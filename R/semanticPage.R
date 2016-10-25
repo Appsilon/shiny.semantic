@@ -51,7 +51,7 @@ semanticPage <- function(...) {
   content <- div(class = "wrapper", ...)
 
   addDeps(
-    tags$body(style = "min-height: 611px;", shiny::bootstrapPage(content, title = title))
+    shiny::tags$body(style = "min-height: 611px;", shiny::bootstrapPage(content, title = title))
   )
 }
 
@@ -77,4 +77,3 @@ img <- function(src, ...) {
 uiicon <- function(type) {
   tags$i(class = paste(type, "icon"))
 }
-

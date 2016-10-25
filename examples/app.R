@@ -18,50 +18,6 @@ jsCode <- "
   $('.rating').rating('setting', 'clearable', true);
 "
 
-ratedPlot <- function(name) {
-  div(class = "ui raised segment",
-      input(placeholder ="Filip"),
-      div(class = "ui star rating")
-  )
-}
-ratedMap <- function(name) {
-  div(class = "ui raised segment",
-      input(placeholder ="Filip"),
-      div(class = "ui star rating")
-  )
-}
-card <- function(content) {
-  div(class="ui card",
-      div(class="content",
-          div(class="right floated meta", "14h"),
-          img(class="ui avatar image", src="images/elliot.jpg"),
-          "Elliot"
-      ),
-      content,
-      div(class="content",
-          span(class="right floated", uiicon("heart outline like"), "17 likes"),
-          uiicon("comment"),
-          "3 comments"
-      ),
-      div(class="extra content",
-          div(class="ui large transparent left icon input",
-              uiicon("heart ouline"),
-              tags$input(type="text", placeholder ="Add Comment...")
-          )
-      )
-  )
-}
-
-breadcrumb <- function() {
-  div(class="ui huge breadcrumb", style="background: transparent",
-      a(class="section", "Portfolio"),
-      div(class="divider", "/"),
-      a(class="section", "Agriculture"),
-      div(class="divider", "/"),
-      a(class="section", "Rice")
-  )
-}
-
 header <- function() {
   div(
     h1(class="ui header", id="header", "Headers"),
@@ -133,9 +89,107 @@ uiinput <- function() {
              div(class="ui basic label" ,"kg")))
   )
 }
+breadcrumb <- function() {
+  div(
+    h1(class="ui header", id="breadcrumb", "Breadcrumb"),
+    demo(div(class="ui breadcrumb",
+             a(class="section", "Home"),
+             div(class="divider", "/"),
+             a(class="section", "Store"),
+             div(class="divider", "/"),
+             a(class="section", "T-shirts"))),
+    demo(div(class="ui breadcrumb",
+             a(class="section", "Home"),
+             uiicon("right angle divider"),
+             a(class="section", "Store"),
+             uiicon("right angle divider"),
+             a(class="section", "T-shirts"))),
+    demo(div(class="ui huge breadcrumb",
+             a(class="section", "Home"),
+             uiicon("right angle divider"),
+             a(class="section", "Store"),
+             uiicon("right angle divider"),
+             a(class="section", "T-shirts")))
+  )
+}
+accordion <- function() {
+  div(
+    h1(class="ui header", id="accordion", "Accordion"),
+    demo(h1(class="ui header", "First header"))
+  )
+}
+grid <- function() {
+  div(
+    h1(class="ui header", id="grid", "Grid"),
+    demo(div(class="ui grid",
+             div(class="four wide column", "Column"),
+             div(class="four wide column", "Column"),
+             div(class="four wide column", "Column"),
+             div(class="four wide column", "Column"))),
+    demo(div(class="ui stackable four column grid",
+             div(class="column", "Column"),
+             div(class="column", "Column"),
+             div(class="column", "Column"),
+             div(class="column", "Column")))
+  )
+}
+card <- function() {
+  div(
+    h1(class="ui header", id="card", "Card"),
+    demo(
+      div(class="ui card",
+        div(class="content",
+          div(class="right floated meta", "14h"),
+          img(class="ui avatar image", src="images/elliot.jpg"),
+          "Elliot"
+        ),
+        div(class="image", img(src="/images/wireframe.png")),
+        div(class="content",
+          span(class="right floated", uiicon("heart outline like"), "17 likes"),
+          uiicon("comment"),
+          "3 comments"
+        ),
+        div(class="extra content",
+          div(class="ui large transparent left icon input",
+            uiicon("heart ouline"),
+            tags$input(type="text", placeholder ="Add Comment...")
+          )
+        )
+      )
+    )
+  )
+}
+uilabel <- function() {
+  div(
+    h1(class="ui header", id="label", "Label"),
+    demo(h1(class="ui header", "First header"))
+  )
+}
+
+rating <- function() {
+  div(
+    h1(class="ui header", id="rating", "Rating"),
+    demo(div(class = "ui star rating"))
+  )
+}
+uilist <- function() {
+  div(
+    h1(class="ui header", id="list", "List"),
+    demo(div(class="ui list", c("Apples", "Pears", "Oranges") %>% purrr::map(~ div(class="item", .)))),
+    demo(div(class="ui list", c("Apples", "Pears", "Oranges") %>% purrr::map(~ 
+      div(class="item", uiicon('users'), div(class="content", .))))),
+    demo(div(class="ui relaxed divided list", c("Apples", "Pears", "Oranges") %>% purrr::map(~ 
+      div(class="item", 
+          uiicon('large github middle aligned'), 
+          div(class="content", 
+              a(class="header", "Hello"),
+              div(class="description", .))
+      ))))
+  )
+}
 section <- function() {
   div(
-    h1(class="ui header", "Section"),
+    h1(class="ui header", id="section", "Section"),
     demo(h1(class="ui header", "First header"))
   )
 }
@@ -148,7 +202,24 @@ sidebar <- function() {
               a(class="item", href="#header", "Header"),
               a(class="item", href="#divider", "Divider"),
               a(class="item", href="#input", "Input"),
-              a(class="item", href="#button", "Button"))))
+              a(class="item", href="#label", "Label"),
+              a(class="item", href="#list", "List"),
+              a(class="item", href="#button", "Button"))),
+      div(class="item",
+          div(class="active header", "Collections"),
+          div(class="menu",
+              a(class="item", href="#grid", "Grid"),
+              a(class="item", href="#breadcrumb", "Breadcrumb"))),
+      div(class="item",
+          div(class="active header", "Views"),
+          div(class="menu",
+              a(class="item", href="#card", "Card"))),
+      div(class="item",
+          div(class="active header", "Modules"),
+          div(class="menu",
+              a(class="item", href="#accordion", "Accordion"),
+              a(class="item", href="#rating", "Rating")
+              )))
 }
 
 ui <- function() {
@@ -157,19 +228,17 @@ ui <- function() {
     sidebar(),
     div(style="margin-left: 210px",
       div(class="ui container",
-          header(),
-          button(),
-          divider(),
-          uiinput(),
-          div(class = "ui raised segment",
-              div(class="ui cards",
-                  card(div(class="image", img(src="/images/wireframe.png")))
-              )
-          ),
-          div(class="ui stackable two column grid",
-              div(class="column", ratedPlot("samplePlot")),
-              div(class="column", ratedMap("sampleMap"))
-          )
+        header(),
+        button(),
+        divider(),
+        uiinput(),
+        uilabel(),
+        uilist(),
+        grid(),
+        breadcrumb(),
+        card(),
+        accordion(),
+        rating()
       )
     )
   ))
