@@ -44,10 +44,7 @@ addDeps <- function(x) {
 #'   provided, it will try to extract the title from the \code{dashboardHeader}.
 #'
 #' @export
-semanticPage <- function(...) {
-  message("setting up page")
-  title <- "test"
-
+semanticPage <- function(title = "", ...) {
   content <- div(class = "wrapper", ...)
 
   addDeps(
@@ -65,8 +62,8 @@ menu <- function(class = "ui item menu", ...) {
   div(class = class, ...)
 }
 
-menuItem <- function(name, class = "item", ...) {
-  tags$a(class = class, name, ...)
+menuItem <- function(..., class = "item") {
+  tags$a(class = class, ...)
 }
 divMenuItem <- function(content, class = "item") {
   div(class = class, content)

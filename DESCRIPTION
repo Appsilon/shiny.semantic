@@ -1,8 +1,8 @@
 Package: semanticui
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Semantic ui support for shiny
 Version: 0.1.0
-Author: Who wrote it
+Author: Filip Stachura
 Maintainer: Who to complain to <yourfault@somewhere.net>
 Description: More about what it does (maybe more than one line)
 License: What license is it under?
