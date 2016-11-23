@@ -69,13 +69,13 @@ sidebar <- function() {
 }
 
 settingsPage <- function () {
-  div(class="ui middle aligned center aligned grid",
+  div(class="ui center aligned grid",
       div(class="sixteen wide column",
           h2(class="ui blue image header",
              div(class="content", "Settings")
           )
       ),
-      div(class="sixteen wide column", style = "max-width: 600px;",
+      div(class="eight wide column", style = "max-width: 600px;",
           div(class = "ui raised segment",
               h3(class="ui image header",
                  div(class="content", "Basic settings")
@@ -110,7 +110,8 @@ settingsPage <- function () {
                       )
                   )
               )
-          ),
+          )),
+      div(class="eight wide column", style = "max-width: 600px;",
           div(class = "ui raised segment",
               h3(class="ui image header",
                  div(class="content", "Other settings")
