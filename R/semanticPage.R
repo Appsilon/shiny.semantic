@@ -52,9 +52,9 @@ semanticPage <- function(title = "", ...) {
   )
 }
 
-input <- function(class = "ui input", placeholder = "") {
+input <- function(class = "ui input", type = "text", name = "", placeholder = "") {
   div(class = class,
-    tags$input(type="text", placeholder = placeholder)
+    tags$input(type = type, name = name, placeholder = placeholder)
   )
 }
 
