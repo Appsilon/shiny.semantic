@@ -52,8 +52,8 @@ semanticPage <- function(title = "", ...) {
   )
 }
 
-input <- function(class = "ui input", placeholder = "") {
-  div(class = class,
+input <- function(class = "ui input", style = "", placeholder = "") {
+  div(class = class, style = style,
     tags$input(type="text", placeholder = placeholder)
   )
 }
@@ -71,6 +71,6 @@ divMenuItem <- function(content, class = "item") {
 img <- function(src, ...) {
   tags$img(src = src, ...)
 }
-uiicon <- function(type) {
-  tags$i(class = paste(type, "icon"))
+uiicon <- function(type = "", style = "") {
+  tags$i(class = paste(type, "icon"), style = style)
 }

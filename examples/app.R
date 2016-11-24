@@ -8,7 +8,7 @@ library(formatR)
 demo <- function(code) {
   div(class = "ui raised segment",
     code,
-    div(style="width: 100%; height:10px"),
+    div(style = "width: 100%; height:10px"),
     highlight(formatR::tidy_source(width.cutoff = 40, text = deparse(substitute(code)))$text.tidy)
   )
 }
@@ -174,14 +174,14 @@ rating <- function() {
 }
 uilist <- function() {
   div(
-    h1(class="ui header", id="list", "List"),
+    h1(class="ui dividing header", id="list", "List"),
     demo(div(class="ui list", c("Apples", "Pears", "Oranges") %>% purrr::map(~ div(class="item", .)))),
-    demo(div(class="ui list", c("Apples", "Pears", "Oranges") %>% purrr::map(~ 
+    demo(div(class="ui list", c("Apples", "Pears", "Oranges") %>% purrr::map(~
       div(class="item", uiicon('users'), div(class="content", .))))),
-    demo(div(class="ui relaxed divided list", c("Apples", "Pears", "Oranges") %>% purrr::map(~ 
-      div(class="item", 
-          uiicon('large github middle aligned'), 
-          div(class="content", 
+    demo(div(class="ui relaxed divided list", c("Apples", "Pears", "Oranges") %>% purrr::map(~
+      div(class="item",
+          uiicon('large github middle aligned'),
+          div(class="content",
               a(class="header", "Hello"),
               div(class="description", .))
       ))))
@@ -189,7 +189,7 @@ uilist <- function() {
 }
 section <- function() {
   div(
-    h1(class="ui header", id="section", "Section"),
+    h1(class="ui dividing header", id="section", "Section"),
     demo(h1(class="ui header", "First header"))
   )
 }
@@ -221,13 +221,17 @@ sidebar <- function() {
               a(class="item", href="#rating", "Rating")
               )))
 }
-
+css <- "
+#examples > div > .header {
+  margin-top: 1em;
+}"
 ui <- function() {
   shinyUI(semanticPage(
+    tags$head(tags$style(HTML(css))),
     useShinyjs(),
     sidebar(),
     div(style="margin-left: 210px",
-      div(class="ui container",
+      div(id="examples", class="ui container",
         header(),
         button(),
         divider(),
