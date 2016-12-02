@@ -95,7 +95,6 @@
 
 	  // The input rate limiting policy
 	  getRatePolicy: function() {
-	    console.log("getRate called");
 	    return {
 	      // Can be 'debounce' or 'throttle'
 	      policy: 'debounce',
