@@ -553,7 +553,12 @@ settingsPage <- function () {
                </div>
                </div>
                </div>
-               </form>')
+               </form>
+              <script>
+              $( document ).ready(function() {
+                $(".ui.dropdown").dropdown();
+              })
+              </script>')
           )
       )
   )
