@@ -54,6 +54,16 @@ $.extend(customShinyInputBinding, {
       policy: 'debounce',
       delay: 500
     };
+  },
+
+  receiveMessage: function(el, data) {
+    if (data.hasOwnProperty('value'))
+      this.setValue(el, data.value);
+
+    if (data.hasOwnProperty('label'))
+      $(el).closest(".ui").dropdown('set selected', data.label)
+
+    $(el).trigger('change');
   }
 });
 
