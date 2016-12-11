@@ -103,11 +103,18 @@
 	  },
 
 	  receiveMessage: function(el, data) {
+	    console.log(JSON.stringify(data))
 	    if (data.hasOwnProperty('value'))
 	      this.setValue(el, data.value);
 
-	    if (data.hasOwnProperty('label'))
-	      $(el).closest(".ui").dropdown('set selected', data.label)
+	    if (data.hasOwnProperty('label')) {
+	      var input = $(el).closest(".ui");
+	      if (data.label === "") {
+	        input.dropdown('remove selected')
+	      } else {
+	        input.dropdown('set selected', data.label)
+	      }
+	    }
 
 	    $(el).trigger('change');
 	  }
