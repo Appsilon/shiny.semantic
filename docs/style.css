@@ -1,0 +1,84 @@
+body {
+  background: oldlace;
+  font-family: "Lato", sans-serif;
+}
+h1 {
+  text-align: center;
+  font-size: 80px;
+  font-weight: 300;
+  padding-top: 1em;
+  margin: 0;
+}
+.footer h1 {
+  font-size: 50px;
+}
+.footer a {
+  color: white;
+  text-decoration: underline;
+}
+.section.footer img {
+  width: 150px !important;
+  margin: 1em;
+  margin-bottom: 1em;
+}
+h2, .subheader {
+  font-size: 22px;
+  text-align: center;
+  font-style: italic;
+  font-weight: 300;
+  margin: 0;
+}
+
+.main-container {
+  max-width: 100%;
+  padding: 0;
+}
+.custom {
+  background-color: rgb(52, 52, 52);
+}
+.section.level2 {
+  text-align: center;
+  padding: 1em 0;
+}
+.section.level2 * {
+  text-align: left;
+  margin: 1em auto;
+  width: 50%;
+  max-width: 940px;
+}
+@media (max-width: 1440px) {
+  .section.level2 * {
+    width:75%;
+  }
+}
+
+
+.section.level1.footer * {
+  text-align: center;
+}
+.section.level2 * * {
+  width: 100%;
+}
+.darkslide {
+  background-color: #343434;
+  color: darkorange;
+}
+.footer {
+  background-color: #343434;
+  color: white;
+  padding-bottom: 2em;
+}
+.darkslide a {
+  color: white;
+}
+.firebrick {
+  background-color: firebrick;
+  color: white;
+}
+.darkorange {
+  background-color: darkorange;
+  color: #343434;
+}
+.logo img {
+  width: 100px !important;
+}
