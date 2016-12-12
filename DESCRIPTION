@@ -18,3 +18,4 @@ Imports:
     utils,
     shiny (>= 0.12.1),
     htmltools (>= 0.2.6)
+RoxygenNote: 5.0.1
