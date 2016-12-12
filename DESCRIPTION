@@ -1,12 +1,19 @@
-Package: semanticui
+Package: shiny.semantic
 Type: Package
 Title: Semantic ui support for shiny
 Version: 0.1.0
-Author: Filip Stachura
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Filip Stachura <filip@appsilondatascience.com>
+Maintainer: Marek Rogala <marek@appsilondatascience.com>
+Description: Creating great user interface for your Shiny apps
+    can be a hassle, especialy if you don't want to leave R for
+    HTML templates. This package add support for powerful UI
+    library Semantic UI - http://semantic-ui.com/. You can
+    also find support for universal UI input binding that works
+    with various DOM elements.
+BugReports: https://github.com/Appsilon/shiny.semantic/issues
+Encoding: UTF-8
 LazyData: TRUE
+License: MIT + file LICENSE
 Imports:
     utils,
     shiny (>= 0.12.1),
