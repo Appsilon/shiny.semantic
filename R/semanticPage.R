@@ -1,19 +1,22 @@
-# Some useful keyboard shortcuts for package authoring:
-#
-#   Build and Reload Package:  'Cmd + Shift + B'
-#   Check Package:             'Cmd + Shift + E'
-#   Test Package:              'Cmd + Shift + T'
-
-# Add an html dependency, without overwriting existing ones
-appendDependencies <- function(x, newDependencies) {
+#' Internal function that adds an html dependency, without overwriting existing ones.
+#'
+#' @param content Content to which dependencies need to be added.
+#' @param newDependencies Dependencies to be added.
+#'
+#' @return Content with appended dependencies.
+appendDependencies <- function(content, newDependencies) {
   if (inherits(newDependencies, "html_dependency")) newDependencies <- list(newDependencies)
-  existingDependencies <- attr(x, "html_dependencies", TRUE)
-  htmltools::htmlDependencies(x) <- c(existingDependencies, newDependencies)
-  x
+  existingDependencies <- attr(content, "html_dependencies", TRUE)
+  htmltools::htmlDependencies(content) <- c(existingDependencies, newDependencies)
+  content
 }
 
-# Add dashboard dependencies to a tag object
-addDeps <- function(x) {
+#' Internal function that adds dashboard dependencies to html.
+#'
+#' @param content Content to which dependencies need to be added.
+#'
+#' @return Content with appended dependencies.
+addDeps <- function(content) {
   if (getOption("shiny.minified", TRUE)) {
     javascriptFile <- "semantic.min.js"
     cssFiles <- c("semantic.min.css")
@@ -30,18 +33,14 @@ addDeps <- function(x) {
     )
   )
 
-  appendDependencies(x, dashboardDeps)
+  appendDependencies(content, dashboardDeps)
 }
 
-#' Semantic-ui page
+#' Semantic UI page
 #'
-#' This creates a semantic-ui page for use in a Shiny app.
+#' This creates a Semantic page for use in a Shiny app.
 #'
-#' @param header A header created by \code{dashboardHeader}.
-#' @param sidebar A sidebar created by \code{dashboardSidebar}.
-#' @param body A body created by \code{dashboardBody}.
-#' @param title A title to display in the browser's title bar. If no value is
-#'   provided, it will try to extract the title from the \code{dashboardHeader}.
+#' @param title A title to display in the browser's title bar.
 #'
 #' @export
 semanticPage <- function(title = "", ...) {
@@ -52,26 +51,3 @@ semanticPage <- function(title = "", ...) {
   )
 }
 
-
-input <- function(class = "ui input", style = "", type = "text", name = "", placeholder = "") {
-  div(class = class, style = style,
-    tags$input(type = type, name = name, placeholder = placeholder)
-  )
-}
-
-menu <- function(class = "ui item menu", ...) {
-  div(class = class, ...)
-}
-
-menuItem <- function(..., class = "item") {
-  tags$a(class = class, ...)
-}
-divMenuItem <- function(content, class = "item") {
-  div(class = class, content)
-}
-img <- function(src, ...) {
-  tags$img(src = src, ...)
-}
-uiicon <- function(type = "", style = "") {
-  tags$i(class = paste(type, "icon"), style = style)
-}

@@ -1,28 +1,30 @@
 var customShinyInputBinding = new Shiny.InputBinding();
 
 $.extend(customShinyInputBinding, {
+
+  // This initialize input element. It extracts data-value attribute and use that as value.
   initialize: function(el) {
     var val = $(el).attr('data-value');
     $(el).val(val);
   },
 
-  // This returns a jQuery object with the DOM element
+  // This returns a jQuery object with the DOM element.
   find: function(scope) {
     return $(scope).find('.shiny-custom-input');
   },
 
-  // return the ID of the DOM element
+  // Returns the ID of the DOM element.
   getId: function(el) {
     return el.id;
   },
 
-  // Given the DOM element for the input, return the value
+  // Given the DOM element for the input, return the value as JSON.
   getValue: function(el) {
     var value = $(el).val();
     return JSON.stringify(value);
   },
 
-  // Given the DOM element for the input, set the value
+  // Given the DOM element for the input, set the value.
   setValue: function(el, value) {
     el.value = value;
   },
@@ -35,22 +37,21 @@ $.extend(customShinyInputBinding, {
     $(el).change(function () { callback(true); });
   },
 
-  // Remove the event listeners
+  // TODO: Remove the event listeners.
   unsubscribe: function(el) {
   },
 
   // This returns a full description of the input's state.
-  // Note that some inputs may be too complex for a full description of the state to be feasible.
   getState: function(el) {
     return {
       value: el.value
     };
   },
 
-  // The input rate limiting policy
+  // The input rate limiting policy.
   getRatePolicy: function() {
     return {
-      // Can be 'debounce' or 'throttle'
+      // Can be 'debounce' or 'throttle':
       policy: 'debounce',
       delay: 500
     };
