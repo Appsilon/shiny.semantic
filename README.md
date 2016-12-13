@@ -1,20 +1,41 @@
-Repo documentation
-================
 
 <link href="http://fonts.googleapis.com/css?family=Lato:300,700,300italic|Inconsolata" rel="stylesheet" type="text/css"> <link href='docs/style.css' rel='stylesheet' type='text/css'>
 
-shiny.Semantic
+shiny.semantic
 ==============
 
 SemanticUI wrapper for Shiny
 
-With this library it's easy to use SemanticUI components in Shiny app development.
+With this library it's easy to wrap Shiny with SemanticUI components. Add few simple CSS classes to your components and achieve amazing boost look of your user interface.
 
+<!-- TODO Filip better example -->
 <h2>
 Before
 </h2>
 <!--html_preserve-->
-Shiny applications not supported in static R Markdown documents
+<a>Client's info</a>
+<p>
+</p>
+<table>
+<tbody>
+<tr>
+<td>
+Name
+</td>
+<td>
+John Smith
+</td>
+</tr>
+<tr>
+<td>
+City
+</td>
+<td>
+Warsaw, Poland
+</td>
+</tr>
+</tbody>
+</table>
 
 <!--/html_preserve-->
 
@@ -22,15 +43,43 @@ Shiny applications not supported in static R Markdown documents
 After
 </h2>
 <!--html_preserve-->
-Shiny applications not supported in static R Markdown documents
+<body style="min-height: 611px;">
+<!--SHINY.SINGLETON[12b282b6c4e1ec3cee386f4ca6165aafc4731a84]-->
+<!--/SHINY.SINGLETON[12b282b6c4e1ec3cee386f4ca6165aafc4731a84]-->
+<a class="ui green ribbon label">Client's info</a>
+<p>
+</p>
+<table>
+<tbody>
+<tr>
+<td>
+Name
+</td>
+<td>
+John Smith
+</td>
+</tr>
+<tr>
+<td>
+City
+</td>
+<td>
+Warsaw, Poland
+</td>
+</tr>
+</tbody>
+</table>
 
+</body>
 <!--/html_preserve-->
 
 <!-- #Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link). -->
 <!-- Live demo link below -->
-<p style="text-align: center; font-size: x-large;">
-<a href="http://appsilondatascience.com/demo/shinysemantic">Live demo</a>
+<!-- TODO Analogy to http://shiny.rstudio.com/gallery/widget-gallery.html -->
+<p style="text-align: center; font-size: x-large; clear: both">
+<a href="http://demo.appsilondatascience.com/shiny.semantic/components">Components live demo</a>
 </p>
+For better understanding it's good to check [SemanticUI documentation.](http://semantic-ui.com/introduction/getting-started.html)
 
 Source code
 -----------
@@ -47,14 +96,57 @@ How to install?
 
 At the moment it's possible to install this library through [devtools](https://github.com/hadley/devtools).
 
-    devtools::install_github("Appsilon/shiny.Semantic")
+    devtools::install_github("Appsilon/shiny.semantic")
 
 To install [previous version]() you can run:
 
-    devtools::install_github("Appsilon/shiny.Semantic", ref = "0.1.0")
+    devtools::install_github("Appsilon/shiny.semantic", ref = "0.1.0")
 
-Example
--------
+How to use it?
+--------------
+
+TODO Chris - write how to initialse all necessary things in shinyServer and ui. <br> TODO Chris - write about invoking specific components JS, found in SemanticUI documentation.
+
+    ## div(class = "ui card", div(class = "content", 
+    ##     div(class = "right floated meta", "14h"), 
+    ##     img(class = "ui avatar image", src = "../examples/www/images/elliot.jpg"), 
+    ##     "Elliot"), div(class = "image", img(src = "../examples/www/images/wireframe.png")), 
+    ##     div(class = "content", span(class = "right floated", 
+    ##         uiicon("heart outline like"), "17 likes"), 
+    ##         uiicon("comment"), "3 comments"), 
+    ##     div(class = "extra content", div(class = "ui large transparent left icon input", 
+    ##         uiicon("heart ouline"), tags$input(type = "text", 
+    ##             placeholder = "Add Comment..."))))
+
+<!--html_preserve-->
+14h
+
+<img class="ui avatar image" src="../examples/www/images/elliot.jpg"/> Elliot
+
+<img src="../examples/www/images/wireframe.png"/>
+
+<span class="right floated"> <i class="heart outline like icon"></i> 17 likes </span> <i class="comment icon"></i> 3 comments
+
+<i class="heart ouline icon"></i> <input type="text" placeholder="Add Comment..."/>
+
+<script type="application/json" data-for="htmlwidget-5bd0bdf88eddba4c3898">{"x":"div(class = \"ui card\", div(class = \"content\", \n    div(class = \"right floated meta\", \"14h\"), \n    img(class = \"ui avatar image\", src = \"../examples/www/images/elliot.jpg\"), \n    \"Elliot\"), div(class = \"image\", img(src = \"../examples/www/images/wireframe.png\")), \n    div(class = \"content\", span(class = \"right floated\", \n        uiicon(\"heart outline like\"), \"17 likes\"), \n        uiicon(\"comment\"), \"3 comments\"), \n    div(class = \"extra content\", div(class = \"ui large transparent left icon input\", \n        uiicon(\"heart ouline\"), tags$input(type = \"text\", \n            placeholder = \"Add Comment...\"))))","evals":[],"jsHooks":[]}</script>
+
+<!--/html_preserve-->
+**More examples**
+
+The source code for the live demo you were able to go to in the bigging is located in **/examples** folder. To run it locally you will have to install:
+
+-   [**highlighter**](TODO%20Filip%20repo%20url)
+
+        TODO Filip change to github
+        devtools::install_git("https://user:password@gitlab.com/appsilon/highlighter.git")
+
+Check out our dashboard examples:
+
+1.  [Churn analytics](http://demo.appsilondatascience.com/shiny.semantic/churn)
+2.  [Fraud detection](demo.appsilondatascience.com/shiny.semantic/frauds)
+
+All dashboards source code can be found in **/demo** folder. You will have to follow the according README files to install all necessary dependencies for those projects.
 
 How to contribute?
 ------------------
@@ -82,13 +174,15 @@ However, if you encounter any problems, try the following:
 
             install.packages("shinyjs", version='0.8')
 
-        TODO dependecies
+        TODO FILIP other dependecies???
+
+3.  Some bugs may be realted directly to SemanticUI. In that case please try to check issues on its [repository.](https://github.com/Semantic-Org/Semantic-UI)
 
 Future enhacements
 ------------------
 
+-   create all update\*Input components to mimic shiny as close as possible
 -   CRAN release
--   TODO other features
 
 Appsilon Data Science
 =====================
