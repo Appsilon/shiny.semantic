@@ -162,7 +162,8 @@ server <- shinyServer(function(input, output) {
     leaflet() %>%
       addCircleMarkers(data = cities[airports %>% unlist,], radius = 1, color="white") %>%
       addFlights(airports %>% tidyr::gather(V1) %>% .[, c(1,3)]) %>%
-      addProviderTiles("CartoDB.DarkMatter")
+      addProviderTiles("CartoDB.DarkMatter") %>%
+      setView(lat = 0, lng= 0, zoom = 3)
   })
 
   output$transactionRadar <- renderChartjs({
