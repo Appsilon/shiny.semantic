@@ -1,26 +1,41 @@
+Repo documentation
+================
 
 <link href="http://fonts.googleapis.com/css?family=Lato:300,700,300italic|Inconsolata" rel="stylesheet" type="text/css"> <link href='docs/style.css' rel='stylesheet' type='text/css'>
 
-TODO your repo name
-===================
+shiny.Semantic
+==============
 
-TODO - Your repo title
+SemanticUI wrapper for Shiny
 
-TODO - Your repo short description here <!--
-TODO We would like to have a nice graphic explaning routing mechanism
---> \#Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link).
+With this library it's easy to use SemanticUI components in Shiny app development.
 
-Live demo link below
-====================
+<h2>
+Before
+</h2>
+<!--html_preserve-->
+Shiny applications not supported in static R Markdown documents
 
-<!-- <p style="text-align: center; font-size: x-large;"> -->
-<!-- <a href="http://demo.appsilondatascience.com/semantic/">Live demo</a> -->
-<!-- </p> -->
+<!--/html_preserve-->
+
+<h2>
+After
+</h2>
+<!--html_preserve-->
+Shiny applications not supported in static R Markdown documents
+
+<!--/html_preserve-->
+
+<!-- #Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link). -->
+<!-- Live demo link below -->
+<p style="text-align: center; font-size: x-large;">
+<a href="http://appsilondatascience.com/demo/shinysemantic">Live demo</a>
+</p>
 
 Source code
 -----------
 
-This library source code can be found on [Appsilon Data Science's](http://appsilondatascience.com) Github: <br> [TODO your\_Repo\_link](TODO%20your_Repo_link)
+This library source code can be found on [Appsilon Data Science's](http://appsilondatascience.com) Github: <br> <https://github.com/Appsilon/shiny.semantic>
 
 <script>
 document.write('<div class="logo"><a href="http://appsilondatascience.com"><img alt="Appsilon Data Science" src="https://cdn.rawgit.com/Appsilon/website-cdn/gh-pages/logo-white.png"/></a></div>')
@@ -32,11 +47,11 @@ How to install?
 
 At the moment it's possible to install this library through [devtools](https://github.com/hadley/devtools).
 
-    devtools::install_github("Appsilon/TODO_link")
+    devtools::install_github("Appsilon/shiny.Semantic")
 
-To install [previous version](https://github.com/Appsilon/TODO_link/blob/master/CHANGELOG.md) you can run:
+To install [previous version]() you can run:
 
-    devtools::install_github("Appsilon/TODO_link", ref = "0.1.0")
+    devtools::install_github("Appsilon/shiny.Semantic", ref = "0.1.0")
 
 Example
 -------
@@ -68,7 +83,6 @@ However, if you encounter any problems, try the following:
             install.packages("shinyjs", version='0.8')
 
         TODO dependecies
-        ================
 
 Future enhacements
 ------------------
@@ -85,5 +99,5 @@ document.write('<div class="subheader"> We Provide End-to-End Data Science Solut
 Get in touch [dev@appsilondatascience.com](dev@appsilondatascience.com)
 
 <script>
-document.write('<a href="https://github.com/Appsilon/todo_your_url"><img style="position: absolute; margin: 0; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>')
+document.write('<a href="https://github.com/Appsilon/shiny.semantic"><img style="position: absolute; margin: 0; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>')
 </script>
