@@ -13,7 +13,14 @@ demo <- function(code) {
   )
 }
 
+input <- function(class = "ui input", style = "", type = "text", name = "", placeholder = "") {
+  div(class = class, style = style,
+      tags$input(type = type, name = name, placeholder = placeholder)
+  )
+}
+
 jsCode <- "
+  $('.accordion').accordion({selector: {trigger: '.title .icon'}}).accordion('close');
   $('.ui.dropdown').dropdown({});
   $('.rating').rating('setting', 'clearable', true);
 "
@@ -115,7 +122,13 @@ breadcrumb <- function() {
 accordion <- function() {
   div(
     h1(class="ui header", id="accordion", "Accordion"),
-    demo(h1(class="ui header", "First header"))
+    demo(div(class="ui styled accordion", 
+             div(class="active title", uiicon('dropdown icon'), "What is dog?"),
+             div(class="active content", p("A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.")),
+             div(class="title", uiicon('dropdown icon'), "What kinds of dogs are there?"),
+             div(class="content", p("There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion."))
+             )
+         )
   )
 }
 grid <- function() {
