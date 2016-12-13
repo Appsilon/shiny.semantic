@@ -13,6 +13,26 @@ library(visNetwork)
 
 source("emotion.R")
 
+input <- function(class = "ui input", style = "", type = "text", name = "", placeholder = "") {
+  div(class = class, style = style,
+      tags$input(type = type, name = name, placeholder = placeholder)
+  )
+}
+
+menu <- function(class = "ui item menu", ...) {
+  div(class = class, ...)
+}
+
+menuItem <- function(..., class = "item") {
+  tags$a(class = class, ...)
+}
+divMenuItem <- function(content, class = "item") {
+  div(class = class, content)
+}
+img <- function(src, ...) {
+  tags$img(src = src, ...)
+}
+
 options(shiny.maxRequestSize = 100 * 1024^2)
 
 jsCode <- "

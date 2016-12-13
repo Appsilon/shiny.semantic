@@ -1,6 +1,6 @@
 library(shiny)
 library(shinyjs)
-library(semanticui)
+library(shiny.semantic)
 library(plotly)
 library(leaflet)
 library(magrittr)
@@ -18,6 +18,26 @@ $('.ui.dropdown').dropdown({});
 $('.rating').rating('setting', 'clearable', true);
 $('.disabled .rating').rating('disable');
 "
+
+input <- function(class = "ui input", style = "", type = "text", name = "", placeholder = "") {
+  div(class = class, style = style,
+      tags$input(type = type, name = name, placeholder = placeholder)
+  )
+}
+
+menu <- function(class = "ui item menu", ...) {
+  div(class = class, ...)
+}
+
+menuItem <- function(..., class = "item") {
+  tags$a(class = class, ...)
+}
+divMenuItem <- function(content, class = "item") {
+  div(class = class, content)
+}
+img <- function(src, ...) {
+  tags$img(src = src, ...)
+}
 
 logoutPage <- function () {
   div(class="ui middle aligned center aligned grid",

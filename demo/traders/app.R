@@ -14,6 +14,26 @@ jsCode <- "
   $('.rating').rating('setting', 'clearable', true);
 "
 
+input <- function(class = "ui input", style = "", type = "text", name = "", placeholder = "") {
+  div(class = class, style = style,
+      tags$input(type = type, name = name, placeholder = placeholder)
+  )
+}
+
+menu <- function(class = "ui item menu", ...) {
+  div(class = class, ...)
+}
+
+menuItem <- function(..., class = "item") {
+  tags$a(class = class, ...)
+}
+divMenuItem <- function(content, class = "item") {
+  div(class = class, content)
+}
+img <- function(src, ...) {
+  tags$img(src = src, ...)
+}
+
 area <- readOGR("area.json", "OGRGeoJSON")
 
 breadcrumb <- function() {
