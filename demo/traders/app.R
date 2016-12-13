@@ -1,6 +1,6 @@
 library(shiny)
 library(shinyjs)
-library(semanticui)
+library(shiny.semantic)
 library(plotly)
 library(leaflet)
 library(magrittr)

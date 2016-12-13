@@ -1,6 +1,6 @@
 library(shiny)
 library(shinyjs)
-library(semanticui)
+library(shiny.semantic)
 library(magrittr)
 
 js_code <- "
@@ -16,7 +16,7 @@ customer_input <- function(input) {
   print(val)
 
   div(class = "ui selection dropdown",
-    semanticui::shiny_input(name,
+    shiny_input(name,
       shiny::tags$input(type = "hidden", name = "customer"),
       value = val
     ),

@@ -1,6 +1,6 @@
 library(shiny)
 library(shinyjs)
-library(semanticui)
+library(shiny.semantic)
 library(plotly)
 library(leaflet)
 library(magrittr)
@@ -13,7 +13,7 @@ library(visNetwork)
 
 source("emotion.R")
 
-options(shiny.maxRequestSize = 100 * 1024^2) 
+options(shiny.maxRequestSize = 100 * 1024^2)
 
 jsCode <- "
 $('.ui.dropdown').dropdown({});
@@ -34,7 +34,7 @@ ui <- function() {
             div(class = "ui raised segment",
               a(class="ui red ribbon label", "Panel"),
               p(),
-              fileInput(inputId = 'file', 
+              fileInput(inputId = 'file',
                         label = 'Select an Image',
                         multiple = TRUE,
                         accept=c('image/png', 'image/jpeg')),
@@ -57,7 +57,7 @@ ui <- function() {
 enhanceImageWithFaces <- function(imagePath, outPath, emotions) {
   file.copy(imagePath, outPath, overwrite = T)
   img <- EBImage::readImage(outPath)
-  emotions %>% 
+  emotions %>%
     purrr::map(~ .$faceRectangle) %>%
     purrr::map(function(rect) {
       x <- rect$left + rect$width / 2
@@ -70,35 +70,35 @@ enhanceImageWithFaces <- function(imagePath, outPath, emotions) {
 
 server <- shinyServer(function(input, output) {
   runjs(jsCode)
-  
+
   emotions <- reactive({
     if(is.null(input$file)) return(NULL)
     getEmotionResponse(input$file$datapath)
   })
-  
+
   emotionsTab <- reactive({
-    emotions() %>% 
-      purrr::map(~ .$scores %>% unlist %>% round(4)) %>% 
+    emotions() %>%
+      purrr::map(~ .$scores %>% unlist %>% round(4)) %>%
       do.call(rbind, .)
   })
-  
+
   output$image <- renderImage({
     validate(
       need(input$file$datapath != "", "No file selected")
     )
-    
+
     path <- input$file$datapath
     outPath <- "/tmp/tempImage.jpg"
     enhanceImageWithFaces(path, outPath, emotions())
-    
+
     list(src = outPath, alt = "Image failed to render", width = 400)
   }, deleteFile = F)
-  
+
   output$detectedOutput <- renderUI({
     if(is.null(input$file)) return(NULL)
-    span(emotions() %>% length %>% as.character) 
+    span(emotions() %>% length %>% as.character)
   })
-  
+
   output$emotionsTable <- DT::renderDataTable({
     if(is.null(input$file)) return(NULL)
     emotionsTab() %>% DT::datatable()

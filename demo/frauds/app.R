@@ -1,6 +1,6 @@
 library(shiny)
 library(shinyjs)
-library(semanticui)
+library(shiny.semantic)
 library(plotly)
 library(leaflet)
 library(magrittr)
@@ -29,38 +29,38 @@ breadcrumb <- function() {
 }
 
 userCard <- function() {
-  div(class = "ui card", 
-    div(class = "content", 
-      div(class = "right floated meta", "7 minutes ago"), 
-      img(class = "ui avatar image", src = "images/elliot.jpg"), 
-      "John Smith"), 
-    div(class = "content", 
+  div(class = "ui card",
+    div(class = "content",
+      div(class = "right floated meta", "7 minutes ago"),
+      img(class = "ui avatar image", src = "images/elliot.jpg"),
+      "John Smith"),
+    div(class = "content",
       a(class="header", "Top indicators"),
-      div(class="ui divided list", 
-       div(class="item", 
-         uiicon('large green plus middle aligned'), 
-         div(class="content", 
+      div(class="ui divided list",
+       div(class="item",
+         uiicon('large green plus middle aligned'),
+         div(class="content",
            a(class="header", "Strong network"),
            div(class="description", "Healthy user network")
          )
        ),
-       div(class="item", 
-         uiicon('large green plus middle aligned'), 
-         div(class="content", 
+       div(class="item",
+         uiicon('large green plus middle aligned'),
+         div(class="content",
            a(class="header", "Social media"),
            div(class="description", "Profiles authentic and reliable")
          )
        ),
-       div(class="item", 
-         uiicon('large green plus middle aligned'), 
-         div(class="content", 
+       div(class="item",
+         uiicon('large green plus middle aligned'),
+         div(class="content",
            a(class="header", "Location"),
            div(class="description", "Regular user location (work)")
          )
        ),
-       div(class="item", 
-         uiicon('large red minus middle aligned'), 
-         div(class="content", 
+       div(class="item",
+         uiicon('large red minus middle aligned'),
+         div(class="content",
            a(class="header", "Short transactions history"),
            div(class="description", "User performed less transactions than average")
          )
@@ -68,7 +68,7 @@ userCard <- function() {
       )
     ),
     div(class="extra content",
-      "Positive indicators"     
+      "Positive indicators"
     )
   )
 }
@@ -150,18 +150,18 @@ server <- shinyServer(function(input, output) {
       cjsRadar(labels = c("Social media", "History", "Location", "Device", "Network")) %>%
       cjsSeries(label="John Smiths", data = c(6, 7, 8, 5, 9)) %>%
       cjsSeries(label="Recommended", data = c(4, 8, 5, 6, 4)) %>%
-      cjsEditScale(axis = NULL, ticks = list(beginAtZero = TRUE)) %>% 
+      cjsEditScale(axis = NULL, ticks = list(beginAtZero = TRUE)) %>%
       cjsLegend
   })
   output$transactionRadarSummary <- DT::renderDataTable({
-    frame <- data.frame(date = as.Date(c("2016/07/16","2016/07/25","2016/08/03")), 
+    frame <- data.frame(date = as.Date(c("2016/07/16","2016/07/25","2016/08/03")),
                         spendings = c(127.78, 1000.00, 17.83))
     datatable(frame, options = list(pageLength = 5))
   })
   output$network <- renderVisNetwork({
     nodes <- data.frame(id = 1:10, color="#f6f6f6")
     edges <- data.frame(from = round(runif(15)*10), to = round(runif(15)*10))
-    
+
     visNetwork(nodes, edges)
   })
 

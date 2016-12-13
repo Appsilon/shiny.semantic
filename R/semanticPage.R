@@ -27,7 +27,7 @@ addDeps <- function(content) {
 
   dashboardDeps <- list(
     htmltools::htmlDependency("semantic-ui", "2.1.8",
-                   c(file = system.file("semantic", package = "semanticui")),
+                   c(file = system.file("semantic", package = "shiny.semantic")),
                    script = javascriptFile,
                    stylesheet = cssFiles
     )

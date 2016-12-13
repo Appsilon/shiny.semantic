@@ -2,7 +2,7 @@
 .onLoad <- function(libname, pkgname) {
   # Add directory for static resources
   message("attaching resources")
-  shiny::addResourcePath('semanticui', system.file('www', package = 'semanticui', mustWork = TRUE))
+  shiny::addResourcePath('shiny.semantic', system.file('www', package = 'shiny.semantic', mustWork = TRUE))
 }
 
 #' Semantic UI page
@@ -25,7 +25,7 @@ shiny_input <- function(input_id, shiny_ui, value = NULL) {
   shiny::tagList(
     shiny::singleton(
       shiny::tags$head(
-        shiny::tags$script(src = "semanticui/shiny-binding.js")
+        shiny::tags$script(src = "shiny.semantic/shiny-binding.js")
       )
     ),
     shiny_ui
