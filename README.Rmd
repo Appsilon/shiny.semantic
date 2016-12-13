@@ -1,11 +1,11 @@
 ---
-title: Repo documentation
+title: shiny.semantic documentation
 output: html_document
 params:
    website_url: http://appsilondatascience.com
    logo_url: https://cdn.rawgit.com/Appsilon/website-cdn/gh-pages/logo-white.png
    
-   repo_name: shiny.Semantic
+   repo_name: shiny.semantic
    repo_url: https://github.com/Appsilon/shiny.semantic
    demo_url: http://demo.appsilondatascience.com/shiny.semantic/churn
    chagelog_url: https://github.com/Appsilon/shiny.semantic/blob/master/CHANGELOG.md
@@ -24,8 +24,9 @@ source("readme_assets/ui_demo.R")
 <div class="subheader">SemanticUI wrapper for Shiny</div>
 
 <div class="section level2">
-With this library it's easy to use SemanticUI components in Shiny app development. 
+With this library it's easy to wrap Shiny components into SemanticUI components. 
 
+<!-- TODO better example -->
 <div>
 <div style="width:50%; height: 400px; float:left; max-width: 400px">
 <h2> Before </h2>
@@ -44,6 +45,7 @@ after_ui_demo()
 <!-- #Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link). -->
 
 <!-- Live demo link below -->
+<!-- TODO Analogy to http://shiny.rstudio.com/gallery/widget-gallery.html -->
 <p style="text-align: center; font-size: x-large; clear: both">
 <a href="`r params$demo_url`">Live demo</a>
 </p>
@@ -75,9 +77,22 @@ To install [previous version](`r params$changelog_url`) you can run:
 devtools::install_github("Appsilon/`r params$repo_name`", ref = "0.1.0")
 ```
 
-Example {.firebrick}
+Examples {.firebrick}
 -------
+The source code for the live demo you were able to go to in the bigging is located in **/examples** folder. To run it locally you will have to install:
 
+* [**highlighter**](TODO repo url)
+```
+TODO change to github
+devtools::install_git("https://user:password@gitlab.com/appsilon/highlighter.git")
+```
+
+Check out our dashboard examples:
+
+1. [Churn analytics](http://demo.appsilondatascience.com/shiny.semantic/churn)
+2. [Fraud detection](demo.appsilondatascience.com/shiny.semantic/frauds)
+
+All dashboard source code can be found in **/demo** folder.
 
 How to contribute?
 -----------------
@@ -103,13 +118,13 @@ However, if you encounter any problems, try the following:
     ```
     install.packages("shinyjs", version='0.8')
     ```
-    TODO dependecies
+    TODO FILIP other dependecies???
 
 
 Future enhacements
 ------------------
+* create all update*Input components to mimic shiny as close as possible
 * CRAN release
-* TODO other features
 
 
 Appsilon Data Science {.footer}

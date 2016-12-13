@@ -16,6 +16,10 @@ h1 {
   color: white;
   text-decoration: underline;
 }
+.firebrick a {
+  color: white;
+  text-decoration: underline;
+}
 .section.footer img {
   width: 150px !important;
   margin: 1em;

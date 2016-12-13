@@ -13,5 +13,5 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 - TODO your feature
 
-[Unreleased]: https://github.com/Appsilon/your_repo_url/compare/0.1.0...HEAD
-[0.1.0]: https://github.com/Appsilon/your_repo_url/compare/your_repo_init_comit_hash...0.1.0
+[Unreleased]: https://github.com/Appsilon/shiny.semantic/compare/0.1.0...HEAD
+[0.1.0]: https://github.com/Appsilon/shiny.semantic/compare/a4987aa4588cab0e511519b2a60f738e8fa5d01a...0.1.0
