@@ -73,7 +73,7 @@ sidebar <- function() {
               img(class="ui avatar image", src="images/elliot.jpg"),
               "Elliot"
           ),
-          div(class="image", img(src="/images/wireframe.png")),
+          div(class="image", img(src="images/wireframe.png")),
           div(class="content",
               span(class="right floated", uiicon("heart outline like"), "17 likes"),
               uiicon("comment"),
@@ -539,27 +539,27 @@ settingsPage <- function () {
                <div class="default text">Saved Contacts</div>
                <div class="menu">
                <div class="item" data-value="jenny" data-text="Jenny">
-               <img class="ui mini avatar image" src="/images/avatar/small/jenny.jpg">
+               <img class="ui mini avatar image" src="images/avatar/small/jenny.jpg">
                Jenny Hess
                </div>
                <div class="item" data-value="elliot" data-text="Elliot">
-               <img class="ui mini avatar image" src="/images/avatar/small/elliot.jpg">
+               <img class="ui mini avatar image" src="images/avatar/small/elliot.jpg">
                Elliot Fu
                </div>
                <div class="item" data-value="stevie" data-text="Stevie">
-               <img class="ui mini avatar image" src="/images/avatar/small/stevie.jpg">
+               <img class="ui mini avatar image" src="images/avatar/small/stevie.jpg">
                Stevie Feliciano
                </div>
                <div class="item" data-value="christian" data-text="Christian">
-               <img class="ui mini avatar image" src="/images/avatar/small/christian.jpg">
+               <img class="ui mini avatar image" src="images/avatar/small/christian.jpg">
                Christian
                </div>
                <div class="item" data-value="matt" data-text="Matt">
-               <img class="ui mini avatar image" src="/images/avatar/small/matt.jpg">
+               <img class="ui mini avatar image" src="images/avatar/small/matt.jpg">
                Matt
                </div>
                <div class="item" data-value="justen" data-text="Justen">
-               <img class="ui mini avatar image" src="/images/avatar/small/justen.jpg">
+               <img class="ui mini avatar image" src="images/avatar/small/justen.jpg">
                Justen Kitsune
                </div>
                </div>
@@ -663,7 +663,7 @@ ui <- function() {
     style="min-height: 100%;",
     useShinyjs(),
     menu(class = "ui four item stackable container menu",
-         divMenuItem(img(src = "/images/logo-appsilon.png", style="width:135px")),
+         divMenuItem(img(src = "images/logo-appsilon.png", style="width:135px")),
          menuItem(uiicon("hourglass end"), id = "menu_actions", "Pending actions"),
          menuItem(uiicon("settings"), id = "menu_settings", "Settings"),
          menuItem(uiicon("logout"),  id = "menu_logout", "Log out")),

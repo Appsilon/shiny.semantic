@@ -98,7 +98,7 @@ ui <- function() {
     style="min-height: 100%; background: black",
     useShinyjs(),
         menu(class = "ui four item inverted menu",
-             divMenuItem(img(src = "/images/logo-appsilon.png", style="width:135px")),
+             divMenuItem(img(src = "images/logo-appsilon.png", style="width:135px")),
              menuItem("Clients data"),
              menuItem("Settings"),
              menuItem("Log out")),

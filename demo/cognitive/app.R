@@ -45,7 +45,7 @@ ui <- function() {
     style="min-height: 100%;",
     useShinyjs(),
     menu(class = "ui three item menu",
-         divMenuItem(img(src = "/images/logo-appsilon.png", style="width:135px")),
+         divMenuItem(img(src = "images/logo-appsilon.png", style="width:135px")),
          menuItem("Settings"),
          menuItem("Log out")),
     div(class = "ui two column grid",
