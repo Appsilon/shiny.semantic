@@ -11,7 +11,14 @@ params:
 
 ```{r echo=FALSE, message=F}
 source("readme_assets/ui_demo.R")
-source("examples/app.R")
+
+demo <- function(code) {
+  div(class = "ui raised segment",
+    code,
+    div(style = "width: 100%; height:10px"),
+    highlight(formatR::tidy_source(width.cutoff = 40, text = deparse(substitute(code)))$text.tidy)
+  )
+}
 ```
 
 <link href="http://fonts.googleapis.com/css?family=Lato:300,700,300italic|Inconsolata" rel="stylesheet" type="text/css">
@@ -79,18 +86,19 @@ devtools::install_github("Appsilon/`r params$repo_name`", ref = "0.1.0")
 
 How to use it? {.firebrick}
 -------
+TODO write how to initialse all necessary things in shinyServer and ui. 
+TODO write about invoking specific components JS, found in SemanticUI documentation.
 
-```{r}
+```{r echo=FALSE, message=F}
 div(
-  h1(class="ui header", id="card", "Card"),
   demo(
     div(class="ui card",
       div(class="content",
         div(class="right floated meta", "14h"),
-        img(class="ui avatar image", src="images/elliot.jpg"),
+        img(class="ui avatar image", src="../examples/www/images/elliot.jpg"),
         "Elliot"
       ),
-      div(class="image", img(src="/images/wireframe.png")),
+      div(class="image", img(src="../examples/www/images/wireframe.png")),
       div(class="content",
         span(class="right floated", uiicon("heart outline like"), "17 likes"),
         uiicon("comment"),
@@ -151,7 +159,7 @@ However, if you encounter any problems, try the following:
     install.packages("shinyjs", version='0.8')
     ```
     TODO FILIP other dependecies???
-3. Check
+3. Some bugs may be realted directly to SemanticUI. In that case please try to check issues on its [repository.][semantic_repo]
 
 
 Future enhacements
