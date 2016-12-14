@@ -1,5 +1,7 @@
 
-<link href="http://fonts.googleapis.com/css?family=Lato:300,700,300italic|Inconsolata" rel="stylesheet" type="text/css"> <link href='docs/style.css' rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=Lato:300,700,300italic|Inconsolata" rel="stylesheet" type="text/css">
+
+<link href='docs/style.css' rel='stylesheet' type='text/css'>
 
 shiny.semantic
 ==============
@@ -16,22 +18,43 @@ Before
 <a>Client's info</a>
 <p>
 </p>
-<table>
+<!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
+<!-- Wed Dec 14 17:17:18 2016 -->
+<table class="table shiny-table table- spacing-s" style="width:auto;">
+<thead>
+<tr>
+<th style="text-align: left;">
+Name
+</th>
+<th style="text-align: left;">
+City
+</th>
+<th style="text-align: left;">
+Revenue
+</th>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>
-Name
+John Smith
 </td>
 <td>
-John Smith
+Warsaw, Poland
+</td>
+<td>
+$210.50
 </td>
 </tr>
 <tr>
 <td>
-City
+Lindsay More
 </td>
 <td>
-Warsaw, Poland
+SF, United States
+</td>
+<td>
+$172.78
 </td>
 </tr>
 </tbody>
@@ -44,30 +67,45 @@ After
 </h2>
 <!--html_preserve-->
 <body style="min-height: 611px;">
-<!--SHINY.SINGLETON[12b282b6c4e1ec3cee386f4ca6165aafc4731a84]-->
-<!--/SHINY.SINGLETON[12b282b6c4e1ec3cee386f4ca6165aafc4731a84]-->
 <a class="ui green ribbon label">Client's info</a>
 <p>
 </p>
-<table style="ui very basic collapsing celled table">
-<tbody>
+<!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
+<!-- Wed Dec 14 17:17:18 2016 -->
+<table class="ui very basic collapsing celled table">
 <tr>
-<td>
+<th>
 Name
-</td>
-<td>
-John Smith
-</td>
+</th>
+<th>
+City
+</th>
+<th>
+Revenue
+</th>
 </tr>
 <tr>
 <td>
-City
+John Smith
 </td>
 <td>
 Warsaw, Poland
 </td>
+<td>
+$210.50
+</td>
 </tr>
-</tbody>
+<tr>
+<td>
+Lindsay More
+</td>
+<td>
+SF, United States
+</td>
+<td>
+$172.78
+</td>
+</tr>
 </table>
 
 </body>
@@ -118,7 +156,7 @@ TODO Chris - write how to initialse all necessary things in shinyServer and ui. 
 
 <i class="heart ouline icon"></i> <input type="text" placeholder="Add Comment..."/>
 
-<script type="application/json" data-for="htmlwidget-421457f71f2787b85455">{"x":"div(class = \"ui card\", div(class = \"content\", \n    div(class = \"right floated meta\", \"14h\"), \n    img(class = \"ui avatar image\", src = \"http://semantic-ui.com/images/avatar/large/elliot.jpg\"), \n    \"Elliot\"), div(class = \"image\", img(src = \"http://semantic-ui.com/images/wireframe/image.png\")), \n    div(class = \"content\", span(class = \"right floated\", \n        uiicon(\"heart outline like\"), \"17 likes\"), \n        uiicon(\"comment\"), \"3 comments\"), \n    div(class = \"extra content\", div(class = \"ui large transparent left icon input\", \n        uiicon(\"heart ouline\"), tags$input(type = \"text\", \n            placeholder = \"Add Comment...\"))))","evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-961d23c56d2d9997851a">{"x":"div(class = \"ui card\", div(class = \"content\", \n    div(class = \"right floated meta\", \"14h\"), \n    img(class = \"ui avatar image\", src = \"http://semantic-ui.com/images/avatar/large/elliot.jpg\"), \n    \"Elliot\"), div(class = \"image\", img(src = \"http://semantic-ui.com/images/wireframe/image.png\")), \n    div(class = \"content\", span(class = \"right floated\", \n        uiicon(\"heart outline like\"), \"17 likes\"), \n        uiicon(\"comment\"), \"3 comments\"), \n    div(class = \"extra content\", div(class = \"ui large transparent left icon input\", \n        uiicon(\"heart ouline\"), tags$input(type = \"text\", \n            placeholder = \"Add Comment...\"))))","evals":[],"jsHooks":[]}</script>
 
 <!--/html_preserve-->
 **More examples**

@@ -1,26 +1,23 @@
 library(shiny)
 #devtools::install_github("Appsilon/shiny.semantic")
 library(shiny.semantic)
+library(magrittr)
 
-jsCode <- "
-$('.ui.dropdown').dropdown({});
-$('.rating').rating('setting', 'clearable', true);
-$('.disabled .rating').rating('disable');
-"
+table_data <- data.frame(
+  Name = c("John Smith", "Lindsay More"),
+  City = c("Warsaw, Poland", "SF, United States"),
+  Revenue = c("$210.50", "$172.78"))
+
 before_ui_demo <- function() {
   fluidPage(
     title = "ui",
-    div(style="margin-left: 20px; background: white",
+    div(style = "margin-left: 20px; background: white",
         div(
           div(
             a("Client's info"),
-              p(),
-              shiny::tags$table(
-                shiny::tags$tbody(
-                  shiny::tags$tr( shiny::tags$td("Name"), shiny::tags$td("John Smith") ),
-                  shiny::tags$tr( shiny::tags$td("City"), shiny::tags$td("Warsaw, Poland") )
-                )
-              ))
+            p(),
+            HTML(renderTable(table_data)())
+          )
         )
     )
   )
@@ -29,19 +26,16 @@ before_ui_demo <- function() {
 after_ui_demo <- function() {
   semanticPage(
     title = "ui",
-    shinyjs::useShinyjs(),
     div(class="ui grid", style="margin-left: 20px",
       div(class="column",
         div(class = "ui raised segment",
-        a(class="ui green ribbon label", "Client's info"),
-        p(),
-        shiny::tags$table(
-          style = "ui very basic collapsing celled table",
-          shiny::tags$tbody(
-            shiny::tags$tr( shiny::tags$td("Name"), shiny::tags$td("John Smith") ),
-            shiny::tags$tr( shiny::tags$td("City"), shiny::tags$td("Warsaw, Poland") )
-          )
-        ))
+          a(class="ui green ribbon label", "Client's info"),
+          p(),
+          xtable::xtable(table_data) %>%
+            print(html.table.attributes="class = 'ui very basic collapsing celled table'",
+              type = "html", include.rownames = F, print.results = F) %>%
+            HTML
+        )
       )
     )
   )
