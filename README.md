@@ -4,9 +4,9 @@
 shiny.semantic
 ==============
 
-SemanticUI wrapper for Shiny
+Semantic UI wrapper for Shiny
 
-With this library it's easy to wrap Shiny with SemanticUI components. Add few simple CSS classes to your components and achieve amazing boost look of your user interface.
+With this library it's easy to wrap Shiny with Semantic UI components. Add few simple CSS classes to your components and achieve amazing boost look of your user interface.
 
 <!-- TODO Filip better example -->
 <h2>
@@ -79,7 +79,7 @@ Warsaw, Poland
 <p style="text-align: center; font-size: x-large; clear: both">
 <a href="http://demo.appsilondatascience.com/shiny.semantic/components">Components live demo</a>
 </p>
-For better understanding it's good to check [SemanticUI documentation.](http://semantic-ui.com/introduction/getting-started.html)
+For better understanding it's good to check [Semantic UI documentation.](http://semantic-ui.com/introduction/getting-started.html)
 
 Source code
 -----------
@@ -105,41 +105,29 @@ To install [previous version]() you can run:
 How to use it?
 --------------
 
-TODO Chris - write how to initialse all necessary things in shinyServer and ui. <br> TODO Chris - write about invoking specific components JS, found in SemanticUI documentation.
-
-    ## div(class = "ui card", div(class = "content", 
-    ##     div(class = "right floated meta", "14h"), 
-    ##     img(class = "ui avatar image", src = "../examples/www/images/elliot.jpg"), 
-    ##     "Elliot"), div(class = "image", img(src = "../examples/www/images/wireframe.png")), 
-    ##     div(class = "content", span(class = "right floated", 
-    ##         uiicon("heart outline like"), "17 likes"), 
-    ##         uiicon("comment"), "3 comments"), 
-    ##     div(class = "extra content", div(class = "ui large transparent left icon input", 
-    ##         uiicon("heart ouline"), tags$input(type = "text", 
-    ##             placeholder = "Add Comment..."))))
+TODO Chris - write how to initialse all necessary things in shinyServer and ui. <br> TODO Chris - write about invoking specific components JS, found in Semantic UI documentation.
 
 <!--html_preserve-->
 14h
 
-<img class="ui avatar image" src="../examples/www/images/elliot.jpg"/> Elliot
+<img class="ui avatar image" src="http://semantic-ui.com/images/avatar/large/elliot.jpg"/> Elliot
 
-<img src="../examples/www/images/wireframe.png"/>
+<img src="http://semantic-ui.com/images/wireframe/image.png"/>
 
 <span class="right floated"> <i class="heart outline like icon"></i> 17 likes </span> <i class="comment icon"></i> 3 comments
 
 <i class="heart ouline icon"></i> <input type="text" placeholder="Add Comment..."/>
 
-<script type="application/json" data-for="htmlwidget-46d29cb02020dc91bbe4">{"x":"div(class = \"ui card\", div(class = \"content\", \n    div(class = \"right floated meta\", \"14h\"), \n    img(class = \"ui avatar image\", src = \"../examples/www/images/elliot.jpg\"), \n    \"Elliot\"), div(class = \"image\", img(src = \"../examples/www/images/wireframe.png\")), \n    div(class = \"content\", span(class = \"right floated\", \n        uiicon(\"heart outline like\"), \"17 likes\"), \n        uiicon(\"comment\"), \"3 comments\"), \n    div(class = \"extra content\", div(class = \"ui large transparent left icon input\", \n        uiicon(\"heart ouline\"), tags$input(type = \"text\", \n            placeholder = \"Add Comment...\"))))","evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-74489ff1e97be09352e7">{"x":"div(class = \"ui card\", div(class = \"content\", \n    div(class = \"right floated meta\", \"14h\"), \n    img(class = \"ui avatar image\", src = \"http://semantic-ui.com/images/avatar/large/elliot.jpg\"), \n    \"Elliot\"), div(class = \"image\", img(src = \"http://semantic-ui.com/images/wireframe/image.png\")), \n    div(class = \"content\", span(class = \"right floated\", \n        uiicon(\"heart outline like\"), \"17 likes\"), \n        uiicon(\"comment\"), \"3 comments\"), \n    div(class = \"extra content\", div(class = \"ui large transparent left icon input\", \n        uiicon(\"heart ouline\"), tags$input(type = \"text\", \n            placeholder = \"Add Comment...\"))))","evals":[],"jsHooks":[]}</script>
 
 <!--/html_preserve-->
 **More examples**
 
 The source code for the live demo you were able to go to in the bigging is located in **/examples** folder. To run it locally you will have to install:
 
--   [**highlighter**](TODO%20Filip%20repo%20url)
+-   [**highlighter**](https://github.com/Appsilon/highlighter)
 
-        TODO Filip change to github
-        devtools::install_git("https://user:password@gitlab.com/appsilon/highlighter.git")
+        devtools::install_github("Appsilon/highlighter")
 
 Check out our dashboard examples:
 
@@ -170,18 +158,13 @@ However, if you encounter any problems, try the following:
 
             install.packages("shiny", version='0.14.2.9001')
 
-    -   shinyjs
-
-            install.packages("shinyjs", version='0.8')
-
-        TODO FILIP other dependecies???
-
-3.  Some bugs may be realted directly to SemanticUI. In that case please try to check issues on its [repository.](https://github.com/Semantic-Org/Semantic-UI)
+3.  Some bugs may be realted directly to Semantic UI. In that case please try to check issues on its [repository.](https://github.com/Semantic-Org/Semantic-UI)
 
 Future enhacements
 ------------------
 
--   create all update\*Input components to mimic shiny as close as possible
+-   create all update functions for input components to mimic shiny as close as possible
+-   add some glue code in dsl.R to make using this package smoother
 -   CRAN release
 
 Appsilon Data Science

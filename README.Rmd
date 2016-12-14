@@ -1,5 +1,4 @@
 ---
-# Question filip is it actually ok. Without this option I couldn't generate Markdown file.
 always_allow_html: yes
 params:
    website_url: http://appsilondatascience.com
@@ -29,22 +28,22 @@ demo <- function(code) {
 `r params$repo_name`
 ===========
 
-<div class="subheader">SemanticUI wrapper for Shiny</div>
+<div class="subheader">Semantic UI wrapper for Shiny</div>
 
 <div class="section level2">
-With this library it's easy to wrap Shiny with SemanticUI components. Add few simple CSS classes to your components and achieve amazing boost look of your user interface.
+With this library it's easy to wrap Shiny with Semantic UI components. Add few simple CSS classes to your components and achieve amazing boost look of your user interface.
 
 <!-- TODO Filip better example -->
 <div>
-<div style="width:50%; height: 400px; float:left; max-width: 400px">
+<div style="width:50%; height: 200px; float:left; max-width: 400px">
 <h2> Before </h2>
-```{r, echo=FALSE, message=F}
+```{r, echo=FALSE, message=FALSE}
 before_ui_demo()
 ```
 </div>
-<div style="width:50%; height: 400px; float:right; max-width: 400px">
+<div style="width:50%; height: 200px; float:right; max-width: 400px">
 <h2> After </h2>
-```{r, echo=FALSE, message=F}
+```{r, echo=FALSE, message=FALSE}
 after_ui_demo()
 ```
 </div>
@@ -57,7 +56,7 @@ after_ui_demo()
 <a href="`r params$demo_url`">Components live demo</a>
 </p>
 
-For better understanding it's good to check [SemanticUI documentation.][semantic_website]
+For better understanding it's good to check [Semantic UI documentation.][semantic_website]
 
 </div>
 
@@ -89,18 +88,18 @@ devtools::install_github("Appsilon/`r params$repo_name`", ref = "0.1.0")
 How to use it? {.firebrick}
 -------
 TODO Chris - write how to initialse all necessary things in shinyServer and ui. <br>
-TODO Chris - write about invoking specific components JS, found in SemanticUI documentation.
+TODO Chris - write about invoking specific components JS, found in Semantic UI documentation.
 
-```{r echo=FALSE, message=F, warning=F, error=F}
+```{r echo=FALSE}
 div(
   demo(
     div(class="ui card",
       div(class="content",
         div(class="right floated meta", "14h"),
-        img(class="ui avatar image", src="../examples/www/images/elliot.jpg"),
+        img(class="ui avatar image", src="http://semantic-ui.com/images/avatar/large/elliot.jpg"),
         "Elliot"
       ),
-      div(class="image", img(src="../examples/www/images/wireframe.png")),
+      div(class="image", img(src="http://semantic-ui.com/images/wireframe/image.png")),
       div(class="content",
         span(class="right floated", uiicon("heart outline like"), "17 likes"),
         uiicon("comment"),
@@ -123,10 +122,9 @@ div(
 
 The source code for the live demo you were able to go to in the bigging is located in **/examples** folder. To run it locally you will have to install:
 
-* [**highlighter**](TODO Filip repo url)
+* [**highlighter**](https://github.com/Appsilon/highlighter)
 ```
-TODO Filip change to github
-devtools::install_git("https://user:password@gitlab.com/appsilon/highlighter.git")
+devtools::install_github("Appsilon/highlighter")
 ```
 
 Check out our dashboard examples:
@@ -156,19 +154,14 @@ However, if you encounter any problems, try the following:
     ```
     install.packages("shiny", version='0.14.2.9001')
     ```
-    * shinyjs
-    ```
-    install.packages("shinyjs", version='0.8')
-    ```
-    TODO FILIP other dependecies???
-3. Some bugs may be realted directly to SemanticUI. In that case please try to check issues on its [repository.][semantic_repo]
+3. Some bugs may be realted directly to Semantic UI. In that case please try to check issues on its [repository.][semantic_repo]
 
 
 Future enhacements
 ------------------
-* create all update*Input components to mimic shiny as close as possible
+* create all update functions for input components to mimic shiny as close as possible
+* add some glue code in dsl.R to make using this package smoother
 * CRAN release
-
 
 Appsilon Data Science {.footer}
 =====================
