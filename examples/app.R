@@ -156,7 +156,7 @@ card <- function() {
           img(class="ui avatar image", src="images/elliot.jpg"),
           "Elliot"
         ),
-        div(class="image", img(src="/images/wireframe.png")),
+        div(class="image", img(src="images/wireframe.png")),
         div(class="content",
           span(class="right floated", uiicon("heart outline like"), "17 likes"),
           uiicon("comment"),
