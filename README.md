@@ -1,26 +1,90 @@
 
 <link href="http://fonts.googleapis.com/css?family=Lato:300,700,300italic|Inconsolata" rel="stylesheet" type="text/css"> <link href='docs/style.css' rel='stylesheet' type='text/css'>
 
-TODO your repo name
-===================
+shiny.semantic
+==============
 
-TODO - Your repo title
+Semantic UI wrapper for Shiny
 
-TODO - Your repo short description here <!--
-TODO We would like to have a nice graphic explaning routing mechanism
---> \#Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link).
+With this library it's easy to wrap Shiny with Semantic UI components. Add few simple CSS classes to your components and achieve amazing boost look of your user interface.
 
-Live demo link below
-====================
+<!-- TODO Filip better example -->
+<h2>
+Before
+</h2>
+<!--html_preserve-->
+<a>Client's info</a>
+<p>
+</p>
+<table>
+<tbody>
+<tr>
+<td>
+Name
+</td>
+<td>
+John Smith
+</td>
+</tr>
+<tr>
+<td>
+City
+</td>
+<td>
+Warsaw, Poland
+</td>
+</tr>
+</tbody>
+</table>
 
-<!-- <p style="text-align: center; font-size: x-large;"> -->
-<!-- <a href="http://demo.appsilondatascience.com/semantic/">Live demo</a> -->
-<!-- </p> -->
+<!--/html_preserve-->
+
+<h2>
+After
+</h2>
+<!--html_preserve-->
+<body style="min-height: 611px;">
+<!--SHINY.SINGLETON[12b282b6c4e1ec3cee386f4ca6165aafc4731a84]-->
+<!--/SHINY.SINGLETON[12b282b6c4e1ec3cee386f4ca6165aafc4731a84]-->
+<a class="ui green ribbon label">Client's info</a>
+<p>
+</p>
+<table>
+<tbody>
+<tr>
+<td>
+Name
+</td>
+<td>
+John Smith
+</td>
+</tr>
+<tr>
+<td>
+City
+</td>
+<td>
+Warsaw, Poland
+</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+<!--/html_preserve-->
+
+<!-- #Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link). -->
+<!-- Live demo link below -->
+<!-- TODO Analogy to http://shiny.rstudio.com/gallery/widget-gallery.html -->
+<p style="text-align: center; font-size: x-large; clear: both">
+<a href="http://demo.appsilondatascience.com/shiny.semantic/components">Components live demo</a>
+</p>
+For better understanding it's good to check [Semantic UI documentation.](http://semantic-ui.com/introduction/getting-started.html)
 
 Source code
 -----------
 
-This library source code can be found on [Appsilon Data Science's](http://appsilondatascience.com) Github: <br> [TODO your\_Repo\_link](TODO%20your_Repo_link)
+This library source code can be found on [Appsilon Data Science's](http://appsilondatascience.com) Github: <br> <https://github.com/Appsilon/shiny.semantic>
 
 <script>
 document.write('<div class="logo"><a href="http://appsilondatascience.com"><img alt="Appsilon Data Science" src="https://cdn.rawgit.com/Appsilon/website-cdn/gh-pages/logo-white.png"/></a></div>')
@@ -32,14 +96,45 @@ How to install?
 
 At the moment it's possible to install this library through [devtools](https://github.com/hadley/devtools).
 
-    devtools::install_github("Appsilon/TODO_link")
+    devtools::install_github("Appsilon/shiny.semantic")
 
-To install [previous version](https://github.com/Appsilon/TODO_link/blob/master/CHANGELOG.md) you can run:
+To install [previous version]() you can run:
 
-    devtools::install_github("Appsilon/TODO_link", ref = "0.1.0")
+    devtools::install_github("Appsilon/shiny.semantic", ref = "0.1.0")
 
-Example
--------
+How to use it?
+--------------
+
+TODO Chris - write how to initialse all necessary things in shinyServer and ui. <br> TODO Chris - write about invoking specific components JS, found in Semantic UI documentation.
+
+<!--html_preserve-->
+14h
+
+<img class="ui avatar image" src="http://semantic-ui.com/images/avatar/large/elliot.jpg"/> Elliot
+
+<img src="http://semantic-ui.com/images/wireframe/image.png"/>
+
+<span class="right floated"> <i class="heart outline like icon"></i> 17 likes </span> <i class="comment icon"></i> 3 comments
+
+<i class="heart ouline icon"></i> <input type="text" placeholder="Add Comment..."/>
+
+<script type="application/json" data-for="htmlwidget-74489ff1e97be09352e7">{"x":"div(class = \"ui card\", div(class = \"content\", \n    div(class = \"right floated meta\", \"14h\"), \n    img(class = \"ui avatar image\", src = \"http://semantic-ui.com/images/avatar/large/elliot.jpg\"), \n    \"Elliot\"), div(class = \"image\", img(src = \"http://semantic-ui.com/images/wireframe/image.png\")), \n    div(class = \"content\", span(class = \"right floated\", \n        uiicon(\"heart outline like\"), \"17 likes\"), \n        uiicon(\"comment\"), \"3 comments\"), \n    div(class = \"extra content\", div(class = \"ui large transparent left icon input\", \n        uiicon(\"heart ouline\"), tags$input(type = \"text\", \n            placeholder = \"Add Comment...\"))))","evals":[],"jsHooks":[]}</script>
+
+<!--/html_preserve-->
+**More examples**
+
+The source code for the live demo you were able to go to in the bigging is located in **/examples** folder. To run it locally you will have to install:
+
+-   [**highlighter**](https://github.com/Appsilon/highlighter)
+
+        devtools::install_github("Appsilon/highlighter")
+
+Check out our dashboard examples:
+
+1.  [Churn analytics](http://demo.appsilondatascience.com/shiny.semantic/churn)
+2.  [Fraud detection](demo.appsilondatascience.com/shiny.semantic/frauds)
+
+All dashboards source code can be found in **/demo** folder. You will have to follow the according README files to install all necessary dependencies for those projects.
 
 How to contribute?
 ------------------
@@ -63,18 +158,14 @@ However, if you encounter any problems, try the following:
 
             install.packages("shiny", version='0.14.2.9001')
 
-    -   shinyjs
-
-            install.packages("shinyjs", version='0.8')
-
-        TODO dependecies
-        ================
+3.  Some bugs may be realted directly to Semantic UI. In that case please try to check issues on its [repository.](https://github.com/Semantic-Org/Semantic-UI)
 
 Future enhacements
 ------------------
 
+-   create all update functions for input components to mimic shiny as close as possible
+-   add some glue code in dsl.R to make using this package smoother
 -   CRAN release
--   TODO other features
 
 Appsilon Data Science
 =====================
@@ -85,5 +176,5 @@ document.write('<div class="subheader"> We Provide End-to-End Data Science Solut
 Get in touch [dev@appsilondatascience.com](dev@appsilondatascience.com)
 
 <script>
-document.write('<a href="https://github.com/Appsilon/todo_your_url"><img style="position: absolute; margin: 0; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>')
+document.write('<a href="https://github.com/Appsilon/shiny.semantic"><img style="position: absolute; margin: 0; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>')
 </script>

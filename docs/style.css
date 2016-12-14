@@ -16,6 +16,10 @@ h1 {
   color: white;
   text-decoration: underline;
 }
+.firebrick a {
+  color: white;
+  text-decoration: underline;
+}
 .section.footer img {
   width: 150px !important;
   margin: 1em;
@@ -40,23 +44,22 @@ h2, .subheader {
   text-align: center;
   padding: 1em 0;
 }
-.section.level2 * {
+.section.level2 > * {
   text-align: left;
   margin: 1em auto;
   width: 50%;
   max-width: 940px;
 }
 @media (max-width: 1440px) {
-  .section.level2 * {
+  .section.level2 > * {
     width:75%;
   }
 }
 
-
-.section.level1.footer * {
+.section.level1.footer > * {
   text-align: center;
 }
-.section.level2 * * {
+.section.level2 > * > * {
   width: 100%;
 }
 .darkslide {
