@@ -25,9 +25,11 @@ h1 {
   margin: 1em;
   margin-bottom: 1em;
 }
+.subheader {
+  text-align: center;
+}
 h2, .subheader {
   font-size: 22px;
-  text-align: center;
   font-style: italic;
   font-weight: 300;
   margin: 0;
@@ -40,27 +42,30 @@ h2, .subheader {
 .custom {
   background-color: rgb(52, 52, 52);
 }
-.section.level2 {
-  text-align: center;
-  padding: 1em 0;
+.section.level2 h2,
+.section.level2 li,
+.section.level2 p {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
-.section.level2 > * {
+.section.level2 {
+  text-align: left;
+  padding: 1em 25%;
+}
+.section.level2 > p,
+.section.level2 > div {
   text-align: left;
   margin: 1em auto;
-  width: 50%;
   max-width: 940px;
 }
 @media (max-width: 1440px) {
-  .section.level2 > * {
-    width:75%;
+  .section.level2 {
+    padding: 1em 12%;
   }
 }
 
-.section.level1.footer > * {
+.section.level1.footer > p {
   text-align: center;
-}
-.section.level2 > * > * {
-  width: 100%;
 }
 .darkslide {
   background-color: #343434;
@@ -70,6 +75,7 @@ h2, .subheader {
   background-color: #343434;
   color: white;
   padding-bottom: 2em;
+  text-align: center;
 }
 .darkslide a {
   color: white;
@@ -84,4 +90,8 @@ h2, .subheader {
 }
 .logo img {
   width: 100px !important;
+}
+
+.section .demo {
+  color: rgba(0,0,0,.87);;
 }
