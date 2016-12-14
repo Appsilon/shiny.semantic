@@ -60,6 +60,12 @@ h2, .subheader {
 .section.level1.footer * {
   text-align: center;
 }
+.section.level2 demo *  {
+  width: auto;
+}
+.section.level2 demo * * {
+  width: auto;
+}
 .section.level2 * * {
   width: 100%;
 }

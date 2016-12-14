@@ -129,7 +129,7 @@ TODO Chris - write how to initialse all necessary things in shinyServer and ui. 
 
 <i class="heart ouline icon"></i> <input type="text" placeholder="Add Comment..."/>
 
-<script type="application/json" data-for="htmlwidget-5bd0bdf88eddba4c3898">{"x":"div(class = \"ui card\", div(class = \"content\", \n    div(class = \"right floated meta\", \"14h\"), \n    img(class = \"ui avatar image\", src = \"../examples/www/images/elliot.jpg\"), \n    \"Elliot\"), div(class = \"image\", img(src = \"../examples/www/images/wireframe.png\")), \n    div(class = \"content\", span(class = \"right floated\", \n        uiicon(\"heart outline like\"), \"17 likes\"), \n        uiicon(\"comment\"), \"3 comments\"), \n    div(class = \"extra content\", div(class = \"ui large transparent left icon input\", \n        uiicon(\"heart ouline\"), tags$input(type = \"text\", \n            placeholder = \"Add Comment...\"))))","evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-46d29cb02020dc91bbe4">{"x":"div(class = \"ui card\", div(class = \"content\", \n    div(class = \"right floated meta\", \"14h\"), \n    img(class = \"ui avatar image\", src = \"../examples/www/images/elliot.jpg\"), \n    \"Elliot\"), div(class = \"image\", img(src = \"../examples/www/images/wireframe.png\")), \n    div(class = \"content\", span(class = \"right floated\", \n        uiicon(\"heart outline like\"), \"17 likes\"), \n        uiicon(\"comment\"), \"3 comments\"), \n    div(class = \"extra content\", div(class = \"ui large transparent left icon input\", \n        uiicon(\"heart ouline\"), tags$input(type = \"text\", \n            placeholder = \"Add Comment...\"))))","evals":[],"jsHooks":[]}</script>
 
 <!--/html_preserve-->
 **More examples**
