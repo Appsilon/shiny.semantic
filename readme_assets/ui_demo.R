@@ -36,6 +36,7 @@ after_ui_demo <- function() {
         a(class="ui green ribbon label", "Client's info"),
         p(),
         shiny::tags$table(
+          style = "ui very basic collapsing celled table",
           shiny::tags$tbody(
             shiny::tags$tr( shiny::tags$td("Name"), shiny::tags$td("John Smith") ),
             shiny::tags$tr( shiny::tags$td("City"), shiny::tags$td("Warsaw, Poland") )

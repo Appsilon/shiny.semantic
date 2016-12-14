@@ -49,7 +49,7 @@ After
 <a class="ui green ribbon label">Client's info</a>
 <p>
 </p>
-<table>
+<table style="ui very basic collapsing celled table">
 <tbody>
 <tr>
 <td>
@@ -118,7 +118,7 @@ TODO Chris - write how to initialse all necessary things in shinyServer and ui. 
 
 <i class="heart ouline icon"></i> <input type="text" placeholder="Add Comment..."/>
 
-<script type="application/json" data-for="htmlwidget-74489ff1e97be09352e7">{"x":"div(class = \"ui card\", div(class = \"content\", \n    div(class = \"right floated meta\", \"14h\"), \n    img(class = \"ui avatar image\", src = \"http://semantic-ui.com/images/avatar/large/elliot.jpg\"), \n    \"Elliot\"), div(class = \"image\", img(src = \"http://semantic-ui.com/images/wireframe/image.png\")), \n    div(class = \"content\", span(class = \"right floated\", \n        uiicon(\"heart outline like\"), \"17 likes\"), \n        uiicon(\"comment\"), \"3 comments\"), \n    div(class = \"extra content\", div(class = \"ui large transparent left icon input\", \n        uiicon(\"heart ouline\"), tags$input(type = \"text\", \n            placeholder = \"Add Comment...\"))))","evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-421457f71f2787b85455">{"x":"div(class = \"ui card\", div(class = \"content\", \n    div(class = \"right floated meta\", \"14h\"), \n    img(class = \"ui avatar image\", src = \"http://semantic-ui.com/images/avatar/large/elliot.jpg\"), \n    \"Elliot\"), div(class = \"image\", img(src = \"http://semantic-ui.com/images/wireframe/image.png\")), \n    div(class = \"content\", span(class = \"right floated\", \n        uiicon(\"heart outline like\"), \"17 likes\"), \n        uiicon(\"comment\"), \"3 comments\"), \n    div(class = \"extra content\", div(class = \"ui large transparent left icon input\", \n        uiicon(\"heart ouline\"), tags$input(type = \"text\", \n            placeholder = \"Add Comment...\"))))","evals":[],"jsHooks":[]}</script>
 
 <!--/html_preserve-->
 **More examples**
