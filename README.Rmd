@@ -31,7 +31,7 @@ create_example <- function(code, ...) {
 <div class="subheader">Semantic UI wrapper for Shiny</div>
 
 <div class="section level2">
-With this library it's easy to wrap Shiny with [Semantic UI components][semantic_repo_url]. Add few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.
+With this library it's easy to wrap Shiny with [Semantic UI components][semantic_repo_url]. Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.
 
 <div class="ui stackable two column grid">
 <div class="column">
