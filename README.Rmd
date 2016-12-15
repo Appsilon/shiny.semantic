@@ -126,7 +126,7 @@ For better understanding it's good to check [Semantic UI documentation.][semanti
 
 * **Raised segment with list**
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.height=1.7}
 example_list = create_example(
   div(class = "ui raised segment",
   div(class = "ui relaxed divided list", c("Apples", 
@@ -199,16 +199,14 @@ Some Semantic UI elements require to run a specific JS code when DOM document is
 ```
 library(shinyjs)
 ...
-jsCode <- "
-#Semantic UI componts JS
-"
+jsCode <- " # Semantic UI components JS "
 ...
 ui <- function() {
   shinyUI(
     semanticPage(
       title = "Your page title",
       shinyjs::useShinyjs(),
-      #Your UI code
+      # Your UI code
     )
   )
 }
@@ -226,16 +224,16 @@ shinyApp(ui = ui(), server = server)
 ...
 jsCode <- "
 $(document).ready(function() {
-  #Semantic UI components JS code e.g.
-  #$('.rating').rating('setting', 'clearable', true);
-  #$('.disabled .rating').rating('disable');
+  # Semantic UI components JS code, like:
+  # $('.rating').rating('setting', 'clearable', true);
+  # $('.disabled .rating').rating('disable');
 })
 ...
 ui <- function() {
   shinyUI(semanticPage(
     title = "My page",
     tags$script(jsCode),
-    #Your UI code
+    # Your UI code
     )
   )
 }
