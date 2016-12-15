@@ -14,102 +14,12 @@ With this library it's easy to wrap Shiny with Semantic UI components. Add few s
 <h2>
 Before
 </h2>
-<!--html_preserve-->
-<a>Client's info</a>
-<p>
-</p>
-<!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
-<!-- Thu Dec 15 13:24:43 2016 -->
-<table class="table shiny-table table- spacing-s" style="width:auto;">
-<thead>
-<tr>
-<th style="text-align: left;">
-Name
-</th>
-<th style="text-align: left;">
-City
-</th>
-<th style="text-align: left;">
-Revenue
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-John Smith
-</td>
-<td>
-Warsaw, Poland
-</td>
-<td>
-$210.50
-</td>
-</tr>
-<tr>
-<td>
-Lindsay More
-</td>
-<td>
-SF, United States
-</td>
-<td>
-$172.78
-</td>
-</tr>
-</tbody>
-</table>
-
-<!--/html_preserve-->
+![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
 <h2>
 After
 </h2>
-<!--html_preserve-->
-<body style="min-height: 611px;">
-<a class="ui green ribbon label">Client's info</a>
-<p>
-</p>
-<!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
-<!-- Thu Dec 15 13:24:43 2016 -->
-<table class="ui very basic collapsing celled table">
-<tr>
-<th>
-Name
-</th>
-<th>
-City
-</th>
-<th>
-Revenue
-</th>
-</tr>
-<tr>
-<td>
-John Smith
-</td>
-<td>
-Warsaw, Poland
-</td>
-<td>
-$210.50
-</td>
-</tr>
-<tr>
-<td>
-Lindsay More
-</td>
-<td>
-SF, United States
-</td>
-<td>
-$172.78
-</td>
-</tr>
-</table>
-
-</body>
-<!--/html_preserve-->
+![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
 <!-- #Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link). -->
 <!-- Live demo link below -->

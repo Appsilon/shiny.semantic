@@ -26,17 +26,13 @@ before_ui_demo <- function() {
 after_ui_demo <- function() {
   semanticPage(
     title = "ui",
-    div(class="ui grid", style="margin-left: 20px",
-      div(class="column",
-        div(class = "ui raised segment",
-          a(class="ui green ribbon label", "Client's info"),
-          p(),
-          xtable::xtable(table_data) %>%
-            print(html.table.attributes="class = 'ui very basic collapsing celled table'",
-              type = "html", include.rownames = F, print.results = F) %>%
-            HTML
-        )
-      )
+    div(class = "ui raised segment", style="margin-left: 20px; max-width: 350px",
+      a(class="ui green ribbon label", "Client's info"),
+      p(),
+      xtable::xtable(table_data) %>%
+        print(html.table.attributes="class = 'ui very basic collapsing celled table'",
+          type = "html", include.rownames = F, print.results = F) %>%
+        HTML
     )
   )
 }

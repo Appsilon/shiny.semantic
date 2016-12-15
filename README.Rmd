@@ -37,14 +37,14 @@ With this library it's easy to wrap Shiny with Semantic UI components. Add few s
 <div>
 <div style="width:50%; height: 300px; float:left; max-width: 350px">
 <h2> Before </h2>
-```{r, echo=FALSE, message=FALSE}
-before_ui_demo()
+```{r, echo=FALSE, message=FALSE, fig.height=1}
+create_example(before_ui_demo(), width="350px", height="100px")$htmlwidget
 ```
 </div>
 <div style="width:50%; height: 300px; float:right; max-width: 350px">
 <h2> After </h2>
-```{r, echo=FALSE, message=FALSE}
-after_ui_demo()
+```{r, echo=FALSE, message=FALSE, fig.height=1}
+create_example(after_ui_demo(), width="800px", height="100px")$htmlwidget
 ```
 </div>
 </div>
