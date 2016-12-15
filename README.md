@@ -13,12 +13,102 @@ With this library it's easy to wrap Shiny with Semantic UI components. Add few s
 <h2>
 Before
 </h2>
-![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
+<!--html_preserve-->
+<a>Client's info</a>
+<p>
+</p>
+<!-- html table generated in R 3.3.1 by xtable 1.8-2 package -->
+<!-- Thu Dec 15 13:03:15 2016 -->
+<table class="table shiny-table table- spacing-s" style="width:auto;">
+<thead>
+<tr>
+<th style="text-align: left;">
+Name
+</th>
+<th style="text-align: left;">
+City
+</th>
+<th style="text-align: left;">
+Revenue
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+John Smith
+</td>
+<td>
+Warsaw, Poland
+</td>
+<td>
+$210.50
+</td>
+</tr>
+<tr>
+<td>
+Lindsay More
+</td>
+<td>
+SF, United States
+</td>
+<td>
+$172.78
+</td>
+</tr>
+</tbody>
+</table>
+
+<!--/html_preserve-->
 
 <h2>
 After
 </h2>
-![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
+<!--html_preserve-->
+<body style="min-height: 611px;">
+<a class="ui green ribbon label">Client's info</a>
+<p>
+</p>
+<!-- html table generated in R 3.3.1 by xtable 1.8-2 package -->
+<!-- Thu Dec 15 13:03:15 2016 -->
+<table class="ui very basic collapsing celled table">
+<tr>
+<th>
+Name
+</th>
+<th>
+City
+</th>
+<th>
+Revenue
+</th>
+</tr>
+<tr>
+<td>
+John Smith
+</td>
+<td>
+Warsaw, Poland
+</td>
+<td>
+$210.50
+</td>
+</tr>
+<tr>
+<td>
+Lindsay More
+</td>
+<td>
+SF, United States
+</td>
+<td>
+$172.78
+</td>
+</tr>
+</table>
+
+</body>
+<!--/html_preserve-->
 
 <!-- #Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link). -->
 <!-- Live demo link below -->
@@ -52,33 +142,116 @@ To install [previous version]() you can run:
 How to use it?
 --------------
 
-TODO Chris - write how to initialse all necessary things in shinyServer and ui. <br> TODO Chris - write about invoking specific components JS, found in Semantic UI documentation.
+Firstly, you will have to invoke *shinyUI()* with *semanticPage()* instead of standard Shiny UI definitions like e.g. *fluidPage()*. From now on forward all components can ba annotated with Semantic UI specific CSS classes and also you will be able to use [shiny.semantic components](http://demo.appsilondatascience.com/shiny.semantic/components).<br> Please note that at the moment you have to pass page title in *semanticPage()*
 
-![](README_files/figure-markdown_github/unnamed-chunk-4-1.png) <!--html_preserve-->
-<pre>
-<code class="r">div(class = "ui button", uiicon("user"), "Icon button")</code>
-</pre>
+    semanticPage(title = "Your page title", ...)
 
-<!--/html_preserve-->
-![](README_files/figure-markdown_github/unnamed-chunk-6-1.png) <!--html_preserve-->
-<pre>
-<code class="r">div(class = "ui raised segment", div(class = "ui relaxed divided list", c("Apples", 
-    "Pears", "Oranges") %&gt;% purrr::map(~div(class = "item", uiicon("large github middle aligned"), 
-    div(class = "content", a(class = "header", "Hello"), div(class = "description", 
-        .))))))</code>
-</pre>
+What's more some of Semantic UI components are required to run a certain JS code when DOM document is ready. There are at least 2 options to do this:
 
-<!--/html_preserve-->
-![](README_files/figure-markdown_github/unnamed-chunk-8-1.png) <!--html_preserve-->
-<pre>
-<code class="r">div(class = "ui card", div(class = "content", div(class = "right floated meta", "14h"), 
-    img(class = "ui avatar image", src = "http://semantic-ui.com/images/avatar/large/elliot.jpg"), 
-    "Elliot"), div(class = "image", img(src = "http://semantic-ui.com/images/wireframe/image.png")), 
-    div(class = "content", span(class = "right floated", uiicon("heart outline like"), 
-        "17 likes"), uiicon("comment"), "3 comments"), div(class = "extra content", 
-        div(class = "ui large transparent left icon input", uiicon("heart ouline"), 
-            tags$input(type = "text", placeholder = "Add Comment..."))))</code>
-</pre>
+1.  Use [shinyjs](https://github.com/daattali/shinyjs)
+
+<!-- -->
+
+    library(shinyjs)
+    ...
+    jsCode <- "
+    #Semantic UI componts JS
+    "
+    ...
+    ui <- function() {
+      shinyUI(
+        semanticPage(
+          title = "Your page title",
+          shinyjs::useShinyjs(),
+          #Your UI code
+        )
+      )
+    }
+
+    server <- shinyServer(function(input, output) {
+      runjs(jsCode)
+      # Your Shiny logic
+    })
+
+    shinyApp(ui = ui(), server = server)
+
+1.  Use *shiny::tags$script()*
+
+<!-- -->
+
+    ...
+    jsCode <- "
+    $(document).ready(function() {
+      $('.rating').rating('setting', 'clearable', true);
+      $('.disabled .rating').rating('disable');
+    })
+    ...
+    ui <- function() {
+      shinyUI(semanticPage(
+        title = "My page",
+        tags$script(jsCode),
+        #Your UI code
+        )
+      )
+    }
+    ...
+    server <- shinyServer(function(input, output) {
+      # Your Shiny logic
+    })
+
+    shinyApp(ui = ui(), server = server)
+        
+
+    library(shiny)
+    library(shinyjs)
+    #devtools::install_github("Appsilon/shiny.semantic")
+    library(shiny.semantic)
+
+    jsCode <- "
+    $('.rating').rating('setting', 'clearable', true);
+    $('.disabled .rating').rating('disable');
+    "
+
+    ui <- function() {
+      shinyUI(
+        semanticPage(
+          title = "My page",
+          shinyjs::useShinyjs(),
+          div(class="ui raised segment",
+              div(
+                  "Your rating",
+                  div(class="ui star rating", 'data-rating'="4", 'data-max-rating'="5")
+              ),
+              div(
+                  span(class="right floated", uiicon("heart outline like"), "17 likes"),
+                  uiicon("comment"),
+                  "3 comments"
+              )
+            )
+        )
+      )
+    }
+
+    server <- shinyServer(function(input, output) {
+      runjs(jsCode)
+    })
+
+    shinyApp(ui = ui(), server = server)
+
+TODO Chris - write about invoking specific components JS, found in Semantic UI documentation.
+
+<!--html_preserve-->
+14h
+
+<img class="ui avatar image" src="http://semantic-ui.com/images/avatar/large/elliot.jpg"/> Elliot
+
+<img src="http://semantic-ui.com/images/wireframe/image.png"/>
+
+<span class="right floated"> <i class="heart outline like icon"></i> 17 likes </span> <i class="comment icon"></i> 3 comments
+
+<i class="heart ouline icon"></i> <input type="text" placeholder="Add Comment..."/>
+
+<script type="application/json" data-for="htmlwidget-801ea52ffdadc31de1e9">{"x":"div(class = \"ui card\", div(class = \"content\", \n    div(class = \"right floated meta\", \"14h\"), \n    img(class = \"ui avatar image\", src = \"http://semantic-ui.com/images/avatar/large/elliot.jpg\"), \n    \"Elliot\"), div(class = \"image\", img(src = \"http://semantic-ui.com/images/wireframe/image.png\")), \n    div(class = \"content\", span(class = \"right floated\", \n        uiicon(\"heart outline like\"), \"17 likes\"), \n        uiicon(\"comment\"), \"3 comments\"), \n    div(class = \"extra content\", div(class = \"ui large transparent left icon input\", \n        uiicon(\"heart ouline\"), tags$input(type = \"text\", \n            placeholder = \"Add Comment...\"))))","evals":[],"jsHooks":[]}</script>
 
 <!--/html_preserve-->
 **More examples**
