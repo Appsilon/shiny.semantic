@@ -10,7 +10,6 @@ Semantic UI wrapper for Shiny
 
 With this library it's easy to wrap Shiny with Semantic UI components. Add few simple CSS classes to your components and achieve amazing boost look of your user interface.
 
-<!-- TODO Filip better example -->
 <h2>
 Before
 </h2>
@@ -24,7 +23,7 @@ After
 <!-- #Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link). -->
 <!-- Live demo link below -->
 <!-- TODO Analogy to http://shiny.rstudio.com/gallery/widget-gallery.html -->
-<p style="text-align: center; font-size: x-large; clear: both">
+<p style="text-align: center; font-size: x-large;">
 <a href="http://demo.appsilondatascience.com/shiny.semantic/components">Components live demo</a>
 </p>
 For better understanding it's good to check [Semantic UI documentation.](http://semantic-ui.com/introduction/getting-started.html)

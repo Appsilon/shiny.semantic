@@ -33,18 +33,18 @@ create_example <- function(code, ...) {
 <div class="section level2">
 With this library it's easy to wrap Shiny with Semantic UI components. Add few simple CSS classes to your components and achieve amazing boost look of your user interface.
 
-<!-- TODO Filip better example -->
-<div>
-<div style="width:50%; height: 300px; float:left; max-width: 350px">
+<div class="ui stackable two column grid">
+<div class="column">
 <h2> Before </h2>
 ```{r, echo=FALSE, message=FALSE, fig.height=1}
 create_example(before_ui_demo(), width="350px", height="100px")$htmlwidget
 ```
 </div>
-<div style="width:50%; height: 300px; float:right; max-width: 350px">
+  
+<div class="column">
 <h2> After </h2>
 ```{r, echo=FALSE, message=FALSE, fig.height=1}
-create_example(after_ui_demo(), width="800px", height="100px")$htmlwidget
+create_example(after_ui_demo(), width="100%", height="100%")$htmlwidget
 ```
 </div>
 </div>
@@ -52,7 +52,7 @@ create_example(after_ui_demo(), width="800px", height="100px")$htmlwidget
 <!-- #Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link). -->
 <!-- Live demo link below -->
 <!-- TODO Analogy to http://shiny.rstudio.com/gallery/widget-gallery.html -->
-<p style="text-align: center; font-size: x-large; clear: both">
+<p style="text-align: center; font-size: x-large;">
 <a href="`r params$demo_url`">Components live demo</a>
 </p>
 
@@ -107,7 +107,8 @@ example_list = create_example(
     div(class = "content", a(class = "header", 
         "Hello"), div(class = "description", 
         .)))))),
-  height = "170px"
+  height = "170px",
+  width = "100%"
 )
 example_list$htmlwidget
 ```
