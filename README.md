@@ -19,7 +19,7 @@ Before
 <p>
 </p>
 <!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
-<!-- Thu Dec 15 12:33:44 2016 -->
+<!-- Thu Dec 15 13:06:04 2016 -->
 <table class="table shiny-table table- spacing-s" style="width:auto;">
 <thead>
 <tr>
@@ -71,7 +71,7 @@ After
 <p>
 </p>
 <!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
-<!-- Thu Dec 15 12:33:44 2016 -->
+<!-- Thu Dec 15 13:06:04 2016 -->
 <table class="ui very basic collapsing celled table">
 <tr>
 <th>
@@ -147,11 +147,20 @@ TODO Chris - write how to initialse all necessary things in shinyServer and ui. 
 
 ![](README_files/figure-markdown_github/unnamed-chunk-4-1.png) <!--html_preserve-->
 <pre>
-<code class="r">div(class = "ui basic button", uiicon("user"), "Icon button")</code>
+<code class="r">div(class = "ui button", uiicon("user"), "Icon button")</code>
 </pre>
 
 <!--/html_preserve-->
 ![](README_files/figure-markdown_github/unnamed-chunk-6-1.png) <!--html_preserve-->
+<pre>
+<code class="r">div(class = "ui raised segment", div(class = "ui relaxed divided list", c("Apples", 
+    "Pears", "Oranges") %&gt;% purrr::map(~div(class = "item", uiicon("large github middle aligned"), 
+    div(class = "content", a(class = "header", "Hello"), div(class = "description", 
+        .))))))</code>
+</pre>
+
+<!--/html_preserve-->
+![](README_files/figure-markdown_github/unnamed-chunk-8-1.png) <!--html_preserve-->
 <pre>
 <code class="r">div(class = "ui card", div(class = "content", div(class = "right floated meta", "14h"), 
     img(class = "ui avatar image", src = "http://semantic-ui.com/images/avatar/large/elliot.jpg"), 

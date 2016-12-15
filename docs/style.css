@@ -56,7 +56,7 @@ h2, .subheader {
 .section.level2 > h2,
 .section.level2 > div {
   text-align: left;
-  margin: 1em;
+  margin: 1em 0;
   max-width: 940px;
 }
 @media (max-width: 1440px) {
