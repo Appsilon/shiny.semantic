@@ -94,7 +94,7 @@ TODO Chris - write about invoking specific components JS, found in Semantic UI d
 example_button = create_example(div(class = "ui button", uiicon("user"),  "Icon button"), height = "30px")
 example_button$htmlwidget
 ```
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.height=1.5}
 example_button$code_demo
 ```
 

@@ -19,7 +19,7 @@ Before
 <p>
 </p>
 <!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
-<!-- Thu Dec 15 13:06:04 2016 -->
+<!-- Thu Dec 15 13:07:35 2016 -->
 <table class="table shiny-table table- spacing-s" style="width:auto;">
 <thead>
 <tr>
@@ -71,7 +71,7 @@ After
 <p>
 </p>
 <!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
-<!-- Thu Dec 15 13:06:04 2016 -->
+<!-- Thu Dec 15 13:07:36 2016 -->
 <table class="ui very basic collapsing celled table">
 <tr>
 <th>
