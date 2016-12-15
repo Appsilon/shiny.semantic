@@ -94,11 +94,11 @@ TODO Chris - write about invoking specific components JS, found in Semantic UI d
 example_button = create_example(div(class = "ui button", uiicon("user"),  "Icon button"), height = "30px")
 example_button$htmlwidget
 ```
-```{r, echo = FALSE, fig.height=1.5}
+```{r, echo = FALSE}
 example_button$code_demo
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.height=2.0}
 example_list = create_example(
   div(class = "ui raised segment",
   div(class = "ui relaxed divided list", c("Apples", 
@@ -107,7 +107,7 @@ example_list = create_example(
     div(class = "content", a(class = "header", 
         "Hello"), div(class = "description", 
         .)))))),
-  height = "150px"
+  height = "170px"
 )
 example_list$htmlwidget
 ```
