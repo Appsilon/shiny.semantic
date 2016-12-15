@@ -109,18 +109,11 @@ server <- shinyServer(function(input, output) {
 shinyApp(ui = ui(), server = server)
 ```
 
-This will render a simple button.
+and will render a simple button.
 ```{r, echo = FALSE, fig.height=1}
 example_button = create_example(div(class = "ui button", uiicon("user"),  "Icon button"), height = "30px")
 example_button$htmlwidget
 ```
-<<<<<<< HEAD
-```{r, echo = FALSE}
-example_button$code_demo
-```
-
-```{r, echo=FALSE, fig.height=2.0}
-=======
 
 Please note that at the moment you have to pass page title in *semanticPage()*
 ```
@@ -129,12 +122,11 @@ semanticPage(title = "Your page title", ...)
 
 For better understanding it's good to check [Semantic UI documentation.][semantic_website_url]
 
-**Code examples**
+**Component examples**
 
 * **Raised segment with list**
 
 ```{r, echo=FALSE}
->>>>>>> Wrap up README docs
 example_list = create_example(
   div(class = "ui raised segment",
   div(class = "ui relaxed divided list", c("Apples", 
@@ -183,21 +175,24 @@ example_card$htmlwidget
 example_card$code_demo
 ```
 
-The source code for the [Live components demo](`r params$demo_url`) is located in **/examples** folder. To run it locally you will have to install:
+All components examples can be found here:<br>
+[`r params$demo_url`](`r params$demo_url`)
+
+The source code for **Components live demo** is located in **/examples** folder. To run it locally you will have to install:
 
 * [**highlighter**](https://github.com/Appsilon/highlighter)
 ```
 devtools::install_github("Appsilon/highlighter")
 ```
 
-Check out also our dashboard examples:
+Check out also our dashboard examples made with **shiny.semantic** librabry:
 
 1. [Churn analytics](http://demo.appsilondatascience.com/shiny.semantic/churn)
 2. [Fraud detection](demo.appsilondatascience.com/shiny.semantic/frauds)
 
-**[Advanced] Using JS compontns**
+**[Advanced] Using Semantic UI JavaScript elements**
 
-Some Semantic UI components require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:
+Some Semantic UI elements require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:
 
 1. Use [shinyjs][shinyjs_repo_url]
 
