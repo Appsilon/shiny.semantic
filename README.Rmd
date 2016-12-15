@@ -15,8 +15,8 @@ source("readme_assets/ui_demo.R")
 
 create_example <- function(code, ...) {
   list(
-    htmlwidget = shiny.semantic::uirender(code),
-    code_demo = highlighter::highlight(formatR::tidy_source(output = FALSE, width.cutoff = 80, text = deparse(substitute(code)))$text.tidy)
+    htmlwidget = shiny.semantic::uirender(div(class="demo", code), ...),
+    code_demo = div(class="demo-code", pre(code(class="r", formatR::tidy_source(output = FALSE, width.cutoff = 80, text = deparse(substitute(code)))$text.tidy)))
   )
 }
 ```
@@ -90,8 +90,8 @@ How to use it? {.firebrick}
 TODO Chris - write how to initialse all necessary things in shinyServer and ui. <br>
 TODO Chris - write about invoking specific components JS, found in Semantic UI documentation.
 
-```{r, echo = FALSE}
-example_button = create_example(div(class = "ui basic button", uiicon("user"),  "Icon button"))
+```{r, echo = FALSE, fig.height=1}
+example_button = create_example(div(class = "ui basic button", uiicon("user"),  "Icon button"), height = "30px")
 example_button$htmlwidget
 ```
 ```{r, echo = FALSE}
@@ -119,7 +119,8 @@ example_card = create_example(
         tags$input(type="text", placeholder ="Add Comment...")
       )
     )
-  )
+  ),
+  height = "400px"
 )
 example_card$htmlwidget
 ```

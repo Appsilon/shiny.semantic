@@ -53,9 +53,10 @@ h2, .subheader {
   padding: 1em 25%;
 }
 .section.level2 > p,
+.section.level2 > h2,
 .section.level2 > div {
   text-align: left;
-  margin: 1em auto;
+  margin: 1em;
   max-width: 940px;
 }
 @media (max-width: 1440px) {

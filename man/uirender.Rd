@@ -2,11 +2,11 @@
 % Please edit documentation in R/uirender.R
 \name{uirender}
 \alias{uirender}
-\title{<Add Title>}
+\title{htmlwidget that adds semanticui dependencies and renders in viewer or rmarkdown.}
 \usage{
 uirender(ui, width = NULL, height = NULL, elementId = NULL)
 }
 \description{
-<Add Description>
+htmlwidget that adds semanticui dependencies and renders in viewer or rmarkdown.
 }
 

@@ -19,7 +19,7 @@ Before
 <p>
 </p>
 <!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
-<!-- Thu Dec 15 12:00:27 2016 -->
+<!-- Thu Dec 15 12:33:44 2016 -->
 <table class="table shiny-table table- spacing-s" style="width:auto;">
 <thead>
 <tr>
@@ -71,7 +71,7 @@ After
 <p>
 </p>
 <!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->
-<!-- Thu Dec 15 12:00:27 2016 -->
+<!-- Thu Dec 15 12:33:44 2016 -->
 <table class="ui very basic collapsing celled table">
 <tr>
 <th>
@@ -145,10 +145,24 @@ How to use it?
 
 TODO Chris - write how to initialse all necessary things in shinyServer and ui. <br> TODO Chris - write about invoking specific components JS, found in Semantic UI documentation.
 
-![](README_files/figure-markdown_github/unnamed-chunk-4-1.png) ![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-4-1.png) <!--html_preserve-->
+<pre>
+<code class="r">div(class = "ui basic button", uiicon("user"), "Icon button")</code>
+</pre>
 
-![](README_files/figure-markdown_github/unnamed-chunk-6-1.png) ![](README_files/figure-markdown_github/unnamed-chunk-7-1.png)
+<!--/html_preserve-->
+![](README_files/figure-markdown_github/unnamed-chunk-6-1.png) <!--html_preserve-->
+<pre>
+<code class="r">div(class = "ui card", div(class = "content", div(class = "right floated meta", "14h"), 
+    img(class = "ui avatar image", src = "http://semantic-ui.com/images/avatar/large/elliot.jpg"), 
+    "Elliot"), div(class = "image", img(src = "http://semantic-ui.com/images/wireframe/image.png")), 
+    div(class = "content", span(class = "right floated", uiicon("heart outline like"), 
+        "17 likes"), uiicon("comment"), "3 comments"), div(class = "extra content", 
+        div(class = "ui large transparent left icon input", uiicon("heart ouline"), 
+            tags$input(type = "text", placeholder = "Add Comment..."))))</code>
+</pre>
 
+<!--/html_preserve-->
 **More examples**
 
 The source code for the live demo you were able to go to in the bigging is located in **/examples** folder. To run it locally you will have to install:
