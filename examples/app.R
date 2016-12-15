@@ -122,7 +122,7 @@ breadcrumb <- function() {
 accordion <- function() {
   div(
     h1(class="ui header", id="accordion", "Accordion"),
-    demo(div(class="ui styled accordion", 
+    demo(div(class="ui styled accordion",
              div(class="active title", uiicon('dropdown icon'), "What is dog?"),
              div(class="active content", p("A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.")),
              div(class="title", uiicon('dropdown icon'), "What kinds of dogs are there?"),

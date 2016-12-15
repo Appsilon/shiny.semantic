@@ -13,11 +13,10 @@ params:
 ```{r, echo=FALSE, message=FALSE}
 source("readme_assets/ui_demo.R")
 
-demo <- function(code) {
-  div(class = "demo ui raised segment",
-    code,
-    div(style = "width: 100%; height:10px"),
-    highlighter::highlight(formatR::tidy_source(output = FALSE, width.cutoff = 40, text = deparse(substitute(code)))$text.tidy)
+create_example <- function(code, ...) {
+  list(
+    htmlwidget = shiny.semantic::uirender(div(class="demo", code), ...),
+    code_demo = div(class="demo-code", pre(code(class="r", formatR::tidy_source(output = FALSE, width.cutoff = 80, text = deparse(substitute(code)))$text.tidy)))
   )
 }
 ```
@@ -91,30 +90,42 @@ How to use it? {.firebrick}
 TODO Chris - write how to initialse all necessary things in shinyServer and ui. <br>
 TODO Chris - write about invoking specific components JS, found in Semantic UI documentation.
 
-```{r echo=FALSE}
-div(
-  demo(
-    div(class="ui card",
-      div(class="content",
-        div(class="right floated meta", "14h"),
-        img(class="ui avatar image", src="http://semantic-ui.com/images/avatar/large/elliot.jpg"),
-        "Elliot"
-      ),
-      div(class="image", img(src="http://semantic-ui.com/images/wireframe/image.png")),
-      div(class="content",
-        span(class="right floated", uiicon("heart outline like"), "17 likes"),
-        uiicon("comment"),
-        "3 comments"
-      ),
-      div(class="extra content",
-        div(class="ui large transparent left icon input",
-          uiicon("heart ouline"),
-          tags$input(type="text", placeholder ="Add Comment...")
-        )
+```{r, echo = FALSE, fig.height=1}
+example_button = create_example(div(class = "ui basic button", uiicon("user"),  "Icon button"), height = "30px")
+example_button$htmlwidget
+```
+```{r, echo = FALSE}
+example_button$code_demo
+```
+
+
+```{r, echo=FALSE}
+example_card = create_example(
+  div(class="ui card",
+    div(class="content",
+      div(class="right floated meta", "14h"),
+      img(class="ui avatar image", src="http://semantic-ui.com/images/avatar/large/elliot.jpg"),
+      "Elliot"
+    ),
+    div(class="image", img(src="http://semantic-ui.com/images/wireframe/image.png")),
+    div(class="content",
+      span(class="right floated", uiicon("heart outline like"), "17 likes"),
+      uiicon("comment"),
+      "3 comments"
+    ),
+    div(class="extra content",
+      div(class="ui large transparent left icon input",
+        uiicon("heart ouline"),
+        tags$input(type="text", placeholder ="Add Comment...")
       )
     )
-  )
+  ),
+  height = "400px"
 )
+example_card$htmlwidget
+```
+```{r, echo = FALSE}
+example_card$code_demo
 ```
 
 

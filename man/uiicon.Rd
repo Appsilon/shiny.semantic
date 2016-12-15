@@ -4,12 +4,12 @@
 \alias{uiicon}
 \title{This creates an icon tag using Semantic UI styles.}
 \usage{
-uiicon(type = "", style = "")
+uiicon(type = "", ...)
 }
 \arguments{
 \item{type}{A name of an icon. Look at http://semantic-ui.com/elements/icon.html for all possibilities.}
 
-\item{style}{Optional style attribute to add to the tag.}
+\item{...}{Other arguments to be added as attributes of the tag (e.g. style, class etc.)}
 }
 \description{
 This creates an icon tag using Semantic UI styles.

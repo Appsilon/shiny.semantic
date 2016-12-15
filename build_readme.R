@@ -1,6 +1,7 @@
 # Small script for generating github readme and github pages.
 rm(params)
 
+unlink("README_files/", recursive = TRUE)
 file.remove("docs/index.html")
 file.remove("README.md")
 rmarkdown::render("README.Rmd", output_format = "github_document")
