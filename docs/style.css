@@ -60,6 +60,9 @@ h2, .subheader {
   max-width: 940px;
 }
 @media (max-width: 1440px) {
+  h1 {
+    font-size: 50px;
+  }
   .section.level2 {
     padding: 1em 12%;
   }
