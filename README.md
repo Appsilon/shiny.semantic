@@ -10,13 +10,12 @@ Semantic UI wrapper for Shiny
 
 With this library it's easy to wrap Shiny with [Semantic UI components](https://github.com/Semantic-Org/Semantic-UI). Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.
 
-<!-- TODO Filip better example -->
 <h2>
 Before
 </h2>
 <!--html_preserve-->
 
-<script type="application/json" data-for="htmlwidget-74a896d8e1c47e861266">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"container-fluid\">\n    <div style=\"margin-left: 20px; background: white\">\n      <div>\n        <div>\n          <a>Client's info\u003c/a>\n          <p>\u003c/p>\n          <!-- html table generated in R 3.3.1 by xtable 1.8-2 package -->\n<!-- Thu Dec 15 14:39:03 2016 -->\n<table  class = 'table shiny-table table- spacing-s' style = 'width:auto;'>\n<thead> <tr> <th style='text-align: left;'> Name \u003c/th> <th style='text-align: left;'> City \u003c/th> <th style='text-align: left;'> Revenue \u003c/th>  \u003c/tr> \u003c/thead> <tbody>\n  <tr> <td> John Smith \u003c/td> <td> Warsaw, Poland \u003c/td> <td> $210.50 \u003c/td> \u003c/tr>\n  <tr> <td> Lindsay More \u003c/td> <td> SF, United States \u003c/td> <td> $172.78 \u003c/td> \u003c/tr>\n   \u003c/tbody> \u003c/table>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n  \u003c/div>\n\u003c/div>"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-3bbe9059166754724fa4">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"container-fluid\">\n    <div style=\"margin-left: 20px; background: white\">\n      <div>\n        <div>\n          <a>Client's info\u003c/a>\n          <p>\u003c/p>\n          <!-- html table generated in R 3.3.1 by xtable 1.8-2 package -->\n<!-- Thu Dec 15 14:56:25 2016 -->\n<table  class = 'table shiny-table table- spacing-s' style = 'width:auto;'>\n<thead> <tr> <th style='text-align: left;'> Name \u003c/th> <th style='text-align: left;'> City \u003c/th> <th style='text-align: left;'> Revenue \u003c/th>  \u003c/tr> \u003c/thead> <tbody>\n  <tr> <td> John Smith \u003c/td> <td> Warsaw, Poland \u003c/td> <td> $210.50 \u003c/td> \u003c/tr>\n  <tr> <td> Lindsay More \u003c/td> <td> SF, United States \u003c/td> <td> $172.78 \u003c/td> \u003c/tr>\n   \u003c/tbody> \u003c/table>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n  \u003c/div>\n\u003c/div>"},"evals":[],"jsHooks":[]}</script>
 <!--/html_preserve-->
 
 <h2>
@@ -24,14 +23,14 @@ After
 </h2>
 <!--html_preserve-->
 
-<script type="application/json" data-for="htmlwidget-269d50824bee792057e3">{"x":{"ui":"<div class=\"demo\">\n  <body style=\"min-height: 611px;\">\n    <div class=\"wrapper\">\n      <div class=\"ui raised segment\" style=\"margin-left: 20px; max-width: 350px\">\n        <a class=\"ui green ribbon label\">Client's info\u003c/a>\n        <p>\u003c/p>\n        <!-- html table generated in R 3.3.1 by xtable 1.8-2 package -->\n<!-- Thu Dec 15 14:39:03 2016 -->\n<table class = 'ui very basic collapsing celled table'>\n<tr> <th> Name \u003c/th> <th> City \u003c/th> <th> Revenue \u003c/th>  \u003c/tr>\n  <tr> <td> John Smith \u003c/td> <td> Warsaw, Poland \u003c/td> <td> $210.50 \u003c/td> \u003c/tr>\n  <tr> <td> Lindsay More \u003c/td> <td> SF, United States \u003c/td> <td> $172.78 \u003c/td> \u003c/tr>\n   \u003c/table>\n\n      \u003c/div>\n    \u003c/div>\n  \u003c/body>\n\u003c/div>"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-11a0714dde696a2ad2e7">{"x":{"ui":"<div class=\"demo\">\n  <body style=\"min-height: 611px;\">\n    <div class=\"wrapper\">\n      <div class=\"ui raised segment\" style=\"margin-left: 20px; max-width: 350px; width: 100%\">\n        <a class=\"ui green ribbon label\">Client's info\u003c/a>\n        <p>\u003c/p>\n        <!-- html table generated in R 3.3.1 by xtable 1.8-2 package -->\n<!-- Thu Dec 15 14:56:25 2016 -->\n<table class = 'ui very basic collapsing celled table'>\n<tr> <th> Name \u003c/th> <th> City \u003c/th> <th> Revenue \u003c/th>  \u003c/tr>\n  <tr> <td> John Smith \u003c/td> <td> Warsaw, Poland \u003c/td> <td> $210.50 \u003c/td> \u003c/tr>\n  <tr> <td> Lindsay More \u003c/td> <td> SF, United States \u003c/td> <td> $172.78 \u003c/td> \u003c/tr>\n   \u003c/table>\n\n      \u003c/div>\n    \u003c/div>\n  \u003c/body>\n\u003c/div>"},"evals":[],"jsHooks":[]}</script>
 <!--/html_preserve-->
 
 <!-- #Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link). -->
 <!-- Live demo link below -->
 <!-- TODO Analogy to http://shiny.rstudio.com/gallery/widget-gallery.html -->
-<p style="text-align: center; font-size: x-large; clear: both">
-<a href="http://demo.appsilondatascience.com/shiny.semantic/components">See components live demo</a>
+<p style="text-align: center; font-size: x-large;">
+<a href="http://demo.appsilondatascience.com/shiny.semantic/components">Components live demo</a>
 </p>
 
 Source code
@@ -80,9 +79,9 @@ Basic example will look like this:
 
     shinyApp(ui = ui(), server = server)
 
-This will render a simple button. <!--html_preserve-->
+and will render a simple button. <!--html_preserve-->
 
-<script type="application/json" data-for="htmlwidget-54468b4998ae4129239d">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui button\">\n    <i class=\"user icon\">\u003c/i>\n    Icon button\n  \u003c/div>\n\u003c/div>"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-3fa414ad08ef5c6fb5ea">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui button\">\n    <i class=\"user icon\">\u003c/i>\n    Icon button\n  \u003c/div>\n\u003c/div>"},"evals":[],"jsHooks":[]}</script>
 <!--/html_preserve-->
 Please note that at the moment you have to pass page title in *semanticPage()*
 
@@ -96,7 +95,7 @@ For better understanding it's good to check [Semantic UI documentation.](http://
 
 <!--html_preserve-->
 
-<script type="application/json" data-for="htmlwidget-bd70fc0242b936308fc0">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui raised segment\">\n    <div class=\"ui relaxed divided list\">\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\">\u003c/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello\u003c/a>\n          <div class=\"description\">Apples\u003c/div>\n        \u003c/div>\n      \u003c/div>\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\">\u003c/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello\u003c/a>\n          <div class=\"description\">Pears\u003c/div>\n        \u003c/div>\n      \u003c/div>\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\">\u003c/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello\u003c/a>\n          <div class=\"description\">Oranges\u003c/div>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n  \u003c/div>\n\u003c/div>"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-99b42550bb37d485751a">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui raised segment\">\n    <div class=\"ui relaxed divided list\">\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\">\u003c/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello\u003c/a>\n          <div class=\"description\">Apples\u003c/div>\n        \u003c/div>\n      \u003c/div>\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\">\u003c/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello\u003c/a>\n          <div class=\"description\">Pears\u003c/div>\n        \u003c/div>\n      \u003c/div>\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\">\u003c/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello\u003c/a>\n          <div class=\"description\">Oranges\u003c/div>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n  \u003c/div>\n\u003c/div>"},"evals":[],"jsHooks":[]}</script>
 <!--/html_preserve-->
 <!--html_preserve-->
 <pre>
@@ -111,7 +110,7 @@ For better understanding it's good to check [Semantic UI documentation.](http://
 
 <!--html_preserve-->
 
-<script type="application/json" data-for="htmlwidget-467d0e1b05712395c328">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui card\">\n    <div class=\"content\">\n      <div class=\"right floated meta\">14h\u003c/div>\n      <img class=\"ui avatar image\" src=\"http://semantic-ui.com/images/avatar/large/elliot.jpg\"/>\n      Elliot\n    \u003c/div>\n    <div class=\"image\">\n      <img src=\"http://semantic-ui.com/images/wireframe/image.png\"/>\n    \u003c/div>\n    <div class=\"content\">\n      <span class=\"right floated\">\n        <i class=\"heart outline like icon\">\u003c/i>\n        17 likes\n      \u003c/span>\n      <i class=\"comment icon\">\u003c/i>\n      3 comments\n    \u003c/div>\n    <div class=\"extra content\">\n      <div class=\"ui large transparent left icon input\">\n        <i class=\"heart ouline icon\">\u003c/i>\n        <input type=\"text\" placeholder=\"Add Comment...\"/>\n      \u003c/div>\n    \u003c/div>\n  \u003c/div>\n\u003c/div>"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-8198f9f6562fb9773c28">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui card\">\n    <div class=\"content\">\n      <div class=\"right floated meta\">14h\u003c/div>\n      <img class=\"ui avatar image\" src=\"http://semantic-ui.com/images/avatar/large/elliot.jpg\"/>\n      Elliot\n    \u003c/div>\n    <div class=\"image\">\n      <img src=\"http://semantic-ui.com/images/wireframe/image.png\"/>\n    \u003c/div>\n    <div class=\"content\">\n      <span class=\"right floated\">\n        <i class=\"heart outline like icon\">\u003c/i>\n        17 likes\n      \u003c/span>\n      <i class=\"comment icon\">\u003c/i>\n      3 comments\n    \u003c/div>\n    <div class=\"extra content\">\n      <div class=\"ui large transparent left icon input\">\n        <i class=\"heart ouline icon\">\u003c/i>\n        <input type=\"text\" placeholder=\"Add Comment...\"/>\n      \u003c/div>\n    \u003c/div>\n  \u003c/div>\n\u003c/div>"},"evals":[],"jsHooks":[]}</script>
 <!--/html_preserve-->
 <!--html_preserve-->
 <pre>
@@ -138,9 +137,9 @@ Check out also our dashboard examples made with **shiny.semantic** librabry:
 1.  [Churn analytics](http://demo.appsilondatascience.com/shiny.semantic/churn)
 2.  [Fraud detection](demo.appsilondatascience.com/shiny.semantic/frauds)
 
-**\[Advanced\] Using JS compontns**
+**\[Advanced\] Using Semantic UI JavaScript elements**
 
-Some Semantic UI components require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:
+Some Semantic UI elements require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:
 
 1.  Use [shinyjs](https://github.com/daattali/shinyjs)
 
