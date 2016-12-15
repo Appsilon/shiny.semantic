@@ -8,17 +8,23 @@ shiny.semantic
 
 Semantic UI wrapper for Shiny
 
-With this library it's easy to wrap Shiny with Semantic UI components. Add few simple CSS classes to your components and achieve amazing boost look of your user interface.
+With this library it's easy to wrap Shiny with [Semantic UI components](https://github.com/Semantic-Org/Semantic-UI). Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.
 
 <h2>
 Before
 </h2>
-![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
+<!--html_preserve-->
+
+<script type="application/json" data-for="htmlwidget-a5bf9cf041dfd622029f">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"container-fluid\">\n    <div style=\"margin-left: 20px; background: white\">\n      <div>\n        <div>\n          <a>Client's info\u003c/a>\n          <p>\u003c/p>\n          <!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->\n<!-- Thu Dec 15 15:31:59 2016 -->\n<table  class = 'table shiny-table table- spacing-s' style = 'width:auto;'>\n<thead> <tr> <th style='text-align: left;'> Name \u003c/th> <th style='text-align: left;'> City \u003c/th> <th style='text-align: left;'> Revenue \u003c/th>  \u003c/tr> \u003c/thead> <tbody>\n  <tr> <td> John Smith \u003c/td> <td> Warsaw, Poland \u003c/td> <td> $210.50 \u003c/td> \u003c/tr>\n  <tr> <td> Lindsay More \u003c/td> <td> SF, United States \u003c/td> <td> $172.78 \u003c/td> \u003c/tr>\n   \u003c/tbody> \u003c/table>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n  \u003c/div>\n\u003c/div>"},"evals":[],"jsHooks":[]}</script>
+<!--/html_preserve-->
 
 <h2>
 After
 </h2>
-![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
+<!--html_preserve-->
+
+<script type="application/json" data-for="htmlwidget-64a6ed06f234387298bd">{"x":{"ui":"<div class=\"demo\">\n  <body style=\"min-height: 611px;\">\n    <div class=\"wrapper\">\n      <div class=\"ui raised segment\" style=\"margin-left: 20px; max-width: 350px; width: 100%\">\n        <a class=\"ui green ribbon label\">Client's info\u003c/a>\n        <p>\u003c/p>\n        <!-- html table generated in R 3.3.2 by xtable 1.8-2 package -->\n<!-- Thu Dec 15 15:31:59 2016 -->\n<table class = 'ui very basic collapsing celled table'>\n<tr> <th> Name \u003c/th> <th> City \u003c/th> <th> Revenue \u003c/th>  \u003c/tr>\n  <tr> <td> John Smith \u003c/td> <td> Warsaw, Poland \u003c/td> <td> $210.50 \u003c/td> \u003c/tr>\n  <tr> <td> Lindsay More \u003c/td> <td> SF, United States \u003c/td> <td> $172.78 \u003c/td> \u003c/tr>\n   \u003c/table>\n\n      \u003c/div>\n    \u003c/div>\n  \u003c/body>\n\u003c/div>"},"evals":[],"jsHooks":[]}</script>
+<!--/html_preserve-->
 
 <!-- #Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link). -->
 <!-- Live demo link below -->
@@ -26,7 +32,6 @@ After
 <p style="text-align: center; font-size: x-large;">
 <a href="http://demo.appsilondatascience.com/shiny.semantic/components">Components live demo</a>
 </p>
-For better understanding it's good to check [Semantic UI documentation.](http://semantic-ui.com/introduction/getting-started.html)
 
 Source code
 -----------
@@ -52,15 +57,47 @@ To install [previous version]() you can run:
 How to use it?
 --------------
 
-TODO Chris - write how to initialse all necessary things in shinyServer and ui. <br> TODO Chris - write about invoking specific components JS, found in Semantic UI documentation.
+Firstly, you will have to invoke *shinyUI()* with *semanticPage()* instead of standard Shiny UI definitions like e.g. *fluidPage()*. From now on forward all components can ba annotated with [Semantic UI](http://semantic-ui.com/introduction/getting-started.html) specific CSS classes and also you will be able to use [shiny.semantic components](http://demo.appsilondatascience.com/shiny.semantic/components).
 
-![](README_files/figure-markdown_github/unnamed-chunk-4-1.png) <!--html_preserve-->
-<pre>
-<code class="r">div(class = "ui button", uiicon("user"), "Icon button")</code>
-</pre>
+Basic example will look like this:
 
+    library(shiny)
+    #devtools::install_github("Appsilon/shiny.semantic")
+    library(shiny.semantic)
+
+    ui <- function() {
+      shinyUI(
+        semanticPage(
+          title = "My page",
+          div(class = "ui button", uiicon("user"),  "Icon button")
+        )
+      )
+    }
+
+    server <- shinyServer(function(input, output) {
+    })
+
+    shinyApp(ui = ui(), server = server)
+
+and will render a simple button. <!--html_preserve-->
+
+<script type="application/json" data-for="htmlwidget-d36f200ca87d4fb2b06a">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui button\">\n    <i class=\"user icon\">\u003c/i>\n    Icon button\n  \u003c/div>\n\u003c/div>"},"evals":[],"jsHooks":[]}</script>
 <!--/html_preserve-->
-![](README_files/figure-markdown_github/unnamed-chunk-6-1.png) <!--html_preserve-->
+Please note that at the moment you have to pass page title in *semanticPage()*
+
+    semanticPage(title = "Your page title", ...)
+
+For better understanding it's good to check [Semantic UI documentation.](http://semantic-ui.com/introduction/getting-started.html)
+
+**Component examples**
+
+-   **Raised segment with list**
+
+<!--html_preserve-->
+
+<script type="application/json" data-for="htmlwidget-c14a01e9e03d5d66f3a6">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui raised segment\">\n    <div class=\"ui relaxed divided list\">\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\">\u003c/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello\u003c/a>\n          <div class=\"description\">Apples\u003c/div>\n        \u003c/div>\n      \u003c/div>\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\">\u003c/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello\u003c/a>\n          <div class=\"description\">Pears\u003c/div>\n        \u003c/div>\n      \u003c/div>\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\">\u003c/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello\u003c/a>\n          <div class=\"description\">Oranges\u003c/div>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n  \u003c/div>\n\u003c/div>"},"evals":[],"jsHooks":[]}</script>
+<!--/html_preserve-->
+<!--html_preserve-->
 <pre>
 <code class="r">div(class = "ui raised segment", div(class = "ui relaxed divided list", c("Apples", 
     "Pears", "Oranges") %&gt;% purrr::map(~div(class = "item", uiicon("large github middle aligned"), 
@@ -69,7 +106,13 @@ TODO Chris - write how to initialse all necessary things in shinyServer and ui. 
 </pre>
 
 <!--/html_preserve-->
-![](README_files/figure-markdown_github/unnamed-chunk-8-1.png) <!--html_preserve-->
+-   **Interactive card**
+
+<!--html_preserve-->
+
+<script type="application/json" data-for="htmlwidget-d13bbb44c8ef1a216e46">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui card\">\n    <div class=\"content\">\n      <div class=\"right floated meta\">14h\u003c/div>\n      <img class=\"ui avatar image\" src=\"http://semantic-ui.com/images/avatar/large/elliot.jpg\"/>\n      Elliot\n    \u003c/div>\n    <div class=\"image\">\n      <img src=\"http://semantic-ui.com/images/wireframe/image.png\"/>\n    \u003c/div>\n    <div class=\"content\">\n      <span class=\"right floated\">\n        <i class=\"heart outline like icon\">\u003c/i>\n        17 likes\n      \u003c/span>\n      <i class=\"comment icon\">\u003c/i>\n      3 comments\n    \u003c/div>\n    <div class=\"extra content\">\n      <div class=\"ui large transparent left icon input\">\n        <i class=\"heart ouline icon\">\u003c/i>\n        <input type=\"text\" placeholder=\"Add Comment...\"/>\n      \u003c/div>\n    \u003c/div>\n  \u003c/div>\n\u003c/div>"},"evals":[],"jsHooks":[]}</script>
+<!--/html_preserve-->
+<!--html_preserve-->
 <pre>
 <code class="r">div(class = "ui card", div(class = "content", div(class = "right floated meta", "14h"), 
     img(class = "ui avatar image", src = "http://semantic-ui.com/images/avatar/large/elliot.jpg"), 
@@ -81,20 +124,77 @@ TODO Chris - write how to initialse all necessary things in shinyServer and ui. 
 </pre>
 
 <!--/html_preserve-->
-**More examples**
+All components examples can be found here:<br> <http://demo.appsilondatascience.com/shiny.semantic/components>
 
-The source code for the live demo you were able to go to in the bigging is located in **/examples** folder. To run it locally you will have to install:
+The source code for **Components live demo** is located in **/examples** folder. To run it locally you will have to install:
 
 -   [**highlighter**](https://github.com/Appsilon/highlighter)
 
         devtools::install_github("Appsilon/highlighter")
 
-Check out our dashboard examples:
+Check out also our dashboard examples made with **shiny.semantic** librabry:
 
 1.  [Churn analytics](http://demo.appsilondatascience.com/shiny.semantic/churn)
 2.  [Fraud detection](demo.appsilondatascience.com/shiny.semantic/frauds)
 
-All dashboards source code can be found in **/demo** folder. You will have to follow the according README files to install all necessary dependencies for those projects.
+**\[Advanced\] Using Semantic UI JavaScript elements**
+
+Some Semantic UI elements require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:
+
+1.  Use [shinyjs](https://github.com/daattali/shinyjs)
+
+<!-- -->
+
+    library(shinyjs)
+    ...
+    jsCode <- "
+    #Semantic UI componts JS
+    "
+    ...
+    ui <- function() {
+      shinyUI(
+        semanticPage(
+          title = "Your page title",
+          shinyjs::useShinyjs(),
+          #Your UI code
+        )
+      )
+    }
+
+    server <- shinyServer(function(input, output) {
+      runjs(jsCode)
+      # Your Shiny logic
+    })
+
+    shinyApp(ui = ui(), server = server)
+
+1.  Use *shiny::tags$script()*
+
+<!-- -->
+
+    ...
+    jsCode <- "
+    $(document).ready(function() {
+      #Semantic UI components JS code e.g.
+      #$('.rating').rating('setting', 'clearable', true);
+      #$('.disabled .rating').rating('disable');
+    })
+    ...
+    ui <- function() {
+      shinyUI(semanticPage(
+        title = "My page",
+        tags$script(jsCode),
+        #Your UI code
+        )
+      )
+    }
+    ...
+    server <- shinyServer(function(input, output) {
+      # Your Shiny logic
+    })
+
+    shinyApp(ui = ui(), server = server)
+        
 
 How to contribute?
 ------------------

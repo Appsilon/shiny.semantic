@@ -31,7 +31,7 @@ create_example <- function(code, ...) {
 <div class="subheader">Semantic UI wrapper for Shiny</div>
 
 <div class="section level2">
-With this library it's easy to wrap Shiny with Semantic UI components. Add few simple CSS classes to your components and achieve amazing boost look of your user interface.
+With this library it's easy to wrap Shiny with [Semantic UI components][semantic_repo_url]. Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.
 
 <div class="ui stackable two column grid">
 <div class="column">
@@ -55,8 +55,6 @@ create_example(after_ui_demo(), width="100%", height="100%")$htmlwidget
 <p style="text-align: center; font-size: x-large;">
 <a href="`r params$demo_url`">Components live demo</a>
 </p>
-
-For better understanding it's good to check [Semantic UI documentation.][semantic_website]
 
 </div>
 
@@ -87,18 +85,48 @@ devtools::install_github("Appsilon/`r params$repo_name`", ref = "0.1.0")
 
 How to use it? {.firebrick}
 -------
-TODO Chris - write how to initialse all necessary things in shinyServer and ui. <br>
-TODO Chris - write about invoking specific components JS, found in Semantic UI documentation.
+Firstly, you will have to invoke *shinyUI()* with *semanticPage()* instead of standard Shiny UI definitions like e.g. *fluidPage()*. From now on forward all components can ba annotated with [Semantic UI][semantic_website_url] specific CSS classes and also you will be able to use [shiny.semantic  components](`r params$demo_url`).
 
+Basic example will look like this:
+
+```
+library(shiny)
+#devtools::install_github("Appsilon/`r params$repo_name`")
+library(shiny.semantic)
+
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      title = "My page",
+      div(class = "ui button", uiicon("user"),  "Icon button")
+    )
+  )
+}
+
+server <- shinyServer(function(input, output) {
+})
+
+shinyApp(ui = ui(), server = server)
+```
+
+and will render a simple button.
 ```{r, echo = FALSE, fig.height=1}
 example_button = create_example(div(class = "ui button", uiicon("user"),  "Icon button"), height = "30px")
 example_button$htmlwidget
 ```
-```{r, echo = FALSE}
-example_button$code_demo
+
+Please note that at the moment you have to pass page title in *semanticPage()*
+```
+semanticPage(title = "Your page title", ...)
 ```
 
-```{r, echo=FALSE, fig.height=2.0}
+For better understanding it's good to check [Semantic UI documentation.][semantic_website_url]
+
+**Component examples**
+
+* **Raised segment with list**
+
+```{r, echo=FALSE}
 example_list = create_example(
   div(class = "ui raised segment",
   div(class = "ui relaxed divided list", c("Apples", 
@@ -116,6 +144,7 @@ example_list$htmlwidget
 example_list$code_demo
 ```
 
+* **Interactive card**
 
 ```{r, echo=FALSE}
 example_card = create_example(
@@ -146,23 +175,78 @@ example_card$htmlwidget
 example_card$code_demo
 ```
 
+All components examples can be found here:<br>
+[`r params$demo_url`](`r params$demo_url`)
 
-
-**More examples**
-
-The source code for the live demo you were able to go to in the bigging is located in **/examples** folder. To run it locally you will have to install:
+The source code for **Components live demo** is located in **/examples** folder. To run it locally you will have to install:
 
 * [**highlighter**](https://github.com/Appsilon/highlighter)
 ```
 devtools::install_github("Appsilon/highlighter")
 ```
 
-Check out our dashboard examples:
+Check out also our dashboard examples made with **shiny.semantic** librabry:
 
 1. [Churn analytics](http://demo.appsilondatascience.com/shiny.semantic/churn)
 2. [Fraud detection](demo.appsilondatascience.com/shiny.semantic/frauds)
 
-All dashboards source code can be found in **/demo** folder. You will have to follow the according README files to install all necessary dependencies for those projects.
+**[Advanced] Using Semantic UI JavaScript elements**
+
+Some Semantic UI elements require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:
+
+1. Use [shinyjs][shinyjs_repo_url]
+
+```
+library(shinyjs)
+...
+jsCode <- "
+#Semantic UI componts JS
+"
+...
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      title = "Your page title",
+      shinyjs::useShinyjs(),
+      #Your UI code
+    )
+  )
+}
+
+server <- shinyServer(function(input, output) {
+  runjs(jsCode)
+  # Your Shiny logic
+})
+
+shinyApp(ui = ui(), server = server)
+```
+2. Use *shiny::tags$script()*
+
+```
+...
+jsCode <- "
+$(document).ready(function() {
+  #Semantic UI components JS code e.g.
+  #$('.rating').rating('setting', 'clearable', true);
+  #$('.disabled .rating').rating('disable');
+})
+...
+ui <- function() {
+  shinyUI(semanticPage(
+    title = "My page",
+    tags$script(jsCode),
+    #Your UI code
+    )
+  )
+}
+...
+server <- shinyServer(function(input, output) {
+  # Your Shiny logic
+})
+
+shinyApp(ui = ui(), server = server)
+    
+```
 
 How to contribute?
 -----------------
@@ -184,7 +268,7 @@ However, if you encounter any problems, try the following:
     ```
     install.packages("shiny", version='0.14.2.9001')
     ```
-3. Some bugs may be realted directly to Semantic UI. In that case please try to check issues on its [repository.][semantic_repo]
+3. Some bugs may be realted directly to Semantic UI. In that case please try to check issues on its [repository.][semantic_repo_url]
 
 
 Future enhacements
@@ -206,5 +290,6 @@ Get in touch [dev@appsilondatascience.com](dev@appsilondatascience.com)
 document.write('<a href="`r params$repo_url`"><img style="position: absolute; margin: 0; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>')
 </script>
 
-[semantic_website]: http://semantic-ui.com/introduction/getting-started.html
-[semantic_repo]: https://github.com/Semantic-Org/Semantic-UI
+[semantic_website_url]: http://semantic-ui.com/introduction/getting-started.html
+[semantic_repo_url]: https://github.com/Semantic-Org/Semantic-UI
+[shinyjs_repo_url]: https://github.com/daattali/shinyjs
