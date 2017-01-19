@@ -2,6 +2,7 @@
 
 export(semanticPage)
 export(shiny_input)
+export(shiny_text_input)
 export(uiicon)
 export(uirender)
 import(htmlwidgets)

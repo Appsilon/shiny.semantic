@@ -21,7 +21,15 @@ $.extend(customShinyInputBinding, {
   // Given the DOM element for the input, return the value as JSON.
   getValue: function(el) {
     var value = $(el).val();
-    return JSON.stringify(value);
+    var value_type = $(el).attr('data-value-type');
+    switch (value_type) {
+      case 'JSON':
+        return JSON.stringify(value);
+      case 'text':
+        return value;
+      default:
+        throw new Error("Unrecognized value type of custom shiny input: " + value_type);
+    }
   },
 
   // Given the DOM element for the input, set the value.
@@ -58,7 +66,6 @@ $.extend(customShinyInputBinding, {
   },
 
   receiveMessage: function(el, data) {
-    console.log(JSON.stringify(data))
     if (data.hasOwnProperty('value'))
       this.setValue(el, data.value);
 
