@@ -1,6 +1,6 @@
-var customShinyTextInputBinding = new Shiny.InputBinding();
+var customShinyInputBinding = new Shiny.InputBinding();
 
-$.extend(customShinyTextInputBinding, {
+$.extend(customShinyInputBinding, {
 
   // This initialize input element. It extracts data-value attribute and use that as value.
   initialize: function(el) {
@@ -10,7 +10,7 @@ $.extend(customShinyTextInputBinding, {
 
   // This returns a jQuery object with the DOM element.
   find: function(scope) {
-    return $(scope).find('.shiny-custom-text-input');
+    return $(scope).find('.shiny-custom-input');
   },
 
   // Returns the ID of the DOM element.
@@ -21,7 +21,15 @@ $.extend(customShinyTextInputBinding, {
   // Given the DOM element for the input, return the value as JSON.
   getValue: function(el) {
     var value = $(el).val();
-    return value;
+    var value_type = $(el).attr('data-value-type');
+    switch (value_type) {
+      case 'JSON':
+        return JSON.stringify(value);
+      case 'text':
+        return value;
+      default:
+        throw new Error("Unrecognized value type of custom shiny input: " + value_type);
+    }
   },
 
   // Given the DOM element for the input, set the value.
@@ -74,5 +82,5 @@ $.extend(customShinyTextInputBinding, {
   }
 });
 
-Shiny.inputBindings.register(customShinyTextInputBinding, 'shiny.customShinyTextInput');
+Shiny.inputBindings.register(customShinyInputBinding, 'shiny.customShinyInput');
 
