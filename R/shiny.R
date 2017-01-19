@@ -38,3 +38,16 @@ shiny_input <- function(input_id, shiny_ui, value = NULL, type = "JSON") {
     shiny_ui
   )
 }
+
+#' Universal binding for Shiny text input on custom user interface. Value of this input is extracted via jQuery using $().val()
+#' function. This function is just a simple binding over shiny_input. Please take a look at shiny_input documentation for more
+#' information.
+#'
+#' @param input_id String with name of this input. Access to this input within server code is normal with input[[input_id]].
+#' @param shiny_ui UI of HTML component presenting this input to the users. This UI should allow to extract its value with jQuery $().val() function.
+#' @param value An optional argument with value that should be set for this input. Can be used to store persisten input valus in dynamic UIs.
+#'
+#' @export
+shiny_text_input <- function(...) {
+  shiny_input(type = "text", ...)
+}
