@@ -98,6 +98,7 @@ ui <- function() {
   shinyUI(
     semanticPage(
       title = "My page",
+      suppressDependencies("bootstrap"),
       div(class = "ui button", uiicon("user"),  "Icon button")
     )
   )
@@ -115,14 +116,87 @@ example_button = create_example(div(class = "ui button", uiicon("user"),  "Icon 
 example_button$htmlwidget
 ```
 
-Please note that at the moment you have to pass page title in *semanticPage()*
+For better understanding it's good to check [Semantic UI documentation.][semantic_website_url]
+
+**Note #1**
+
+At the moment you have to pass page title in *semanticPage()*
 ```
 semanticPage(title = "Your page title", ...)
 ```
+**Note #2**
 
-For better understanding it's good to check [Semantic UI documentation.][semantic_website_url]
+Fot the time being you will have to suppress **Bootstrap** by caling:
+```
+semanticPage(
+      ...
+      suppressDependencies("bootstrap"),
+      ...
+      )
+```
 
-**Component examples**
+**[Advanced] Using Semantic UI JavaScript elements**
+
+Some Semantic UI elements require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:
+
+1. Use [shinyjs][shinyjs_repo_url]
+
+```
+library(shinyjs)
+...
+jsCode <- "
+#Semantic UI componts JS
+"
+...
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      title = "Your page title",
+      shinyjs::useShinyjs(),
+      suppressDependencies("bootstrap"),
+      #Your UI code
+    )
+  )
+}
+
+server <- shinyServer(function(input, output) {
+  runjs(jsCode)
+  # Your Shiny logic
+})
+
+shinyApp(ui = ui(), server = server)
+```
+2. Use *shiny::tags$script()*
+
+```
+...
+jsCode <- "
+$(document).ready(function() {
+  #Semantic UI components JS code e.g.
+  #$('.rating').rating('setting', 'clearable', true);
+  #$('.disabled .rating').rating('disable');
+})
+...
+ui <- function() {
+  shinyUI(semanticPage(
+    title = "My page",
+    tags$script(jsCode),
+    suppressDependencies("bootstrap"),
+    #Your UI code
+    )
+  )
+}
+...
+server <- shinyServer(function(input, output) {
+  # Your Shiny logic
+})
+
+shinyApp(ui = ui(), server = server)
+    
+```
+
+Component examples
+-------
 
 * **Raised segment with list**
 
@@ -190,63 +264,7 @@ Check out also our dashboard examples made with **shiny.semantic** librabry:
 1. [Churn analytics](http://demo.appsilondatascience.com/shiny.semantic/churn)
 2. [Fraud detection](demo.appsilondatascience.com/shiny.semantic/frauds)
 
-**[Advanced] Using Semantic UI JavaScript elements**
-
-Some Semantic UI elements require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:
-
-1. Use [shinyjs][shinyjs_repo_url]
-
-```
-library(shinyjs)
-...
-jsCode <- " # Semantic UI components JS "
-...
-ui <- function() {
-  shinyUI(
-    semanticPage(
-      title = "Your page title",
-      shinyjs::useShinyjs(),
-      # Your UI code
-    )
-  )
-}
-
-server <- shinyServer(function(input, output) {
-  runjs(jsCode)
-  # Your Shiny logic
-})
-
-shinyApp(ui = ui(), server = server)
-```
-2. Use *shiny::tags$script()*
-
-```
-...
-jsCode <- "
-$(document).ready(function() {
-  # Semantic UI components JS code, like:
-  # $('.rating').rating('setting', 'clearable', true);
-  # $('.disabled .rating').rating('disable');
-})
-...
-ui <- function() {
-  shinyUI(semanticPage(
-    title = "My page",
-    tags$script(jsCode),
-    # Your UI code
-    )
-  )
-}
-...
-server <- shinyServer(function(input, output) {
-  # Your Shiny logic
-})
-
-shinyApp(ui = ui(), server = server)
-    
-```
-
-How to contribute?
+How to contribute?  {.darkorange}
 -----------------
 If you want to contribute to this project please submit a regular PR, once you're done with new feature or bug fix.<br>
 
@@ -254,7 +272,7 @@ If you want to contribute to this project please submit a regular PR, once you'r
 
 Both repository **README.md** file and an official documentation page are generated with Rmarkdown, so if there is a need to update them, please modify accordingly a **README.Rmd** file  and run a **build_readme.R** script to compile it.
 
-Troubleshooting {.darkorange}
+Troubleshooting
 -----------------
 We used the latest versions of dependencies for this library, so please update your R environment before installation.
 
@@ -266,10 +284,11 @@ However, if you encounter any problems, try the following:
     ```
     install.packages("shiny", version='0.14.2.9001')
     ```
-3. Some bugs may be realted directly to Semantic UI. In that case please try to check issues on its [repository.][semantic_repo_url]
+3. Some bugs may be related directly to Semantic UI. In that case please try to check issues on its [repository.][semantic_repo_url]
+4. Some bugs may be related to **Bootstrap**. Please make sure you have it suppressed. Instructions are above in **How to use it?** section.
 
 
-Future enhacements
+Future enhacements {.firebrick}
 ------------------
 * create all update functions for input components to mimic shiny as close as possible
 * add some glue code in dsl.R to make using this package smoother
