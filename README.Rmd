@@ -126,7 +126,7 @@ semanticPage(title = "Your page title", ...)
 ```
 **Note #2**
 
-Fot the time being you will have to suppress **Bootstrap** by caling:
+There are some conflicts in CSS styles between **SemanticUI** and **Bootstrap**. For the time being it's better to suppress **Bootstrap** by caling:
 ```
 semanticPage(
       ...
@@ -144,9 +144,7 @@ Some Semantic UI elements require to run a specific JS code when DOM document is
 ```
 library(shinyjs)
 ...
-jsCode <- "
-#Semantic UI componts JS
-"
+jsCode <- " # Semantic UI componts JS "
 ...
 ui <- function() {
   shinyUI(
@@ -154,7 +152,7 @@ ui <- function() {
       title = "Your page title",
       shinyjs::useShinyjs(),
       suppressDependencies("bootstrap"),
-      #Your UI code
+      # Your UI code
     )
   )
 }
@@ -172,7 +170,7 @@ shinyApp(ui = ui(), server = server)
 ...
 jsCode <- "
 $(document).ready(function() {
-  #Semantic UI components JS code e.g.
+  # Semantic UI components JS code, like:
   #$('.rating').rating('setting', 'clearable', true);
   #$('.disabled .rating').rating('disable');
 })
@@ -182,7 +180,7 @@ ui <- function() {
     title = "My page",
     tags$script(jsCode),
     suppressDependencies("bootstrap"),
-    #Your UI code
+    # Your UI code
     )
   )
 }
