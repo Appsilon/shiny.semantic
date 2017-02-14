@@ -4,6 +4,8 @@ library(shiny.semantic)
 library(magrittr)
 library(highlighter)
 library(formatR)
+library(httr)
+library(rjson)
 
 demo <- function(code) {
   div(class = "ui raised segment",
@@ -238,6 +240,21 @@ css <- "
 #examples > div > .header {
   margin-top: 1em;
 }"
+format_name <- function(name, description) {
+  description <- ifelse(is.null(description), 'no data', description)
+  paste0('<strong>', name, '</strong> [', description, ']')
+}
+
+query_elastic_search <- function(query) {
+  resp_body = paste0('{"name_suggest": { "text": "',
+                     query,
+                     '", "completion": { "field": "name_suggest", "fuzzy": { "edit_distance": 1 } }} }')
+  response <- POST('http://temp_user:lfvbphk3635tcbbgv2@560e982eb806d23502d4ebb214386baa.eu-west-1.aws.found.io:9200/companies/_suggest?pretty',
+                   body = paste0(resp_body))
+  
+  fromJSON(content(response, "text"))$name_suggest[[1]]$options %>%
+    purrr::map(~ list(name = format_name(.$text, .$payload$name), value = .$text))
+}
 ui <- function() {
   shinyUI(semanticPage(
     tags$head(tags$style(HTML(css))),
@@ -261,7 +278,7 @@ ui <- function() {
   ))
 }
 
-server <- shinyServer(function(input, output) {
+server <- shinyServer(function(input, output, session) {
   runjs(jsCode)
 })
 

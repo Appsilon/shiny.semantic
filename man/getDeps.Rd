@@ -15,4 +15,3 @@ Content with appended dependencies.
 \description{
 Internal function that adds dashboard dependencies to html.
 }
-

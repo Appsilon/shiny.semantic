@@ -12,4 +12,3 @@ semanticPage(title = "", ...)
 \description{
 This creates a Semantic page for use in a Shiny app.
 }
-
