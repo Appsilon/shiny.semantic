@@ -4,7 +4,7 @@
 \alias{semanticPage}
 \title{Semantic UI page}
 \usage{
-semanticPage(title = "", ...)
+semanticPage(..., title = "")
 }
 \arguments{
 \item{title}{A title to display in the browser's title bar.}
