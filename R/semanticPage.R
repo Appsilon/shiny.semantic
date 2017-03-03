@@ -28,12 +28,13 @@ getDeps <- function() {
 #' @param title A title to display in the browser's title bar.
 #'
 #' @export
-semanticPage <- function(title = "", ...) {
+semanticPage <- function(..., title = "") {
   content <- shiny::tags$div(class = "wrapper", ...)
 
   shiny::tagList(
     getDeps(),
-    shiny::tags$body(style = "min-height: 611px;", shiny::bootstrapPage(content, title = title))
+    shiny::tags$head(tags$title(title)),
+    shiny::tags$body(style = "min-height: 611px;", content)
   )
 }
 
