@@ -1,69 +1,80 @@
-#' define_selection_type
-#'
-#' @param name - string with object name
-#' @param multiple - logical
+#' Define search type if multiple
 define_selection_type <- function(name, multiple) {
-  if (multiple == T) {
-    paste("ui fluid multiple search selection dropdown", name)
-  } else {
-    paste("ui fluid search selection dropdown", name)
-  }
+  multiple_class = switch(multiple, "multiple", NULL)
+  classes = c("ui", "fluid", "search", "selection", "dropdown", multiple_class, name)
+  paste(classes, collapse=" ")
 }
 
-#' semantic_search_api
+#' Add Semantic UI search selection dropdown based on REST API
 #'
-#' function defining the (multiple) search selection dropdown input using REST API
+#' Define the (multiple) search selection dropdown input component inserting search options using REST API.
 #'
-#' @param name string with input name
-#' @param search_api_url register api url
-#' @param multiple logical indicating whether dropdown search is multiple (default FALSE)
+#' @param name Input name. Reactive value is available under input[[name]].
+#' @param search_api_url Register api url.
+#' @param multiple TRUE if the dropdown should allow multiple selections, FALSE otherwise (default FALSE).
+#' @param default_text Text to be visible on dropdown when nothing is selected.
 #'
 #' @export
-semantic_search_api <- function(name, search_api_url, multiple = FALSE) {
-  input_class <- define_selection_type(name, multiple)
+semantic_search_api <- function(name, search_api_url, multiple = FALSE, default_text = 'Select') {
+  selection_type <- define_selection_type(name, multiple)
   tagList(
-    tags$div(class = input_class,
+    tags$div(class = selection_type,
              shiny_input(name,
                          tags$input(class = "prompt", type = "hidden", name = name),
                          type = "text"
              ),
              uiicon("search"),
-             tags$div(class = 'default text', "Select"),
+             tags$div(class = 'default text', deafult_text),
              tags$div(class = 'menu')
     ),
     HTML(paste0("<script>$('.ui.dropdown.", name, "').dropdown({
-                forceSelection: false,
-                apiSettings: {
-                url: '", search_api_url, "&q={query}'
-                }
-})</script>"
+                  forceSelection: false,
+                  apiSettings: {
+                    url: '", search_api_url, "&q={query}'
+                  }
+                })</script>"
     ))
   )
 }
 
-#' semantic_search_choices
+#' Add Semantic UI search selection dropdown based on provided choices
 #'
-#' function defining the (multiple) search selection dropdown input using provided choices
+#' Define the (multiple) search selection dropdown input component serving search options using provided choices.
 #'
-#' @param name string with input name
-#' @param choices vector or a list of choices to search through
-#' @param multiple logical indicating whether dropdown search is multiple (default FALSE)
+#' @param name Input name. Reactive value is available under input[[name]].
+#' @param choices Vector or a list of choices to search through.
+#' @param multiple TRUE if the dropdown should allow multiple selections, FALSE otherwise (default FALSE).
+#' @param default_text Text to be visible on dropdown when nothing is selected.
 #'
 #'@examples
-#'\dontrun{
-#'## server.R example of multiple dropdown search
-#'function(input, output, session) {
-#'choices <- LETTERS
-#'output$letters_results <- shiny::renderUI(semantic_search_choices("serach_result", choices, multiple = TRUE))
-#'}
+#' ## Only run examples in interactive R sessions
+#' if (interactive()) {
+#'   library(shiny)
+#'   library(shiny.semantic)
 #'
-#'## ui.R
-#'uiOutput("letters_results")
+#'   ui <- function() {
+#'     shinyUI(
+#'       semanticPage(
+#'         title = "Dropdown example",
+#'         suppressDependencies("bootstrap"),
+#'         uiOutput("search_letters"),
+#'         p("Selected letter:"),
+#'         textOutput("selected_letters")
+#'       )
+#'     )
+#'   }
 #'
-#'}
+#'   server <- shinyServer(function(input, output, session) {
+#'     choices <- LETTERS
+#'     output$search_letters <- shiny::renderUI(semantic_search_choices("search_result", choices, multiple = TRUE))
+#'     output$selected_letters <- renderText(input[["search_result"]])
+#'   })
+#'
+#'   shinyApp(ui = ui(), server = server)
+#' }
 #' @importFrom magrittr "%>%"
 #' @export
-semantic_search_choices <- function(name, choices, multiple = FALSE) {
+semantic_search_choices <- function(name, choices, multiple = FALSE, default_text = 'Select') {
   input_class <- define_selection_type(name, multiple)
   tagList(
     tags$div(class = input_class,
@@ -72,14 +83,14 @@ semantic_search_choices <- function(name, choices, multiple = FALSE) {
                          type = "text"
              ),
              uiicon("search"),
-             tags$div(class = 'default text', "Select"),
+             tags$div(class = 'default text', default_text),
              tags$div(class = 'menu',
                       choices %>% purrr::map(~div(class = "item", `data-value` = ., .) %>% shiny::tagList())
             )
     ),
     HTML(paste0("<script>$('.ui.dropdown.", name, "').dropdown({
-                forceSelection: false
-})</script>"
+                  forceSelection: false
+                })</script>"
     ))
   )
 }
@@ -95,10 +106,10 @@ semantic_search_choices <- function(name, choices, multiple = FALSE) {
 register_search <- function(session, search_query) {
   session$registerDataObj("search_api", NULL, function(data, request) {
     query <- parseQueryString(request$QUERY_STRING)
-    search_query <- query$q
+    extracted_query <- query$q
     response <- jsonlite::toJSON(list(
       success = TRUE,
-      results = search_query(search_query)
+      results = search_query(extracted_query)
     ))
     shiny:::httpResponse(200, 'application/json', enc2utf8(response))
   })

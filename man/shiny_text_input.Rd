@@ -20,3 +20,4 @@ Universal binding for Shiny text input on custom user interface. Value of this i
 function. This function is just a simple binding over shiny_input. Please take a look at shiny_input documentation for more
 information.
 }
+

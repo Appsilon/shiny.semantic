@@ -2,30 +2,45 @@
 % Please edit documentation in R/semantic_search.R
 \name{semantic_search_choices}
 \alias{semantic_search_choices}
-\title{semantic_search_choices}
+\title{Add Semantic UI search selection dropdown based on provided choices}
 \usage{
 semantic_search_choices(name, choices, multiple = FALSE)
 }
 \arguments{
-\item{name}{string with input name}
+\item{name}{Input name. Reactive value is available under input[[name]].}
 
-\item{choices}{vector or a list of choices to search through}
+\item{choices}{Vector or a list of choices to search through.}
 
-\item{multiple}{logical indicating whether dropdown search is multiple (default FALSE)}
+\item{multiple}{TRUE if the dropdown should allow multiple selections, FALSE otherwise (default FALSE).}
 }
 \description{
-function defining the (multiple) search selection dropdown input using provided choices
+Define the (multiple) search selection dropdown input component serving search options using provided choices.
 }
 \examples{
-\dontrun{
-## server.R example of multiple dropdown search
-function(input, output, session) {
-choices <- LETTERS
-output$letters_results <- shiny::renderUI(semantic_search_choices("serach_result", choices, multiple = TRUE))
+## Only run examples in interactive R sessions
+if (interactive()) {
+  library(shiny)
+  library(shiny.semantic)
+
+  ui <- function() {
+    shinyUI(
+      semanticPage(
+        title = "Dropdown example",
+        suppressDependencies("bootstrap"),
+        uiOutput("search_letters"),
+        p("Selected letter:"),
+        textOutput("selected_letters")
+      )
+    )
+  }
+
+  server <- shinyServer(function(input, output, session) {
+    choices <- LETTERS
+    output$search_letters <- shiny::renderUI(semantic_search_choices("search_result", choices, multiple = TRUE))
+    output$selected_letters <- renderText(input[["search_result"]])
+  })
+
+  shinyApp(ui = ui(), server = server)
+}
 }
 
-## ui.R
-uiOutput("letters_results")
-
-}
-}

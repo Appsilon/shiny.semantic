@@ -2,17 +2,18 @@
 % Please edit documentation in R/semantic_search.R
 \name{semantic_search_api}
 \alias{semantic_search_api}
-\title{semantic_search_api}
+\title{Add Semantic UI search selection dropdown based on REST API}
 \usage{
 semantic_search_api(name, search_api_url, multiple = FALSE)
 }
 \arguments{
-\item{name}{string with input name}
+\item{name}{Input name. Reactive value is available under input[[name]].}
 
-\item{search_api_url}{register api url}
+\item{search_api_url}{Register api url.}
 
-\item{multiple}{logical indicating whether dropdown search is multiple (default FALSE)}
+\item{multiple}{TRUE if the dropdown should allow multiple selections, FALSE otherwise (default FALSE).}
 }
 \description{
-function defining the (multiple) search selection dropdown input using REST API
+Define the (multiple) search selection dropdown input component inserting search options using REST API.
 }
+

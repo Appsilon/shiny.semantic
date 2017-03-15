@@ -14,3 +14,4 @@ register_search(session, search_query)
 \description{
 calls shiny session's registerDataObj to create REST API
 }
+

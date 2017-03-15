@@ -14,3 +14,4 @@ uiicon(type = "", ...)
 \description{
 This creates an icon tag using Semantic UI styles.
 }
+

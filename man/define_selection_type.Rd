@@ -2,15 +2,11 @@
 % Please edit documentation in R/semantic_search.R
 \name{define_selection_type}
 \alias{define_selection_type}
-\title{define_selection_type}
+\title{Define search type if multiple}
 \usage{
 define_selection_type(name, multiple)
 }
-\arguments{
-\item{name}{- string with object name}
-
-\item{multiple}{- logical}
-}
 \description{
-define_selection_type
+Define search type if multiple
 }
+
