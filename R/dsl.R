@@ -1,3 +1,5 @@
+#' Create Semantic UI icon tag
+#'
 #' This creates an icon tag using Semantic UI styles.
 #'
 #' @param type A name of an icon. Look at http://semantic-ui.com/elements/icon.html for all possibilities.
@@ -8,6 +10,8 @@ uiicon <- function(type = "", ...) {
   tags$i(class = paste(type, "icon"), ...)
 }
 
+#' Create dropdown Semantic UI component
+#'
 #' This creates a default dropdown using Semantic UI styles with Shiny input. Dropdown is already initialized
 #' and available under input[[name]].
 #'
@@ -15,7 +19,7 @@ uiicon <- function(type = "", ...) {
 #' @param choices All available options one can select from.
 #' @param choices_value What reactive value should be used for corresponding choice.
 #' @param default_text Text to be visible on dropdown when nothing is selected.
-#' @param value Pass value if you want to set selection for dropdown.
+#' @param value Pass value if you want to initialize selection for dropdown.
 #'
 #' @export
 dropdown <- function(name, choices, choices_value = choices, default_text = 'Select', value = NULL) {
@@ -27,7 +31,7 @@ dropdown <- function(name, choices, choices_value = choices, default_text = 'Sel
       uiicon("dropdown"),
       div(class = "default text", default_text),
       div(class = "menu",
-        map2(choices, choices_value, ~ div(class = "item", `data-value` = .y, .x))
+        purrr::map2(choices, choices_value, ~ div(class = "item", `data-value` = .y, .x))
       )
     ),
     tags$script(paste0("$('.ui.dropdown.", unique_dropdown_class, "').dropdown().dropdown('set selected', '", value,"');"))

@@ -2,8 +2,7 @@
 % Please edit documentation in R/dsl.R
 \name{dropdown}
 \alias{dropdown}
-\title{This creates a default dropdown using Semantic UI styles with Shiny input. Dropdown is already initialized
-and available under input[[name]].}
+\title{Create dropdown Semantic UI component}
 \usage{
 dropdown(name, choices, choices_value = choices, default_text = "Select",
   value = NULL)
@@ -17,7 +16,7 @@ dropdown(name, choices, choices_value = choices, default_text = "Select",
 
 \item{default_text}{Text to be visible on dropdown when nothing is selected.}
 
-\item{value}{Pass value if you want to set selection for dropdown.}
+\item{value}{Pass value if you want to initialize selection for dropdown.}
 }
 \description{
 This creates a default dropdown using Semantic UI styles with Shiny input. Dropdown is already initialized
