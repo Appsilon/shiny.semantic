@@ -22,4 +22,32 @@ dropdown(name, choices, choices_value = choices, default_text = "Select",
 This creates a default dropdown using Semantic UI styles with Shiny input. Dropdown is already initialized
 and available under input[[name]].
 }
+\examples{
+## Only run examples in interactive R sessions
+if (interactive()) {
+
+  library(shiny)
+  library(shiny.semantic)
+  ui <- function() {
+      shinyUI(
+        semanticPage(
+          title = "Dropdown example",
+          suppressDependencies("bootstrap"),
+          uiOutput("dropdown"),
+          p("Selected letter:"),
+          textOutput("selected_letter")
+       )
+     )
+  }
+  server <- shinyServer(function(input, output) {
+     output$dropdown <- renderUI({
+         dropdown("simple_dropdown", LETTERS, value = "A")
+     })
+     output$selected_letter <- renderText(input[["simple_dropdown"]])
+  })
+
+  shinyApp(ui = ui(), server = server)
+}
+
+}
 
