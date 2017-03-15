@@ -4,7 +4,8 @@
 \alias{semantic_search_api}
 \title{Add Semantic UI search selection dropdown based on REST API}
 \usage{
-semantic_search_api(name, search_api_url, multiple = FALSE)
+semantic_search_api(name, search_api_url, multiple = FALSE,
+  default_text = "Select")
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under input[[name]].}
@@ -12,6 +13,8 @@ semantic_search_api(name, search_api_url, multiple = FALSE)
 \item{search_api_url}{Register api url.}
 
 \item{multiple}{TRUE if the dropdown should allow multiple selections, FALSE otherwise (default FALSE).}
+
+\item{default_text}{Text to be visible on dropdown when nothing is selected.}
 }
 \description{
 Define the (multiple) search selection dropdown input component inserting search options using REST API.
