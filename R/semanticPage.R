@@ -1,3 +1,5 @@
+#' Add dashboard dependencies to html
+#'
 #' Internal function that adds dashboard dependencies to html.
 #'
 #' @param content Content to which dependencies need to be added.

@@ -1,3 +1,5 @@
+#' Render semanticui htmlwidget
+#'
 #' htmlwidget that adds semanticui dependencies and renders in viewer or rmarkdown.
 #'
 #' @import htmlwidgets

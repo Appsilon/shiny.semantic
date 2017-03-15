@@ -2,9 +2,7 @@
 % Please edit documentation in R/shiny.R
 \name{shiny_text_input}
 \alias{shiny_text_input}
-\title{Universal binding for Shiny text input on custom user interface. Value of this input is extracted via jQuery using $().val()
-function. This function is just a simple binding over shiny_input. Please take a look at shiny_input documentation for more
-information.}
+\title{Create universal Shiny text input binding}
 \usage{
 shiny_text_input(...)
 }
