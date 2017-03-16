@@ -2,9 +2,9 @@
 
 export(dropdown)
 export(register_search)
+export(search_selection_api)
+export(search_selection_choices)
 export(semanticPage)
-export(semantic_search_api)
-export(semantic_search_choices)
 export(shiny_input)
 export(shiny_text_input)
 export(uiicon)

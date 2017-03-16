@@ -51,14 +51,14 @@ define_selection_type <- function(name, multiple) {
 #'     }
 #'
 #'     search_api_url <- shiny.semantic::register_search(session, gapminder, search_api)
-#'     output$search_letters <- shiny::renderUI(semantic_search_api("search_result", search_api_url, multiple = TRUE))
+#'     output$search_letters <- shiny::renderUI(search_selection_api("search_result", search_api_url, multiple = TRUE))
 #'     output$selected_letters <- renderText(input[["search_result"]])
 #'   })
 #'
 #'   shinyApp(ui = ui(), server = server)
 #' }
 #' @export
-semantic_search_api <- function(name, search_api_url, multiple = FALSE, default_text = 'Select') {
+search_selection_api <- function(name, search_api_url, multiple = FALSE, default_text = 'Select') {
   selection_type <- define_selection_type(name, multiple)
   tagList(
     tags$div(class = selection_type,
@@ -110,7 +110,7 @@ semantic_search_api <- function(name, search_api_url, multiple = FALSE, default_
 #'
 #'   server <- shinyServer(function(input, output, session) {
 #'     choices <- LETTERS
-#'     output$search_letters <- shiny::renderUI(semantic_search_choices("search_result", choices, multiple = TRUE))
+#'     output$search_letters <- shiny::renderUI(search_selection_choices("search_result", choices, multiple = TRUE))
 #'     output$selected_letters <- renderText(input[["search_result"]])
 #'   })
 #'
@@ -118,7 +118,7 @@ semantic_search_api <- function(name, search_api_url, multiple = FALSE, default_
 #' }
 #' @importFrom magrittr "%>%"
 #' @export
-semantic_search_choices <- function(name, choices, multiple = FALSE, default_text = 'Select') {
+search_selection_choices <- function(name, choices, multiple = FALSE, default_text = 'Select') {
   input_class <- define_selection_type(name, multiple)
   tagList(
     tags$div(class = input_class,

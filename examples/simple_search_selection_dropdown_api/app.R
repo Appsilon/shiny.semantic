@@ -32,7 +32,7 @@ ui <- function() {
     }
 
     search_api_url <- shiny.semantic::register_search(session, gapminder, search_api)
-    output$search_letters <- shiny::renderUI(semantic_search_api("search_result", search_api_url, multiple = TRUE))
+    output$search_letters <- shiny::renderUI(search_selection_api("search_result", search_api_url, multiple = TRUE))
     output$selected_letters <- renderText(input[["search_result"]])
     })
 
