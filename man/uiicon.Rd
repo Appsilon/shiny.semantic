@@ -2,7 +2,7 @@
 % Please edit documentation in R/dsl.R
 \name{uiicon}
 \alias{uiicon}
-\title{This creates an icon tag using Semantic UI styles.}
+\title{Create Semantic UI icon tag}
 \usage{
 uiicon(type = "", ...)
 }
