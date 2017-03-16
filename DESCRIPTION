@@ -17,5 +17,6 @@ License: MIT + file LICENSE
 Imports:
     utils,
     shiny (>= 0.12.1),
-    htmltools (>= 0.2.6)
+    htmltools (>= 0.2.6),
+    purrr
 RoxygenNote: 5.0.1
