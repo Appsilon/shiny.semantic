@@ -14,7 +14,51 @@ semantic_search_api(name, search_api_url, multiple = FALSE,
 
 \item{multiple}{TRUE if the dropdown should allow multiple selections, FALSE otherwise (default FALSE).}
 
-\item{default_text}{Text to be visible on dropdown when nothing is selected.}
+\item{default_text}{Text to be visible on dropdown when nothing is selected.
+
+#'@examples
+## Only run examples in interactive R sessions
+if (interactive()) {
+   library(shiny)
+   library(shiny.semantic)
+   library(gapminder)
+   library(dplyr)
+
+   ui <- function() {
+    shinyUI(
+      semanticPage(
+        title = "Dropdown example",
+        suppressDependencies("bootstrap"),
+        uiOutput("search_letters"),
+        p("Selected letter:"),
+        textOutput("selected_letters")
+      )
+    )
+  }
+
+  server <- shinyServer(function(input, output, session) {
+
+   search_api <- function(gapminder, q){
+     has_matching <- function(field) {
+        startsWith(field, q)
+      }
+      gapminder %>%
+        mutate(country = as.character(country)) %>%
+        select(country) %>%
+        unique %>%
+        filter(has_matching(country)) %>%
+        head(5) %>%
+          transmute(name = country,
+                  value = country)
+    }
+
+    search_api_url <- shiny.semantic::register_search(session, gapminder, search_api)
+    output$search_letters <- shiny::renderUI(semantic_search_api("search_result", search_api_url, multiple = TRUE))
+    output$selected_letters <- renderText(input[["search_result"]])
+  })
+
+  shinyApp(ui = ui(), server = server)
+}}
 }
 \description{
 Define the (multiple) search selection dropdown input component inserting search options using REST API.

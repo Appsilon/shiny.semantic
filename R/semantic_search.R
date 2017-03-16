@@ -14,6 +14,49 @@ define_selection_type <- function(name, multiple) {
 #' @param multiple TRUE if the dropdown should allow multiple selections, FALSE otherwise (default FALSE).
 #' @param default_text Text to be visible on dropdown when nothing is selected.
 #'
+#'#'@examples
+#' ## Only run examples in interactive R sessions
+#' if (interactive()) {
+#'    library(shiny)
+#'    library(shiny.semantic)
+#'    library(gapminder)
+#'    library(dplyr)
+#'
+#'    ui <- function() {
+#'     shinyUI(
+#'       semanticPage(
+#'         title = "Dropdown example",
+#'         suppressDependencies("bootstrap"),
+#'         uiOutput("search_letters"),
+#'         p("Selected letter:"),
+#'         textOutput("selected_letters")
+#'       )
+#'     )
+#'   }
+#'
+#'   server <- shinyServer(function(input, output, session) {
+#'
+#'    search_api <- function(gapminder, q){
+#'      has_matching <- function(field) {
+#'         startsWith(field, q)
+#'       }
+#'       gapminder %>%
+#'         mutate(country = as.character(country)) %>%
+#'         select(country) %>%
+#'         unique %>%
+#'         filter(has_matching(country)) %>%
+#'         head(5) %>%
+#'           transmute(name = country,
+#'                   value = country)
+#'     }
+#'
+#'     search_api_url <- shiny.semantic::register_search(session, gapminder, search_api)
+#'     output$search_letters <- shiny::renderUI(semantic_search_api("search_result", search_api_url, multiple = TRUE))
+#'     output$selected_letters <- renderText(input[["search_result"]])
+#'   })
+#'
+#'   shinyApp(ui = ui(), server = server)
+#' }
 #' @export
 semantic_search_api <- function(name, search_api_url, multiple = FALSE, default_text = 'Select') {
   selection_type <- define_selection_type(name, multiple)
@@ -24,9 +67,10 @@ semantic_search_api <- function(name, search_api_url, multiple = FALSE, default_
                          type = "text"
              ),
              uiicon("search"),
-             tags$div(class = 'default text', deafult_text),
+             tags$div(class = 'default text', default_text),
              tags$div(class = 'menu')
     ),
+
     HTML(paste0("<script>$('.ui.dropdown.", name, "').dropdown({
                   forceSelection: false,
                   apiSettings: {
@@ -95,21 +139,28 @@ semantic_search_choices <- function(name, choices, multiple = FALSE, default_tex
   )
 }
 
-#' register_search
+#' Register search api url
 #'
-#' calls shiny session's registerDataObj to create REST API
+#' Calls Shiny session's registerDataObj to create REST API.
+#' Publishes any R object as a URL endpoint that is unique to Shiny session.
+#' search_query must be a function that takes two arguments:
+#' data (the value that was passed into registerDataObj) and req
+#' (an environment that implements the Rook specification for HTTP requests).
+#' search_query will be called with these values whenever an HTTP request is made to the URL endpoint.
+#' The return value of search_query should be a list of list response (see Arguments for detials).
 #'
-#' @param session shiny server session
-#' @param search_query function providing a search query
+#' @param session Shiny server session
+#' @param data Data (the value that is passed into registerDataObj)
+#' @param search_query Function providing a response as a list of lists with character elements name and value of search results.
 #'
 #' @export
-register_search <- function(session, search_query) {
-  session$registerDataObj("search_api", NULL, function(data, request) {
+register_search <- function(session, data, search_query) {
+  session$registerDataObj("search_api", data, function(data, request) {
     query <- parseQueryString(request$QUERY_STRING)
     extracted_query <- query$q
     response <- jsonlite::toJSON(list(
       success = TRUE,
-      results = search_query(extracted_query)
+      results = search_query(data, extracted_query)
     ))
     shiny:::httpResponse(200, 'application/json', enc2utf8(response))
   })

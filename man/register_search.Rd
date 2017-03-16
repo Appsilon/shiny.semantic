@@ -2,16 +2,24 @@
 % Please edit documentation in R/semantic_search.R
 \name{register_search}
 \alias{register_search}
-\title{register_search}
+\title{Register search api url}
 \usage{
-register_search(session, search_query)
+register_search(session, data, search_query)
 }
 \arguments{
-\item{session}{shiny server session}
+\item{session}{Shiny server session}
 
-\item{search_query}{function providing a search query}
+\item{data}{Data (the value that is passed into registerDataObj)}
+
+\item{search_query}{Function providing a response as a list of lists with character elements name and value of search results.}
 }
 \description{
-calls shiny session's registerDataObj to create REST API
+Calls Shiny session's registerDataObj to create REST API.
+Publishes any R object as a URL endpoint that is unique to Shiny session.
+search_query must be a function that takes two arguments:
+data (the value that was passed into registerDataObj) and req
+(an environment that implements the Rook specification for HTTP requests).
+search_query will be called with these values whenever an HTTP request is made to the URL endpoint.
+The return value of search_query should be a list of list response (see Arguments for detials).
 }
 
