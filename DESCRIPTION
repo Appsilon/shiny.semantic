@@ -1,7 +1,7 @@
 Package: shiny.semantic
 Type: Package
 Title: Semantic ui support for shiny
-Version: 0.1.0
+Version: 0.1.1
 Author: Filip Stachura <filip@appsilondatascience.com>
 Maintainer: Marek Rogala <marek@appsilondatascience.com>
 Description: Creating great user interface for your Shiny apps
@@ -17,5 +17,6 @@ License: MIT + file LICENSE
 Imports:
     utils,
     shiny (>= 0.12.1),
-    htmltools (>= 0.2.6)
+    htmltools (>= 0.2.6),
+    purrr
 RoxygenNote: 5.0.1
