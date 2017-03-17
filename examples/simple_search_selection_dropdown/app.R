@@ -16,7 +16,7 @@ ui <- function() {
   server <- shinyServer(function(input, output, session) {
     choices <- LETTERS
     search_api_url <- register_search(session, iris)
-    output$search_letters <- shiny::renderUI(search_selection_choices("search_result", choices, multiple = TRUE))
+    output$search_letters <- shiny::renderUI(search_selection_choices("search_result", choices, value = "A", multiple = TRUE))
     output$selected_letters <- renderText(input[["search_result"]])
     })
 

@@ -87,6 +87,7 @@ search_selection_api <- function(name, search_api_url, multiple = FALSE, default
 #'
 #' @param name Input name. Reactive value is available under input[[name]].
 #' @param choices Vector or a list of choices to search through.
+#' @param value String with default values to set when initialize the component. Values should be delimited wirh a comma when multiple to set. Default NULL.
 #' @param multiple TRUE if the dropdown should allow multiple selections, FALSE otherwise (default FALSE).
 #' @param default_text Text to be visible on dropdown when nothing is selected.
 #'
@@ -118,12 +119,13 @@ search_selection_api <- function(name, search_api_url, multiple = FALSE, default
 #' }
 #' @importFrom magrittr "%>%"
 #' @export
-search_selection_choices <- function(name, choices, multiple = FALSE, default_text = 'Select') {
+search_selection_choices <- function(name, choices, value = NULL, multiple = FALSE, default_text = 'Select') {
   input_class <- define_selection_type(name, multiple)
   tagList(
     tags$div(class = input_class,
              shiny_input(name,
                          tags$input(class = "prompt", type = "hidden", name = name),
+                         value = value,
                          type = "text"
              ),
              uiicon("search"),
@@ -134,7 +136,7 @@ search_selection_choices <- function(name, choices, multiple = FALSE, default_te
     ),
     HTML(paste0("<script>$('.ui.dropdown.", name, "').dropdown({
                   forceSelection: false
-                })</script>"
+                }).dropdown('set selected', '", value,"'.split(','));</script>"
     ))
   )
 }
