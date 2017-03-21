@@ -13,11 +13,15 @@ With this library it's easy to wrap Shiny with [Semantic UI components](https://
 <h2>
 Before
 </h2>
+<br>
+
 ![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
 <h2>
 After
 </h2>
+<br>
+
 ![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
 <!-- #Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link). -->

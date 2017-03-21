@@ -37,6 +37,7 @@ With this library it's easy to wrap Shiny with [Semantic UI components][semantic
 <div class="ui stackable two column grid">
 <div class="column">
 <h2> Before </h2>
+<br>
 
 ```{r, echo=FALSE, message=FALSE, fig.height=1}
 create_example(before_ui_demo(), width="350px", height="100px")$htmlwidget
@@ -45,6 +46,7 @@ create_example(before_ui_demo(), width="350px", height="100px")$htmlwidget
   
 <div class="column">
 <h2> After </h2>
+<br>
 
 ```{r, echo=FALSE, message=FALSE, fig.height=1}
 create_example(after_ui_demo(), width="100%", height="100%")$htmlwidget
