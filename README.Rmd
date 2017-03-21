@@ -8,6 +8,7 @@ params:
    repo_url: https://github.com/Appsilon/shiny.semantic
    demo_url: http://demo.appsilondatascience.com/shiny.semantic/components
    chagelog_url: https://github.com/Appsilon/shiny.semantic/blob/master/CHANGELOG.md
+   escape_ribbon: FALSE 
 ---
 
 ```{r, echo=FALSE, message=FALSE}
@@ -36,6 +37,8 @@ With this library it's easy to wrap Shiny with [Semantic UI components][semantic
 <div class="ui stackable two column grid">
 <div class="column">
 <h2> Before </h2>
+<br>
+
 ```{r, echo=FALSE, message=FALSE, fig.height=1}
 create_example(before_ui_demo(), width="350px", height="100px")$htmlwidget
 ```
@@ -43,6 +46,8 @@ create_example(before_ui_demo(), width="350px", height="100px")$htmlwidget
   
 <div class="column">
 <h2> After </h2>
+<br>
+
 ```{r, echo=FALSE, message=FALSE, fig.height=1}
 create_example(after_ui_demo(), width="100%", height="100%")$htmlwidget
 ```
@@ -295,15 +300,16 @@ Future enhacements {.firebrick}
 Appsilon Data Science {.footer}
 =====================
 
-<script>
-document.write('<div class="subheader"> We Provide End-to-End Data Science Solutions </div>  <div class="logo"><a href="`r params$website_url`"><img alt="Appsilon Data Science" src="`r params$logo_url`" /></a></div>');
-</script>
+<div class="subheader"> We Provide End-to-End Data Science Solutions </div>  
+<div class="logo"><a href="`r params$website_url`"><img alt="Appsilon Data Science" src="`r params$logo_url`" /></a></div>
 
 Get in touch [dev@appsilondatascience.com](dev@appsilondatascience.com)
 
-<script>
-document.write('<a href="`r params$repo_url`"><img style="position: absolute; margin: 0; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>')
-</script>
+```{python, conditional_block_py, echo=FALSE, results='asis', eval=!params$escape_ribbon}
+print("""
+<script>document.write('<a href="https://github.com/Appsilon/shiny.semantic"><img style="position: absolute; margin: 0; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"   data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>')</script>
+""")
+```
 
 [semantic_website_url]: http://semantic-ui.com/introduction/getting-started.html
 [semantic_repo_url]: https://github.com/Semantic-Org/Semantic-UI
