@@ -3,7 +3,7 @@
 #'
 #' This creates a default search field using Semantic UI styles with Shiny input. Search field is already initialized
 #' and available under input[[name]]. Search will automatically route to the named API endpoint provided as parameter.
-#' Search is performed across JavaScript searchFields `title` and `description`.
+#' API response is expected to be a JSON with property fields `title` and `description`.
 #' See https://semantic-ui.com/modules/search.html#behaviors for more details.
 #'
 #' @param name Input name. Reactive value is available under input[[name]].
