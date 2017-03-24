@@ -7,10 +7,12 @@ define_selection_type <- function(name, multiple) {
 
 #' Add Semantic UI search selection dropdown based on REST API
 #'
-#' Define the (multiple) search selection dropdown input component inserting search options using REST API.
+#' Define the (multiple) search selection dropdown input for retrieving remote selection menu content from an API endpoint.
+#' API response is expected to be a JSON with property fields `name` and `value`.
+#' Using a search selection dropdown allows to search more easily through large lists.
 #'
 #' @param name Input name. Reactive value is available under input[[name]].
-#' @param search_api_url Register api url.
+#' @param search_api_url Register API url with server JSON Response containing fields `name` and `value`.
 #' @param multiple TRUE if the dropdown should allow multiple selections, FALSE otherwise (default FALSE).
 #' @param default_text Text to be visible on dropdown when nothing is selected.
 #'
@@ -26,7 +28,6 @@ define_selection_type <- function(name, multiple) {
 #'     shinyUI(
 #'       semanticPage(
 #'         title = "Dropdown example",
-#'         suppressDependencies("bootstrap"),
 #'         uiOutput("search_letters"),
 #'         p("Selected letter:"),
 #'         textOutput("selected_letters")
@@ -101,7 +102,6 @@ search_selection_api <- function(name, search_api_url, multiple = FALSE, default
 #'     shinyUI(
 #'       semanticPage(
 #'         title = "Dropdown example",
-#'         suppressDependencies("bootstrap"),
 #'         uiOutput("search_letters"),
 #'         p("Selected letter:"),
 #'         textOutput("selected_letters")
@@ -149,11 +149,13 @@ search_selection_choices <- function(name, choices, value = NULL, multiple = FAL
 #' data (the value that was passed into registerDataObj) and req
 #' (an environment that implements the Rook specification for HTTP requests).
 #' search_query will be called with these values whenever an HTTP request is made to the URL endpoint.
-#' The return value of search_query should be a list of list response (see Arguments for detials).
+#' The return value of search_query should be a list of list or a dataframe. Note that different semantic components expect
+#' specific JSON fields to be present in order to work correctly. Check components documentation for details.
 #'
 #' @param session Shiny server session
 #' @param data Data (the value that is passed into registerDataObj)
-#' @param search_query Function providing a response as a list of lists with character elements name and value of search results.
+#' @param search_query Function providing a response as a list of
+#' lists or dataframe of search results.
 #'
 #' @export
 register_search <- function(session, data, search_query) {
