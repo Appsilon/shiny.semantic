@@ -31,7 +31,6 @@ if (interactive()) {
     shinyUI(
       semanticPage(
         title = "Dropdown example",
-        suppressDependencies("bootstrap"),
         uiOutput("search_letters"),
         p("Selected letter:"),
         textOutput("selected_letters")

@@ -10,7 +10,7 @@ search_selection_api(name, search_api_url, multiple = FALSE,
 \arguments{
 \item{name}{Input name. Reactive value is available under input[[name]].}
 
-\item{search_api_url}{Register api url.}
+\item{search_api_url}{Register API url with server JSON Response containing fields `name` and `value`.}
 
 \item{multiple}{TRUE if the dropdown should allow multiple selections, FALSE otherwise (default FALSE).}
 
@@ -28,7 +28,6 @@ if (interactive()) {
     shinyUI(
       semanticPage(
         title = "Dropdown example",
-        suppressDependencies("bootstrap"),
         uiOutput("search_letters"),
         p("Selected letter:"),
         textOutput("selected_letters")
@@ -61,6 +60,8 @@ if (interactive()) {
 }}
 }
 \description{
-Define the (multiple) search selection dropdown input component inserting search options using REST API.
+Define the (multiple) search selection dropdown input for retrieving remote selection menu content from an API endpoint.
+API response is expected to be a JSON with property fields `name` and `value`.
+Using a search selection dropdown allows to search more easily through large lists.
 }
 

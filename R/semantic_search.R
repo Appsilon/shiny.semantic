@@ -131,7 +131,12 @@ search_selection_choices <- function(name, choices, value = NULL, multiple = FAL
              uiicon("search"),
              tags$div(class = 'default text', default_text),
              tags$div(class = 'menu',
-                      choices %>% purrr::map(~div(class = "item", `data-value` = ., .) %>% shiny::tagList())
+                      if(is.null(choices)){
+                        NULL
+                      } else{
+                        choices %>% purrr::map(~div(class = "item", `data-value` = ., .) %>% shiny::tagList())
+                      }
+
             )
     ),
     HTML(paste0("<script>$('.ui.dropdown.", name, "').dropdown({
