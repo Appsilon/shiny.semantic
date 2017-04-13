@@ -75,7 +75,7 @@ Basic example will look like this:
 
     shinyApp(ui = ui(), server = server)
 
-and will render a simple button. ![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
+and will render a simple button. ![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
 For better understanding it's good to check [Semantic UI documentation.](http://semantic-ui.com/introduction/getting-started.html)
 
@@ -159,7 +159,7 @@ Component examples
 
 -   **Raised segment with list**
 
-![](README_files/figure-markdown_github/unnamed-chunk-5-1.png) <!--html_preserve-->
+![](README_files/figure-markdown_github/unnamed-chunk-6-1.png) <!--html_preserve-->
 <pre>
 <code class="r">div(class = "ui raised segment", div(class = "ui relaxed divided list", c("Apples", 
     "Pears", "Oranges") %&gt;% purrr::map(~div(class = "item", uiicon("large github middle aligned"), 
@@ -170,7 +170,7 @@ Component examples
 <!--/html_preserve-->
 -   **Interactive card**
 
-![](README_files/figure-markdown_github/unnamed-chunk-7-1.png) <!--html_preserve-->
+![](README_files/figure-markdown_github/unnamed-chunk-8-1.png) <!--html_preserve-->
 <pre>
 <code class="r">div(class = "ui card", div(class = "content", div(class = "right floated meta", "14h"), 
     img(class = "ui avatar image", src = "http://semantic-ui.com/images/avatar/large/elliot.jpg"), 
