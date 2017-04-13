@@ -8,7 +8,7 @@ params:
    repo_url: https://github.com/Appsilon/shiny.semantic
    demo_url: http://demo.appsilondatascience.com/shiny.semantic/components
    chagelog_url: https://github.com/Appsilon/shiny.semantic/blob/master/CHANGELOG.md
-   escape_ribbon: FALSE 
+   escape_script: FALSE 
 ---
 
 ```{r, echo=FALSE, message=FALSE}
@@ -70,9 +70,13 @@ This library source code can be found on [Appsilon Data Science's](`r params$web
 <br>
 [`r params$repo_url`](`r params$repo_url`)
 
+```{python, conditional_block_py, echo=FALSE, results='asis', eval=!params$escape_script}
+print("""
 <script>
-document.write('<div class="logo"><a href="`r params$website_url`"><img alt="Appsilon Data Science" src="`r params$logo_url`"/></a></div>')
+document.write('<div class="logo"><a href="http://appsilondatascience.com"><img alt="Appsilon Data Science" src="https://cdn.rawgit.com/Appsilon/website-cdn/gh-pages/logo-white.png"/></a></div>')
 </script>
+""")
+```
 
 How to install?
 ---------------
@@ -305,7 +309,7 @@ Appsilon Data Science {.footer}
 
 Get in touch [dev@appsilondatascience.com](dev@appsilondatascience.com)
 
-```{python, conditional_block_py, echo=FALSE, results='asis', eval=!params$escape_ribbon}
+```{python, echo=FALSE, results='asis', eval=!params$escape_script}
 print("""
 <script>document.write('<a href="https://github.com/Appsilon/shiny.semantic"><img style="position: absolute; margin: 0; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"   data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>')</script>
 """)
