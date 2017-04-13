@@ -70,7 +70,7 @@ This library source code can be found on [Appsilon Data Science's](`r params$web
 <br>
 [`r params$repo_url`](`r params$repo_url`)
 
-```{python, conditional_block_py, echo=FALSE, results='asis', eval=!params$escape_script}
+```{python, echo=FALSE, results='asis', eval=!params$escape_script}
 print("""
 <script>
 document.write('<div class="logo"><a href="http://appsilondatascience.com"><img alt="Appsilon Data Science" src="https://cdn.rawgit.com/Appsilon/website-cdn/gh-pages/logo-white.png"/></a></div>')
