@@ -5,11 +5,11 @@ Version: 0.1.0
 Author: Filip Stachura <filip@appsilondatascience.com>
 Maintainer: Marek Rogala <marek@appsilondatascience.com>
 Description: Creating great user interface for your Shiny apps
-    can be a hassle, especialy if you don't want to leave R for
-    HTML templates. This package add support for powerful UI
-    library Semantic UI - http://semantic-ui.com/. You can
-    also find support for universal UI input binding that works
-    with various DOM elements.
+    can be a hassle, especialy if you want to work purely in R 
+    and don't want to use, for instance HTML templates. This 
+    package add support for powerful UI library Semantic UI - 
+    http://semantic-ui.com/. You can also find support for 
+    universal UI input binding that works with various DOM elements.
 BugReports: https://github.com/Appsilon/shiny.semantic/issues
 Encoding: UTF-8
 LazyData: TRUE
