@@ -2,7 +2,7 @@
 % Please edit documentation in R/uirender.R
 \name{uirender}
 \alias{uirender}
-\title{htmlwidget that adds semanticui dependencies and renders in viewer or rmarkdown.}
+\title{Render semanticui htmlwidget}
 \usage{
 uirender(ui, width = NULL, height = NULL, elementId = NULL)
 }
