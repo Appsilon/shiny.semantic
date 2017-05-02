@@ -78,7 +78,6 @@ dropdown <- function(name, choices, choices_value = choices, default_text = 'Sel
 tabset <- function(tabs, id = generate_random_id("menu"), menu_class = "top attached tabular", tab_content_class = "bottom attached segment") {
   identifiers <- replicate(length(tabs), list(id = generate_random_id("tab")), simplify = FALSE)
   tabsWithId <- purrr::map2(identifiers, tabs, ~ c(.x, .y))
-  print(tabsWithId)
 
   tagList(
     div(id = id,
