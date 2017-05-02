@@ -21,4 +21,3 @@ ranging from text, numerical, date, dropdowns, etc. Value of this input is extra
 function and default exposed as serialized JSON to the Shiny server. If you want to change type of exposed input
 value specify it via type param. Currently list of supported types is "JSON" (default) and "text".
 }
-

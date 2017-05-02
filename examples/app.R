@@ -185,6 +185,18 @@ rating <- function() {
     demo(div(class = "ui star rating"))
   )
 }
+tabs <- function () {
+  div(
+    h1(class="ui header", id="tabset", "Tabset"),
+    demo(
+      tabset(list(
+        list(div("First link"), div("First content")),
+        list(div("Second link"), div("Second content")),
+        list(div("Third link"), div("Third content"))
+      ))
+    )
+  )
+}
 uilist <- function() {
   div(
     h1(class="ui dividing header", id="list", "List"),
@@ -231,7 +243,8 @@ sidebar <- function() {
           div(class="active header", "Modules"),
           div(class="menu",
               a(class="item", href="#accordion", "Accordion"),
-              a(class="item", href="#rating", "Rating")
+              a(class="item", href="#rating", "Rating"),
+              a(class="item", href="#tabset", "Tabset")
               )))
 }
 css <- "
@@ -255,7 +268,8 @@ ui <- function() {
         breadcrumb(),
         card(),
         accordion(),
-        rating()
+        rating(),
+        tabs()
       )
     )
   ))

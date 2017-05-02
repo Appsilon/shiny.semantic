@@ -64,3 +64,41 @@ dropdown <- function(name, choices, choices_value = choices, default_text = 'Sel
     tags$script(paste0("$('.ui.dropdown.", unique_dropdown_class, "').dropdown().dropdown('set selected', '", value,"');"))
   )
 }
+
+#' Create Semantic UI tabs
+#'
+#' This creates tabs with content using Semantic UI styles.
+#'
+#' @param tabs A list of tabs. Each tab is a list of two elements - first element defines menu item, second element defines tab content.
+#' @param id Id of the menu element (default: randomly generated id)
+#' @param menu_class Class for the menu element (default: "top attached tabular")
+#' @param tab_content_class Class for the tab content (default: "bottom attached segment")
+#'
+#' @export
+tabset <- function(tabs, id = generate_random_id(), menu_class = "top attached tabular", tab_content_class = "bottom attached segment") {
+  identifiers <- replicate(length(tabs), generate_random_id())
+  tabsWithId <- purrr::map2(identifiers, tabs, ~ c(.x, .y))
+
+  tagList(
+    div(id = id,
+      class = paste("ui menu", menu_class),
+      tabsWithId %>% purrr::map(~
+        div(class = paste("item", if (.[[1]] == tabsWithId[[1]][[1]]) "active" else ""),
+          `data-tab`=.[[1]],
+          .[[2]]
+        )
+      )
+    ),
+    tabsWithId %>% purrr::map(~
+      div(class = paste("ui tab", tab_content_class, if (.[[1]] == tabsWithId[[1]][[1]]) "active" else ""),
+        `data-tab`=.[[1]],
+        .[[3]]
+      )
+    ),
+    tags$script(paste("$('#", id, ".menu .item').tab();", sep = ""))
+  )
+}
+
+generate_random_id <- function(id_length = 20) {
+  paste(sample(letters, id_length, replace = TRUE), collapse = "")
+}
