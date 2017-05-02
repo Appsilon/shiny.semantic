@@ -75,30 +75,32 @@ dropdown <- function(name, choices, choices_value = choices, default_text = 'Sel
 #' @param tab_content_class Class for the tab content (default: "bottom attached segment")
 #'
 #' @export
-tabset <- function(tabs, id = generate_random_id(), menu_class = "top attached tabular", tab_content_class = "bottom attached segment") {
-  identifiers <- replicate(length(tabs), generate_random_id())
+tabset <- function(tabs, id = generate_random_id("menu"), menu_class = "top attached tabular", tab_content_class = "bottom attached segment") {
+  identifiers <- replicate(length(tabs), list(id = generate_random_id("tab")), simplify = FALSE)
   tabsWithId <- purrr::map2(identifiers, tabs, ~ c(.x, .y))
+  print(tabsWithId)
 
   tagList(
     div(id = id,
       class = paste("ui menu", menu_class),
       tabsWithId %>% purrr::map(~
-        div(class = paste("item", if (.[[1]] == tabsWithId[[1]][[1]]) "active" else ""),
-          `data-tab`=.[[1]],
-          .[[2]]
+        div(class = paste("item", if (.$id == tabsWithId[[1]]$id) "active" else ""),
+          `data-tab`=.$id,
+          .$menu
         )
       )
     ),
     tabsWithId %>% purrr::map(~
-      div(class = paste("ui tab", tab_content_class, if (.[[1]] == tabsWithId[[1]][[1]]) "active" else ""),
-        `data-tab`=.[[1]],
-        .[[3]]
+      div(class = paste("ui tab", tab_content_class, if (.$id == tabsWithId[[1]]$id) "active" else ""),
+        `data-tab`=.$id,
+        .$content
       )
     ),
-    tags$script(paste("$('#", id, ".menu .item').tab();", sep = ""))
+    tags$script(paste0("$('#", id, ".menu .item').tab();"))
   )
 }
 
-generate_random_id <- function(id_length = 20) {
-  paste(sample(letters, id_length, replace = TRUE), collapse = "")
+generate_random_id <- function(prefix, id_length = 20) {
+  random_id <- paste(sample(letters, id_length, replace = TRUE), collapse = "")
+  paste0(prefix, "-", random_id)
 }

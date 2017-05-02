@@ -190,9 +190,9 @@ tabs <- function () {
     h1(class="ui header", id="tabset", "Tabset"),
     demo(
       tabset(list(
-        list(div("First link"), div("First content")),
-        list(div("Second link"), div("Second content")),
-        list(div("Third link"), div("Third content"))
+        list(menu = div("First link"), content = div("First content")),
+        list(menu = div("Second link"), content = div("Second content")),
+        list(menu = div("Third link"), content = div("Third content"))
       ))
     )
   )
