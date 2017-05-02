@@ -84,7 +84,7 @@ tabset <- function(tabs, id = generate_random_id("menu"), menu_class = "top atta
     div(id = id,
       class = paste("ui menu", menu_class),
       tabsWithId %>% purrr::map(~
-        div(class = paste("item", if (.$id == tabsWithId[[1]]$id) "active" else ""),
+        a(class = paste("item", if (.$id == tabsWithId[[1]]$id) "active" else ""),
           `data-tab`=.$id,
           .$menu
         )
