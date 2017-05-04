@@ -7,7 +7,7 @@
 #'
 #' @export
 uiicon <- function(type = "", ...) {
-  tags$i(class = paste(type, "icon"), ...)
+  shiny::tags$i(class = paste(type, "icon"), ...)
 }
 
 #' Create dropdown Semantic UI component

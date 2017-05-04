@@ -6,9 +6,6 @@
 \usage{
 getDeps()
 }
-\arguments{
-\item{content}{Content to which dependencies need to be added.}
-}
 \value{
 Content with appended dependencies.
 }
