@@ -52,16 +52,16 @@ uiicon <- function(type = "", ...) {
 dropdown <- function(name, choices, choices_value = choices, default_text = 'Select', value = NULL) {
   unique_dropdown_class <- paste0('dropdown_name_', name)
 
-  tagList(
-    div(class = paste("ui selection fluid dropdown", unique_dropdown_class),
+  shiny::tagList(
+    shiny::div(class = paste("ui selection fluid dropdown", unique_dropdown_class),
       shiny_text_input(name, shiny::tags$input(type = "hidden", name = name), value = value),
       uiicon("dropdown"),
-      div(class = "default text", default_text),
-      div(class = "menu",
+      shiny::div(class = "default text", default_text),
+      shiny::div(class = "menu",
         purrr::map2(choices, choices_value, ~ div(class = "item", `data-value` = .y, .x))
       )
     ),
-    tags$script(paste0("$('.ui.dropdown.", unique_dropdown_class, "').dropdown().dropdown('set selected', '", value,"');"))
+    shiny::tags$script(paste0("$('.ui.dropdown.", unique_dropdown_class, "').dropdown().dropdown('set selected', '", value,"');"))
   )
 }
 
@@ -79,23 +79,23 @@ tabset <- function(tabs, id = generate_random_id("menu"), menu_class = "top atta
   identifiers <- replicate(length(tabs), list(id = generate_random_id("tab")), simplify = FALSE)
   tabsWithId <- purrr::map2(identifiers, tabs, ~ c(.x, .y))
 
-  tagList(
-    div(id = id,
+  shiny::tagList(
+    shiny::div(id = id,
       class = paste("ui menu", menu_class),
-      tabsWithId %>% purrr::map(~
-        a(class = paste("item", if (.$id == tabsWithId[[1]]$id) "active" else ""),
+       purrr::map(tabsWithId, ~
+        shiny::a(class = paste("item", if (.$id == tabsWithId[[1]]$id) "active" else ""),
           `data-tab`=.$id,
           .$menu
         )
       )
     ),
-    tabsWithId %>% purrr::map(~
-      div(class = paste("ui tab", tab_content_class, if (.$id == tabsWithId[[1]]$id) "active" else ""),
+     purrr::map(tabsWithId, ~
+      shiny::div(class = paste("ui tab", tab_content_class, if (.$id == tabsWithId[[1]]$id) "active" else ""),
         `data-tab`=.$id,
         .$content
       )
     ),
-    tags$script(paste0("$('#", id, ".menu .item').tab();"))
+    shiny::tags$script(paste0("$('#", id, ".menu .item').tab();"))
   )
 }
 
