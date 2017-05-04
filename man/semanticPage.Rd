@@ -4,7 +4,7 @@
 \alias{semanticPage}
 \title{Semantic UI page}
 \usage{
-semanticPage(title = "", ...)
+semanticPage(..., title = "")
 }
 \arguments{
 \item{title}{A title to display in the browser's title bar.}
@@ -14,4 +14,3 @@ semanticPage(title = "", ...)
 \description{
 This creates a Semantic page for use in a Shiny app.
 }
-

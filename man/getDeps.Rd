@@ -2,7 +2,7 @@
 % Please edit documentation in R/semanticPage.R
 \name{getDeps}
 \alias{getDeps}
-\title{Internal function that adds dashboard dependencies to html.}
+\title{Add dashboard dependencies to html}
 \usage{
 getDeps()
 }
@@ -12,4 +12,3 @@ Content with appended dependencies.
 \description{
 Internal function that adds dashboard dependencies to html.
 }
-

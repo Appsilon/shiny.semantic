@@ -4,6 +4,8 @@
   shiny::addResourcePath('shiny.semantic', system.file('www', package = 'shiny.semantic', mustWork = TRUE))
 }
 
+#' Create universal Shiny input binding
+#'
 #' Universal binding for Shiny input on custom user interface. Using this function one can create various inputs
 #' ranging from text, numerical, date, dropdowns, etc. Value of this input is extracted via jQuery using $().val()
 #' function and default exposed as serialized JSON to the Shiny server. If you want to change type of exposed input
@@ -39,6 +41,8 @@ shiny_input <- function(input_id, shiny_ui, value = NULL, type = "JSON") {
   )
 }
 
+#' Create universal Shiny text input binding
+#'
 #' Universal binding for Shiny text input on custom user interface. Value of this input is extracted via jQuery using $().val()
 #' function. This function is just a simple binding over shiny_input. Please take a look at shiny_input documentation for more
 #' information.
