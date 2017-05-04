@@ -34,7 +34,7 @@ semanticPage <- function(..., title = "") {
 
   shiny::tagList(
     getDeps(),
-    shiny::tags$head(tags$title(title)),
+    shiny::tags$head(shiny::tags$title(title)),
     shiny::tags$body(style = "min-height: 611px;", content)
   )
 }
