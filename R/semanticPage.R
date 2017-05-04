@@ -1,6 +1,6 @@
-#' Internal function that adds dashboard dependencies to html.
+#' Add dashboard dependencies to html
 #'
-#' @param content Content to which dependencies need to be added.
+#' Internal function that adds dashboard dependencies to html.
 #'
 #' @return Content with appended dependencies.
 getDeps <- function() {
@@ -26,14 +26,16 @@ getDeps <- function() {
 #' This creates a Semantic page for use in a Shiny app.
 #'
 #' @param title A title to display in the browser's title bar.
+#' @param ... Other arguments to be added as attributes of the main div tag wrapper (e.g. style, class etc.)
 #'
 #' @export
-semanticPage <- function(title = "", ...) {
+semanticPage <- function(..., title = "") {
   content <- shiny::tags$div(class = "wrapper", ...)
 
   shiny::tagList(
     getDeps(),
-    shiny::tags$body(style = "min-height: 611px;", shiny::bootstrapPage(content, title = title))
+    shiny::tags$head(shiny::tags$title(title)),
+    shiny::tags$body(style = "min-height: 611px;", content)
   )
 }
 
