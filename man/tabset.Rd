@@ -4,7 +4,8 @@
 \alias{tabset}
 \title{Create Semantic UI tabs}
 \usage{
-tabset(tabs, id = generate_random_id(), menu_class = "top attached tabular",
+tabset(tabs, id = generate_random_id("menu"),
+  menu_class = "top attached tabular",
   tab_content_class = "bottom attached segment")
 }
 \arguments{

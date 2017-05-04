@@ -7,9 +7,9 @@
 semanticPage(..., title = "")
 }
 \arguments{
-\item{title}{A title to display in the browser's title bar.}
-
 \item{...}{Other arguments to be added as attributes of the main div tag wrapper (e.g. style, class etc.)}
+
+\item{title}{A title to display in the browser's title bar.}
 }
 \description{
 This creates a Semantic page for use in a Shiny app.
