@@ -2,8 +2,8 @@ Package: shiny.semantic
 Type: Package
 Title: Semantic ui support for shiny
 Version: 0.1.1
-Author: Filip Stachura <filip@appsilondatascience.com>
-Maintainer: Filip Stachura <filip@appsilondatascience.com>
+Authors@R: person("Filip", "Stachura", email = "filip@appsilondatascience.com",
+  role = c("aut", "cre"))
 Description: Creating great user interface for your Shiny apps
     can be a hassle, especialy if you want to work purely in R
     and don't want to use, for instance HTML templates. This
