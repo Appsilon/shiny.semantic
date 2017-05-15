@@ -16,8 +16,9 @@ zip_file=$(find *tar.gz)
 echo "==> Checking package."
 R CMD check --as-cran $zip_file
 mv $zip_file build/
+rm shiny.semantic.Rcheck/
 
 echo "==> Reset."
-#git reset --hard
-#git checkout master
-#git branch -d temp_cran_release
+git reset --hard
+git checkout master
+git branch -d temp_cran_release
