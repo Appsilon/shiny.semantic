@@ -14,8 +14,9 @@ R CMD build ../shiny.semantic
 zip_file=$(find *tar.gz)
 
 echo "==> Checking package."
+R CMD Rd2pdf $zip_file
 R CMD check --as-cran $zip_file
 
 echo "==> Reset."
 git reset --hard
-git checkout master
+# git checkout master
