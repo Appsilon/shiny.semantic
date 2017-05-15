@@ -11,6 +11,14 @@ params:
    escape_script: FALSE 
 ---
 
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "inst/assets/README_files/figure-markdown_github"
+)
+```
+
 ```{r, echo=FALSE, message=FALSE}
 source("readme_assets/ui_demo.R")
 
