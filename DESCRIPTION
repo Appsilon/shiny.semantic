@@ -1,6 +1,6 @@
 Package: shiny.semantic
 Type: Package
-Title: Semantic ui support for shiny
+Title: Semantic Ui Support for Shiny
 Version: 0.1.1
 Authors@R: person("Filip", "Stachura", email = "filip@appsilondatascience.com",
   role = c("aut", "cre"))
