@@ -21,4 +21,4 @@ rm -r shiny.semantic.Rcheck/
 echo "==> Reset."
 git reset --hard
 git checkout master
-git branch -d temp_cran_release
+git branch -D temp_cran_release
