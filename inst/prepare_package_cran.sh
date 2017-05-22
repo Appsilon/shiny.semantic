@@ -5,7 +5,7 @@ cd $BASENAME/..
 git checkout -B temp_cran_release
 
 echo "==> Preparing package for CRAN release."
-rm -r build/ docs/ examples/ CHANGELOG.md README.Rmd README_files build_readme.R examples/ readme_assets/ readme_rmd_template/ inst/semantic/.versions
+rm -r build/ docs/ examples/ LICENSE.md CHANGELOG.md README.Rmd README_files build_readme.R examples/ readme_assets/ readme_rmd_template/ inst/semantic/.versions
 
 mkdir build
 
