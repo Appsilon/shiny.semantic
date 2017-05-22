@@ -11,6 +11,14 @@ params:
    escape_script: FALSE 
 ---
 
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "inst/assets/README_files/figure-markdown_github"
+)
+```
+
 ```{r, echo=FALSE, message=FALSE}
 source("readme_assets/ui_demo.R")
 
@@ -24,7 +32,7 @@ create_example <- function(code, ...) {
 
 <link href="http://fonts.googleapis.com/css?family=Lato:300,700,300italic|Inconsolata" rel="stylesheet" type="text/css">
 
-<link href='docs/style.css' rel='stylesheet' type='text/css'>
+<link href='inst/assets/styles/style.css' rel='stylesheet' type='text/css'>
 
 `r params$repo_name`
 ===========
