@@ -9,4 +9,3 @@ uirender(ui, width = NULL, height = NULL, elementId = NULL)
 \description{
 htmlwidget that adds semanticui dependencies and renders in viewer or rmarkdown.
 }
-

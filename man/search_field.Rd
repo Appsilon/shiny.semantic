@@ -18,7 +18,50 @@ search_field(name, search_api_url, default_text = "Search", value = "")
 \description{
 This creates a default search field using Semantic UI styles with Shiny input. Search field is already initialized
 and available under input[[name]]. Search will automatically route to the named API endpoint provided as parameter.
-Search is performed across JavaScript searchFields `title` and `description`.
+API response is expected to be a JSON with property fields `title` and `description`.
 See https://semantic-ui.com/modules/search.html#behaviors for more details.
 }
+\examples{
+## Only run examples in interactive R sessions
+if (interactive()) {
+library(shiny)
+library(shiny.semantic)
+library(gapminder)
+library(dplyr)
 
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      title = "Dropdown example",
+      uiOutput("search_letters"),
+      p("Selected letter:"),
+      textOutput("selected_letters")
+   )
+  )
+}
+
+server <- shinyServer(function(input, output, session) {
+ 
+ search_api <- function(gapminder, q){
+   has_matching <- function(field) {
+     startsWith(field, q)
+   }
+   gapminder \%>\%
+     mutate(country = as.character(country)) \%>\%
+     select(country) \%>\%
+     unique \%>\%
+     filter(has_matching(country)) \%>\%
+     head(5) \%>\%
+     transmute(title = country,
+               description = country)
+ }
+ 
+ search_api_url <- register_search(session, gapminder, search_api)
+ output$search_letters <- shiny::renderUI(search_field("search_result", search_api_url))
+ output$selected_letters <- renderText(input[["search_result"]])
+})
+}
+
+shinyApp(ui = ui(), server = server)
+
+}
