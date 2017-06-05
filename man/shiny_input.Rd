@@ -2,10 +2,7 @@
 % Please edit documentation in R/shiny.R
 \name{shiny_input}
 \alias{shiny_input}
-\title{Universal binding for Shiny input on custom user interface. Using this function one can create various inputs
-ranging from text, numerical, date, dropdowns, etc. Value of this input is extracted via jQuery using $().val()
-function and default exposed as serialized JSON to the Shiny server. If you want to change type of exposed input
-value specify it via type param. Currently list of supported types is "JSON" (default) and "text".}
+\title{Create universal Shiny input binding}
 \usage{
 shiny_input(input_id, shiny_ui, value = NULL, type = "JSON")
 }
@@ -24,4 +21,3 @@ ranging from text, numerical, date, dropdowns, etc. Value of this input is extra
 function and default exposed as serialized JSON to the Shiny server. If you want to change type of exposed input
 value specify it via type param. Currently list of supported types is "JSON" (default) and "text".
 }
-

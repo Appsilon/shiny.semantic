@@ -9,4 +9,3 @@ define_selection_type(name, multiple)
 \description{
 Define search type if multiple
 }
-

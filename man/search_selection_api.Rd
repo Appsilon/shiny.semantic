@@ -64,4 +64,3 @@ Define the (multiple) search selection dropdown input for retrieving remote sele
 API response is expected to be a JSON with property fields `name` and `value`.
 Using a search selection dropdown allows to search more easily through large lists.
 }
-

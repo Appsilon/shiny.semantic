@@ -24,4 +24,3 @@ search_query will be called with these values whenever an HTTP request is made t
 The return value of search_query should be a list of list or a dataframe. Note that different semantic components expect
 specific JSON fields to be present in order to work correctly. Check components documentation for details.
 }
-
