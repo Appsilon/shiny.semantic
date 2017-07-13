@@ -95,7 +95,7 @@ tabset <- function(tabs, id = generate_random_id("menu"), menu_class = "top atta
                             .$content
                  )
     ),
-    shiny::tags$script(paste0("$('#", id, ".menu .item').tab();"))
+    shiny::tags$script(paste0("$('#", id, ".menu .item').tab({onVisible: function() {$(window).resize()} });"))
   )
 }
 
