@@ -4,6 +4,8 @@ library(shiny.semantic)
 library(magrittr)
 library(highlighter)
 library(formatR)
+library(httr)
+library(rjson)
 
 demo <- function(code) {
   div(class = "ui raised segment",
@@ -251,6 +253,7 @@ css <- "
 #examples > div > .header {
   margin-top: 1em;
 }"
+
 ui <- function() {
   shinyUI(semanticPage(
     tags$head(tags$style(HTML(css))),
@@ -275,7 +278,7 @@ ui <- function() {
   ))
 }
 
-server <- shinyServer(function(input, output) {
+server <- shinyServer(function(input, output, session) {
   runjs(jsCode)
 })
 
