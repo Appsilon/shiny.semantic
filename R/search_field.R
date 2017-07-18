@@ -10,7 +10,7 @@
 #' @param default_text Text to be visible on serach field when nothing is selected.
 #' @param value Pass value if you want to initialize selection for search field.
 #'
-#' @examples 
+#' @examples
 #' ## Only run examples in interactive R sessions
 #' if (interactive()) {
 #' library(shiny)
@@ -30,7 +30,7 @@
 #' }
 #'
 #' server <- shinyServer(function(input, output, session) {
-#'  
+#'
 #'  search_api <- function(gapminder, q){
 #'    has_matching <- function(field) {
 #'      startsWith(field, q)
@@ -44,7 +44,7 @@
 #'      transmute(title = country,
 #'                description = country)
 #'  }
-#'  
+#'
 #'  search_api_url <- register_search(session, gapminder, search_api)
 #'  output$search_letters <- shiny::renderUI(search_field("search_result", search_api_url))
 #'  output$selected_letters <- renderText(input[["search_result"]])
@@ -61,7 +61,7 @@ search_field <- function(name, search_api_url, default_text = 'Search',  value =
     div(class = paste(name, "ui search"),
         div(class = "ui icon fluid input",
             shiny_input(name,
-                        tags$input(class = "prompt search field", type = "text" , placeholder = "Search...",
+                        tags$input(class = "prompt search field", type = "text" , placeholder = default_text,
                                    # Hack: Setting "oninput" to "null" is a fix for reset of selection, when using arrows
                                    # as suggested here: https://github.com/Semantic-Org/Semantic-UI/issues/3416
                                    oninput = "null"),
