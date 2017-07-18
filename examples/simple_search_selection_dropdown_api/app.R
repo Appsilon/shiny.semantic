@@ -7,9 +7,9 @@ ui <- function() {
     shinyUI(
         semanticPage(
             title = "Dropdown example",
-            uiOutput("search_letters"),
-            p("Selected letter:"),
-            textOutput("selected_letters")
+            uiOutput("search_countries"),
+            p("Selected countries:"),
+            textOutput("selected_countries")
           )
       )
   }
@@ -31,8 +31,8 @@ ui <- function() {
     }
 
     search_api_url <- shiny.semantic::register_search(session, gapminder, search_api)
-    output$search_letters <- shiny::renderUI(search_selection_api("search_result", search_api_url, multiple = TRUE))
-    output$selected_letters <- renderText(input[["search_result"]])
+    output$search_countries <- shiny::renderUI(search_selection_api("search_result", search_api_url, multiple = TRUE))
+    output$selected_countries <- renderText(input[["search_result"]])
     })
 
 shinyApp(ui = ui(), server = server)
