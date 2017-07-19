@@ -103,3 +103,46 @@ generate_random_id <- function(prefix, id_length = 20) {
   random_id <- paste(sample(letters, id_length, replace = TRUE), collapse = "")
   paste0(prefix, "-", random_id)
 }
+
+#' Create Semantic UI Message
+#' 
+#' This creates a message using UI Semantics
+#' 
+#' @param header Header of the message
+#' @param content Content of the message. If it is a vector, creates a list of vector's elements
+#' @param type Type of the message. Look at https://semantic-ui.com/collections/message.html for all possibilities.
+#' @param icon If the message is of the type 'icon', specify the icon. Look at http://semantic-ui.com/elements/icon.html for all possibilities.
+#' 
+#' @export
+
+uimessage <- function(header, content, type = "", icon) {
+  if (grepl("icon", type)) {
+    if(missing(icon)) {
+      stop("Type 'icon' requires an icon!")
+    } else if(length(content) > 1) {
+      div(class = paste("ui message", type),
+          uiicon(icon),
+          div(class = "content",
+              div(class = "header", header),
+              tags$ul(class = "list",
+                      content %>% lapply(tags$li))))
+    } else {
+      div(class = paste("ui message", type),
+          uiicon(icon),
+          div(class = "content",
+              div(class = "header", header),
+              content))
+    }
+  } else {
+    if (length(content) > 1) {
+      div(class = paste("ui message", type),
+          div(class = "header", header),
+          tags$ul(class = "list",
+                  content %>% lapply(tags$li)))
+    } else {
+      div(class = paste("ui message", type),
+          div(class = "header", header),
+          content)
+    }
+  }
+}
