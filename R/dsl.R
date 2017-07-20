@@ -115,7 +115,7 @@ generate_random_id <- function(prefix, id_length = 20) {
 #'
 #' @export
 
-uimessage <- function(header, content, type = "", icon, close) {
+uimessage <- function(header, content, type = "", icon) {
   if(length(content) > 1) {
     content <- tags$ul(class = "list", content %>% lapply(tags$li))
   }
