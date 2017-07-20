@@ -112,6 +112,7 @@ generate_random_id <- function(prefix, id_length = 20) {
 #' @param content Content of the message. If it is a vector, creates a list of vector's elements
 #' @param type Type of the message. Look at https://semantic-ui.com/collections/message.html for all possibilities.
 #' @param icon If the message is of the type 'icon', specify the icon. Look at http://semantic-ui.com/elements/icon.html for all possibilities.
+#' @param closable Determines whether the message should be closable. Default is FALSE - not closable
 #'
 #' @export
 
