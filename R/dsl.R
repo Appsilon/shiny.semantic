@@ -124,7 +124,7 @@ closable_messages <- "$('.message .close')
   })
 ;"
 
-uimessage <- function(header, content, type = "", icon, close = FALSE) {
+uimessage <- function(header, content, type = "", icon, closable = FALSE) {
   if(length(content) > 1) {
     content <- tags$ul(class = "list", content %>% lapply(tags$li))
   }
@@ -141,7 +141,7 @@ uimessage <- function(header, content, type = "", icon, close = FALSE) {
     message_else_content <- content
   }
   div(class = paste("ui message", type),
-      if (close == TRUE) {
+      if (closable) {
         uiicon("close icon", tags$script(HTML(closable_messages)))
       },
       icon_else_header,
