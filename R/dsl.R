@@ -115,7 +115,16 @@ generate_random_id <- function(prefix, id_length = 20) {
 #'
 #' @export
 
-uimessage <- function(header, content, type = "", icon, close) {
+closable_messages <- "$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;"
+
+uimessage <- function(header, content, type = "", icon, close = FALSE) {
   if(length(content) > 1) {
     content <- tags$ul(class = "list", content %>% lapply(tags$li))
   }
@@ -132,6 +141,9 @@ uimessage <- function(header, content, type = "", icon, close) {
     message_else_content <- content
   }
   div(class = paste("ui message", type),
+      if (close == TRUE) {
+        uiicon("close icon", tags$script(HTML(closable_messages)))
+      },
       icon_else_header,
       message_else_content)
 }
