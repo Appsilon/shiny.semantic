@@ -124,7 +124,6 @@ CLOSABLE_MESSAGES <- "$('.message .close')
 #' @param closable Determines whether the message should be closable. Default is FALSE - not closable
 #'
 #' @export
-
 uimessage <- function(header, content, type = "", icon, closable = FALSE) {
   if(length(content) > 1) {
     content <- tags$ul(class = "list", content %>% lapply(tags$li))
