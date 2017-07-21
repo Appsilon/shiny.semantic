@@ -150,9 +150,10 @@ right_menu <- function(...) {
 #' 
 #' This creates a menu item using Semantic UI
 #' 
-#' @param link To what the menu item should be linked. Default is "" - not linked.
+#' @param type Type of the menu item: static, linked or dropdown.
 #' @param text Text displayed on the menu item.
-#' @param icon Icon displayed on the menu item. Deafult is "" - no icon. Look at http://semantic-ui.com/elements/icon.html for all possibilities
+#' @param icon Icon displayed on the menu item. Deafult is "" - no icon. Look at http://semantic-ui.com/elements/icon.html for all possibilities.
+#' @param link To what the menu item should be linked. Default is "" - not linked.
 #' @param style Determine style of the menu item. Default is "text-align: center"
 #' @param item_feature If required, add additional item feature like 'active', 'header', etc.
 #' 
@@ -174,7 +175,7 @@ menu_item <- function(type = "static", text = "", icon = "", link = "", style = 
 #' This creates a menu using Semantic UI.
 #' 
 #' @param type Type of the menu. Look at https://semantic-ui.com/collections/menu.html for all possiblities.
-#' @param ... Menu items to be created. Use menu_item function to create new menu item. Use dropdown to create a dropdwon item. Use right_menu to create a menu on the right.
+#' @param ... Menu items to be created. Use menu_item function to create new menu item. Use right_menu to create a submenu on the right.
 #' 
 #' @export
 uimenu <- function(type = "", ...) {
