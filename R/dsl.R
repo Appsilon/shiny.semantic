@@ -104,46 +104,46 @@ generate_random_id <- function(prefix, id_length = 20) {
   paste0(prefix, "-", random_id)
 }
 
-CLOSABLE_MESSAGES <- "$('.message .close')
-  .on('click', function() {
-    $(this)
-      .closest('.message')
-      .transition('fade')
-    ;
-  })
-;"
+createHyperlinkItem <- function(link = "", icon = "", text = "", style = "") {
+  a(class = "item",
+    href = link,
+    uiicon(icon),
+    text)
+}
 
-#' Create Semantic UI Message
-#'
-#' This creates a message using Semantic UI
-#'
-#' @param header Header of the message
-#' @param content Content of the message. If it is a vector, creates a list of vector's elements
-#' @param type Type of the message. Look at https://semantic-ui.com/collections/message.html for all possibilities.
-#' @param icon If the message is of the type 'icon', specify the icon. Look at http://semantic-ui.com/elements/icon.html for all possibilities.
-#' @param closable Determines whether the message should be closable. Default is FALSE - not closable
-#'
-#' @export
-uimessage <- function(header, content, type = "", icon, closable = FALSE) {
-  if(length(content) > 1) {
-    content <- tags$ul(class = "list", content %>% lapply(tags$li))
-  }
-  if (grepl("icon", type)) {
-    if (missing(icon)) {
-      stop("Type 'icon' requires an icon!")
-    }
-    icon_else_header <- uiicon(icon)
-    message_else_content <- div(class = "content",
-                                div(class = "header", header),
-                                content)
+createStaticItem <- function(icon = "", text = "", style = "text-align: center") {
+  div(class = "item", 
+      style = style, 
+      h4(class = "ui icon header",
+         uiicon(icon),
+         div(class = "content", text)))
+}
+
+#' Create Semantic UI Menu Item
+#' 
+#' This creates a menu item using Semantic UI
+#' 
+#' @param link To what the menu item should be linked. Default is "" - not linked.
+#' @param text Text displayed on the menu item.
+#' @param icon Icon displayed on the menu item. Deafult is "" - no icon. Look at http://semantic-ui.com/elements/icon.html for all possibilities
+#' @param style Determine style of the menu item. Default is "text-align: center"
+menuItem <- function(link = "", text = "", icon = "", style = "text-align: center") {
+  if (link == "") {
+    createStaticItem(icon, text, style)
   } else {
-    icon_else_header <- div(class = "header", header)
-    message_else_content <- content
+    createHyperlinkItem(link, icon, text, style)
   }
-  div(class = paste("ui message", type),
-      if (closable) {
-        uiicon("close icon", tags$script(HTML(CLOSABLE_MESSAGES)))
-      },
-      icon_else_header,
-      message_else_content)
+}
+
+#' Create Semantic UI Menu
+#' 
+#' This creates a menu using Semantic UI.
+#' 
+#' @param type Type of the menu. Look at https://semantic-ui.com/collections/menu.html for all possiblities.
+#' @param ... Menu items to be created. Use menuItem function to create new menu item.
+#' 
+#' @export
+uimenu <- function(type = "", ...) {
+  div(class = paste("ui menu", type),
+      list(...))
 }
