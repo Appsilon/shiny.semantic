@@ -72,14 +72,19 @@ generate_random_id <- function(prefix, id_length = 20) {
 #' 
 #' @param type Type of the dropdown. Look at https://semantic-ui.com/modules/dropdown.html for all possibilities.
 #' @param name Unique name of the created dropdown.
-#' @param text Text displayed on the dropdown.
-#' @param left_icon Icon diplayed on the left of the text in the dropdown.
-#' @param right_icon Icon displayed on the right of the text in the dropdown.
-#' @param in_menu TRUE if the dropdown is a menu item. Default is FALSE.
+#' @param choices Use dropdown_menu to create set of choices, headers and dividers for the dropdown.
 #' @param ... Dropdown items to be created. Use dropdown_item to create new dropdown item.
+#' @param in_menu TRUE if the dropdown is a menu item. Default is FALSE.
+#' @param dropdown_specs A list of dropdown functionalities. Look at https://semantic-ui.com/modules/dropdown.html#link3 for all possibilities.
+#' @param value Default value of the dropdown. Useful when using selection dropdowns with default value selected.
 #' 
 #' @export
-uidropdown <- function(type = "", name = "", text = "", in_menu = "FALSE", ..., value = NULL) {
+uidropdown <- function(type = "", name, choices = dropdown_menu(), ..., in_menu = "FALSE", dropdown_specs = list(), value = NULL) {
+  
+  if (missing(name)) {
+    stop("Dropdown requires unique name. Specify 'name' argument.")
+  }
+  
   unique_dropdown_class <- paste0('dropdown_name_', name)
   
   if (in_menu) {
@@ -88,38 +93,161 @@ uidropdown <- function(type = "", name = "", text = "", in_menu = "FALSE", ..., 
     class <- paste("ui dropdown", type, unique_dropdown_class)
   }
   
+  dropdown_functionality <- paste(dropdown_specs, collapse = ", ")
+  
   div(class = class,
       shiny_text_input(name, tags$input(type = "hidden", name = name), value = value),
-      
-      div(class = "text", text),
-      div(class = "menu",
-          list(...)
-      ),
-      tags$script(paste0("$('.ui.dropdown.", unique_dropdown_class, "').dropdown();"))
+      list(...),
+      choices,
+      tags$script(paste0("$('.ui.dropdown.", unique_dropdown_class, "').dropdown({", dropdown_functionality, "});"))
   )
 }
 
-
+#' Create Semantic UI Dropdown Menu
+#' 
+#' @param ... Dropdown content. Use dropdown_choice to create dropdown item. Use dropdown_header to create dropdown header item.
+#' Use dropdown_divider to create divider item.
+#' 
+#' @export
+dropdown_menu <- function(...) {
+  div(class = "menu",
+      list(...)
+  )
+}
 
 #' Create Semantic UI Dropdown Choice Item
 #' 
 #' This creates a dropdown item using Semantic UI.
 #' 
-#' @param text Text displayed on the dropdown choice item
-#' @param left_icon Icon on the left of the text
-#' @param right_icon Icon on the right of the text
+#' @param name Name of the dropdown choice. This corresponds to 'value' argument for uidropdown.
+#' @param ... Content of the dropdown choice such as text, icons, labels.
+#' @param link To what dropdown choice should be linked. If not specified, dropdown choice is not linked.
 #' 
 #' @export
-dropdown_choice <- function(text = "", left_icon = "", right_icon = "") {
-  div(class = "item",
-      `data-value` = text,
-      icon_if_present(left_icon),
-      text,
-      icon_if_present(right_icon)
-  )
+dropdown_choice <- function(name, ..., link) {
+  if(missing(name)){
+    stop("Dropdown choice requires a name!")
+  }
+  if (missing(link)) {
+    div(class = "item",
+        `data-value` = name,
+        list(...)
+    )
+  } else {
+    a(class = "item",
+      href = link,
+      `data-value` = name,
+      list(...)
+    )
+  }
 }
 
-#' Create Semantic UI Menu Item
+#' Create Semantic UI Hedaer Item
+#' 
+#' This creates a dropdown header item using Semantic UI.
+#' 
+#' @param ... Content of the header: text, icons, etc.
+#' 
+#' @export
+dropdown_header <- function(...) {
+  div(class = "header", ...)
+}
+
+#' Create Semantic UI Hedaer Item
+#' 
+#' This creates a dropdown header item using Semantic UI.
+#' 
+#' @param ... Other attributes of the divider such as style.
+#' 
+#' @export
+dropdown_divider <- function(...) {
+  div(class = "divider", ...)
+}
+
+#' Create Semantic UI Menu
+#' 
+#' This creates a menu using Semantic UI.
+#' 
+#' @param type Type of the menu. Look at https://semantic-ui.com/collections/menu.html for all possiblities.
+#' @param ... Menu items to be created. Use hyperlink_item function to create new linked menu item. Use static_item 
+#' function to create new static menu item. Use uidropdown(in_menu = TRUE, ...) to create a dropdown item. Use
+#' right_menu to create a submenu on the right.
+#' 
+#' @examples 
+#' library(shiny)
+#' library(shiny.semantic)
+#' 
+#' ui <- function() {
+#' shinyUI(
+#'   semanticPage(
+#'     title = "My page",
+#'     suppressDependencies("bootstrap"),
+#'     uimenu("secondary vertical",
+#'            hyperlink_item("", "Account", item_feature = "active"),
+#'            hyperlink_item("", "Settings"),
+#'            uidropdown(type = "",
+#'                       name = "unique_name",
+#'                       in_menu = TRUE,
+#'                       choices = dropdown_menu(dropdown_header("Text Size"),
+#'                                               dropdown_choice("Small", "Small"),
+#'                                               dropdown_choice("Medium", "Medium"),
+#'                                               dropdown_choice("Large", "Large")),
+#'                       value = NULL,
+#'                       dropdown_specs = list("transition: 'drop'"),
+#'                       uiicon("dropdown icon"),
+#'                       "Display Options"))
+#'   )
+#' )
+#' }
+#' 
+#' server <- shinyServer(function(input, output) {
+#' })
+#' 
+#' shinyApp(ui = ui(), server = server)
+#' 
+#' # Note that shiny::tags$a generates the same output as hyperlink_item. You can use shiny html tags to create more complex menu items if you label them with "item" class.
+#' 
+#' ui <- function() {
+#' shinyUI(
+#'   semanticPage(
+#'     title = "My page",
+#'     suppressDependencies("bootstrap"),
+#'     uimenu("pointing",
+#'            static_item("Menu"),
+#'            uidropdown(type = "",
+#'                       name = "unique_name",
+#'                       in_menu = TRUE,
+#'                       choices = dropdown_menu(
+#'                         dropdown_header("File"),
+#'                         dropdown_choice("Open", uiicon("wrench icon"), "Open"),
+#'                         dropdown_choice("Save", uiicon("user")),
+#'                         dropdown_choice("Undo", uiicon("inbox icon"), uiicon("users"), uiicon("user")),
+#'                         dropdown_divider(),
+#'                         dropdown_header("Home"),
+#'                         dropdown_choice("Close", uiicon("wrench icon"), "Close")),
+#'                       value = "Open",
+#'                       uiicon("world icon"), 
+#'                       span(class = "text", "Dropdown")),
+#'            hyperlink_item("/index", uiicon("user"), "Profile", item_feature = "active"),
+#'            hyperlink_item("Projects", link = "/projects"),
+#'            hyperlink_item(link = "", uiicon("users"), "Team"),
+#'            right_menu(hyperlink_item("", uiicon("add icon"), "New tab")))
+#'   )
+#' )
+#' }
+#' 
+#' server <- shinyServer(function(input, output) {
+#' })
+#' 
+#' shinyApp(ui = ui(), server = server)
+#' 
+#' @export
+uimenu <- function(type = "", ...) {
+  div(class = paste("ui menu", type),
+      list(...))
+}
+
+#' Create Semantic UI Menu on the right
 #' 
 #' This creates a menu items on the right of a Sematic UI Menu.
 #' 
@@ -154,76 +282,11 @@ hyperlink_item <- function(link = "", ...,  item_feature = "", style = "") {
 #' 
 #' @param ... Other attributes of the menu item such as style and also content of the item: text, icons or labels to be displayed. 
 #' @param item_feature If required, add additional item feature like 'active', 'header', etc.
+#' @param style Style of the static menu item, e.g. "text-align: center"
 #' 
 #' @export
 static_item <- function(..., item_feature = "", style = "") {
   div(class = paste("item", item_feature),
       style = style,
-      list(...))
-}
-
-#' Create Semantic UI Menu
-#' 
-#' This creates a menu using Semantic UI.
-#' 
-#' @param type Type of the menu. Look at https://semantic-ui.com/collections/menu.html for all possiblities.
-#' @param ... Menu items to be created. Use menu_item function to create new menu item. Use uidropdown(in_menu = TRUE, ...) to create a dropdown item. Use right_menu to create a submenu on the right.
-#' 
-#' @examples 
-#' library(shiny)
-#' library(shiny.semantic)
-#' 
-#' ui <- function() {
-#'   shinyUI(
-#'     semanticPage(
-#'       title = "My page",
-#'       suppressDependencies("bootstrap"),
-#'       uimenu("pointing",
-#'              static_item("Menu"),
-#'              hyperlink_item("/index", uiicon("user"), "Profile", item_feature = "active"),
-#'              hyperlink_item("Projects", link = "/projects"),
-#'              uidropdown("", "unique_name", "UIDropdown", in_menu = TRUE, dropdown_choice("Open", "wrench icon"), dropdown_choice("Save", "user"), dropdown_choice("Undo", "inbox icon")),
-#'              hyperlink_item(link = "", uiicon("users"), "Team"),
-#'              right_menu(hyperlink_item(link = "", uiicon("add icon"), "New tab")))
-#'     )
-#'   )
-#' }
-#' 
-#' server <- shinyServer(function(input, output) {
-#' })
-#' 
-#' shinyApp(ui = ui(), server = server)
-#' 
-#' # Note that shiny::tags$a generates the same output as hyperlink_item. You can use shiny html tags to create more complex menu items if you label them with "item" class.
-#' 
-#' ui <- function() {
-#'   shinyUI(
-#'     semanticPage(
-#'       title = "My page",
-#'       suppressDependencies("bootstrap"),
-#'       uimenu("vertical",
-#'              a(class = "item teal",
-#'                href = "",
-#'                uiicon("users"), "User", uiicon("user"), uilabel("", 51)),
-#'              hyperlink_item(link = "", item_feature = "teal", uiicon("users"), "User", uiicon("user"), uilabel("", 51)),
-#'              static_item(h4(class = "ui icon header",
-#'                             uiicon("user"),
-#'                             div(class = "content", "File")),
-#'                          item_feature = "",
-#'                          style = "text-align: center"),
-#'              static_item("", "", "Static")
-#'       )
-#'     )
-#'   )
-#' }
-#' 
-#' server <- shinyServer(function(input, output) {
-#' })
-#' 
-#' shinyApp(ui = ui(), server = server)
-#' 
-#' @export
-uimenu <- function(type = "", ...) {
-  div(class = paste("ui menu", type),
       list(...))
 }
