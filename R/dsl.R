@@ -27,24 +27,6 @@ uilabel <- function(type = "", ...) {
       list(...))
 }
 
-#' Create Semantic UI Dropdown Choice Item
-#' 
-#' This creates a dropdown item using Semantic UI.
-#' 
-#' @param text Text displayed on the dropdown choice item
-#' @param left_icon Icon on the left of the text
-#' @param right_icon Icon on the right of the text
-#' 
-#' @export
-dropdown_choice <- function(text = "", left_icon = "", right_icon = "") {
-  div(class = "item",
-      `data-value` = text,
-      icon_if_present(left_icon),
-      text,
-      icon_if_present(right_icon)
-  )
-}
-
 #' Create Semantic UI tabs
 #'
 #' This creates tabs with content using Semantic UI styles.
@@ -117,13 +99,15 @@ uidropdown <- function(type = "", name = "", text = "", in_menu = "FALSE", ..., 
   )
 }
 
-#' Create Semantic UI Dropdown Item
+
+
+#' Create Semantic UI Dropdown Choice Item
 #' 
-#' This creates a dropdown choice item using Semantic UI
+#' This creates a dropdown item using Semantic UI.
 #' 
-#' @param text Text displayed on the item
-#' @param left_icon Icon diplayed on the left of the text in the item.
-#' @param right_icon Icon displayed on the right of the text in the item.
+#' @param text Text displayed on the dropdown choice item
+#' @param left_icon Icon on the left of the text
+#' @param right_icon Icon on the right of the text
 #' 
 #' @export
 dropdown_choice <- function(text = "", left_icon = "", right_icon = "") {
