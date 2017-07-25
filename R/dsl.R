@@ -104,15 +104,6 @@ generate_random_id <- function(prefix, id_length = 20) {
   paste0(prefix, "-", random_id)
 }
 
-CLOSABLE_MESSAGES <- "$('.message .close')
-  .on('click', function() {
-    $(this)
-      .closest('.message')
-      .transition('fade')
-    ;
-  })
-;"
-
 #' Create Semantic UI Message
 #'
 #' This creates a message using Semantic UI
@@ -147,3 +138,12 @@ uimessage <- function(header, content, type = "", icon, closable = FALSE) {
       icon_else_header,
       message_else_content)
 }
+
+CLOSABLE_MESSAGES <- "$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;"
