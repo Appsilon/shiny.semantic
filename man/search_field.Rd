@@ -41,7 +41,7 @@ ui <- function() {
 }
 
 server <- shinyServer(function(input, output, session) {
- 
+
  search_api <- function(gapminder, q){
    has_matching <- function(field) {
      startsWith(field, q)
@@ -55,7 +55,7 @@ server <- shinyServer(function(input, output, session) {
      transmute(title = country,
                description = country)
  }
- 
+
  search_api_url <- register_search(session, gapminder, search_api)
  output$search_letters <- shiny::renderUI(search_field("search_result", search_api_url))
  output$selected_letters <- renderText(input[["search_result"]])
