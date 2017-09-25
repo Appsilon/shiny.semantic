@@ -4,10 +4,12 @@
 \alias{uiform}
 \title{Create Semantic UI form tag}
 \usage{
-uiform(...)
+uiform(..., class = "")
 }
 \arguments{
 \item{...}{Other arguments to be added as attributes of the tag (e.g. style, class or childrens etc.)}
+
+\item{class}{Additional classes to add to html tag.}
 }
 \description{
 This creates a form tag using Semantic UI styles.

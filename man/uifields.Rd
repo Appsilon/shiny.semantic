@@ -4,10 +4,12 @@
 \alias{uifields}
 \title{Create Semantic UI fields tag}
 \usage{
-uifields(...)
+uifields(..., class = "")
 }
 \arguments{
 \item{...}{Other arguments to be added as attributes of the tag (e.g. style, class or childrens etc.)}
+
+\item{class}{Additional classes to add to html tag.}
 }
 \description{
 This creates a fields tag using Semantic UI styles.

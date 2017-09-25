@@ -150,6 +150,39 @@ card <- function() {
   div(
     h1(class="ui header", id="card", "Card"),
     demo(
+      uicard(
+        div(class="content",
+          div(class="header", "Elliot Fu"),
+          div(class="meta", "Friend"),
+          div(class="description", "Elliot Fu is a film-maker from New York.")
+        )
+      )
+    ),
+    demo(
+      uicards(
+        class = "three",
+        mtcars %>% tibble::rownames_to_column() %>% head %>%
+          purrrlyr::by_row(~ {
+            uicard(
+              div(class="content",
+                div(class="header", .$rowname),
+                div(class="meta", paste("Number of cylinders:", .$cyl)),
+                div(class="description", paste("1/4 mile time:", .$qsec))
+              )
+            )
+          }) %>% {.$.out}
+      )
+    ),
+    demo(
+      uicard(
+        div(class="content",
+          div(class="header", "Elliot Fu"),
+          div(class="meta", "Friend"),
+          div(class="description", "Elliot Fu is a film-maker from New York.")
+        )
+      )
+    ),
+    demo(
       div(class="ui card",
         div(class="content",
           div(class="right floated meta", "14h"),
