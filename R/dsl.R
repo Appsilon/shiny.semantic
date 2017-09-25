@@ -10,6 +10,108 @@ uiicon <- function(type = "", ...) {
   shiny::tags$i(class = paste(type, "icon"), ...)
 }
 
+#' Create Semantic UI header
+#'
+#' This creates a header with optional icon using Semantic UI styles.
+#'
+#' @param title Header title
+#' @param description Subheader text
+#' @param icon Optional icon name
+#'
+#' @export
+uiheader <- function(title, description, icon = NULL) {
+  shiny::h2(class = "ui header",
+     if (!is.null(icon)) uiicon(icon),
+     shiny::div(class = "content", title, shiny::div(class = "sub header", description))
+  )
+}
+
+#' Create Semantic UI cards tag
+#'
+#' This creates a cards tag using Semantic UI styles.
+#'
+#' @param ... Other arguments to be added as attributes of the tag (e.g. style, class or childrens etc.)
+#' @param class Additional classes to add to html tag.
+#'
+#' @export
+uicards <- function(..., class = "") {
+  shiny::div(class = paste("ui cards", class), ...)
+}
+
+#' Create Semantic UI card tag
+#'
+#' This creates a card tag using Semantic UI styles.
+#'
+#' @param ... Other arguments to be added as attributes of the tag (e.g. style, class or childrens etc.)
+#' @param class Additional classes to add to html tag.
+#'
+#' @export
+uicard <- function(..., class = "") {
+  shiny::div(class = paste("ui card", class), ...)
+}
+
+#' Create Semantic UI segment
+#'
+#' This creates a segment using Semantic UI styles.
+#'
+#' @param ... Other arguments to be added as attributes of the tag (e.g. style, class or childrens etc.)
+#' @param class Additional classes to add to html tag.
+#'
+#' @export
+uisegment <- function(..., class = "") {
+  shiny::div(class = paste("ui segment", class), ...)
+}
+
+#' Create Semantic UI form tag
+#'
+#' This creates a form tag using Semantic UI styles.
+#'
+#' @param ... Other arguments to be added as attributes of the tag (e.g. style, class or childrens etc.)
+#' @param class Additional classes to add to html tag.
+#'
+#' @export
+uiform <- function(..., class = "") {
+  shiny::tags$form(class = paste("ui form", class),
+    ...
+  )
+}
+
+#' Create Semantic UI fields tag
+#'
+#' This creates a fields tag using Semantic UI styles.
+#'
+#' @param ... Other arguments to be added as attributes of the tag (e.g. style, class or childrens etc.)
+#' @param class Additional classes to add to html tag.
+#'
+#' @export
+uifields <- function(..., class = "") {
+  shiny::div(class = paste("fields", class), ...)
+}
+
+#' Create Semantic UI field tag
+#'
+#' This creates a field tag using Semantic UI styles.
+#'
+#' @param ... Other arguments to be added as attributes of the tag (e.g. style, class or childrens etc.)
+#' @param class Additional classes to add to html tag.
+#'
+#' @export
+uifield <- function(..., class = "") {
+  shiny::div(class = paste("field", class), ...)
+}
+
+#' Create HTML label tag
+#'
+#' This creates a HTML label tag.
+#'
+#' @param ... Other arguments to be added as attributes of the tag (e.g. style, class or childrens etc.)
+#'
+#' @export
+label <- function(...) {
+  shiny::tags$label(...)
+}
+
+
 #' Create dropdown Semantic UI component
 #'
 #' This creates a default dropdown using Semantic UI styles with Shiny input. Dropdown is already initialized
