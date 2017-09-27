@@ -7,7 +7,8 @@
 uisegment(..., class = "")
 }
 \arguments{
-\item{...}{Other arguments to be added as attributes of the tag (e.g. style, class or childrens etc.)}
+\item{...}{Other arguments to be added as attributes of the
+tag (e.g. style, class or childrens etc.)}
 
 \item{class}{Additional classes to add to html tag.}
 }

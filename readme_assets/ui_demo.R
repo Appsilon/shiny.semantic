@@ -24,7 +24,7 @@ before_ui_demo <- function() {
 }
 
 after_ui_demo <- function() {
-  semanticPage(
+  semantic_page(
     title = "ui",
     div(class = "ui raised segment", style="margin-left: 20px; max-width: 350px; width: 100%",
       a(class="ui green ribbon label", "Client's info"),

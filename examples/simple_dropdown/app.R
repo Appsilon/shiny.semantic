@@ -3,7 +3,7 @@ library(shiny.semantic)
 
 ui <- function() {
   shinyUI(
-    semanticPage(
+    semantic_page(
       title = "Dropdown example",
       uiOutput("dropdown"),
       p("Selected letter:"),

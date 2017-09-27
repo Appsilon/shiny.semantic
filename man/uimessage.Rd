@@ -9,13 +9,17 @@ uimessage(header, content, type = "", icon, closable = FALSE)
 \arguments{
 \item{header}{Header of the message}
 
-\item{content}{Content of the message. If it is a vector, creates a list of vector's elements}
+\item{content}{Content of the message. If it is a vector, creates a list of
+vector's elements}
 
-\item{type}{Type of the message. Look at https://semantic-ui.com/collections/message.html for all possibilities.}
+\item{type}{Type of the message. Look at
+https://semantic-ui.com/collections/message.html for all possibilities.}
 
-\item{icon}{If the message is of the type 'icon', specify the icon. Look at http://semantic-ui.com/elements/icon.html for all possibilities.}
+\item{icon}{If the message is of the type 'icon', specify the icon.
+Look at http://semantic-ui.com/elements/icon.html for all possibilities.}
 
-\item{closable}{Determines whether the message should be closable. Default is FALSE - not closable}
+\item{closable}{Determines whether the message should be closable.
+Default is FALSE - not closable}
 }
 \description{
 This creates a message using Semantic UI

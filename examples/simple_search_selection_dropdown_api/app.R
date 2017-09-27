@@ -5,7 +5,7 @@ library(dplyr)
 
 ui <- function() {
     shinyUI(
-        semanticPage(
+        semantic_page(
             title = "Dropdown example",
             uiOutput("search_countries"),
             p("Selected countries:"),

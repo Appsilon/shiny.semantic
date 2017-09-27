@@ -288,7 +288,7 @@ css <- "
 }"
 
 ui <- function() {
-  shinyUI(semanticPage(
+  shinyUI(semantic_page(
     tags$head(tags$style(HTML(css))),
     useShinyjs(),
     sidebar(),
