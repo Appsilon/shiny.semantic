@@ -28,6 +28,6 @@ uirender <- function(ui, width = NULL, height = NULL, element_id = NULL) {
     width = width,
     height = height,
     package = "shiny.semantic",
-    element_id = element_id
+    elementId = element_id
   )
 }
