@@ -7,8 +7,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Run CMD check
-          command: 'R CMD check .'
+          name: Run devtools check
+          command: 'R -e "devtools::check()"'
       - store_artifacts:
           path: ..Rcheck
           prefix: tests
