@@ -22,5 +22,6 @@ Imports:
     purrr (>= 0.2.2)
 Suggests:
     dplyr,
-    gapminder
+    gapminder,
+    testthat
 RoxygenNote: 6.0.1
