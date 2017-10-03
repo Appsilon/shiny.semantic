@@ -12,14 +12,17 @@ search_selection_choices(name, choices, value = NULL, multiple = FALSE,
 
 \item{choices}{Vector or a list of choices to search through.}
 
-\item{value}{String with default values to set when initialize the component. Values should be delimited wirh a comma when multiple to set. Default NULL.}
+\item{value}{String with default values to set when initialize the component.
+Values should be delimited wirh a comma when multiple to set. Default NULL.}
 
-\item{multiple}{TRUE if the dropdown should allow multiple selections, FALSE otherwise (default FALSE).}
+\item{multiple}{TRUE if the dropdown should allow multiple selections,
+FALSE otherwise (default FALSE).}
 
 \item{default_text}{Text to be visible on dropdown when nothing is selected.}
 }
 \description{
-Define the (multiple) search selection dropdown input component serving search options using provided choices.
+Define the (multiple) search selection dropdown input component serving
+search options using provided choices.
 }
 \examples{
 ## Only run examples in interactive R sessions
@@ -40,7 +43,9 @@ if (interactive()) {
 
   server <- shinyServer(function(input, output, session) {
     choices <- LETTERS
-    output$search_letters <- shiny::renderUI(search_selection_choices("search_result", choices, multiple = TRUE))
+    output$search_letters <- shiny::renderUI(
+      search_selection_choices("search_result", choices, multiple = TRUE)
+    )
     output$selected_letters <- renderText(input[["search_result"]])
   })
 

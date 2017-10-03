@@ -20,7 +20,9 @@ Publishes any R object as a URL endpoint that is unique to Shiny session.
 search_query must be a function that takes two arguments:
 data (the value that was passed into registerDataObj) and req
 (an environment that implements the Rook specification for HTTP requests).
-search_query will be called with these values whenever an HTTP request is made to the URL endpoint.
-The return value of search_query should be a list of list or a dataframe. Note that different semantic components expect
-specific JSON fields to be present in order to work correctly. Check components documentation for details.
+search_query will be called with these values whenever an HTTP request is
+made to the URL endpoint. The return value of search_query should be a list
+of list or a dataframe. Note that different semantic components expect
+specific JSON fields to be present in order to work correctly.
+Check components documentation for details.
 }

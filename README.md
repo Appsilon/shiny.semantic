@@ -36,6 +36,8 @@ Source code
 
 This library source code can be found on [Appsilon Data Science's](http://appsilondatascience.com) Github: <br> <https://github.com/Appsilon/shiny.semantic>
 
+[![CircleCI](https://circleci.com/gh/Appsilon/shiny.semantic/tree/develop.svg?style=svg)](https://circleci.com/gh/Appsilon/shiny.semantic/tree/develop)
+
 How to install?
 ---------------
 

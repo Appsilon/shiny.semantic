@@ -15,7 +15,8 @@ params:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "inst/assets/README_files/figure-markdown_github"
+  fig.path = "inst/assets/README_files/figure-markdown_github",
+  screenshot.force = params$escape_script # When script is not dynamic (markdown) we should use screenshots.
 )
 ```
 
@@ -77,6 +78,8 @@ Source code {.darkslide}
 This library source code can be found on [Appsilon Data Science's](`r params$website_url`) Github:
 <br>
 [`r params$repo_url`](`r params$repo_url`)
+
+[![CircleCI](https://circleci.com/gh/Appsilon/shiny.semantic/tree/develop.svg?style=svg)](https://circleci.com/gh/Appsilon/shiny.semantic/tree/develop)
 
 ```{python, echo=FALSE, results='asis', eval=!params$escape_script}
 print("""
