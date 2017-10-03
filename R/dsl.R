@@ -143,7 +143,7 @@ label <- function(...) {
 #'   library(shiny.semantic)
 #'   ui <- function() {
 #'       shinyUI(
-#'         semantic_page(
+#'         semanticPage(
 #'           title = "Dropdown example",
 #'           suppressDependencies("bootstrap"),
 #'           uiOutput("dropdown"),

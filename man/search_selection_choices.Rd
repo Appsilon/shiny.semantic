@@ -32,7 +32,7 @@ if (interactive()) {
 
   ui <- function() {
     shinyUI(
-      semantic_page(
+      semanticPage(
         title = "Dropdown example",
         uiOutput("search_letters"),
         p("Selected letter:"),

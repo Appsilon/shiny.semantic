@@ -104,7 +104,7 @@ devtools::install_github("Appsilon/`r params$repo_name`", ref = "0.1.0")
 
 How to use it? {.firebrick}
 -------
-Firstly, you will have to invoke *shinyUI()* with *semantic_page()* instead of standard Shiny UI definitions like e.g. *fluidPage()*. From now on forward all components can ba annotated with [Semantic UI][semantic_website_url] specific CSS classes and also you will be able to use [shiny.semantic  components](`r params$demo_url`).
+Firstly, you will have to invoke *shinyUI()* with *semanticPage()* instead of standard Shiny UI definitions like e.g. *fluidPage()*. From now on forward all components can ba annotated with [Semantic UI][semantic_website_url] specific CSS classes and also you will be able to use [shiny.semantic  components](`r params$demo_url`).
 
 Basic example will look like this:
 
@@ -115,7 +115,7 @@ library(shiny.semantic)
 
 ui <- function() {
   shinyUI(
-    semantic_page(
+    semanticPage(
       title = "My page",
       suppressDependencies("bootstrap"),
       div(class = "ui button", uiicon("user"),  "Icon button")
@@ -139,15 +139,15 @@ For better understanding it's good to check [Semantic UI documentation.][semanti
 
 **Note #1**
 
-At the moment you have to pass page title in *semantic_page()*
+At the moment you have to pass page title in *semanticPage()*
 ```
-semantic_page(title = "Your page title", ...)
+semanticPage(title = "Your page title", ...)
 ```
 **Note #2**
 
 There are some conflicts in CSS styles between **SemanticUI** and **Bootstrap**. For the time being it's better to suppress **Bootstrap** by caling:
 ```
-semantic_page(
+semanticPage(
       ...
       suppressDependencies("bootstrap"),
       ...
@@ -167,7 +167,7 @@ jsCode <- " # Semantic UI componts JS "
 ...
 ui <- function() {
   shinyUI(
-    semantic_page(
+    semanticPage(
       title = "Your page title",
       shinyjs::useShinyjs(),
       suppressDependencies("bootstrap"),
@@ -195,7 +195,7 @@ $(document).ready(function() {
 })
 ...
 ui <- function() {
-  shinyUI(semantic_page(
+  shinyUI(semanticPage(
     title = "My page",
     tags$script(jsCode),
     suppressDependencies("bootstrap"),

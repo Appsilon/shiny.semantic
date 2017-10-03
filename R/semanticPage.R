@@ -32,7 +32,7 @@ get_dependencies <- function() {
 #' wrapper (e.g. style, class etc.)
 #'
 #' @export
-semantic_page <- function(..., title = "") {
+semanticPage <- function(..., title = "") { # nolint
   content <- shiny::tags$div(class = "wrapper", ...)
 
   shiny::tagList(
