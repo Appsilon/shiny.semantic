@@ -15,7 +15,8 @@ params:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "inst/assets/README_files/figure-markdown_github"
+  fig.path = "inst/assets/README_files/figure-markdown_github",
+  screenshot.force = params$escape_script # When script is not dynamic (markdown) we should use screenshots.
 )
 ```
 
