@@ -10,6 +10,8 @@ Semantic UI wrapper for Shiny
 
 With this library it's easy to wrap Shiny with [Semantic UI components](https://github.com/Semantic-Org/Semantic-UI). Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.
 
+`master` branch contains the stable version. Use `develop` branch for latest features.
+
 <h2>
 Before
 </h2>

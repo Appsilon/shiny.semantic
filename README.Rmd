@@ -43,6 +43,9 @@ create_example <- function(code, ...) {
 <div class="section level2">
 With this library it's easy to wrap Shiny with [Semantic UI components][semantic_repo_url]. Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.
 
+`master` branch contains the stable version. Use `develop` branch for latest features.
+
+
 <div class="ui stackable two column grid">
 <div class="column">
 <h2> Before </h2>
