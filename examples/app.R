@@ -4,6 +4,8 @@ library(shiny.semantic)
 library(magrittr)
 library(highlighter)
 library(formatR)
+library(httr)
+library(rjson)
 
 demo <- function(code) {
   div(class = "ui raised segment",
@@ -150,6 +152,39 @@ card <- function() {
   div(
     h1(class="ui header", id="card", "Card"),
     demo(
+      uicard(
+        div(class="content",
+          div(class="header", "Elliot Fu"),
+          div(class="meta", "Friend"),
+          div(class="description", "Elliot Fu is a film-maker from New York.")
+        )
+      )
+    ),
+    demo(
+      uicards(
+        class = "three",
+        mtcars %>% tibble::rownames_to_column() %>% head %>%
+          purrrlyr::by_row(~ {
+            uicard(
+              div(class="content",
+                div(class="header", .$rowname),
+                div(class="meta", paste("Number of cylinders:", .$cyl)),
+                div(class="description", paste("1/4 mile time:", .$qsec))
+              )
+            )
+          }) %>% {.$.out}
+      )
+    ),
+    demo(
+      uicard(
+        div(class="content",
+          div(class="header", "Elliot Fu"),
+          div(class="meta", "Friend"),
+          div(class="description", "Elliot Fu is a film-maker from New York.")
+        )
+      )
+    ),
+    demo(
       div(class="ui card",
         div(class="content",
           div(class="right floated meta", "14h"),
@@ -251,6 +286,7 @@ css <- "
 #examples > div > .header {
   margin-top: 1em;
 }"
+
 ui <- function() {
   shinyUI(semanticPage(
     tags$head(tags$style(HTML(css))),
@@ -275,7 +311,7 @@ ui <- function() {
   ))
 }
 
-server <- shinyServer(function(input, output) {
+server <- shinyServer(function(input, output, session) {
   runjs(jsCode)
 })
 

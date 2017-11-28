@@ -17,20 +17,14 @@ Before
 </h2>
 <br>
 
-<!--html_preserve-->
-
-<script type="application/json" data-for="htmlwidget-dbdd4a2a19e1448d30c4">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"container-fluid\">\n    <div style=\"margin-left: 20px; background: white\">\n      <div>\n        <div>\n          <a>Client's info<\/a>\n          <p><\/p>\n          <table  class = 'table shiny-table table- spacing-s' style = 'width:auto;'>\n<thead> <tr> <th style='text-align: left;'> Name <\/th> <th style='text-align: left;'> City <\/th> <th style='text-align: left;'> Revenue <\/th>  <\/tr> <\/thead> <tbody>\n  <tr> <td> John Smith <\/td> <td> Warsaw, Poland <\/td> <td> $210.50 <\/td> <\/tr>\n  <tr> <td> Lindsay More <\/td> <td> SF, United States <\/td> <td> $172.78 <\/td> <\/tr>\n   <\/tbody> <\/table>\n        <\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div>"},"evals":[],"jsHooks":[]}</script>
-<!--/html_preserve-->
+![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-3-1.png)
 
 <h2>
 After
 </h2>
 <br>
 
-<!--html_preserve-->
-
-<script type="application/json" data-for="htmlwidget-b6156886aa01b7f2ecb2">{"x":{"ui":"<div class=\"demo\">\n  <body style=\"min-height: 611px;\">\n    <div class=\"wrapper\">\n      <div class=\"ui raised segment\" style=\"margin-left: 20px; max-width: 350px; width: 100%\">\n        <a class=\"ui green ribbon label\">Client's info<\/a>\n        <p><\/p>\n        <!-- html table generated in R 3.4.2 by xtable 1.8-2 package -->\n<!-- Fri Nov 24 14:55:08 2017 -->\n<table class = 'ui very basic collapsing celled table'>\n<tr> <th> Name <\/th> <th> City <\/th> <th> Revenue <\/th>  <\/tr>\n  <tr> <td> John Smith <\/td> <td> Warsaw, Poland <\/td> <td> $210.50 <\/td> <\/tr>\n  <tr> <td> Lindsay More <\/td> <td> SF, United States <\/td> <td> $172.78 <\/td> <\/tr>\n   <\/table>\n\n      <\/div>\n    <\/div>\n  <\/body>\n<\/div>"},"evals":[],"jsHooks":[]}</script>
-<!--/html_preserve-->
+![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-4-1.png)
 
 <!-- #Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link). -->
 <!-- Live demo link below -->
@@ -43,6 +37,8 @@ Source code
 -----------
 
 This library source code can be found on [Appsilon Data Science's](http://appsilondatascience.com) Github: <br> <https://github.com/Appsilon/shiny.semantic>
+
+[![CircleCI](https://circleci.com/gh/Appsilon/shiny.semantic/tree/develop.svg?style=svg)](https://circleci.com/gh/Appsilon/shiny.semantic/tree/develop)
 
 How to install?
 ---------------
@@ -83,10 +79,8 @@ Basic example will look like this:
 
     shinyApp(ui = ui(), server = server)
 
-and will render a simple button. <!--html_preserve-->
+and will render a simple button. ![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-6-1.png)
 
-<script type="application/json" data-for="htmlwidget-8861655536cb59378385">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui button\">\n    <i class=\"user icon\"><\/i>\n    Icon button\n  <\/div>\n<\/div>"},"evals":[],"jsHooks":[]}</script>
-<!--/html_preserve-->
 For better understanding it's good to check [Semantic UI documentation.](http://semantic-ui.com/introduction/getting-started.html)
 
 **Note \#1**
@@ -169,11 +163,7 @@ Component examples
 
 -   **Raised segment with list**
 
-<!--html_preserve-->
-
-<script type="application/json" data-for="htmlwidget-cff5afa835db8e9e089a">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui raised segment\">\n    <div class=\"ui relaxed divided list\">\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\"><\/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello<\/a>\n          <div class=\"description\">Apples<\/div>\n        <\/div>\n      <\/div>\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\"><\/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello<\/a>\n          <div class=\"description\">Pears<\/div>\n        <\/div>\n      <\/div>\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\"><\/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello<\/a>\n          <div class=\"description\">Oranges<\/div>\n        <\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div>"},"evals":[],"jsHooks":[]}</script>
-<!--/html_preserve-->
-<!--html_preserve-->
+![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-7-1.png) <!--html_preserve-->
 <pre>
 <code class="r">div(class = "ui raised segment", div(class = "ui relaxed divided list", c("Apples", 
     "Pears", "Oranges") %&gt;% purrr::map(~div(class = "item", uiicon("large github middle aligned"), 
@@ -184,11 +174,7 @@ Component examples
 <!--/html_preserve-->
 -   **Interactive card**
 
-<!--html_preserve-->
-
-<script type="application/json" data-for="htmlwidget-286f33d849f3323eef27">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui card\">\n    <div class=\"content\">\n      <div class=\"right floated meta\">14h<\/div>\n      <img class=\"ui avatar image\" src=\"http://semantic-ui.com/images/avatar/large/elliot.jpg\"/>\n      Elliot\n    <\/div>\n    <div class=\"image\">\n      <img src=\"http://semantic-ui.com/images/wireframe/image.png\"/>\n    <\/div>\n    <div class=\"content\">\n      <span class=\"right floated\">\n        <i class=\"heart outline like icon\"><\/i>\n        17 likes\n      <\/span>\n      <i class=\"comment icon\"><\/i>\n      3 comments\n    <\/div>\n    <div class=\"extra content\">\n      <div class=\"ui large transparent left icon input\">\n        <i class=\"heart ouline icon\"><\/i>\n        <input type=\"text\" placeholder=\"Add Comment...\"/>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div>"},"evals":[],"jsHooks":[]}</script>
-<!--/html_preserve-->
-<!--html_preserve-->
+![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-9-1.png) <!--html_preserve-->
 <pre>
 <code class="r">div(class = "ui card", div(class = "content", div(class = "right floated meta", "14h"), 
     img(class = "ui avatar image", src = "http://semantic-ui.com/images/avatar/large/elliot.jpg"), 

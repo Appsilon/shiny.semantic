@@ -42,7 +42,7 @@ $.extend(customShinyInputBinding, {
   // callback is a function that queues data to be sent to
   // the server.
   subscribe: function(el, callback) {
-    $(el).change(function () { callback(true); });
+    $(el).on('keyup change', function () { callback(true); });
   },
 
   // TODO: Remove the event listeners.

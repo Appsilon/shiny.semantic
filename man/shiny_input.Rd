@@ -7,11 +7,14 @@
 shiny_input(input_id, shiny_ui, value = NULL, type = "JSON")
 }
 \arguments{
-\item{input_id}{String with name of this input. Access to this input within server code is normal with input[[input_id]].}
+\item{input_id}{String with name of this input. Access to this input within server code is normal with
+input[[input_id]].}
 
-\item{shiny_ui}{UI of HTML component presenting this input to the users. This UI should allow to extract its value with jQuery $().val() function.}
+\item{shiny_ui}{UI of HTML component presenting this input to the users. This UI should allow to extract its value
+with jQuery $().val() function.}
 
-\item{value}{An optional argument with value that should be set for this input. Can be used to store persisten input valus in dynamic UIs.}
+\item{value}{An optional argument with value that should be set for this input. Can be used to store persisten input
+valus in dynamic UIs.}
 
 \item{type}{Type of input value (could be "JSON" or "text").}
 }

@@ -19,5 +19,10 @@ Imports:
     shiny (>= 0.12.1),
     htmltools (>= 0.2.6),
     htmlwidgets (>= 0.8),
-    purrr (>= 0.2.2)
+    purrr (>= 0.2.2),
+    magrittr
+Suggests:
+    dplyr,
+    gapminder,
+    testthat
 RoxygenNote: 6.0.1

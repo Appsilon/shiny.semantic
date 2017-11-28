@@ -4,17 +4,21 @@
 \alias{uirender}
 \title{Render semanticui htmlwidget}
 \usage{
-uirender(ui, width = NULL, height = NULL, elementId = NULL)
+uirender(ui, width = NULL, height = NULL, element_id = NULL)
 }
 \arguments{
 \item{ui}{UI, which will be wraped in an htmlwidget.}
 
-\item{width}{Fixed width for widget (in css units). The default is NULL, which results in intelligent automatic sizing based on the widget's container.}
+\item{width}{Fixed width for widget (in css units). The default is NULL,
+which results in intelligent automatic sizing.}
 
-\item{height}{Fixed height for widget (in css units). The default is NULL, which results in intelligent automatic sizing based on the widget's container.}
+\item{height}{Fixed height for widget (in css units). The default is NULL,
+which results in intelligent automatic sizing.}
 
-\item{elementId}{Use an explicit element ID for the widget (rather than an automatically generated one).}
+\item{element_id}{Use an explicit element ID for the widget
+(rather than an automatically generated one).}
 }
 \description{
-htmlwidget that adds semanticui dependencies and renders in viewer or rmarkdown.
+htmlwidget that adds semanticui dependencies and
+renders in viewer or rmarkdown.
 }
