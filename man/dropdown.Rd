@@ -12,15 +12,16 @@ dropdown(name, choices, choices_value = choices, default_text = "Select",
 
 \item{choices}{All available options one can select from.}
 
-\item{choices_value}{What reactive value should be used for corresponding choice.}
+\item{choices_value}{What reactive value should be used for corresponding
+choice.}
 
 \item{default_text}{Text to be visible on dropdown when nothing is selected.}
 
 \item{value}{Pass value if you want to initialize selection for dropdown.}
 }
 \description{
-This creates a default dropdown using Semantic UI styles with Shiny input. Dropdown is already initialized
-and available under input[[name]].
+This creates a default dropdown using Semantic UI styles with Shiny input.
+Dropdown is already initialized and available under input[[name]].
 }
 \examples{
 ## Only run examples in interactive R sessions

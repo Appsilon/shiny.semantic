@@ -9,13 +9,16 @@ tabset(tabs, id = generate_random_id("menu"),
   tab_content_class = "bottom attached segment")
 }
 \arguments{
-\item{tabs}{A list of tabs. Each tab is a list of two elements - first element defines menu item, second element defines tab content.}
+\item{tabs}{A list of tabs. Each tab is a list of two elements - first
+element defines menu item, second element defines tab content.}
 
 \item{id}{Id of the menu element (default: randomly generated id)}
 
-\item{menu_class}{Class for the menu element (default: "top attached tabular")}
+\item{menu_class}{Class for the menu element (default: "top attached
+tabular")}
 
-\item{tab_content_class}{Class for the tab content (default: "bottom attached segment")}
+\item{tab_content_class}{Class for the tab content (default: "bottom attached
+segment")}
 }
 \description{
 This creates tabs with content using Semantic UI styles.

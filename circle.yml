@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  test:
+    working_directory: /mnt
+    docker:
+      - image: appsilon/shiny.semantic-build:3.4.1
+    steps:
+      - checkout
+      - run:
+          name: Run devtools check
+          command: 'R -e "devtools::check()"'
+      - store_artifacts:
+          path: ..Rcheck
+          prefix: tests
+      
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test
