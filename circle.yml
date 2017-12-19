@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Run devtools check
-          command: 'R -e "devtools::check()"'
+          command: "R -e 'results <- devtools::check(); stopifnot(length(results$errors) == 0 & length(results$warnings) == 0 & length(results$notes) == 0)'"
       - store_artifacts:
           path: ..Rcheck
           prefix: tests
