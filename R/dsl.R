@@ -23,10 +23,10 @@ uiicon <- function(type = "", ...) {
 #' @export
 uiheader <- function(title, description, icon = NULL) {
   shiny::h2(class = "ui header",
-     if (!is.null(icon)) uiicon(icon),
-     shiny::div(class = "content", title,
-       shiny::div(class = "sub header", description)
-     )
+            if (!is.null(icon)) uiicon(icon),
+            shiny::div(class = "content", title,
+                       shiny::div(class = "sub header", description)
+            )
   )
 }
 
@@ -80,7 +80,7 @@ uisegment <- function(..., class = "") {
 #' @export
 uiform <- function(..., class = "") {
   shiny::tags$form(class = paste("ui form", class),
-    ...
+                   ...
   )
 }
 
@@ -174,15 +174,15 @@ dropdown <- function(name,
   shiny::tagList(
     shiny::div(class = class,
                shiny_text_input(name,
-                 shiny::tags$input(type = "hidden", name = name),
-                 value = value
+                                shiny::tags$input(type = "hidden", name = name),
+                                value = value
                ),
                uiicon("dropdown"),
                shiny::div(class = "default text", default_text),
                shiny::div(class = "menu",
-                 purrr::map2(choices, choices_value, ~
-                   div(class = "item", `data-value` = .y, .x)
-                 )
+                          purrr::map2(choices, choices_value, ~
+                                        div(class = "item", `data-value` = .y, .x)
+                          )
                )
     ),
     shiny::tags$script(paste0(
@@ -216,11 +216,11 @@ tabset <- function(tabs,
 
   shiny::tagList(
     shiny::div(id = id,
-      class = paste("ui menu", menu_class),
-      purrr::map(id_tabs, ~ {
-        class <- paste("item", if (.$id == id_tabs[[1]]$id) "active" else "")
-        shiny::a(class = class, `data-tab` = .$id, .$menu)
-      })
+               class = paste("ui menu", menu_class),
+               purrr::map(id_tabs, ~ {
+                 class <- paste("item", if (.$id == id_tabs[[1]]$id) "active" else "")
+                 shiny::a(class = class, `data-tab` = .$id, .$menu)
+               })
     ),
     purrr::map(id_tabs, ~ {
       class <- paste("ui tab", tab_content_class,
@@ -228,8 +228,19 @@ tabset <- function(tabs,
       shiny::div(class = class, `data-tab` = .$id, .$content)
     }),
     shiny::tags$script(paste0(
-      "$('#", id, ".menu .item').tab({onVisible:",
-      " function() {$(window).resize()} });"))
+      "/* Code below is needed to trigger visibility on reactive Shiny outputs. */
+       /* Thanks to that users do not have to set suspendWhenHidden to FALSE.   */
+       var previous_tab;
+       $('#", id, ".menu .item').tab({
+       onVisible: function(target) {
+        if (previous_tab) {
+          $(this).trigger('hidden');
+        }
+      $(window).resize();
+      $(this).trigger('shown');
+      previous_tab = this;
+    }
+  });"))
   )
 }
 
@@ -263,8 +274,8 @@ uimessage <- function(header, content, type = "", icon, closable = FALSE) {
     }
     icon_else_header <- uiicon(icon)
     message_else_content <- shiny::div(class = "content",
-                                shiny::div(class = "header", header),
-                                content)
+                                       shiny::div(class = "header", header),
+                                       content)
   } else {
     icon_else_header <- shiny::div(class = "header", header)
     message_else_content <- content
