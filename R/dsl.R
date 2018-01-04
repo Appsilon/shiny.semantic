@@ -233,14 +233,12 @@ tabset <- function(tabs,
        var previous_tab;
        $('#", id, ".menu .item').tab({
        onVisible: function(target) {
-        if (previous_tab) {
+         if (previous_tab) {
           $(this).trigger('hidden');
-        }
-      $(window).resize();
-      $(this).trigger('shown');
-      previous_tab = this;
-    }
-  });"))
+         }
+       $(window).resize();
+       $(this).trigger('shown');
+       previous_tab = this;}});"))
   )
 }
 

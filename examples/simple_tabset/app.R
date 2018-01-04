@@ -1,7 +1,5 @@
 library(shiny)
 library(shiny.semantic)
-library(highlighter)
-library(magrittr)
 library(plotly)
 
 ui <- shinyUI(semanticPage(
