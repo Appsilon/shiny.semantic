@@ -162,7 +162,31 @@ Component examples
 
 ![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-7-1.png) <!--html_preserve-->
 <pre>
-<code class="r">div(class = "ui raised segment", div(class = "ui relaxed divided list", c("Apples", "Pears", "Oranges") %&gt;% purrr::map(~div(class = "item", uiicon("large github middle aligned"), div(class = "content", a(class = "header", "Hello"), div(class = "description", .))))))</code>
+<code class="r">div(
+  class = "ui raised segment",
+  div(
+    class = "ui relaxed divided list",
+    c(
+      "Apples", "Pears",
+      "Oranges"
+    ) %&gt;%
+      purrr::map(~div(
+        class = "item",
+        uiicon("large github middle aligned"),
+        div(
+          class = "content",
+          a(
+            class = "header",
+            "Hello"
+          ),
+          div(
+            class = "description",
+            .
+          )
+        )
+      ))
+  )
+)</code>
 </pre>
 
 <!--/html_preserve-->
@@ -170,7 +194,44 @@ Component examples
 
 ![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-9-1.png) <!--html_preserve-->
 <pre>
-<code class="r">div(class = "ui card", div(class = "content", div(class = "right floated meta", "14h"), img(class = "ui avatar image", src = "http://semantic-ui.com/images/avatar/large/elliot.jpg"), "Elliot"), div(class = "image", img(src = "http://semantic-ui.com/images/wireframe/image.png")), div(class = "content", span(class = "right floated", uiicon("heart outline like"), "17 likes"), uiicon("comment"), "3 comments"), div(class = "extra content", div(class = "ui large transparent left icon input", uiicon("heart ouline"), tags$input(type = "text", placeholder = "Add Comment..."))))</code>
+<code class="r">div(
+  class = "ui card",
+  div(
+    class = "content",
+    div(
+      class = "right floated meta",
+      "14h"
+    ), img(
+      class = "ui avatar image",
+      src = "http://semantic-ui.com/images/avatar/large/elliot.jpg"
+    ),
+    "Elliot"
+  ), div(
+    class = "image",
+    img(src = "http://semantic-ui.com/images/wireframe/image.png")
+  ),
+  div(
+    class = "content",
+    span(
+      class = "right floated",
+      uiicon("heart outline like"),
+      "17 likes"
+    ),
+    uiicon("comment"),
+    "3 comments"
+  ),
+  div(
+    class = "extra content",
+    div(
+      class = "ui large transparent left icon input",
+      uiicon("heart ouline"),
+      tags$input(
+        type = "text",
+        placeholder = "Add Comment..."
+      )
+    )
+  )
+)</code>
 </pre>
 
 <!--/html_preserve-->

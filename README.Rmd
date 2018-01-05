@@ -21,12 +21,16 @@ knitr::opts_chunk$set(
 source("readme_assets/ui_demo.R")
 
 create_example <- function(code, ...) {
+  unstyled <- deparse(substitute(code), width.cutoff = 20)
+  args <- as.list(unstyled)
+  args$sep <- "\n"
+  args <- as.list(styler::style_text(do.call(paste, args)))
+  args$sep <- "\n"
+  styled <- do.call(paste, args)
   list(
     htmlwidget = shiny.semantic::uirender(div(class="demo", code), ...),
     code_demo = div(class="demo-code",
-      pre(code(class="r",
-        styler::style_text(do.call(paste0, as.list(deparse(substitute(code)))))
-      ))
+      pre(code(class="r", styled))
     )
   )
 }
