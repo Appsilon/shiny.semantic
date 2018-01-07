@@ -4,14 +4,15 @@
 \alias{uimenu}
 \title{Create Semantic UI Menu}
 \usage{
-uimenu(type = "", ...)
+uimenu(..., type = NULL, disable_ui_class = FALSE)
 }
 \arguments{
+\item{...}{Menu items to be created. Use menu_item function to create new menu item. Use uidropdown(is_menu_item = TRUE, ...)
+function to create new dropdown menu item. Use menu_header and menu_divider functions to customize menu format.}
+
 \item{type}{Type of the menu. Look at https://semantic-ui.com/collections/menu.html for all possiblities.}
 
-\item{...}{Menu items to be created. Use hyperlink_item function to create new linked menu item. Use static_item 
-function to create new static menu item. Use uidropdown(in_menu = TRUE, ...) to create a dropdown item. Use
-right_menu to create a submenu on the right.}
+\item{disable_ui_class}{If TRUE menu is created without ui class - used when UI menu is child of other ui class.}
 }
 \description{
 This creates a menu using Semantic UI.
@@ -21,62 +22,31 @@ library(shiny)
 library(shiny.semantic)
 
 ui <- function() {
-shinyUI(
-  semanticPage(
-    title = "My page",
-    suppressDependencies("bootstrap"),
-    uimenu("secondary vertical",
-           hyperlink_item("", "Account", item_feature = "active"),
-           hyperlink_item("", "Settings"),
-           uidropdown(type = "",
-                      name = "unique_name",
-                      in_menu = TRUE,
-                      choices = dropdown_menu(dropdown_header("Text Size"),
-                                              dropdown_choice("Small", "Small"),
-                                              dropdown_choice("Medium", "Medium"),
-                                              dropdown_choice("Large", "Large")),
-                      value = NULL,
-                      dropdown_specs = list("transition: 'drop'"),
-                      uiicon("dropdown icon"),
-                      "Display Options"))
+  shinyUI(
+    semanticPage(
+      title = "My page",
+      suppressDependencies("bootstrap"),
+      uimenu(menu_item("Menu"),
+             uidropdown(
+               "Action",
+               dropdown_menu(
+                 menu_header(uiicon("file"), "File", is_item = FALSE),
+                 menu_item(uiicon("wrench"), "Open"),
+                 menu_item(uiicon("upload"), "Upload"),
+                menu_item(uiicon("remove"), "Upload"),
+                 menu_divider(),
+                 menu_header(uiicon("user"), "User", is_item = FALSE),
+                 menu_item(uiicon("add user"), "Add"),
+                 menu_item(uiicon("remove user"), "Remove")),
+               type = "",
+               name = "unique_name",
+               is_menu_item = TRUE),
+             menu_item(uiicon("user"), "Profile", is_link = TRUE, link = "#index", item_feature = "active"),
+             menu_item("Projects", is_link = TRUE, link = "#projects"),
+             menu_item(uiicon("users"), "Team"),
+             dropdown_menu(menu_item(uiicon("add icon"), "New tab"), type = "right"))
+    )
   )
-)
-}
-
-server <- shinyServer(function(input, output) {
-})
-
-shinyApp(ui = ui(), server = server)
-
-# Note that shiny::tags$a generates the same output as hyperlink_item. You can use shiny html tags to create more complex menu items if you label them with "item" class.
-
-ui <- function() {
-shinyUI(
-  semanticPage(
-    title = "My page",
-    suppressDependencies("bootstrap"),
-    uimenu("pointing",
-           static_item("Menu"),
-           uidropdown(type = "",
-                      name = "unique_name",
-                      in_menu = TRUE,
-                      choices = dropdown_menu(
-                        dropdown_header("File"),
-                        dropdown_choice("Open", uiicon("wrench icon"), "Open"),
-                        dropdown_choice("Save", uiicon("user")),
-                        dropdown_choice("Undo", uiicon("inbox icon"), uiicon("users"), uiicon("user")),
-                        dropdown_divider(),
-                        dropdown_header("Home"),
-                        dropdown_choice("Close", uiicon("wrench icon"), "Close")),
-                      value = "Open",
-                      uiicon("world icon"), 
-                      span(class = "text", "Dropdown")),
-           hyperlink_item("/index", uiicon("user"), "Profile", item_feature = "active"),
-           hyperlink_item("Projects", link = "/projects"),
-           hyperlink_item(link = "", uiicon("users"), "Team"),
-           right_menu(hyperlink_item("", uiicon("add icon"), "New tab")))
-  )
-)
 }
 
 server <- shinyServer(function(input, output) {

@@ -4,24 +4,38 @@
 \alias{uidropdown}
 \title{Create Semantic UI Dropdown}
 \usage{
-uidropdown(type = "", name, choices = dropdown_menu(), ...,
-  in_menu = "FALSE", dropdown_specs = list(), value = NULL)
+uidropdown(..., type = NULL, name, is_menu_item = FALSE,
+  dropdown_specs = list())
 }
 \arguments{
+\item{...}{Dropdown content.}
+
 \item{type}{Type of the dropdown. Look at https://semantic-ui.com/modules/dropdown.html for all possibilities.}
 
 \item{name}{Unique name of the created dropdown.}
 
+\item{is_menu_item}{TRUE if the dropdown is a menu item. Default is FALSE.}
+
+\item{dropdown_specs}{A list of dropdown functionalities. Look at https://semantic-ui.com/modules/dropdown.html#/settings for all possibilities.}
+
 \item{choices}{Use dropdown_menu to create set of choices, headers and dividers for the dropdown.}
-
-\item{...}{Dropdown items to be created. Use dropdown_item to create new dropdown item.}
-
-\item{in_menu}{TRUE if the dropdown is a menu item. Default is FALSE.}
-
-\item{dropdown_specs}{A list of dropdown functionalities. Look at https://semantic-ui.com/modules/dropdown.html#link3 for all possibilities.}
-
-\item{value}{Default value of the dropdown. Useful when using selection dropdowns with default value selected.}
 }
 \description{
 This creates a dropdown using Semantic UI.
+}
+\examples{
+
+uidropdown(
+  "Dropdown menu",
+  uiicon(type = "dropdown"),
+  dropdown_menu(
+    menu_header("Header"),
+    menu_divider(),
+    menu_item("Option 1"),
+    menu_item("Option 2")
+  ),
+  name = "dropdown_menu",
+  dropdown_specs = list("duration: 500")
+)
+
 }

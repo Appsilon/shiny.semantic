@@ -2,14 +2,17 @@
 % Please edit documentation in R/dsl.R
 \name{dropdown_menu}
 \alias{dropdown_menu}
-\title{Create Semantic UI Dropdown Menu}
+\title{Create Semantic UI Menu inside dropdown}
 \usage{
-dropdown_menu(...)
+dropdown_menu(..., type = NULL)
 }
 \arguments{
-\item{...}{Dropdown content. Use dropdown_choice to create dropdown item. Use dropdown_header to create dropdown header item.
-Use dropdown_divider to create divider item.}
+\item{...}{Menu items to be created inside dropdown.}
+
+\item{type}{Type of specified menu. It can be: 'left', 'right' or NULL (default).}
+
+\item{disable_ui_class}{If TRUE menu is created without ui class - used when UI menu is child of other ui class.}
 }
 \description{
-Create Semantic UI Dropdown Menu
+This creates a menu item that allows to insert more elements inside uidropdown.
 }
