@@ -10,9 +10,11 @@ search_selection_api(name, search_api_url, multiple = FALSE,
 \arguments{
 \item{name}{Input name. Reactive value is available under input[[name]].}
 
-\item{search_api_url}{Register API url with server JSON Response containing fields `name` and `value`.}
+\item{search_api_url}{Register API url with server JSON Response containing
+fields `name` and `value`.}
 
-\item{multiple}{TRUE if the dropdown should allow multiple selections, FALSE otherwise (default FALSE).}
+\item{multiple}{TRUE if the dropdown should allow multiple selections,
+FALSE otherwise (default FALSE).}
 
 \item{default_text}{Text to be visible on dropdown when nothing is selected.
 
@@ -51,8 +53,12 @@ if (interactive()) {
                   value = country)
     }
 
-    search_api_url <- shiny.semantic::register_search(session, gapminder, search_api)
-    output$search_letters <- shiny::renderUI(search_selection_api("search_result", search_api_url, multiple = TRUE))
+    search_api_url <- shiny.semantic::register_search(session,
+                                                      gapminder,
+                                                      search_api)
+    output$search_letters <- shiny::renderUI(
+      search_selection_api("search_result", search_api_url, multiple = TRUE)
+    )
     output$selected_letters <- renderText(input[["search_result"]])
   })
 
@@ -60,7 +66,8 @@ if (interactive()) {
 }}
 }
 \description{
-Define the (multiple) search selection dropdown input for retrieving remote selection menu content from an API endpoint.
-API response is expected to be a JSON with property fields `name` and `value`.
-Using a search selection dropdown allows to search more easily through large lists.
+Define the (multiple) search selection dropdown input for retrieving remote
+selection menu content from an API endpoint. API response is expected to be
+a JSON with property fields `name` and `value`. Using a search selection
+dropdown allows to search more easily through large lists.
 }

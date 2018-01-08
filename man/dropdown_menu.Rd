@@ -9,7 +9,7 @@ dropdown_menu(..., type = NULL)
 \arguments{
 \item{...}{Menu items to be created inside dropdown.}
 
-\item{type}{Type of specified menu. It can be: 'left', 'right' or NULL (default).}
+\item{type}{Type of specified menu. It can be: 'left', 'right' or '' (default).}
 
 \item{disable_ui_class}{If TRUE menu is created without ui class - used when UI menu is child of other ui class.}
 }

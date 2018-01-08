@@ -4,7 +4,7 @@
 \alias{uimenu}
 \title{Create Semantic UI Menu}
 \usage{
-uimenu(..., type = NULL, disable_ui_class = FALSE)
+uimenu(..., type = "", disable_ui_class = FALSE)
 }
 \arguments{
 \item{...}{Menu items to be created. Use menu_item function to create new menu item. Use uidropdown(is_menu_item = TRUE, ...)

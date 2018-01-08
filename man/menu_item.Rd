@@ -4,7 +4,7 @@
 \alias{menu_item}
 \title{Create Semantic UI Menu Item}
 \usage{
-menu_item(..., item_feature = NULL, style = NULL, is_link = FALSE,
+menu_item(..., item_feature = "", style = NULL, is_link = FALSE,
   link = NULL)
 }
 \arguments{

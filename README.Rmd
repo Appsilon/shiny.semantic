@@ -11,6 +11,15 @@ params:
    escape_script: FALSE 
 ---
 
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "inst/assets/README_files/figure-markdown_github",
+  screenshot.force = params$escape_script # When script is not dynamic (markdown) we should use screenshots.
+)
+```
+
 ```{r, echo=FALSE, message=FALSE}
 source("readme_assets/ui_demo.R")
 
@@ -24,7 +33,7 @@ create_example <- function(code, ...) {
 
 <link href="http://fonts.googleapis.com/css?family=Lato:300,700,300italic|Inconsolata" rel="stylesheet" type="text/css">
 
-<link href='docs/style.css' rel='stylesheet' type='text/css'>
+<link href='inst/assets/styles/style.css' rel='stylesheet' type='text/css'>
 
 `r params$repo_name`
 ===========
@@ -33,6 +42,9 @@ create_example <- function(code, ...) {
 
 <div class="section level2">
 With this library it's easy to wrap Shiny with [Semantic UI components][semantic_repo_url]. Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.
+
+`master` branch contains the stable version. Use `develop` branch for latest features.
+
 
 <div class="ui stackable two column grid">
 <div class="column">
@@ -69,6 +81,8 @@ Source code {.darkslide}
 This library source code can be found on [Appsilon Data Science's](`r params$website_url`) Github:
 <br>
 [`r params$repo_url`](`r params$repo_url`)
+
+[![CircleCI](https://circleci.com/gh/Appsilon/shiny.semantic/tree/develop.svg?style=svg)](https://circleci.com/gh/Appsilon/shiny.semantic/tree/develop)
 
 ```{python, echo=FALSE, results='asis', eval=!params$escape_script}
 print("""
