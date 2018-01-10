@@ -339,8 +339,8 @@ dropdown <- function(name,
 #'                type = "",
 #'                name = "unique_name",
 #'                is_menu_item = TRUE),
-#'              menu_item(uiicon("user"), "Profile", link = "#index", item_feature = "active"),
-#'              menu_item("Projects", link = "#projects"),
+#'              menu_item(uiicon("user"), "Profile", href = "#index", item_feature = "active"),
+#'              menu_item("Projects", href = "#projects"),
 #'              menu_item(uiicon("users"), "Team"),
 #'              uimenu(menu_item(uiicon("add icon"), "New tab"), type = "right"))
 #'     )
@@ -371,7 +371,7 @@ uimenu <- function(..., type = "") {
 #'
 #' @export
 menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
-  menu_item_tag <- if (!is.NULL(href)) tags$a else tags$div
+  menu_item_tag <- if (!is.null(href)) tags$a else tags$div
   menu_item_tag(class = paste("item", item_feature),
                 href = href,
                 style = style,
