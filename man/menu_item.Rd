@@ -4,8 +4,7 @@
 \alias{menu_item}
 \title{Create Semantic UI Menu Item}
 \usage{
-menu_item(..., item_feature = "", style = NULL, is_link = FALSE,
-  link = NULL)
+menu_item(..., item_feature = "", style = NULL, href = NULL)
 }
 \arguments{
 \item{...}{Content of the menu item: text, icons or labels to be displayed.}
@@ -14,9 +13,8 @@ menu_item(..., item_feature = "", style = NULL, is_link = FALSE,
 
 \item{style}{Style of the item, e.g. "text-align: center".}
 
-\item{is_link}{If TRUE menu item is created with 'a' tag - ortherwise with 'div' tag (default).}
-
-\item{link}{If is_link is TRUE, determines to what the menu item should be linked. Ignored when is_link is FALSE.}
+\item{href}{If NULL (default) menu_item is created with 'div' tag. Otherwise it is created with 'a' tag, and
+parameeter defines its href attribute.}
 }
 \description{
 This creates a menu item using Semantic UI

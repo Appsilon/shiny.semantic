@@ -18,7 +18,7 @@ uidropdown(..., type = "", name, is_menu_item = FALSE,
 
 \item{dropdown_specs}{A list of dropdown functionalities. Look at https://semantic-ui.com/modules/dropdown.html#/settings for all possibilities.}
 
-\item{choices}{Use dropdown_menu to create set of choices, headers and dividers for the dropdown.}
+\item{choices}{Use uimenu to create set of choices, headers and dividers for the dropdown.}
 }
 \description{
 This creates a dropdown using Semantic UI.
@@ -28,7 +28,7 @@ This creates a dropdown using Semantic UI.
 uidropdown(
   "Dropdown menu",
   uiicon(type = "dropdown"),
-  dropdown_menu(
+  uimenu(
     menu_header("Header"),
     menu_divider(),
     menu_item("Option 1"),

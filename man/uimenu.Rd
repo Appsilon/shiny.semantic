@@ -4,15 +4,13 @@
 \alias{uimenu}
 \title{Create Semantic UI Menu}
 \usage{
-uimenu(..., type = "", disable_ui_class = FALSE)
+uimenu(..., type = "")
 }
 \arguments{
 \item{...}{Menu items to be created. Use menu_item function to create new menu item. Use uidropdown(is_menu_item = TRUE, ...)
 function to create new dropdown menu item. Use menu_header and menu_divider functions to customize menu format.}
 
 \item{type}{Type of the menu. Look at https://semantic-ui.com/collections/menu.html for all possiblities.}
-
-\item{disable_ui_class}{If TRUE menu is created without ui class - used when UI menu is child of other ui class.}
 }
 \description{
 This creates a menu using Semantic UI.
@@ -29,7 +27,7 @@ ui <- function() {
       uimenu(menu_item("Menu"),
              uidropdown(
                "Action",
-               dropdown_menu(
+               uimenu(
                  menu_header(uiicon("file"), "File", is_item = FALSE),
                  menu_item(uiicon("wrench"), "Open"),
                  menu_item(uiicon("upload"), "Upload"),
@@ -41,10 +39,10 @@ ui <- function() {
                type = "",
                name = "unique_name",
                is_menu_item = TRUE),
-             menu_item(uiicon("user"), "Profile", is_link = TRUE, link = "#index", item_feature = "active"),
-             menu_item("Projects", is_link = TRUE, link = "#projects"),
+             menu_item(uiicon("user"), "Profile", href = "#index", item_feature = "active"),
+             menu_item("Projects", href = "#projects"),
              menu_item(uiicon("users"), "Team"),
-             dropdown_menu(menu_item(uiicon("add icon"), "New tab"), type = "right"))
+             uimenu(menu_item(uiicon("add icon"), "New tab"), type = "right"))
     )
   )
 }
