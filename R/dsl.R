@@ -455,3 +455,46 @@ menu_header <- function(..., is_item = TRUE) {
 menu_divider <- function(...) {
   div(class = "divider", ...)
 }
+
+#' Helper function to render list element
+#'
+#' @param header String with header
+#' @param description String with description
+#' @param icon Icon string
+list_element <- function(header, description, icon){
+  div(class = "item", uiicon(icon),
+      div(class = "content",
+          div(class = "header", header),
+          div(class = "description", description)))
+}
+
+#' Create Semantic UI list with header, description and icons
+#'
+#' This creates a list with icons using Semantic UI
+#'
+#' @param data A dataframe with two columns `header` and `description` containing the list items
+#' headers and descriptions
+#' @param icon A string with icon name
+#' @param is_divided If TRUE created list elements are divided
+#'
+#' @export
+#'
+#' @examples
+#'
+#' list_content <- data.frame(
+#'   header = paste("Header", 1:5),
+#'   description = paste("Description", 1:5),
+#'   stringsAsFactors = FALSE
+#' )
+#'
+#' # Create a 5 element divided list with alert icons
+#' list_description_icons(list_content, "alert", is_divided = TRUE)
+uilist_with_description <- function(data, icon, is_divided = FALSE){
+  divided_list <- ifelse(is_divided, "divided", "")
+  list_class <- paste("ui", divided_list, "list")
+
+  div(class = list_class,
+      data %>% purrr::pmap(function(header, description){
+        list_element(header, description, icon)})
+  )
+}
