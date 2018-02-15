@@ -4,14 +4,14 @@
 \alias{list_element}
 \title{Helper function to render list element}
 \usage{
-list_element(header, description, icon)
+list_element(data, is_description, icon, row)
 }
 \arguments{
+\item{icon}{Icon string}
+
 \item{header}{String with header}
 
 \item{description}{String with description}
-
-\item{icon}{Icon string}
 }
 \description{
 Helper function to render list element

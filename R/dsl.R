@@ -461,21 +461,28 @@ menu_divider <- function(...) {
 #' @param header String with header
 #' @param description String with description
 #' @param icon Icon string
-list_element <- function(header, description, icon){
-  div(class = "item", uiicon(icon),
-      div(class = "content",
-          div(class = "header", header),
-          div(class = "description", description)))
+list_element <- function(data, is_description, icon, row){
+  div(class = "item",  if(icon == "") "" else uiicon(icon),
+      if(is_description) {
+        div(class = "content",
+            div(class = "header", data$header[row]),
+            div(class = "description", data$description[row]))
+      } else {
+        div(class = "content", data$header[row])
+      }
+      )
 }
 
 #' Create Semantic UI list with header, description and icons
 #'
 #' This creates a list with icons using Semantic UI
 #'
-#' @param data A dataframe with two columns `header` and `description` containing the list items
-#' headers and descriptions
-#' @param icon A string with icon name
+#' @param data A dataframe with columns `header` and/or `description` containing the list items
+#' headers and descriptions. `description` column is optional and should be provided
+#' if `is_description` parameter TRUE.
+#' @param icon A string with icon name. Empty string will render list without icons.
 #' @param is_divided If TRUE created list elements are divided
+#' @param is_description If TRUE created list will have a description
 #'
 #' @export
 #'
@@ -487,14 +494,14 @@ list_element <- function(header, description, icon){
 #'   stringsAsFactors = FALSE
 #' )
 #'
-#' # Create a 5 element divided list with alert icons
-#' list_description_icons(list_content, "alert", is_divided = TRUE)
-uilist_with_description <- function(data, icon, is_divided = FALSE){
+#' # Create a 5 element divided list with alert icons and description
+#' list_description_icons(list_content, "alert", is_divided = TRUE, is_description = TRUE)
+uilist <- function(data, icon, is_divided = FALSE, is_description = FALSE){
   divided_list <- ifelse(is_divided, "divided", "")
   list_class <- paste("ui", divided_list, "list")
 
   div(class = list_class,
-      data %>% purrr::pmap(function(header, description){
-        list_element(header, description, icon)})
+      1:nrow(data) %>% purrr::map(function(row){
+        list_element(data, is_description , icon, row)})
   )
 }
