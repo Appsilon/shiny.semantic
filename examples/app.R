@@ -232,21 +232,21 @@ tabs <- function () {
     )
   )
 }
-uilist <- function() {
+uilist_demo <- function() {
+  list_content <- data.frame(
+    header = paste("Header", 1:5),
+    description = paste("Description", 1:5),
+    stringsAsFactors = FALSE
+  )
+
   div(
     h1(class="ui dividing header", id="list", "List"),
-    demo(div(class="ui list", c("Apples", "Pears", "Oranges") %>% purrr::map(~ div(class="item", .)))),
-    demo(div(class="ui list", c("Apples", "Pears", "Oranges") %>% purrr::map(~
-      div(class="item", uiicon('users'), div(class="content", .))))),
-    demo(div(class="ui relaxed divided list", c("Apples", "Pears", "Oranges") %>% purrr::map(~
-      div(class="item",
-          uiicon('large github middle aligned'),
-          div(class="content",
-              a(class="header", "Hello"),
-              div(class="description", .))
-      ))))
+    demo(uilist(list_content, "", is_divided = FALSE, is_description = FALSE)),
+    demo(uilist(list_content, "alarm", is_divided = TRUE, is_description = FALSE)),
+    demo(uilist(list_content, "github", is_divided = TRUE, is_description = TRUE))
   )
 }
+
 section <- function() {
   div(
     h1(class="ui dividing header", id="section", "Section"),
@@ -299,7 +299,7 @@ ui <- function() {
         divider(),
         uiinput(),
         uilabel(),
-        uilist(),
+        uilist_demo(),
         grid(),
         breadcrumb(),
         card(),
