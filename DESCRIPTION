@@ -20,7 +20,8 @@ Imports:
     htmltools (>= 0.2.6),
     htmlwidgets (>= 0.8),
     purrr (>= 0.2.2),
-    magrittr
+    magrittr,
+    jsonlite
 Suggests:
     dplyr,
     gapminder,
