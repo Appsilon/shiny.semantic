@@ -375,7 +375,7 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
   menu_item_tag(class = paste("item", item_feature),
                 href = href,
                 style = style,
-                list(...))
+                ...)
 }
 
 #' Create Semantic UI Dropdown
