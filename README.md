@@ -43,9 +43,9 @@ How to install?
 
 **Note! This library is still in its infancy. Api might change in the future.**
 
-At the moment it's possible to install this library through [devtools](https://github.com/hadley/devtools).
+You can install shiny.semantic from CRAN repository:
 
-    devtools::install_github("Appsilon/shiny.semantic")
+    install.packages("shiny.semantic")
 
 To install [previous version]() you can run:
 
