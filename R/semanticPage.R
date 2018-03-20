@@ -37,8 +37,10 @@ semanticPage <- function(..., title = "") { # nolint
 
   shiny::tagList(
     get_dependencies(),
-    shiny::tags$meta(name="viewport", content="width=device-width, initial-scale=1.0"),
-    shiny::tags$head(shiny::tags$title(title)),
+    shiny::tags$head(
+      shiny::tags$title(title),
+      shiny::tags$meta(name = "viewport", content = "width=device-width, initial-scale=1.0")
+    ),
     shiny::tags$body(style = "min-height: 611px;", content)
   )
 }
