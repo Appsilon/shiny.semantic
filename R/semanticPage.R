@@ -19,7 +19,9 @@ get_dependencies <- function() {
                               c(file = file),
                               script = javascript_file,
                               stylesheet = css_files
-    )
+    ),
+    htmltools::tags$link(href = file.path(system.file("www", package = "shiny.semantic"), "range.css"), rel = "stylesheet"),
+    htmltools::tags$script(src = file.path(system.file("www", package = "shiny.semantic"), "range.js"))
   )
 }
 
