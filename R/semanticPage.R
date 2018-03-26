@@ -12,11 +12,10 @@ get_dependencies <- function() {
     css_files <- c("semantic.css")
   }
 
-  file <- system.file("semantic", package = "shiny.semantic")
   shiny::tagList(
     htmltools::htmlDependency("semantic-ui",
-                              "2.1.8",
-                              c(file = file),
+                              "2.2.3",
+                              c(file = CDN_PATH),
                               script = javascript_file,
                               stylesheet = css_files
     )
@@ -29,9 +28,9 @@ get_dependencies <- function() {
 get_default_semantic_theme <- function() {
   # TODO cdf paths
   if (getOption("shiny.minified", TRUE)) {
-    path <- system.file("semantic/semantic.min.css", package = "shiny.semantic")
+    path <- file.path(CDN_PATH, "semantic.min.css", fsep = "/")
   } else {
-    path <- system.file("semantic/semantic.css", package = "shiny.semantic")
+    path <- file.path(CDN_PATH, "semantic.css", fsep = "/")
   }
   c(path)
 }
@@ -42,9 +41,9 @@ get_default_semantic_theme <- function() {
 get_default_semantic_js <- function() {
   # TODO cdf paths
   if (getOption("shiny.minified", TRUE)) {
-    path <- system.file("semantic/semantic.min.js", package = "shiny.semantic")
+    path <- file.path(CDN_PATH, "semantic.min.js", fsep = "/")
   } else {
-    path <- system.file("semantic/semantic.js", package = "shiny.semantic")
+    path <- file.path(CDN_PATH, "semantic.js", fsep = "/")
   }
   path
 }
@@ -63,6 +62,7 @@ semanticPage <- function(..., title = "", theme = NULL) { # nolint
   content <- shiny::tags$div(class = "wrapper", ...)
 
   shiny::tagList(
+    ifelse(getOption("semantic.themes", FALSE), get_dependencies(), ""),
     shiny::tags$head(
       shiny::tags$link(rel="stylesheet", href = check_semantic_theme(theme)),
       tags$script(src = get_default_semantic_js()),
@@ -80,8 +80,7 @@ SUPPORTED_THEMES <- c("cerulean", "darkly", "paper", "simplex",
                       "cyborg", "sandstone", "yeti", "lumen", "spacelab")
 
 #' Cloudfront path
-#' TODO fill in
-CDN_PATH <- ""
+CDN_PATH <- "http://d335w9rbwpvuxm.cloudfront.net"
 
 #' Semantic theme path validator
 #'
