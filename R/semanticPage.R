@@ -1,3 +1,13 @@
+#' Supported semantic themes
+#' @export
+SUPPORTED_THEMES <- c("cerulean", "darkly", "paper", "simplex",
+                      "superhero", "flatly", "slate", "cosmo",
+                      "readable",  "united", "journal", "solar",
+                      "cyborg", "sandstone", "yeti", "lumen", "spacelab")
+
+#' Cloudfront path
+CDN_PATH <- "http://d335w9rbwpvuxm.cloudfront.net"
+
 #' Add dashboard dependencies to html
 #'
 #' Internal function that adds dashboard dependencies to html.
@@ -48,6 +58,28 @@ get_default_semantic_js <- function() {
   path
 }
 
+#' Semantic theme path validator
+#'
+#' @param theme_css it can be either NULL, character with css path, or theme name
+#'
+#' @return path to theme
+#' @export
+#'
+#' @examples
+#' check_semantic_theme(NULL)
+#' check_semantic_theme("darkly")
+check_semantic_theme <- function(theme_css) {
+  minfield <- ifelse(getOption("shiny.minified", TRUE), ".min", "")
+  if (is.null(theme_css)) return(get_default_semantic_theme())
+  if (tools::file_ext(theme_css) == "css") return(theme_css)
+  if (theme_css %in% SUPPORTED_THEMES) {
+    return(file.path(CDN_PATH, paste0("semantic.", theme_css, minfield, ".css"), fsep = "/"))
+  } else {
+    warning(paste("Theme ", theme_css, "not recognized. Default used instead!"))
+    return(get_default_semantic_theme())
+  }
+}
+
 #' Semantic UI page
 #'
 #' This creates a Semantic page for use in a Shiny app.
@@ -71,35 +103,4 @@ semanticPage <- function(..., title = "", theme = NULL) { # nolint
     ),
     shiny::tags$body(style = "min-height: 611px;", content)
   )
-}
-
-#' Supported semantic themes
-SUPPORTED_THEMES <- c("cerulean", "darkly", "paper", "simplex",
-                      "superhero", "flatly", "slate", "cosmo",
-                      "readable",  "united", "journal", "solar",
-                      "cyborg", "sandstone", "yeti", "lumen", "spacelab")
-
-#' Cloudfront path
-CDN_PATH <- "http://d335w9rbwpvuxm.cloudfront.net"
-
-#' Semantic theme path validator
-#'
-#' @param theme_css it can be either NULL, character with css path, or theme name
-#'
-#' @return path to theme
-#' @export
-#'
-#' @examples
-#' check_semantic_theme(NULL)
-#' check_semantic_theme("darkly")
-check_semantic_theme <- function(theme_css) {
-  minfield <- ifelse(getOption("shiny.minified", TRUE), ".min", "")
-  if (is.null(theme_css)) return(get_default_semantic_theme())
-  if (tools::file_ext(theme_css) == "css") return(theme_css)
-  if (theme_css %in% SUPPORTED_THEMES) {
-    return(file.path(CDN_PATH, paste0("semantic.", theme_css, minfield, ".css"), fsep = "/"))
-  } else {
-    warning(paste("Theme ", theme_css, "not recognized. Default used instead!"))
-    return(get_default_semantic_theme())
-  }
 }
