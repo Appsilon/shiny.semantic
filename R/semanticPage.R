@@ -25,7 +25,7 @@ get_dependencies <- function() {
   shiny::tagList(
     htmltools::htmlDependency("semantic-ui",
                               "2.2.3",
-                              c(file = CDN_PATH),
+                              c(href = CDN_PATH),
                               script = javascript_file,
                               stylesheet = css_files
     )
@@ -36,7 +36,6 @@ get_dependencies <- function() {
 #'
 #' @return path to default css semantic file
 get_default_semantic_theme <- function() {
-  # TODO cdf paths
   if (getOption("shiny.minified", TRUE)) {
     path <- file.path(CDN_PATH, "semantic.min.css", fsep = "/")
   } else {
@@ -49,7 +48,6 @@ get_default_semantic_theme <- function() {
 #'
 #' @return path to default js semantic file
 get_default_semantic_js <- function() {
-  # TODO cdf paths
   if (getOption("shiny.minified", TRUE)) {
     path <- file.path(CDN_PATH, "semantic.min.js", fsep = "/")
   } else {

@@ -7,6 +7,8 @@ library(formatR)
 library(httr)
 library(rjson)
 
+options(semantic.themes = TRUE)
+
 demo <- function(code) {
   div(class = "ui raised segment",
       code,
