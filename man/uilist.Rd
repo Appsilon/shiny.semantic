@@ -29,5 +29,5 @@ list_content <- data.frame(
 )
 
 # Create a 5 element divided list with alert icons and description
-list_description_icons(list_content, "alert", is_divided = TRUE, is_description = TRUE)
+uilist(list_content, "alert", is_divided = TRUE, is_description = TRUE)
 }

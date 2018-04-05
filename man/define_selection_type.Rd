@@ -6,6 +6,11 @@
 \usage{
 define_selection_type(name, multiple)
 }
+\arguments{
+\item{name}{character with name}
+
+\item{multiple}{multiple flag}
+}
 \description{
 Define search type if multiple
 }

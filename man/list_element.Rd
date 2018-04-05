@@ -7,11 +7,13 @@
 list_element(data, is_description, icon, row)
 }
 \arguments{
-\item{icon}{Icon string}
+\item{data}{data to list}
 
-\item{header}{String with header}
+\item{is_description}{description flag}
 
-\item{description}{String with description}
+\item{icon}{Icon character}
+
+\item{row}{row character}
 }
 \description{
 Helper function to render list element

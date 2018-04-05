@@ -1,4 +1,7 @@
 #' Define search type if multiple
+#'
+#' @param name character with name
+#' @param multiple multiple flag
 define_selection_type <- function(name, multiple) {
   multiple_class <- switch(multiple, "multiple", NULL)
   classes <- c("ui", "fluid", "search", "selection",

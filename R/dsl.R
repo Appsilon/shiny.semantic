@@ -389,7 +389,6 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
 #' @param ... Dropdown content.
 #' @param type Type of the dropdown. Look at https://semantic-ui.com/modules/dropdown.html for all possibilities.
 #' @param name Unique name of the created dropdown.
-#' @param choices Use uimenu to create set of choices, headers and dividers for the dropdown.
 #' @param is_menu_item TRUE if the dropdown is a menu item. Default is FALSE.
 #' @param dropdown_specs A list of dropdown functionalities. Look at https://semantic-ui.com/modules/dropdown.html#/settings for all possibilities.
 #'
@@ -465,9 +464,10 @@ menu_divider <- function(...) {
 
 #' Helper function to render list element
 #'
-#' @param header String with header
-#' @param description String with description
-#' @param icon Icon string
+#' @param data data to list
+#' @param is_description description flag
+#' @param icon Icon character
+#' @param row row character
 #'
 #' @import shiny
 list_element <- function(data, is_description, icon, row) {
@@ -494,7 +494,7 @@ list_element <- function(data, is_description, icon, row) {
 #' @param is_description If TRUE created list will have a description
 #'
 #' @export
-#'
+#' @import shiny
 #' @examples
 #'
 #' list_content <- data.frame(
@@ -504,7 +504,7 @@ list_element <- function(data, is_description, icon, row) {
 #' )
 #'
 #' # Create a 5 element divided list with alert icons and description
-#' list_description_icons(list_content, "alert", is_divided = TRUE, is_description = TRUE)
+#' uilist(list_content, "alert", is_divided = TRUE, is_description = TRUE)
 uilist <- function(data, icon, is_divided = FALSE, is_description = FALSE){
   divided_list <- ifelse(is_divided, "divided", "")
   list_class <- paste("ui", divided_list, "list")
