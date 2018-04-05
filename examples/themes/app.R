@@ -7,11 +7,13 @@ library(formatR)
 library(httr)
 library(rjson)
 
+options(semantic.themes = TRUE)
+
 demo <- function(code) {
   div(class = "ui raised segment",
-    code,
-    div(style = "width: 100%; height:10px"),
-    highlight(formatR::tidy_source(width.cutoff = 40, text = deparse(substitute(code)))$text.tidy)
+      code,
+      div(style = "width: 100%; height:10px"),
+      highlight(formatR::tidy_source(width.cutoff = 40, text = deparse(substitute(code)))$text.tidy)
   )
 }
 
@@ -22,9 +24,9 @@ input <- function(class = "ui input", style = "", type = "text", name = "", plac
 }
 
 jsCode <- "
-  $('.accordion').accordion({selector: {trigger: '.title .icon'}}).accordion('close');
-  $('.ui.dropdown').dropdown({});
-  $('.rating').rating('setting', 'clearable', true);
+$('.accordion').accordion({selector: {trigger: '.title .icon'}}).accordion('close');
+$('.ui.dropdown').dropdown({});
+$('.rating').rating('setting', 'clearable', true);
 "
 
 header <- function() {
@@ -129,8 +131,8 @@ accordion <- function() {
              div(class="active content", p("A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.")),
              div(class="title", uiicon('dropdown icon'), "What kinds of dogs are there?"),
              div(class="content", p("There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion."))
-             )
-         )
+    )
+    )
   )
 }
 grid <- function() {
@@ -154,9 +156,9 @@ card <- function() {
     demo(
       uicard(
         div(class="content",
-          div(class="header", "Elliot Fu"),
-          div(class="meta", "Friend"),
-          div(class="description", "Elliot Fu is a film-maker from New York.")
+            div(class="header", "Elliot Fu"),
+            div(class="meta", "Friend"),
+            div(class="description", "Elliot Fu is a film-maker from New York.")
         )
       )
     ),
@@ -167,9 +169,9 @@ card <- function() {
           purrrlyr::by_row(~ {
             uicard(
               div(class="content",
-                div(class="header", .$rowname),
-                div(class="meta", paste("Number of cylinders:", .$cyl)),
-                div(class="description", paste("1/4 mile time:", .$qsec))
+                  div(class="header", .$rowname),
+                  div(class="meta", paste("Number of cylinders:", .$cyl)),
+                  div(class="description", paste("1/4 mile time:", .$qsec))
               )
             )
           }) %>% {.$.out}
@@ -178,31 +180,31 @@ card <- function() {
     demo(
       uicard(
         div(class="content",
-          div(class="header", "Elliot Fu"),
-          div(class="meta", "Friend"),
-          div(class="description", "Elliot Fu is a film-maker from New York.")
+            div(class="header", "Elliot Fu"),
+            div(class="meta", "Friend"),
+            div(class="description", "Elliot Fu is a film-maker from New York.")
         )
       )
     ),
     demo(
       div(class="ui card",
-        div(class="content",
-          div(class="right floated meta", "14h"),
-          img(class="ui avatar image", src="images/elliot.jpg"),
-          "Elliot"
-        ),
-        div(class="image", img(src="images/wireframe.png")),
-        div(class="content",
-          span(class="right floated", uiicon("heart outline like"), "17 likes"),
-          uiicon("comment"),
-          "3 comments"
-        ),
-        div(class="extra content",
-          div(class="ui large transparent left icon input",
-            uiicon("heart ouline"),
-            tags$input(type="text", placeholder ="Add Comment...")
+          div(class="content",
+              div(class="right floated meta", "14h"),
+              img(class="ui avatar image", src="images/elliot.jpg"),
+              "Elliot"
+          ),
+          div(class="image", img(src="images/wireframe.png")),
+          div(class="content",
+              span(class="right floated", uiicon("heart outline like"), "17 likes"),
+              uiicon("comment"),
+              "3 comments"
+          ),
+          div(class="extra content",
+              div(class="ui large transparent left icon input",
+                  uiicon("heart ouline"),
+                  tags$input(type="text", placeholder ="Add Comment...")
+              )
           )
-        )
       )
     )
   )
@@ -280,11 +282,11 @@ sidebar <- function() {
               a(class="item", href="#accordion", "Accordion"),
               a(class="item", href="#rating", "Rating"),
               a(class="item", href="#tabset", "Tabset")
-              )))
+          )))
 }
 css <- "
 #examples > div > .header {
-  margin-top: 1em;
+margin-top: 1em;
 }"
 
 ui <- function() {
@@ -293,21 +295,21 @@ ui <- function() {
     useShinyjs(),
     sidebar(),
     div(style="margin-left: 210px",
-      div(id="examples", class="ui container",
-        header(),
-        button(),
-        divider(),
-        uiinput(),
-        uilabel(),
-        uilist_demo(),
-        grid(),
-        breadcrumb(),
-        card(),
-        accordion(),
-        rating(),
-        tabs()
-      )
-    )
+        div(id="examples", class="ui container",
+            header(),
+            button(),
+            divider(),
+            uiinput(),
+            uilabel(),
+            uilist_demo(),
+            grid(),
+            breadcrumb(),
+            card(),
+            accordion(),
+            rating(),
+            tabs()
+        )
+    ), theme = "yeti" # a list of all available themes sits in SUPPORTED_THEMES
   ))
 }
 

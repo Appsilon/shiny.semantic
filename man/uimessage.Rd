@@ -22,5 +22,5 @@ Look at http://semantic-ui.com/elements/icon.html for all possibilities.}
 Default is FALSE - not closable}
 }
 \description{
-This creates a message using Semantic UI
+Create Semantic UI Message
 }
