@@ -28,13 +28,16 @@ get_dependencies <- function() {
                               c(href = CDN_PATH),
                               script = javascript_file,
                               stylesheet = css_files
-    ),
-    htmltools::htmlDependency("semantic-range",
-                              "1.0.0",
-                              c(file = system.file("semantic-range", package = "shiny.semantic")),
-                              script = "range.js",
-                              stylesheet = "range.css"
     )
+  )
+}
+
+get_range_component_dependencies <- function() {
+  htmltools::htmlDependency("semantic-range",
+                            "1.0.0",
+                            c(file = system.file("semantic-range", package = "shiny.semantic")),
+                            script = "range.js",
+                            stylesheet = "range.css"
   )
 }
 
@@ -99,6 +102,7 @@ semanticPage <- function(..., title = "", theme = NULL) { # nolint
 
   shiny::tagList(
     ifelse(getOption("semantic.themes", FALSE), get_dependencies(), ""),
+    get_range_component_dependencies(),
     shiny::tags$head(
       shiny::tags$link(rel="stylesheet", href = check_semantic_theme(theme)),
       tags$script(src = get_default_semantic_js()),
