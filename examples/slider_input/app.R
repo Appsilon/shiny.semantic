@@ -4,7 +4,7 @@ library(shiny.semantic)
 ui <- function() {
   shinyUI(
     semanticPage(
-      title = "Dropdown example",
+      title = "Id slider example",
       suppressDependencies("bootstrap"),
       suppressDependencies("semantic"),
       uiOutput("slider", width = "200px"),
