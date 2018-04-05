@@ -35,12 +35,12 @@ slider_input <- function(name, min, max, value, step = 0.01, n_ticks = 5, color 
                start: %s,
                step: %s,
                onChange: function(value) {
-                 var $self = $(this);
-                 $self.find('.thumb').html('<div class = \"ui pointing below label\" style = \"bottom: 2.7em; right: 0.9em; width: 3.5em; text-align: center;\">' + value + '</div>');
+                 var html = '<div class = \"ui pointing below label\" style = \"bottom: 2.7em; right: 0.9em; width: 3.5em; text-align: center;\">' + value + '</div>';
+                 $('#%s .thumb').html(html);
                  Shiny.onInputChange('%s', value);
                }
             });",
-            name, min, max, value, step, name
+            name, min, max, value, step, name, name
     )))
   )
 }
