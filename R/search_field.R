@@ -16,6 +16,7 @@
 #'
 #' @examples
 #' ## Only run examples in interactive R sessions
+#' \dontrun{
 #' if (interactive()) {
 #' library(shiny)
 #' library(shiny.semantic)
@@ -58,7 +59,7 @@
 #'}
 #'
 #'shinyApp(ui = ui(), server = server)
-#'
+#'}
 #' @export
 #' @importFrom magrittr "%>%"
 #' @import shiny
