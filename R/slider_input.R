@@ -8,7 +8,7 @@
 #' @param value Initial value.
 #' @param step Possible step for slider inputs.
 #' @param n_ticks Specifies how many ticks the slider should display.
-#' @param color Possible slider color, see: \link{shiny.semantic::semantic_palette}.
+#' @param color Possible slider color, see: \link{semantic_palette}.
 #'
 #' @export
 slider_input <- function(name, min, max, value, step = 0.01, n_ticks = 5, color = "") {

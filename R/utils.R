@@ -10,9 +10,9 @@ parse_val <- function(val) {
 
 #' Check if color is set from Semanti-UI palette
 #'
-#' @param color
+#' @param color character with color name
 #'
-#' @return Error when \color{color} does not belong to palette
+#' @return Error when \code{color} does not belong to palette
 #' @export
 check_proper_color <- function(color) {
   if (!(color %in% c("", names(semantic_palette)))) {

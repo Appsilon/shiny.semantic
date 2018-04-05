@@ -7,10 +7,10 @@
 check_proper_color(color)
 }
 \arguments{
-\item{color}{}
+\item{color}{character with color name}
 }
 \value{
-Error when \color{color} does not belong to palette
+Error when \code{color} does not belong to palette
 }
 \description{
 Check if color is set from Semanti-UI palette
