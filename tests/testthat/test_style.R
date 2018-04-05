@@ -1,5 +1,5 @@
 context("lintr")
-install.packages("lintr")
+install.packages("lintr", repos = "http://cran.us.r-project.org")
 
 library("lintr")
 test_that("lintr", {
