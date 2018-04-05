@@ -318,6 +318,8 @@ dropdown <- function(name,
 #' @param type Type of the menu. Look at https://semantic-ui.com/collections/menu.html for all possiblities.
 #'
 #' @examples
+#'
+#' if (interactive()){
 #' library(shiny)
 #' library(shiny.semantic)
 #'
@@ -353,7 +355,7 @@ dropdown <- function(name,
 #' })
 #'
 #' shinyApp(ui = ui(), server = server)
-#'
+#'}
 #' @export
 uimenu <- function(..., type = "") {
   class <- "ui menu"
@@ -406,7 +408,7 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
 #'   name = "dropdown_menu",
 #'   dropdown_specs = list("duration: 500")
 #' )
-#'
+#' @import shiny
 #' @export
 uidropdown <- function(..., type = "", name, is_menu_item = FALSE, dropdown_specs = list()) {
 

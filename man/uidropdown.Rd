@@ -35,5 +35,4 @@ uidropdown(
   name = "dropdown_menu",
   dropdown_specs = list("duration: 500")
 )
-
 }
