@@ -7,3 +7,17 @@
 parse_val <- function(val) {
   jsonlite::fromJSON(ifelse(is.null(val), '""', val))
 }
+
+#' Check if color is set from Semanti-UI palette
+#'
+#' @param color
+#'
+#' @return Error when \color{color} does not belong to palette
+#' @export
+check_proper_color <- function(color) {
+  if (!(color %in% c("", names(semantic_palette)))) {
+    stop("Wrong color parameter specified!")
+  } else {
+    invisible(color)
+  }
+}
