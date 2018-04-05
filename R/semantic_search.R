@@ -66,13 +66,15 @@ define_selection_type <- function(name, multiple) {
 #'
 #'   shinyApp(ui = ui(), server = server)
 #' }
+#'
+#' @import shiny
 #' @export
 search_selection_api <- function(name,
                                  search_api_url,
                                  multiple = FALSE,
                                  default_text = "Select") {
   selection_type <- define_selection_type(name, multiple)
-  tagList(
+  shiny::tagList(
     tags$div(class = selection_type,
              shiny_input(name,
                          tags$input(class = "prompt",
@@ -136,6 +138,7 @@ search_selection_api <- function(name,
 #'   shinyApp(ui = ui(), server = server)
 #' }
 #' @importFrom magrittr "%>%"
+#' @import shiny
 #' @export
 search_selection_choices <- function(name,
                                      choices,
@@ -143,7 +146,7 @@ search_selection_choices <- function(name,
                                      multiple = FALSE,
                                      default_text = "Select") {
   input_class <- define_selection_type(name, multiple)
-  tagList(
+  shiny::tagList(
     tags$div(class = input_class,
              shiny_input(name,
                          tags$input(class = "prompt",
@@ -190,8 +193,9 @@ search_selection_choices <- function(name,
 #' lists or dataframe of search results.
 #'
 #' @export
+#' @import shiny
 register_search <- function(session, data, search_query) {
-  session$registerDataObj("search_api", data, function(data, request) {
+  session$registerDataObj("search_api", data, function(data, request) { # nolint
     query <- shiny::parseQueryString(request$QUERY_STRING)
     extracted_query <- query$q
     response <- jsonlite::toJSON(list(

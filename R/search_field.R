@@ -61,12 +61,13 @@
 #'
 #' @export
 #' @importFrom magrittr "%>%"
+#' @import shiny
 #'
 search_field <- function(name,
                          search_api_url,
                          default_text = "Search",
                          value = "") {
-  tagList(
+  shiny::tagList(
     div(class = paste(name, "ui search"),
         div(class = "ui icon fluid input",
             shiny_input(name,

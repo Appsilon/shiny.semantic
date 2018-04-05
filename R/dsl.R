@@ -21,6 +21,8 @@ uiicon <- function(type = "", ...) {
 #' @param is_link If TRUE creates label with 'a' tag, otherwise with 'div' tag.
 #' #'
 #' @export
+#'
+#' @import shiny
 uilabel <- function(..., type = "", is_link = TRUE) {
   label_tag <- if (is_link) tags$a else tags$div
   label_tag(class = paste("ui label", type),
@@ -48,7 +50,18 @@ tabset <- function(tabs,
                            list(id = generate_random_id("tab")),
                            simplify = FALSE)
   id_tabs <- purrr::map2(identifiers, tabs, ~ c(.x, .y))
-
+  script_code <- paste0(
+    " // Code below is needed to trigger visibility on reactive Shiny outputs.
+      // Thanks to that users do not have to set suspendWhenHidden to FALSE.
+      var previous_tab;
+      $('#", id, ".menu .item').tab({
+      onVisible: function(target) {
+      if (previous_tab) {
+      $(this).trigger('hidden');
+      }
+      $(window).resize();
+      $(this).trigger('shown');
+      previous_tab = this;}});")
   shiny::tagList(
     shiny::div(id = id,
                class = paste("ui menu", menu_class),
@@ -62,18 +75,7 @@ tabset <- function(tabs,
                      if (.$id == id_tabs[[1]]$id) "active" else "")
       shiny::div(class = class, `data-tab` = .$id, .$content)
     }),
-    shiny::tags$script(paste0(
-      "/* Code below is needed to trigger visibility on reactive Shiny outputs. */
-       /* Thanks to that users do not have to set suspendWhenHidden to FALSE.   */
-       var previous_tab;
-       $('#", id, ".menu .item').tab({
-       onVisible: function(target) {
-         if (previous_tab) {
-          $(this).trigger('hidden');
-         }
-       $(window).resize();
-       $(this).trigger('shown');
-       previous_tab = this;}});"))
+    shiny::tags$script(script_code)
   )
 }
 
@@ -370,6 +372,8 @@ uimenu <- function(..., type = "") {
 #' parameeter defines its href attribute.
 #'
 #' @export
+#'
+#' @import shiny
 menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
   menu_item_tag <- if (!is.null(href)) tags$a else tags$div
   menu_item_tag(class = paste("item", item_feature),
@@ -408,10 +412,10 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
 uidropdown <- function(..., type = "", name, is_menu_item = FALSE, dropdown_specs = list()) {
 
   if (missing(name)) {
-    stop("Dropdown requires unique name. Specify 'name' argument.")
+    stop("Dropdown requires unique name. Specify \"name\" argument.")
   }
 
-  unique_dropdown_class <- paste0('dropdown_name_', name)
+  unique_dropdown_class <- paste0("dropdown_name_", name)
 
   if (is_menu_item) {
     class <- paste("ui dropdown item", type, unique_dropdown_class)
@@ -437,6 +441,8 @@ uidropdown <- function(..., type = "", name, is_menu_item = FALSE, dropdown_spec
 #' @param is_item If TRUE created header is item of Semantic UI Menu.
 #'
 #' @export
+#'
+#' @import shiny
 menu_header <- function(..., is_item = TRUE) {
   class <- "header"
   if (is_item) {
@@ -452,8 +458,9 @@ menu_header <- function(..., is_item = TRUE) {
 #' @param ... Other attributes of the divider such as style.
 #'
 #' @export
+#'
 menu_divider <- function(...) {
-  div(class = "divider", ...)
+  shiny::div(class = "divider", ...)
 }
 
 #' Helper function to render list element
@@ -461,9 +468,11 @@ menu_divider <- function(...) {
 #' @param header String with header
 #' @param description String with description
 #' @param icon Icon string
-list_element <- function(data, is_description, icon, row){
-  div(class = "item",  if(icon == "") "" else uiicon(icon),
-      if(is_description) {
+#'
+#' @import shiny
+list_element <- function(data, is_description, icon, row) {
+  div(class = "item",  if (icon == "") "" else uiicon(icon),
+      if (is_description) {
         div(class = "content",
             div(class = "header", data$header[row]),
             div(class = "description", data$description[row]))
@@ -502,6 +511,7 @@ uilist <- function(data, icon, is_divided = FALSE, is_description = FALSE){
 
   div(class = list_class,
       1:nrow(data) %>% purrr::map(function(row){
-        list_element(data, is_description , icon, row)})
+        list_element(data, is_description, icon, row)
+        })
   )
 }

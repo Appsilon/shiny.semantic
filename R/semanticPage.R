@@ -88,13 +88,13 @@ check_semantic_theme <- function(theme_css) {
 #' wrapper (e.g. style, class etc.)
 #'
 #' @export
-semanticPage <- function(..., title = "", theme = NULL) { # nolint
+semanticPage <- function(..., title = "", theme = NULL){ # nolint
   content <- shiny::tags$div(class = "wrapper", ...)
 
   shiny::tagList(
     ifelse(getOption("semantic.themes", FALSE), get_dependencies(), ""),
     shiny::tags$head(
-      shiny::tags$link(rel="stylesheet", href = check_semantic_theme(theme)),
+      shiny::tags$link(rel = "stylesheet", href = check_semantic_theme(theme)),
       tags$script(src = get_default_semantic_js()),
       shiny::tags$title(title),
       shiny::tags$meta(name = "viewport", content = "width=device-width, initial-scale=1.0")
