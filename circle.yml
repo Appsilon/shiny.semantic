@@ -3,7 +3,7 @@ jobs:
   test:
     working_directory: /mnt
     docker:
-      - image: appsilon/shiny.semantic-build:3.4.1
+      - image: appsilon/shiny.semantic-build:3.4.2
     steps:
       - checkout
       - run:
