@@ -7,7 +7,7 @@
 parse_val(val)
 }
 \arguments{
-\item{val}{}
+\item{val}{value to get from JSON}
 }
 \value{
 Value of type defined in `shiny_input`

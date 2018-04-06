@@ -16,6 +16,8 @@ function to create new dropdown menu item. Use menu_header and menu_divider func
 This creates a menu using Semantic UI.
 }
 \examples{
+
+if (interactive()){
 library(shiny)
 library(shiny.semantic)
 
@@ -51,5 +53,5 @@ server <- shinyServer(function(input, output) {
 })
 
 shinyApp(ui = ui(), server = server)
-
+}
 }

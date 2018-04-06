@@ -19,7 +19,7 @@ slider_input(name, min, max, value, step = 0.01, n_ticks = 5, color = "")
 
 \item{n_ticks}{Specifies how many ticks the slider should display.}
 
-\item{color}{Possible slider color, see: \link{shiny.semantic::semantic_palette}.}
+\item{color}{Possible slider color, see: \link{semantic_palette}.}
 }
 \description{
 It implements slider extension provided by: https://github.com/tyleryasaka/semantic-ui-range

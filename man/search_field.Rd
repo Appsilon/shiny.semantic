@@ -27,6 +27,7 @@ See https://semantic-ui.com/modules/search.html#behaviors for more details.
 }
 \examples{
 ## Only run examples in interactive R sessions
+\dontrun{
 if (interactive()) {
 library(shiny)
 library(shiny.semantic)
@@ -69,5 +70,5 @@ server <- shinyServer(function(input, output, session) {
 }
 
 shinyApp(ui = ui(), server = server)
-
+}
 }

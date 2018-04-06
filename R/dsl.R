@@ -21,6 +21,8 @@ uiicon <- function(type = "", ...) {
 #' @param is_link If TRUE creates label with 'a' tag, otherwise with 'div' tag.
 #' #'
 #' @export
+#'
+#' @import shiny
 uilabel <- function(..., type = "", is_link = TRUE) {
   label_tag <- if (is_link) tags$a else tags$div
   label_tag(class = paste("ui label", type),
@@ -48,7 +50,18 @@ tabset <- function(tabs,
                            list(id = generate_random_id("tab")),
                            simplify = FALSE)
   id_tabs <- purrr::map2(identifiers, tabs, ~ c(.x, .y))
-
+  script_code <- paste0(
+    " // Code below is needed to trigger visibility on reactive Shiny outputs.
+      // Thanks to that users do not have to set suspendWhenHidden to FALSE.
+      var previous_tab;
+      $('#", id, ".menu .item').tab({
+      onVisible: function(target) {
+      if (previous_tab) {
+      $(this).trigger('hidden');
+      }
+      $(window).resize();
+      $(this).trigger('shown');
+      previous_tab = this;}});")
   shiny::tagList(
     shiny::div(id = id,
                class = paste("ui menu", menu_class),
@@ -62,18 +75,7 @@ tabset <- function(tabs,
                      if (.$id == id_tabs[[1]]$id) "active" else "")
       shiny::div(class = class, `data-tab` = .$id, .$content)
     }),
-    shiny::tags$script(paste0(
-      "/* Code below is needed to trigger visibility on reactive Shiny outputs. */
-       /* Thanks to that users do not have to set suspendWhenHidden to FALSE.   */
-       var previous_tab;
-       $('#", id, ".menu .item').tab({
-       onVisible: function(target) {
-         if (previous_tab) {
-          $(this).trigger('hidden');
-         }
-       $(window).resize();
-       $(this).trigger('shown');
-       previous_tab = this;}});"))
+    shiny::tags$script(script_code)
   )
 }
 
@@ -316,6 +318,8 @@ dropdown <- function(name,
 #' @param type Type of the menu. Look at https://semantic-ui.com/collections/menu.html for all possiblities.
 #'
 #' @examples
+#'
+#' if (interactive()){
 #' library(shiny)
 #' library(shiny.semantic)
 #'
@@ -351,7 +355,7 @@ dropdown <- function(name,
 #' })
 #'
 #' shinyApp(ui = ui(), server = server)
-#'
+#'}
 #' @export
 uimenu <- function(..., type = "") {
   class <- "ui menu"
@@ -370,6 +374,8 @@ uimenu <- function(..., type = "") {
 #' parameeter defines its href attribute.
 #'
 #' @export
+#'
+#' @import shiny
 menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
   menu_item_tag <- if (!is.null(href)) tags$a else tags$div
   menu_item_tag(class = paste("item", item_feature),
@@ -385,7 +391,6 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
 #' @param ... Dropdown content.
 #' @param type Type of the dropdown. Look at https://semantic-ui.com/modules/dropdown.html for all possibilities.
 #' @param name Unique name of the created dropdown.
-#' @param choices Use uimenu to create set of choices, headers and dividers for the dropdown.
 #' @param is_menu_item TRUE if the dropdown is a menu item. Default is FALSE.
 #' @param dropdown_specs A list of dropdown functionalities. Look at https://semantic-ui.com/modules/dropdown.html#/settings for all possibilities.
 #'
@@ -403,15 +408,15 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
 #'   name = "dropdown_menu",
 #'   dropdown_specs = list("duration: 500")
 #' )
-#'
+#' @import shiny
 #' @export
 uidropdown <- function(..., type = "", name, is_menu_item = FALSE, dropdown_specs = list()) {
 
   if (missing(name)) {
-    stop("Dropdown requires unique name. Specify 'name' argument.")
+    stop("Dropdown requires unique name. Specify \"name\" argument.")
   }
 
-  unique_dropdown_class <- paste0('dropdown_name_', name)
+  unique_dropdown_class <- paste0("dropdown_name_", name)
 
   if (is_menu_item) {
     class <- paste("ui dropdown item", type, unique_dropdown_class)
@@ -437,6 +442,8 @@ uidropdown <- function(..., type = "", name, is_menu_item = FALSE, dropdown_spec
 #' @param is_item If TRUE created header is item of Semantic UI Menu.
 #'
 #' @export
+#'
+#' @import shiny
 menu_header <- function(..., is_item = TRUE) {
   class <- "header"
   if (is_item) {
@@ -452,18 +459,22 @@ menu_header <- function(..., is_item = TRUE) {
 #' @param ... Other attributes of the divider such as style.
 #'
 #' @export
+#'
 menu_divider <- function(...) {
-  div(class = "divider", ...)
+  shiny::div(class = "divider", ...)
 }
 
 #' Helper function to render list element
 #'
-#' @param header String with header
-#' @param description String with description
-#' @param icon Icon string
-list_element <- function(data, is_description, icon, row){
-  div(class = "item",  if(icon == "") "" else uiicon(icon),
-      if(is_description) {
+#' @param data data to list
+#' @param is_description description flag
+#' @param icon Icon character
+#' @param row row character
+#'
+#' @import shiny
+list_element <- function(data, is_description, icon, row) {
+  div(class = "item",  if (icon == "") "" else uiicon(icon),
+      if (is_description) {
         div(class = "content",
             div(class = "header", data$header[row]),
             div(class = "description", data$description[row]))
@@ -485,7 +496,7 @@ list_element <- function(data, is_description, icon, row){
 #' @param is_description If TRUE created list will have a description
 #'
 #' @export
-#'
+#' @import shiny
 #' @examples
 #'
 #' list_content <- data.frame(
@@ -495,13 +506,14 @@ list_element <- function(data, is_description, icon, row){
 #' )
 #'
 #' # Create a 5 element divided list with alert icons and description
-#' list_description_icons(list_content, "alert", is_divided = TRUE, is_description = TRUE)
+#' uilist(list_content, "alert", is_divided = TRUE, is_description = TRUE)
 uilist <- function(data, icon, is_divided = FALSE, is_description = FALSE){
   divided_list <- ifelse(is_divided, "divided", "")
   list_class <- paste("ui", divided_list, "list")
 
   div(class = list_class,
       1:nrow(data) %>% purrr::map(function(row){
-        list_element(data, is_description , icon, row)})
+        list_element(data, is_description, icon, row)
+        })
   )
 }

@@ -17,8 +17,6 @@ uidropdown(..., type = "", name, is_menu_item = FALSE,
 \item{is_menu_item}{TRUE if the dropdown is a menu item. Default is FALSE.}
 
 \item{dropdown_specs}{A list of dropdown functionalities. Look at https://semantic-ui.com/modules/dropdown.html#/settings for all possibilities.}
-
-\item{choices}{Use uimenu to create set of choices, headers and dividers for the dropdown.}
 }
 \description{
 This creates a dropdown using Semantic UI.
@@ -37,5 +35,4 @@ uidropdown(
   name = "dropdown_menu",
   dropdown_specs = list("duration: 500")
 )
-
 }
