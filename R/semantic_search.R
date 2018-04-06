@@ -177,6 +177,18 @@ search_selection_choices <- function(name,
   )
 }
 
+#' ::: hack solution
+#'
+#' @param pkg package name
+#' @param name function name
+#'
+#' @return function
+`%:::%` <- function (pkg, name) {
+  pkg <- as.character(substitute(pkg))
+  name <- as.character(substitute(name))
+  get(name, envir = asNamespace(pkg), inherits = FALSE)
+}
+
 #' Register search api url
 #'
 #' Calls Shiny session's registerDataObj to create REST API.
@@ -205,6 +217,10 @@ register_search <- function(session, data, search_query) {
       success = TRUE,
       results = search_query(data, extracted_query)
     ))
-    shiny:::httpResponse(200, "application/json", enc2utf8(response))
+    # Ispired by: https://stat.ethz.ch/pipermail/r-devel/2013-August/067210.html
+    # It's because httpResponse is not exported from shiny
+    # and triggers NOTE in R CMD check
+    f <- 'shiny' %:::% 'httpResponse'
+    f(200, "application/json", enc2utf8(response))
   })
 }

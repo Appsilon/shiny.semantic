@@ -1,2 +1,12 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^README\.Rmd$
+^\.[a-zA-Z]*$
+^CHANGELOG\.md$
+^LICENSE\.md$
+^build_readme\.R$
+^ci$
+^circle\.yml$
+^readme_assets$
+^docs$
+^examples$
