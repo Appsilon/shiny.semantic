@@ -25,5 +25,6 @@ Imports:
 Suggests:
     dplyr,
     gapminder,
-    testthat
+    testthat,
+    lintr
 RoxygenNote: 6.0.1
