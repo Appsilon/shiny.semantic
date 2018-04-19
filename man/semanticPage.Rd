@@ -4,12 +4,15 @@
 \alias{semanticPage}
 \title{Semantic UI page}
 \usage{
-semanticPage(..., title = "")
+semanticPage(..., title = "", theme = NULL)
 }
 \arguments{
-\item{...}{Other arguments to be added as attributes of the main div tag wrapper (e.g. style, class etc.)}
+\item{...}{Other arguments to be added as attributes of the main div tag
+wrapper (e.g. style, class etc.)}
 
 \item{title}{A title to display in the browser's title bar.}
+
+\item{theme}{Theme name or path}
 }
 \description{
 This creates a Semantic page for use in a Shiny app.

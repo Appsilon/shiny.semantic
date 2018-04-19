@@ -4,6 +4,8 @@ library(shiny.semantic)
 library(magrittr)
 library(highlighter)
 library(formatR)
+library(httr)
+library(rjson)
 
 demo <- function(code) {
   div(class = "ui raised segment",
@@ -150,6 +152,39 @@ card <- function() {
   div(
     h1(class="ui header", id="card", "Card"),
     demo(
+      uicard(
+        div(class="content",
+          div(class="header", "Elliot Fu"),
+          div(class="meta", "Friend"),
+          div(class="description", "Elliot Fu is a film-maker from New York.")
+        )
+      )
+    ),
+    demo(
+      uicards(
+        class = "three",
+        mtcars %>% tibble::rownames_to_column() %>% head %>%
+          purrrlyr::by_row(~ {
+            uicard(
+              div(class="content",
+                div(class="header", .$rowname),
+                div(class="meta", paste("Number of cylinders:", .$cyl)),
+                div(class="description", paste("1/4 mile time:", .$qsec))
+              )
+            )
+          }) %>% {.$.out}
+      )
+    ),
+    demo(
+      uicard(
+        div(class="content",
+          div(class="header", "Elliot Fu"),
+          div(class="meta", "Friend"),
+          div(class="description", "Elliot Fu is a film-maker from New York.")
+        )
+      )
+    ),
+    demo(
       div(class="ui card",
         div(class="content",
           div(class="right floated meta", "14h"),
@@ -197,21 +232,21 @@ tabs <- function () {
     )
   )
 }
-uilist <- function() {
+uilist_demo <- function() {
+  list_content <- data.frame(
+    header = paste("Header", 1:5),
+    description = paste("Description", 1:5),
+    stringsAsFactors = FALSE
+  )
+
   div(
     h1(class="ui dividing header", id="list", "List"),
-    demo(div(class="ui list", c("Apples", "Pears", "Oranges") %>% purrr::map(~ div(class="item", .)))),
-    demo(div(class="ui list", c("Apples", "Pears", "Oranges") %>% purrr::map(~
-      div(class="item", uiicon('users'), div(class="content", .))))),
-    demo(div(class="ui relaxed divided list", c("Apples", "Pears", "Oranges") %>% purrr::map(~
-      div(class="item",
-          uiicon('large github middle aligned'),
-          div(class="content",
-              a(class="header", "Hello"),
-              div(class="description", .))
-      ))))
+    demo(uilist(list_content, "", is_divided = FALSE, is_description = FALSE)),
+    demo(uilist(list_content, "alarm", is_divided = TRUE, is_description = FALSE)),
+    demo(uilist(list_content, "github", is_divided = TRUE, is_description = TRUE))
   )
 }
+
 section <- function() {
   div(
     h1(class="ui dividing header", id="section", "Section"),
@@ -251,6 +286,7 @@ css <- "
 #examples > div > .header {
   margin-top: 1em;
 }"
+
 ui <- function() {
   shinyUI(semanticPage(
     tags$head(tags$style(HTML(css))),
@@ -263,7 +299,7 @@ ui <- function() {
         divider(),
         uiinput(),
         uilabel(),
-        uilist(),
+        uilist_demo(),
         grid(),
         breadcrumb(),
         card(),
@@ -275,7 +311,7 @@ ui <- function() {
   ))
 }
 
-server <- shinyServer(function(input, output) {
+server <- shinyServer(function(input, output, session) {
   runjs(jsCode)
 })
 
