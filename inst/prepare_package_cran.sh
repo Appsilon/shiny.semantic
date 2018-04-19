@@ -18,6 +18,9 @@ R CMD check --as-cran $zip_file
 mv $zip_file build/
 rm -r shiny.semantic.Rcheck/
 
+echo "==> Cleaning README"
+sed -i '/link href/d' ../README.md
+
 echo "==> Reset changes and switching to master branch."
 git reset --hard
 git checkout master
