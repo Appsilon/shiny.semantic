@@ -8,7 +8,7 @@ echo "==> Preparing package for CRAN release."
 rm -r build/ docs/ examples/ LICENSE.md CHANGELOG.md README.Rmd README_files build_readme.R examples/ readme_assets/ readme_rmd_template/ inst/semantic/.versions
 
 echo "==> Cleaning README"
-sed -i '/link href/d' ../README.md
+sed -i '' '/link href/d' README.md
 
 mkdir build
 
