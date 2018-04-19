@@ -1,6 +1,1 @@
 dependencies:
- - name: Semantic UI
-   version: 2.2.3
-   src: semantic/
-   script: semantic.js
-   stylesheet: semantic.css
