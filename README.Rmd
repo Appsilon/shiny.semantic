@@ -101,11 +101,11 @@ if (params$type == "web") {
 
 How to install?
 ---------------
-**Note! This library is still in its infancy. Api might change in the future.**
 
-At the moment it's possible to install this library through [devtools](https://github.com/hadley/devtools).
-```
-devtools::install_github("Appsilon/`r params$repo_name`")
+You can install shiny.semantic from CRAN repository:
+
+``` 
+install.packages("shiny.semantic")
 ```
 
 To install [previous version](`r params$changelog_url`) you can run:

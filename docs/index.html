@@ -138,16 +138,16 @@ Semantic UI wrapper for Shiny
 Before
 </h2>
 <p><br></p>
-<div id="htmlwidget-05b4ca71efc62115a997" style="width:100%;height:100px;" class="uirender html-widget"></div>
-<script type="application/json" data-for="htmlwidget-05b4ca71efc62115a997">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"container-fluid\">\n    <div style=\"margin-left: 20px; background: white\">\n      <div>\n        <div>\n          <a>Client's info<\/a>\n          <p><\/p>\n          <table  class = 'table shiny-table table- spacing-s' style = 'width:auto;'>\n<thead> <tr> <th style='text-align: left;'> Name <\/th> <th style='text-align: left;'> City <\/th> <th style='text-align: left;'> Revenue <\/th>  <\/tr> <\/thead> <tbody>\n  <tr> <td> John Smith <\/td> <td> Warsaw, Poland <\/td> <td> $210.50 <\/td> <\/tr>\n  <tr> <td> Lindsay More <\/td> <td> SF, United States <\/td> <td> $172.78 <\/td> <\/tr>\n   <\/tbody> <\/table>\n        <\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4dcca69982d890ce54d9" style="width:100%;height:100px;" class="uirender html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4dcca69982d890ce54d9">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"container-fluid\">\n    <div style=\"margin-left: 20px; background: white\">\n      <div>\n        <div>\n          <a>Client's info<\/a>\n          <p><\/p>\n          <table  class = 'table shiny-table table- spacing-s' style = 'width:auto;'>\n<thead> <tr> <th style='text-align: left;'> Name <\/th> <th style='text-align: left;'> City <\/th> <th style='text-align: left;'> Revenue <\/th>  <\/tr> <\/thead> <tbody>\n  <tr> <td> John Smith <\/td> <td> Warsaw, Poland <\/td> <td> $210.50 <\/td> <\/tr>\n  <tr> <td> Lindsay More <\/td> <td> SF, United States <\/td> <td> $172.78 <\/td> <\/tr>\n   <\/tbody> <\/table>\n        <\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div>"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="column">
 <h2>
 After
 </h2>
 <p><br></p>
-<div id="htmlwidget-b5c5e6119a1e11dab755" style="width:100%;height:100%;" class="uirender html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b5c5e6119a1e11dab755">{"x":{"ui":"<div class=\"demo\">\n  <body style=\"min-height: 611px;\">\n    <div class=\"wrapper\">\n      <div class=\"ui raised segment\" style=\"margin-left: 20px; max-width: 350px; width: 100%\">\n        <a class=\"ui green ribbon label\">Client's info<\/a>\n        <p><\/p>\n        <!-- html table generated in R 3.4.3 by xtable 1.8-2 package -->\n<!-- Tue Apr 24 13:26:13 2018 -->\n<table class = 'ui very basic collapsing celled table'>\n<tr> <th> Name <\/th> <th> City <\/th> <th> Revenue <\/th>  <\/tr>\n  <tr> <td> John Smith <\/td> <td> Warsaw, Poland <\/td> <td> $210.50 <\/td> <\/tr>\n  <tr> <td> Lindsay More <\/td> <td> SF, United States <\/td> <td> $172.78 <\/td> <\/tr>\n   <\/table>\n\n      <\/div>\n    <\/div>\n  <\/body>\n<\/div>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5433f0840d16a1d73694" style="width:100%;height:100%;" class="uirender html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5433f0840d16a1d73694">{"x":{"ui":"<div class=\"demo\">\n  <body style=\"min-height: 611px;\">\n    <div class=\"wrapper\">\n      <div class=\"ui raised segment\" style=\"margin-left: 20px; max-width: 350px; width: 100%\">\n        <a class=\"ui green ribbon label\">Client's info<\/a>\n        <p><\/p>\n        <!-- html table generated in R 3.4.3 by xtable 1.8-2 package -->\n<!-- Tue Apr 24 20:57:37 2018 -->\n<table class = 'ui very basic collapsing celled table'>\n<tr> <th> Name <\/th> <th> City <\/th> <th> Revenue <\/th>  <\/tr>\n  <tr> <td> John Smith <\/td> <td> Warsaw, Poland <\/td> <td> $210.50 <\/td> <\/tr>\n  <tr> <td> Lindsay More <\/td> <td> SF, United States <\/td> <td> $172.78 <\/td> <\/tr>\n   <\/table>\n\n      <\/div>\n    <\/div>\n  <\/body>\n<\/div>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -168,9 +168,8 @@ After
 </div>
 <div id="how-to-install" class="section level2">
 <h2>How to install?</h2>
-<p><strong>Note! This library is still in its infancy. Api might change in the future.</strong></p>
-<p>At the moment it’s possible to install this library through <a href="https://github.com/hadley/devtools">devtools</a>.</p>
-<pre><code>devtools::install_github(&quot;Appsilon/shiny.semantic&quot;)</code></pre>
+<p>You can install shiny.semantic from CRAN repository:</p>
+<pre><code>install.packages(&quot;shiny.semantic&quot;)</code></pre>
 <p>To install <a href>previous version</a> you can run:</p>
 <pre><code>devtools::install_github(&quot;Appsilon/shiny.semantic&quot;, ref = &quot;0.1.0&quot;)</code></pre>
 </div>
@@ -196,8 +195,8 @@ server &lt;- shinyServer(function(input, output) {
 })
 
 shinyApp(ui = ui(), server = server)</code></pre>
-<p>and will render a simple button. <div id="htmlwidget-baea4b9eab3146903e8f" style="width:100%;height:30px;" class="uirender html-widget"></div>
-<script type="application/json" data-for="htmlwidget-baea4b9eab3146903e8f">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui button\">\n    <i class=\"user icon\"><\/i>\n    Icon button\n  <\/div>\n<\/div>"},"evals":[],"jsHooks":[]}</script></p>
+<p>and will render a simple button. <div id="htmlwidget-080ab4580a3c54ca14ad" style="width:100%;height:30px;" class="uirender html-widget"></div>
+<script type="application/json" data-for="htmlwidget-080ab4580a3c54ca14ad">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui button\">\n    <i class=\"user icon\"><\/i>\n    Icon button\n  <\/div>\n<\/div>"},"evals":[],"jsHooks":[]}</script></p>
 <p>For better understanding it’s good to check <a href="http://semantic-ui.com/introduction/getting-started.html">Semantic UI documentation.</a></p>
 <p><strong>Note #1</strong></p>
 <p>At the moment you have to pass page title in <em>semanticPage()</em></p>
@@ -268,8 +267,8 @@ shinyApp(ui = ui(), server = server)
 <ul>
 <li><strong>Raised segment with list</strong></li>
 </ul>
-<p><div id="htmlwidget-d331f86428cf5ae74498" style="width:100%;height:170px;" class="uirender html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d331f86428cf5ae74498">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui raised segment\">\n    <div class=\"ui relaxed divided list\">\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\"><\/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello<\/a>\n          <div class=\"description\">Apples<\/div>\n        <\/div>\n      <\/div>\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\"><\/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello<\/a>\n          <div class=\"description\">Pears<\/div>\n        <\/div>\n      <\/div>\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\"><\/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello<\/a>\n          <div class=\"description\">Oranges<\/div>\n        <\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div>"},"evals":[],"jsHooks":[]}</script> <div class="demo-code">
+<p><div id="htmlwidget-ba0be60f63516cadda2d" style="width:100%;height:170px;" class="uirender html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ba0be60f63516cadda2d">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui raised segment\">\n    <div class=\"ui relaxed divided list\">\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\"><\/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello<\/a>\n          <div class=\"description\">Apples<\/div>\n        <\/div>\n      <\/div>\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\"><\/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello<\/a>\n          <div class=\"description\">Pears<\/div>\n        <\/div>\n      <\/div>\n      <div class=\"item\">\n        <i class=\"large github middle aligned icon\"><\/i>\n        <div class=\"content\">\n          <a class=\"header\">Hello<\/a>\n          <div class=\"description\">Oranges<\/div>\n        <\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div>"},"evals":[],"jsHooks":[]}</script> <div class="demo-code">
 <pre>
 <code class="r">div(
   class = "ui raised segment",
@@ -301,8 +300,8 @@ shinyApp(ui = ui(), server = server)
 <ul>
 <li><strong>Interactive card</strong></li>
 </ul>
-<p><div id="htmlwidget-8c7562cde9bcb6511413" style="width:100%;height:400px;" class="uirender html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8c7562cde9bcb6511413">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui card\">\n    <div class=\"content\">\n      <div class=\"right floated meta\">14h<\/div>\n      <img class=\"ui avatar image\" src=\"http://semantic-ui.com/images/avatar/large/elliot.jpg\"/>\n      Elliot\n    <\/div>\n    <div class=\"image\">\n      <img src=\"http://semantic-ui.com/images/wireframe/image.png\"/>\n    <\/div>\n    <div class=\"content\">\n      <span class=\"right floated\">\n        <i class=\"heart outline like icon\"><\/i>\n        17 likes\n      <\/span>\n      <i class=\"comment icon\"><\/i>\n      3 comments\n    <\/div>\n    <div class=\"extra content\">\n      <div class=\"ui large transparent left icon input\">\n        <i class=\"heart ouline icon\"><\/i>\n        <input type=\"text\" placeholder=\"Add Comment...\"/>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div>"},"evals":[],"jsHooks":[]}</script> <div class="demo-code">
+<p><div id="htmlwidget-d0b265d52eaa6234c942" style="width:100%;height:400px;" class="uirender html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d0b265d52eaa6234c942">{"x":{"ui":"<div class=\"demo\">\n  <div class=\"ui card\">\n    <div class=\"content\">\n      <div class=\"right floated meta\">14h<\/div>\n      <img class=\"ui avatar image\" src=\"http://semantic-ui.com/images/avatar/large/elliot.jpg\"/>\n      Elliot\n    <\/div>\n    <div class=\"image\">\n      <img src=\"http://semantic-ui.com/images/wireframe/image.png\"/>\n    <\/div>\n    <div class=\"content\">\n      <span class=\"right floated\">\n        <i class=\"heart outline like icon\"><\/i>\n        17 likes\n      <\/span>\n      <i class=\"comment icon\"><\/i>\n      3 comments\n    <\/div>\n    <div class=\"extra content\">\n      <div class=\"ui large transparent left icon input\">\n        <i class=\"heart ouline icon\"><\/i>\n        <input type=\"text\" placeholder=\"Add Comment...\"/>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div>"},"evals":[],"jsHooks":[]}</script> <div class="demo-code">
 <pre>
 <code class="r">div(
   class = "ui card",
