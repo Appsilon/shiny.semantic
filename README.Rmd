@@ -1,11 +1,12 @@
 ---
 output: html_document
+always_allow_html: yes
 params:
    website_url: http://appsilondatascience.com
    logo_url: https://cdn.rawgit.com/Appsilon/website-cdn/gh-pages/logo-white.png
    repo_name: shiny.semantic
    repo_url: https://github.com/Appsilon/shiny.semantic
-   demo_url: http://demo.appsilondatascience.com/shiny.semantic/components
+   demo_url: https://demo.appsilondatascience.com/shiny-semantic-components/
    chagelog_url: https://github.com/Appsilon/shiny.semantic/blob/master/CHANGELOG.md
 ---
 
