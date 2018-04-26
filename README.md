@@ -1,6 +1,4 @@
 
-    #> Warning: package 'shiny.semantic' was built under R version 3.4.4
-
 <link href="http://fonts.googleapis.com/css?family=Maven+Pro:400,700|Inconsolata" rel="stylesheet" type="text/css"> <link href='docs/style.css' rel='stylesheet' type='text/css'>
 
 shiny.semantic
