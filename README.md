@@ -28,7 +28,7 @@ After
 <!-- Live demo link below -->
 <!-- TODO Analogy to http://shiny.rstudio.com/gallery/widget-gallery.html -->
 <p style="text-align: center; font-size: x-large;">
-<a href="http://demo.appsilondatascience.com/shiny.semantic/components">Components live demo</a>
+<a href="https://demo.appsilondatascience.com/shiny-semantic-components/">Components live demo</a>
 </p>
 </div>
 Source code
@@ -41,8 +41,6 @@ This library source code can be found on [Appsilon Data Science's](http://appsil
 How to install?
 ---------------
 
-**Note! This library is still in its infancy. Api might change in the future.**
-
 You can install shiny.semantic from CRAN repository:
 
     install.packages("shiny.semantic")
@@ -54,7 +52,7 @@ To install [previous version]() you can run:
 How to use it?
 --------------
 
-Firstly, you will have to invoke *shinyUI()* with *semanticPage()* instead of standard Shiny UI definitions like e.g. *fluidPage()*. From now on forward all components can ba annotated with [Semantic UI](http://semantic-ui.com/introduction/getting-started.html) specific CSS classes and also you will be able to use [shiny.semantic components](http://demo.appsilondatascience.com/shiny.semantic/components).
+Firstly, you will have to invoke *shinyUI()* with *semanticPage()* instead of standard Shiny UI definitions like e.g. *fluidPage()*. From now on forward all components can ba annotated with [Semantic UI](http://semantic-ui.com/introduction/getting-started.html) specific CSS classes and also you will be able to use [shiny.semantic components](https://demo.appsilondatascience.com/shiny-semantic-components/).
 
 Basic example will look like this:
 
@@ -235,7 +233,7 @@ Component examples
 </pre>
 
 <!--/html_preserve-->
-All components examples can be found here:<br> <http://demo.appsilondatascience.com/shiny.semantic/components>
+All components examples can be found here:<br> <https://demo.appsilondatascience.com/shiny-semantic-components/>
 
 The source code for **Components live demo** is located in **/examples** folder. To run it locally you will have to install:
 
@@ -245,8 +243,8 @@ The source code for **Components live demo** is located in **/examples** folder.
 
 Check out also our dashboard examples made with **shiny.semantic** librabry:
 
-1.  [Churn analytics](http://demo.appsilondatascience.com/shiny.semantic/churn)
-2.  [Fraud detection](demo.appsilondatascience.com/shiny.semantic/frauds)
+1.  [Churn analytics](https://demo.appsilondatascience.com/churn)
+2.  [Fraud detection](https://demo.appsilondatascience.com/frauds)
 
 How to contribute?
 ------------------
