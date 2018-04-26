@@ -243,8 +243,8 @@ The source code for **Components live demo** is located in **/examples** folder.
 
 Check out also our dashboard examples made with **shiny.semantic** librabry:
 
-1.  [Churn analytics](http://demo.appsilondatascience.com/shiny.semantic/churn)
-2.  [Fraud detection](demo.appsilondatascience.com/shiny.semantic/frauds)
+1.  [Churn analytics](https://demo.appsilondatascience.com/churn)
+2.  [Fraud detection](https://demo.appsilondatascience.com/frauds)
 
 How to contribute?
 ------------------
