@@ -10,12 +10,13 @@ params:
    chagelog_url: https://github.com/Appsilon/shiny.semantic/blob/master/CHANGELOG.md
 ---
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, message=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "inst/assets/README_files/figure-markdown_github"
 )
+suppressWarnings(library(shiny.semantic))
 ```
 
 ```{r, echo=FALSE, message=FALSE}
