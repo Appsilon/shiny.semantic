@@ -1,20 +1,22 @@
 ---
 output: html_document
+always_allow_html: yes
 params:
    website_url: http://appsilondatascience.com
    logo_url: https://cdn.rawgit.com/Appsilon/website-cdn/gh-pages/logo-white.png
    repo_name: shiny.semantic
    repo_url: https://github.com/Appsilon/shiny.semantic
-   demo_url: http://demo.appsilondatascience.com/shiny.semantic/components
+   demo_url: https://demo.appsilondatascience.com/shiny-semantic-components/
    chagelog_url: https://github.com/Appsilon/shiny.semantic/blob/master/CHANGELOG.md
 ---
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, message=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "inst/assets/README_files/figure-markdown_github"
 )
+suppressWarnings(library(shiny.semantic))
 ```
 
 ```{r, echo=FALSE, message=FALSE}
@@ -100,11 +102,11 @@ if (params$type == "web") {
 
 How to install?
 ---------------
-**Note! This library is still in its infancy. Api might change in the future.**
 
-At the moment it's possible to install this library through [devtools](https://github.com/hadley/devtools).
-```
-devtools::install_github("Appsilon/`r params$repo_name`")
+You can install shiny.semantic from CRAN repository:
+
+``` 
+install.packages("shiny.semantic")
 ```
 
 To install [previous version](`r params$changelog_url`) you can run:
@@ -289,8 +291,8 @@ devtools::install_github("Appsilon/highlighter")
 
 Check out also our dashboard examples made with **shiny.semantic** librabry:
 
-1. [Churn analytics](http://demo.appsilondatascience.com/shiny.semantic/churn)
-2. [Fraud detection](demo.appsilondatascience.com/shiny.semantic/frauds)
+1. [Churn analytics](https://demo.appsilondatascience.com/churn)
+2. [Fraud detection](https://demo.appsilondatascience.com/frauds)
 
 How to contribute?  {.darkslide}
 -----------------
