@@ -6,7 +6,7 @@ SUPPORTED_THEMES <- c("cerulean", "darkly", "paper", "simplex",
                       "cyborg", "sandstone", "yeti", "lumen", "spacelab")
 
 #' Cloudfront path
-CDN_PATH <- "http://d335w9rbwpvuxm.cloudfront.net"
+CDN_PATH <- "https://d335w9rbwpvuxm.cloudfront.net"
 
 #' Add dashboard dependencies to html
 #'
