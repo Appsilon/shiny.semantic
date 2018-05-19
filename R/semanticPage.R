@@ -21,11 +21,15 @@ get_dependencies <- function() {
     javascript_file <- "semantic.js"
     css_files <- c("semantic.css")
   }
-
+  if (!is.null(getOption("shiny.custom.semantic", NULL))) {
+    dep_src <- c(file = getOption("shiny.custom.semantic"))
+  } else {
+    dep_src <- c(href = CDN_PATH)
+  }
   shiny::tagList(
     htmltools::htmlDependency("semantic-ui",
                               "2.2.3",
-                              c(href = CDN_PATH),
+                              dep_src,
                               script = javascript_file,
                               stylesheet = css_files
     )
