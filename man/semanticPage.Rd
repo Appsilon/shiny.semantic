@@ -17,3 +17,12 @@ wrapper (e.g. style, class etc.)}
 \description{
 This creates a Semantic page for use in a Shiny app.
 }
+\details{
+Inside, it uses two crucial options:
+- \code{shiny.minified} with a logical value, tells whether it should attach min or full
+semnatic css or js (TRUE by default).
+- \code{shiny.custom.semantic} if this option has not NULL character \code{semanticPage}
+takes dependencies from custom css and js files specified in this path
+(NULL by default). Depending on \code{shiny.minified} value the folder should contain
+either "min" or standard version.
+}
