@@ -95,12 +95,13 @@ check_semantic_theme <- function(theme_css) {
 #'
 #' This creates a Semantic page for use in a Shiny app.
 #'
-#' It makes use of two important options:
-#' \code{shiny.minified} with a logical value, tells whether it should attach min or full
+#' Inside it uses of two crucial options:
+#' - \code{shiny.minified} with a logical value, tells whether it should attach min or full
 #' semnatic css or js (TRUE by default).
-#' \code{shiny.custom.semantic} if this option has not NULL character semanticPage
-#' will take dependencies from custom css file specified in this path
-#' (NULL by default).
+#' - \code{shiny.custom.semantic} if this option has not NULL character \code{semanticPage}
+#' takes dependencies from custom css and js files specified in this path
+#' (NULL by default). Depending on \code{shiny.minified} value the folder should contain
+#' either "min" or standard version.
 #'
 #' @param title A title to display in the browser's title bar.
 #' @param theme Theme name or path
