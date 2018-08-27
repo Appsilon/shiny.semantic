@@ -4,14 +4,14 @@
 \alias{list_element}
 \title{Helper function to render list element}
 \usage{
-list_element(data, is_description, icon, row)
+list_element(data, is_description, is_icon, row)
 }
 \arguments{
 \item{data}{data to list}
 
 \item{is_description}{description flag}
 
-\item{icon}{Icon character}
+\item{is_icon}{Icon logical to add icon from data}
 
 \item{row}{row character}
 }
