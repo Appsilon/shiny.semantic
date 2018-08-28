@@ -3,6 +3,8 @@
 export(SUPPORTED_THEMES)
 export(check_proper_color)
 export(check_semantic_theme)
+export(checkbox_types)
+export(checkbox_ui)
 export(dropdown)
 export(label)
 export(menu_divider)
