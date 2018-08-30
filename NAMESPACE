@@ -3,6 +3,7 @@
 export(SUPPORTED_THEMES)
 export(check_proper_color)
 export(check_semantic_theme)
+export(date_input)
 export(dropdown)
 export(label)
 export(menu_divider)
