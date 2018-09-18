@@ -499,6 +499,7 @@ list_element <- function(data, is_description, is_icon, row) {
 #'
 #' @export
 #' @import shiny
+#' @import magrittr
 #' @examples
 #'
 #' list_content <- data.frame(
