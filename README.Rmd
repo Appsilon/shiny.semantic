@@ -2,11 +2,11 @@
 output: html_document
 always_allow_html: yes
 params:
-   website_url: http://appsilondatascience.com
+   website_url: http://appsilon.com
    logo_url: https://cdn.rawgit.com/Appsilon/website-cdn/gh-pages/logo-white.png
    repo_name: shiny.semantic
    repo_url: https://github.com/Appsilon/shiny.semantic
-   demo_url: https://demo.appsilondatascience.com/shiny-semantic-components/
+   demo_url: https://demo.appsilon.com/shiny-semantic-components/
    chagelog_url: https://github.com/Appsilon/shiny.semantic/blob/master/CHANGELOG.md
 ---
 
@@ -291,8 +291,8 @@ devtools::install_github("Appsilon/highlighter")
 
 Check out also our dashboard examples made with **shiny.semantic** library:
 
-1. [Churn analytics](https://demo.appsilondatascience.com/churn)
-2. [Fraud detection](https://demo.appsilondatascience.com/frauds)
+1. [Churn analytics](https://demo.appsilon.com/churn)
+2. [Fraud detection](https://demo.appsilon.com/frauds)
 
 How to contribute?  {.darkslide}
 -----------------
@@ -336,7 +336,7 @@ if (params$type == "web") {
 }
 ```
 
-Get in touch [dev@appsilondatascience.com](dev@appsilondatascience.com)
+Get in touch [dev@appsilon.com](dev@appsilon.com)
 
 ```{r, echo = F, results='asis'}
 if (params$type == "web") {
