@@ -4,8 +4,8 @@
 \alias{dropdown}
 \title{Create dropdown Semantic UI component}
 \usage{
-dropdown(name, choices, choices_value = choices, default_text = "Select",
-  value = NULL)
+dropdown(name, choices, choices_value = choices,
+  default_text = "Select", value = NULL)
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under input[[name]].}
