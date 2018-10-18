@@ -43,11 +43,22 @@ js_for_toggle_input <- function(selector, input_id) {
          }});")
 }
 
+#' Create Semantic UI multiple checkbox
+#'
+#' This creates a multiple checkbox using Semantic UI styles.
+#'
+#' @param input_id Input name. Reactive value is available under input[[input_id]].
+#' @param label Text to be displayed with checkbox.
+#' @param choices List of values to show checkboxes for.
+#'   If elements of the list are named then that name rather than the value is displayed to the user.
+#' @param selected The value that should be chosen initially.
+#'   If \code{NULL} the first one from \code{choices} is chosen.
+#' @param position Specified checkmarks setup. Can be \code{grouped} or \code{inline}.
+#' @param type Type of checkbox. Please check \code{\link{checkbox_types}} for possibilities.
+#' @param ... Other arguments to be added as attributes of the
+#' tag (e.g. style, childrens etc.)
+#'
 #' @export
-uicheckbox <- function(..., type = "") {
-  shiny::div(class = paste("ui checkbox", type), ...)
-}
-
 #' @export
 multiple_checkbox <- function(input_id, label, choices, selected = NULL, position = "grouped", type = "radio", ...) {
 
@@ -75,7 +86,7 @@ multiple_checkbox <- function(input_id, label, choices, selected = NULL, positio
   }
 
   slider_field <- function(label, value, checked, type) {
-    field_id <- shiny.semantic:::generate_random_id("slider", 10)
+    field_id <- generate_random_id("slider", 10)
 
     if (checked) {
       checked <- "checked"
