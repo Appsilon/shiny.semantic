@@ -194,6 +194,20 @@ label <- function(...) {
   shiny::tags$label(...)
 }
 
+
+#' Create Semantic UI checkox
+#'
+#' This creates a checkbox using Semantic UI styles.
+#'
+#' @param ... Other arguments to be added as attributes of the
+#' tag (e.g. style, childrens etc.)
+#' @param type Type of checkbox to be used See \code{\link{checkbox_types}} for possible values.
+#'
+#' @export
+uicheckbox <- function(..., type = "") {
+  shiny::div(class = paste("ui checkbox", type), ...)
+}
+
 #' Create Semantic UI Message
 #'
 #' @param header Header of the message
