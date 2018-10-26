@@ -75,7 +75,6 @@ multiple_checkbox <- function(input_id, label, choices, selected = NULL,
     stop("Wrong type selected. Please check checkbox_types for possibilities.")
   }
 
-  # choices_names <- names(choices)
   choices_values <- choices
 
   if (!is.null(selected) && !(selected %in% choices_values)) {
