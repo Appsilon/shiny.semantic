@@ -40,10 +40,11 @@ slider_input <- function(name, min, max, value, step = 0.01, n_ticks = 5, color 
                  Shiny.onInputChange('%s', value);
                }
             });",
-            name, min, max, value, step, name, name,
+            name, min, max, value, step,
             paste0("'<div class = \"ui pointing below label\"",
                    "style = \"bottom: 2.7em; right: 0.9em; width: 3.5em; text-align: center;\">'",
-                   "+ value + '</div>'")
+                   "+ value + '</div>'"),
+            name, name
     )))
   )
 }
