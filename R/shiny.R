@@ -1,4 +1,7 @@
 #' Internal function that expose javascript bindings to Shiny app.
+#'
+#' @param libname library name
+#' @param pkgname package name
 .onLoad <- function(libname, pkgname) {
   # Add directory for static resources
   file <- system.file("www", package = "shiny.semantic", mustWork = TRUE)
