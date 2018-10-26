@@ -1,8 +1,12 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 language: R
-sudo: false
+sudo: true
 cache: packages
+dist: trusty
+
+git:
+  submodules: false
 
 after_success:
   - Rscript -e 'covr::codecov()'
