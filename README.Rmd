@@ -89,8 +89,6 @@ This library source code can be found on [Appsilon Data Science's](`r params$web
 <br>
 [`r params$repo_url`](`r params$repo_url`)
 
-[![CircleCI](https://circleci.com/gh/Appsilon/shiny.semantic/tree/develop.svg?style=svg)](https://circleci.com/gh/Appsilon/shiny.semantic/tree/develop)
-
 ```{r, echo = F, results='asis'}
 if (params$type == "web") {
   cat(paste0('<script>
