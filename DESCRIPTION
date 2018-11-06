@@ -28,5 +28,6 @@ Suggests:
     dplyr,
     gapminder,
     testthat,
-    lintr
-RoxygenNote: 6.0.1
+    lintr,
+    covr
+RoxygenNote: 6.1.0
