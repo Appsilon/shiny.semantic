@@ -220,7 +220,7 @@ register_search <- function(session, data, search_query) {
     # Ispired by: https://stat.ethz.ch/pipermail/r-devel/2013-August/067210.html
     # It's because httpResponse is not exported from shiny
     # and triggers NOTE in R CMD check
-    f <- 'shiny' %:::% 'httpResponse'
+    f <- "shiny" %:::% "httpResponse"
     f(200, "application/json", enc2utf8(response))
   })
 }

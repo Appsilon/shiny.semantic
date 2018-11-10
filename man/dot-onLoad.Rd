@@ -6,6 +6,11 @@
 \usage{
 .onLoad(libname, pkgname)
 }
+\arguments{
+\item{libname}{library name}
+
+\item{pkgname}{package name}
+}
 \description{
 Internal function that expose javascript bindings to Shiny app.
 }
