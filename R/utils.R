@@ -14,7 +14,7 @@ parse_val <- function(val) {
 #'
 #' @return Error when \code{color} does not belong to palette
 #' @export
-#' @example
+#' @examples
 #' check_proper_color("blue")
 check_proper_color <- function(color) {
   if (!(color %in% c("", names(semantic_palette)))) {

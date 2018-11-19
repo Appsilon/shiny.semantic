@@ -43,7 +43,7 @@ uilabel <- function(..., type = "", is_link = TRUE) {
 #'
 #' @export
 #'
-#' @example
+#' @examples
 #' tabset(list(
 #' list(menu = div("First link"), content = div("First content")),
 #' list(menu = div("Second link"), content = div("Second content"))

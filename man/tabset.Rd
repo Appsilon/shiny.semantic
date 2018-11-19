@@ -23,3 +23,9 @@ segment")}
 \description{
 This creates tabs with content using Semantic UI styles.
 }
+\examples{
+tabset(list(
+list(menu = div("First link"), content = div("First content")),
+list(menu = div("Second link"), content = div("Second content"))
+))
+}
