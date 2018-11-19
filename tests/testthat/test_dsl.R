@@ -162,7 +162,8 @@ test_that("test dropdown", {
 
 test_that("test menu_item", {
   # test missing input
-  expect_match(menu_item(), "<div class=\"item \"></div>")
+  expect_match(as.character(menu_item()),
+               "<div class=\"item \"></div>")
   #test with icon
   si_str <- as.character(
     menu_item(uiicon("add icon"), "New tab")
@@ -188,13 +189,18 @@ test_that("test uimenu", {
 
 test_that("test menu_header", {
   # test missing input
-  expect_match(as.character(menu_header()), "<div class=\"ui header\"></div>")
+  expect_match(as.character(menu_header()), "<div class=\"item header\"></div>")
   # test class
   expect_match(as.character(menu_header(class = "ch")),
                "<div class=\"item header ch\"></div>")
 })
 
-test_that("test uiheader", {
+test_that("test menu_divider", {
   # test missing input
-  expect_error(uiheader())
+  expect_match(as.character(menu_divider()), "<div class=\"divider\"></div>")
+})
+
+test_that("test uilist", {
+  # test missing input
+  expect_error(uilist())
 })
