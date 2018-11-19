@@ -42,6 +42,12 @@ uilabel <- function(..., type = "", is_link = TRUE) {
 #' segment")
 #'
 #' @export
+#'
+#' @example
+#' tabset(list(
+#' list(menu = div("First link"), content = div("First content")),
+#' list(menu = div("Second link"), content = div("Second content"))
+#' ))
 tabset <- function(tabs,
                    id = generate_random_id("menu"),
                    menu_class = "top attached tabular",
