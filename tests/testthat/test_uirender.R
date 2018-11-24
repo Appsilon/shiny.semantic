@@ -5,6 +5,6 @@ test_that("test uirender missing values", {
 })
 
 test_that("test uirender output type", {
-  expect_is(uirender(div(class="demo", "p")), "uirender")
-  expect_is(uirender(div(class="demo", "p")), "htmlwidget")
+  expect_is(uirender(div(class = "demo", "p")), "uirender")
+  expect_is(uirender(div(class = "demo", "p")), "htmlwidget")
 })

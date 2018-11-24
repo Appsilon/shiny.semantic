@@ -20,7 +20,7 @@ test_that("test uimessage type and input values", {
   # empty input
   expect_error(uimessage())
   # text input
-  si_str <- as.character(uimessage(shiny::p("a"),"abcb"))
+  si_str <- as.character(uimessage(shiny::p("a"), "abcb"))
   expect_true(any(grepl("<div class=\"header\">",
                         si_str, fixed = TRUE)))
   expect_true(any(grepl("abcb", si_str, fixed = TRUE)))
