@@ -156,7 +156,8 @@ test_that("test dropdown", {
   )
   expect_true(any(grepl("<div class=\"item \" data-value=\"C\">C</div>",
                         si_str, fixed = TRUE)))
-  expect_true(any(grepl("$('.ui.dropdown.dropdown_name_simple_dropdown').dropdown()",
+  expect_true(any(grepl(paste0("$('.ui.dropdown.dropdown_name_",
+                               "simple_dropdown').dropdown()"),
                         si_str, fixed = TRUE)))
 })
 
@@ -189,7 +190,8 @@ test_that("test uimenu", {
 
 test_that("test menu_header", {
   # test missing input
-  expect_match(as.character(menu_header()), "<div class=\"item header\"></div>")
+  expect_match(as.character(menu_header()),
+               "<div class=\"item header\"></div>")
   # test class
   expect_match(as.character(menu_header(class = "ch")),
                "<div class=\"item header ch\"></div>")
@@ -197,7 +199,8 @@ test_that("test menu_header", {
 
 test_that("test menu_divider", {
   # test missing input
-  expect_match(as.character(menu_divider()), "<div class=\"divider\"></div>")
+  expect_match(as.character(menu_divider()),
+               "<div class=\"divider\"></div>")
 })
 
 test_that("test uilist", {
