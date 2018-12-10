@@ -7,7 +7,8 @@
 list_element(data, is_description, is_icon, row)
 }
 \arguments{
-\item{data}{data to list}
+\item{data}{data to list; data.frame with fields
+header, icon, description}
 
 \item{is_description}{description flag}
 

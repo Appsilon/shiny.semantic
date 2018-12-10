@@ -15,3 +15,6 @@ Error when \code{color} does not belong to palette
 \description{
 Check if color is set from Semanti-UI palette
 }
+\examples{
+check_proper_color("blue")
+}

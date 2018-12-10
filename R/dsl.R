@@ -42,6 +42,14 @@ uilabel <- function(..., type = "", is_link = TRUE) {
 #' segment")
 #'
 #' @export
+#'
+#' @examples
+#' tabset(list(
+#' list(menu = shiny::div("First link"),
+#'      content = shiny::div("First content")),
+#' list(menu = shiny::div("Second link"),
+#'      content = shiny::div("Second content"))
+#' ))
 tabset <- function(tabs,
                    id = generate_random_id("menu"),
                    menu_class = "top attached tabular",
@@ -480,7 +488,8 @@ menu_divider <- function(...) {
 
 #' Helper function to render list element
 #'
-#' @param data data to list
+#' @param data data to list; data.frame with fields
+#' header, icon, description
 #' @param is_description description flag
 #' @param is_icon Icon logical to add icon from data
 #' @param row row character

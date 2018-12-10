@@ -28,7 +28,11 @@ After
 <!-- Live demo link below -->
 <!-- TODO Analogy to http://shiny.rstudio.com/gallery/widget-gallery.html -->
 <p style="text-align: center; font-size: x-large;">
+<<<<<<< HEAD
 <a href="https://demo.appsilon.com/shiny-semantic-components/">Components live demo</a>
+=======
+<a href="https://demo.appsilondatascience.com/shiny-semantic-components/">Components live demo</a>
+>>>>>>> 0c67d5f05901a7385eb7026ca20bd2bfb62df1d6
 </p>
 </div>
 Source code
@@ -50,7 +54,11 @@ To install [previous version]() you can run:
 How to use it?
 --------------
 
+<<<<<<< HEAD
 Firstly, you will have to invoke *shinyUI()* with *semanticPage()* instead of standard Shiny UI definitions like e.g. *fluidPage()*. From now on forward all components can ba annotated with [Semantic UI](http://semantic-ui.com/introduction/getting-started.html) specific CSS classes and also you will be able to use [shiny.semantic components](https://demo.appsilon.com/shiny-semantic-components/).
+=======
+Firstly, you will have to invoke *shinyUI()* with *semanticPage()* instead of standard Shiny UI definitions like e.g. *fluidPage()*. From now on forward all components can ba annotated with [Semantic UI](http://semantic-ui.com/introduction/getting-started.html) specific CSS classes and also you will be able to use [shiny.semantic components](https://demo.appsilondatascience.com/shiny-semantic-components/).
+>>>>>>> 0c67d5f05901a7385eb7026ca20bd2bfb62df1d6
 
 Basic example will look like this:
 
@@ -231,7 +239,11 @@ Component examples
 </pre>
 
 <!--/html_preserve-->
+<<<<<<< HEAD
 All components examples can be found here:<br> <https://demo.appsilon.com/shiny-semantic-components/>
+=======
+All components examples can be found here:<br> <https://demo.appsilondatascience.com/shiny-semantic-components/>
+>>>>>>> 0c67d5f05901a7385eb7026ca20bd2bfb62df1d6
 
 The source code for **Components live demo** is located in **/examples** folder. To run it locally you will have to install:
 
@@ -241,8 +253,13 @@ The source code for **Components live demo** is located in **/examples** folder.
 
 Check out also our dashboard examples made with **shiny.semantic** librabry:
 
+<<<<<<< HEAD
 1.  [Churn analytics](https://demo.appsilon.com/churn)
 2.  [Fraud detection](https://demo.appsilon.com/frauds)
+=======
+1.  [Churn analytics](https://demo.appsilondatascience.com/churn)
+2.  [Fraud detection](https://demo.appsilondatascience.com/frauds)
+>>>>>>> 0c67d5f05901a7385eb7026ca20bd2bfb62df1d6
 
 How to contribute?
 ------------------
