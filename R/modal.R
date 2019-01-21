@@ -43,7 +43,7 @@ modal <- function(id = "",
     ),
     if (!is.null(target)) tags$script(attach_rule(id, "attach events", target, "show")),
     if (!is.null(settings)) {
-      tagList(
+      shiny::tagList(
         lapply(settings, function(x) tags$script(attach_rule(id, "setting", x[1], x[2])))
       )
     }
