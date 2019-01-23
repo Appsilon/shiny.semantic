@@ -8,19 +8,19 @@ modal(id = "", class = "", header = "", content = "",
   footer = NULL, target = NULL, settings = NULL)
 }
 \arguments{
-\item{id.}{ID to be added to the modal div. Default "".}
+\item{id}{ID to be added to the modal div. Default "".}
 
-\item{class.}{Classes except "ui modal" to be added to the modal. Semantic UI classes can be used. Default "".}
+\item{class}{Classes except "ui modal" to be added to the modal. Semantic UI classes can be used. Default "".}
 
-\item{header.}{Content to be displayed in the modal header. Default "".}
+\item{header}{Content to be displayed in the modal header. Default "".}
 
-\item{content.}{Content to be displayed in the modal body. Default "".}
+\item{content}{Content to be displayed in the modal body. Default "".}
 
-\item{footer.}{Content to be displayed in the modal footer. Usually for buttons. Default NULL.}
+\item{footer}{Content to be displayed in the modal footer. Usually for buttons. Default NULL.}
 
-\item{target.}{Javascript selector for the element that will open the modal. Default NULL.}
+\item{target}{Javascript selector for the element that will open the modal. Default NULL.}
 
-\item{settings.}{List of vectors of Semantic UI settings to be added to the modal. Default NULL.}
+\item{settings}{List of vectors of Semantic UI settings to be added to the modal. Default NULL.}
 }
 \description{
 This creates a modal using Semantic UI styles.
