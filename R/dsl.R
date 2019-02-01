@@ -297,9 +297,22 @@ dropdown <- function(name,
                uiicon("dropdown"),
                shiny::div(class = "default text", default_text),
                uimenu(
-                          purrr::map2(choices, choices_value, ~
-                                        menu_item(`data-value` = .y, .x)
-                          )
+                         purrr::when(
+                           choices,
+                           is.null(names(.)) ~
+                             purrr::map2(choices, choices_value, ~
+                                           menu_item(`data-value` = .y, .x)
+                             ),
+                           !is.null(names(.)) ~
+                             purrr::map(1:length(choices), ~ {
+                             shiny::tagList(
+                               menu_header(names(choices)[.x], is_item = FALSE),
+                               menu_divider(),
+                               purrr::map2(choices[[.x]], choices_value[[.x]], ~
+                                             menu_item(`data-value` = .y, .x))
+                             )
+                           })
+                         )
                )
     ),
     shiny::tags$script(paste0(
