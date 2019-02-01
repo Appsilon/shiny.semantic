@@ -23,3 +23,11 @@ segment")}
 \description{
 This creates tabs with content using Semantic UI styles.
 }
+\examples{
+tabset(list(
+list(menu = shiny::div("First link"),
+     content = shiny::div("First content")),
+list(menu = shiny::div("Second link"),
+     content = shiny::div("Second content"))
+))
+}

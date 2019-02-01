@@ -236,14 +236,23 @@ uilist_demo <- function() {
   list_content <- data.frame(
     header = paste("Header", 1:5),
     description = paste("Description", 1:5),
+    icon = paste("home", 1:5),
+    stringsAsFactors = FALSE
+  )
+
+  icons_names <- c("home", "circle", "github", "star", "sun")
+  list_content_with_icons <- data.frame(
+    header = paste("Header", 1:5),
+    description = paste("Description", icons_names),
+    icon = icons_names,
     stringsAsFactors = FALSE
   )
 
   div(
     h1(class="ui dividing header", id="list", "List"),
-    demo(uilist(list_content, "", is_divided = FALSE, is_description = FALSE)),
-    demo(uilist(list_content, "alarm", is_divided = TRUE, is_description = FALSE)),
-    demo(uilist(list_content, "github", is_divided = TRUE, is_description = TRUE))
+    demo(uilist(list_content, is_icon = FALSE, is_divided = FALSE, is_description = FALSE)),
+    demo(uilist(list_content, is_icon = TRUE, is_divided = TRUE, is_description = FALSE)),
+    demo(uilist(list_content_with_icons, is_icon = TRUE, is_divided = TRUE, is_description = TRUE))
   )
 }
 

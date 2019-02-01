@@ -42,6 +42,14 @@ uilabel <- function(..., type = "", is_link = TRUE) {
 #' segment")
 #'
 #' @export
+#'
+#' @examples
+#' tabset(list(
+#' list(menu = shiny::div("First link"),
+#'      content = shiny::div("First content")),
+#' list(menu = shiny::div("Second link"),
+#'      content = shiny::div("Second content"))
+#' ))
 tabset <- function(tabs,
                    id = generate_random_id("menu"),
                    menu_class = "top attached tabular",
@@ -192,6 +200,20 @@ uifield <- function(..., class = "") {
 #' @export
 label <- function(...) {
   shiny::tags$label(...)
+}
+
+
+#' Create Semantic UI checkox
+#'
+#' This creates a checkbox using Semantic UI styles.
+#'
+#' @param ... Other arguments to be added as attributes of the
+#' tag (e.g. style, childrens etc.)
+#' @param type Type of checkbox to be used See \code{\link{checkbox_types}} for possible values.
+#'
+#' @export
+uicheckbox <- function(..., type = "") {
+  shiny::div(class = paste("ui checkbox", type), ...)
 }
 
 #' Create Semantic UI Message
@@ -479,14 +501,15 @@ menu_divider <- function(...) {
 
 #' Helper function to render list element
 #'
-#' @param data data to list
+#' @param data data to list; data.frame with fields
+#' header, icon, description
 #' @param is_description description flag
-#' @param icon Icon character
+#' @param is_icon Icon logical to add icon from data
 #' @param row row character
 #'
 #' @import shiny
-list_element <- function(data, is_description, icon, row) {
-  div(class = "item",  if (icon == "") "" else uiicon(icon),
+list_element <- function(data, is_description, is_icon, row) {
+  div(class = "item",  if (is_icon) uiicon(data$icon[row]) else "",
       if (is_description) {
         div(class = "content",
             div(class = "header", data$header[row]),
@@ -501,32 +524,36 @@ list_element <- function(data, is_description, icon, row) {
 #'
 #' This creates a list with icons using Semantic UI
 #'
-#' @param data A dataframe with columns `header` and/or `description` containing the list items
-#' headers and descriptions. `description` column is optional and should be provided
-#' if `is_description` parameter TRUE.
-#' @param icon A string with icon name. Empty string will render list without icons.
+#' @param data A dataframe with columns `header` and/or `description`, `icon` containing the list items
+#' headers, descriptions and icons. `description` column is optional and should be provided
+#' if `is_description` parameter TRUE. `icon` column is optional and should be provided
+#' if `is_icon` parameter TRUE. Icon column should contain strings with icon names available
+#' here: https://semantic-ui.com/elements/icon.html
+#' @param is_icon IF TRUE created list has icons
 #' @param is_divided If TRUE created list elements are divided
 #' @param is_description If TRUE created list will have a description
 #'
 #' @export
 #' @import shiny
+#' @import magrittr
 #' @examples
 #'
 #' list_content <- data.frame(
 #'   header = paste("Header", 1:5),
 #'   description = paste("Description", 1:5),
+#'   icon = paste("home", 1:5),
 #'   stringsAsFactors = FALSE
 #' )
 #'
 #' # Create a 5 element divided list with alert icons and description
-#' uilist(list_content, "alert", is_divided = TRUE, is_description = TRUE)
-uilist <- function(data, icon, is_divided = FALSE, is_description = FALSE){
+#' uilist(list_content, is_icon = TRUE, is_divided = TRUE, is_description = TRUE)
+uilist <- function(data, is_icon = FALSE, is_divided = FALSE, is_description = FALSE){
   divided_list <- ifelse(is_divided, "divided", "")
   list_class <- paste("ui", divided_list, "list")
 
   div(class = list_class,
       1:nrow(data) %>% purrr::map(function(row){
-        list_element(data, is_description, icon, row)
+        list_element(data, is_description, is_icon, row)
         })
   )
 }
