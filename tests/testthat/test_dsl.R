@@ -161,6 +161,24 @@ test_that("test dropdown", {
                         si_str, fixed = TRUE)))
 })
 
+test_that("test dropdown header", {
+  # test output
+  si_str <- as.character(
+    dropdown("header_dropdown", list("LETTERS" = LETTERS, "month.name" = month.name), value = "A")
+  )
+
+  expect_true(any(grepl("<div class=\"item \" data-value=\"C\">C</div>",
+                        si_str, fixed = TRUE)))
+  expect_true(any(grepl(paste0("$('.ui.dropdown.dropdown_name_",
+                               "header_dropdown').dropdown()"),
+                        si_str, fixed = TRUE)))
+  expect_true(any(grepl("<div class=\"header\">month.name</div>",
+                        si_str, fixed = TRUE)))
+  expect_true(any(grepl("<div class=\"divider\"></div>",
+                        si_str, fixed = TRUE)))
+})
+
+
 test_that("test menu_item", {
   # test missing input
   expect_match(as.character(menu_item()),
