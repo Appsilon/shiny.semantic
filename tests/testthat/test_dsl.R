@@ -164,7 +164,9 @@ test_that("test dropdown", {
 test_that("test dropdown header", {
   # test output
   si_str <- as.character(
-    dropdown("header_dropdown", list("LETTERS" = LETTERS, "month.name" = month.name), value = "A")
+    dropdown("header_dropdown",
+             list("LETTERS" = LETTERS, "month.name" = month.name),
+             value = "A")
   )
 
   expect_true(any(grepl("<div class=\"item \" data-value=\"C\">C</div>",
