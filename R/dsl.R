@@ -72,7 +72,7 @@ tabset <- function(tabs,
                    tab_content_class = "bottom attached segment") {
   id_tabs <- tabs %>% purrr::map(~ set_tab_id(.x))
   valid_ids <- id_tabs %>% purrr::map_chr(~ .x$id)
-  active_tab <- if (!is.null(active)) active else valid_ids[1]
+  active_tab <- if (!is.null(active)) active else valid_ids[1] # nolint
   script_code <- paste0(
     " // Code below is needed to trigger visibility on reactive Shiny outputs.
       // Thanks to that users do not have to set suspendWhenHidden to FALSE.
@@ -89,13 +89,13 @@ tabset <- function(tabs,
     shiny::div(id = id,
                class = paste("ui menu", menu_class),
                purrr::map(id_tabs, ~ {
-                 class <- paste("item", if (.$id == active_tab) "active" else "")
+                 class <- paste("item", if (.$id == active_tab) "active" else "") # nolint
                  shiny::a(class = class, `data-tab` = .$id, .$menu)
                })
     ),
     purrr::map(id_tabs, ~ {
       class <- paste("ui tab", tab_content_class,
-                     if (.$id == active_tab) "active" else "")
+                     if (.$id == active_tab) "active" else "") # nolint
       shiny::div(class = class, `data-tab` = .$id, .$content)
     }),
     shiny::tags$script(script_code)
