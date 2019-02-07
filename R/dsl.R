@@ -57,10 +57,10 @@ tabset <- function(tabs,
                    menu_class = "top attached tabular",
                    tab_content_class = "bottom attached segment") {
   id_tabs <- tabs %>% purrr::map(~ {
-    id = .x$id
-    menu = .x$menu
-    content = .x$content
-    list(id = if (!is.null(id)) id else tolower(gsub(" ", "_", menu)),
+    id <- .x$id
+    menu <- .x$menu
+    content <- .x$content
+    list(id = if (!is.null(id)) id else generate_random_id("tab"),
          menu = menu, content = content)
   })
   valid_ids <- id_tabs %>% purrr::map_chr(~ .x$id)
