@@ -9,8 +9,8 @@ tabset(tabs, active = NULL, id = generate_random_id("menu"),
   tab_content_class = "bottom attached segment")
 }
 \arguments{
-\item{tabs}{A list of tabs. Each tab is a list of two elements - first
-element defines menu item, second element defines tab content.}
+\item{tabs}{A list of tabs. Each tab is a list of three elements - first
+element defines menu item, second element defines tab content, third optional element defines tab id.}
 
 \item{active}{Id of the active tab. If NULL first tab will be active.}
 

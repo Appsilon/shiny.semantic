@@ -29,12 +29,26 @@ uilabel <- function(..., type = "", is_link = TRUE) {
       list(...))
 }
 
+#' Sets tab id if not provided
+#'
+#' Sets tab id if it wasn't provided
+#'
+#' @param tab A tab. Tab is a list of three elements - first
+#' element defines menu item, second element defines tab content, third optional element defines tab id.
+set_tab_id <- function(tab) {
+  id <- tab$id
+  menu <- tab$menu
+  content <- tab$content
+  list(id = if (!is.null(id)) id else generate_random_id("tab"),
+       menu = menu, content = content)
+}
+
 #' Create Semantic UI tabs
 #'
 #' This creates tabs with content using Semantic UI styles.
 #'
-#' @param tabs A list of tabs. Each tab is a list of two elements - first
-#' element defines menu item, second element defines tab content.
+#' @param tabs A list of tabs. Each tab is a list of three elements - first
+#' element defines menu item, second element defines tab content, third optional element defines tab id.
 #' @param active Id of the active tab. If NULL first tab will be active.
 #' @param id Id of the menu element (default: randomly generated id)
 #' @param menu_class Class for the menu element (default: "top attached
@@ -56,13 +70,7 @@ tabset <- function(tabs,
                    id = generate_random_id("menu"),
                    menu_class = "top attached tabular",
                    tab_content_class = "bottom attached segment") {
-  id_tabs <- tabs %>% purrr::map(~ {
-    id <- .x$id
-    menu <- .x$menu
-    content <- .x$content
-    list(id = if (!is.null(id)) id else generate_random_id("tab"),
-         menu = menu, content = content)
-  })
+  id_tabs <- tabs %>% purrr::map(~ set_tab_id(.x))
   valid_ids <- id_tabs %>% purrr::map_chr(~ .x$id)
   active_tab <- if (!is.null(active)) active else valid_ids[1]
   script_code <- paste0(
