@@ -56,14 +56,14 @@ tabset <- function(tabs,
                    id = generate_random_id("menu"),
                    menu_class = "top attached tabular",
                    tab_content_class = "bottom attached segment") {
-  id_tabs <- tabs %>% map(~ {
+  id_tabs <- tabs %>% purrr::map(~ {
     id = .x$id
     menu = .x$menu
     content = .x$content
     list(id = if (!is.null(id)) id else tolower(gsub(" ", "_", menu)),
          menu = menu, content = content)
   })
-  valid_ids <- id_tabs %>% map_chr(~ .x$id)
+  valid_ids <- id_tabs %>% purrr::map_chr(~ .x$id)
   active_tab <- if (!is.null(active)) active else valid_ids[1]
   script_code <- paste0(
     " // Code below is needed to trigger visibility on reactive Shiny outputs.
