@@ -1,9 +1,11 @@
 Package: shiny.semantic
 Type: Package
 Title: Semantic UI Support for Shiny
-Version: 0.2.0
-Authors@R: person("Filip", "Stachura", email = "filip@appsilondatascience.com",
-  role = c("aut", "cre"))
+Version: 0.2.3
+Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com",
+  role = "aut"),
+  person("Dominik", "Krzeminski", email = "dominik@appsilon.com",
+  role = "cre"))
 Description: Creating a great user interface for your Shiny apps
     can be a hassle, especially if you want to work purely in R
     and don't want to use, for instance HTML templates. This
@@ -26,5 +28,6 @@ Suggests:
     dplyr,
     gapminder,
     testthat,
-    lintr
-RoxygenNote: 6.0.1
+    lintr,
+    covr
+RoxygenNote: 6.1.0

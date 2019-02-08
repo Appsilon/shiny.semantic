@@ -14,7 +14,7 @@
 slider_input <- function(name, min, max, value, step = 0.01, n_ticks = 5, color = "") {
   check_proper_color(color)
 
-  tagList(
+  shiny::tagList(
     div(style = "margin: 0.5em;",
       div(id = name, class = paste("ui range", color), style = "padding-bottom: 0; padding-top: 2em;"),
       div(
@@ -35,12 +35,16 @@ slider_input <- function(name, min, max, value, step = 0.01, n_ticks = 5, color 
                start: %s,
                step: %s,
                onChange: function(value) {
-                 var html = '<div class = \"ui pointing below label\" style = \"bottom: 2.7em; right: 0.9em; width: 3.5em; text-align: center;\">' + value + '</div>';
+                 var html = %s;
                  $('#%s .thumb').html(html);
                  Shiny.onInputChange('%s', value);
                }
             });",
-            name, min, max, value, step, name, name
+            name, min, max, value, step,
+            paste0("'<div class = \"ui pointing below label\"",
+                   "style = \"bottom: 2.7em; right: 0.9em; width: 3.5em; text-align: center;\">'",
+                   "+ value + '</div>'"),
+            name, name
     )))
   )
 }
