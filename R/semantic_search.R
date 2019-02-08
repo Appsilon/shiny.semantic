@@ -179,7 +179,7 @@ search_selection_choices <- function(name,
     HTML(
       sprintf(
         "<script>$('.ui.dropdown.%s').dropdown(%s).dropdown('set selected', '%s'.split(','));</script>",
-        name, toJSON(dropdown_settings, auto_unbox = TRUE), value)
+        name, toJSON(dropdown_settings, auto_unbox = TRUE), value) #nolint
     )
   )
 }
