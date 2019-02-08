@@ -108,10 +108,12 @@ search_selection_api <- function(name,
 #' @param name Input name. Reactive value is available under input[[name]].
 #' @param choices Vector or a list of choices to search through.
 #' @param value String with default values to set when initialize the component.
-#' Values should be delimited wirh a comma when multiple to set. Default NULL.
+#' Values should be delimited with a comma when multiple to set. Default NULL.
 #' @param multiple TRUE if the dropdown should allow multiple selections,
 #' FALSE otherwise (default FALSE).
 #' @param default_text Text to be visible on dropdown when nothing is selected.
+#' @param dropdown_settings Settings passed to dropdown() semantic-ui method.
+#' See https://semantic-ui.com/modules/dropdown.html#/settings
 #'
 #'@examples
 #' ## Only run examples in interactive R sessions
@@ -147,8 +149,12 @@ search_selection_choices <- function(name,
                                      choices,
                                      value = NULL,
                                      multiple = FALSE,
-                                     default_text = "Select") {
+                                     default_text = "Select",
+                                     dropdown_settings = list(forceSelection = FALSE)) {
   input_class <- define_selection_type(name, multiple)
+  if (is.null(value)) {
+    value <- ""
+  }
   shiny::tagList(
     tags$div(class = input_class,
              shiny_input(name,
@@ -170,10 +176,11 @@ search_selection_choices <- function(name,
                }
             )
     ),
-    HTML(paste0("<script>$('.ui.dropdown.", name, "').dropdown({
-                  forceSelection: false
-                }).dropdown('set selected', '", value, "'.split(','));</script>"
-    ))
+    HTML(
+      sprintf(
+        "<script>$('.ui.dropdown.%s').dropdown(%s).dropdown('set selected', '%s'.split(','));</script>",
+        name, toJSON(dropdown_settings, auto_unbox = TRUE), value) #nolint
+    )
   )
 }
 
@@ -217,7 +224,7 @@ register_search <- function(session, data, search_query) {
       success = TRUE,
       results = search_query(data, extracted_query)
     ))
-    # Ispired by: https://stat.ethz.ch/pipermail/r-devel/2013-August/067210.html
+    # Inspired by: https://stat.ethz.ch/pipermail/r-devel/2013-August/067210.html
     # It's because httpResponse is not exported from shiny
     # and triggers NOTE in R CMD check
     f <- "shiny" %:::% "httpResponse"

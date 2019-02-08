@@ -5,7 +5,8 @@
 \title{Add Semantic UI search selection dropdown based on provided choices}
 \usage{
 search_selection_choices(name, choices, value = NULL, multiple = FALSE,
-  default_text = "Select")
+  default_text = "Select", dropdown_settings = list(forceSelection =
+  FALSE))
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under input[[name]].}
@@ -13,12 +14,15 @@ search_selection_choices(name, choices, value = NULL, multiple = FALSE,
 \item{choices}{Vector or a list of choices to search through.}
 
 \item{value}{String with default values to set when initialize the component.
-Values should be delimited wirh a comma when multiple to set. Default NULL.}
+Values should be delimited with a comma when multiple to set. Default NULL.}
 
 \item{multiple}{TRUE if the dropdown should allow multiple selections,
 FALSE otherwise (default FALSE).}
 
 \item{default_text}{Text to be visible on dropdown when nothing is selected.}
+
+\item{dropdown_settings}{Settings passed to dropdown() semantic-ui method.
+See https://semantic-ui.com/modules/dropdown.html#/settings}
 }
 \description{
 Define the (multiple) search selection dropdown input component serving
