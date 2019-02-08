@@ -14,6 +14,7 @@ ui <- shinyUI(semanticPage(
   )
 ))
 server <- shinyServer(function(input, output) {
+
   output$plot1 <- renderPlot(plot(1, 1))
   output$plot2 <- renderPlotly(plot_ly(mtcars, x = ~mpg, y = ~cyl, width = "100%"))
 })
