@@ -112,6 +112,8 @@ search_selection_api <- function(name,
 #' @param multiple TRUE if the dropdown should allow multiple selections,
 #' FALSE otherwise (default FALSE).
 #' @param default_text Text to be visible on dropdown when nothing is selected.
+#' @param groups Vector of length equal to choices, specifying to which group the choice belongs.
+#'    Specifying the parameter enables group dropdown search implementation.
 #' @param dropdown_settings Settings passed to dropdown() semantic-ui method.
 #' See https://semantic-ui.com/modules/dropdown.html#/settings
 #'
