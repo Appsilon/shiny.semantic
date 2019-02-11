@@ -150,11 +150,13 @@ search_selection_choices <- function(name,
                                      value = NULL,
                                      multiple = FALSE,
                                      default_text = "Select",
+                                     groups = NULL,
                                      dropdown_settings = list(forceSelection = FALSE)) {
   input_class <- define_selection_type(name, multiple)
   if (is.null(value)) {
     value <- ""
   }
+
   shiny::tagList(
     tags$div(class = input_class,
              shiny_input(name,
@@ -169,17 +171,30 @@ search_selection_choices <- function(name,
              tags$div(class = "menu",
                if (is.null(choices)) {
                  NULL
-               } else{
+               } else if (is.null(groups)) {
                  purrr::map(choices, ~
-                   div(class = "item", `data-value` = ., .) %>% shiny::tagList()
-                 )
+                   div(class = "item", `data-value` = ., .)
+                 )  %>% shiny::tagList()
+               } else {
+                 group_levels <- unique(groups)
+                 group_choices <- purrr::map(group_levels, ~ choices[groups == .])
+                 divide_choices <- function(group, group_specific_choices) {
+                   shiny::tagList(
+                     div(class = "ui horizontal divider", style = "border-top: none !important;", group),
+                     purrr::map(group_specific_choices, ~
+                       div(class = "item", `data-value` = ., .)
+                     )
+                   )
+                 }
+                 purrr::map2(group_levels, group_choices, divide_choices) %>%
+                   shiny::tagList()
                }
             )
     ),
     HTML(
       sprintf(
         "<script>$('.ui.dropdown.%s').dropdown(%s).dropdown('set selected', '%s'.split(','));</script>",
-        name, toJSON(dropdown_settings, auto_unbox = TRUE), value) #nolint
+        name, jsonlite::toJSON(dropdown_settings, auto_unbox = TRUE), value) #nolint
     )
   )
 }
