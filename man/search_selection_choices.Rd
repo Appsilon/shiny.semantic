@@ -5,8 +5,8 @@
 \title{Add Semantic UI search selection dropdown based on provided choices}
 \usage{
 search_selection_choices(name, choices, value = NULL, multiple = FALSE,
-  default_text = "Select", dropdown_settings = list(forceSelection =
-  FALSE))
+  default_text = "Select", groups = NULL,
+  dropdown_settings = list(forceSelection = FALSE))
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under input[[name]].}
@@ -20,6 +20,9 @@ Values should be delimited with a comma when multiple to set. Default NULL.}
 FALSE otherwise (default FALSE).}
 
 \item{default_text}{Text to be visible on dropdown when nothing is selected.}
+
+\item{groups}{Vector of length equal to choices, specifying to which group the choice belongs.
+Specifying the parameter enables group dropdown search implementation.}
 
 \item{dropdown_settings}{Settings passed to dropdown() semantic-ui method.
 See https://semantic-ui.com/modules/dropdown.html#/settings}
