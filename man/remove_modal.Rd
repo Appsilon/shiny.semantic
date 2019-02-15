@@ -7,7 +7,7 @@
 remove_modal(selector)
 }
 \arguments{
-\item{target}{Javascript selector for the modal that will be hidden.}
+\item{selector}{ID of the modal that will be hidden.}
 }
 \description{
 This hides a displayed Semantic UI modal.

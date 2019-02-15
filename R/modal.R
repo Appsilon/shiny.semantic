@@ -10,6 +10,7 @@
 #' @param target Javascript selector for the element that will open the modal. Default NULL.
 #' @param settings List of vectors of Semantic UI settings to be added to the modal. Default NULL.
 #'
+#' @import shiny
 #' @export
 modal <- function(...,
                   id = "",
@@ -50,6 +51,13 @@ modal <- function(...,
   )
 }
 
+#' Internal function that creates the rule for a specific setting or behavior of the modal.
+#'
+#' @param id ID of the target modal.
+#' @param behavior What behavior is beging set i. e. setting or attach events.
+#' @param target First argument of the behavior. Usually a target or a setting name.
+#' @param value Second argument of the behavior. usually an action or a setting value.
+
 attach_rule <- function(id, behavior, target, value) {
   is_boolean <- (value == "false" || value == "true")
   paste0(
@@ -61,20 +69,20 @@ attach_rule <- function(id, behavior, target, value) {
 #'
 #' This displays a hidden Semantic UI modal.
 #'
-#' @param target Javascript selector for the modal that will be displayed.
+#' @param selector ID of the modal that will be displayed.
 #'
 #' @export
 show_modal <- function(selector) {
-  shinyjs::runjs(paste0("$('", selector, "').modal('show')"))
+  shinyjs::runjs(paste0("$('#", selector, "').modal('show')"))
 }
 
 #' Hide Semantic UI modal
 #'
 #' This hides a displayed Semantic UI modal.
 #'
-#' @param target Javascript selector for the modal that will be hidden.
+#' @param selector ID of the modal that will be hidden.
 #'
 #' @export
 remove_modal <- function(selector) {
-  shinyjs::runjs(paste0("$('", selector, "').modal('hide')"))
+  shinyjs::runjs(paste0("$('#", selector, "').modal('hide')"))
 }

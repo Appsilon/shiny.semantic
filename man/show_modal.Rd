@@ -7,7 +7,7 @@
 show_modal(selector)
 }
 \arguments{
-\item{target}{Javascript selector for the modal that will be displayed.}
+\item{selector}{ID of the modal that will be displayed.}
 }
 \description{
 This displays a hidden Semantic UI modal.

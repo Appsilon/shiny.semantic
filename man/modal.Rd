@@ -8,7 +8,7 @@ modal(..., id = "", class = "", header = "", footer = NULL,
   target = NULL, settings = NULL)
 }
 \arguments{
-\item{...}{Content to be displayed in the modal body. Default "".}
+\item{...}{Content to be displayed in the modal body.}
 
 \item{id}{ID to be added to the modal div. Default "".}
 
