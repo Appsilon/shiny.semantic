@@ -42,7 +42,17 @@ modal <- function(...,
       modal_content,
       modal_actions
     ),
-    if (!is.null(target)) tags$script(attach_rule(id, "attach events", target, "show")),
+    HTML(paste0(
+      "<script>
+        $('.ui.modal').modal({
+           onShow: function () {
+             Shiny.bindAll();
+           }
+         })
+      </script>
+      "
+    )),
+    if (!is.null(target)) tags$script(attach_rule(id, "attach events", paste0("#", target), "show")),
     if (!is.null(settings)) {
       shiny::tagList(
         lapply(settings, function(x) tags$script(attach_rule(id, "setting", x[1], x[2])))
