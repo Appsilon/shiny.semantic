@@ -25,7 +25,7 @@ test_that("test modal created with no content", {
 })
 
 test_that("test modal created with given content", {
-  si_str <- as.character(modal(content = "this is a test content"))
+  si_str <- as.character(modal("this is a test content"))
   expect_true(any(grepl("this is a test content",
                         si_str, fixed = TRUE)))
 })

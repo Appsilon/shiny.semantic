@@ -4,17 +4,17 @@
 \alias{modal}
 \title{Create Semantic UI modal}
 \usage{
-modal(id = "", class = "", header = "", content = "",
-  footer = NULL, target = NULL, settings = NULL)
+modal(..., id = "", class = "", header = "", footer = NULL,
+  target = NULL, settings = NULL)
 }
 \arguments{
+\item{...}{Content to be displayed in the modal body. Default "".}
+
 \item{id}{ID to be added to the modal div. Default "".}
 
 \item{class}{Classes except "ui modal" to be added to the modal. Semantic UI classes can be used. Default "".}
 
 \item{header}{Content to be displayed in the modal header. Default "".}
-
-\item{content}{Content to be displayed in the modal body. Default "".}
 
 \item{footer}{Content to be displayed in the modal footer. Usually for buttons. Default NULL.}
 

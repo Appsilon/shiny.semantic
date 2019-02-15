@@ -23,9 +23,9 @@ server <- shinyServer(function(input, output) {
 
   output$modalBind <- renderUI({
     modal(
+      "This is some example content",
       id = "bind-example-modal",
       header = "This is a modal example",
-      content = "This is some example content",
       class = "tiny",
       target = "#modal-button",
       settings = list(c("transition", "fade"), c("closable", "false")))
@@ -33,9 +33,9 @@ server <- shinyServer(function(input, output) {
 
   output$modalAction <- renderUI({
     modal(
+      "I am another modal that is hidden by hide_modal after a few seconds",
       id = "action-example-modal",
       header = "This is a modal example",
-      content = 'I am another modal that is hidden by hide_modal after a few seconds',
       footer = "",
       class = "tiny",
       settings = list(c("transition", "fade"), c("closable", "false")))
