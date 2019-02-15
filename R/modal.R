@@ -71,6 +71,7 @@ attach_rule <- function(id, behavior, target, value) {
 #'
 #' @param selector ID of the modal that will be displayed.
 #'
+#' @import shinyjs
 #' @export
 show_modal <- function(selector) {
   shinyjs::runjs(paste0("$('#", selector, "').modal('show')"))
@@ -82,6 +83,7 @@ show_modal <- function(selector) {
 #'
 #' @param selector ID of the modal that will be hidden.
 #'
+#' @import shinyjs
 #' @export
 remove_modal <- function(selector) {
   shinyjs::runjs(paste0("$('#", selector, "').modal('hide')"))
