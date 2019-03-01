@@ -2,12 +2,21 @@
 % Please edit documentation in R/modal.R
 \name{show_modal}
 \alias{show_modal}
-\title{Show Semantic UI modal}
+\alias{remove_modal}
+\alias{hide_modal}
+\title{Show, Hide or Remove Semantic UI modal}
 \usage{
-show_modal(selector)
+show_modal(id, session = getDefaultReactiveDomain())
+
+remove_modal(id, session = shiny::getDefaultReactiveDomain())
+
+hide_modal(id, session = getDefaultReactiveDomain())
 }
 \arguments{
-\item{selector}{ID of the modal that will be displayed.}
+\item{id}{ID of the modal that will be displayed.}
+
+\item{session}{The \code{session} object passed to function given to
+\code{shinyServer}.}
 }
 \description{
 This displays a hidden Semantic UI modal.

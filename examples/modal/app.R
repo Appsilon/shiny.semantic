@@ -26,7 +26,11 @@ ui <- function() {
 server <- shinyServer(function(input, output) {
   observeEvent(input$show, {
     show_modal('action-example-modal')
-    shinyjs::delay(5000, remove_modal('action-example-modal'))
+    shinyjs::delay(5000, hide_modal('action-example-modal'))
+  })
+
+  observeEvent(input$test, {
+    browser()
   })
 
   output$modalBind <- renderUI({

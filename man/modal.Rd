@@ -5,7 +5,7 @@
 \title{Create Semantic UI modal}
 \usage{
 modal(..., id = "", class = "", header = "", footer = NULL,
-  target = NULL, settings = NULL)
+  target = NULL, settings = NULL, modal_tags = NULL)
 }
 \arguments{
 \item{...}{Content to be displayed in the modal body.}
@@ -21,6 +21,8 @@ modal(..., id = "", class = "", header = "", footer = NULL,
 \item{target}{Javascript selector for the element that will open the modal. Default NULL.}
 
 \item{settings}{List of vectors of Semantic UI settings to be added to the modal. Default NULL.}
+
+\item{modal_tags}{Other modal elements. Default NULL.}
 }
 \description{
 This creates a modal using Semantic UI styles.

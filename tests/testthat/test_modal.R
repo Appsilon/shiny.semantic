@@ -45,7 +45,7 @@ test_that("test modal created with given footer", {
 })
 
 test_that("test modal created with given target", {
-  si_str <- as.character(modal(id = "test-modal", target = "#targetelement"))
+  si_str <- as.character(modal(id = "test-modal", target = "targetelement"))
   expect_true(any(grepl("$('#test-modal').modal('attach events', '#targetelement', 'show')",
                         si_str, fixed = TRUE)))
 })

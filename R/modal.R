@@ -37,6 +37,11 @@ modal <- function(...,
   )
 
   shiny::tagList(
+    shiny::singleton(
+      shiny::tags$head(
+        shiny::tags$script(src = "shiny.semantic/shiny-modal-message.js")
+      )
+    ),
     div(
       id = id,
       class = paste0("ui modal ", class),
@@ -51,7 +56,7 @@ modal <- function(...,
            onShow: function () {
              Shiny.bindAll();
            }
-         })
+         });
       </script>
       "
     )),
@@ -78,26 +83,27 @@ attach_rule <- function(id, behavior, target, value) {
   )
 }
 
-#' Show Semantic UI modal
+#' Show, Hide or Remove Semantic UI modal
 #'
 #' This displays a hidden Semantic UI modal.
 #'
-#' @param selector ID of the modal that will be displayed.
+#' @param id ID of the modal that will be displayed.
+#' @param session The \code{session} object passed to function given to
+#'   \code{shinyServer}.
 #'
-#' @import shinyjs
 #' @export
-show_modal <- function(selector) {
-  shinyjs::runjs(paste0("$('#", selector, "').modal('show')"))
+show_modal <- function(id, session = shiny::getDefaultReactiveDomain()) {
+  session$sendCustomMessage("showSemanticModal", list(id = id, action = "show")) # nolint
 }
 
-#' Hide Semantic UI modal
-#'
-#' This hides a displayed Semantic UI modal.
-#'
-#' @param selector ID of the modal that will be hidden.
-#'
-#' @import shinyjs
+#' @rdname show_modal
 #' @export
-remove_modal <- function(selector) {
-  shinyjs::runjs(paste0("$('#", selector, "').modal('hide')"))
+remove_modal <- function(id, session = shiny::getDefaultReactiveDomain()) {
+  shiny::removeUI(paste0("#", id ))
+}
+
+#' @rdname show_modal
+#' @export
+hide_modal <- function(id, session = shiny::getDefaultReactiveDomain()) {
+  session$sendCustomMessage("showSemanticModal", list(id = id, action = "hide")) # nolint
 }
