@@ -6,11 +6,11 @@
 \alias{hide_modal}
 \title{Show, Hide or Remove Semantic UI modal}
 \usage{
-show_modal(id, session = getDefaultReactiveDomain())
+show_modal(id, session = shiny::getDefaultReactiveDomain())
 
 remove_modal(id, session = shiny::getDefaultReactiveDomain())
 
-hide_modal(id, session = getDefaultReactiveDomain())
+hide_modal(id, session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
 \item{id}{ID of the modal that will be displayed.}
