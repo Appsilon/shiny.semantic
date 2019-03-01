@@ -29,12 +29,27 @@ uilabel <- function(..., type = "", is_link = TRUE) {
       list(...))
 }
 
+#' Sets tab id if not provided
+#'
+#' Sets tab id if it wasn't provided
+#'
+#' @param tab A tab. Tab is a list of three elements - first
+#' element defines menu item, second element defines tab content, third optional element defines tab id.
+set_tab_id <- function(tab) {
+  id <- tab$id
+  menu <- tab$menu
+  content <- tab$content
+  list(id = if (!is.null(id)) id else generate_random_id("tab"),
+       menu = menu, content = content)
+}
+
 #' Create Semantic UI tabs
 #'
 #' This creates tabs with content using Semantic UI styles.
 #'
-#' @param tabs A list of tabs. Each tab is a list of two elements - first
-#' element defines menu item, second element defines tab content.
+#' @param tabs A list of tabs. Each tab is a list of three elements - first
+#' element defines menu item, second element defines tab content, third optional element defines tab id.
+#' @param active Id of the active tab. If NULL first tab will be active.
 #' @param id Id of the menu element (default: randomly generated id)
 #' @param menu_class Class for the menu element (default: "top attached
 #' tabular")
@@ -51,13 +66,13 @@ uilabel <- function(..., type = "", is_link = TRUE) {
 #'      content = shiny::div("Second content"))
 #' ))
 tabset <- function(tabs,
+                   active = NULL,
                    id = generate_random_id("menu"),
                    menu_class = "top attached tabular",
                    tab_content_class = "bottom attached segment") {
-  identifiers <- replicate(length(tabs),
-                           list(id = generate_random_id("tab")),
-                           simplify = FALSE)
-  id_tabs <- purrr::map2(identifiers, tabs, ~ c(.x, .y))
+  id_tabs <- tabs %>% purrr::map(~ set_tab_id(.x))
+  valid_ids <- id_tabs %>% purrr::map_chr(~ .x$id)
+  active_tab <- if (!is.null(active)) active else valid_ids[1] # nolint
   script_code <- paste0(
     " // Code below is needed to trigger visibility on reactive Shiny outputs.
       // Thanks to that users do not have to set suspendWhenHidden to FALSE.
@@ -74,13 +89,13 @@ tabset <- function(tabs,
     shiny::div(id = id,
                class = paste("ui menu", menu_class),
                purrr::map(id_tabs, ~ {
-                 class <- paste("item", if (.$id == id_tabs[[1]]$id) "active" else "")
+                 class <- paste("item", if (.$id == active_tab) "active" else "") # nolint
                  shiny::a(class = class, `data-tab` = .$id, .$menu)
                })
     ),
     purrr::map(id_tabs, ~ {
       class <- paste("ui tab", tab_content_class,
-                     if (.$id == id_tabs[[1]]$id) "active" else "")
+                     if (.$id == active_tab) "active" else "") # nolint
       shiny::div(class = class, `data-tab` = .$id, .$content)
     }),
     shiny::tags$script(script_code)
@@ -319,9 +334,22 @@ dropdown <- function(name,
                uiicon("dropdown"),
                shiny::div(class = "default text", default_text),
                uimenu(
-                          purrr::map2(choices, choices_value, ~
-                                        menu_item(`data-value` = .y, .x)
-                          )
+                         purrr::when(
+                           choices,
+                           is.null(names(.)) ~
+                             purrr::map2(choices, choices_value, ~
+                                           menu_item(`data-value` = .y, .x)
+                             ),
+                           !is.null(names(.)) ~
+                             purrr::map(1:length(choices), ~ {
+                             shiny::tagList(
+                               menu_header(names(choices)[.x], is_item = FALSE),
+                               menu_divider(),
+                               purrr::map2(choices[[.x]], choices_value[[.x]], ~
+                                             menu_item(`data-value` = .y, .x))
+                             )
+                           })
+                         )
                )
     ),
     shiny::tags$script(paste0(

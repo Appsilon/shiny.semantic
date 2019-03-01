@@ -21,6 +21,7 @@ get_dependencies <- function() {
     javascript_file <- "semantic.js"
     css_files <- c("semantic.css")
   }
+
   if (!is.null(getOption("shiny.custom.semantic", NULL))) {
     dep_src <- c(file = getOption("shiny.custom.semantic"))
   } else {
@@ -96,28 +97,36 @@ check_semantic_theme <- function(theme_css) {
 #' This creates a Semantic page for use in a Shiny app.
 #'
 #' Inside, it uses two crucial options:
-#' - \code{shiny.minified} with a logical value, tells whether it should attach min or full
+#'
+#' (1) \code{shiny.minified} with a logical value, tells whether it should attach min or full
 #' semnatic css or js (TRUE by default).
-#' - \code{shiny.custom.semantic} if this option has not NULL character \code{semanticPage}
+#' (2) \code{shiny.custom.semantic} if this option has not NULL character \code{semanticPage}
 #' takes dependencies from custom css and js files specified in this path
 #' (NULL by default). Depending on \code{shiny.minified} value the folder should contain
-#' either "min" or standard version.
+#' either "min" or standard version. The folder should contain: \code{semantic.css} and
+#' \code{semantic.js} files, or \code{semantic.min.css} and \code{semantic.min.js}
+#' in \code{shiny.minified = TRUE} mode.
 #'
 #' @param ... Other arguments to be added as attributes of the main div tag
 #' wrapper (e.g. style, class etc.)
 #' @param title A title to display in the browser's title bar.
-#' @param theme Theme name or path
+#' @param theme Theme name or path. Full list of supported themes you will find in
+#' \code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.
 #'
 #' @export
 semanticPage <- function(..., title = "", theme = NULL){ # nolint
   content <- shiny::tags$div(class = "wrapper", ...)
-
   shiny::tagList(
-    ifelse(getOption("semantic.themes", FALSE), get_dependencies(), ""),
     get_range_component_dependencies(),
     shiny::tags$head(
-      shiny::tags$link(rel = "stylesheet", href = check_semantic_theme(theme)),
-      tags$script(src = get_default_semantic_js()),
+      if (!is.null(getOption("shiny.custom.semantic", NULL))) {
+        get_dependencies()
+      } else {
+        shiny::tagList(
+          shiny::tags$link(rel = "stylesheet", href = check_semantic_theme(theme)),
+          tags$script(src = get_default_semantic_js())
+        )
+      },
       shiny::tags$title(title),
       shiny::tags$meta(name = "viewport", content = "width=device-width, initial-scale=1.0")
     ),
