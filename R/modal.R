@@ -9,6 +9,7 @@
 #' @param footer Content to be displayed in the modal footer. Usually for buttons. Default NULL.
 #' @param target Javascript selector for the element that will open the modal. Default NULL.
 #' @param settings List of vectors of Semantic UI settings to be added to the modal. Default NULL.
+#' @param modal_tags Other modal elements. Default NULL.
 #'
 #' @import shiny
 #' @export
@@ -18,7 +19,8 @@ modal <- function(...,
                   header = "",
                   footer = NULL,
                   target = NULL,
-                  settings = NULL) {
+                  settings = NULL,
+                  modal_tags = NULL) {
 
   div <- shiny::div
 
@@ -40,7 +42,8 @@ modal <- function(...,
       class = paste0("ui modal ", class),
       modal_header,
       modal_content,
-      modal_actions
+      modal_actions,
+      modal_tags
     ),
     HTML(paste0(
       "<script>
