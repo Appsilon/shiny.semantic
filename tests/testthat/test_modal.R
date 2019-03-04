@@ -75,3 +75,20 @@ test_that("test modal created with given settings", {
     )
   ))
 })
+
+test_that("test modal created with arguments list", {
+  si_str <- as.character(modal(
+    header = list(class = "ui icon", shiny.semantic::uiicon("archive")),
+    content = div(class = "children", "content"),
+    footer = list(id = "footer_modal_id", "footer")
+  ))
+  expect_true(any(grepl(
+    "<div class=\"actions\" id=\"footer_modal_id\">footer</div>",
+    si_str, fixed = TRUE)))
+  expect_true(any(grepl(
+    "<div class=\"content\">\n    <div class=\"children\">content</div>",
+    si_str, fixed = TRUE)))
+  expect_true(any(grepl(
+    "<div class=\"header ui icon\">\n    <i class=\"archive icon\"></i>",
+    si_str, fixed = TRUE)))
+})
