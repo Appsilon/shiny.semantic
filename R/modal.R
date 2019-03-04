@@ -12,6 +12,56 @@
 #' @param settings List of vectors of Semantic UI settings to be added to the modal. Default NULL.
 #' @param modal_tags Other modal elements. Default NULL.
 #'
+#' @examples
+#' ## Create a simple UI modal
+#' library(shiny)
+#' library(shiny.semantic)
+#' ui <- function() {
+#'   shinyUI(
+#'     semanticPage(
+#'       title = "Modal example - Static UI modal",
+#'       div(id = "modal-open-button", class = "ui button", "Open Modal"),
+#'       modal(
+#'         div("Example content"),
+#'         id = "example-modal",
+#'         target = "modal-open-button"
+#'       )
+#'     )
+#'   )
+#' }
+#'
+#' ## Observe server side actions
+#' library(shiny)
+#' library(shiny.semantic)
+#' ui <- function() {
+#'   shinyUI(
+#'     semanticPage(
+#'       title = "Modal example - Server side actions",
+#'       uiOutput("modalAction"),
+#'       actionButton("show", "Show by calling show_modal")
+#'     )
+#'   )
+#' }
+#'
+#' server <- shinyServer(function(input, output) {
+#'   observeEvent(input$show, {
+#'     show_modal('action-example-modal')
+#'   })
+#'   observeEvent(input$hide, {
+#'     hide_modal('action-example-modal')
+#'   })
+#'
+#'   output$modalAction <- renderUI({
+#'     modal(
+#'       actionButton("hide", "Hide by calling hide_modal"),
+#'       id = "action-example-modal",
+#'       header = "Modal example",
+#'       footer = "",
+#'       class = "tiny"
+#'     )
+#'   })
+#' })
+#'
 #' @import shiny
 #' @export
 modal <- function(...,
@@ -54,7 +104,7 @@ modal <- function(...,
   shiny::tagList(
     shiny::singleton(
       shiny::tags$head(
-        shiny::tags$script(src = "shiny.semantic/shiny-modal-message.js")
+        shiny::tags$script(src = "shiny.semantic/shiny-semantic-modal.js")
       )
     ),
     div(
@@ -67,11 +117,7 @@ modal <- function(...,
     ),
     HTML(paste0(
       "<script>
-        $('.ui.modal').modal({
-           onShow: function () {
-             Shiny.bindAll();
-           }
-         });
+        Shiny.initSemanticModal('", id, "')
       </script>
       "
     )),
