@@ -31,15 +31,15 @@ modal <- function(...,
       div(class = "ui button negative", "Cancel"),
       div(class = "ui button positive", "OK")
     ))
-  } else if (class(footer) == "shiny.tag") {
+  } else if (class(footer)[[1]] == "shiny.tag") {
     footer <- shiny::tagList(footer)
   }
 
-  if (class(header) == "shiny.tag") {
+  if (class(header)[[1]] == "shiny.tag") {
     header <- shiny::tagList(header)
   }
 
-  if (class(content) == "shiny.tag") {
+  if (class(content)[[1]] == "shiny.tag") {
     content <- shiny::tagList(content)
   }
 
