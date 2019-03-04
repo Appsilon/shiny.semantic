@@ -46,14 +46,32 @@ test_that("test modal created with given footer", {
 
 test_that("test modal created with given target", {
   si_str <- as.character(modal(id = "test-modal", target = "targetelement"))
-  expect_true(any(grepl("$('#test-modal').modal('attach events', '#targetelement', 'show')",
-                        si_str, fixed = TRUE)))
+  expect_true(any(
+    grepl(
+      "$('#test-modal').modal('attach events', '#targetelement', 'show')",
+      si_str,
+      fixed = TRUE
+    )
+  ))
 })
 
 test_that("test modal created with given settings", {
-  si_str <- as.character(modal(id = "test-modal", settings = list(c("transition", "fade"), c("closable", "false"))))
-  expect_true(any(grepl("$('#test-modal').modal('setting', 'closable', false)",
-                        si_str, fixed = TRUE)))
-  expect_true(any(grepl("$('#test-modal').modal('setting', 'transition', 'fade')",
-                        si_str, fixed = TRUE)))
+  si_str <-
+    as.character(modal(id = "test-modal", settings = list(
+      c("transition", "fade"), c("closable", "false")
+    )))
+  expect_true(any(
+    grepl(
+      "$('#test-modal').modal('setting', 'closable', false)",
+      si_str,
+      fixed = TRUE
+    )
+  ))
+  expect_true(any(
+    grepl(
+      "$('#test-modal').modal('setting', 'transition', 'fade')",
+      si_str,
+      fixed = TRUE
+    )
+  ))
 })

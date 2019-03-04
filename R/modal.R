@@ -6,6 +6,7 @@
 #' @param id ID to be added to the modal div. Default "".
 #' @param class Classes except "ui modal" to be added to the modal. Semantic UI classes can be used. Default "".
 #' @param header Content to be displayed in the modal header. Default "".
+#' @param content Content to be displayed in the modal body.
 #' @param footer Content to be displayed in the modal footer. Usually for buttons. Default NULL.
 #' @param target Javascript selector for the element that will open the modal. Default NULL.
 #' @param settings List of vectors of Semantic UI settings to be added to the modal. Default NULL.
@@ -17,6 +18,7 @@ modal <- function(...,
                   id = "",
                   class = "",
                   header = "",
+                  content = NULL,
                   footer = NULL,
                   target = NULL,
                   settings = NULL,
@@ -30,7 +32,7 @@ modal <- function(...,
   )
 
   modal_header <- div(class = "header", header)
-  modal_content <- div(class = "content", ...)
+  modal_content <- div(class = "content", content, ...)
   modal_actions <- div(
     class = "actions",
     if (!is.null(footer)) footer else default_modal_footer
