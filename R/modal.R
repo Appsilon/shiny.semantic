@@ -26,17 +26,30 @@ modal <- function(...,
 
   div <- shiny::div
 
-  default_modal_footer <- div(
-    div(class = "ui button negative", "Cancel"),
-    div(class = "ui button positive", "OK")
-  )
+  if (is.null(footer)) {
+    footer <- shiny::tagList(div(
+      div(class = "ui button negative", "Cancel"),
+      div(class = "ui button positive", "OK")
+    ))
+  } else if (class(footer) == "shiny.tag") {
+    footer <- shiny::tagList(footer)
+  }
 
-  modal_header <- div(class = "header", header)
-  modal_content <- div(class = "content", content, ...)
-  modal_actions <- div(
-    class = "actions",
-    if (!is.null(footer)) footer else default_modal_footer
-  )
+  if (class(header) == "shiny.tag") {
+    header <- shiny::tagList(header)
+  }
+
+  if (class(content) == "shiny.tag") {
+    content <- shiny::tagList(content)
+  }
+
+  modal_header <- do.call(div, c(list(class = "header"), header))
+  modal_content <- do.call(div,
+      c(list(class = "content"), content, shiny::tagList(...)))
+  modal_actions <- do.call(div, c(
+    list(class = "actions"),
+    footer
+  ))
 
   shiny::tagList(
     shiny::singleton(
