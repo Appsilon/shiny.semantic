@@ -5,8 +5,8 @@ SUPPORTED_THEMES <- c("cerulean", "darkly", "paper", "simplex",
                       "readable",  "united", "journal", "solar",
                       "cyborg", "sandstone", "yeti", "lumen", "spacelab")
 
-#' Cloudfront path
-CDN_PATH <- "https://d335w9rbwpvuxm.cloudfront.net"
+#' Server static files path
+CDN_PATH <- "//shiny.semantic/"
 
 #' Add dashboard dependencies to html
 #'
