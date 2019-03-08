@@ -27,12 +27,11 @@
 #'
 #' server = function(input, output) {
 #'   observeEvent(input$show, {
-#'     shiny.semantic:::create_modal(modal(
+#'     create_modal(modal(
 #'       id = "simple-modal",
 #'       title = "Important message",
 #'       "This is an important message!"
-#'     ),
-#'     show = TRUE)
+#'     ))
 #'   })
 #' }
 #'
@@ -161,7 +160,6 @@ modal <- function(...,
 #'
 #' @import shiny
 #' @export
-
 create_modal <- function(ui_modal, show = TRUE, session = shiny::getDefaultReactiveDomain()) {
   session$sendCustomMessage( # nolint
     "createSemanticModal",
@@ -176,7 +174,6 @@ create_modal <- function(ui_modal, show = TRUE, session = shiny::getDefaultReact
 #' @param behavior What behavior is beging set i. e. setting or attach events.
 #' @param target First argument of the behavior. Usually a target or a setting name.
 #' @param value Second argument of the behavior. usually an action or a setting value.
-
 attach_rule <- function(id, behavior, target, value) {
   is_boolean <- (value == "false" || value == "true")
   paste0(

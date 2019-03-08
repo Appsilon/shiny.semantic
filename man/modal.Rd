@@ -44,12 +44,11 @@ ui <- function() {
 
 server = function(input, output) {
   observeEvent(input$show, {
-    shiny.semantic:::create_modal(modal(
+    create_modal(modal(
       id = "simple-modal",
       title = "Important message",
       "This is an important message!"
-    ),
-    show = TRUE)
+    ))
   })
 }
 
