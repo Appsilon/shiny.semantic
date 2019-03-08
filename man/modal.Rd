@@ -30,6 +30,29 @@ modal(..., id = "", class = "", header = "", content = NULL,
 This creates a modal using Semantic UI styles.
 }
 \examples{
+## Create a simple server modal
+library(shiny)
+library(shiny.semantic)
+
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      actionButton("show", "Show modal dialog")
+    )
+  )
+}
+
+server = function(input, output) {
+  observeEvent(input$show, {
+    shiny.semantic:::create_modal(modal(
+      id = "simple-modal",
+      title = "Important message",
+      "This is an important message!"
+    ),
+    show = TRUE)
+  })
+}
+
 ## Create a simple UI modal
 library(shiny)
 library(shiny.semantic)

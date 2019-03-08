@@ -13,6 +13,29 @@
 #' @param modal_tags Other modal elements. Default NULL.
 #'
 #' @examples
+#' ## Create a simple server modal
+#' library(shiny)
+#' library(shiny.semantic)
+#'
+#' ui <- function() {
+#'   shinyUI(
+#'     semanticPage(
+#'       actionButton("show", "Show modal dialog")
+#'     )
+#'   )
+#' }
+#'
+#' server = function(input, output) {
+#'   observeEvent(input$show, {
+#'     shiny.semantic:::create_modal(modal(
+#'       id = "simple-modal",
+#'       title = "Important message",
+#'       "This is an important message!"
+#'     ),
+#'     show = TRUE)
+#'   })
+#' }
+#'
 #' ## Create a simple UI modal
 #' library(shiny)
 #' library(shiny.semantic)
@@ -127,6 +150,23 @@ modal <- function(...,
         lapply(settings, function(x) tags$script(attach_rule(id, "setting", x[1], x[2])))
       )
     }
+  )
+}
+
+#' Allows for the creation of modals in the server side without being tied to a specific HTML element.
+#'
+#' @param ui_modal HTML containing the modal.
+#' @param show If the modal should only be created or open when called (open by default).
+#' @param session Current session.
+#'
+#' @import shiny
+#' @export
+
+create_modal <- function(ui_modal, show = TRUE, session = shiny::getDefaultReactiveDomain()) {
+  session$sendCustomMessage( # nolint
+    "createSemanticModal",
+    list(ui_modal = as.character(ui_modal),
+    action = ifelse(show, "show", ""))
   )
 }
 

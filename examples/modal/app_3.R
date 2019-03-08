@@ -19,7 +19,7 @@ server <- shinyServer(function(input, output) {
       id = "bind-example-modal",
       header = "Example header",
       class = "tiny",
-      target = "modal-button"
+      target = "modal-button")
   })
 })
 
