@@ -6,7 +6,7 @@ SUPPORTED_THEMES <- c("cerulean", "darkly", "paper", "simplex",
                       "cyborg", "sandstone", "yeti", "lumen", "spacelab")
 
 #' Server static files path
-CDN_PATH <- "//shiny.semantic/"
+CDN_PATH <- "shiny.semantic/"
 
 #' Add dashboard dependencies to html
 #'
