@@ -15,7 +15,7 @@ server = function(input, output) {
       id = "simple-modal",
       title = "Important message",
       "This is an important message!"
-    )
+    ))
   })
 }
 

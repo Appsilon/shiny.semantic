@@ -6,8 +6,9 @@ options(shiny.custom.semantic = "styles/")
 ui <- shinyUI(
   semanticPage(
     title = "Website", theme = "cosmo",
-    div(style="margin-left: 210px",
-        p("website content"))
+    div(
+      style = "margin-left: 210px",
+      p("website content"))
   )
 )
 
