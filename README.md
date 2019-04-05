@@ -17,15 +17,18 @@ With this library it's easy to wrap Shiny with [Semantic UI components](https://
 Before
 </h2>
 <br>
-
+<center>
 ![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-3-1.png)
+</center>
 
+<br>
 <h2>
 After
 </h2>
 <br>
-
+<center>
 ![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-4-1.png)
+</center>
 
 <!-- #Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link). -->
 <!-- Live demo link below -->
@@ -76,8 +79,11 @@ Basic example will look like this:
 
     shinyApp(ui = ui(), server = server)
 
-and will render a simple button. ![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-6-1.png)
+and will render a simple button.
 
+<center>
+![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-6-1.png)
+</center>
 For better understanding it's good to check [Semantic UI documentation.](http://semantic-ui.com/introduction/getting-started.html)
 
 **Note \#1**
@@ -191,7 +197,10 @@ Component examples
 <!--/html_preserve-->
 -   **Interactive card**
 
-![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-9-1.png) <!--html_preserve-->
+<center>
+![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-9-1.png)
+</center>
+<!--html_preserve-->
 <pre>
 <code class="r">div(
   class = "ui card",
