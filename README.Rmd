@@ -152,8 +152,8 @@ shinyApp(ui = ui(), server = server)
 and will render a simple button.
 
  
-```{r, echo = FALSE, fig.height = 2, , fig.width = 2}
-example_button = create_example(div(class = "ui button", uiicon("user"),  "Icon button"), width = "50%", height = "100px")
+```{r, echo = FALSE, fig.height = 2, fig.width = 3}
+example_button = create_example(div(class = "ui button", uiicon("user"),  "Icon button"), width = "60%", height = "70px")
 example_button$htmlwidget
 ```
 
