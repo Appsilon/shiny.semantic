@@ -6,9 +6,10 @@ shiny.semantic
 
 Semantic UI wrapper for Shiny
 
-<center>
+</br>
+
 [![Travis build status](https://travis-ci.org/Appsilon/shiny.semantic.svg?branch=develop)](https://travis-ci.org/Appsilon/shiny.semantic) [![codecov](https://codecov.io/gh/Appsilon/shiny.semantic/branch/master/graph/badge.svg)](https://codecov.io/gh/Appsilon/shiny.semantic)
-</center>
+
 With this library it's easy to wrap Shiny with [Semantic UI components](https://github.com/Semantic-Org/Semantic-UI). Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.
 
 `master` branch contains the stable version. Use `develop` branch for latest features.
@@ -17,18 +18,16 @@ With this library it's easy to wrap Shiny with [Semantic UI components](https://
 Before
 </h2>
 <br>
-<center>
+
 ![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-3-1.png)
-</center>
 
 <br>
 <h2>
 After
 </h2>
 <br>
-<center>
+
 ![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-4-1.png)
-</center>
 
 <!-- #Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link). -->
 <!-- Live demo link below -->
@@ -81,9 +80,8 @@ Basic example will look like this:
 
 and will render a simple button.
 
-<center>
 ![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-6-1.png)
-</center>
+
 For better understanding it's good to check [Semantic UI documentation.](http://semantic-ui.com/introduction/getting-started.html)
 
 **Note \#1**
@@ -197,9 +195,8 @@ Component examples
 <!--/html_preserve-->
 -   **Interactive card**
 
-<center>
 ![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-9-1.png)
-</center>
+
 <!--html_preserve-->
 <pre>
 <code class="r">div(
