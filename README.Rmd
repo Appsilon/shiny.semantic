@@ -46,6 +46,11 @@ create_example <- function(code, ...) {
 
 <div class="subheader">Semantic UI wrapper for Shiny</div>
 
+<center>
+[![Travis build status](https://travis-ci.org/Appsilon/shiny.semantic.svg?branch=develop)](https://travis-ci.org/Appsilon/shiny.semantic)
+[![codecov](https://codecov.io/gh/Appsilon/shiny.semantic/branch/master/graph/badge.svg)](https://codecov.io/gh/Appsilon/shiny.semantic)
+</center>
+
 <div class="section level2">
 With this library it's easy to wrap Shiny with [Semantic UI components][semantic_repo_url]. Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.
 
@@ -57,7 +62,7 @@ With this library it's easy to wrap Shiny with [Semantic UI components][semantic
 <h2> Before </h2>
 <br>
 
-```{r, echo=FALSE, message=FALSE, fig.height=1}
+```{r, echo=FALSE, message=FALSE, fig.height=1, screenshot.force = TRUE}
 create_example(before_ui_demo(), width="100%", height="100px")$htmlwidget
 ```
 </div>
@@ -66,7 +71,7 @@ create_example(before_ui_demo(), width="100%", height="100px")$htmlwidget
 <h2> After </h2>
 <br>
 
-```{r, echo=FALSE, message=FALSE, fig.height=1}
+```{r, echo=FALSE, message=FALSE, fig.height=1, screenshot.force = TRUE}
 create_example(after_ui_demo(), width="100%", height="100%")$htmlwidget
 ```
 </div>
@@ -140,7 +145,7 @@ shinyApp(ui = ui(), server = server)
 ```
 
 and will render a simple button.
-```{r, echo = FALSE, fig.height=1}
+```{r, echo = FALSE, fig.height=1, screenshot.force = TRUE}
 example_button = create_example(div(class = "ui button", uiicon("user"),  "Icon button"), width = "100%", height = "30px")
 example_button$htmlwidget
 ```
@@ -227,7 +232,7 @@ Component examples
 
 * **Raised segment with list**
 
-```{r, echo=FALSE, fig.height=1.7}
+```{r, echo=FALSE, fig.height=1.7, screenshot.force = TRUE}
 example_list = create_example(
   div(class = "ui raised segment",
   div(class = "ui relaxed divided list", c("Apples",
@@ -247,7 +252,7 @@ example_list$code_demo
 
 * **Interactive card**
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, screenshot.force = TRUE}
 example_card = create_example(
   div(class="ui card",
     div(class="content",
@@ -298,7 +303,15 @@ If you want to contribute to this project please submit a regular PR, once you'r
 
 **Changes in documentation**
 
-Both repository **README.md** file and an official documentation page are generated with Rmarkdown, so if there is a need to update them, please modify accordingly a **README.Rmd** file  and run a **build_readme.R** script to compile it.
+Both repository **README.md** file and an official documentation page are generated with Rmarkdown, so if there is a need to update them, please modify accordingly a **README.Rmd** file  and use [readmebuilder](https://github.com/Appsilon/readmebuilder) package to render the new README.
+
+In most cases a simple call of: 
+
+```r
+readmebuilder::build_readme()
+```
+
+is enough.
 
 Troubleshooting
 -----------------

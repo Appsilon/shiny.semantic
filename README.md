@@ -6,6 +6,9 @@ shiny.semantic
 
 Semantic UI wrapper for Shiny
 
+<center>
+[![Travis build status](https://travis-ci.org/Appsilon/shiny.semantic.svg?branch=develop)](https://travis-ci.org/Appsilon/shiny.semantic) [![codecov](https://codecov.io/gh/Appsilon/shiny.semantic/branch/master/graph/badge.svg)](https://codecov.io/gh/Appsilon/shiny.semantic)
+</center>
 With this library it's easy to wrap Shiny with [Semantic UI components](https://github.com/Semantic-Org/Semantic-UI). Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.
 
 `master` branch contains the stable version. Use `develop` branch for latest features.
@@ -166,7 +169,7 @@ Component examples
       "Apples", "Pears",
       "Oranges"
     ) %&gt;%
-      purrr::map(~div(
+      purrr::map(~ div(
         class = "item",
         uiicon("large github middle aligned"),
         div(
@@ -239,7 +242,7 @@ The source code for **Components live demo** is located in **/examples** folder.
 
         devtools::install_github("Appsilon/highlighter")
 
-Check out also our dashboard examples made with **shiny.semantic** librabry:
+Check out also our dashboard examples made with **shiny.semantic** library:
 
 1.  [Churn analytics](https://demo.appsilon.com/churn)
 2.  [Fraud detection](https://demo.appsilon.com/frauds)
@@ -251,7 +254,15 @@ If you want to contribute to this project please submit a regular PR, once you'r
 
 **Changes in documentation**
 
-Both repository **README.md** file and an official documentation page are generated with Rmarkdown, so if there is a need to update them, please modify accordingly a **README.Rmd** file and run a **build\_readme.R** script to compile it.
+Both repository **README.md** file and an official documentation page are generated with Rmarkdown, so if there is a need to update them, please modify accordingly a **README.Rmd** file and use [readmebuilder](https://github.com/Appsilon/readmebuilder) package to render the new README.
+
+In most cases a simple call of:
+
+``` r
+readmebuilder::build_readme()
+```
+
+is enough.
 
 Troubleshooting
 ---------------
