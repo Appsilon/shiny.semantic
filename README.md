@@ -53,7 +53,7 @@ To install [previous version]() you can run:
 How to use it?
 --------------
 
-Firstly, you will have to invoke *shinyUI()* with *semanticPage()* instead of standard Shiny UI definitions like e.g. *fluidPage()*. From now on forward all components can ba annotated with [Semantic UI](http://semantic-ui.com/introduction/getting-started.html) specific CSS classes and also you will be able to use [shiny.semantic components](https://demo.appsilon.com/shiny-semantic-components/).
+Firstly, you will have to invoke `shinyUI()` with `semanticPage()` instead of standard Shiny UI definitions like e.g. `fluidPage()`. From now on forward all components can ba annotated with [Semantic UI](http://semantic-ui.com/introduction/getting-started.html) specific CSS classes and also you will be able to use [shiny.semantic components](https://demo.appsilon.com/shiny-semantic-components/).
 
 Basic example will look like this:
 
@@ -82,7 +82,7 @@ For better understanding it's good to check [Semantic UI documentation.](http://
 
 **Note \#1**
 
-At the moment you have to pass page title in *semanticPage()*
+At the moment you have to pass page title in `semanticPage()`
 
     semanticPage(title = "Your page title", ...)
 
@@ -91,10 +91,10 @@ At the moment you have to pass page title in *semanticPage()*
 There are some conflicts in CSS styles between **SemanticUI** and **Bootstrap**. For the time being it's better to suppress **Bootstrap** by caling:
 
     semanticPage(
-          ...
-          suppressDependencies("bootstrap"),
-          ...
-          )
+      ...
+      suppressDependencies("bootstrap"),
+      ...
+    )
 
 **\[Advanced\] Using Semantic UI JavaScript elements**
 
@@ -126,7 +126,7 @@ Some Semantic UI elements require to run a specific JS code when DOM document is
 
     shinyApp(ui = ui(), server = server)
 
-1.  Use *shiny::tags$script()*
+1.  Use `shiny::tags$script()`
 
 <!-- -->
 

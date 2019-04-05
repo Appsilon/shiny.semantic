@@ -239,7 +239,7 @@ After
 </div>
 <div id="how-to-use-it" class="section level2 darkorange">
 <h2>How to use it?</h2>
-<p>Firstly, you will have to invoke <em>shinyUI()</em> with <em>semanticPage()</em> instead of standard Shiny UI definitions like e.g. <em>fluidPage()</em>. From now on forward all components can ba annotated with <a href="http://semantic-ui.com/introduction/getting-started.html">Semantic UI</a> specific CSS classes and also you will be able to use <a href="https://demo.appsilon.com/shiny-semantic-components/">shiny.semantic components</a>.</p>
+<p>Firstly, you will have to invoke <code>shinyUI()</code> with <code>semanticPage()</code> instead of standard Shiny UI definitions like e.g. <code>fluidPage()</code>. From now on forward all components can ba annotated with <a href="http://semantic-ui.com/introduction/getting-started.html">Semantic UI</a> specific CSS classes and also you will be able to use <a href="https://demo.appsilon.com/shiny-semantic-components/">shiny.semantic components</a>.</p>
 <p>Basic example will look like this:</p>
 <pre><code>library(shiny)
 #devtools::install_github(&quot;Appsilon/shiny.semantic&quot;)
@@ -262,15 +262,15 @@ shinyApp(ui = ui(), server = server)</code></pre>
 <p>and will render a simple button. <img src="data:image/png;base64,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" width="672" /></p>
 <p>For better understanding it’s good to check <a href="http://semantic-ui.com/introduction/getting-started.html">Semantic UI documentation.</a></p>
 <p><strong>Note #1</strong></p>
-<p>At the moment you have to pass page title in <em>semanticPage()</em></p>
+<p>At the moment you have to pass page title in <code>semanticPage()</code></p>
 <pre><code>semanticPage(title = &quot;Your page title&quot;, ...)</code></pre>
 <p><strong>Note #2</strong></p>
 <p>There are some conflicts in CSS styles between <strong>SemanticUI</strong> and <strong>Bootstrap</strong>. For the time being it’s better to suppress <strong>Bootstrap</strong> by caling:</p>
 <pre><code>semanticPage(
-      ...
-      suppressDependencies(&quot;bootstrap&quot;),
-      ...
-      )</code></pre>
+  ...
+  suppressDependencies(&quot;bootstrap&quot;),
+  ...
+)</code></pre>
 <p><strong>[Advanced] Using Semantic UI JavaScript elements</strong></p>
 <p>Some Semantic UI elements require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:</p>
 <ol style="list-style-type: decimal">
@@ -298,7 +298,7 @@ server &lt;- shinyServer(function(input, output) {
 
 shinyApp(ui = ui(), server = server)</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Use <em>shiny::tags$script()</em></li>
+<li>Use <code>shiny::tags$script()</code></li>
 </ol>
 <pre><code>...
 jsCode &lt;- &quot;

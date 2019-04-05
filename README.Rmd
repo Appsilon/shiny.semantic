@@ -10,7 +10,7 @@ params:
    chagelog_url: https://github.com/Appsilon/shiny.semantic/blob/master/CHANGELOG.md
 ---
 
-```{r, echo = FALSE, message=FALSE}
+```{r, echo = FALSE, message = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 suppressWarnings(library(shiny.semantic))
 ```
 
-```{r, echo=FALSE, message=FALSE}
+```{r, echo = FALSE, message = FALSE}
 source("readme_assets/ui_demo.R")
 
 create_example <- function(code, ...) {
@@ -62,7 +62,7 @@ With this library it's easy to wrap Shiny with [Semantic UI components][semantic
 <h2> Before </h2>
 <br>
 
-```{r, echo=FALSE, message=FALSE, fig.height=1, screenshot.force = TRUE}
+```{r, echo = FALSE, message = FALSE, fig.height = 1, screenshot.force = TRUE}
 create_example(before_ui_demo(), width="100%", height="100px")$htmlwidget
 ```
 </div>
@@ -71,7 +71,7 @@ create_example(before_ui_demo(), width="100%", height="100px")$htmlwidget
 <h2> After </h2>
 <br>
 
-```{r, echo=FALSE, message=FALSE, fig.height=1, screenshot.force = TRUE}
+```{r, echo = FALSE, message = FALSE, fig.height = 1, screenshot.force = TRUE}
 create_example(after_ui_demo(), width="100%", height="100%")$htmlwidget
 ```
 </div>
@@ -94,7 +94,7 @@ This library source code can be found on [Appsilon Data Science's](`r params$web
 <br>
 [`r params$repo_url`](`r params$repo_url`)
 
-```{r, echo = F, results='asis'}
+```{r, echo = F, results = 'asis'}
 if (params$type == "web") {
   cat(paste0('<script>
     document.write(\'<div class="logo"><a href="', params$website_url, '"><img alt="Appsilon Data Science" src="', params$logo_url, '"/></a></div>\')
@@ -119,7 +119,7 @@ devtools::install_github("Appsilon/`r params$repo_name`", ref = "0.1.0")
 
 How to use it? {.darkorange}
 -------
-Firstly, you will have to invoke *shinyUI()* with *semanticPage()* instead of standard Shiny UI definitions like e.g. *fluidPage()*. From now on forward all components can ba annotated with [Semantic UI][semantic_website_url] specific CSS classes and also you will be able to use [shiny.semantic  components](`r params$demo_url`).
+Firstly, you will have to invoke `shinyUI()` with `semanticPage()` instead of standard Shiny UI definitions like e.g. `fluidPage()`. From now on forward all components can ba annotated with [Semantic UI][semantic_website_url] specific CSS classes and also you will be able to use [shiny.semantic  components](`r params$demo_url`).
 
 Basic example will look like this:
 
@@ -145,7 +145,7 @@ shinyApp(ui = ui(), server = server)
 ```
 
 and will render a simple button.
-```{r, echo = FALSE, fig.height=1, screenshot.force = TRUE}
+```{r, echo = FALSE, fig.height = 1, screenshot.force = TRUE}
 example_button = create_example(div(class = "ui button", uiicon("user"),  "Icon button"), width = "100%", height = "30px")
 example_button$htmlwidget
 ```
@@ -154,7 +154,7 @@ For better understanding it's good to check [Semantic UI documentation.][semanti
 
 **Note #1**
 
-At the moment you have to pass page title in *semanticPage()*
+At the moment you have to pass page title in `semanticPage()`
 ```
 semanticPage(title = "Your page title", ...)
 ```
@@ -163,10 +163,10 @@ semanticPage(title = "Your page title", ...)
 There are some conflicts in CSS styles between **SemanticUI** and **Bootstrap**. For the time being it's better to suppress **Bootstrap** by caling:
 ```
 semanticPage(
-      ...
-      suppressDependencies("bootstrap"),
-      ...
-      )
+  ...
+  suppressDependencies("bootstrap"),
+  ...
+)
 ```
 
 **[Advanced] Using Semantic UI JavaScript elements**
@@ -198,7 +198,7 @@ server <- shinyServer(function(input, output) {
 
 shinyApp(ui = ui(), server = server)
 ```
-2. Use *shiny::tags$script()*
+2. Use `shiny::tags$script()`
 
 ```
 ...
@@ -232,7 +232,7 @@ Component examples
 
 * **Raised segment with list**
 
-```{r, echo=FALSE, fig.height=1.7, screenshot.force = TRUE}
+```{r, echo = FALSE, fig.height = 1.7, screenshot.force = TRUE}
 example_list = create_example(
   div(class = "ui raised segment",
   div(class = "ui relaxed divided list", c("Apples",
@@ -252,7 +252,7 @@ example_list$code_demo
 
 * **Interactive card**
 
-```{r, echo=FALSE, screenshot.force = TRUE}
+```{r, echo = FALSE, screenshot.force = TRUE}
 example_card = create_example(
   div(class="ui card",
     div(class="content",
