@@ -36,6 +36,8 @@ After
 <a href="https://demo.appsilon.com/shiny-semantic-components/">Components live demo</a>
 </p>
 </div>
+<br>
+
 Source code
 -----------
 
