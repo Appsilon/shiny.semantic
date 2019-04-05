@@ -12,17 +12,21 @@ wrapper (e.g. style, class etc.)}
 
 \item{title}{A title to display in the browser's title bar.}
 
-\item{theme}{Theme name or path}
+\item{theme}{Theme name or path. Full list of supported themes you will find in
+\code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.}
 }
 \description{
 This creates a Semantic page for use in a Shiny app.
 }
 \details{
 Inside, it uses two crucial options:
-- \code{shiny.minified} with a logical value, tells whether it should attach min or full
+
+(1) \code{shiny.minified} with a logical value, tells whether it should attach min or full
 semnatic css or js (TRUE by default).
-- \code{shiny.custom.semantic} if this option has not NULL character \code{semanticPage}
+(2) \code{shiny.custom.semantic} if this option has not NULL character \code{semanticPage}
 takes dependencies from custom css and js files specified in this path
 (NULL by default). Depending on \code{shiny.minified} value the folder should contain
-either "min" or standard version.
+either "min" or standard version. The folder should contain: \code{semantic.css} and
+\code{semantic.js} files, or \code{semantic.min.css} and \code{semantic.min.js}
+in \code{shiny.minified = TRUE} mode.
 }
