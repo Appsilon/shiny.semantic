@@ -6,6 +6,10 @@ shiny.semantic
 
 Semantic UI wrapper for Shiny
 
+</br>
+
+[![Travis build status](https://travis-ci.org/Appsilon/shiny.semantic.svg?branch=develop)](https://travis-ci.org/Appsilon/shiny.semantic) [![codecov](https://codecov.io/gh/Appsilon/shiny.semantic/branch/master/graph/badge.svg)](https://codecov.io/gh/Appsilon/shiny.semantic)
+
 With this library it's easy to wrap Shiny with [Semantic UI components](https://github.com/Semantic-Org/Semantic-UI). Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.
 
 `master` branch contains the stable version. Use `develop` branch for latest features.
@@ -17,6 +21,7 @@ Before
 
 ![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-3-1.png)
 
+<br>
 <h2>
 After
 </h2>
@@ -31,6 +36,8 @@ After
 <a href="https://demo.appsilon.com/shiny-semantic-components/">Components live demo</a>
 </p>
 </div>
+<br>
+
 Source code
 -----------
 
@@ -50,7 +57,7 @@ To install [previous version]() you can run:
 How to use it?
 --------------
 
-Firstly, you will have to invoke *shinyUI()* with *semanticPage()* instead of standard Shiny UI definitions like e.g. *fluidPage()*. From now on forward all components can ba annotated with [Semantic UI](http://semantic-ui.com/introduction/getting-started.html) specific CSS classes and also you will be able to use [shiny.semantic components](https://demo.appsilon.com/shiny-semantic-components/).
+Firstly, you will have to invoke `shinyUI()` with `semanticPage()` instead of standard Shiny UI definitions like e.g. `fluidPage()`. From now on forward all components can ba annotated with [Semantic UI](http://semantic-ui.com/introduction/getting-started.html) specific CSS classes and also you will be able to use [shiny.semantic components](https://demo.appsilon.com/shiny-semantic-components/).
 
 Basic example will look like this:
 
@@ -73,13 +80,15 @@ Basic example will look like this:
 
     shinyApp(ui = ui(), server = server)
 
-and will render a simple button. ![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-6-1.png)
+and will render a simple button.
+
+![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-6-1.png)
 
 For better understanding it's good to check [Semantic UI documentation.](http://semantic-ui.com/introduction/getting-started.html)
 
 **Note \#1**
 
-At the moment you have to pass page title in *semanticPage()*
+At the moment you have to pass page title in `semanticPage()`
 
     semanticPage(title = "Your page title", ...)
 
@@ -88,10 +97,10 @@ At the moment you have to pass page title in *semanticPage()*
 There are some conflicts in CSS styles between **SemanticUI** and **Bootstrap**. For the time being it's better to suppress **Bootstrap** by caling:
 
     semanticPage(
-          ...
-          suppressDependencies("bootstrap"),
-          ...
-          )
+      ...
+      suppressDependencies("bootstrap"),
+      ...
+    )
 
 **\[Advanced\] Using Semantic UI JavaScript elements**
 
@@ -123,7 +132,7 @@ Some Semantic UI elements require to run a specific JS code when DOM document is
 
     shinyApp(ui = ui(), server = server)
 
-1.  Use *shiny::tags$script()*
+1.  Use `shiny::tags$script()`
 
 <!-- -->
 
@@ -166,7 +175,7 @@ Component examples
       "Apples", "Pears",
       "Oranges"
     ) %&gt;%
-      purrr::map(~div(
+      purrr::map(~ div(
         class = "item",
         uiicon("large github middle aligned"),
         div(
@@ -188,7 +197,9 @@ Component examples
 <!--/html_preserve-->
 -   **Interactive card**
 
-![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-9-1.png) <!--html_preserve-->
+![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-9-1.png)
+
+<!--html_preserve-->
 <pre>
 <code class="r">div(
   class = "ui card",
@@ -239,7 +250,7 @@ The source code for **Components live demo** is located in **/examples** folder.
 
         devtools::install_github("Appsilon/highlighter")
 
-Check out also our dashboard examples made with **shiny.semantic** librabry:
+Check out also our dashboard examples made with **shiny.semantic** library:
 
 1.  [Churn analytics](https://demo.appsilon.com/churn)
 2.  [Fraud detection](https://demo.appsilon.com/frauds)
@@ -251,7 +262,15 @@ If you want to contribute to this project please submit a regular PR, once you'r
 
 **Changes in documentation**
 
-Both repository **README.md** file and an official documentation page are generated with Rmarkdown, so if there is a need to update them, please modify accordingly a **README.Rmd** file and run a **build\_readme.R** script to compile it.
+Both repository **README.md** file and an official documentation page are generated with Rmarkdown, so if there is a need to update them, please modify accordingly a **README.Rmd** file and use [readmebuilder](https://github.com/Appsilon/readmebuilder) package to render the new README.
+
+In most cases a simple call of:
+
+``` r
+readmebuilder::build_readme()
+```
+
+is enough.
 
 Troubleshooting
 ---------------
