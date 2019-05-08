@@ -18,7 +18,8 @@ uirender <- function(ui, width = NULL, height = NULL, element_id = NULL) {
 
   # forward options using x
   args <- list(
-    ui = toString(ui)
+    ui = toString(ui),
+    shiny_custom_semantic = get_cdn_path()
   )
 
   # create widget
