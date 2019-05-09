@@ -10,5 +10,10 @@ get_cdn_path()
 CDN path of semantic dependencies
 }
 \description{
-Internal function that return cdn path from options.
+Internal function that returns path string from `shiny.custom.semantic.cdn` options.
+}
+\examples{
+## Load shiny.semantic dependencies from local domain.
+options("shiny.custom.semantic.cdn" = "shiny.semantic")
+
 }

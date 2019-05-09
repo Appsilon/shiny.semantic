@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.2.4]
+### Added
+-  shiny.custom.semantic.cdn options introduced to get dependencies from custom location.
 
 ## [0.1.2]
 ### Added

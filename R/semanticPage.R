@@ -7,7 +7,11 @@ SUPPORTED_THEMES <- c("cerulean", "darkly", "paper", "simplex",
 
 #' Get CDN path semantic dependencies
 #'
-#' Internal function that return cdn path from options.
+#' Internal function that returns path string from `shiny.custom.semantic.cdn` options.
+#'
+#' @examples
+#' ## Load shiny.semantic dependencies from local domain.
+#' options("shiny.custom.semantic.cdn" = "shiny.semantic")
 #'
 #' @return CDN path of semantic dependencies
 get_cdn_path <- function() {
