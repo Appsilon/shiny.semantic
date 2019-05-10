@@ -7,7 +7,7 @@ ui <- function() {
       title = "Id slider example",
       suppressDependencies("bootstrap"),
       suppressDependencies("semantic"),
-      uiOutput("slider", width = "200px"),
+      shiny.semantic::slider_input("my_slider", 0, 10, 5, step = 1, color = "red"),
       br(),
       textOutput("val")
     )
@@ -15,9 +15,6 @@ ui <- function() {
 }
 
 server <- shinyServer(function(input, output) {
-  output$slider <- renderUI({
-    shiny.semantic::slider_input("my_slider", 0, 10, 5, color = "red")
-  })
   output$val <- renderPrint({
     input$my_slider
   })
