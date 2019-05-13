@@ -56,6 +56,8 @@ set_tab_id <- function(tab) {
 #' @param tab_content_class Class for the tab content (default: "bottom attached
 #' segment")
 #'
+#' @details You may access active tab id with \code{input$<id>_tab}.
+#'
 #' @export
 #'
 #' @examples
@@ -74,17 +76,23 @@ tabset <- function(tabs,
   valid_ids <- id_tabs %>% purrr::map_chr(~ .x$id)
   active_tab <- if (!is.null(active)) active else valid_ids[1] # nolint
   script_code <- paste0(
-    " // Code below is needed to trigger visibility on reactive Shiny outputs.
+    " $(document).on('shiny:sessioninitialized', function(event) {
+        Shiny.onInputChange('", id, "_tab', '", active_tab, "');
+      });
+      // Code below is needed to trigger visibility on reactive Shiny outputs.
       // Thanks to that users do not have to set suspendWhenHidden to FALSE.
       var previous_tab;
       $('#", id, ".menu .item').tab({
-      onVisible: function(target) {
-      if (previous_tab) {
-      $(this).trigger('hidden');
-      }
-      $(window).resize();
-      $(this).trigger('shown');
-      previous_tab = this;}});")
+        onVisible: function(target) {
+          if (previous_tab) {
+            $(this).trigger('hidden');
+          }
+          $(window).resize();
+          $(this).trigger('shown');
+          previous_tab = this;
+          Shiny.onInputChange('", id, "_tab', $(this).attr('data-tab'))
+        }
+      });")
   shiny::tagList(
     shiny::div(id = id,
                class = paste("ui menu", menu_class),

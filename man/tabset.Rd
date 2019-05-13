@@ -25,6 +25,9 @@ segment")}
 \description{
 This creates tabs with content using Semantic UI styles.
 }
+\details{
+You may access active tab id with \code{input$<id>_tab}.
+}
 \examples{
 tabset(list(
 list(menu = shiny::div("First link"),
