@@ -25,7 +25,7 @@ slider_input <- function(name, min, max, value, step = 0.01, n_ticks = 5, color 
       div(
         id = paste0(slider_id, "-tick-labels"),
         style = "padding-top: 1.2em;",
-        paste(format(round(seq(min, max, length.out = n_ticks), 2), nsmall = 2), collapse = " ")
+        paste(round(seq(min, max, length.out = n_ticks), 2), collapse = " ")
       )
     ),
     tags$style(
@@ -60,4 +60,3 @@ slider_js <- function(slider_id, min, max, init, step, name) {
     slider_id, name, name)
   )
 }
-

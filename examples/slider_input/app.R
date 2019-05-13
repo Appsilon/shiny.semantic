@@ -1,18 +1,14 @@
 library(shiny)
 library(shiny.semantic)
 
-ui <- function() {
-  shinyUI(
-    semanticPage(
-      title = "Id slider example",
-      suppressDependencies("bootstrap"),
-      suppressDependencies("semantic"),
-      shiny.semantic::slider_input("my_slider", 0, 10, 5, step = 1, color = "red"),
-      br(),
-      textOutput("val")
-    )
+ui <- shinyUI(
+  semanticPage(
+    title = "Id slider example",
+    shiny.semantic::slider_input("my_slider", 1, 10, 10, step = 1, n_ticks = 10, color = "red"),
+    br(),
+    textOutput("val")
   )
-}
+)
 
 server <- shinyServer(function(input, output) {
   output$val <- renderPrint({
@@ -20,4 +16,4 @@ server <- shinyServer(function(input, output) {
   })
 })
 
-shinyApp(ui = ui(), server = server)
+shinyApp(ui = ui, server = server)
