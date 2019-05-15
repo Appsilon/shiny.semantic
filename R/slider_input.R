@@ -14,6 +14,10 @@
 slider_input <- function(name, min, max, value, step = 0.01, n_ticks = 5, color = "") {
   check_proper_color(color)
   slider_id <- sprintf("slider-%s", name)
+  ticks <- round(seq(min, max, length.out = n_ticks), 2)
+  if (!all(ticks %% 1 == 0)) {
+    ticks <- format(ticks, nsmall = 2)
+  }
 
   shiny::tagList(
     div(style = "margin: 0.5em;",
@@ -25,7 +29,7 @@ slider_input <- function(name, min, max, value, step = 0.01, n_ticks = 5, color 
       div(
         id = paste0(slider_id, "-tick-labels"),
         style = "padding-top: 1.2em;",
-        paste(round(seq(min, max, length.out = n_ticks), 2), collapse = " ")
+        paste(ticks, collapse = " ")
       )
     ),
     tags$style(
