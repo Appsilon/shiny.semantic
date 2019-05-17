@@ -41,6 +41,26 @@ slider_input <- function(name, min, max, value, step = 0.01, n_ticks = 5, color 
   )
 }
 
+#' Java script code that allows passing slider value into shiny
+#'
+#' @param slider_id Id for div containing the slider.
+#' @param min Minimum slider value.
+#' @param max Maximum slider value.
+#' @param init Initial value set for slider after the page is loaded.
+#' @param step Step value defining possible values passes into slider.
+#' @param name Id for input element responsible for passing chosen value into shiny.
+#'
+#' @description
+#' JS code uses range method for slider div element.
+#' The method allows to specify basic parameters for slider such as min, max, etc.
+#' onChange parameter allows to specify callback executed after slider value is changed.
+#' In this case onChange performs the following steps:
+#' \itemize{
+#'   \item{basing on selected value in slider it creates label with selected value and attaches it to slider pointer}
+#'   \item{new value is attached to input element responsible for passing value into Shiny server}
+#'   \item{the value attached to input element replaces the old one that triggers passing it to Shiny server}
+#' }
+#'
 slider_js <- function(slider_id, min, max, init, step, name) {
   HTML(sprintf("
     $('#%s').range({
