@@ -127,8 +127,8 @@ check_semantic_theme <- function(theme_css) {
 semanticPage <- function(..., title = "", theme = NULL){ # nolint
   content <- shiny::tags$div(class = "wrapper", ...)
   shiny::tagList(
-    get_range_component_dependencies(),
     shiny::tags$head(
+    get_range_component_dependencies(),
       if (!is.null(getOption("shiny.custom.semantic", NULL))) {
         get_dependencies()
       } else {
