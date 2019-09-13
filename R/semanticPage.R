@@ -5,8 +5,18 @@ SUPPORTED_THEMES <- c("cerulean", "darkly", "paper", "simplex",
                       "readable",  "united", "journal", "solar",
                       "cyborg", "sandstone", "yeti", "lumen", "spacelab")
 
-#' Cloudfront path
-CDN_PATH <- "https://d335w9rbwpvuxm.cloudfront.net"
+#' Get CDN path semantic dependencies
+#'
+#' Internal function that returns path string from `shiny.custom.semantic.cdn` options.
+#'
+#' @examples
+#' ## Load shiny.semantic dependencies from local domain.
+#' options("shiny.custom.semantic.cdn" = "shiny.semantic")
+#'
+#' @return CDN path of semantic dependencies
+get_cdn_path <- function() {
+  getOption("shiny.custom.semantic.cdn", default = "https://d335w9rbwpvuxm.cloudfront.net")
+}
 
 #' Add dashboard dependencies to html
 #'
@@ -25,7 +35,7 @@ get_dependencies <- function() {
   if (!is.null(getOption("shiny.custom.semantic", NULL))) {
     dep_src <- c(file = getOption("shiny.custom.semantic"))
   } else {
-    dep_src <- c(href = CDN_PATH)
+    dep_src <- c(href = get_cdn_path())
   }
   shiny::tagList(
     htmltools::htmlDependency("semantic-ui",
@@ -51,9 +61,9 @@ get_range_component_dependencies <- function() {
 #' @return path to default css semantic file
 get_default_semantic_theme <- function() {
   if (getOption("shiny.minified", TRUE)) {
-    path <- file.path(CDN_PATH, "semantic.min.css", fsep = "/")
+    path <- file.path(get_cdn_path(), "semantic.min.css", fsep = "/")
   } else {
-    path <- file.path(CDN_PATH, "semantic.css", fsep = "/")
+    path <- file.path(get_cdn_path(), "semantic.css", fsep = "/")
   }
   c(path)
 }
@@ -63,9 +73,9 @@ get_default_semantic_theme <- function() {
 #' @return path to default js semantic file
 get_default_semantic_js <- function() {
   if (getOption("shiny.minified", TRUE)) {
-    path <- file.path(CDN_PATH, "semantic.min.js", fsep = "/")
+    path <- file.path(get_cdn_path(), "semantic.min.js", fsep = "/")
   } else {
-    path <- file.path(CDN_PATH, "semantic.js", fsep = "/")
+    path <- file.path(get_cdn_path(), "semantic.js", fsep = "/")
   }
   path
 }
@@ -85,7 +95,7 @@ check_semantic_theme <- function(theme_css) {
   if (is.null(theme_css)) return(get_default_semantic_theme())
   if (tools::file_ext(theme_css) == "css") return(theme_css)
   if (theme_css %in% SUPPORTED_THEMES) {
-    return(file.path(CDN_PATH, paste0("semantic.", theme_css, minfield, ".css"), fsep = "/"))
+    return(file.path(get_cdn_path(), paste0("semantic.", theme_css, minfield, ".css"), fsep = "/"))
   } else {
     warning(paste("Theme ", theme_css, "not recognized. Default used instead!"))
     return(get_default_semantic_theme())
