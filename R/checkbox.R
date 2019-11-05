@@ -43,6 +43,16 @@ js_for_toggle_input <- function(selector, input_id) {
          }});")
 }
 
+#'
+#' 'checkbox_ui' is deprecated. Use 'simple_checkbox' instead.
+#'
+#' @inherit simple_checkbox
+#' @export
+checkbox_ui <- function(id, label, type = "", is_marked = TRUE, style = NULL) {
+  .Deprecated("simple_checkbox")
+  simple_checkbox(id, label, type, is_marked, style)
+}
+
 #' Create Semantic UI multiple checkbox
 #'
 #' This creates a multiple checkbox using Semantic UI styles.
