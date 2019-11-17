@@ -1,6 +1,6 @@
 #' Supported semantic themes
 #' @export
-SUPPORTED_THEMES <- c("cerulean", "darkly", "paper", "simplex",
+SUPPORTED_THEMES <- c("cerulean", "darkly", "paper", "simplex",  # nolint
                       "superhero", "flatly", "slate", "cosmo",
                       "readable",  "united", "journal", "solar",
                       "cyborg", "sandstone", "yeti", "lumen", "spacelab")
@@ -47,7 +47,7 @@ get_dependencies <- function() {
   )
 }
 
-get_range_component_dependencies <- function() {
+get_range_component_dependencies <- function() { # nolint
   htmltools::htmlDependency("semantic-range",
                             "1.0.0",
                             c(file = system.file("semantic-range", package = "shiny.semantic")),
@@ -140,7 +140,8 @@ semanticPage <- function(..., title = "", theme = NULL){ # nolint
       shiny::tags$title(title),
       shiny::tags$meta(name = "viewport", content = "width=device-width, initial-scale=1.0"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-modal.js"),
-    shiny::tags$script(src = "shiny.semantic/shiny-semantic-dropdown.js")
+      shiny::tags$script(src = "shiny.semantic/shiny-semantic-dropdown.js"),
+      shiny::tags$script(src = "shiny.semantic/shiny-semantic-button.js")
     ),
     shiny::tags$body(style = "min-height: 611px;", content)
   )

@@ -17,17 +17,21 @@ modal(
 )
 }
 \arguments{
-\item{...}{Content elements to be added to the modal body. To change attributes of the container please check the `content` argument.}
+\item{...}{Content elements to be added to the modal body.
+To change attributes of the container please check the `content` argument.}
 
 \item{id}{ID to be added to the modal div. Default "".}
 
 \item{class}{Classes except "ui modal" to be added to the modal. Semantic UI classes can be used. Default "".}
 
-\item{header}{Content to be displayed in the modal header. If given in form of a list, HTML attributes for the container can also be changed. Default "".}
+\item{header}{Content to be displayed in the modal header.
+If given in form of a list, HTML attributes for the container can also be changed. Default "".}
 
-\item{content}{Content to be displayed in the modal body. If given in form of a list, HTML attributes for the container can also be changed. Default NULL.}
+\item{content}{Content to be displayed in the modal body.
+If given in form of a list, HTML attributes for the container can also be changed. Default NULL.}
 
-\item{footer}{Content to be displayed in the modal footer. Usually for buttons. If given in form of a list, HTML attributes for the container can also be changed. Default NULL.}
+\item{footer}{Content to be displayed in the modal footer. Usually for buttons.
+If given in form of a list, HTML attributes for the container can also be changed. Default NULL.}
 
 \item{target}{Javascript selector for the element that will open the modal. Default NULL.}
 
@@ -128,7 +132,8 @@ server = function(input, output) {
       id = "simple-modal",
       title = "Important message",
       header = list(style = "background: lightcoral"),
-      content = list(style = "background: lightblue", `data-custom` = "value", "This is an important message!"),
+      content = list(style = "background: lightblue",
+                     `data-custom` = "value", "This is an important message!"),
       p("This is also part of the content!")
     ))
   })

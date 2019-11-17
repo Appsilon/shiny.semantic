@@ -47,7 +47,7 @@ ui <- function() {
 
 server <- shinyServer(function(input, output, session) {
 
- search_api <- function(gapminder, q){
+ search_api <- function(gapminder, q) {
    has_matching <- function(field) {
      startsWith(field, q)
    }

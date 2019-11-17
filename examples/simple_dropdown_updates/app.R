@@ -8,8 +8,8 @@ ui <- function() {
       dropdown("simple_dropdown", LETTERS[1:5], value = "A", type = "selection multiple"),
       p("Selected letter:"),
       textOutput("selected_letter"),
-      shiny::actionButton("simple_button", "Update input to D"),
-      shiny::actionButton("simple_button2", "Update input to use all letters")
+      uibutton("simple_button", "Update input to D"),
+      uibutton("simple_button2", "Update input to use all letters")
     )
   )
 }

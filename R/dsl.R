@@ -26,7 +26,7 @@ uiicon <- function(type = "", ...) {
 uilabel <- function(..., type = "", is_link = TRUE) {
   label_tag <- if (is_link) tags$a else tags$div
   label_tag(class = paste("ui label", type),
-      list(...))
+            list(...))
 }
 
 #' Sets tab id if not provided
@@ -288,13 +288,14 @@ uimessage <- function(header, content, type = "", icon, closable = FALSE) {
 #'
 #' This creates a menu using Semantic UI.
 #'
-#' @param ... Menu items to be created. Use menu_item function to create new menu item. Use uidropdown(is_menu_item = TRUE, ...)
-#' function to create new dropdown menu item. Use menu_header and menu_divider functions to customize menu format.
+#' @param ... Menu items to be created. Use menu_item function to create new menu item.
+#' Use uidropdown(is_menu_item = TRUE, ...) function to create new dropdown menu item.
+#' Use menu_header and menu_divider functions to customize menu format.
 #' @param type Type of the menu. Look at https://semantic-ui.com/collections/menu.html for all possiblities.
 #'
 #' @examples
 #'
-#' if (interactive()){
+#' if (interactive()) {
 #' library(shiny)
 #' library(shiny.semantic)
 #'
@@ -367,7 +368,8 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
 #' @param type Type of the dropdown. Look at https://semantic-ui.com/modules/dropdown.html for all possibilities.
 #' @param name Unique name of the created dropdown.
 #' @param is_menu_item TRUE if the dropdown is a menu item. Default is FALSE.
-#' @param dropdown_specs A list of dropdown functionalities. Look at https://semantic-ui.com/modules/dropdown.html#/settings for all possibilities.
+#' @param dropdown_specs A list of dropdown functionalities.
+#' Look at https://semantic-ui.com/modules/dropdown.html#/settings for all possibilities.
 #'
 #' @examples
 #'
@@ -457,7 +459,7 @@ list_element <- function(data, is_description, is_icon, row) {
       } else {
         div(class = "content", data$header[row])
       }
-      )
+  )
 }
 
 #' Create Semantic UI list with header, description and icons
@@ -487,13 +489,13 @@ list_element <- function(data, is_description, is_icon, row) {
 #'
 #' # Create a 5 element divided list with alert icons and description
 #' uilist(list_content, is_icon = TRUE, is_divided = TRUE, is_description = TRUE)
-uilist <- function(data, is_icon = FALSE, is_divided = FALSE, is_description = FALSE){
+uilist <- function(data, is_icon = FALSE, is_divided = FALSE, is_description = FALSE) {
   divided_list <- ifelse(is_divided, "divided", "")
   list_class <- paste("ui", divided_list, "list")
 
   div(class = list_class,
-      1:nrow(data) %>% purrr::map(function(row){
+      seq_len(nrow(data)) %>% purrr::map(function(row) {
         list_element(data, is_description, is_icon, row)
-        })
+      })
   )
 }
