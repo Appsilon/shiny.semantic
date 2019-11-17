@@ -1,0 +1,29 @@
+library(shiny)
+library(shiny.semantic)
+
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      title = "Dropdown example",
+      dropdown("simple_dropdown", LETTERS[1:5], value = "A", type = "selection multiple"),
+      p("Selected letter:"),
+      textOutput("selected_letter"),
+      shiny::actionButton("simple_button", "Update input to D"),
+      shiny::actionButton("simple_button2", "Update input to use all letters")
+    )
+  )
+}
+
+server <- shinyServer(function(input, output, session) {
+  output$selected_letter <- renderText(paste(input[["simple_dropdown"]], collapse = ", "))
+
+  observeEvent(input$simple_button, {
+    update_dropdown(session, "simple_dropdown", selected = "D")
+  })
+
+  observeEvent(input$simple_button2, {
+    update_dropdown(session, "simple_dropdown", choices = LETTERS, selected = input$simple_dropdown)
+  })
+})
+
+shinyApp(ui = ui(), server = server)

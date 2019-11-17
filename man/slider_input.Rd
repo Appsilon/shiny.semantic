@@ -4,8 +4,7 @@
 \alias{slider_input}
 \title{Add Semantic UI slider component}
 \usage{
-slider_input(name, min, max, value, step = 0.01, n_ticks = 5,
-  color = "")
+slider_input(name, min, max, value, step = 0.01, n_ticks = 5, color = "")
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under input[[name]].}
