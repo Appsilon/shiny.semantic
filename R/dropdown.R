@@ -56,7 +56,7 @@ dropdown <- function(name, choices, choices_value = choices,
             ),
           !is.null(names(.)) ~
             purrr::map(
-              1:length(choices), ~ {
+              seq_len(length(choices)), ~ {
                 shiny::tagList(
                   menu_header(names(choices)[.x], is_item = FALSE),
                   menu_divider(),
@@ -83,15 +83,15 @@ dropdown <- function(name, choices, choices_value = choices,
 #' @param value The initially selected value.
 #'
 #' @export
-update_dropdown <- function(session, name, choices = NULL, choices_value = choices, selected = NULL) {
-  if (!is.null(selected)) value <- paste(as.character(selected), collapse = ",") else value <- NULL
+update_dropdown <- function(session, name, choices = NULL, choices_value = choices, value = NULL) {
+  if (!is.null(value)) value <- paste(as.character(value), collapse = ",") else value <- NULL
   if (!is.null(choices)) {
     options <- jsonlite::toJSON(data.frame(name = choices, text = choices, value = choices_value))
   } else {
     options <- NULL
   }
 
-  message <- list(label = label, choices = options, value = selected)
+  message <- list(label = label, choices = options, value = value)
   message <- message[!vapply(message, is.null, FUN.VALUE = logical(1))]
 
   session$sendInputMessage(name, message)

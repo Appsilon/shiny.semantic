@@ -9,7 +9,7 @@ update_dropdown(
   name,
   choices = NULL,
   choices_value = choices,
-  selected = NULL
+  value = NULL
 )
 }
 \arguments{
