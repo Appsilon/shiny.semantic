@@ -5,6 +5,10 @@ sudo: true
 cache: packages
 dist: trusty
 
+env:
+  global:
+    - LINTR_COMMENT_BOT=false
+
 git:
   submodules: false
 
