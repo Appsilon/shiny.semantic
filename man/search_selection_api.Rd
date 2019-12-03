@@ -4,8 +4,12 @@
 \alias{search_selection_api}
 \title{Add Semantic UI search selection dropdown based on REST API}
 \usage{
-search_selection_api(name, search_api_url, multiple = FALSE,
-  default_text = "Select")
+search_selection_api(
+  name,
+  search_api_url,
+  multiple = FALSE,
+  default_text = "Select"
+)
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under input[[name]].}
@@ -39,7 +43,7 @@ if (interactive()) {
 
   server <- shinyServer(function(input, output, session) {
 
-   search_api <- function(gapminder, q){
+   search_api <- function(gapminder, q) {
      has_matching <- function(field) {
         startsWith(field, q)
       }
