@@ -4,8 +4,7 @@
 \alias{uilist}
 \title{Create Semantic UI list with header, description and icons}
 \usage{
-uilist(data, is_icon = FALSE, is_divided = FALSE,
-  is_description = FALSE)
+uilist(data, is_icon = FALSE, is_divided = FALSE, is_description = FALSE)
 }
 \arguments{
 \item{data}{A dataframe with columns `header` and/or `description`, `icon` containing the list items

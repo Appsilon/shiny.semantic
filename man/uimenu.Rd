@@ -7,8 +7,9 @@
 uimenu(..., type = "")
 }
 \arguments{
-\item{...}{Menu items to be created. Use menu_item function to create new menu item. Use uidropdown(is_menu_item = TRUE, ...)
-function to create new dropdown menu item. Use menu_header and menu_divider functions to customize menu format.}
+\item{...}{Menu items to be created. Use menu_item function to create new menu item.
+Use uidropdown(is_menu_item = TRUE, ...) function to create new dropdown menu item.
+Use menu_header and menu_divider functions to customize menu format.}
 
 \item{type}{Type of the menu. Look at https://semantic-ui.com/collections/menu.html for all possiblities.}
 }
@@ -17,7 +18,7 @@ This creates a menu using Semantic UI.
 }
 \examples{
 
-if (interactive()){
+if (interactive()) {
 library(shiny)
 library(shiny.semantic)
 
