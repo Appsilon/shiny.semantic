@@ -3,6 +3,7 @@ library(shiny.semantic)
 
 ui <- shinyUI(
   semanticPage(
+    tags$script(src = "shiny-semantic-radiogroup.js"),
     suppressDependencies("bootstrap"),
 
     tags$br(),
@@ -42,6 +43,18 @@ ui <- shinyUI(
               uifield(
                 tags$label("Numeric"),
                 uinumericinput("number_ex", value = 50, min = 0, max = 100)
+              ),
+              uifield(
+                tags$label("Checkbox"),
+                simple_checkbox("checkbox_ex", "Checkbox"),
+                tags$br(),
+                simple_checkbox("slider_ex", "Slider", type = "slider")
+              ),
+              uifield(
+                tags$label("Group Radiobox"),
+                multiple_radio(
+                  "grp_radio_ex", "Favourite Letter", choices = LETTERS[1:4], selected = "B", position = "inline"
+                )
               )
             )
           )
@@ -76,6 +89,16 @@ ui <- shinyUI(
               uifield(
                 tags$label("Number"),
                 "Selected Number: ", shiny::textOutput("number_ex", container = shiny::span)
+              ),
+              uifield(
+                tags$label("Checkbox"),
+                "Checkbox Selected:", shiny::textOutput("checkbox_ex", container = shiny::span),
+                tags$br(),
+                "Slider Selected:", shiny::textOutput("slider_ex", container = shiny::span)
+              ),
+              uifield(
+                tags$label("Group Radiobox"),
+                "Radiobox Selected:", shiny::textOutput("grp_radio_ex", container = shiny::span)
               )
             )
           )
@@ -85,13 +108,16 @@ ui <- shinyUI(
   )
 )
 
-server <- shinyServer(function(input, output) {
+server <- shinyServer(function(input, output, session) {
   output$text_ex <- renderText(input$text_ex)
   output$textarea_ex <- renderText(input$textarea_ex)
   output$password_ex <- renderText(input$password_ex)
   output$email_ex <- renderText(input$email_ex)
   output$url_ex <- renderText(input$url_ex)
   output$number_ex <- renderText(paste(input$number_ex, "   Class: ", class(input$number_ex)))
+  output$checkbox_ex <- renderText(input$checkbox_ex)
+  output$slider_ex <- renderText(input$slider_ex)
+  output$grp_radio_ex <- renderText(input$grp_radio_ex)
 })
 
 shiny::shinyApp(ui, server)

@@ -20,3 +20,10 @@ simple_checkbox(id, label, type = "", is_marked = TRUE, style = NULL)
 \description{
 This creates a checkbox using Semantic UI styles.
 }
+\details{
+The inputs are updateable by using \code{\link[shiny]{updateCheckboxInput}}.
+}
+\examples{
+simple_checkbox("example", "Check me", is_marked = FALSE)
+
+}
