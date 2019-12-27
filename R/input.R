@@ -16,7 +16,7 @@
 #'
 #' @export
 uiinput <- function(..., type = "") {
-  div(class = paste("ui input", type), ...)
+  div(class = paste("ui", type, "input"), ...)
 }
 
 #' Create Semantic UI Text Input
@@ -40,6 +40,9 @@ uiinput <- function(..., type = "") {
 #' \item{url}{A special version of the text input specific for URLs}
 #' \item{tel}{A special version of the text input specific for telephone numbers}
 #' }
+#'
+#' The inputs are updateable by using \code{\link[shiny]{updateTextInput}} or
+#' \code{\link[shiny]{updateTextAreaInput}} if \code{type = "textarea"}.
 #'
 #' @examples
 #' # Text input
@@ -74,6 +77,9 @@ uitextinput <- function(name, value = "", type = "text", placeholder = NULL, att
 #' @param min Minimum allowed value.
 #' @param max Maximum allowed value.
 #' @param step Interval to use when stepping between min and max.
+#'
+#' @details
+#' The inputs are updateable by using \code{\link[shiny]{updateNumericInput}}.
 #'
 #' @examples
 #' # Text input

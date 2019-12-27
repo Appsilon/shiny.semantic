@@ -21,6 +21,9 @@ uinumericinput(name, value, min = NA, max = NA, step = NA)
 This creates a default numeric input using Semantic UI. The input is availbale
 under \code{input[[name]]}.
 }
+\details{
+The inputs are updateable by using \code{\link[shiny]{updateNumericInput}}.
+}
 \examples{
 # Text input
 uiinput(

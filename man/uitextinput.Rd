@@ -37,6 +37,9 @@ The following \code{type}s are allowed:
 \item{url}{A special version of the text input specific for URLs}
 \item{tel}{A special version of the text input specific for telephone numbers}
 }
+
+The inputs are updateable by using \code{\link[shiny]{updateTextInput}} or
+\code{\link[shiny]{updateTextAreaInput}} if \code{type = "textarea"}.
 }
 \examples{
 # Text input
