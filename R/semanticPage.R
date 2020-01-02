@@ -37,7 +37,14 @@ get_dependencies <- function(theme = NULL) {
     if(!is.null(theme)) {
       warning("It's not posible use local semantic version with themes. Using CDN")
     } else {
-      dep_src <- c(file = system.file("www", "shared", "semantic", package = "shiny.semantic"))
+      dep_src <- c(
+        file = system.file(
+          "www",
+          "shared",
+          "semantic",
+          package = "shiny.semantic"
+        )
+      )
     }
   }
 
@@ -78,7 +85,7 @@ get_default_semantic_theme <- function(full_url = TRUE) {
 #' Semantic theme path validator
 #'
 #' @param theme_css it can be either NULL, character with css path, or theme name
-#' @param full_url define return output filename or full path. Default TRUE
+#' @param full_url boolean flag that defines what is returned, either filename, or full path. Default TRUE
 #'
 #' @return path to theme or filename
 #' @export
@@ -93,7 +100,13 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
   if (tools::file_ext(theme_css) == "css") return(theme_css)
   if (theme_css %in% SUPPORTED_THEMES) {
     if (full_url)
-      return(file.path(get_cdn_path(), paste("semantic", theme_css, minfield, "css", sep = "."), fsep = "/"))
+      return(
+        file.path(
+          get_cdn_path(),
+          paste("semantic", theme_css, minfield, "css", sep = "."),
+          fsep = "/"
+        )
+      )
     else
       return(paste("semantic", theme_css, minfield, "css", sep = "."))
   } else {

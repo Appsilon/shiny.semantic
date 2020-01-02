@@ -9,7 +9,7 @@ check_semantic_theme(theme_css, full_url = TRUE)
 \arguments{
 \item{theme_css}{it can be either NULL, character with css path, or theme name}
 
-\item{full_url}{define return output filename or full path. Default TRUE}
+\item{full_url}{boolean flag that defines what is returned, either filename, or full path. Default TRUE}
 }
 \value{
 path to theme or filename
