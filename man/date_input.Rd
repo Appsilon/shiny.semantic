@@ -34,7 +34,7 @@ Define simple date input with semantic ui styling
 }
 \examples{
 if (interactive()) {
-# Below example shows how to imlement simple date range input using \\code{date_input}
+# Below example shows how to imlement simple date range input using \code{date_input}
 
 library(shiny)
 library(shiny.semantic)
