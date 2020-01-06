@@ -21,7 +21,11 @@ uiinput <- function(..., type = "") {
 
 #' Create Semantic UI Text Input
 #'
+<<<<<<< HEAD
 #' This creates a default text input using Semantic UI. The input is available
+=======
+#' This creates a default text input using Semantic UI. The input is availbale
+>>>>>>> 7067d92a9661fe9406e73f74b50a64674e55712f
 #' under \code{input[[name]]}.
 #'
 #' @param name Input name. Reactive value is available under \code{input[[name]]}.
@@ -69,7 +73,11 @@ uitextinput <- function(name, value = "", type = "text", placeholder = NULL, att
 
 #' Create Semantic UI Numeric Input
 #'
+<<<<<<< HEAD
 #' This creates a default numeric input using Semantic UI. The input is available
+=======
+#' This creates a default numeric input using Semantic UI. The input is availbale
+>>>>>>> 7067d92a9661fe9406e73f74b50a64674e55712f
 #' under \code{input[[name]]}.
 #'
 #' @param name Input name. Reactive value is available under \code{input[[name]]}.
