@@ -61,6 +61,12 @@ ui <- shinyUI(
                 multiple_checkbox(
                   "grp_check_ex", "Favourite Numbers", choices = 1:5, position = "inline"
                 )
+              ),
+              uifield(
+                tags$label("Calendar"),
+                uicalendar(
+                  "calendar_ex"
+                )
               )
             )
           )
@@ -109,6 +115,10 @@ ui <- shinyUI(
               uifield(
                 tags$label("Group Checkbox"),
                 "Checkboxes Selected:", shiny::textOutput("grp_check_ex", container = shiny::span)
+              ),
+              uifield(
+                tags$label("Calendar"),
+                "Date Selected:", shiny::textOutput("calendar_ex", container = shiny::span)
               )
             )
           )
@@ -129,6 +139,7 @@ server <- shinyServer(function(input, output, session) {
   output$slider_ex <- renderText(input$slider_ex)
   output$grp_radio_ex <- renderText(input$grp_radio_ex)
   output$grp_check_ex <- renderText(paste(input$grp_check_ex, collapse = ", "))
+  output$calendar_ex <- renderText(input$calendar_ex)
 })
 
 shiny::shinyApp(ui, server)
