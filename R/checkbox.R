@@ -49,7 +49,7 @@ checkbox_ui <- function(id, label, type = "", is_marked = TRUE, style = NULL) {
 #'
 #' This creates a multiple checkbox using Semantic UI styles.
 #'
-#' @param input_id Input name. Reactive value is available under input[[input_id]].
+#' @param name Input name. Reactive value is available under input[[name]].
 #' @param label Text to be displayed with checkbox.
 #' @param choices List of values to show checkboxes for.
 #'   If elements of the list are named then that name rather than the value is displayed to the user.
@@ -61,11 +61,25 @@ checkbox_ui <- function(id, label, type = "", is_marked = TRUE, style = NULL) {
 #' tag (e.g. style, childrens etc.)
 #'
 #' @export
-multiple_checkbox <- function(input_id, label, choices, selected = NULL,
-                              position = "grouped", type = "radio", ...) {
+multiple_checkbox <- function(name, label, choices, choices_value = choices,
+                              selected = NULL, position = "grouped", type = NULL, ...) {
+  choices_html <- tagList(lapply(seq_along(choices), function(x) {
+    div(
+      class = "field",
+      div(
+        class = paste("ui checkbox", type, if (choices[x] %in% selected) "checked"),
+        tags$input(
+          type = "checkbox", name = name, tabindex = "0", value = choices_value[x],
+          checked = if (choices[x] %in% selected) NA else NULL
+        ),
+        tags$label(choices[x])
+      )
+    )
+  }))
   shiny::div(
-    class = paste(position, "fields"),
-
+    id = name, class = paste("shiny-input-checkboxgroup", position, "fields"),
+    tags$label(`for` = name, label),
+    choices_html
   )
 }
 

@@ -51,9 +51,15 @@ ui <- shinyUI(
                 simple_checkbox("slider_ex", "Slider", type = "slider")
               ),
               uifield(
-                tags$label("Group Radiobox"),
+                tags$label("Group Radio Button"),
                 multiple_radio(
                   "grp_radio_ex", "Favourite Letter", choices = LETTERS[1:4], selected = "B", position = "inline"
+                )
+              ),
+              uifield(
+                tags$label("Group Checkbox"),
+                multiple_checkbox(
+                  "grp_check_ex", "Favourite Numbers", choices = 1:5, position = "inline"
                 )
               )
             )
@@ -97,8 +103,12 @@ ui <- shinyUI(
                 "Slider Selected:", shiny::textOutput("slider_ex", container = shiny::span)
               ),
               uifield(
-                tags$label("Group Radiobox"),
-                "Radiobox Selected:", shiny::textOutput("grp_radio_ex", container = shiny::span)
+                tags$label("Group Radio Button"),
+                "Radio Button Selected:", shiny::textOutput("grp_radio_ex", container = shiny::span)
+              ),
+              uifield(
+                tags$label("Group Checkbox"),
+                "Checkboxes Selected:", shiny::textOutput("grp_check_ex", container = shiny::span)
               )
             )
           )
@@ -118,6 +128,7 @@ server <- shinyServer(function(input, output, session) {
   output$checkbox_ex <- renderText(input$checkbox_ex)
   output$slider_ex <- renderText(input$slider_ex)
   output$grp_radio_ex <- renderText(input$grp_radio_ex)
+  output$grp_check_ex <- renderText(paste(input$grp_check_ex, collapse = ", "))
 })
 
 shiny::shinyApp(ui, server)
