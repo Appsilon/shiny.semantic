@@ -5,17 +5,17 @@
 \title{Create Semantic UI multiple checkbox}
 \usage{
 multiple_checkbox(
-  input_id,
+  name,
   label,
   choices,
   selected = NULL,
   position = "grouped",
-  type = "radio",
+  type = NULL,
   ...
 )
 }
 \arguments{
-\item{input_id}{Input name. Reactive value is available under input[[input_id]].}
+\item{name}{Input name. Reactive value is available under input[[name]].}
 
 \item{label}{Text to be displayed with checkbox.}
 
