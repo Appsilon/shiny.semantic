@@ -18,7 +18,7 @@ uinumericinput(name, value, min = NA, max = NA, step = NA)
 \item{step}{Interval to use when stepping between min and max.}
 }
 \description{
-This creates a default numeric input using Semantic UI. The input is availbale
+This creates a default numeric input using Semantic UI. The input is available
 under \code{input[[name]]}.
 }
 \details{

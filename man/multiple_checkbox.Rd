@@ -8,6 +8,7 @@ multiple_checkbox(
   name,
   label,
   choices,
+  choices_value = choices,
   selected = NULL,
   position = "grouped",
   type = NULL,

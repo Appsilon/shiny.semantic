@@ -24,7 +24,7 @@ uitextinput(
 \item{attribs}{A named list of attributes to assign to the input.}
 }
 \description{
-This creates a default text input using Semantic UI. The input is availbale
+This creates a default text input using Semantic UI. The input is available
 under \code{input[[name]]}.
 }
 \details{
