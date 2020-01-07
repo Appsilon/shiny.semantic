@@ -78,7 +78,7 @@ multiple_checkbox <- function(name, label, choices, choices_value = choices,
   }))
 
   shiny::div(
-    id = name, class = paste(position, "fields"),
+    id = name, class = paste(position, "fields shiny-input-checkboxgroup"),
     tags$label(`for` = name, label),
     choices_html
   )
@@ -110,7 +110,7 @@ multiple_radio <- function(name, label, choices, choices_value = choices,
   }))
 
   shiny::div(
-    id = name, class = paste(position, "fields"),
+    id = name, class = paste(position, "fields shiny-input-radiogroup"),
     tags$label(`for` = name, label),
     choices_html
   )

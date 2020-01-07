@@ -22,13 +22,17 @@
 #'
 #' @export
 uicalendar <- function(name, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
-  div(
-    id = name, class = "ui calendar", `data-type` = type, `data-date` = value,
-    `data-min-date` = min, `data-max-date` = max,
+  cal_widget <- div(
+    id = name, class = "ui calendar ss-input-date", `data-type` = type, `data-date` = value,
     div(
       class = "ui input left icon",
       tags$i(class = "calendar icon"),
       tags$input(type = "text", placeholder = placeholder)
     )
   )
+
+  if (!is.na(min)) cal_widget$attribs[["data-min-date"]] <- min
+  if (!is.na(max)) cal_widget$attribs[["data-max-date"]] <- max
+
+  cal_widget
 }
