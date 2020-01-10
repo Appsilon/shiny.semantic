@@ -51,12 +51,12 @@ server <- shinyServer(function(input, output, session) {
    has_matching <- function(field) {
      startsWith(field, q)
    }
-   gapminder %>%
-     mutate(country = as.character(country)) %>%
-     select(country) %>%
-     unique %>%
-     filter(has_matching(country)) %>%
-     head(5) %>%
+   gapminder \%>\%
+     mutate(country = as.character(country)) \%>\%
+     select(country) \%>\%
+     unique \%>\%
+     filter(has_matching(country)) \%>\%
+     head(5) \%>\%
      transmute(title = country,
                description = country)
  }

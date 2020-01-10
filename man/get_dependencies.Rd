@@ -4,7 +4,10 @@
 \alias{get_dependencies}
 \title{Add dashboard dependencies to html}
 \usage{
-get_dependencies()
+get_dependencies(theme = NULL)
+}
+\arguments{
+\item{theme}{define theme}
 }
 \value{
 Content with appended dependencies.

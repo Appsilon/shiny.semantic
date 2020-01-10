@@ -4,10 +4,13 @@
 \alias{get_default_semantic_theme}
 \title{Get default semantic css}
 \usage{
-get_default_semantic_theme()
+get_default_semantic_theme(full_url = TRUE)
+}
+\arguments{
+\item{full_url}{define return output filename or full path. Default TRUE}
 }
 \value{
-path to default css semantic file
+path to default css semantic file or default filename
 }
 \description{
 Get default semantic css
