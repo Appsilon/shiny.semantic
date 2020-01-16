@@ -53,12 +53,48 @@ checkbox_ui <- function(id, label, type = "", is_marked = TRUE, style = NULL) {
 #' @param label Text to be displayed with checkbox.
 #' @param choices List of values to show checkboxes for.
 #'   If elements of the list are named then that name rather than the value is displayed to the user.
+#' @param choices_value What reactive value should be used for corresponding choice.
 #' @param selected The value that should be chosen initially.
 #'   If \code{NULL} the first one from \code{choices} is chosen.
 #' @param position Specified checkmarks setup. Can be \code{grouped} or \code{inline}.
 #' @param type Type of checkbox. Please check \code{\link{checkbox_types}} for possibilities.
 #' @param ... Other arguments to be added as attributes of the
 #' tag (e.g. style, childrens etc.)
+#'
+#' @rdname multiple_checkbox
+#'
+#' @examples
+#' ## Only run examples in interactive R sessions
+#' if (interactive()) {
+#'   # Checkbox
+#'   library(shiny)
+#'   library(shiny.semantic)
+#'
+#'   ui <- function() {
+#'       shinyUI(
+#'         semanticPage(
+#'           title = "Checkbox example",
+#'           suppressDependencies("bootstrap"),
+#'           h1("Checkboxes"),
+#'           multiple_checkbox("checkboxes", "Select Letters", LETTERS[1:6], value = "A"),
+#'           p("Selected letters:"),
+#'           textOutput("selected_letters"),
+#'           tags$br(),
+#'           h1("Radioboxes"),
+#'           multiple_radio("radioboxes", "Select Letter", LETTERS[1:6], value = "A"),
+#'           p("Selected letter:"),
+#'           textOutput("selected_letter")
+#'        )
+#'      )
+#'   }
+#'
+#'   server <- shinyServer(function(input, output) {
+#'      output$selected_letters <- renderText(paste(input$checkboxes, collapse = ", "))
+#'      output$selected_letter <- renderText(input$radioboxes)
+#'   })
+#'
+#'   shinyApp(ui = ui(), server = server)
+#' }
 #'
 #' @export
 multiple_checkbox <- function(name, label, choices, choices_value = choices,
@@ -84,13 +120,7 @@ multiple_checkbox <- function(name, label, choices, choices_value = choices,
   )
 }
 
-#' Create Semantic UI multiple radio buttons
-#'
-#' @description
-#' This creates a multiple radiobox input using the Semantic UI style
-#'
-#' @param choices_value What reactive value should be used for corresponding
-#' choice.
+#' @rdname multiple_checkbox
 #'
 #' @export
 multiple_radio <- function(name, label, choices, choices_value = choices,

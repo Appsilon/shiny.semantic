@@ -15,8 +15,8 @@
 #' @seealso uitextinput
 #'
 #' @export
-uiinput <- function(..., type = "") {
-  div(class = paste("ui", type, "input"), ...)
+uiinput <- function(..., class = "") {
+  div(class = paste("ui", class, "input"), ...)
 }
 
 #' Create Semantic UI Text Input
@@ -90,6 +90,8 @@ uitextinput <- function(name, value = "", type = "text", placeholder = NULL, att
 #'
 #' @export
 uinumericinput <- function(name, value, min = NA, max = NA, step = NA) {
+  if (!is.numeric(value) & !grepl("^\\d*(\\.\\d*|)$", value)) stop("Non-numeric input detected")
+
   input <- tags$input(id = name, value = value, type = "number")
   if (!is.na(min)) input$attibs$min <- min
   if (!is.na(max)) input$attibs$max <- max

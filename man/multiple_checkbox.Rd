@@ -2,6 +2,7 @@
 % Please edit documentation in R/checkbox.R
 \name{multiple_checkbox}
 \alias{multiple_checkbox}
+\alias{multiple_radio}
 \title{Create Semantic UI multiple checkbox}
 \usage{
 multiple_checkbox(
@@ -14,6 +15,16 @@ multiple_checkbox(
   type = NULL,
   ...
 )
+
+multiple_radio(
+  name,
+  label,
+  choices,
+  choices_value = choices,
+  selected = choices_value[1],
+  position = "grouped",
+  ...
+)
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under input[[name]].}
@@ -22,6 +33,8 @@ multiple_checkbox(
 
 \item{choices}{List of values to show checkboxes for.
 If elements of the list are named then that name rather than the value is displayed to the user.}
+
+\item{choices_value}{What reactive value should be used for corresponding choice.}
 
 \item{selected}{The value that should be chosen initially.
 If \code{NULL} the first one from \code{choices} is chosen.}
@@ -35,4 +48,38 @@ tag (e.g. style, childrens etc.)}
 }
 \description{
 This creates a multiple checkbox using Semantic UI styles.
+}
+\examples{
+## Only run examples in interactive R sessions
+if (interactive()) {
+  # Checkbox
+  library(shiny)
+  library(shiny.semantic)
+
+  ui <- function() {
+      shinyUI(
+        semanticPage(
+          title = "Checkbox example",
+          suppressDependencies("bootstrap"),
+          h1("Checkboxes"),
+          multiple_checkbox("checkboxes", "Select Letters", LETTERS[1:6], value = "A"),
+          p("Selected letters:"),
+          textOutput("selected_letters"),
+          tags$br(),
+          h1("Radioboxes"),
+          multiple_radio("radioboxes", "Select Letter", LETTERS[1:6], value = "A"),
+          p("Selected letter:"),
+          textOutput("selected_letter")
+       )
+     )
+  }
+
+  server <- shinyServer(function(input, output) {
+     output$selected_letters <- renderText(paste(input$checkboxes, collapse = ", "))
+     output$selected_letter <- renderText(input$radioboxes)
+  })
+
+  shinyApp(ui = ui(), server = server)
+}
+
 }

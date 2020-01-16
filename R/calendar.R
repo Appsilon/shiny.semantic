@@ -12,7 +12,28 @@
 #'
 #' @examples
 #' # Basic calendar
-#' uicalendar(name = "date_start")
+#' if (interactive()) {
+#'
+#'   library(shiny)
+#'   library(shiny.semantic)
+#'
+#'   ui <- shinyUI(
+#'     semanticPage(
+#'       title = "Calendar example",
+#'       uicalendar("date"),
+#'       p("Selected date:"),
+#'       textOutput("selected_date")
+#'     )
+#'   )
+#'
+#'    server <- shinyServer(function(input, output, session) {
+#'      output$selected_date <- renderText(
+#'        as.character(input$date)
+#'      )
+#'    })
+#'
+#'    shinyApp(ui = ui, server = server)
+#'  }
 #'
 #' # Calendar with max and min
 #' uicalendar(
@@ -23,10 +44,11 @@
 #' )
 #'
 #' # Selecting month
-#' ui_calendar(
+#' uicalendar(
 #'   name = "month",
 #'   type = "month"
 #' )
+#'
 #' @export
 uicalendar <- function(name, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
   cal_widget <- div(

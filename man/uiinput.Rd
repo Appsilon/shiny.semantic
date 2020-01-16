@@ -4,7 +4,7 @@
 \alias{uiinput}
 \title{Create Semantic UI Input}
 \usage{
-uiinput(..., type = "")
+uiinput(..., class = "")
 }
 \arguments{
 \item{...}{Other arguments to be added as attributes of the tag (e.g. style, class or childrens etc.)}
