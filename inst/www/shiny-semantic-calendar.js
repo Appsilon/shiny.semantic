@@ -25,7 +25,11 @@ $.extend(semanticDateBinding, {
 
   // This initialize input element. It extracts data-value attribute and use that as value.
   initialize: function(el) {
-    $(el).calendar();
+    $(el).calendar({
+      onChange: function(date, text, mode) {
+        $(el).trigger('change');
+      }
+    });
   },
 
   // This returns a jQuery object with the DOM element.
@@ -73,7 +77,7 @@ $.extend(semanticDateBinding, {
   },
 
   subscribe: function(el, callback) {
-    $(el).on('change keyup', function() { callback(true); });
+    $(el).on('keyup change ', function(event) { callback(true); });
   },
 
   unsubscribe: function(el) {
