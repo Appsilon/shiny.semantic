@@ -10,16 +10,23 @@
 #' @param min Minimum allowed value.
 #' @param max Maximum allowed value.
 #'
-#' @details
-#' The inputs are updateable by using \code{\link[shiny]{updateNumericInput}}.
-#'
 #' @examples
-#' # Text input
-#' uiinput(
-#'   tags$label("Numeric Input"),
-#'   uinumberinput("ex", 10)
+#' # Basic calendar
+#' uicalendar(name = "date_start")
+#'
+#' # Calendar with max and min
+#' uicalendar(
+#'   name = "date_finish",
+#'   placeholder = "Select End Date",
+#'   min = "2019-01-01",
+#'   max = "2020-01-01"
 #' )
 #'
+#' # Selecting month
+#' ui_calendar(
+#'   name = "month",
+#'   type = "month"
+#' )
 #' @export
 uicalendar <- function(name, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
   cal_widget <- div(
