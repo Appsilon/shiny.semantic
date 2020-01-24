@@ -140,8 +140,6 @@ server <- shinyServer(function(input, output, session) {
   output$grp_radio_ex <- renderText(input$grp_radio_ex)
   output$grp_check_ex <- renderText(paste(input$grp_check_ex, collapse = ", "))
   output$calendar_ex <- renderText(as.character(input$calendar_ex))
-
-  # observeEvent(input$grp_check_ex, browser(), ignoreInit = TRUE)
 })
 
 shiny::shinyApp(ui, server)
