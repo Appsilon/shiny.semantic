@@ -42,6 +42,9 @@ The inputs are updateable by using \code{\link[shiny]{updateTextInput}} or
 \code{\link[shiny]{updateTextAreaInput}} if \code{type = "textarea"}.
 }
 \examples{
+library(shiny)
+library(shiny.semantic)
+
 # Text input
 uiinput(
   tags$label("Text input"),

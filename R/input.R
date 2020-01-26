@@ -6,6 +6,9 @@
 #' @param class Additional classes to add to html tag.
 #'
 #' @examples
+#' library(shiny)
+#' library(shiny.semantic)
+#'
 #' # Text input
 #' uiinput(
 #'   tags$label("Text input"),
@@ -45,6 +48,9 @@ uiinput <- function(..., class = "") {
 #' \code{\link[shiny]{updateTextAreaInput}} if \code{type = "textarea"}.
 #'
 #' @examples
+#' library(shiny)
+#' library(shiny.semantic)
+#'
 #' # Text input
 #' uiinput(
 #'   tags$label("Text input"),
@@ -82,10 +88,13 @@ uitextinput <- function(name, value = "", type = "text", placeholder = NULL, att
 #' The inputs are updateable by using \code{\link[shiny]{updateNumericInput}}.
 #'
 #' @examples
+#' library(shiny)
+#' library(shiny.semantic)
+#'
 #' # Text input
 #' uiinput(
 #'   tags$label("Numeric Input"),
-#'   uinumberinput("ex", 10)
+#'   uinumericinput("ex", 10)
 #' )
 #'
 #' @export
