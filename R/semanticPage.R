@@ -26,8 +26,8 @@ get_cdn_path <- function() {
 #'
 #' @return Content with appended dependencies.
 get_dependencies <- function(theme = NULL) {
-  minfield <- ifelse(getOption("shiny.minified", TRUE), "min", "")
-  javascript_file <- paste("semantic", minfield, "js", sep = ".")
+  minfield <- if (getOption("shiny.minified", TRUE)) "min" else NULL
+  javascript_file <- paste(c("semantic", minfield, "js"), collapse = ".")
   css_files <- c(check_semantic_theme(theme, full_url = FALSE))
 
   dep_src <- NULL
@@ -76,8 +76,8 @@ get_range_component_dependencies <- function() { # nolint
 #'
 #' @return path to default css semantic file or default filename
 get_default_semantic_theme <- function(full_url = TRUE) {
-  minfield <- ifelse(getOption("shiny.minified", TRUE), "min", "")
-  css_file <- paste("semantic", minfield, "css", sep = ".")
+  minfield <- if (getOption("shiny.minified", TRUE)) "min" else NULL
+  css_file <- paste(c("semantic", minfield, "css"), collapse = ".")
   path <- file.path(get_cdn_path(), css_file, fsep = "/")
   return(c(ifelse(full_url, path, css_file)))
 }
@@ -95,7 +95,7 @@ get_default_semantic_theme <- function(full_url = TRUE) {
 #' check_semantic_theme("darkly")
 #' check_semantic_theme("darkly", full_url = FALSE)
 check_semantic_theme <- function(theme_css, full_url = TRUE) {
-  minfield <- ifelse(getOption("shiny.minified", TRUE), "min", "")
+  minfield <- if (getOption("shiny.minified", TRUE)) "min" else NULL
   if (is.null(theme_css)) return(get_default_semantic_theme(full_url))
   if (tools::file_ext(theme_css) == "css") return(theme_css)
   if (theme_css %in% SUPPORTED_THEMES) {
@@ -103,12 +103,12 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
       return(
         file.path(
           get_cdn_path(),
-          paste("semantic", theme_css, minfield, "css", sep = "."),
+          paste(c("semantic", theme_css, minfield, "css"), collapse = "."),
           fsep = "/"
         )
       )
     else
-      return(paste("semantic", theme_css, minfield, "css", sep = "."))
+      return(paste(c("semantic", theme_css, minfield, "css"), collapse = "."))
   } else {
     warning(paste("Theme ", theme_css, "not recognized. Default used instead!"))
     return(get_default_semantic_theme(full_url))

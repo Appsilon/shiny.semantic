@@ -4,7 +4,16 @@ $.extend(semanticDropdownBinding, {
 
   // This initialize input element. It extracts data-value attribute and use that as value.
   initialize: function(el) {
-    $(el).dropdown();
+    let value = $(el).children('input').val();
+    // Enables the dropdown to be a vector if multiple class
+    if ($(el).hasClass('multiple')) {
+      value = value.split(",");
+      for (i = 0; i < value.length; i++) {
+        $(el).dropdown('set selected', value[i]);
+      }
+    } else {
+      $(el).dropdown('set exactly', value);
+    }
   },
 
   // This returns a jQuery object with the DOM element.
