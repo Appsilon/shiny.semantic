@@ -6,14 +6,12 @@ function padZeros(n, digits) {
   return str;
 }
 
-// Given a Date object, return a string in yyyy-mm-dd format, using the
-// UTC date. This may be a day off from the date in the local time zone.
-function formatDateUTC(date) {
+// Given a Date object, return a string in the local time zone.
+function formatDate(date) {
   if (date instanceof Date) {
-    return date.getUTCFullYear() + '-' +
-           padZeros(date.getUTCMonth()+1, 2) + '-' +
-           padZeros(date.getUTCDate(), 2);
-
+    return date.getFullYear() + '-' +
+           padZeros(date.getMonth()+1, 2) + '-' +
+           padZeros(date.getDate(), 2);
   } else {
     return null;
   }
@@ -45,7 +43,7 @@ $.extend(semanticDateBinding, {
   // format like mm/dd/yyyy)
   getValue: function(el) {
     var date = $(el).calendar('get date');
-    return formatDateUTC(date);
+    return formatDate(date);
   },
 
   // value must be an unambiguous string like '2001-01-01', or a Date object.
@@ -65,8 +63,8 @@ $.extend(semanticDateBinding, {
 
     // Stringify min and max. If min and max aren't set, they will be
     // -Infinity and Infinity; replace these with null.
-    min = (min === -Infinity) ? null : formatDateUTC(min);
-    max = (max ===  Infinity) ? null : formatDateUTC(max);
+    min = (min === -Infinity) ? null : formatDate(min);
+    max = (max ===  Infinity) ? null : formatDate(max);
 
     // startViewMode is stored as a number; convert to string
     return {
