@@ -6,11 +6,6 @@ semantic_palette <- c("#A333C8", "#21BA45", "#2185D0", "#DB2828", "#F2711C", "#F
 names(semantic_palette) <- c("purple", "green", "blue", "red", "orange", "yellow", "olive", "teal",
                              "violet", "pink", "brown", "grey", "black")
 
-#' Checkbox types
-#'
-#' @export
-checkbox_types <- c("", "toggle", "slider", "radio")
-
 #' Checkbox positions
 #'
 #' @export

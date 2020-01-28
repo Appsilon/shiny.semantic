@@ -17,7 +17,7 @@ uicheckbox <- function(..., type = "") {
 #'
 #' @param id Input name. Reactive value is available under input[[name]].
 #' @param label Text to be displayed with checkbox.
-#' @param type Type of checkbox. Please check \code{checkbox_types} for possibilities.
+#' @param type Type of checkbox.
 #' @param is_marked Defines if checkbox should be marked. Default TRUE.
 #' @param style Style of the widget.
 #'
@@ -27,8 +27,15 @@ uicheckbox <- function(..., type = "") {
 #' @details
 #' The inputs are updateable by using \code{\link[shiny]{updateCheckboxInput}}.
 #'
+#' The following \code{type}s are allowed:
+#' \itemize{
+#' \item{NULL}{The standard checkbox (default)}
+#' \item{toggle}{Each checkbox has a toggle form}
+#' \item{slider}{Each checkbox has a simple slider form}
+#' }
+#'
 #' @export
-simple_checkbox <- function(id, label, type = "", is_marked = TRUE, style = NULL) {
+simple_checkbox <- function(id, label, type = NULL, is_marked = TRUE, style = NULL) {
   div(
     class = paste("ui", type, if (is_marked) "checked", "checkbox"), style = style,
     tags$input(id = id, type = "checkbox", checked = if (is_marked) NA else NULL),
@@ -36,30 +43,29 @@ simple_checkbox <- function(id, label, type = "", is_marked = TRUE, style = NULL
   )
 }
 
-#' 'checkbox_ui' is deprecated. Use 'simple_checkbox' instead.
-#'
-#' @inherit simple_checkbox
-#' @export
-checkbox_ui <- function(id, label, type = "", is_marked = TRUE, style = NULL) {
-  .Deprecated("simple_checkbox")
-  simple_checkbox(id, label, type, is_marked, style)
-}
-
 #' Create Semantic UI multiple checkbox
 #'
 #' This creates a multiple checkbox using Semantic UI styles.
 #'
-#' @param name Input name. Reactive value is available under input[[name]].
+#' @param name Input name. Reactive value is available under \code{input[[name]]}.
 #' @param label Text to be displayed with checkbox.
-#' @param choices List of values to show checkboxes for.
-#'   If elements of the list are named then that name rather than the value is displayed to the user.
-#' @param choices_value What reactive value should be used for corresponding choice.
-#' @param selected The value that should be chosen initially.
+#' @param choices Vector of labels to show checkboxes for.
+#' @param choices_value Vector of values that should be used for corresponding choice.
+#'   If not specified, \code{choices} is used by default.
+#' @param selected The value(s) that should be chosen initially.
 #'   If \code{NULL} the first one from \code{choices} is chosen.
 #' @param position Specified checkmarks setup. Can be \code{grouped} or \code{inline}.
-#' @param type Type of checkbox. Please check \code{\link{checkbox_types}} for possibilities.
+#' @param type Type of checkbox.
 #' @param ... Other arguments to be added as attributes of the
 #' tag (e.g. style, childrens etc.)
+#'
+#' @details
+#' The following \code{type}s are allowed:
+#' \itemize{
+#' \item{NULL}{The standard checkbox (default)}
+#' \item{toggle}{Each checkbox has a toggle form}
+#' \item{slider}{Each checkbox has a simple slider form}
+#' }
 #'
 #' @rdname multiple_checkbox
 #'
@@ -116,7 +122,8 @@ multiple_checkbox <- function(name, label, choices, choices_value = choices,
   shiny::div(
     id = name, class = paste(position, "fields shiny-input-checkboxgroup"),
     tags$label(`for` = name, label),
-    choices_html
+    choices_html,
+    ...
   )
 }
 
@@ -142,6 +149,7 @@ multiple_radio <- function(name, label, choices, choices_value = choices,
   shiny::div(
     id = name, class = paste(position, "fields shiny-input-radiogroup"),
     tags$label(`for` = name, label),
-    choices_html
+    choices_html,
+    ...
   )
 }

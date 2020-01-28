@@ -4,14 +4,15 @@
 \alias{simple_checkbox}
 \title{Create Semantic UI checkbox}
 \usage{
-simple_checkbox(id, label, type = "", is_marked = TRUE, style = NULL)
+simple_checkbox(id, label, type = NULL, is_marked = TRUE,
+  style = NULL)
 }
 \arguments{
 \item{id}{Input name. Reactive value is available under input[[name]].}
 
 \item{label}{Text to be displayed with checkbox.}
 
-\item{type}{Type of checkbox. Please check \code{checkbox_types} for possibilities.}
+\item{type}{Type of checkbox.}
 
 \item{is_marked}{Defines if checkbox should be marked. Default TRUE.}
 
@@ -22,6 +23,13 @@ This creates a checkbox using Semantic UI styles.
 }
 \details{
 The inputs are updateable by using \code{\link[shiny]{updateCheckboxInput}}.
+
+The following \code{type}s are allowed:
+\itemize{
+\item{NULL}{The standard checkbox (default)}
+\item{toggle}{Each checkbox has a toggle form}
+\item{slider}{Each checkbox has a simple slider form}
+}
 }
 \examples{
 simple_checkbox("example", "Check me", is_marked = FALSE)

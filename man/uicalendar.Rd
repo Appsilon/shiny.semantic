@@ -4,14 +4,8 @@
 \alias{uicalendar}
 \title{Create Semantic UI Calendar}
 \usage{
-uicalendar(
-  name,
-  value = NULL,
-  placeholder = NULL,
-  type = "date",
-  min = NA,
-  max = NA
-)
+uicalendar(name, value = NULL, placeholder = NULL, type = "date",
+  min = NA, max = NA)
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under \code{input[[name]]}.}
