@@ -15,6 +15,9 @@ uiinput(..., class = "")
 This creates an input shell for the actual input
 }
 \examples{
+library(shiny)
+library(shiny.semantic)
+
 # Text input
 uiinput(
   tags$label("Text input"),

@@ -3,7 +3,6 @@ library(shiny.semantic)
 
 ui <- shinyUI(
   semanticPage(
-    tags$script(src = "shiny-semantic-radiogroup.js"),
     suppressDependencies("bootstrap"),
 
     tags$br(),

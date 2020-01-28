@@ -25,10 +25,13 @@ under \code{input[[name]]}.
 The inputs are updateable by using \code{\link[shiny]{updateNumericInput}}.
 }
 \examples{
+library(shiny)
+library(shiny.semantic)
+
 # Text input
 uiinput(
   tags$label("Numeric Input"),
-  uinumberinput("ex", 10)
+  uinumericinput("ex", 10)
 )
 
 }
