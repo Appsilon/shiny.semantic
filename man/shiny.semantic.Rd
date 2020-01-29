@@ -3,6 +3,7 @@
 \docType{package}
 \name{shiny.semantic}
 \alias{shiny.semantic}
+\alias{shiny.semantic-package}
 \title{Semantic UI wrapper for Shiny}
 \description{
 With this library it’s easy to wrap Shiny with Semantic UI
@@ -11,7 +12,7 @@ your UI a fresh, modern and highly interactive look.
 }
 \section{Options}{
 
-There are a number of global options that affect shiny.semantic as well as in
+There are a number of global options that affect shiny.semantic as well as
 Shiny behavior.The options can be set globally with `options()`
 \describe{
 \item{shiny.custom.semantic.cdn (defaults is internal CDN)}{This controls from where the css

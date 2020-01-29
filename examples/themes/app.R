@@ -7,8 +7,6 @@ library(formatR)
 library(httr)
 library(rjson)
 
-options(semantic.themes = TRUE)
-
 demo <- function(code) {
   div(class = "ui raised segment",
       code,
@@ -16,6 +14,8 @@ demo <- function(code) {
       highlight(formatR::tidy_source(width.cutoff = 40, text = deparse(substitute(code)))$text.tidy)
   )
 }
+
+options(semantic.themes = TRUE)
 
 input <- function(class = "ui input", style = "", type = "text", name = "", placeholder = "") {
   div(class = class, style = style,

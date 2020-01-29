@@ -147,7 +147,8 @@ semanticPage <- function(..., title = "", theme = NULL){ # nolint
       shiny::tags$meta(name = "viewport", content = "width=device-width, initial-scale=1.0"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-modal.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-dropdown.js"),
-      shiny::tags$script(src = "shiny.semantic/shiny-semantic-button.js")
+      shiny::tags$script(src = "shiny.semantic/shiny-semantic-button.js"),
+      shiny::tags$script(src = "shiny.semantic/shiny-semantic-calendar.js")
     ),
     shiny::tags$body(style = "min-height: 611px;", content)
   )

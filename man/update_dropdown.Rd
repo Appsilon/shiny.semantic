@@ -4,13 +4,8 @@
 \alias{update_dropdown}
 \title{Update dropdown Semantic UI component}
 \usage{
-update_dropdown(
-  session,
-  name,
-  choices = NULL,
-  choices_value = choices,
-  value = NULL
-)
+update_dropdown(session, name, choices = NULL, choices_value = choices,
+  value = NULL)
 }
 \arguments{
 \item{session}{The \code{session} object passed to function given to \code{shinyServer}.}
