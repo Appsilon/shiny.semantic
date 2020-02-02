@@ -61,15 +61,6 @@ get_dependencies <- function(theme = NULL) {
   )
 }
 
-get_range_component_dependencies <- function() { # nolint
-  htmltools::htmlDependency("semantic-range",
-                            "1.0.0",
-                            c(file = system.file("semantic-range", package = "shiny.semantic")),
-                            script = "range.js",
-                            stylesheet = "range.css"
-  )
-}
-
 #' Get default semantic css
 #'
 #' @param full_url define return output filename or full path. Default TRUE
@@ -141,13 +132,13 @@ semanticPage <- function(..., title = "", theme = NULL){ # nolint
   content <- shiny::tags$div(class = "wrapper", ...)
   shiny::tagList(
     shiny::tags$head(
-      get_range_component_dependencies(),
       get_dependencies(theme),
       shiny::tags$title(title),
       shiny::tags$meta(name = "viewport", content = "width=device-width, initial-scale=1.0"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-modal.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-dropdown.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-button.js"),
+      shiny::tags$script(src = "shiny.semantic/shiny-semantic-slider.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-calendar.js")
     ),
     shiny::tags$body(style = "min-height: 611px;", content)
