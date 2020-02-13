@@ -81,7 +81,7 @@ uicalendar <- function(name, value = NULL, placeholder = NULL, type = "date", mi
 #' @rdname uicalendar
 #'
 #' @export
-update_calendar <- function (id, value = NULL, min = NULL, max = NULL, session = shiny::getDefaultReactiveDomain()) {
-  message <- list(value = value, min=min, max=max)
+update_calendar <- function(id, value = NULL, min = NULL, max = NULL, session = shiny::getDefaultReactiveDomain()) {
+  message <- list(value = value, min = min, max = max)
   session$sendInputMessage(id, message = message)
 }
