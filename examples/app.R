@@ -288,9 +288,20 @@ sidebar <- function() {
           div(class="menu",
               a(class="item", href="#accordion", "Accordion"),
               a(class="item", href="#rating", "Rating"),
-              a(class="item", href="#tabset", "Tabset")
+              a(class="item", href="#tabset", "Tabset"),
+              a(class="item", href="#calendar", "Calendar")
               )))
 }
+
+calendar <- function() {
+  div(
+    h1(class="ui header", id="calendar", "Calendar"),
+    demo(uicalendar("date", type = "date", value = "20.2.2020", placeholder = "Select Date", min = "2.2.2020", max = "25.2.2020")),
+    demo(uicalendar("month", type = "month", placeholder = "Pick Month"))
+  )
+}
+
+
 css <- "
 #examples > div > .header {
   margin-top: 1em;
@@ -314,7 +325,8 @@ ui <- function() {
         card(),
         accordion(),
         rating(),
-        tabs()
+        tabs(),
+        calendar()
       )
     )
   ))
