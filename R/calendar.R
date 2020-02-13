@@ -72,9 +72,13 @@ uicalendar <- function(name, value = NULL, placeholder = NULL, type = "date", mi
 #' This function updates the date on a calendar
 #'
 #' @param id ID of the calendar that will be updated
-#' @param value The date to be set
+#' @param value The date to be set, default NULL
+#' @param min Minimum date that will be possible to set, default NULL
+#' @param max Maximum date that will be possible to set, default NULL
 #' @param session The \code{session} object passed to function given to
 #'   \code{shinyServer}.
+#'
+#' @rdname uicalendar
 #'
 #' @export
 update_calendar <- function (id, value = NULL, min = NULL, max = NULL, session = shiny::getDefaultReactiveDomain()) {

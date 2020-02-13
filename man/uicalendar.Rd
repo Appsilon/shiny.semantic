@@ -2,27 +2,49 @@
 % Please edit documentation in R/calendar.R
 \name{uicalendar}
 \alias{uicalendar}
+\alias{update_calendar}
 \title{Create Semantic UI Calendar}
 \usage{
-uicalendar(name, value = NULL, placeholder = NULL, type = "date",
-  min = NA, max = NA)
+uicalendar(
+  name,
+  value = NULL,
+  placeholder = NULL,
+  type = "date",
+  min = NA,
+  max = NA
+)
+
+update_calendar(
+  id,
+  value = NULL,
+  min = NULL,
+  max = NULL,
+  session = shiny::getDefaultReactiveDomain()
+)
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under \code{input[[name]]}.}
 
-\item{value}{Initial value of the numeric input.}
+\item{value}{The date to be set, default NULL}
 
 \item{placeholder}{Text visible in the input when nothing is inputted.}
 
 \item{type}{Select from \code{'year'}, \code{'month'}, \code{'date'} and \code{'time'}}
 
-\item{min}{Minimum allowed value.}
+\item{min}{Minimum date that will be possible to set, default NULL}
 
-\item{max}{Maximum allowed value.}
+\item{max}{Maximum date that will be possible to set, default NULL}
+
+\item{id}{ID of the calendar that will be updated}
+
+\item{session}{The \code{session} object passed to function given to
+\code{shinyServer}.}
 }
 \description{
 This creates a default calendar input using Semantic UI. The input is available
 under \code{input[[name]]}.
+
+This function updates the date on a calendar
 }
 \examples{
 # Basic calendar

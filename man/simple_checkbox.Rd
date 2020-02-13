@@ -4,8 +4,7 @@
 \alias{simple_checkbox}
 \title{Create Semantic UI checkbox}
 \usage{
-simple_checkbox(id, label, type = NULL, is_marked = TRUE,
-  style = NULL)
+simple_checkbox(id, label, type = NULL, is_marked = TRUE, style = NULL)
 }
 \arguments{
 \item{id}{Input name. Reactive value is available under input[[name]].}

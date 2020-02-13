@@ -4,8 +4,17 @@
 \alias{modal}
 \title{Create Semantic UI modal}
 \usage{
-modal(..., id = "", class = "", header = "", content = NULL,
-  footer = NULL, target = NULL, settings = NULL, modal_tags = NULL)
+modal(
+  ...,
+  id = "",
+  class = "",
+  header = "",
+  content = NULL,
+  footer = NULL,
+  target = NULL,
+  settings = NULL,
+  modal_tags = NULL
+)
 }
 \arguments{
 \item{...}{Content elements to be added to the modal body.

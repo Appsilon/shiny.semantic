@@ -4,8 +4,11 @@
 \alias{create_modal}
 \title{Allows for the creation of modals in the server side without being tied to a specific HTML element.}
 \usage{
-create_modal(ui_modal, show = TRUE,
-  session = shiny::getDefaultReactiveDomain())
+create_modal(
+  ui_modal,
+  show = TRUE,
+  session = shiny::getDefaultReactiveDomain()
+)
 }
 \arguments{
 \item{ui_modal}{HTML containing the modal.}
