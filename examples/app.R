@@ -296,8 +296,11 @@ sidebar <- function() {
 calendar <- function() {
   div(
     h1(class="ui header", id="calendar", "Calendar"),
-    demo(uicalendar("date", type = "date", value = "20.2.2020", placeholder = "Select Date", min = "2.2.2020", max = "25.2.2020")),
-    demo(uicalendar("month", type = "month", placeholder = "Pick Month"))
+    demo(
+      uicalendar("date", type = "date", value = "20.2.2020", placeholder = "Select Date",
+                 min = "2.2.2020", max = "25.2.2020")),
+    demo(
+      uicalendar("month", type = "month", placeholder = "Pick Month"))
   )
 }
 
