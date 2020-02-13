@@ -90,13 +90,9 @@ $.extend(semanticDateBinding, {
   },
 
   receiveMessage: function(el, data) {
-
-    console.log(data);
-
     if (data.hasOwnProperty('min'))
       $(el).calendar('set minDate', data.min);
       $(el).attr("data-min-date", data.min);
-
 
     if (data.hasOwnProperty('max'))
       $(el).calendar('set maxDate', data.max);
