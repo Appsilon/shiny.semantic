@@ -51,17 +51,37 @@
 #'
 #' @export
 uicalendar <- function(name, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
-  cal_widget <- div(
-    id = name, class = "ui calendar ss-input-date", `data-type` = type, `data-date` = value,
+  cal_widget <-
     div(
-      class = "ui input left icon",
-      tags$i(class = "calendar icon"),
-      tags$input(type = "text", placeholder = placeholder)
+      id = name, class = "ui calendar ss-input-date", `data-type` = type, `data-date` = value,
+      div(
+        class = "ui input left icon",
+        tags$i(class = "calendar icon"),
+        tags$input(type = "text", placeholder = placeholder)
+      )
     )
-  )
 
   if (!is.na(min)) cal_widget$attribs[["data-min-date"]] <- min
   if (!is.na(max)) cal_widget$attribs[["data-max-date"]] <- max
 
   cal_widget
+}
+
+#' Update UI calendar
+#'
+#' This function updates the date on a calendar
+#'
+#' @param session The \code{session} object passed to function given to
+#'   \code{shinyServer}.
+#' @param id ID of the calendar that will be updated
+#' @param value The date to be set, default NULL
+#' @param min Minimum date that will be possible to set, default NULL
+#' @param max Maximum date that will be possible to set, default NULL
+#'
+#' @rdname uicalendar
+#'
+#' @export
+update_calendar <- function(session, id, value = NULL, min = NULL, max = NULL) {
+  message <- list(value = value, min = min, max = max)
+  session$sendInputMessage(id, message = message)
 }

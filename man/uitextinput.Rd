@@ -4,8 +4,13 @@
 \alias{uitextinput}
 \title{Create Semantic UI Text Input}
 \usage{
-uitextinput(name, value = "", type = "text", placeholder = NULL,
-  attribs = list())
+uitextinput(
+  name,
+  value = "",
+  type = "text",
+  placeholder = NULL,
+  attribs = list()
+)
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under \code{input[[name]]}.}

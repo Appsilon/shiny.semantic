@@ -92,15 +92,18 @@ $.extend(semanticDateBinding, {
   receiveMessage: function(el, data) {
     if (data.hasOwnProperty('min'))
       $(el).calendar('set minDate', data.min);
+      $(el).attr("data-min-date", data.min);
 
     if (data.hasOwnProperty('max'))
-      $(el).calendar('set maxDate', data.min);
+      $(el).calendar('set maxDate', data.max);
+      $(el).attr("data-max-date", data.max);
 
     // Must set value only after min and max have been set. If new value is
     // outside the bounds of the previous min/max, then the result will be a
     // blank input.
     if (data.hasOwnProperty('value'))
-      $(el).calendar('set value', data.value);
+      this.setValue(el, data.value);
+      $(el).attr("data-date", this.getValue(el));
 
     $(el).trigger('change');
   }
