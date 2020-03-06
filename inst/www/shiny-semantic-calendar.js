@@ -110,7 +110,3 @@ $.extend(semanticDateBinding, {
 });
 
 Shiny.inputBindings.register(semanticDateBinding, 'shiny.semanticDate');
-
-Shiny.addCustomMessageHandler('updateSemanticCalendar', function(message){
-  semanticDateBinding.setValue($('#' + message.id), message.value)
-});
