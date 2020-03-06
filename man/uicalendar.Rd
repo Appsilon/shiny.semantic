@@ -14,13 +14,7 @@ uicalendar(
   max = NA
 )
 
-update_calendar(
-  id,
-  value = NULL,
-  min = NULL,
-  max = NULL,
-  session = shiny::getDefaultReactiveDomain()
-)
+update_calendar(session, id, value = NULL, min = NULL, max = NULL)
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under \code{input[[name]]}.}
@@ -35,10 +29,10 @@ update_calendar(
 
 \item{max}{Maximum date that will be possible to set, default NULL}
 
-\item{id}{ID of the calendar that will be updated}
-
 \item{session}{The \code{session} object passed to function given to
 \code{shinyServer}.}
+
+\item{id}{ID of the calendar that will be updated}
 }
 \description{
 This creates a default calendar input using Semantic UI. The input is available

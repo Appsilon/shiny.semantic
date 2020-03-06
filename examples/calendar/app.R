@@ -14,14 +14,14 @@ ui <- function() {
   )
 }
 
-server <- shinyServer(function(input, output) {
+server <- shinyServer(function(input, output, session) {
 
   output$result <- renderText({
     input$month
   })
 
   observeEvent(input$update, {
-    update_calendar("date", value = "12.2.2020", min = "10.2.2020", max = "25.2.2020")
+    update_calendar(session, "date", value = "12.2.2020", min = "10.2.2020", max = "25.2.2020")
   })
 })
 
