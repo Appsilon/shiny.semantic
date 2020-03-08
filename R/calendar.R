@@ -35,6 +35,7 @@
 #'    shinyApp(ui = ui, server = server)
 #'  }
 #'
+#' \dontrun{
 #' # Calendar with max and min
 #' uicalendar(
 #'   name = "date_finish",
@@ -48,7 +49,8 @@
 #'   name = "month",
 #'   type = "month"
 #' )
-#'
+#' }
+#' @rdname uicalendar
 #' @export
 uicalendar <- function(name, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
   cal_widget <-

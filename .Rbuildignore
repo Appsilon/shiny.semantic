@@ -12,4 +12,5 @@
 ^readme_assets$
 ^docs$
 ^examples$
-^index.html
+^index.html$
+

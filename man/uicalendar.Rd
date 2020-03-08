@@ -65,6 +65,7 @@ if (interactive()) {
    shinyApp(ui = ui, server = server)
  }
 
+\dontrun{
 # Calendar with max and min
 uicalendar(
   name = "date_finish",
@@ -78,5 +79,5 @@ uicalendar(
   name = "month",
   type = "month"
 )
-
+}
 }
