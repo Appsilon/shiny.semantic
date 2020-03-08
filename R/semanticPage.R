@@ -34,7 +34,7 @@ get_dependencies <- function(theme = NULL) {
   if (!is.null(getOption("shiny.custom.semantic", NULL))) {
     dep_src <- c(file = getOption("shiny.custom.semantic"))
   } else if (isTRUE(getOption("shiny.semantic.local", FALSE))) {
-    if(!is.null(theme)) {
+    if (!is.null(theme)) {
       warning("It's not posible use local semantic version with themes. Using CDN")
     } else {
       dep_src <- c(

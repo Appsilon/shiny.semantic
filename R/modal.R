@@ -226,7 +226,7 @@ show_modal <- function(id, session = shiny::getDefaultReactiveDomain()) {
 #' @rdname show_modal
 #' @export
 remove_modal <- function(id, session = shiny::getDefaultReactiveDomain()) {
-  shiny::removeUI(paste0("#", id ))
+  shiny::removeUI(paste0("#", id))
 }
 
 #' @rdname show_modal
