@@ -7,10 +7,7 @@ $.extend(semanticDropdownBinding, {
     let value = $(el).children('input').val();
     // Enables the dropdown to be a vector if multiple class
     if ($(el).hasClass('multiple')) {
-      value = value.split(",");
-      for (i = 0; i < value.length; i++) {
-        $(el).dropdown('set selected', value[i]);
-      }
+      value.split(",").map(v => $(el).dropdown('set selected', v));
     } else {
       $(el).dropdown('set exactly', value);
     }
@@ -38,7 +35,12 @@ $.extend(semanticDropdownBinding, {
 
   // Given the DOM element for the input, set the value.
   setValue: function(el, value) {
-    $(el).dropdown('set exactly', value);
+    if ($(el).hasClass('multiple')) {
+      $(el).dropdown('set exactly', '');
+      value.split(",").map(v => $(el).dropdown('set selected', v));
+    } else {
+      $(el).dropdown('set exactly', value);
+    }
   },
 
   // Set up the event listeners so that interactions with the
@@ -84,4 +86,3 @@ $.extend(semanticDropdownBinding, {
 });
 
 Shiny.inputBindings.register(semanticDropdownBinding, 'shiny.semanticDropdown');
-
