@@ -62,7 +62,7 @@ simple_checkbox <- function(id, label, type = NULL, is_marked = TRUE, style = NU
 #' @param selected The value(s) that should be chosen initially.
 #'   If \code{NULL} the first one from \code{choices} is chosen.
 #' @param position Specified checkmarks setup. Can be \code{grouped} or \code{inline}.
-#' @param type Type of checkbox.
+#' @param type Type of checkbox or radio.
 #' @param ... Other arguments to be added as attributes of the
 #' tag (e.g. style, childrens etc.)
 #'
@@ -138,12 +138,13 @@ multiple_checkbox <- function(name, label, choices, choices_value = choices,
 #'
 #' @export
 multiple_radio <- function(name, label, choices, choices_value = choices,
-                           selected = choices_value[1], position = "grouped", ...) {
+                           selected = choices_value[1], position = "grouped",
+                           type = "radio", ...) {
   choices_html <- tagList(lapply(seq_along(choices), function(x) {
     div(
       class = "field",
       div(
-        class = paste("ui radio checkbox", if (choices[x] %in% selected) "checked"),
+        class = paste("ui radio checkbox", type,  if (choices[x] %in% selected) "checked"),
         tags$input(
           type = "radio", name = name, tabindex = "0", value = choices_value[x],
           checked = if (choices[x] %in% selected) NA else NULL

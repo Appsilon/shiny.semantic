@@ -23,6 +23,7 @@ multiple_radio(
   choices_value = choices,
   selected = choices_value[1],
   position = "grouped",
+  type = "radio",
   ...
 )
 }
@@ -41,7 +42,7 @@ If \code{NULL} the first one from \code{choices} is chosen.}
 
 \item{position}{Specified checkmarks setup. Can be \code{grouped} or \code{inline}.}
 
-\item{type}{Type of checkbox.}
+\item{type}{Type of checkbox or radio.}
 
 \item{...}{Other arguments to be added as attributes of the
 tag (e.g. style, childrens etc.)}
