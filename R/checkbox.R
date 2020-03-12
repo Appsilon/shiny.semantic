@@ -116,10 +116,10 @@ multiple_checkbox <- function(name, label, choices, choices_value = choices,
     div(
       class = "field",
       div(
-        class = paste("ui checkbox", type, if (choices[x] %in% selected) "checked"),
+        class = paste("ui checkbox", type, if (choices_value[x] %in% selected) "checked"),
         tags$input(
           type = "checkbox", name = name, tabindex = "0", value = choices_value[x],
-          checked = if (choices[x] %in% selected) NA else NULL
+          checked = if (choices_value[x] %in% selected) NA else NULL
         ),
         tags$label(choices[x])
       )
@@ -144,10 +144,10 @@ multiple_radio <- function(name, label, choices, choices_value = choices,
     div(
       class = "field",
       div(
-        class = paste("ui checkbox", type,  if (choices[x] %in% selected) "checked"),
+        class = paste("ui checkbox", type,  if (choices_value[x] %in% selected) "checked"),
         tags$input(
           type = "radio", name = name, tabindex = "0", value = choices_value[x],
-          checked = if (choices[x] %in% selected) NA else NULL
+          checked = if (choices_value[x] %in% selected) NA else NULL
         ),
         tags$label(choices[x])
       )
