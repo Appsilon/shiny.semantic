@@ -4,9 +4,7 @@
 \name{checkbox_positions}
 \alias{checkbox_positions}
 \title{Checkbox positions}
-\format{
-An object of class \code{character} of length 2.
-}
+\format{An object of class \code{character} of length 2.}
 \usage{
 checkbox_positions
 }

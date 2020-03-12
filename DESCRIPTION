@@ -18,7 +18,6 @@ Encoding: UTF-8
 LazyData: TRUE
 License: MIT + file LICENSE
 Imports:
-    utils,
     shiny (>= 0.12.1),
     htmltools (>= 0.2.6),
     htmlwidgets (>= 0.8),
