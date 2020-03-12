@@ -1,11 +1,12 @@
 Package: shiny.semantic
 Type: Package
 Title: Semantic UI Support for Shiny
-Version: 0.2.4
-Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com",
-  role = "aut"),
-  person("Dominik", "Krzeminski", email = "dominik@appsilon.com",
-  role = "cre"))
+Version: 0.3.0
+Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com", role = "aut"),
+  person("Krystian", "Igras", email = "krystian@appsilon.com", role = "aut"),
+  person("Adam", "Forys", email = "adam@appsilon.com", role = "aut"),
+  person("Dominik", "Krzeminski", email = "dominik@appsilon.com", role = "cre"),
+  person(family = "Appsilon Sp. z o.o.", role = c("cph")))
 Description: Creating a great user interface for your Shiny apps
     can be a hassle, especially if you want to work purely in R
     and don't want to use, for instance HTML templates. This
@@ -17,7 +18,6 @@ Encoding: UTF-8
 LazyData: TRUE
 License: MIT + file LICENSE
 Imports:
-    utils,
     shiny (>= 0.12.1),
     htmltools (>= 0.2.6),
     htmlwidgets (>= 0.8),
@@ -30,4 +30,4 @@ Suggests:
     testthat,
     lintr,
     covr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2.9000

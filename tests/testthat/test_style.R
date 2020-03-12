@@ -1,5 +1,10 @@
 context("lintr")
 
 test_that("lintr", {
-  lintr::expect_lint_free()
+  print(getwd())
+  lintr::expect_lint_free(
+    path = "../../00_pkg_src/shiny.semantic",
+    relative_path = TRUE,
+    lintr::line_length_linter(120)
+  )
 })

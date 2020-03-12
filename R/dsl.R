@@ -26,7 +26,7 @@ uiicon <- function(type = "", ...) {
 uilabel <- function(..., type = "", is_link = TRUE) {
   label_tag <- if (is_link) tags$a else tags$div
   label_tag(class = paste("ui label", type),
-      list(...))
+            list(...))
 }
 
 #' Sets tab id if not provided
@@ -225,20 +225,6 @@ label <- function(...) {
   shiny::tags$label(...)
 }
 
-
-#' Create Semantic UI checkox
-#'
-#' This creates a checkbox using Semantic UI styles.
-#'
-#' @param ... Other arguments to be added as attributes of the
-#' tag (e.g. style, childrens etc.)
-#' @param type Type of checkbox to be used See \code{\link{checkbox_types}} for possible values.
-#'
-#' @export
-uicheckbox <- function(..., type = "") {
-  shiny::div(class = paste("ui checkbox", type), ...)
-}
-
 #' Create Semantic UI Message
 #'
 #' @param header Header of the message
@@ -284,100 +270,18 @@ uimessage <- function(header, content, type = "", icon, closable = FALSE) {
       message_else_content)
 }
 
-
-#' Create dropdown Semantic UI component
-#'
-#' This creates a default dropdown using Semantic UI styles with Shiny input.
-#' Dropdown is already initialized and available under input[[name]].
-#'
-#' @param name Input name. Reactive value is available under input[[name]].
-#' @param choices All available options one can select from.
-#' @param choices_value What reactive value should be used for corresponding
-#' choice.
-#' @param default_text Text to be visible on dropdown when nothing is selected.
-#' @param value Pass value if you want to initialize selection for dropdown.
-#'
-#' @examples
-#' ## Only run examples in interactive R sessions
-#' if (interactive()) {
-#'
-#'   library(shiny)
-#'   library(shiny.semantic)
-#'   ui <- function() {
-#'       shinyUI(
-#'         semanticPage(
-#'           title = "Dropdown example",
-#'           suppressDependencies("bootstrap"),
-#'           uiOutput("dropdown"),
-#'           p("Selected letter:"),
-#'           textOutput("selected_letter")
-#'        )
-#'      )
-#'   }
-#'   server <- shinyServer(function(input, output) {
-#'      output$dropdown <- renderUI({
-#'          dropdown("simple_dropdown", LETTERS, value = "A")
-#'      })
-#'      output$selected_letter <- renderText(input[["simple_dropdown"]])
-#'   })
-#'
-#'   shinyApp(ui = ui(), server = server)
-#' }
-#'
-#' @export
-dropdown <- function(name,
-                     choices,
-                     choices_value = choices,
-                     default_text = "Select",
-                     value = NULL) {
-  unique_dropdown_class <- paste0("dropdown_name_", name)
-  class <- paste("ui selection fluid dropdown", unique_dropdown_class)
-
-  shiny::tagList(
-    shiny::div(class = class,
-               shiny_text_input(name,
-                                shiny::tags$input(type = "hidden", name = name),
-                                value = value
-               ),
-               uiicon("dropdown"),
-               shiny::div(class = "default text", default_text),
-               uimenu(
-                         purrr::when(
-                           choices,
-                           is.null(names(.)) ~
-                             purrr::map2(choices, choices_value, ~
-                                           menu_item(`data-value` = .y, .x)
-                             ),
-                           !is.null(names(.)) ~
-                             purrr::map(1:length(choices), ~ {
-                             shiny::tagList(
-                               menu_header(names(choices)[.x], is_item = FALSE),
-                               menu_divider(),
-                               purrr::map2(choices[[.x]], choices_value[[.x]], ~
-                                             menu_item(`data-value` = .y, .x))
-                             )
-                           })
-                         )
-               )
-    ),
-    shiny::tags$script(paste0(
-      "$('.ui.dropdown.", unique_dropdown_class,
-      "').dropdown().dropdown('set selected', '", value, "');"
-    ))
-  )
-}
-
 #' Create Semantic UI Menu
 #'
 #' This creates a menu using Semantic UI.
 #'
-#' @param ... Menu items to be created. Use menu_item function to create new menu item. Use uidropdown(is_menu_item = TRUE, ...)
-#' function to create new dropdown menu item. Use menu_header and menu_divider functions to customize menu format.
+#' @param ... Menu items to be created. Use menu_item function to create new menu item.
+#' Use uidropdown(is_menu_item = TRUE, ...) function to create new dropdown menu item.
+#' Use menu_header and menu_divider functions to customize menu format.
 #' @param type Type of the menu. Look at https://semantic-ui.com/collections/menu.html for all possiblities.
 #'
 #' @examples
 #'
-#' if (interactive()){
+#' if (interactive()) {
 #' library(shiny)
 #' library(shiny.semantic)
 #'
@@ -450,7 +354,8 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
 #' @param type Type of the dropdown. Look at https://semantic-ui.com/modules/dropdown.html for all possibilities.
 #' @param name Unique name of the created dropdown.
 #' @param is_menu_item TRUE if the dropdown is a menu item. Default is FALSE.
-#' @param dropdown_specs A list of dropdown functionalities. Look at https://semantic-ui.com/modules/dropdown.html#/settings for all possibilities.
+#' @param dropdown_specs A list of dropdown functionalities.
+#' Look at https://semantic-ui.com/modules/dropdown.html#/settings for all possibilities.
 #'
 #' @examples
 #'
@@ -540,7 +445,7 @@ list_element <- function(data, is_description, is_icon, row) {
       } else {
         div(class = "content", data$header[row])
       }
-      )
+  )
 }
 
 #' Create Semantic UI list with header, description and icons
@@ -570,13 +475,13 @@ list_element <- function(data, is_description, is_icon, row) {
 #'
 #' # Create a 5 element divided list with alert icons and description
 #' uilist(list_content, is_icon = TRUE, is_divided = TRUE, is_description = TRUE)
-uilist <- function(data, is_icon = FALSE, is_divided = FALSE, is_description = FALSE){
+uilist <- function(data, is_icon = FALSE, is_divided = FALSE, is_description = FALSE) {
   divided_list <- ifelse(is_divided, "divided", "")
   list_class <- paste("ui", divided_list, "list")
 
   div(class = list_class,
-      1:nrow(data) %>% purrr::map(function(row){
+      seq_len(nrow(data)) %>% purrr::map(function(row) {
         list_element(data, is_description, is_icon, row)
-        })
+      })
   )
 }

@@ -4,13 +4,15 @@
 \alias{check_semantic_theme}
 \title{Semantic theme path validator}
 \usage{
-check_semantic_theme(theme_css)
+check_semantic_theme(theme_css, full_url = TRUE)
 }
 \arguments{
 \item{theme_css}{it can be either NULL, character with css path, or theme name}
+
+\item{full_url}{boolean flag that defines what is returned, either filename, or full path. Default TRUE}
 }
 \value{
-path to theme
+path to theme or filename
 }
 \description{
 Semantic theme path validator
@@ -18,4 +20,5 @@ Semantic theme path validator
 \examples{
 check_semantic_theme(NULL)
 check_semantic_theme("darkly")
+check_semantic_theme("darkly", full_url = FALSE)
 }

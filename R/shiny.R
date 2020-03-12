@@ -1,8 +1,32 @@
+#' Semantic UI wrapper for Shiny
+#'
+#'
+#' @description With this library it’s easy to wrap Shiny with Semantic UI
+#' components. Add a few simple lines of code and some CSS classes to give
+#' your UI a fresh, modern and highly interactive look.
+#'
+#' @section Options:
+#' There are a number of global options that affect shiny.semantic as well as
+#' Shiny behavior.The options can be set globally with `options()`
+#' \describe{
+#' \item{shiny.custom.semantic.cdn (defaults is internal CDN)}{This controls from where the css
+#' and javascripts will be downloaded.}
+#' \item{shiny.semantic.local (defaults to `FALSE`)}{This allows to use only local dependency.}
+#' \item{shiny.custom.semantic (defaults to `NULL`)}{This allows to set custom local path
+#' to semantic dependencies.}
+#' \item{shiny.minified (defaults to `TRUE`)}{Defines including JavaScript as a minified or
+#' un-minified file.}
+#' }
+#'
+#' @docType package
+#' @name shiny.semantic
+NULL
+
 #' Internal function that expose javascript bindings to Shiny app.
 #'
 #' @param libname library name
 #' @param pkgname package name
-.onLoad <- function(libname, pkgname) {
+.onLoad <- function(libname, pkgname) { # nolint
   # Add directory for static resources
   file <- system.file("www", package = "shiny.semantic", mustWork = TRUE)
   shiny::addResourcePath("shiny.semantic", file)

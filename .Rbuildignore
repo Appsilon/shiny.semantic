@@ -12,3 +12,5 @@
 ^readme_assets$
 ^docs$
 ^examples$
+^index.html$
+^README.md$

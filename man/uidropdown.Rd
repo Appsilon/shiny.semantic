@@ -4,8 +4,7 @@
 \alias{uidropdown}
 \title{Create Semantic UI Dropdown}
 \usage{
-uidropdown(..., type = "", name, is_menu_item = FALSE,
-  dropdown_specs = list())
+uidropdown(..., type = "", name, is_menu_item = FALSE, dropdown_specs = list())
 }
 \arguments{
 \item{...}{Dropdown content.}
@@ -16,7 +15,8 @@ uidropdown(..., type = "", name, is_menu_item = FALSE,
 
 \item{is_menu_item}{TRUE if the dropdown is a menu item. Default is FALSE.}
 
-\item{dropdown_specs}{A list of dropdown functionalities. Look at https://semantic-ui.com/modules/dropdown.html#/settings for all possibilities.}
+\item{dropdown_specs}{A list of dropdown functionalities.
+Look at https://semantic-ui.com/modules/dropdown.html#/settings for all possibilities.}
 }
 \description{
 This creates a dropdown using Semantic UI.

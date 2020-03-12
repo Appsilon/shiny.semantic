@@ -44,7 +44,7 @@ define_selection_type <- function(name, multiple) {
 #'
 #'   server <- shinyServer(function(input, output, session) {
 #'
-#'    search_api <- function(gapminder, q){
+#'    search_api <- function(gapminder, q) {
 #'      has_matching <- function(field) {
 #'         startsWith(field, q)
 #'       }
@@ -207,7 +207,7 @@ search_selection_choices <- function(name,
 #' @param name function name
 #'
 #' @return function
-`%:::%` <- function (pkg, name) {
+`%:::%` <- function(pkg, name) { # nolint
   pkg <- as.character(substitute(pkg))
   name <- as.character(substitute(name))
   get(name, envir = asNamespace(pkg), inherits = FALSE)

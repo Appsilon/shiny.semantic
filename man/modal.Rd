@@ -4,21 +4,34 @@
 \alias{modal}
 \title{Create Semantic UI modal}
 \usage{
-modal(..., id = "", class = "", header = "", content = NULL,
-  footer = NULL, target = NULL, settings = NULL, modal_tags = NULL)
+modal(
+  ...,
+  id = "",
+  class = "",
+  header = "",
+  content = NULL,
+  footer = NULL,
+  target = NULL,
+  settings = NULL,
+  modal_tags = NULL
+)
 }
 \arguments{
-\item{...}{Content to be displayed in the modal body.}
+\item{...}{Content elements to be added to the modal body.
+To change attributes of the container please check the `content` argument.}
 
 \item{id}{ID to be added to the modal div. Default "".}
 
 \item{class}{Classes except "ui modal" to be added to the modal. Semantic UI classes can be used. Default "".}
 
-\item{header}{Content to be displayed in the modal header. Default "".}
+\item{header}{Content to be displayed in the modal header.
+If given in form of a list, HTML attributes for the container can also be changed. Default "".}
 
-\item{content}{Content to be displayed in the modal body.}
+\item{content}{Content to be displayed in the modal body.
+If given in form of a list, HTML attributes for the container can also be changed. Default NULL.}
 
-\item{footer}{Content to be displayed in the modal footer. Usually for buttons. Default NULL.}
+\item{footer}{Content to be displayed in the modal footer. Usually for buttons.
+If given in form of a list, HTML attributes for the container can also be changed. Default NULL.}
 
 \item{target}{Javascript selector for the element that will open the modal. Default NULL.}
 
@@ -100,5 +113,30 @@ server <- shinyServer(function(input, output) {
     )
   })
 })
+
+## Changing attributes of header and content.
+library(shiny)
+library(shiny.semantic)
+
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      actionButton("show", "Show modal dialog")
+    )
+  )
+}
+
+server = function(input, output) {
+  observeEvent(input$show, {
+    create_modal(modal(
+      id = "simple-modal",
+      title = "Important message",
+      header = list(style = "background: lightcoral"),
+      content = list(style = "background: lightblue",
+                     `data-custom` = "value", "This is an important message!"),
+      p("This is also part of the content!")
+    ))
+  })
+}
 
 }

@@ -2,12 +2,16 @@
 #'
 #' This creates a modal using Semantic UI styles.
 #'
-#' @param ... Content to be displayed in the modal body.
+#' @param ... Content elements to be added to the modal body.
+#' To change attributes of the container please check the `content` argument.
 #' @param id ID to be added to the modal div. Default "".
 #' @param class Classes except "ui modal" to be added to the modal. Semantic UI classes can be used. Default "".
-#' @param header Content to be displayed in the modal header. Default "".
+#' @param header Content to be displayed in the modal header.
+#' If given in form of a list, HTML attributes for the container can also be changed. Default "".
 #' @param content Content to be displayed in the modal body.
-#' @param footer Content to be displayed in the modal footer. Usually for buttons. Default NULL.
+#' If given in form of a list, HTML attributes for the container can also be changed. Default NULL.
+#' @param footer Content to be displayed in the modal footer. Usually for buttons.
+#' If given in form of a list, HTML attributes for the container can also be changed. Default NULL.
 #' @param target Javascript selector for the element that will open the modal. Default NULL.
 #' @param settings List of vectors of Semantic UI settings to be added to the modal. Default NULL.
 #' @param modal_tags Other modal elements. Default NULL.
@@ -83,6 +87,31 @@
 #'     )
 #'   })
 #' })
+#'
+#' ## Changing attributes of header and content.
+#' library(shiny)
+#' library(shiny.semantic)
+#'
+#' ui <- function() {
+#'   shinyUI(
+#'     semanticPage(
+#'       actionButton("show", "Show modal dialog")
+#'     )
+#'   )
+#' }
+#'
+#' server = function(input, output) {
+#'   observeEvent(input$show, {
+#'     create_modal(modal(
+#'       id = "simple-modal",
+#'       title = "Important message",
+#'       header = list(style = "background: lightcoral"),
+#'       content = list(style = "background: lightblue",
+#'                      `data-custom` = "value", "This is an important message!"),
+#'       p("This is also part of the content!")
+#'     ))
+#'   })
+#' }
 #'
 #' @import shiny
 #' @export
@@ -197,7 +226,7 @@ show_modal <- function(id, session = shiny::getDefaultReactiveDomain()) {
 #' @rdname show_modal
 #' @export
 remove_modal <- function(id, session = shiny::getDefaultReactiveDomain()) {
-  shiny::removeUI(paste0("#", id ))
+  shiny::removeUI(paste0("#", id))
 }
 
 #' @rdname show_modal

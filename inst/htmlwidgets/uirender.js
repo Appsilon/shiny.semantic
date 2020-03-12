@@ -5,10 +5,16 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
     return {
       renderValue: function(x) {
-        var tag_js = "<script src='https://d335w9rbwpvuxm.cloudfront.net/semantic.min.js'></script>"
-        var tag_css = "<link href='https://d335w9rbwpvuxm.cloudfront.net/semantic.min.css' rel='stylesheet'>"
-        el.innerHTML = x.ui + tag_js + tag_css;
-        },
+        let script = document.createElement('script')
+        script.src = `${x.shiny_custom_semantic}/semantic.min.js`
+        let css = document.createElement('link')
+        css.rel = 'stylesheet'
+        css.href = `${x.shiny_custom_semantic}/semantic.min.css`
+        document.head.appendChild(css)
+        document.head.appendChild(script)
+
+        el.innerHTML = x.ui;
+      },
 
       resize: function(width, height) {
         // TODO: code to re-render the widget with a new size
