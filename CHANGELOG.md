@@ -1,6 +1,22 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.3.0]
+
+- Migrate to fomantic 2.8.3
+
+- checkbox_ui was completely removed. Use simple_checkbox instead.
+
+- slider_input was removed
+
+- shiny.custom.semantic.cdn options introduced to get dependencies from custom location.
+
+- added semantic modal
+
+- updated slider
+
+- added calendar
+
 ## [0.2.4]
 ### Added
 -  shiny.custom.semantic.cdn options introduced to get dependencies from custom location.
