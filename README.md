@@ -71,7 +71,7 @@ After
 
 <p style="text-align: center; font-size: x-large;">
 
-<a href="https://demo.appsilon.com/shiny-semantic-components/">Components
+<a href="https://demo.appsilon.ai/semantic/">Components
 live demo</a>
 
 </p>
@@ -103,7 +103,7 @@ instead of standard Shiny UI definitions like e.g. `fluidPage()`. From
 now on forward all components can ba annotated with [Semantic
 UI](http://semantic-ui.com/introduction/getting-started.html) specific
 CSS classes and also you will be able to use [shiny.semantic
-components](https://demo.appsilon.com/shiny-semantic-components/).
+components](https://.appsilon.ai/semantic/).
 
 Basic example will look like this:
 
