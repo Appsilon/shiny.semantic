@@ -1,7 +1,5 @@
-library(shiny)
-#devtools::install_github("Appsilon/shiny.semantic")
-library(shiny.semantic)
-library(magrittr)
+suppressWarnings(library(shiny))
+suppressWarnings(library(magrittr))
 
 table_data <- data.frame(
   Name = c("John Smith", "Lindsay More"),
