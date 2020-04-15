@@ -2,12 +2,20 @@
 shiny.semantic
 ==============
 
-<img src="https://github.com/r-lib/pkgdown/raw/master/man/figures/logo.png" align="right" alt="" width="120" />
+<img src="man/figures/hexsticker.png" align="right" alt="" width="120" />
 
-Semantic UI wrapper for Shiny
+**Semantic UI wrapper for Shiny**
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/Appsilon/shiny.semantic.svg?branch=develop)](https://travis-ci.org/Appsilon/shiny.semantic) [![codecov](https://codecov.io/gh/Appsilon/shiny.semantic/branch/master/graph/badge.svg)](https://codecov.io/gh/Appsilon/shiny.semantic) <!-- badges: end -->
+
+[![Travis build status](https://travis-ci.org/Appsilon/shiny.semantic.svg?branch=develop)](https://travis-ci.org/Appsilon/shiny.semantic) 
+
+[![codecov](https://codecov.io/gh/Appsilon/shiny.semantic/branch/master/graph/badge.svg)](https://codecov.io/gh/Appsilon/shiny.semantic)
+
+[![cranlogs](https://cranlogs.r-pkg.org/badges/shiny.semantic)](https://CRAN.R-project.org/package=shiny.semantic)
+
+[![total](https://cranlogs.r-pkg.org/badges/grand-total/shiny.semantic)](https://www.rpackages.io/package/shiny.semantic)
+<!-- badges: end -->
 
 With this library it's easy to wrap Shiny with [Semantic UI components](https://github.com/Semantic-Org/Semantic-UI). Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.
 
@@ -16,50 +24,66 @@ With this library it's easy to wrap Shiny with [Semantic UI components](https://
 <h2>
 Before
 </h2>
-![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-3-1.png)
+![Before](man/figures/ss_before.png)
 
-</br>
 <h2>
 After
 </h2>
-![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-4-1.png)
+![After](man/figures/ss_after.png)
 
-<!-- #Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link). -->
-<!-- Live demo link below -->
-<!-- TODO Analogy to http://shiny.rstudio.com/gallery/widget-gallery.html -->
+Component examples
+------------------
+
+![Components](man/figures/semantic_components.png)
+
 <p style="text-align: center; font-size: x-large;">
-<a href="https://demo.appsilon.com/shiny-semantic-components/">Components live demo</a>
+<a href="https://demo.appsilon.ai/shiny-semantic-components/">Components live demo</a>
 </p>
-<br>
+The source code for **Components live demo** is located in **/examples** folder. To run it locally you will have to install:
 
-Source code
------------
+-   [**highlighter**](https://github.com/Appsilon/highlighter)
 
-This library source code can be found on [Appsilon Data Science's](http://appsilon.com) Github: <br> <https://github.com/Appsilon/shiny.semantic>
+        devtools::install_github("Appsilon/highlighter")
+
+Check out also our dashboard examples made with **shiny.semantic** library:
+
+1.  [Churn analytics](https://demo.appsilon.ai/churn)
+2.  [Fraud detection](https://demo.appsilon.ai/frauds)
 
 How to install?
 ---------------
 
-You can install shiny.semantic from CRAN repository:
+You can install stable `shiny.semantic` release from CRAN repository:
 
     install.packages("shiny.semantic")
 
-To install [previous version]() you can run:
+To install [previous versions]() you can run:
 
     devtools::install_github("Appsilon/shiny.semantic", ref = "0.1.0")
 
 How to use it?
 --------------
 
-Firstly, you will have to invoke `shinyUI()` with `semanticPage()` instead of standard Shiny UI definitions like e.g. `fluidPage()`. From now on forward all components can ba annotated with [Semantic UI](http://semantic-ui.com/introduction/getting-started.html) specific CSS classes and also you will be able to use [shiny.semantic components](https://demo.appsilon.com/shiny-semantic-components/).
+Firstly, you will have to invoke `shinyUI()` with `semanticPage()` instead of standard Shiny UI definitions like e.g. `fluidPage()`. From now on forward all components can ba annotated with [Semantic UI](http://semantic-ui.com/introduction/getting-started.html) specific CSS classes and also you will be able to use [shiny.semantic components](https://demo.appsilon.ai/shiny-semantic-components/).
 
-Basic example will look like this:
+Basic example for rendering a simple button. will look like this:
 
-`library(shiny) #devtools::install_github("Appsilon/shiny.semantic") library(shiny.semantic) ui <- function() {   shinyUI(     semanticPage(       title = "My page",       suppressDependencies("bootstrap"),       div(class = "ui button", uiicon("user"),  "Icon button")     )   ) } server <- shinyServer(function(input, output) { }) shinyApp(ui = ui(), server = server)`
-
-and will render a simple button.
-
-![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-5-1.png)
+``` r
+library(shiny)
+library(shiny.semantic)
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      title = "My page",
+      suppressDependencies("bootstrap"),
+      div(class = "ui button", uiicon("user"),  "Icon button")
+    )
+  )
+}
+server <- shinyServer(function(input, output) {
+})
+shinyApp(ui = ui(), server = server)
+```
 
 For better understanding it's good to check [Semantic UI documentation.](http://semantic-ui.com/introduction/getting-started.html)
 
@@ -128,101 +152,6 @@ Some Semantic UI elements require to run a specific JS code when DOM document is
     })
     shinyApp(ui = ui(), server = server)
 
-Component examples
-------------------
-
--   **Raised segment with list**
-
-![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-6-1.png) <!--html_preserve-->
-<pre>
-<code class="r">div(
-  class = "ui raised segment",
-  div(
-    class = "ui relaxed divided list",
-    c(
-      "Apples", "Pears",
-      "Oranges"
-    ) %&gt;%
-      purrr::map(~ div(
-        class = "item",
-        uiicon("large github middle aligned"),
-        div(
-          class = "content",
-          a(
-            class = "header",
-            "Hello"
-          ),
-          div(
-            class = "description",
-            .
-          )
-        )
-      ))
-  )
-)</code>
-</pre>
-
-<!--/html_preserve-->
--   **Interactive card**
-
-![](inst/assets/README_files/figure-markdown_githubunnamed-chunk-8-1.png)
-
-<!--html_preserve-->
-<pre>
-<code class="r">div(
-  class = "ui card",
-  div(
-    class = "content",
-    div(
-      class = "right floated meta",
-      "14h"
-    ), img(
-      class = "ui avatar image",
-      src = "http://semantic-ui.com/images/avatar/large/elliot.jpg"
-    ),
-    "Elliot"
-  ), div(
-    class = "image",
-    img(src = "http://semantic-ui.com/images/wireframe/image.png")
-  ),
-  div(
-    class = "content",
-    span(
-      class = "right floated",
-      uiicon("heart outline like"),
-      "17 likes"
-    ),
-    uiicon("comment"),
-    "3 comments"
-  ),
-  div(
-    class = "extra content",
-    div(
-      class = "ui large transparent left icon input",
-      uiicon("heart ouline"),
-      tags$input(
-        type = "text",
-        placeholder = "Add Comment..."
-      )
-    )
-  )
-)</code>
-</pre>
-
-<!--/html_preserve-->
-All components examples can be found here:<br> <https://demo.appsilon.com/shiny-semantic-components/>
-
-The source code for **Components live demo** is located in **/examples** folder. To run it locally you will have to install:
-
--   [**highlighter**](https://github.com/Appsilon/highlighter)
-
-        devtools::install_github("Appsilon/highlighter")
-
-Check out also our dashboard examples made with **shiny.semantic** library:
-
-1.  [Churn analytics](https://demo.appsilon.com/churn)
-2.  [Fraud detection](https://demo.appsilon.com/frauds)
-
 How to contribute?
 ------------------
 
@@ -230,15 +159,9 @@ If you want to contribute to this project please submit a regular PR, once you'r
 
 **Changes in documentation**
 
-Both repository **README.md** file and an official documentation page are generated with Rmarkdown, so if there is a need to update them, please modify accordingly a **README.Rmd** file and use [readmebuilder](https://github.com/Appsilon/readmebuilder) package to render the new README.
+Both repository **README.md** file and an official documentation page are generated with Rmarkdown, so if there is a need to update them, please modify accordingly a **README.Rmd** file and use "Knit". is enough.
 
-In most cases a simple call of:
-
-``` r
-readmebuilder::build_readme()
-```
-
-is enough.
+Documentation is rendered with `pkgdown`
 
 Troubleshooting
 ---------------

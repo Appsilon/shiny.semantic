@@ -5,44 +5,23 @@ params:
   logo_url: https://cdn.rawgit.com/Appsilon/website-cdn/gh-pages/logo-white.png
   repo_name: shiny.semantic
   repo_url: https://github.com/Appsilon/shiny.semantic
-  demo_url: https://demo.appsilon.com/shiny-semantic-components/
+  demo_url: https://demo.appsilon.ai/shiny-semantic-components/
   chagelog_url: https://github.com/Appsilon/shiny.semantic/blob/master/CHANGELOG.md
 ---
 
 
 ```{r, echo = FALSE, message = FALSE}
 suppressWarnings(library(shiny.semantic))
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "inst/assets/README_files/figure-markdown_github"
-)
+suppressWarnings(library(shiny))
 ```
 
-```{r, echo = FALSE, message = FALSE}
-source("readme_assets/ui_demo.R")
-create_example <- function(code, ...) {
-  unstyled <- deparse(substitute(code), width.cutoff = 20)
-  args <- as.list(unstyled)
-  args$sep <- "\n"
-  args <- as.list(styler::style_text(do.call(paste, args)))
-  args$sep <- "\n"
-  styled <- do.call(paste, args)
-  list(
-    htmlwidget = shiny.semantic::uirender(div(class="demo", code), ...),
-    code_demo = div(class="demo-code",
-                    pre(code(class="r", styled))
-    )
-  )
-}
-```
 
   `r params$repo_name`
 ===========
 
-<img src="https://github.com/r-lib/pkgdown/raw/master/man/figures/logo.png" align="right" alt="" width="120" />
+<img src="man/figures/hexsticker.png" align="right" alt="" width="120" />
 
-Semantic UI wrapper for Shiny
+**Semantic UI wrapper for Shiny**
 
 <!-- badges: start -->
   [![Travis build status](https://travis-ci.org/Appsilon/shiny.semantic.svg?branch=develop)](https://travis-ci.org/Appsilon/shiny.semantic)
@@ -56,44 +35,44 @@ With this library it's easy to wrap Shiny with [Semantic UI components][semantic
 
 <h2> Before </h2>
 
-```{r, echo = FALSE, message = FALSE, fig.height = 1, fig.width = 5.5}
-create_example(before_ui_demo(), width="100%", height="90%")$htmlwidget
-```
+![Before](man/figures/ss_before.png)
 
-</br>
 <h2> After </h2>
 
-```{r, echo = FALSE, message = FALSE, fig.height = 1, fig.width = 5.5}
-create_example(after_ui_demo(), width="100%", height="90%")$htmlwidget
-```
+![After](man/figures/ss_after.png)
 
+Component examples
+------------------
 
-<!-- #Basic tutorial article is available on [Appsilon Data Science blog](your_future_art_link). -->
-<!-- Live demo link below -->
-<!-- TODO Analogy to http://shiny.rstudio.com/gallery/widget-gallery.html -->
+![Components](man/figures/semantic_components.png)
+
 <p style="text-align: center; font-size: x-large;">
 <a href="`r params$demo_url`">Components live demo</a>
 </p>
 
-<br>
+The source code for **Components live demo** is located in **/examples** folder. To run it locally you will have to install:
 
-Source code
------------
+* [**highlighter**](https://github.com/Appsilon/highlighter)
+```
+devtools::install_github("Appsilon/highlighter")
+```
 
-This library source code can be found on [Appsilon Data Science's](`r params$website_url`) Github:
-  <br>
-  [`r params$repo_url`](`r params$repo_url`)
+Check out also our dashboard examples made with **shiny.semantic** library:
+
+1. [Churn analytics](https://demo.appsilon.ai/churn)
+2. [Fraud detection](https://demo.appsilon.ai/frauds)
+
 
 How to install?
 ---------------
 
-You can install shiny.semantic from CRAN repository:
+You can install stable `shiny.semantic` release from CRAN repository:
 
 ```
 install.packages("shiny.semantic")
 ```
 
-To install [previous version](`r params$changelog_url`) you can run:
+To install [previous versions](`r params$changelog_url`) you can run:
 
 ```
 devtools::install_github("Appsilon/`r params$repo_name`", ref = "0.1.0")
@@ -103,11 +82,10 @@ How to use it?
 -------
   Firstly, you will have to invoke `shinyUI()` with `semanticPage()` instead of standard Shiny UI definitions like e.g. `fluidPage()`. From now on forward all components can ba annotated with [Semantic UI][semantic_website_url] specific CSS classes and also you will be able to use [shiny.semantic  components](`r params$demo_url`).
 
-Basic example will look like this:
+Basic example for rendering a simple button. will look like this:
 
-  ```
+```{r, eval=FALSE}
 library(shiny)
-#devtools::install_github("Appsilon/`r params$repo_name`")
 library(shiny.semantic)
 ui <- function() {
   shinyUI(
@@ -121,14 +99,6 @@ ui <- function() {
 server <- shinyServer(function(input, output) {
 })
 shinyApp(ui = ui(), server = server)
-```
-
-and will render a simple button.
-
-
-```{r, echo = FALSE, fig.height = 2, fig.width = 3}
-example_button = create_example(div(class = "ui button", uiicon("user"),  "Icon button"), width = "60%", height = "70px")
-example_button$htmlwidget
 ```
 
 For better understanding it's good to check [Semantic UI documentation.][semantic_website_url]
@@ -204,93 +174,16 @@ server <- shinyServer(function(input, output) {
 shinyApp(ui = ui(), server = server)
 ```
 
-Component examples
--------
-
-* **Raised segment with list**
-
-```{r, echo = FALSE, fig.height = 1.7}
-example_list = create_example(
-div(class = "ui raised segment",
-div(class = "ui relaxed divided list", c("Apples",
-"Pears", "Oranges") %>% purrr::map(~div(class = "item",
-uiicon("large github middle aligned"),
-div(class = "content", a(class = "header",
-"Hello"), div(class = "description",
-.)))))),
-height = "170px",
-width = "100%"
-)
-example_list$htmlwidget
-```
-```{r, echo = FALSE}
-example_list$code_demo
-```
-
-* **Interactive card**
-
-
-```{r, echo = FALSE, fig.width = 4, fig.height = 3.5}
-example_card = create_example(
-div(class="ui card",
-div(class="content",
-div(class="right floated meta", "14h"),
-img(class="ui avatar image", src="http://semantic-ui.com/images/avatar/large/elliot.jpg"),
-"Elliot"
-),
-div(class="image", img(src="http://semantic-ui.com/images/wireframe/image.png")),
-div(class="content",
-span(class="right floated", uiicon("heart outline like"), "17 likes"),
-uiicon("comment"),
-"3 comments"
-),
-div(class="extra content",
-div(class="ui large transparent left icon input",
-uiicon("heart ouline"),
-tags$input(type="text", placeholder ="Add Comment...")
-)
-)
-),
-height = "400px",
-width = "60%"
-)
-example_card$htmlwidget
-```
-
-```{r, echo = FALSE}
-example_card$code_demo
-```
-
-All components examples can be found here:<br>
-[`r params$demo_url`](`r params$demo_url`)
-
-The source code for **Components live demo** is located in **/examples** folder. To run it locally you will have to install:
-
-* [**highlighter**](https://github.com/Appsilon/highlighter)
-```
-devtools::install_github("Appsilon/highlighter")
-```
-
-Check out also our dashboard examples made with **shiny.semantic** library:
-
-1. [Churn analytics](https://demo.appsilon.com/churn)
-2. [Fraud detection](https://demo.appsilon.com/frauds)
-
 How to contribute?  {.darkslide}
 -----------------
 If you want to contribute to this project please submit a regular PR, once you're done with new feature or bug fix.<br>
 
 **Changes in documentation**
 
-Both repository **README.md** file and an official documentation page are generated with Rmarkdown, so if there is a need to update them, please modify accordingly a **README.Rmd** file  and use [readmebuilder](https://github.com/Appsilon/readmebuilder) package to render the new README.
-
-In most cases a simple call of:
-
-```r
-readmebuilder::build_readme()
-```
-
+Both repository **README.md** file and an official documentation page are generated with Rmarkdown, so if there is a need to update them, please modify accordingly a **README.Rmd** file and use "Knit".
 is enough.
+
+Documentation is rendered with `pkgdown`
 
 Troubleshooting
 -----------------
