@@ -159,9 +159,9 @@ If you want to contribute to this project please submit a regular PR, once you'r
 
 **Changes in documentation**
 
-Both repository **README.md** file and an official documentation page are generated with Rmarkdown, so if there is a need to update them, please modify accordingly a **README.Rmd** file and use "Knit". is enough.
+Both repository **README.md** file and an official documentation page are generated with Rmarkdown, so if there is a need to update them, please modify accordingly a **README.Rmd** file and use "Knit".
 
-Documentation is rendered with `pkgdown`
+Documentation is rendered with `pkgdown`. Just run `pkgdown::build_site()` after rendering new **README.md**.
 
 Troubleshooting
 ---------------
@@ -185,7 +185,8 @@ Future enhacements
 
 -   create all update functions for input components to mimic shiny as close as possible
 -   add some glue code in dsl.R to make using this package smoother
--   CRAN release
+-   adding more semantic componenets
+-   new version release on CRAN
 
 Appsilon Data Science
 ---------------------
