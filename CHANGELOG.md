@@ -3,22 +3,30 @@ All notable changes to this project will be documented in this file.
 
 ## [0.3.0]
 
+### Added
+
+- added semantic modal
+
+- added calendar
+
+- shiny.custom.semantic.cdn options introduced to get dependencies from custom location.
+
+### Changed
+
 - Migrate to fomantic 2.8.3
 
 - checkbox_ui was completely removed. Use simple_checkbox instead.
 
-- slider_input was removed
-
-- shiny.custom.semantic.cdn options introduced to get dependencies from custom location.
-
-- added semantic modal
-
 - updated slider
 
-- added calendar
+### Removed
+
+- slider_input was removed
 
 ## [0.2.4]
+
 ### Added
+
 -  shiny.custom.semantic.cdn options introduced to get dependencies from custom location.
 
 ## [0.1.2]
@@ -68,11 +76,14 @@ All notable changes to this project will be documented in this file.
 
 - Fixed suspendWhenHidden problem with tabset.
 
-## Removed
+### Removed
 
 - Deleted repetition of dropdown_choice function
 
-## [0.1.1] - 2017-05-29
+## [0.1.1]
+
+*2017-05-29*
+
 ### Added
 
 - Show pointer when hovering over tabset menu items.
@@ -94,7 +105,10 @@ All notable changes to this project will be documented in this file.
 - Lexical changes in description section.
 
 
-## [0.1.0] - 2016-12-05
+## [0.1.0]
+
+*2016-12-05*
+
 ### Added
 
 - First version of API.
@@ -108,6 +122,3 @@ All notable changes to this project will be documented in this file.
 - Basic text input.
 
 - Enable updateTextInput for shiny inputs.
-
-[Unreleased]: https://github.com/Appsilon/shiny.semantic/compare/0.1.0...HEAD
-[0.1.0]: https://github.com/Appsilon/shiny.semantic/compare/a4987aa4588cab0e511519b2a60f738e8fa5d01a...0.1.0

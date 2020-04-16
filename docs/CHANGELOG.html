@@ -6,13 +6,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Change Log • shiny.semantic</title>
+<title>Change Log • SHINY.SEMANTIC</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
@@ -56,7 +56,7 @@
   <body data-spy="scroll" data-target="#toc">
     <div class="container template-title-body">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -66,7 +66,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">shiny.semantic</a>
+        <a class="navbar-link" href="index.html">SHINY.SEMANTIC</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
@@ -75,19 +75,37 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fa fa-home"></span>
      
+    Start
   </a>
-</li>
-<li>
-  <a href="reference/index.html">Reference</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/Appsilon/shiny.semantic/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="reference/index.html">
+    <span class="fa fa-file-code-o"></span>
+     
+    Functions
+  </a>
+</li>
+<li>
+  <a href="CHANGELOG.html">
+    <span class="fa fa-newspaper-o"></span>
+     
+    Changes
+  </a>
+</li>
+<li>
+  <a href="https://github.com/ropensci/MODIStsp/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/Appsilon">
+    <span class="fa fa-twitter fa-lg"></span>
      
   </a>
 </li>
@@ -113,22 +131,38 @@
 <div id="section" class="section level2">
 <h2 class="hasAnchor">
 <a href="#section" class="anchor"></a>[0.3.0]</h2>
+<div id="added" class="section level3">
+<h3 class="hasAnchor">
+<a href="#added" class="anchor"></a>Added</h3>
+<ul>
+<li><p>added semantic modal</p></li>
+<li><p>added calendar</p></li>
+<li><p>shiny.custom.semantic.cdn options introduced to get dependencies from custom location.</p></li>
+</ul>
+</div>
+<div id="changed" class="section level3">
+<h3 class="hasAnchor">
+<a href="#changed" class="anchor"></a>Changed</h3>
 <ul>
 <li><p>Migrate to fomantic 2.8.3</p></li>
 <li><p>checkbox_ui was completely removed. Use simple_checkbox instead.</p></li>
-<li><p>slider_input was removed</p></li>
-<li><p>shiny.custom.semantic.cdn options introduced to get dependencies from custom location.</p></li>
-<li><p>added semantic modal</p></li>
 <li><p>updated slider</p></li>
-<li><p>added calendar</p></li>
 </ul>
+</div>
+<div id="removed" class="section level3">
+<h3 class="hasAnchor">
+<a href="#removed" class="anchor"></a>Removed</h3>
+<ul>
+<li>slider_input was removed</li>
+</ul>
+</div>
 </div>
 <div id="section-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#section-1" class="anchor"></a>[0.2.4]</h2>
-<div id="added" class="section level3">
+<div id="added-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#added" class="anchor"></a>Added</h3>
+<a href="#added-1" class="anchor"></a>Added</h3>
 <ul>
 <li>shiny.custom.semantic.cdn options introduced to get dependencies from custom location.</li>
 </ul>
@@ -137,9 +171,9 @@
 <div id="section-2" class="section level2">
 <h2 class="hasAnchor">
 <a href="#section-2" class="anchor"></a>[0.1.2]</h2>
-<div id="added-1" class="section level3">
+<div id="added-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#added-1" class="anchor"></a>Added</h3>
+<a href="#added-2" class="anchor"></a>Added</h3>
 <ul>
 <li><p>Add multiple selection search dropdown</p></li>
 <li><p>function uimessages which creates UI Semantics message</p></li>
@@ -156,9 +190,9 @@
 <li><p>Theming example added.</p></li>
 </ul>
 </div>
-<div id="changed" class="section level3">
+<div id="changed-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#changed" class="anchor"></a>Changed</h3>
+<a href="#changed-1" class="anchor"></a>Changed</h3>
 <ul>
 <li><p>Adjust countries example.</p></li>
 <li><p>Updated documentation.</p></li>
@@ -175,20 +209,21 @@
 <li><p>Fixed suspendWhenHidden problem with tabset.</p></li>
 </ul>
 </div>
-</div>
-<div id="removed" class="section level2">
-<h2 class="hasAnchor">
-<a href="#removed" class="anchor"></a>Removed</h2>
+<div id="removed-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#removed-1" class="anchor"></a>Removed</h3>
 <ul>
 <li>Deleted repetition of dropdown_choice function</li>
 </ul>
 </div>
+</div>
 <div id="section-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#section-3" class="anchor"></a>[0.1.1] - 2017-05-29</h2>
-<div id="added-2" class="section level3">
+<a href="#section-3" class="anchor"></a>[0.1.1]</h2>
+<p><em>2017-05-29</em></p>
+<div id="added-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#added-2" class="anchor"></a>Added</h3>
+<a href="#added-3" class="anchor"></a>Added</h3>
 <ul>
 <li><p>Show pointer when hovering over tabset menu items.</p></li>
 <li><p>Multiple selection search dropdown.</p></li>
@@ -203,9 +238,9 @@
 <li>Documentation.</li>
 </ul>
 </div>
-<div id="changed-1" class="section level3">
+<div id="changed-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#changed-1" class="anchor"></a>Changed</h3>
+<a href="#changed-2" class="anchor"></a>Changed</h3>
 <ul>
 <li><p>Documentation and examples.</p></li>
 <li><p>Lexical changes in description section.</p></li>
@@ -214,10 +249,11 @@
 </div>
 <div id="section-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#section-4" class="anchor"></a><a href="https://github.com/Appsilon/shiny.semantic/compare/a4987aa4588cab0e511519b2a60f738e8fa5d01a...0.1.0">0.1.0</a> - 2016-12-05</h2>
-<div id="added-3" class="section level3">
+<a href="#section-4" class="anchor"></a>[0.1.0]</h2>
+<p><em>2016-12-05</em></p>
+<div id="added-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#added-3" class="anchor"></a>Added</h3>
+<a href="#added-4" class="anchor"></a>Added</h3>
 <ul>
 <li><p>First version of API.</p></li>
 <li><p>Search selection to use api with example.</p></li>
