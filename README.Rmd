@@ -24,13 +24,9 @@ suppressWarnings(library(shiny))
 **Semantic UI wrapper for Shiny**
 
 <!-- badges: start -->
-
 [![Travis build status](https://travis-ci.org/Appsilon/shiny.semantic.svg?branch=develop)](https://travis-ci.org/Appsilon/shiny.semantic) 
-
 [![codecov](https://codecov.io/gh/Appsilon/shiny.semantic/branch/master/graph/badge.svg)](https://codecov.io/gh/Appsilon/shiny.semantic)
-
 [![cranlogs](https://cranlogs.r-pkg.org/badges/shiny.semantic)](https://CRAN.R-project.org/package=shiny.semantic)
-
 [![total](https://cranlogs.r-pkg.org/badges/grand-total/shiny.semantic)](https://www.rpackages.io/package/shiny.semantic)
 <!-- badges: end -->
 
@@ -159,24 +155,28 @@ shinyApp(ui = ui(), server = server)
 ...
 jsCode <- "
 $(document).ready(function() {
-# Semantic UI components JS code, like:
-#$('.rating').rating('setting', 'clearable', true);
-#$('.disabled .rating').rating('disable');
+  # Semantic UI components JS code, like:
+  #$('.rating').rating('setting', 'clearable', true);
+  #$('.disabled .rating').rating('disable');
 })
 ...
+"
+
 ui <- function() {
-shinyUI(semanticPage(
-title = "My page",
-tags$script(jsCode),
-suppressDependencies("bootstrap"),
-# Your UI code
-)
-)
+  shinyUI(
+    semanticPage(
+      title = "My page",
+      tags$script(jsCode),
+      suppressDependencies("bootstrap"),
+      # Your UI code
+    )
+  )
 }
 ...
 server <- shinyServer(function(input, output) {
-# Your Shiny logic
+  # Your Shiny logic
 })
+
 shinyApp(ui = ui(), server = server)
 ```
 
@@ -217,6 +217,8 @@ Appsilon Data Science
 ------------------
 
 Get in touch [dev@appsilon.com](dev@appsilon.com)
+
+Appsilon is **Full Service Certified RStudio Partner**. Learn more at [https://appsilon.com](appsilon.com).
 
 
 [semantic_website_url]: http://semantic-ui.com/introduction/getting-started.html

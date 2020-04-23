@@ -95,10 +95,8 @@
 <p><img src="reference/figures/hexsticker.png" align="right" alt="" width="120"></p>
 <p><strong>Semantic UI wrapper for Shiny</strong></p>
 <!-- badges: start -->
-<p><a href="https://travis-ci.org/Appsilon/shiny.semantic"><img src="https://travis-ci.org/Appsilon/shiny.semantic.svg?branch=develop" alt="Travis build status"></a></p>
-<p><a href="https://codecov.io/gh/Appsilon/shiny.semantic"><img src="https://codecov.io/gh/Appsilon/shiny.semantic/branch/master/graph/badge.svg" alt="codecov"></a></p>
-<p><a href="https://CRAN.R-project.org/package=shiny.semantic"><embed src="https://cranlogs.r-pkg.org/badges/shiny.semantic"></embed></a></p>
-<p><a href="https://www.rpackages.io/package/shiny.semantic"><embed src="https://cranlogs.r-pkg.org/badges/grand-total/shiny.semantic"></embed></a> <!-- badges: end --></p>
+<p><a href="https://travis-ci.org/Appsilon/shiny.semantic"><img src="https://travis-ci.org/Appsilon/shiny.semantic.svg?branch=develop" alt="Travis build status"></a> <a href="https://codecov.io/gh/Appsilon/shiny.semantic"><img src="https://codecov.io/gh/Appsilon/shiny.semantic/branch/master/graph/badge.svg" alt="codecov"></a></p>
+<p><a href="https://CRAN.R-project.org/package=shiny.semantic"><embed src="https://cranlogs.r-pkg.org/badges/shiny.semantic"></embed></a> <a href="https://CRAN.R-project.org/package=shiny.semantic"><embed src="https://cranlogs.r-pkg.org/badges/grand-total/shiny.semantic"></embed></a> <!-- badges: end --></p>
 <p>With this library it’s easy to wrap Shiny with <a href="https://github.com/Semantic-Org/Semantic-UI">Semantic UI components</a>. Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.</p>
 <p><code>master</code> branch contains the stable version. Use <code>develop</code> branch for latest features.</p>
 <h2>
@@ -194,25 +192,29 @@ server &lt;-<span class="st"> </span><span class="kw">shinyServer</span>(<span c
 <!-- --><div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r">...
 jsCode &lt;-<span class="st"> "</span>
 <span class="st">$(document).ready(function() {</span>
-<span class="st"># Semantic UI components JS code, like:</span>
-<span class="st">#$('.rating').rating('setting', 'clearable', true);</span>
-<span class="st">#$('.disabled .rating').rating('disable');</span>
+<span class="st">  # Semantic UI components JS code, like:</span>
+<span class="st">  #$('.rating').rating('setting', 'clearable', true);</span>
+<span class="st">  #$('.disabled .rating').rating('disable');</span>
 <span class="st">})</span>
 <span class="st">...</span>
-<span class="st">ui &lt;- function() {</span>
-<span class="st">shinyUI(semanticPage(</span>
-<span class="st">title = "</span>My page<span class="st">",</span>
-<span class="st">tags$script(jsCode),</span>
-<span class="st">suppressDependencies("</span>bootstrap<span class="st">"),</span>
-<span class="st"># Your UI code</span>
-<span class="st">)</span>
-<span class="st">)</span>
-<span class="st">}</span>
-<span class="st">...</span>
-<span class="st">server &lt;- shinyServer(function(input, output) {</span>
-<span class="st"># Your Shiny logic</span>
-<span class="st">})</span>
-<span class="st">shinyApp(ui = ui(), server = server)</span></code></pre></div>
+<span class="st">"</span>
+
+ui &lt;-<span class="st"> </span><span class="cf">function</span>() {
+  <span class="kw">shinyUI</span>(
+    <span class="kw">semanticPage</span>(
+      <span class="dt">title =</span> <span class="st">"My page"</span>,
+      tags<span class="op">$</span><span class="kw">script</span>(jsCode),
+      <span class="kw">suppressDependencies</span>(<span class="st">"bootstrap"</span>),
+      <span class="co"># Your UI code</span>
+    )
+  )
+}
+...
+server &lt;-<span class="st"> </span><span class="kw">shinyServer</span>(<span class="cf">function</span>(input, output) {
+  <span class="co"># Your Shiny logic</span>
+})
+
+<span class="kw">shinyApp</span>(<span class="dt">ui =</span> <span class="kw">ui</span>(), <span class="dt">server =</span> server)</code></pre></div>
 </div>
 <div id="how-to-contribute" class="section level2">
 <h2 class="hasAnchor">
@@ -257,6 +259,7 @@ jsCode &lt;-<span class="st"> "</span>
 <h2 class="hasAnchor">
 <a href="#appsilon-data-science" class="anchor"></a>Appsilon Data Science</h2>
 <p>Get in touch <a href="dev@appsilon.com" class="uri">dev@appsilon.com</a></p>
+<p>Appsilon is <strong>Full Service Certified RStudio Partner</strong>. Learn more at <a href="appsilon.com">https://appsilon.com</a>.</p>
 </div>
 </div>
   </div>

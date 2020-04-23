@@ -7,14 +7,11 @@ shiny.semantic
 **Semantic UI wrapper for Shiny**
 
 <!-- badges: start -->
-
 [![Travis build status](https://travis-ci.org/Appsilon/shiny.semantic.svg?branch=develop)](https://travis-ci.org/Appsilon/shiny.semantic) 
-
 [![codecov](https://codecov.io/gh/Appsilon/shiny.semantic/branch/master/graph/badge.svg)](https://codecov.io/gh/Appsilon/shiny.semantic)
 
 [![cranlogs](https://cranlogs.r-pkg.org/badges/shiny.semantic)](https://CRAN.R-project.org/package=shiny.semantic)
-
-[![total](https://cranlogs.r-pkg.org/badges/grand-total/shiny.semantic)](https://www.rpackages.io/package/shiny.semantic)
+[![total](https://cranlogs.r-pkg.org/badges/grand-total/shiny.semantic)](https://CRAN.R-project.org/package=shiny.semantic)
 <!-- badges: end -->
 
 With this library it's easy to wrap Shiny with [Semantic UI components](https://github.com/Semantic-Org/Semantic-UI). Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.
@@ -37,7 +34,7 @@ Component examples
 ![Components](man/figures/semantic_components.png)
 
 <p style="text-align: center; font-size: x-large;">
-<a href="https://demo.appsilon.ai/shiny-semantic-components/">Components live demo</a>
+<a href="https://demo.appsilon.ai/semantic/">Components live demo</a>
 </p>
 The source code for **Components live demo** is located in **/examples** folder. To run it locally you will have to install:
 
@@ -132,24 +129,28 @@ Some Semantic UI elements require to run a specific JS code when DOM document is
     ...
     jsCode <- "
     $(document).ready(function() {
-    # Semantic UI components JS code, like:
-    #$('.rating').rating('setting', 'clearable', true);
-    #$('.disabled .rating').rating('disable');
+      # Semantic UI components JS code, like:
+      #$('.rating').rating('setting', 'clearable', true);
+      #$('.disabled .rating').rating('disable');
     })
     ...
+    "
+
     ui <- function() {
-    shinyUI(semanticPage(
-    title = "My page",
-    tags$script(jsCode),
-    suppressDependencies("bootstrap"),
-    # Your UI code
-    )
-    )
+      shinyUI(
+        semanticPage(
+          title = "My page",
+          tags$script(jsCode),
+          suppressDependencies("bootstrap"),
+          # Your UI code
+        )
+      )
     }
     ...
     server <- shinyServer(function(input, output) {
-    # Your Shiny logic
+      # Your Shiny logic
     })
+
     shinyApp(ui = ui(), server = server)
 
 How to contribute?
@@ -192,3 +193,5 @@ Appsilon Data Science
 ---------------------
 
 Get in touch [dev@appsilon.com](dev@appsilon.com)
+
+Appsilon is **Full Service Certified RStudio Partner**. Learn more at [https://appsilon.com](appsilon.com).
