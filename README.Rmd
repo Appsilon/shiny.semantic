@@ -5,7 +5,7 @@ params:
   logo_url: https://cdn.rawgit.com/Appsilon/website-cdn/gh-pages/logo-white.png
   repo_name: shiny.semantic
   repo_url: https://github.com/Appsilon/shiny.semantic
-  demo_url: https://demo.appsilon.ai/shiny-semantic-components/
+  demo_url: https://demo.appsilon.ai/semantic/
   chagelog_url: https://github.com/Appsilon/shiny.semantic/blob/master/CHANGELOG.md
 ---
 
@@ -26,8 +26,9 @@ suppressWarnings(library(shiny))
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/Appsilon/shiny.semantic.svg?branch=develop)](https://travis-ci.org/Appsilon/shiny.semantic) 
 [![codecov](https://codecov.io/gh/Appsilon/shiny.semantic/branch/master/graph/badge.svg)](https://codecov.io/gh/Appsilon/shiny.semantic)
+
 [![cranlogs](https://cranlogs.r-pkg.org/badges/shiny.semantic)](https://CRAN.R-project.org/package=shiny.semantic)
-[![total](https://cranlogs.r-pkg.org/badges/grand-total/shiny.semantic)](https://www.rpackages.io/package/shiny.semantic)
+[![total](https://cranlogs.r-pkg.org/badges/grand-total/shiny.semantic)](https://CRAN.R-project.org/package=shiny.semantic)
 <!-- badges: end -->
 
 
@@ -216,10 +217,9 @@ Future enhacements
 Appsilon Data Science
 ------------------
 
+Appsilon is the **Full Service Certified RStudio Partner**. Learn more at [appsilon.com](https://appsilon.com.
+
 Get in touch [dev@appsilon.com](dev@appsilon.com)
-
-Appsilon is **Full Service Certified RStudio Partner**. Learn more at [https://appsilon.com](appsilon.com).
-
 
 [semantic_website_url]: http://semantic-ui.com/introduction/getting-started.html
 [semantic_repo_url]: https://github.com/Semantic-Org/Semantic-UI

@@ -61,7 +61,7 @@ To install [previous versions]() you can run:
 How to use it?
 --------------
 
-Firstly, you will have to invoke `shinyUI()` with `semanticPage()` instead of standard Shiny UI definitions like e.g. `fluidPage()`. From now on forward all components can ba annotated with [Semantic UI](http://semantic-ui.com/introduction/getting-started.html) specific CSS classes and also you will be able to use [shiny.semantic components](https://demo.appsilon.ai/shiny-semantic-components/).
+Firstly, you will have to invoke `shinyUI()` with `semanticPage()` instead of standard Shiny UI definitions like e.g. `fluidPage()`. From now on forward all components can ba annotated with [Semantic UI](http://semantic-ui.com/introduction/getting-started.html) specific CSS classes and also you will be able to use [shiny.semantic components](https://demo.appsilon.ai/semantic/).
 
 Basic example for rendering a simple button. will look like this:
 
@@ -192,6 +192,6 @@ Future enhacements
 Appsilon Data Science
 ---------------------
 
-Get in touch [dev@appsilon.com](dev@appsilon.com)
+Appsilon is the **Full Service Certified RStudio Partner**. Learn more at \[appsilon.com\](<https://appsilon.com>.
 
-Appsilon is **Full Service Certified RStudio Partner**. Learn more at [https://appsilon.com](appsilon.com).
+Get in touch [dev@appsilon.com](dev@appsilon.com)
