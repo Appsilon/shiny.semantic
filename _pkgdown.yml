@@ -1,0 +1,22 @@
+title: SHINY.SEMANTIC
+template:
+  params:
+    bootswatch: yeti
+
+navbar:
+  type: inverse
+  left:
+    - icon: fa-home
+      href: index.html
+      text: "Start"
+  right:
+    - icon: fa-file-code-o
+      text: "Functions"
+      href: reference/index.html
+    - icon: fa-newspaper-o
+      text: "Changes"
+      href: CHANGELOG.html
+    - icon: fa-github fa-lg
+      href: https://github.com/ropensci/MODIStsp/
+    - icon: fa-twitter fa-lg
+      href: https://twitter.com/Appsilon
