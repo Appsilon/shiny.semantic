@@ -8,10 +8,12 @@
 
 <title>Create search field Semantic UI component — search_field • SHINY.SEMANTIC</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -36,15 +38,14 @@
 
 
 
-<meta property="og:title" content="Create search field Semantic UI component — search_field" />
 
+<meta property="og:title" content="Create search field Semantic UI component — search_field" />
 <meta property="og:description" content="This creates a default search field using Semantic UI styles with Shiny
 input. Search field is already initialized and available under input[[name]].
 Search will automatically route to the named API endpoint provided
 as parameter. API response is expected to be a JSON with property fields
 `title` and `description`.
 See https://semantic-ui.com/modules/search.html#behaviors for more details." />
-
 
 
 
@@ -90,7 +91,6 @@ See https://semantic-ui.com/modules/search.html#behaviors for more details." />
   </a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
@@ -137,18 +137,16 @@ See https://semantic-ui.com/modules/search.html#behaviors for more details." />
     </div>
 
     <div class="ref-description">
-    
     <p>This creates a default search field using Semantic UI styles with Shiny
 input. Search field is already initialized and available under input[[name]].
 Search will automatically route to the named API endpoint provided
 as parameter. API response is expected to be a JSON with property fields
 `title` and `description`.
 See https://semantic-ui.com/modules/search.html#behaviors for more details.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>search_field</span>(<span class='no'>name</span>, <span class='no'>search_api_url</span>, <span class='kw'>default_text</span> <span class='kw'>=</span> <span class='st'>"Search"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -171,7 +169,7 @@ is selected.</p></td>
       <td><p>Pass value if you want to initialize selection for search field.</p></td>
     </tr>
     </table>
-    
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Only run examples in interactive R sessions</span>
@@ -184,7 +182,7 @@ is selected.</p></td>
 
 <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
-    <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
+    <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/semanticPage.html'>semanticPage</a></span>(
       <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Dropdown example"</span>,
       <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/htmlOutput.html'>uiOutput</a></span>(<span class='st'>"search_letters"</span>),
       <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>p</a></span>(<span class='st'>"Selected letter:"</span>),
@@ -209,9 +207,9 @@ is selected.</p></td>
                <span class='kw'>description</span> <span class='kw'>=</span> <span class='no'>country</span>)
  }
 
- <span class='no'>search_api_url</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='register_search.html'>register_search</a></span>(<span class='no'>session</span>, <span class='no'>gapminder</span>, <span class='no'>search_api</span>)
+ <span class='no'>search_api_url</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/register_search.html'>register_search</a></span>(<span class='no'>session</span>, <span class='no'>gapminder</span>, <span class='no'>search_api</span>)
  <span class='no'>output</span>$<span class='no'>search_letters</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderUI.html'>renderUI</a></span>(
-   <span class='fu'>search_field</span>(<span class='st'>"search_result"</span>, <span class='no'>search_api_url</span>)
+   <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/search_field.html'>search_field</a></span>(<span class='st'>"search_result"</span>, <span class='no'>search_api_url</span>)
  )
  <span class='no'>output</span>$<span class='no'>selected_letters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderText.html'>renderText</a></span>(<span class='no'>input</span><span class='kw'>[[</span><span class='st'>"search_result"</span>]])
 })

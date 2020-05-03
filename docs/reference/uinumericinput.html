@@ -8,10 +8,12 @@
 
 <title>Create Semantic UI Numeric Input — uinumericinput • SHINY.SEMANTIC</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -36,11 +38,10 @@
 
 
 
-<meta property="og:title" content="Create Semantic UI Numeric Input — uinumericinput" />
 
+<meta property="og:title" content="Create Semantic UI Numeric Input — uinumericinput" />
 <meta property="og:description" content="This creates a default numeric input using Semantic UI. The input is available
 under input[[name]]." />
-
 
 
 
@@ -86,7 +87,6 @@ under input[[name]]." />
   </a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
@@ -133,14 +133,12 @@ under input[[name]]." />
     </div>
 
     <div class="ref-description">
-    
     <p>This creates a default numeric input using Semantic UI. The input is available
 under <code>input[[name]]</code>.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>uinumericinput</span>(<span class='no'>name</span>, <span class='no'>value</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -165,20 +163,19 @@ under <code>input[[name]]</code>.</p>
       <td><p>Interval to use when stepping between min and max.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The inputs are updateable by using <code><a href='https://rdrr.io/pkg/shiny/man/updateNumericInput.html'>updateNumericInput</a></code>.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
 
 <span class='co'># Text input</span>
-<span class='fu'><a href='uiinput.html'>uiinput</a></span>(
-  <span class='no'>tags</span>$<span class='fu'><a href='label.html'>label</a></span>(<span class='st'>"Numeric Input"</span>),
-  <span class='fu'>uinumericinput</span>(<span class='st'>"ex"</span>, <span class='fl'>10</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/uiinput.html'>uiinput</a></span>(
+  <span class='no'>tags</span>$<span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/label.html'>label</a></span>(<span class='st'>"Numeric Input"</span>),
+  <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/uinumericinput.html'>uinumericinput</a></span>(<span class='st'>"ex"</span>, <span class='fl'>10</span>)
 )</div><div class='output co'>#&gt; &lt;div class="ui  input"&gt;
 #&gt;   &lt;label&gt;Numeric Input&lt;/label&gt;
 #&gt;   &lt;input id="ex" value="10" type="number"/&gt;

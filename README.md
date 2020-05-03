@@ -194,6 +194,6 @@ Future enhacements
 Appsilon Data Science
 ---------------------
 
-Appsilon is the **Full Service Certified RStudio Partner**. Learn more at \[appsilon.com\](<https://appsilon.com>.
+Appsilon is the **Full Service Certified RStudio Partner**. Learn more at [appsilon.com](https://appsilon.com).
 
 Get in touch [dev@appsilon.com](dev@appsilon.com)

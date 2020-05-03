@@ -138,16 +138,16 @@ After
 <div id="how-to-use-it" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-use-it" class="anchor"></a>How to use it?</h2>
-<p>Firstly, you will have to invoke <code><a href="https://rdrr.io/pkg/shiny/man/shinyUI.html">shinyUI()</a></code> with <code><a href="reference/semanticPage.html">semanticPage()</a></code> instead of standard Shiny UI definitions like e.g. <code><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage()</a></code>. From now on forward all components can ba annotated with <a href="http://semantic-ui.com/introduction/getting-started.html">Semantic UI</a> specific CSS classes and also you will be able to use <a href="https://demo.appsilon.ai/semantic/">shiny.semantic components</a>.</p>
+<p>Firstly, you will have to invoke <code><a href="https://rdrr.io/pkg/shiny/man/shinyUI.html">shinyUI()</a></code> with <code><a href="https://rdrr.io/pkg/shiny.semantic/man/semanticPage.html">semanticPage()</a></code> instead of standard Shiny UI definitions like e.g. <code><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage()</a></code>. From now on forward all components can ba annotated with <a href="http://semantic-ui.com/introduction/getting-started.html">Semantic UI</a> specific CSS classes and also you will be able to use <a href="https://demo.appsilon.ai/semantic/">shiny.semantic components</a>.</p>
 <p>Basic example for rendering a simple button. will look like this:</p>
 <div class="sourceCode"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny.semantic</span>)
 <span class="no">ui</span> <span class="kw">&lt;-</span> <span class="kw">function</span>() {
   <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyUI.html">shinyUI</a></span>(
-    <span class="fu"><a href="reference/semanticPage.html">semanticPage</a></span>(
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny.semantic/man/semanticPage.html">semanticPage</a></span>(
       <span class="kw">title</span> <span class="kw">=</span> <span class="st">"My page"</span>,
       <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/suppressDependencies.html">suppressDependencies</a></span>(<span class="st">"bootstrap"</span>),
-      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">div</a></span>(<span class="kw">class</span> <span class="kw">=</span> <span class="st">"ui button"</span>, <span class="fu"><a href="reference/uiicon.html">uiicon</a></span>(<span class="st">"user"</span>),  <span class="st">"Icon button"</span>)
+      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">div</a></span>(<span class="kw">class</span> <span class="kw">=</span> <span class="st">"ui button"</span>, <span class="fu"><a href="https://rdrr.io/pkg/shiny.semantic/man/uiicon.html">uiicon</a></span>(<span class="st">"user"</span>),  <span class="st">"Icon button"</span>)
     )
   )
 }
@@ -156,7 +156,7 @@ After
 <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span>(<span class="kw">ui</span> <span class="kw">=</span> <span class="fu">ui</span>(), <span class="kw">server</span> <span class="kw">=</span> <span class="no">server</span>)</pre></div>
 <p>For better understanding it’s good to check <a href="http://semantic-ui.com/introduction/getting-started.html">Semantic UI documentation.</a></p>
 <p><strong>Note #1</strong></p>
-<p>At the moment you have to pass page title in <code><a href="reference/semanticPage.html">semanticPage()</a></code></p>
+<p>At the moment you have to pass page title in <code><a href="https://rdrr.io/pkg/shiny.semantic/man/semanticPage.html">semanticPage()</a></code></p>
 <div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r"><span class="kw">semanticPage</span>(<span class="dt">title =</span> <span class="st">"Your page title"</span>, ...)</code></pre></div>
 <p><strong>Note #2</strong></p>
 <p>There are some conflicts in CSS styles between <strong>SemanticUI</strong> and <strong>Bootstrap</strong>. For the time being it’s better to suppress <strong>Bootstrap</strong> by caling: <code>semanticPage(   ...   suppressDependencies("bootstrap"),   ... )</code></p>
@@ -258,7 +258,7 @@ server &lt;-<span class="st"> </span><span class="kw">shinyServer</span>(<span c
 <div id="appsilon-data-science" class="section level2">
 <h2 class="hasAnchor">
 <a href="#appsilon-data-science" class="anchor"></a>Appsilon Data Science</h2>
-<p>Appsilon is the <strong>Full Service Certified RStudio Partner</strong>. Learn more at <br><span class="math display"><em>a</em><em>p</em><em>p</em><em>s</em><em>i</em><em>l</em><em>o</em><em>n</em>.<em>c</em><em>o</em><em>m</em></span><br>(<a href="https://appsilon.com" class="uri">https://appsilon.com</a>.</p>
+<p>Appsilon is the <strong>Full Service Certified RStudio Partner</strong>. Learn more at <a href="https://appsilon.com">appsilon.com</a>.</p>
 <p>Get in touch <a href="dev@appsilon.com" class="uri">dev@appsilon.com</a></p>
 </div>
 </div>
