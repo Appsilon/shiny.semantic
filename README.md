@@ -21,11 +21,13 @@ With this library it's easy to wrap Shiny with [Semantic UI components](https://
 <h2>
 Before
 </h2>
+
 ![Before](man/figures/ss_before.png)
 
 <h2>
 After
 </h2>
+
 ![After](man/figures/ss_after.png)
 
 Component examples
