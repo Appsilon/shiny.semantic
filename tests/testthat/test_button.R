@@ -18,11 +18,14 @@ test_that("test actionbutton", {
   expect_error(uibutton())
   # text input
   si_str <- as.character(actionbutton("action_button", "AB!"))
-  expect_true(any(grepl("<button id=\"action_button\" class=\"ui medium action-button button\">", si_str, fixed = TRUE)))
+  expect_true(any(grepl("<button id=\"action_button\" class=\"ui medium action-button button\">",
+                        si_str, fixed = TRUE)))
   expect_true(any(grepl("AB!", si_str, fixed = TRUE)))
   # input with parameters
-  si_str <- as.character(actionbutton("action_button", "AB!", icon = uiicon("user"), size = "huge", color = "orange"))
-  expect_true(any(grepl("<button id=\"action_button\" class=\"ui huge orange action-button button\">", si_str, fixed = TRUE)))
+  si_str <- as.character(actionbutton("action_button", "AB!", icon = uiicon("user"),
+                                      size = "huge", color = "orange"))
+  expect_true(any(grepl("<button id=\"action_button\" class=\"ui huge orange action-button button\">",
+                        si_str, fixed = TRUE)))
   expect_true(any(grepl("AB!", si_str, fixed = TRUE)))
   expect_true(any(grepl("icon", si_str, fixed = TRUE)))
 })
