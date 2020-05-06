@@ -18,7 +18,7 @@ actionbutton(name, label, icon = NULL, size = "medium", color = NULL, ...)
 
 \item{color}{character with semantic color}
 
-\item{...}{}
+\item{...}{Named attributes to be applied to the button}
 }
 \value{
 action button object

@@ -26,7 +26,6 @@ uibutton <- function(name, label, icon = NULL, type = NULL, ...) {
 #' @param size character with button size, accepted values: "mini", "tiny", "small"
 #' "medium", "large", "big", "huge", "massive"
 #' @param color character with semantic color
-#' @param ...
 #'
 #' @return action button object
 #' @export
