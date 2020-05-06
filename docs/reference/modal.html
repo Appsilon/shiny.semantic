@@ -200,7 +200,7 @@ If given in form of a list, HTML attributes for the container can also be change
 
 <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
-    <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/semanticPage.html'>semanticPage</a></span>(
+    <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
       <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/actionButton.html'>actionButton</a></span>(<span class='st'>"show"</span>, <span class='st'>"Show modal dialog"</span>)
     )
   )
@@ -208,7 +208,7 @@ If given in form of a list, HTML attributes for the container can also be change
 
 <span class='no'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>show</span>, {
-    <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/create_modal.html'>create_modal</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/modal.html'>modal</a></span>(
+    <span class='fu'><a href='create_modal.html'>create_modal</a></span>(<span class='fu'>modal</span>(
       <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"simple-modal"</span>,
       <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Important message"</span>,
       <span class='st'>"This is an important message!"</span>
@@ -221,10 +221,10 @@ If given in form of a list, HTML attributes for the container can also be change
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
 <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
-    <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/semanticPage.html'>semanticPage</a></span>(
+    <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
       <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Modal example - Static UI modal"</span>,
       <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>div</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"modal-open-button"</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui button"</span>, <span class='st'>"Open Modal"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/modal.html'>modal</a></span>(
+      <span class='fu'>modal</span>(
         <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>div</a></span>(<span class='st'>"Example content"</span>),
         <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"example-modal"</span>,
         <span class='kw'>target</span> <span class='kw'>=</span> <span class='st'>"modal-open-button"</span>
@@ -238,7 +238,7 @@ If given in form of a list, HTML attributes for the container can also be change
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
 <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
-    <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/semanticPage.html'>semanticPage</a></span>(
+    <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
       <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Modal example - Server side actions"</span>,
       <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/htmlOutput.html'>uiOutput</a></span>(<span class='st'>"modalAction"</span>),
       <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/actionButton.html'>actionButton</a></span>(<span class='st'>"show"</span>, <span class='st'>"Show by calling show_modal"</span>)
@@ -248,14 +248,14 @@ If given in form of a list, HTML attributes for the container can also be change
 
 <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>show</span>, {
-    <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/show_modal.html'>show_modal</a></span>(<span class='st'>'action-example-modal'</span>)
+    <span class='fu'><a href='show_modal.html'>show_modal</a></span>(<span class='st'>'action-example-modal'</span>)
   })
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>hide</span>, {
-    <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/show_modal.html'>hide_modal</a></span>(<span class='st'>'action-example-modal'</span>)
+    <span class='fu'><a href='show_modal.html'>hide_modal</a></span>(<span class='st'>'action-example-modal'</span>)
   })
 
   <span class='no'>output</span>$<span class='no'>modalAction</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderUI.html'>renderUI</a></span>({
-    <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/modal.html'>modal</a></span>(
+    <span class='fu'>modal</span>(
       <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/actionButton.html'>actionButton</a></span>(<span class='st'>"hide"</span>, <span class='st'>"Hide by calling hide_modal"</span>),
       <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"action-example-modal"</span>,
       <span class='kw'>header</span> <span class='kw'>=</span> <span class='st'>"Modal example"</span>,
@@ -271,7 +271,7 @@ If given in form of a list, HTML attributes for the container can also be change
 
 <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
-    <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/semanticPage.html'>semanticPage</a></span>(
+    <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
       <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/actionButton.html'>actionButton</a></span>(<span class='st'>"show"</span>, <span class='st'>"Show modal dialog"</span>)
     )
   )
@@ -279,7 +279,7 @@ If given in form of a list, HTML attributes for the container can also be change
 
 <span class='no'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>show</span>, {
-    <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/create_modal.html'>create_modal</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/modal.html'>modal</a></span>(
+    <span class='fu'><a href='create_modal.html'>create_modal</a></span>(<span class='fu'>modal</span>(
       <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"simple-modal"</span>,
       <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Important message"</span>,
       <span class='kw'>header</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"background: lightcoral"</span>),

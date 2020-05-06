@@ -53,7 +53,9 @@ Component examples
 <a href="`r params$demo_url`">Components live demo</a>
 </p>
 
+
 The source code for **Components live demo** is located in **/examples** folder. To run it locally you will have to install:
+
 
 * [**highlighter**](https://github.com/Appsilon/highlighter)
 ```

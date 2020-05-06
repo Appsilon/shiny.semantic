@@ -182,7 +182,7 @@ is selected.</p></td>
 
 <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
-    <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/semanticPage.html'>semanticPage</a></span>(
+    <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
       <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Dropdown example"</span>,
       <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/htmlOutput.html'>uiOutput</a></span>(<span class='st'>"search_letters"</span>),
       <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>p</a></span>(<span class='st'>"Selected letter:"</span>),
@@ -207,9 +207,9 @@ is selected.</p></td>
                <span class='kw'>description</span> <span class='kw'>=</span> <span class='no'>country</span>)
  }
 
- <span class='no'>search_api_url</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/register_search.html'>register_search</a></span>(<span class='no'>session</span>, <span class='no'>gapminder</span>, <span class='no'>search_api</span>)
+ <span class='no'>search_api_url</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='register_search.html'>register_search</a></span>(<span class='no'>session</span>, <span class='no'>gapminder</span>, <span class='no'>search_api</span>)
  <span class='no'>output</span>$<span class='no'>search_letters</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderUI.html'>renderUI</a></span>(
-   <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/search_field.html'>search_field</a></span>(<span class='st'>"search_result"</span>, <span class='no'>search_api_url</span>)
+   <span class='fu'>search_field</span>(<span class='st'>"search_result"</span>, <span class='no'>search_api_url</span>)
  )
  <span class='no'>output</span>$<span class='no'>selected_letters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderText.html'>renderText</a></span>(<span class='no'>input</span><span class='kw'>[[</span><span class='st'>"search_result"</span>]])
 })

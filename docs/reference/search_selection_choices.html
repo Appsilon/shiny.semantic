@@ -193,7 +193,7 @@ See https://semantic-ui.com/modules/dropdown.html#/settings</p></td>
 
   <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
     <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/semanticPage.html'>semanticPage</a></span>(
+      <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
         <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Dropdown example"</span>,
         <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/htmlOutput.html'>uiOutput</a></span>(<span class='st'>"search_letters"</span>),
         <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>p</a></span>(<span class='st'>"Selected letter:"</span>),
@@ -205,7 +205,7 @@ See https://semantic-ui.com/modules/dropdown.html#/settings</p></td>
   <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
     <span class='no'>choices</span> <span class='kw'>&lt;-</span> <span class='no'>LETTERS</span>
     <span class='no'>output</span>$<span class='no'>search_letters</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderUI.html'>renderUI</a></span>(
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/search_selection_choices.html'>search_selection_choices</a></span>(<span class='st'>"search_result"</span>, <span class='no'>choices</span>, <span class='kw'>multiple</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+      <span class='fu'>search_selection_choices</span>(<span class='st'>"search_result"</span>, <span class='no'>choices</span>, <span class='kw'>multiple</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
     )
     <span class='no'>output</span>$<span class='no'>selected_letters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderText.html'>renderText</a></span>(<span class='no'>input</span><span class='kw'>[[</span><span class='st'>"search_result"</span>]])
   })

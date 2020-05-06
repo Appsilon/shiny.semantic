@@ -31,4 +31,4 @@ Suggests:
     testthat,
     lintr,
     covr
-RoxygenNote: 7.0.2.9000
+RoxygenNote: 7.1.0

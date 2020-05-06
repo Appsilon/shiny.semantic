@@ -38,6 +38,7 @@ Component examples
 <p style="text-align: center; font-size: x-large;">
 <a href="https://demo.appsilon.ai/semantic/">Components live demo</a>
 </p>
+
 The source code for **Components live demo** is located in **/examples** folder. To run it locally you will have to install:
 
 -   [**highlighter**](https://github.com/Appsilon/highlighter)
