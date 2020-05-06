@@ -13,3 +13,13 @@
 uibutton <- function(name, label, icon = NULL, type = NULL, ...) {
   tags$button(id = name, class = paste("ui", type, "button"), label, icon, ...)
 }
+
+
+actionbutton <- function(name, label, icon = NULL, ...) {
+  value <- shiny::restoreInput(id = name, default = NULL)
+  uibutton(name = name, label = label,
+           icon = icon,
+           type = "action-button",
+           `data-val` = value,
+           ...)
+}
