@@ -13,7 +13,8 @@ uibutton(name, label, icon = NULL, type = NULL, ...)
 
 \item{icon}{An optional \code{\link{uiicon}()} to appear on the button.}
 
-\item{type}{An optional attribute to be added to the button's class.}
+\item{type}{An optional attribute to be added to the button's class. If used
+paramters like \code{color}, \code{size} are ignored.}
 
 \item{...}{Named attributes to be applied to the button}
 }

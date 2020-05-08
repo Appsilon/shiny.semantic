@@ -142,7 +142,7 @@
   <span class='kw'>min</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>max</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>icon</span> <span class='kw'>=</span> <span class='fu'>uiicon</span>(<span class='st'>"calendar"</span>)
+  <span class='kw'>icon</span> <span class='kw'>=</span> <span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"calendar"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -187,7 +187,7 @@
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
 
 <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
-  <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/semanticPage.html'>semanticPage</a></span>(
+  <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
     <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Date range example"</span>,
     <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/htmlOutput.html'>uiOutput</a></span>(<span class='st'>"date_range"</span>),
     <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>p</a></span>(<span class='st'>"Selected dates:"</span>),
@@ -199,9 +199,9 @@
   <span class='no'>output</span>$<span class='no'>date_range</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderUI.html'>renderUI</a></span>({
     <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/tag.html'>tagList</a></span>(
       <span class='no'>tags</span>$<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>div</a></span>(<span class='no'>tags</span>$<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>div</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/HTML.html'>HTML</a></span>(<span class='st'>"From"</span>)),
-               <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/date_input.html'>date_input</a></span>(<span class='st'>"date_from"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>() - <span class='fl'>30</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"width: 10%;"</span>)),
+               <span class='fu'>date_input</span>(<span class='st'>"date_from"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>() - <span class='fl'>30</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"width: 10%;"</span>)),
       <span class='no'>tags</span>$<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>div</a></span>(<span class='no'>tags</span>$<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>div</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/HTML.html'>HTML</a></span>(<span class='st'>"To"</span>)),
-               <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/date_input.html'>date_input</a></span>(<span class='st'>"date_to"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(), <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"width: 10%;"</span>))
+               <span class='fu'>date_input</span>(<span class='st'>"date_to"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(), <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"width: 10%;"</span>))
     )
   })
 
