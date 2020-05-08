@@ -15,7 +15,7 @@ shiny.semantic
 <!-- badges: end -->
 
 With this library it's easy to wrap Shiny with [Semantic UI components](https://github.com/Semantic-Org/Semantic-UI). Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look. 
-This package is best for single page applications or regular *Shiny* apps. For using Semantic components with complex multi-tab apps or modyfiyng the `shinydashboard` based applications check our other package [semantic.dashboard](https://github.com/Appsilon/semantic.dashboard).
+This package is best for single page applications or regular Shiny apps. For using Semantic components with complex multi-tab apps or modyfiyng the `shinydashboard` based applications check our other package [semantic.dashboard](https://github.com/Appsilon/semantic.dashboard).
 
 `master` branch contains the stable version. Use `develop` branch for latest features.
 
