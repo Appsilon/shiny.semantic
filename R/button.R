@@ -53,10 +53,7 @@ uibutton <- function(name, label, icon = NULL, type = NULL, ...) {
 actionbutton <- function(name, label, icon = NULL, size = "medium",
                          color = NULL, ...) {
   value <- shiny::restoreInput(id = name, default = NULL)
-  type <- "action-button"
-  if (!is.null(color))
-    type <- paste(color, type)
-  type <- paste(size, type)
+  type <- paste(c(size, color, "action-buton"), collapse = " ")
   uibutton(name = name, label = label,
            icon = icon,
            type = type,
