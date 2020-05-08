@@ -14,7 +14,8 @@ shiny.semantic
 [![total](https://cranlogs.r-pkg.org/badges/grand-total/shiny.semantic)](https://CRAN.R-project.org/package=shiny.semantic)
 <!-- badges: end -->
 
-With this library it's easy to wrap Shiny with [Semantic UI components](https://github.com/Semantic-Org/Semantic-UI). Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.
+With this library it's easy to wrap Shiny with [Semantic UI components](https://github.com/Semantic-Org/Semantic-UI). Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look. 
+This package is best for single page applications or regular *Shiny* apps. For using Semantic components with complex multi-tab apps or modyfiyng the `shinydashboard` based applications check our other package [semantic.dashboard](https://github.com/Appsilon/semantic.dashboard).
 
 `master` branch contains the stable version. Use `develop` branch for latest features.
 
@@ -33,11 +34,11 @@ After
 Component examples
 ------------------
 
-![Components](man/figures/semantic_components.png)
-
 <p style="text-align: center; font-size: x-large;">
 <a href="https://demo.appsilon.ai/semantic/">Components live demo</a>
 </p>
+
+![Components](man/figures/semantic_components.png)
 
 The source code for **Components live demo** is located in **/examples** folder. To run it locally you will have to install:
 
