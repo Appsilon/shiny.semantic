@@ -73,6 +73,45 @@ dropdown <- function(name, choices, choices_value = choices,
     )
 }
 
+#' @export
+selectInput <- function(inputId, label, choices, selected = NULL, multiple = FALSE, width = NULL, ...) {
+
+  args <- list(...)
+  args_names <- names(args)
+
+  if ("selectize" %in% args_names) {
+    message("'selectize' is shiny::selectInput specific parameter")
+    args$selectize <- NULL
+  }
+  if ("size" %in% args_names) {
+    message("'size' is shiny::selectInput specific parameter")
+    args$size <- NULL
+  }
+  if (!("type" %in% args_names))
+    args$type <- "fluid selection"
+  if (multiple)
+    args$type <- paste(args$type, "multiple")
+  if (is.null(selected) && !multiple)
+    selected <- choices[1]
+  if (!("default_text" %in% args_names))
+    args$default_text <- ""
+
+  args$name <- inputId
+  named_choices <- !is.null(attr(choices, "names"))
+  args$choices <- if (named_choices) names(choices) else choices
+  args$choices_value <- unname(choices)
+  args$value <- selected
+
+  shiny::div(
+    class = "ui form",
+    style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
+    shiny::div(class = "field",
+      tags$label(label),
+      do.call(dropdown, args)
+    )
+  )
+}
+
 #' Update dropdown Semantic UI component
 #'
 #' Change the value of a \code{\link{dropdown}} input on the client.
