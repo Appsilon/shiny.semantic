@@ -84,6 +84,12 @@ $.extend(semanticDropdownBinding, {
       this.setValue(el, data.value);
     }
 
+    if (data.hasOwnProperty('label')) {
+      $("label[for='" + el.id + "'").html(data.label);
+    }
+
+    console.log('data', data);
+
     $(el).trigger('change');
   }
 });

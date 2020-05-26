@@ -73,6 +73,21 @@ dropdown <- function(name, choices, choices_value = choices,
     )
 }
 
+#' Create a select list input control
+#'
+#' Create a select list that can be used to choose a single or multiple items from a list of values.
+#'
+#' @param inputId The input slot that will be used to access the value.
+#' @param label Display label for the control, or NULL for no label.
+#' @param choices List of values to select from. If elements of the list are named,
+#'   then that name — rather than the value — is displayed to the user.
+#' @param selected The initially selected value (or multiple values if multiple = TRUE).
+#'   If not specified then defaults to the first value for single-select lists and no
+#'   values for multiple select lists.
+#' @param multiple Is selection of multiple items allowed?
+#' @param width The width of the input.
+#' @param ... Arguments passed to \link{dropdown}.
+#'
 #' @export
 selectInput <- function(inputId, label, choices, selected = NULL, multiple = FALSE, width = NULL, ...) {
 
@@ -106,7 +121,7 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
     class = "ui form",
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
     shiny::div(class = "field",
-      tags$label(label),
+      if (!is.null(label)) tags$label(label, `for` = inputId),
       do.call(dropdown, args)
     )
   )
@@ -131,8 +146,38 @@ update_dropdown <- function(session, name, choices = NULL, choices_value = choic
     options <- NULL
   }
 
-  message <- list(label = label, choices = options, value = value)
+  message <- list(choices = options, value = value)
   message <- message[!vapply(message, is.null, FUN.VALUE = logical(1))]
 
   session$sendInputMessage(name, message)
+}
+
+#' Change the value of a select input on the client
+#'
+#' Update selecInput widget
+#'
+#' @param session The session object passed to function given to shinyServer.
+#' @param inputId The id of the input object.
+#' @param label The label to set for the input object.
+#' @param choices List of values to select from. If elements of the list are named,
+#'   then that name — rather than the value — is displayed to the user.
+#' @param selected The initially selected value (or multiple values if multiple = TRUE).
+#'   If not specified then defaults to the first value for single-select lists and no
+#'   values for multiple select lists.
+#'
+#' @export
+updateSelectInput <- function(session, inputId, label, choices = NULL, selected = NULL) {
+  if (!is.null(selected)) selected <- paste(as.character(selected), collapse = ",") else selected <- NULL
+  if (!is.null(choices)) {
+    choices_text <- names(choices)
+    if (identical(choices_text, NULL))
+      choices_text <- choices
+    options <- jsonlite::toJSON(data.frame(name = choices, text = choices_text, value = choices))
+  } else {
+    options <- NULL
+  }
+  message <- list(label = label, choices = options, value = selected)
+  message <- message[!vapply(message, is.null, FUN.VALUE = logical(1))]
+
+  session$sendInputMessage(inputId, message)
 }
