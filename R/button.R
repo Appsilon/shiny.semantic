@@ -37,6 +37,19 @@ actionButton <- function(inputId, label, icon = NULL, width = NULL, ...) {
   do.call(uibutton, args_list)
 }
 
+#' Change the label or icon of an action button on the client
+#'
+#' @param session The session object passed to function given to shinyServer.
+#' @param inputId The id of the input object.
+#' @param label The label to set for the input object.
+#' @param icon The icon to set for the input object. To remove the current icon, use icon=character(0)
+#' @export
+updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
+  message <- list(label = label, icon = as.character(icon))
+  message <- message[!vapply(message, is.null, FUN.VALUE = logical(1))]
+
+  session$sendInputMessage(inputId, message)
+}
 
 #' Action Button
 #'
