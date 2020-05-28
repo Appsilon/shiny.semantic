@@ -7,7 +7,7 @@ shinyApp(
                 c("Cylinders" = "cyl",
                   "Transmission" = "am",
                   "Gears" = "gear"), selectize = TRUE, multiple = TRUE, width = "300px"),
-    uibutton("trig", "Cli"),
+    actionButton("trig", "Cli"),
     tableOutput("data")
   ),
   server = function(input, output, session) {

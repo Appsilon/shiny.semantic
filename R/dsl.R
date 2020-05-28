@@ -12,6 +12,22 @@ uiicon <- function(type = "", ...) {
   shiny::tags$i(class = paste(type, "icon"), ...)
 }
 
+#' Create an icon
+#'
+#' Create an icon for use within a page.
+#'
+#' @param name Name of icon. See [Fomantic Icons](https://fomantic-ui.com/elements/icon.html).
+#' @param class Additional classes to customize the style of the icon.
+#'   See [Fomantic Icon Definitions](https://fomantic-ui.com/elements/icon.html#/definition).
+#' @param ... Named attributes to be applied to the icon.
+#'
+#' @export
+icon <- function(name, class = NULL, ...) {
+  args_list <- list(...)
+  args_list$type <- paste(args_list$type, name, class)
+  do.call(uiicon, args_list)
+}
+
 #' Create Semantic UI label tag
 #'
 #' This creates a label tag using Semantic UI.
