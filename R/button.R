@@ -3,7 +3,7 @@
 #' @param name The \code{input} slot that will be used to access the value.
 #' @param label The contents of the button or link
 #' @param icon An optional \code{\link{uiicon}()} to appear on the button.
-#' @param type An optional attribute to be added to the button's class. If used
+#' @param class An optional attribute to be added to the button's class. If used
 #' paramters like \code{color}, \code{size} are ignored.
 #' @param ... Named attributes to be applied to the button
 #'
@@ -11,8 +11,8 @@
 #' uibutton("simple_button", "Press Me!")
 #'
 #' @export
-uibutton <- function(name, label, icon = NULL, type = NULL, ...) {
-  tags$button(id = name, class = paste("ui", type, "button"), icon, " ", label, ...)
+uibutton <- function(name, label, icon = NULL, class = NULL, ...) {
+  tags$button(id = name, class = paste("ui", class, "button"), icon, " ", label, ...)
 }
 
 
@@ -35,14 +35,13 @@ uibutton <- function(name, label, icon = NULL, type = NULL, ...) {
 #' if (interactive()) {
 #' library(shiny)
 #' library(shiny.semantic)
-#' ui <- function() {
+#' ui <-
 #'   semanticPage(
 #'     shinyUI(
 #'       actionbutton("button", "My button", icon = uiicon("user"),
 #'                    size = "huge", color = "orange")
 #'     )
 #'   )
-#' }
 #' server <- function(input, output) {
 #'   observeEvent(input$button,{
 #'     print("Action")
@@ -52,11 +51,9 @@ uibutton <- function(name, label, icon = NULL, type = NULL, ...) {
 #' }
 actionbutton <- function(name, label, icon = NULL, size = "medium",
                          color = NULL, ...) {
-  value <- shiny::restoreInput(id = name, default = NULL)
-  type <- paste(c(size, color, "action-button"), collapse = " ")
+  class <- paste(c(size, color, "action-button"), collapse = " ")
   uibutton(name = name, label = label,
            icon = icon,
-           type = type,
-           `data-val` = value,
+           class = class,
            ...)
 }

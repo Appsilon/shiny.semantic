@@ -32,14 +32,13 @@ each time it is pressed.
 if (interactive()) {
 library(shiny)
 library(shiny.semantic)
-ui <- function() {
+ui <-
   semanticPage(
     shinyUI(
       actionbutton("button", "My button", icon = uiicon("user"),
                    size = "huge", color = "orange")
     )
   )
-}
 server <- function(input, output) {
   observeEvent(input$button,{
     print("Action")
