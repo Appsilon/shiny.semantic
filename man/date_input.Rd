@@ -4,15 +4,8 @@
 \alias{date_input}
 \title{Define simple date input with semantic ui styling}
 \usage{
-date_input(
-  name,
-  label = NULL,
-  value = NULL,
-  min = NULL,
-  max = NULL,
-  style = NULL,
-  icon = uiicon("calendar")
-)
+date_input(name, label = NULL, value = NULL, min = NULL,
+  max = NULL, style = NULL, icon = uiicon("calendar"))
 }
 \arguments{
 \item{name}{Input id.}
@@ -34,7 +27,7 @@ Define simple date input with semantic ui styling
 }
 \examples{
 if (interactive()) {
-# Below example shows how to imlement simple date range input using \code{date_input}
+# Below example shows how to imlement simple date range input using \\code{date_input}
 
 library(shiny)
 library(shiny.semantic)

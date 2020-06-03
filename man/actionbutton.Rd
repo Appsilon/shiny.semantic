@@ -4,7 +4,8 @@
 \alias{actionbutton}
 \title{Action Button}
 \usage{
-actionbutton(name, label, icon = NULL, size = "medium", color = NULL, ...)
+actionbutton(name, label, icon = NULL, size = "medium", color = NULL,
+  ...)
 }
 \arguments{
 \item{name}{The \code{input} slot that will be used to access the value.}

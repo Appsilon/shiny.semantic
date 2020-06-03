@@ -4,15 +4,9 @@
 \alias{search_selection_choices}
 \title{Add Semantic UI search selection dropdown based on provided choices}
 \usage{
-search_selection_choices(
-  name,
-  choices,
-  value = NULL,
-  multiple = FALSE,
-  default_text = "Select",
-  groups = NULL,
-  dropdown_settings = list(forceSelection = FALSE)
-)
+search_selection_choices(name, choices, value = NULL, multiple = FALSE,
+  default_text = "Select", groups = NULL,
+  dropdown_settings = list(forceSelection = FALSE))
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under input[[name]].}

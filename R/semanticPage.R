@@ -129,7 +129,6 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
 #'
 #' @export
 semanticPage <- function(..., title = "", theme = NULL){ # nolint
-  content <- shiny::tags$div(class = "wrapper", ...)
   shiny::tagList(
     shiny::tags$head(
       get_dependencies(theme),
@@ -139,8 +138,9 @@ semanticPage <- function(..., title = "", theme = NULL){ # nolint
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-dropdown.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-button.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-slider.js"),
-      shiny::tags$script(src = "shiny.semantic/shiny-semantic-calendar.js")
+      shiny::tags$script(src = "shiny.semantic/shiny-semantic-calendar.js"),
+      shiny::tags$script(src = "shiny.semantic/shiny-semantic-numericinput.js")
     ),
-    shiny::tags$body(style = "min-height: 611px;", content)
+    shiny::tags$body(style = "min-height: 611px;", ...)
   )
 }

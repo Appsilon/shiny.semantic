@@ -4,15 +4,8 @@
 \alias{selectInput}
 \title{Create a select list input control}
 \usage{
-selectInput(
-  inputId,
-  label,
-  choices,
-  selected = NULL,
-  multiple = FALSE,
-  width = NULL,
-  ...
-)
+selectInput(inputId, label, choices, selected = NULL, multiple = FALSE,
+  width = NULL, ...)
 }
 \arguments{
 \item{inputId}{The input slot that will be used to access the value.}

@@ -4,13 +4,9 @@
 \alias{tabset}
 \title{Create Semantic UI tabs}
 \usage{
-tabset(
-  tabs,
-  active = NULL,
-  id = generate_random_id("menu"),
+tabset(tabs, active = NULL, id = generate_random_id("menu"),
   menu_class = "top attached tabular",
-  tab_content_class = "bottom attached segment"
-)
+  tab_content_class = "bottom attached segment")
 }
 \arguments{
 \item{tabs}{A list of tabs. Each tab is a list of three elements - first
