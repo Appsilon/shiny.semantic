@@ -2,9 +2,20 @@
 % Please edit documentation in R/checkbox.R
 \name{simple_checkbox}
 \alias{simple_checkbox}
+\alias{toggle}
+\alias{This}
+\alias{creates}
+\alias{a}
+\alias{checkbox}
+\alias{using}
+\alias{Semantic}
+\alias{UI}
+\alias{styles.}
 \title{Create Semantic UI checkbox}
 \usage{
 simple_checkbox(id, label, type = NULL, is_marked = TRUE, style = NULL)
+
+toggle(id, label, type = NULL, is_marked = TRUE, style = NULL)
 }
 \arguments{
 \item{id}{Input name. Reactive value is available under input[[name]].}
@@ -18,7 +29,7 @@ simple_checkbox(id, label, type = NULL, is_marked = TRUE, style = NULL)
 \item{style}{Style of the widget.}
 }
 \description{
-This creates a checkbox using Semantic UI styles.
+Create Semantic UI checkbox
 }
 \details{
 The inputs are updateable by using \code{\link[shiny]{updateCheckboxInput}}.
@@ -33,4 +44,17 @@ The following \code{type}s are allowed:
 \examples{
 simple_checkbox("example", "Check me", is_marked = FALSE)
 
+if (interactive()){
+ui <- semanticPage(
+ shinyUI(
+   toggle("tog1", "My Label", TRUE)
+ )
+)
+server <- function(input, output, session) {
+  observeEvent(input$tog1, {
+    print(input$tog1)
+  })
+}
+shinyApp(ui, server)
+}
 }

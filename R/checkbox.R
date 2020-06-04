@@ -19,6 +19,8 @@ uicheckbox <- function(..., type = "") {
 }
 
 #' Create Semantic UI checkbox
+#' @aliases simple_checkbox
+#' @aliases toggle
 #'
 #' This creates a checkbox using Semantic UI styles.
 #'
@@ -31,6 +33,19 @@ uicheckbox <- function(..., type = "") {
 #' @examples
 #' simple_checkbox("example", "Check me", is_marked = FALSE)
 #'
+#' if (interactive()){
+#' ui <- semanticPage(
+#'  shinyUI(
+#'    toggle("tog1", "My Label", TRUE)
+#'  )
+#' )
+#' server <- function(input, output, session) {
+#'   observeEvent(input$tog1, {
+#'     print(input$tog1)
+#'   })
+#' }
+#' shinyApp(ui, server)
+#' }
 #' @details
 #' The inputs are updateable by using \code{\link[shiny]{updateCheckboxInput}}.
 #'
@@ -41,13 +56,19 @@ uicheckbox <- function(..., type = "") {
 #' \item{slider}{Each checkbox has a simple slider form}
 #' }
 #'
+#' @rdname simple_checkbox
 #' @export
-simple_checkbox <- function(id, label, type = NULL, is_marked = TRUE, style = NULL) {
+simple_checkbox <- function(id, label = "", type = NULL, is_marked = TRUE, style = NULL) {
   div(
     class = paste("ui", type, if (is_marked) "checked", "checkbox"), style = style,
     tags$input(id = id, type = "checkbox", checked = if (is_marked) NA else NULL),
     tags$label(label)
   )
+}
+
+#' @rdname simple_checkbox
+toggle <- function(id, label = "", type = NULL, is_marked = TRUE, style = NULL) {
+  simple_checkbox(id, label, type = type, is_marked = is_marked, style = style)
 }
 
 #' Create Semantic UI multiple checkbox
