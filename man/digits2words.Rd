@@ -15,6 +15,3 @@ character with number word
 \description{
 Helper function that transforms digits to words
 }
-\examples{
-digits2words(2) # 'two'
-}

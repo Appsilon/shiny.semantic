@@ -43,9 +43,7 @@ test_that("test horizontal_menu", {
     icon = c("home", "car", 'tree')
   )
   si_str <- as.character(horizontal_menu(menu_content))
-  expect_true(any(grepl("<i class=\"home icon\"></i>",
-                        si_str, fixed = TRUE)))
-  expect_true(any(grepl("<i class=\"car icon\"></i>",
-                        si_str, fixed = TRUE)))
+  expect_true(any(grepl("<i class=\"home icon\"></i>", si_str)))
+  expect_true(any(grepl("<i class=\"car icon\"></i>", si_str)))
 
 })
