@@ -3,8 +3,6 @@ library(shiny.semantic)
 
 ui <- shinyUI(
   semanticPage(
-    suppressDependencies("bootstrap"),
-
     tags$br(),
 
     div(

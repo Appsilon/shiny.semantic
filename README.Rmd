@@ -96,7 +96,6 @@ ui <- function() {
   shinyUI(
     semanticPage(
       title = "My page",
-      suppressDependencies("bootstrap"),
       div(class = "ui button", uiicon("user"),  "Icon button")
     )
   )
@@ -116,14 +115,8 @@ semanticPage(title = "Your page title", ...)
 ```
 **Note #2**
 
-There are some conflicts in CSS styles between **SemanticUI** and **Bootstrap**. For the time being it's better to suppress **Bootstrap** by caling:
-  ```
-semanticPage(
-  ...
-  suppressDependencies("bootstrap"),
-  ...
-)
-```
+You can switch off supressing bootstrap by calling `semanticPage(suppress_bootstrap = FALSE, ...)`
+
 
 **[Advanced] Using Semantic UI JavaScript elements**
 
@@ -141,7 +134,6 @@ ui <- function() {
     semanticPage(
       title = "Your page title",
       shinyjs::useShinyjs(),
-      suppressDependencies("bootstrap"),
       # Your UI code
     )
   )
@@ -170,7 +162,6 @@ ui <- function() {
     semanticPage(
       title = "My page",
       tags$script(jsCode),
-      suppressDependencies("bootstrap"),
       # Your UI code
     )
   )
