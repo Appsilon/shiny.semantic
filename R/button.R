@@ -23,13 +23,12 @@ uibutton <- function(name, label, icon = NULL, class = NULL, ...) {
 #' @param label The contents of the button - a text label, but you could also use any other HTML, like an image.
 #' @param icon An optional \link{icon} to appear on the button.
 #' @param width The width of the input.
-#' @param ... Named attributes to be applied to the button or remaining parameters passed to uibutton, like \code{type}.
+#' @param ... Named attributes to be applied to the button or remaining parameters passed to uibutton,
+#'   like \code{class}.
 #'
 #' @export
 actionButton <- function(inputId, label, icon = NULL, width = NULL, ...) {
   args_list <- list(...)
-  args_list$type = paste(args_list$class, args_list$type)
-  args_list$class <- NULL
   args_list$name <- inputId
   args_list$label <- label
   args_list$icon <- icon
