@@ -3,7 +3,7 @@
 #' @param name The \code{input} slot that will be used to access the value.
 #' @param label The contents of the button or link
 #' @param icon An optional \code{\link{uiicon}()} to appear on the button.
-#' @param type An optional attribute to be added to the button's class. If used
+#' @param class An optional attribute to be added to the button's class. If used
 #' paramters like \code{color}, \code{size} are ignored.
 #' @param ... Named attributes to be applied to the button
 #'
@@ -11,8 +11,8 @@
 #' uibutton("simple_button", "Press Me!")
 #'
 #' @export
-uibutton <- function(name, label, icon = NULL, type = NULL, ...) {
-  tags$button(id = name, class = paste("ui", type, "button"), icon, " ", label, ...)
+uibutton <- function(name, label, icon = NULL, class = NULL, ...) {
+  tags$button(id = name, class = paste("ui", class, "button"), icon, " ", label, ...)
 }
 
 #' Action button
