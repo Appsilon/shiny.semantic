@@ -135,6 +135,8 @@ semanticPage <- function(..., title = "", theme = NULL){ # nolint
       get_dependencies(theme),
       shiny::tags$title(title),
       shiny::tags$meta(name = "viewport", content = "width=device-width, initial-scale=1.0"),
+      shiny::tags$link(rel = "stylesheet", type = "text/css",
+                       href = "shiny.semantic/shiny-semantic-DT.css"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-modal.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-dropdown.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-button.js"),
