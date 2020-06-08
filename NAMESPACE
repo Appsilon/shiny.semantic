@@ -2,7 +2,6 @@
 
 export(SUPPORTED_THEMES)
 export(actionButton)
-export(actionbutton)
 export(check_proper_color)
 export(check_semantic_theme)
 export(checkbox_positions)
