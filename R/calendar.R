@@ -76,9 +76,6 @@ uicalendar <- function(name, value = NULL, placeholder = NULL, type = "date", mi
 #' @param session The \code{session} object passed to function given to
 #'   \code{shinyServer}.
 #' @param id ID of the calendar that will be updated
-#' @param value The date to be set, default NULL
-#' @param min Minimum date that will be possible to set, default NULL
-#' @param max Maximum date that will be possible to set, default NULL
 #'
 #' @rdname uicalendar
 #'
