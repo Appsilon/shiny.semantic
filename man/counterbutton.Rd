@@ -25,7 +25,7 @@ counterbutton(
 
 \item{color}{character with semantic color}
 
-\item{big_mark}{big mark}
+\item{big_mark}{big numbers separator}
 }
 \value{
 counter button object

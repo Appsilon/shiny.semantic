@@ -68,7 +68,7 @@ actionbutton <- function(name, label, icon = NULL, size = "medium",
 #' @param icon an optional \code{\link{uiicon}()} to appear on the button.
 #' @param value initial rating value (integer)
 #' @param color character with semantic color
-#' @param big_mark big mark
+#' @param big_mark big numbers separator
 #'
 #' @return counter button object
 #' @export
