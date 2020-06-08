@@ -8,13 +8,13 @@ big_mark_reqex <- function(big_mark) {
   }
 }
 
-counter_button <- function(inputId, label, icon, value = 0, big.mark = " ") {
+counter_button <- function(inputId, label, icon, value = 0, color = "", big.mark = " ") {
   big_mark_regex <- big_mark_reqex(big.mark)
   shiny::div(
     class = "ui labeled button", tabindex = "0",
     shiny::tagList(
-      uibutton(name = inputId, label, icon),
-      shiny::tags$span(class = "ui basic label", format(value, big.mark = big.mark)),
+      uibutton(name = inputId, label, icon, class = color, `data-val` = value),
+      shiny::tags$span(class = glue::glue("ui basic {color} label"), format(value, big.mark = big.mark)),
       shiny::tags$script(HTML(
         glue::glue("$('#{inputId}').on('click', function() {{
           let $label = $('#{inputId} + .label')
@@ -29,13 +29,16 @@ counter_button <- function(inputId, label, icon, value = 0, big.mark = " ") {
 ui <- function() {
   shinyUI(
     semanticPage(
-      counter_button("likes", "Like", uiicon("heart"), value = 1000)
+      counter_button("meows", "Meow", uiicon("cat"), value = 998, color = "red"),
+      textOutput("meows")
     )
   )
 }
 
 server <- shinyServer(function(input, output, session) {
-
+  output$meows <- renderText({
+    glue::glue("Total Meows: ", input$meows)
+  })
 })
 
 shinyApp(ui = ui(), server = server)
