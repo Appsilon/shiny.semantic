@@ -1,0 +1,29 @@
+context("rating")
+
+test_that("test basic rating behaviour", {
+  # type
+  expect_is(rating("rating"), "shiny.tag")
+  # empty input
+  expect_error(rating())
+  # number input
+  si_str <- as.character(rating("rating"))
+  expect_true(grepl("<div class=\"ui form\">\n  <div class=\"field\">\n    <label for=\"rating\">",
+                    si_str))
+})
+
+
+test_that("test rating parameters", {
+  # label
+  si_str <- as.character(rating("rating", "My label"))
+  expect_true(grepl("<label for=\"rating\">My label</label>",
+                    si_str))
+  # default color
+  expect_true(grepl("yellow", si_str))
+  # color
+  si_str <- as.character(rating("rating", color = "red"))
+  expect_true(grepl("red", si_str))
+  # size
+  si_str <- as.character(rating("rating", size = "huge"))
+  expect_true(grepl("huge", si_str))
+  expect_warning(rating("rating", size = "xAb"))
+})
