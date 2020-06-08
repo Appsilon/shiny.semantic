@@ -4,8 +4,16 @@
 \alias{numericInput}
 \title{Create a numeric input control}
 \usage{
-numericInput(inputId, label, value, min = NA, max = NA, step = NA,
-  width = NULL, ...)
+numericInput(
+  inputId,
+  label,
+  value,
+  min = NA,
+  max = NA,
+  step = NA,
+  width = NULL,
+  ...
+)
 }
 \arguments{
 \item{inputId}{The input slot that will be used to access the value.}

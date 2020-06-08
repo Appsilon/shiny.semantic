@@ -4,8 +4,17 @@
 \alias{uinumericinput}
 \title{Create Semantic UI Numeric Input}
 \usage{
-uinumericinput(name, value, min = NA, max = NA, step = NA,
-  type = NULL, icon = NULL, placeholder = NULL, ...)
+uinumericinput(
+  name,
+  value,
+  min = NA,
+  max = NA,
+  step = NA,
+  type = NULL,
+  icon = NULL,
+  placeholder = NULL,
+  ...
+)
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under \code{input[[name]]}.}

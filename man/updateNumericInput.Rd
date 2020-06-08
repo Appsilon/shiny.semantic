@@ -4,8 +4,15 @@
 \alias{updateNumericInput}
 \title{Change numeric input value and settings}
 \usage{
-updateNumericInput(session, inputId, label = NULL, value = NULL,
-  min = NULL, max = NULL, step = NULL)
+updateNumericInput(
+  session,
+  inputId,
+  label = NULL,
+  value = NULL,
+  min = NULL,
+  max = NULL,
+  step = NULL
+)
 }
 \arguments{
 \item{session}{The session object passed to function given to shinyServer.}

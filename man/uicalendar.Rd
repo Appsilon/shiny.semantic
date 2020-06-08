@@ -5,8 +5,14 @@
 \alias{update_calendar}
 \title{Create Semantic UI Calendar}
 \usage{
-uicalendar(name, value = NULL, placeholder = NULL, type = "date",
-  min = NA, max = NA)
+uicalendar(
+  name,
+  value = NULL,
+  placeholder = NULL,
+  type = "date",
+  min = NA,
+  max = NA
+)
 
 update_calendar(session, id, value = NULL, min = NULL, max = NULL)
 }
