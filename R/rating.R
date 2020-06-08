@@ -13,6 +13,8 @@ FOMANTIC_SIZE_LEVELS <- c("mini", "tiny", "small", "", "large", "huge", "massive
 #' @param color character with colour name
 #' @param size character with legal semantic size, eg. "medium", "huge", "tiny"
 #'
+#' @return rating object
+#'
 #' @export
 rating <- function(name, label = "", value = 0, max = 3, icon = "star",
                    color = "yellow", size = "") {
@@ -31,6 +33,10 @@ rating <- function(name, label = "", value = 0, max = 3, icon = "star",
   )
 }
 
+#' Update rating
+#'
+#' check \code{rating} to learn more.
+#'
 #' @param session shiny object with session info
 #'
 #' @param name rating input name
@@ -41,5 +47,5 @@ rating <- function(name, label = "", value = 0, max = 3, icon = "star",
 updateRating <- function(session, name, label = NULL, value = NULL) {
   message <- list(label = label, value = value)
   message <- message[!vapply(message, is.null, FUN.VALUE = logical(1))]
-  session$sendInputMessage(inputId, message)
+  session$sendInputMessage(name, message)
 }

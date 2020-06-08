@@ -29,6 +29,9 @@ rating(
 
 \item{size}{character with legal semantic size, eg. "medium", "huge", "tiny"}
 }
+\value{
+rating object
+}
 \description{
 Crates rating component
 }
