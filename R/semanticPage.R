@@ -130,10 +130,12 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
 #' @export
 semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE){ # nolint
   content <- shiny::tags$div(class = "wrapper", ...)
-  if (supress_bootstrap)
+  if (supress_bootstrap) {
     supress_bootstrap <- suppressDependencies("bootstrap")
-  else
+  }
+  else {
     supress_bootstrap <- NULL
+  }
   shiny::tagList(
     shiny::tags$head(
       get_dependencies(theme),
