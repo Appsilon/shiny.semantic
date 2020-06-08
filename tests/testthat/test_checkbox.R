@@ -18,7 +18,10 @@ test_that("test simple_checkbox input values", {
 })
 
 test_that("test toggle alias for simple_checkbox", {
-  si_str1 <- as.character(simple_checkbox("check", "My Label", is_marked = FALSE))
+  si_str1 <- as.character(simple_checkbox("check", "My Label",
+                                          type = "toggle", is_marked = FALSE))
   si_str2 <- as.character(toggle("check", "My Label", is_marked = FALSE))
   expect_equal(si_str1, si_str2)
+  expect_true(any(grepl("toggle",
+                        si_str2, fixed = TRUE)))
 })

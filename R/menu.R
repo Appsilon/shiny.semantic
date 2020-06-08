@@ -7,12 +7,13 @@ digits2words <- function(number) {
   textrep <- c("one","two","three","four","five",
                "six","seven","eight","nine", "ten")
   if(is.numeric(number)) {
-    if (number >= 11 || number <= 0)
-      stop("Number must be between 1 and 10")
+    if (number >= 11 || number <= 0 || number %% 1 != 0)
+      stop("Number must be an integer between 1 and 10")
     return(textrep[number])
   }
-  else
+  else {
     stop("Not a number")
+  }
 }
 
 #' Render menu link

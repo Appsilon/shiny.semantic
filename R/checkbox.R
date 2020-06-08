@@ -67,8 +67,9 @@ simple_checkbox <- function(id, label = "", type = NULL, is_marked = TRUE, style
 }
 
 #' @rdname simple_checkbox
-toggle <- function(id, label = "", type = NULL, is_marked = TRUE, style = NULL) {
-  simple_checkbox(id, label, type = type, is_marked = is_marked, style = style)
+#' @export
+toggle <- function(id, label = "", is_marked = TRUE, style = NULL) {
+  simple_checkbox(id, label, type = "toggle", is_marked = is_marked, style = style)
 }
 
 #' Create Semantic UI multiple checkbox

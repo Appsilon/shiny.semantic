@@ -4,6 +4,7 @@ test_that("test digit2word parsing", {
   # test wrong inputs
   expect_error(digits2words(0))
   expect_error(digits2words(11))
+  expect_error(digits2words(3.5))
   expect_error(digits2words("11"))
   # test correct inputs
   expect_equal(digits2words(2), "two")

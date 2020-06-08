@@ -15,7 +15,7 @@
 \usage{
 simple_checkbox(id, label = "", type = NULL, is_marked = TRUE, style = NULL)
 
-toggle(id, label = "", type = NULL, is_marked = TRUE, style = NULL)
+toggle(id, label = "", is_marked = TRUE, style = NULL)
 }
 \arguments{
 \item{id}{Input name. Reactive value is available under input[[name]].}
