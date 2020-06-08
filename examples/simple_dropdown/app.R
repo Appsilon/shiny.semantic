@@ -4,21 +4,19 @@ library(shiny.semantic)
 ui <- function() {
   shinyUI(
     semanticPage(
-      title = "Rating example",
-      rating("rating", "Rate this app"),
-      p("Your rate:"),
-      textOutput("your_rate"),
-      uibutton("update", "Update rate")
+      title = "Dropdown example",
+      uiOutput("dropdown"),
+      p("Selected letter:"),
+      textOutput("selected_letter")
     )
   )
 }
 
-server <- shinyServer(function(input, output, session) {
-  output$your_rate <- renderText(input[["rating"]])
-
-  observeEvent(input$update, {
-    updateRating(session, "rating", "New label", 2)
-  }, ignoreInit = TRUE)
+server <- shinyServer(function(input, output) {
+  output$dropdown <- renderUI({
+    dropdown("simple_dropdown", LETTERS, value = "A")
+    })
+  output$selected_letter <- renderText(input[["simple_dropdown"]])
 })
 
 shinyApp(ui = ui(), server = server)
