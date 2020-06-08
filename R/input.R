@@ -83,9 +83,14 @@ uitextinput <- function(name, value = "", type = "text", placeholder = NULL, att
 #' @param min Minimum allowed value.
 #' @param max Maximum allowed value.
 #' @param step Interval to use when stepping between min and max.
+#' @param type Input type specifying class attached to input container.
+#'   See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.
+#' @param icon Icon or label attached to numeric input.
+#' @param placeholder Inner input label displayed when no value is specified.
+#' @param ... Unused.
 #'
 #' @details
-#' The inputs are updateable by using \code{\link[shiny]{updateNumericInput}}.
+#' The inputs are updateable by using \code{\link{updateNumericInput}}.
 #'
 #' @examples
 #' library(shiny)
@@ -98,7 +103,8 @@ uitextinput <- function(name, value = "", type = "text", placeholder = NULL, att
 #' )
 #'
 #' @export
-uinumericinput <- function(name, value, min = NA, max = NA, step = NA, type = NULL, icon = NULL, ...) {
+uinumericinput <- function(name, value, min = NA, max = NA, step = NA,
+                           type = NULL, icon = NULL, placeholder = NULL, ...) {
   if (!is.numeric(value) & !grepl("^\\d*(\\.\\d*|)$", value)) stop("Non-numeric input detected")
 
   input_tag <- tags$input(id = name, value = value, type = "number")
@@ -110,8 +116,8 @@ uinumericinput <- function(name, value, min = NA, max = NA, step = NA, type = NU
   }
   shiny::div(
     class = paste("ui", type, "input"),
-    icon,
     input_tag,
+    icon
   )
 }
 
@@ -124,7 +130,7 @@ uinumericinput <- function(name, value, min = NA, max = NA, step = NA, type = NU
 #' @param max Maximum allowed value.
 #' @param step Interval to use when stepping between min and max.
 #' @param width The width of the input.
-#' @param ... Other parameters passed to \code{\link{uinumericinput}}
+#' @param ... Other parameters passed to \code{\link{uinumericinput}} like \code{type} or \code{icon}.
 #' @export
 numericInput <- function(inputId, label, value, min = NA, max = NA, step = NA, width = NULL, ...) {
   shiny::div(
@@ -145,6 +151,6 @@ numericInput <- function(inputId, label, value, min = NA, max = NA, step = NA, w
 #' @param value The value to set for the input object.
 #' @param min Minimum value.
 #' @param max Maximum value.
-#' @param step Step size
+#' @param step Step size.
 #' @export
 updateNumericInput <- shiny::updateNumericInput

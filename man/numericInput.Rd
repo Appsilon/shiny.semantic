@@ -22,7 +22,7 @@ numericInput(inputId, label, value, min = NA, max = NA, step = NA,
 
 \item{width}{The width of the input.}
 
-\item{...}{Other parameters passed to \code{\link{uinumericinput}}}
+\item{...}{Other parameters passed to \code{\link{uinumericinput}} like \code{type} or \code{icon}.}
 }
 \description{
 Create a numeric input control

@@ -20,7 +20,7 @@ updateNumericInput(session, inputId, label = NULL, value = NULL,
 
 \item{max}{Maximum value.}
 
-\item{step}{Step size}
+\item{step}{Step size.}
 }
 \description{
 Change numeric input value and settings

@@ -5,7 +5,7 @@
 \title{Create Semantic UI Numeric Input}
 \usage{
 uinumericinput(name, value, min = NA, max = NA, step = NA,
-  type = NULL, icon = NULL, ...)
+  type = NULL, icon = NULL, placeholder = NULL, ...)
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under \code{input[[name]]}.}
@@ -17,13 +17,22 @@ uinumericinput(name, value, min = NA, max = NA, step = NA,
 \item{max}{Maximum allowed value.}
 
 \item{step}{Interval to use when stepping between min and max.}
+
+\item{type}{Input type specifying class attached to input container.
+See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.}
+
+\item{icon}{Icon or label attached to numeric input.}
+
+\item{placeholder}{Inner input label displayed when no value is specified.}
+
+\item{...}{Unused.}
 }
 \description{
 This creates a default numeric input using Semantic UI. The input is available
 under \code{input[[name]]}.
 }
 \details{
-The inputs are updateable by using \code{\link[shiny]{updateNumericInput}}.
+The inputs are updateable by using \code{\link{updateNumericInput}}.
 }
 \examples{
 library(shiny)
