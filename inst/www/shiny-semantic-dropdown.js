@@ -88,8 +88,6 @@ $.extend(semanticDropdownBinding, {
       $("label[for='" + el.id + "'").html(data.label);
     }
 
-    console.log('data', data);
-
     $(el).trigger('change');
   }
 });
