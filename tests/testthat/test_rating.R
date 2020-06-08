@@ -10,7 +10,10 @@ test_that("test basic rating behaviour", {
   expect_true(grepl("<div class=\"ui form\">\n  <div class=\"field\">\n    <label for=\"rating\">",
                     si_str))
 })
-
+test_that("test extract_icon_name", {
+  expect_equal(extract_icon_name(uiicon("cat")), "cat")
+  expect_error(extract_icon_name("error"))
+})
 
 test_that("test rating parameters", {
   # label

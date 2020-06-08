@@ -1,6 +1,15 @@
 #' allowed sizes
 FOMANTIC_SIZE_LEVELS <- c("mini", "tiny", "small", "", "large", "huge", "massive")
 
+#' Extract icon name
+#'
+#' @param icon uiicon object
+#'
+#' @return character with icon name
+extract_icon_name <- function(icon) {
+  gsub(" icon", "", icon$attribs$class)
+}
+
 #' Rating
 #'
 #' Crates rating component
@@ -9,7 +18,8 @@ FOMANTIC_SIZE_LEVELS <- c("mini", "tiny", "small", "", "large", "huge", "massive
 #' @param label the contents of the item to display
 #' @param value initial rating value
 #' @param max maximum value
-#' @param icon An optional \code{\link{uiicon}()} to appear on the button.
+#' @param icon character with name of the icon or \code{\link{uiicon}()} that is
+#' an element of the rating
 #' @param color character with colour name
 #' @param size character with legal semantic size, eg. "medium", "huge", "tiny"
 #'
@@ -21,6 +31,9 @@ rating <- function(name, label = "", value = 0, max = 3, icon = "star",
   if (!(size %in% FOMANTIC_SIZE_LEVELS)) {
     warning("Size value not supported.")
     size <- ""
+  }
+  if (class(icon) == "shiny.tag") {
+    icon <- extract_icon_name(icon)
   }
   class <- glue::glue("ui {size} {color} rating")
   shiny::div(
