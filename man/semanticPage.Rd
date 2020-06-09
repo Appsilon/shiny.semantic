@@ -4,7 +4,7 @@
 \alias{semanticPage}
 \title{Semantic UI page}
 \usage{
-semanticPage(..., title = "", theme = NULL)
+semanticPage(..., title = "", theme = NULL, supress_bootstrap = TRUE)
 }
 \arguments{
 \item{...}{Other arguments to be added as attributes of the main div tag
