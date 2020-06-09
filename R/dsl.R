@@ -429,8 +429,8 @@ menu_divider <- function(...) {
 
 #' Helper function to render list element
 #'
-#' @param data data to list; data.frame with fields
-#' header and optionally icon and description
+#' @param data data to list; data.frame with required column `header`
+#' and optionally `icon` and/or `description`.
 #' @param row row character
 #'
 #' @import shiny

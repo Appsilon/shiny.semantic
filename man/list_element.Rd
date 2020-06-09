@@ -7,8 +7,8 @@
 list_element(data, row)
 }
 \arguments{
-\item{data}{data to list; data.frame with fields
-header and optionally icon and description}
+\item{data}{data to list; data.frame with required column `header`
+and optionally `icon` and/or `description`.}
 
 \item{row}{row character}
 }
