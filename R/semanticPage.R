@@ -145,7 +145,8 @@ semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-dropdown.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-button.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-slider.js"),
-      shiny::tags$script(src = "shiny.semantic/shiny-semantic-calendar.js")
+      shiny::tags$script(src = "shiny.semantic/shiny-semantic-calendar.js"),
+      shiny::tags$script(src = "shiny.semantic/shiny-semantic-rating.js")
     ),
     shiny::tags$body(style = "min-height: 611px;",
                      supress_bootstrap,

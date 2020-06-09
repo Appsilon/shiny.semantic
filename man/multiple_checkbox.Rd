@@ -5,27 +5,12 @@
 \alias{multiple_radio}
 \title{Create Semantic UI multiple checkbox}
 \usage{
-multiple_checkbox(
-  name,
-  label,
-  choices,
-  choices_value = choices,
-  selected = NULL,
-  position = "grouped",
-  type = NULL,
-  ...
-)
+multiple_checkbox(name, label, choices, choices_value = choices,
+  selected = NULL, position = "grouped", type = NULL, ...)
 
-multiple_radio(
-  name,
-  label,
-  choices,
-  choices_value = choices,
-  selected = choices_value[1],
-  position = "grouped",
-  type = "radio",
-  ...
-)
+multiple_radio(name, label, choices, choices_value = choices,
+  selected = choices_value[1], position = "grouped", type = "radio",
+  ...)
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under \code{input[[name]]}.}

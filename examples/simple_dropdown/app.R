@@ -15,7 +15,7 @@ ui <- function() {
 server <- shinyServer(function(input, output) {
   output$dropdown <- renderUI({
     dropdown("simple_dropdown", LETTERS, value = "A")
-    })
+  })
   output$selected_letter <- renderText(input[["simple_dropdown"]])
 })
 
