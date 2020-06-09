@@ -24,11 +24,13 @@ Imports:
     htmlwidgets (>= 0.8),
     purrr (>= 0.2.2),
     magrittr,
-    jsonlite
+    jsonlite,
+    glue
 Suggests:
     dplyr,
     gapminder,
     testthat,
     lintr,
+    DT,
     covr
 RoxygenNote: 7.1.0
