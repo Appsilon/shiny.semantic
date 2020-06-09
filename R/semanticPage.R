@@ -128,8 +128,14 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
 #' \code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.
 #'
 #' @export
-semanticPage <- function(..., title = "", theme = NULL){ # nolint
+semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE){ # nolint
   content <- shiny::tags$div(class = "wrapper", ...)
+  if (supress_bootstrap) {
+    supress_bootstrap <- suppressDependencies("bootstrap")
+  }
+  else {
+    supress_bootstrap <- NULL
+  }
   shiny::tagList(
     shiny::tags$head(
       get_dependencies(theme),
@@ -144,6 +150,8 @@ semanticPage <- function(..., title = "", theme = NULL){ # nolint
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-calendar.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-rating.js")
     ),
-    shiny::tags$body(style = "min-height: 611px;", content)
+    shiny::tags$body(style = "min-height: 611px;",
+                     supress_bootstrap,
+                     content)
   )
 }

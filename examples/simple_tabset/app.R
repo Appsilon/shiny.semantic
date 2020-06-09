@@ -3,7 +3,6 @@ library(shiny.semantic)
 library(plotly)
 
 ui <- shinyUI(semanticPage(
-  suppressDependencies("bootstrap"),
   tabset(tabs =
            list(
              list(menu = "First Tab", content = "Text works well"),

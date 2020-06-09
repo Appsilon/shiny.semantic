@@ -54,7 +54,6 @@ if (interactive()) {
       shinyUI(
         semanticPage(
           title = "Checkbox example",
-          suppressDependencies("bootstrap"),
           h1("Checkboxes"),
           multiple_checkbox("checkboxes", "Select Letters", LETTERS[1:6], value = "A"),
           p("Selected letters:"),

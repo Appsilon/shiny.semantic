@@ -178,14 +178,13 @@ each time it is pressed.</p>
 <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
-<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
+<span class='no'>ui</span> <span class='kw'>&lt;-</span>
   <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
     <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
       <span class='fu'>actionbutton</span>(<span class='st'>"button"</span>, <span class='st'>"My button"</span>, <span class='kw'>icon</span> <span class='kw'>=</span> <span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"user"</span>),
                    <span class='kw'>size</span> <span class='kw'>=</span> <span class='st'>"huge"</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"orange"</span>)
     )
   )
-}
 <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>button</span>,{
     <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='st'>"Action"</span>)
