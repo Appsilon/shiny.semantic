@@ -430,7 +430,7 @@ menu_divider <- function(...) {
 #' Helper function to render list element
 #'
 #' @param data data to list; data.frame with fields
-#' header, icon, description
+#' header and optionally icon and description
 #' @param row row character
 #'
 #' @import shiny
@@ -450,10 +450,10 @@ list_element <- function(data, row) {
 #'
 #' This creates a list with icons using Semantic UI
 #'
-#' @param data A dataframe with columns `header` and/or `description`, `icon` containing the list items
-#' headers, descriptions and icons. `description` column is optional and should be provided
-#' if `is_description` parameter TRUE. `icon` column is optional and should be provided
-#' if `is_icon` parameter TRUE. Icon column should contain strings with icon names available
+#' @param data A dataframe with columns `header` and/or `description`, `icon`
+#' containing the list items headers, descriptions and icons.
+#' The `description`  and `icon` columns are optional.
+#' Icon column should contain strings with icon names available
 #' here: https://semantic-ui.com/elements/icon.html
 #' @param is_divided If TRUE created list elements are divided
 #'
@@ -474,7 +474,6 @@ list_element <- function(data, row) {
 uilist <- function(data, is_divided = FALSE) {
   divided_list <- ifelse(is_divided, "divided", "")
   list_class <- paste("ui", divided_list, "list")
-  
   div(class = list_class,
       seq_len(nrow(data)) %>% purrr::map(function(row) {
         list_element(data, row)

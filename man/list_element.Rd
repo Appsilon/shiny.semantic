@@ -4,15 +4,11 @@
 \alias{list_element}
 \title{Helper function to render list element}
 \usage{
-list_element(data, is_description, is_icon, row)
+list_element(data, row)
 }
 \arguments{
 \item{data}{data to list; data.frame with fields
-header, icon, description}
-
-\item{is_description}{description flag}
-
-\item{is_icon}{Icon logical to add icon from data}
+header and optionally icon and description}
 
 \item{row}{row character}
 }
