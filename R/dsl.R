@@ -305,7 +305,6 @@ uimessage <- function(header, content, type = "", icon, closable = FALSE) {
 #'   shinyUI(
 #'     semanticPage(
 #'       title = "My page",
-#'       suppressDependencies("bootstrap"),
 #'       uimenu(menu_item("Menu"),
 #'              uidropdown(
 #'                "Action",

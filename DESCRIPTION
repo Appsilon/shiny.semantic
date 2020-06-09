@@ -31,5 +31,6 @@ Suggests:
     gapminder,
     testthat,
     lintr,
+    DT,
     covr
 RoxygenNote: 7.1.0

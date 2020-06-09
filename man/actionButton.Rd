@@ -15,7 +15,8 @@ actionButton(inputId, label, icon = NULL, width = NULL, ...)
 
 \item{width}{The width of the input.}
 
-\item{...}{Named attributes to be applied to the button or remaining parameters passed to uibutton, like \code{class}.}
+\item{...}{Named attributes to be applied to the button or remaining parameters passed to uibutton,
+like \code{class}.}
 }
 \description{
 Creates an action button  whose value is initially zero, and increments by one each time it is pressed.
