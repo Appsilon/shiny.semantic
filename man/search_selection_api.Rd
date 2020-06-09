@@ -4,12 +4,8 @@
 \alias{search_selection_api}
 \title{Add Semantic UI search selection dropdown based on REST API}
 \usage{
-search_selection_api(
-  name,
-  search_api_url,
-  multiple = FALSE,
-  default_text = "Select"
-)
+search_selection_api(name, search_api_url, multiple = FALSE,
+  default_text = "Select")
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under input[[name]].}
