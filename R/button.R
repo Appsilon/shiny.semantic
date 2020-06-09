@@ -57,3 +57,56 @@ actionbutton <- function(name, label, icon = NULL, size = "medium",
            class = class,
            ...)
 }
+
+
+#' Counter Button
+#'
+#' Creates a counter button whose value increments by one each time it is pressed.
+#'
+#' @param name The \code{input} slot that will be used to access the value.
+#' @param label the content of the item to display
+#' @param icon an optional \code{\link{uiicon}()} to appear on the button.
+#' @param value initial rating value (integer)
+#' @param color character with semantic color
+#' @param big_mark big numbers separator
+#'
+#' @return counter button object
+#' @export
+#'
+#' @examples
+#' if (interactive()) {
+#' library(shiny)
+#' library(shiny.semantic)
+#' ui <-semanticPage(
+#'      counterbutton("counter", "My Counter Button",
+#'                    icon = uiicon("world"),
+#'                    size = "big", color = "purple")
+#'  )
+#' server <- function(input, output) {
+#'  observeEvent(input$counter,{
+#'    print("Counter", input$counter)
+#'   })
+#'  }
+#' shinyApp(ui, server)
+#' }
+counterbutton <- function(name, label = "", icon = NULL, value = 0, color = "", size = "",
+                          big_mark = " ") {
+  big_mark_regex <- if (big_mark == " ") "\\s" else big_mark
+  shiny::div(
+    class = "ui labeled button", tabindex = "0",
+    shiny::tagList(
+      uibutton(name = name, label, icon,
+               class = paste(c(size, color), collapse = " "),
+               `data-val` = value),
+      shiny::tags$span(class = glue::glue("ui basic {color} label"),
+                       format(value, big.mark = big_mark)),
+      shiny::tags$script(HTML(
+        glue::glue("$('#{name}').on('click', function() {{
+          let $label = $('#{name} + .label')
+          let value = parseInt($label.html().replace(/{big_mark_regex}/g, ''))
+          $label.html((value + 1).toString().replace(/\\B(?=(\\d{{3}})+(?!\\d))/g, '{big_mark}'))
+        }})")
+      ))
+    )
+  )
+}
