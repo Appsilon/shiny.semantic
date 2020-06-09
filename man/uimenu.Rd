@@ -26,7 +26,6 @@ ui <- function() {
   shinyUI(
     semanticPage(
       title = "My page",
-      suppressDependencies("bootstrap"),
       uimenu(menu_item("Menu"),
              uidropdown(
                "Action",
