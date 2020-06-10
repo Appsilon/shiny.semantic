@@ -2,9 +2,20 @@
 % Please edit documentation in R/button.R
 \name{counterbutton}
 \alias{counterbutton}
+\alias{counterButton}
 \title{Counter Button}
 \usage{
 counterbutton(
+  name,
+  label = "",
+  icon = NULL,
+  value = 0,
+  color = "",
+  size = "",
+  big_mark = " "
+)
+
+counterButton(
   name,
   label = "",
   icon = NULL,
@@ -44,7 +55,7 @@ ui <-semanticPage(
  )
 server <- function(input, output) {
  observeEvent(input$counter,{
-   print("Counter", input$counter)
+   print(input$counter)
   })
  }
 shinyApp(ui, server)

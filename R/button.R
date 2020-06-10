@@ -64,7 +64,7 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #'
 #' @return counter button object
 #' @export
-#'
+#' @rdname counterbutton
 #' @examples
 #' if (interactive()) {
 #' library(shiny)
@@ -76,7 +76,7 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #'  )
 #' server <- function(input, output) {
 #'  observeEvent(input$counter,{
-#'    print("Counter", input$counter)
+#'    print(input$counter)
 #'   })
 #'  }
 #' shinyApp(ui, server)
@@ -101,4 +101,11 @@ counterbutton <- function(name, label = "", icon = NULL, value = 0, color = "", 
       ))
     )
   )
+}
+
+#' @rdname counterbutton
+#' @export
+counterButton <- function(name, label = "", icon = NULL, value = 0, color = "", size = "",
+              big_mark = " ") {
+  counterbutton(name, label, icon, value, color, size, big_mark)
 }
