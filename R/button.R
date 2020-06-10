@@ -76,7 +76,7 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #'  )
 #' server <- function(input, output) {
 #'  observeEvent(input$counter,{
-#'    print("Counter", input$counter)
+#'    print(input$counter)
 #'   })
 #'  }
 #' shinyApp(ui, server)
