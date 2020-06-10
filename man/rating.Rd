@@ -23,7 +23,8 @@ rating(
 
 \item{max}{maximum value}
 
-\item{icon}{An optional \code{\link{uiicon}()} to appear on the button.}
+\item{icon}{character with name of the icon or \code{\link{uiicon}()} that is
+an element of the rating}
 
 \item{color}{character with colour name}
 

@@ -4,7 +4,7 @@ library(shiny.semantic)
 ui <- semanticPage(
   uisegment(
     class = "basic",
-    uirange("range_ex", 5, 10, 0, 20, 1, type = "labeled ticked"),
+    uirange("range_ex", 5, 10, 0, 20, 1, class = "labeled ticked"),
     tags$br(),
     textOutput("range_ex"),
     tags$br(), tags$br(),

@@ -128,7 +128,7 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
 #' \code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.
 #'
 #' @export
-semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE){ # nolint
+semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE) {
   content <- shiny::tags$div(class = "wrapper", ...)
   if (supress_bootstrap) {
     supress_bootstrap <- suppressDependencies("bootstrap")
@@ -148,6 +148,7 @@ semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-button.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-slider.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-calendar.js"),
+      shiny::tags$script(src = "shiny.semantic/shiny-semantic-numericinput.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-rating.js")
     ),
     shiny::tags$body(style = "min-height: 611px;",

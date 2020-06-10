@@ -4,7 +4,9 @@
 \name{SUPPORTED_THEMES}
 \alias{SUPPORTED_THEMES}
 \title{Supported semantic themes}
-\format{An object of class \code{character} of length 17.}
+\format{
+An object of class \code{character} of length 17.
+}
 \usage{
 SUPPORTED_THEMES
 }

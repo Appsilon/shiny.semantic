@@ -28,6 +28,9 @@ $.extend(semanticDropdownBinding, {
     let value = $(el).children('input').val();
     // Enables the dropdown to be a vector if multiple class
     if ($(el).hasClass('multiple')) {
+      if (value === "") {
+        return null;
+      }
       value = value.split(",");
     }
     return value;
@@ -79,6 +82,10 @@ $.extend(semanticDropdownBinding, {
 
     if (data.hasOwnProperty('value')) {
       this.setValue(el, data.value);
+    }
+
+    if (data.hasOwnProperty('label')) {
+      $("label[for='" + el.id + "'").html(data.label);
     }
 
     $(el).trigger('change');

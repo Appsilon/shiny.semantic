@@ -83,9 +83,14 @@ uitextinput <- function(name, value = "", type = "text", placeholder = NULL, att
 #' @param min Minimum allowed value.
 #' @param max Maximum allowed value.
 #' @param step Interval to use when stepping between min and max.
+#' @param type Input type specifying class attached to input container.
+#'   See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.
+#' @param icon Icon or label attached to numeric input.
+#' @param placeholder Inner input label displayed when no value is specified.
+#' @param ... Unused.
 #'
 #' @details
-#' The inputs are updateable by using \code{\link[shiny]{updateNumericInput}}.
+#' The inputs are updateable by using \code{\link{updateNumericInput}}.
 #'
 #' @examples
 #' library(shiny)
@@ -98,12 +103,54 @@ uitextinput <- function(name, value = "", type = "text", placeholder = NULL, att
 #' )
 #'
 #' @export
-uinumericinput <- function(name, value, min = NA, max = NA, step = NA) {
+uinumericinput <- function(name, value, min = NA, max = NA, step = NA,
+                           type = NULL, icon = NULL, placeholder = NULL, ...) {
   if (!is.numeric(value) & !grepl("^\\d*(\\.\\d*|)$", value)) stop("Non-numeric input detected")
 
-  input <- tags$input(id = name, value = value, type = "number")
-  if (!is.na(min)) input$attibs$min <- min
-  if (!is.na(max)) input$attibs$max <- max
-  if (!is.na(step)) input$attibs$step <- step
-  input
+  input_tag <- tags$input(id = name, value = value, type = "number")
+  if (!is.na(min)) input_tag$attribs$min <- min
+  if (!is.na(max)) input_tag$attribs$max <- max
+  if (!is.na(step)) input_tag$attribs$step <- step
+  if (!is.null(icon)) {
+    type <- paste(type, "icon")
+  }
+  shiny::div(
+    class = paste("ui", type, "input"),
+    input_tag,
+    icon
+  )
 }
+
+#' Create a numeric input control
+#'
+#' @param inputId The input slot that will be used to access the value.
+#' @param label Display label for the control, or NULL for no label.
+#' @param value Initial value of the numeric input.
+#' @param min Minimum allowed value.
+#' @param max Maximum allowed value.
+#' @param step Interval to use when stepping between min and max.
+#' @param width The width of the input.
+#' @param ... Other parameters passed to \code{\link{uinumericinput}} like \code{type} or \code{icon}.
+#' @export
+numericInput <- function(inputId, label, value, min = NA, max = NA, step = NA, width = NULL, ...) {
+  shiny::div(
+    class = "ui form",
+    style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
+    shiny::div(class = "field",
+               if (!is.null(label)) tags$label(label, `for` = inputId),
+               uinumericinput(inputId, value, min, max, step, ...)
+    )
+  )
+}
+
+#' Change numeric input value and settings
+#'
+#' @param session The session object passed to function given to shinyServer.
+#' @param inputId The id of the input object.
+#' @param label The label to set for the input object.
+#' @param value The value to set for the input object.
+#' @param min Minimum value.
+#' @param max Maximum value.
+#' @param step Step size.
+#' @export
+updateNumericInput <- shiny::updateNumericInput

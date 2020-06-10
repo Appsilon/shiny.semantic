@@ -27,7 +27,6 @@ $.extend(semanticButtonBinding, {
   },
   receiveMessage: function(el, data) {
     var $el = $(el);
-
     // retrieve current label and icon
     var label = $el.text();
     var icon = '';

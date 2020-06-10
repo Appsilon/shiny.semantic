@@ -4,8 +4,7 @@
 \alias{uidropdown}
 \title{Create Semantic UI Dropdown}
 \usage{
-uidropdown(..., type = "", name, is_menu_item = FALSE,
-  dropdown_specs = list())
+uidropdown(..., type = "", name, is_menu_item = FALSE, dropdown_specs = list())
 }
 \arguments{
 \item{...}{Dropdown content.}

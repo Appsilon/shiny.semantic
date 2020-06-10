@@ -5,8 +5,14 @@
 \alias{update_calendar}
 \title{Create Semantic UI Calendar}
 \usage{
-uicalendar(name, value = NULL, placeholder = NULL, type = "date",
-  min = NA, max = NA)
+uicalendar(
+  name,
+  value = NULL,
+  placeholder = NULL,
+  type = "date",
+  min = NA,
+  max = NA
+)
 
 update_calendar(session, id, value = NULL, min = NULL, max = NULL)
 }
@@ -27,12 +33,6 @@ update_calendar(session, id, value = NULL, min = NULL, max = NULL)
 \code{shinyServer}.}
 
 \item{id}{ID of the calendar that will be updated}
-
-\item{value}{The date to be set, default NULL}
-
-\item{min}{Minimum date that will be possible to set, default NULL}
-
-\item{max}{Maximum date that will be possible to set, default NULL}
 }
 \description{
 This creates a default calendar input using Semantic UI. The input is available
