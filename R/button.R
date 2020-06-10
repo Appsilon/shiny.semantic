@@ -12,9 +12,7 @@
 #'
 #' @export
 uibutton <- function(name, label, icon = NULL, class = NULL, ...) {
-  sep <- if (!is.null(icon)) " " else ""
-  tags$button(id = name, class = paste("ui", class, "button"),
-              icon, sep, label, ...)
+  tags$button(id = name, class = paste("ui", class, "button"), icon, " ", label, ...)
 }
 
 #' Action button
