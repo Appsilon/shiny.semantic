@@ -12,7 +12,9 @@
 #'
 #' @export
 uibutton <- function(name, label, icon = NULL, class = NULL, ...) {
-  tags$button(id = name, class = paste("ui", class, "button"), icon, " ", label, ...)
+  sep <- if (!is.null(icon)) " " else ""
+  tags$button(id = name, class = paste("ui", class, "button"),
+              icon, sep, label, ...)
 }
 
 #' Action button
@@ -64,7 +66,7 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #'
 #' @return counter button object
 #' @export
-#'
+#' @rdname counterbutton
 #' @examples
 #' if (interactive()) {
 #' library(shiny)
@@ -101,4 +103,11 @@ counterbutton <- function(name, label = "", icon = NULL, value = 0, color = "", 
       ))
     )
   )
+}
+
+#' @rdname counterbutton
+#' @export
+counterButton <- function(name, label = "", icon = NULL, value = 0, color = "", size = "",
+              big_mark = " ") {
+  counterbutton(name, label, icon, value, color, size, big_mark)
 }

@@ -2,9 +2,20 @@
 % Please edit documentation in R/button.R
 \name{counterbutton}
 \alias{counterbutton}
+\alias{counterButton}
 \title{Counter Button}
 \usage{
 counterbutton(
+  name,
+  label = "",
+  icon = NULL,
+  value = 0,
+  color = "",
+  size = "",
+  big_mark = " "
+)
+
+counterButton(
   name,
   label = "",
   icon = NULL,
