@@ -51,7 +51,7 @@ $.extend(semanticDropdownBinding, {
   // callback is a function that queues data to be sent to
   // the server.
   subscribe: function(el, callback) {
-    $(el).on('keyup change', function () { callback(true); });
+    $(el).on('keyup change', function () { callback(); });
   },
 
   // TODO: Remove the event listeners.
