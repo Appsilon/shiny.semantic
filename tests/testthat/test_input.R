@@ -27,7 +27,7 @@ test_that("test uinumericinput", {
   expect_error(uinumericinput("number input", "Text input"))
   # number input
   si_str <- as.character(uinumericinput("number_input", 20))
-  expect_equal("<input id=\"number_input\" value=\"20\" type=\"number\"/>", si_str)
+  expect_true(any(grepl("<input id=\"number_input\" value=\"20\" type=\"number\"/>", si_str, fixed = TRUE)))
   # all parameters
   expect_is(uinumericinput("number_input", 20, min = 10, max = 40, step = 1), "shiny.tag")
 })

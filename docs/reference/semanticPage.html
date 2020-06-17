@@ -8,10 +8,12 @@
 
 <title>Semantic UI page — semanticPage • SHINY.SEMANTIC</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -36,10 +38,9 @@
 
 
 
+
 <meta property="og:title" content="Semantic UI page — semanticPage" />
-
 <meta property="og:description" content="This creates a Semantic page for use in a Shiny app." />
-
 
 
 
@@ -85,7 +86,6 @@
   </a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
@@ -132,13 +132,11 @@
     </div>
 
     <div class="ref-description">
-    
     <p>This creates a Semantic page for use in a Shiny app.</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>semanticPage</span>(<span class='no'>...</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>theme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>semanticPage</span>(<span class='no'>...</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>theme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>supress_bootstrap</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -157,7 +155,7 @@ wrapper (e.g. style, class etc.)</p></td>
 <code>SUPPORTED_THEMES</code> or at http://semantic-ui-forest.com/themes.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Inside, it uses two crucial options:</p>
@@ -169,7 +167,6 @@ takes dependencies from custom css and js files specified in this path
 either "min" or standard version. The folder should contain: <code>semantic.css</code> and
 <code>semantic.js</code> files, or <code>semantic.min.css</code> and <code>semantic.min.js</code>
 in <code>shiny.minified = TRUE</code> mode.</p>
-    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

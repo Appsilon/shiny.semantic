@@ -1,7 +1,7 @@
 Package: shiny.semantic
 Type: Package
 Title: Semantic UI Support for Shiny
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com", role = "aut"),
   person("Krystian", "Igras", email = "krystian@appsilon.com", role = "aut"),
   person("Adam", "Forys", email = "adam@appsilon.com", role = "aut"),
@@ -24,11 +24,13 @@ Imports:
     htmlwidgets (>= 0.8),
     purrr (>= 0.2.2),
     magrittr,
-    jsonlite
+    jsonlite,
+    glue
 Suggests:
     dplyr,
     gapminder,
     testthat,
     lintr,
+    DT,
     covr
-RoxygenNote: 7.0.2.9000
+RoxygenNote: 7.1.0

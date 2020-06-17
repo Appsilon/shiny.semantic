@@ -1,3 +1,5 @@
+^renv$
+^renv\.lock$
 ^_pkgdown\.yml$
 ^codecov\.yml$
 ^\.travis\.yml$
