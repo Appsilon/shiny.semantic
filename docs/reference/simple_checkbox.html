@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Create Semantic UI checkbox — simple_checkbox" />
-<meta property="og:description" content="This creates a checkbox using Semantic UI styles." />
+<meta property="og:description" content="Create Semantic UI checkbox" />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -132,10 +132,12 @@
     </div>
 
     <div class="ref-description">
-    <p>This creates a checkbox using Semantic UI styles.</p>
+    <p>Create Semantic UI checkbox</p>
     </div>
 
-    <pre class="usage"><span class='fu'>simple_checkbox</span>(<span class='no'>id</span>, <span class='no'>label</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>simple_checkbox</span>(<span class='no'>id</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>toggle</span>(<span class='no'>id</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,7 +179,19 @@
 #&gt;   &lt;input id="example" type="checkbox"/&gt;
 #&gt;   &lt;label&gt;Check me&lt;/label&gt;
 #&gt; &lt;/div&gt;</div><div class='input'>
-</div></pre>
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
+ <span class='fu'>shinyUI</span>(
+   <span class='fu'>toggle</span>(<span class='st'>"tog1"</span>, <span class='st'>"My Label"</span>, <span class='fl'>TRUE</span>)
+ )
+)
+<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
+  <span class='fu'>observeEvent</span>(<span class='no'>input</span>$<span class='no'>tog1</span>, {
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>input</span>$<span class='no'>tog1</span>)
+  })
+}
+<span class='fu'>shinyApp</span>(<span class='no'>ui</span>, <span class='no'>server</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

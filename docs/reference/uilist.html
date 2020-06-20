@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -135,30 +135,22 @@
     <p>This creates a list with icons using Semantic UI</p>
     </div>
 
-    <pre class="usage"><span class='fu'>uilist</span>(<span class='no'>data</span>, <span class='kw'>is_icon</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>is_divided</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>is_description</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>uilist</span>(<span class='no'>data</span>, <span class='kw'>is_divided</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>A dataframe with columns `header` and/or `description`, `icon` containing the list items
-headers, descriptions and icons. `description` column is optional and should be provided
-if `is_description` parameter TRUE. `icon` column is optional and should be provided
-if `is_icon` parameter TRUE. Icon column should contain strings with icon names available
+      <td><p>A dataframe with columns `header` and/or `description`, `icon`
+containing the list items headers, descriptions and icons.
+The `description`  and `icon` columns are optional.
+Icon column should contain strings with icon names available
 here: https://semantic-ui.com/elements/icon.html</p></td>
-    </tr>
-    <tr>
-      <th>is_icon</th>
-      <td><p>IF TRUE created list has icons</p></td>
     </tr>
     <tr>
       <th>is_divided</th>
       <td><p>If TRUE created list elements are divided</p></td>
-    </tr>
-    <tr>
-      <th>is_description</th>
-      <td><p>If TRUE created list will have a description</p></td>
     </tr>
     </table>
 
@@ -173,7 +165,7 @@ here: https://semantic-ui.com/elements/icon.html</p></td>
 )
 
 <span class='co'># Create a 5 element divided list with alert icons and description</span>
-<span class='fu'>uilist</span>(<span class='no'>list_content</span>, <span class='kw'>is_icon</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>is_divided</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>is_description</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; &lt;div class="ui divided list"&gt;
+<span class='fu'>uilist</span>(<span class='no'>list_content</span>, <span class='kw'>is_divided</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; &lt;div class="ui divided list"&gt;
 #&gt;   &lt;div class="item"&gt;
 #&gt;     &lt;i class="home 1 icon"&gt;&lt;/i&gt;
 #&gt;     &lt;div class="content"&gt;
