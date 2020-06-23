@@ -126,9 +126,12 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
 #' @param title A title to display in the browser's title bar.
 #' @param theme Theme name or path. Full list of supported themes you will find in
 #' \code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.
+#' @param supress_bootstrap boolean flag that supresses bootstrap when turned on
+#' @param margin character with body margin size
 #'
 #' @export
-semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE) {
+semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE,
+                         margin = "10px") {
   content <- shiny::tags$div(class = "wrapper", ...)
   if (supress_bootstrap) {
     supress_bootstrap <- suppressDependencies("bootstrap")
@@ -151,7 +154,7 @@ semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-numericinput.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-rating.js")
     ),
-    shiny::tags$body(style = "margin:10px; min-height: 611px;",
+    shiny::tags$body(style = glue::glue("margin:{margin}; min-height: 611px;"),
                      supress_bootstrap,
                      content)
   )
