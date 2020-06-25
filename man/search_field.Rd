@@ -38,9 +38,10 @@ ui <- function() {
   shinyUI(
     semanticPage(
       title = "Dropdown example",
-      uiOutput("search_letters"),
-      p("Selected letter:"),
-      textOutput("selected_letters")
+      p("Search country:"),
+      uiOutput("search_country"),
+      p("Selected country:"),
+      textOutput("selected_country")
    )
   )
 }
@@ -65,7 +66,7 @@ server <- shinyServer(function(input, output, session) {
  output$search_letters <- shiny::renderUI(
    search_field("search_result", search_api_url)
  )
- output$selected_letters <- renderText(input[["search_result"]])
+ output$selected_country <- renderText(input[["search_result"]])
 })
 }
 
