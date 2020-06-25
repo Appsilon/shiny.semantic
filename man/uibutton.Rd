@@ -22,6 +22,18 @@ paramters like \code{color}, \code{size} are ignored.}
 Create Semantic UI Button
 }
 \examples{
-uibutton("simple_button", "Press Me!")
+if (interactive()){
+library(shiny)
+library(shiny.semantic)
+ui <- semanticPage(
+  shinyUI(
+    uibutton("simple_button", "Press Me!")
+  )
+)
+server <- function(input, output, session) {
+}
+shinyApp(ui, server)
+}
+
 
 }
