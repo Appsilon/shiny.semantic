@@ -15,11 +15,10 @@ suppressWarnings(library(shiny.semantic))
 suppressWarnings(library(shiny))
 ```
 
+<img src="man/figures/hexsticker.png" align="right" alt="" width="130" />
 
   `r params$repo_name`
 ===========
-
-<img src="man/figures/hexsticker.png" align="right" alt="" width="130" />
 
 <!-- badges: start -->
 ![R-CMD-check](https://github.com/Appsilon/shiny.semantic/workflows/R-CMD-check/badge.svg)
@@ -77,9 +76,11 @@ Component examples
 
 Check out also our dashboard examples made with **shiny.semantic** library:
 
-
 | [Churn analytics](https://demo.appsilon.ai/churn) | [Fraud detection](https://demo.appsilon.ai/frauds) |
 |---|---|
+
+See more examples with code in the `examples` folder.
+
 How to install?
 ---------------
 
@@ -106,7 +107,7 @@ devtools::install_github("Appsilon/`r params$repo_name`", ref = "0.1.0")
 How to use it?
 -------------
 
-Firstly, you will have to invoke `shinyUI()` with `semanticPage()` instead of standard Shiny UI definitions like e.g. `fluidPage()`. From now on, all components can be annotated with [Fomantic UI][fomantic_website_url] specific CSS classes and also you will be able to use [shiny.semantic components](`r params$demo_url`).
+Firstly, you will have to invoke `shinyUI()` with `semanticPage()` instead of standard Shiny UI definitions like e.g. `bootstrapPage()`. From now on, all components can be annotated with [Fomantic UI][fomantic_website_url] specific CSS classes and also you will be able to use [shiny.semantic components](`r params$demo_url`).
 
 Basic example for rendering a simple button. will look like this:
 
@@ -136,7 +137,12 @@ semanticPage(title = "Your page title", ...)
 ```
 **Note #2**
 
-You can switch off suppressing bootstrap by calling `semanticPage(suppress_bootstrap = FALSE, ...)`
+The `shiny` package works with **Bootstrap** library under the hood. `shiny.semantic` uses
+[Fomantic UI][fomantic_website_url]. Sometimes using both of these libraries may cause
+troubles with rendering specific UI elements. That is why by default we turn off Bootstrap
+dependencies.
+
+However, you can switch off suppressing bootstrap by calling `semanticPage(suppress_bootstrap = FALSE, ...)`
 
 
 **[Advanced] Using Fomantic UI JavaScript elements**
@@ -197,7 +203,7 @@ shinyApp(ui = ui(), server = server)
 
 How to contribute?
 -----------------
-If you want to contribute to this project please submit a regular PR, once you're done with new feature or bug fix.<br>
+If you want to contribute to this project please submit a regular PR, once you're done with new feature or bug fix.
 
 **Changes in documentation**
 

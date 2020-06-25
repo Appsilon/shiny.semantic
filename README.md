@@ -1,7 +1,7 @@
 
-# shiny.semantic
-
 <img src="man/figures/hexsticker.png" align="right" alt="" width="130" />
+
+# shiny.semantic
 
 <!-- badges: start -->
 
@@ -73,6 +73,8 @@ library:
 | [Churn analytics](https://demo.appsilon.ai/churn) | [Fraud detection](https://demo.appsilon.ai/frauds) |
 | ------------------------------------------------- | -------------------------------------------------- |
 
+See more examples with code in the `examples` folder.
+
 ## How to install?
 
 You can install a stable `shiny.semantic` release from CRAN repository:
@@ -99,8 +101,8 @@ devtools::install_github("Appsilon/`r params$repo_name`", ref = "0.1.0")
 ## How to use it?
 
 Firstly, you will have to invoke `shinyUI()` with `semanticPage()`
-instead of standard Shiny UI definitions like e.g. `fluidPage()`. From
-now on, all components can be annotated with [Fomantic
+instead of standard Shiny UI definitions like e.g. `bootstrapPage()`.
+From now on, all components can be annotated with [Fomantic
 UI](https://fomantic-ui.com/) specific CSS classes and also you will be
 able to use [shiny.semantic
 components](https://demo.appsilon.ai/semantic/).
@@ -134,7 +136,12 @@ At the moment you have to pass page title in `semanticPage()`
 
 **Note \#2**
 
-You can switch off suppressing bootstrap by calling
+The `shiny` package works with **Bootstrap** library under the hood.
+`shiny.semantic` uses [Fomantic UI](https://fomantic-ui.com/). Sometimes
+using both of these libraries may cause troubles with rendering specific
+UI elements. That is why by default we turn off Bootstrap dependencies.
+
+However, you can switch off suppressing bootstrap by calling
 `semanticPage(suppress_bootstrap = FALSE, ...)`
 
 **\[Advanced\] Using Fomantic UI JavaScript elements**
@@ -198,7 +205,7 @@ document is ready. There are at least 2 options to do this:
 ## How to contribute?
 
 If you want to contribute to this project please submit a regular PR,
-once you’re done with new feature or bug fix.<br>
+once you’re done with new feature or bug fix.
 
 **Changes in documentation**
 
