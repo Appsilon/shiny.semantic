@@ -73,7 +73,7 @@ under input[[name]]." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -103,7 +103,14 @@ under input[[name]]." />
   </a>
 </li>
 <li>
-  <a href="https://github.com/ropensci/MODIStsp/">
+  <a href="../CODE_OF_CONDUCT.html">
+    <span class="fa fa-user-o"></span>
+     
+    CoC
+  </a>
+</li>
+<li>
+  <a href="https://github.com/Appsilon/shiny.semantic">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -137,7 +144,17 @@ under input[[name]]." />
 under <code>input[[name]]</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>uinumericinput</span>(<span class='no'>name</span>, <span class='no'>value</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
+    <pre class="usage"><span class='fu'>uinumericinput</span>(
+  <span class='no'>name</span>,
+  <span class='no'>value</span>,
+  <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>placeholder</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,11 +179,28 @@ under <code>input[[name]]</code>.</p>
       <th>step</th>
       <td><p>Interval to use when stepping between min and max.</p></td>
     </tr>
+    <tr>
+      <th>type</th>
+      <td><p>Input type specifying class attached to input container.
+See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.</p></td>
+    </tr>
+    <tr>
+      <th>icon</th>
+      <td><p>Icon or label attached to numeric input.</p></td>
+    </tr>
+    <tr>
+      <th>placeholder</th>
+      <td><p>Inner input label displayed when no value is specified.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Unused.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The inputs are updateable by using <code><a href='https://rdrr.io/pkg/shiny/man/updateNumericInput.html'>updateNumericInput</a></code>.</p>
+    <p>The inputs are updateable by using <code><a href='updateNumericInput.html'>updateNumericInput</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
@@ -178,7 +212,9 @@ under <code>input[[name]]</code>.</p>
   <span class='fu'>uinumericinput</span>(<span class='st'>"ex"</span>, <span class='fl'>10</span>)
 )</div><div class='output co'>#&gt; &lt;div class="ui  input"&gt;
 #&gt;   &lt;label&gt;Numeric Input&lt;/label&gt;
-#&gt;   &lt;input id="ex" value="10" type="number"/&gt;
+#&gt;   &lt;div class="ui  input"&gt;
+#&gt;     &lt;input id="ex" value="10" type="number"/&gt;
+#&gt;   &lt;/div&gt;
 #&gt; &lt;/div&gt;</div><div class='input'>
 </div></pre>
   </div>

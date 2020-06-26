@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Action Button — actionbutton • SHINY.SEMANTIC</title>
+<title>Action button — actionButton • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="Action Button — actionbutton" />
-<meta property="og:description" content="Creates an action button whose value is initially zero, and increments by one
-each time it is pressed." />
+<meta property="og:title" content="Action button — actionButton" />
+<meta property="og:description" content="Creates an action button  whose value is initially zero, and increments by one each time it is pressed." />
 
 
 
@@ -73,7 +72,7 @@ each time it is pressed." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -103,7 +102,14 @@ each time it is pressed." />
   </a>
 </li>
 <li>
-  <a href="https://github.com/ropensci/MODIStsp/">
+  <a href="../CODE_OF_CONDUCT.html">
+    <span class="fa fa-user-o"></span>
+     
+    CoC
+  </a>
+</li>
+<li>
+  <a href="https://github.com/Appsilon/shiny.semantic">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -127,71 +133,44 @@ each time it is pressed." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Action Button</h1>
+    <h1>Action button</h1>
     <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/button.R'><code>R/button.R</code></a></small>
-    <div class="hidden name"><code>actionbutton.Rd</code></div>
+    <div class="hidden name"><code>actionButton.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Creates an action button whose value is initially zero, and increments by one
-each time it is pressed.</p>
+    <p>Creates an action button  whose value is initially zero, and increments by one each time it is pressed.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>actionbutton</span>(<span class='no'>name</span>, <span class='no'>label</span>, <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='st'>"medium"</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>actionButton</span>(<span class='no'>inputId</span>, <span class='no'>label</span>, <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>name</th>
-      <td><p>The <code>input</code> slot that will be used to access the value.</p></td>
+      <th>inputId</th>
+      <td><p>The input slot that will be used to access the value.</p></td>
     </tr>
     <tr>
       <th>label</th>
-      <td><p>The contents of the button or link</p></td>
+      <td><p>The contents of the button - a text label, but you could also use any other HTML, like an image.</p></td>
     </tr>
     <tr>
       <th>icon</th>
-      <td><p>icon type, use <code>uiicon</code> to insert icon</p></td>
+      <td><p>An optional <a href='icon.html'>icon</a> to appear on the button.</p></td>
     </tr>
     <tr>
-      <th>size</th>
-      <td><p>character with button size, accepted values: "mini", "tiny", "small"
-"medium", "large", "big", "huge", "massive"</p></td>
-    </tr>
-    <tr>
-      <th>color</th>
-      <td><p>character with semantic color</p></td>
+      <th>width</th>
+      <td><p>The width of the input.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Named attributes to be applied to the button</p></td>
+      <td><p>Named attributes to be applied to the button or remaining parameters passed to uibutton,
+like <code>class</code>.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>action button object</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Only run examples in interactive R sessions</span>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
-<span class='no'>ui</span> <span class='kw'>&lt;-</span>
-  <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-    <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
-      <span class='fu'>actionbutton</span>(<span class='st'>"button"</span>, <span class='st'>"My button"</span>, <span class='kw'>icon</span> <span class='kw'>=</span> <span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"user"</span>),
-                   <span class='kw'>size</span> <span class='kw'>=</span> <span class='st'>"huge"</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"orange"</span>)
-    )
-  )
-<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
-  <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>button</span>,{
-    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='st'>"Action"</span>)
-  })
-}
-<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
-}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
