@@ -3,7 +3,8 @@
 
 <img src="man/figures/hexsticker.png" align="right" alt="" width="120" />
 
-**Semantic UI wrapper for Shiny**
+**Semantic UI wrapper for
+Shiny**
 
 <!-- badges: start -->
 
@@ -76,7 +77,7 @@ To install [previous versions]() you can run:
 ## How to use it?
 
 Firstly, you will have to invoke `shinyUI()` with `semanticPage()`
-instead of standard Shiny UI definitions like e.g. `fluidPage()`. From
+instead of standard Shiny UI definitions like e.g. `fluidPage()`. From
 now on forward all components can ba annotated with [Semantic
 UI](http://semantic-ui.com/introduction/getting-started.html) specific
 CSS classes and also you will be able to use [shiny.semantic
@@ -174,6 +175,12 @@ document is ready. There are at least 2 options to do this:
 
 ## How to contribute?
 
+We welcome contributions of all types\!
+
+We encourage typo corrections, bug reports, bug fixes and feature
+requests. Feedback on the clarity of the documentation and examples is
+especially valuable.
+
 If you want to contribute to this project please submit a regular PR,
 once you’re done with new feature or bug fix.<br>
 
@@ -185,6 +192,9 @@ please modify accordingly a **README.Rmd** file and use “Knit”.
 
 Documentation is rendered with `pkgdown`. Just run
 `pkgdown::build_site()` after rendering new **README.md**.
+
+We have a Contributor [Code of Conduct](). Make sure to check it and to
+follow it.
 
 ## Troubleshooting
 

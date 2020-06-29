@@ -177,6 +177,11 @@ shinyApp(ui = ui(), server = server)
 
 How to contribute?  {.darkslide}
 -----------------
+
+We welcome contributions of all types!
+
+We encourage typo corrections, bug reports, bug fixes and feature requests. Feedback on the clarity of the documentation and examples is especially valuable.
+
 If you want to contribute to this project please submit a regular PR, once you're done with new feature or bug fix.<br>
 
 **Changes in documentation**
@@ -185,7 +190,7 @@ Both repository **README.md** file and an official documentation page are genera
 
 Documentation is rendered with `pkgdown`. Just run `pkgdown::build_site()` after rendering new **README.md**.
 
-Make sure to check our [Code of Conduct](`r params$code_of_conduct`).
+We have a Contributor [Code of Conduct](`r params$code_of_conduct`). Make sure to check it and to follow it.
 
 Troubleshooting
 -----------------
