@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -102,7 +102,14 @@
   </a>
 </li>
 <li>
-  <a href="https://github.com/ropensci/MODIStsp/">
+  <a href="../CODE_OF_CONDUCT.html">
+    <span class="fa fa-user-o"></span>
+     
+    CoC
+  </a>
+</li>
+<li>
+  <a href="https://github.com/Appsilon/shiny.semantic">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -135,7 +142,13 @@
     <p>This creates a Semantic page for use in a Shiny app.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>semanticPage</span>(<span class='no'>...</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>theme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>supress_bootstrap</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>semanticPage</span>(
+  <span class='no'>...</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>theme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>supress_bootstrap</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>margin</span> <span class='kw'>=</span> <span class='st'>"10px"</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,6 +166,14 @@ wrapper (e.g. style, class etc.)</p></td>
       <th>theme</th>
       <td><p>Theme name or path. Full list of supported themes you will find in
 <code>SUPPORTED_THEMES</code> or at http://semantic-ui-forest.com/themes.</p></td>
+    </tr>
+    <tr>
+      <th>supress_bootstrap</th>
+      <td><p>boolean flag that supresses bootstrap when turned on</p></td>
+    </tr>
+    <tr>
+      <th>margin</th>
+      <td><p>character with body margin size</p></td>
     </tr>
     </table>
 
