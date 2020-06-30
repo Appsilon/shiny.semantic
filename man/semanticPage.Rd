@@ -4,7 +4,13 @@
 \alias{semanticPage}
 \title{Semantic UI page}
 \usage{
-semanticPage(..., title = "", theme = NULL, supress_bootstrap = TRUE)
+semanticPage(
+  ...,
+  title = "",
+  theme = NULL,
+  supress_bootstrap = TRUE,
+  margin = "10px"
+)
 }
 \arguments{
 \item{...}{Other arguments to be added as attributes of the main div tag
@@ -14,6 +20,10 @@ wrapper (e.g. style, class etc.)}
 
 \item{theme}{Theme name or path. Full list of supported themes you will find in
 \code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.}
+
+\item{supress_bootstrap}{boolean flag that supresses bootstrap when turned on}
+
+\item{margin}{character with body margin size}
 }
 \description{
 This creates a Semantic page for use in a Shiny app.

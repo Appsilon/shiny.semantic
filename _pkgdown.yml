@@ -16,7 +16,10 @@ navbar:
     - icon: fa-newspaper-o
       text: "Changes"
       href: CHANGELOG.html
+    - icon: fa-user-o
+      text: "CoC"
+      href: CODE_OF_CONDUCT.html
     - icon: fa-github fa-lg
-      href: https://github.com/ropensci/MODIStsp/
+      href: https://github.com/Appsilon/shiny.semantic
     - icon: fa-twitter fa-lg
       href: https://twitter.com/Appsilon

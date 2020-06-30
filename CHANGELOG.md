@@ -1,6 +1,22 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## Upcoming
+
+### Added
+
+- horizontal menu
+
+- shiny-like API introduced to actionButton, updateActionButton, selectInput, updateSelectInput, icon, numericInput, updateNumericInput
+
+- counterbutton
+
+### Changed
+
+- uilist modified
+
+- supressing bootstrap parametrised in semanticPage
+
 ## [0.3.0]
 
 ### Added
