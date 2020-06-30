@@ -67,13 +67,13 @@ ui <- semanticPage(
 
 </center>
 
+See more examples with code in the `examples` folder.
+
 Check out also our dashboard examples made with **shiny.semantic**
 library:
 
 | [Churn analytics](https://demo.appsilon.ai/churn) | [Fraud detection](https://demo.appsilon.ai/frauds) |
 | ------------------------------------------------- | -------------------------------------------------- |
-
-See more examples with code in the `examples` folder.
 
 ## How to install?
 
