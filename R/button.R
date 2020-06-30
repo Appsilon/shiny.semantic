@@ -8,7 +8,19 @@
 #' @param ... Named attributes to be applied to the button
 #'
 #' @examples
-#' uibutton("simple_button", "Press Me!")
+#' if (interactive()){
+#' library(shiny)
+#' library(shiny.semantic)
+#' ui <- semanticPage(
+#'   shinyUI(
+#'     uibutton("simple_button", "Press Me!")
+#'   )
+#' )
+#' server <- function(input, output, session) {
+#' }
+#' shinyApp(ui, server)
+#' }
+#'
 #'
 #' @export
 uibutton <- function(name, label, icon = NULL, class = NULL, ...) {

@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -102,7 +102,14 @@
   </a>
 </li>
 <li>
-  <a href="https://github.com/ropensci/MODIStsp/">
+  <a href="../CODE_OF_CONDUCT.html">
+    <span class="fa fa-user-o"></span>
+     
+    CoC
+  </a>
+</li>
+<li>
+  <a href="https://github.com/Appsilon/shiny.semantic">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -135,23 +142,15 @@
     <p>Helper function to render list element</p>
     </div>
 
-    <pre class="usage"><span class='fu'>list_element</span>(<span class='no'>data</span>, <span class='no'>is_description</span>, <span class='no'>is_icon</span>, <span class='no'>row</span>)</pre>
+    <pre class="usage"><span class='fu'>list_element</span>(<span class='no'>data</span>, <span class='no'>row</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>data to list; data.frame with fields
-header, icon, description</p></td>
-    </tr>
-    <tr>
-      <th>is_description</th>
-      <td><p>description flag</p></td>
-    </tr>
-    <tr>
-      <th>is_icon</th>
-      <td><p>Icon logical to add icon from data</p></td>
+      <td><p>data to list; data.frame with required column `header`
+and optionally `icon` and/or `description`.</p></td>
     </tr>
     <tr>
       <th>row</th>
