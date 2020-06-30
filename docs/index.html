@@ -96,59 +96,81 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
+
+<p><img src="reference/figures/hexsticker.png" align="right" alt="" width="130"></p>
 <div id="shinysemantic" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#shinysemantic" class="anchor"></a>shiny.semantic</h1></div>
-<p><img src="reference/figures/hexsticker.png" align="right" alt="" width="120"></p>
-<p><strong>Semantic UI wrapper for Shiny</strong></p>
 <!-- badges: start -->
 <p><img src="https://github.com/Appsilon/shiny.semantic/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"><a href="https://codecov.io/gh/Appsilon/shiny.semantic"><img src="https://codecov.io/gh/Appsilon/shiny.semantic/branch/master/graph/badge.svg" alt="codecov"></a></p>
 <p><a href="https://CRAN.R-project.org/package=shiny.semantic"><img src="https://cranlogs.r-pkg.org/badges/shiny.semantic" alt="cranlogs"></a> <a href="https://CRAN.R-project.org/package=shiny.semantic"><img src="https://cranlogs.r-pkg.org/badges/grand-total/shiny.semantic" alt="total"></a> <!-- badges: end --></p>
-<p>With this library it’s easy to wrap Shiny with <a href="https://github.com/Semantic-Org/Semantic-UI">Semantic UI components</a>. Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.</p>
-<p><code>master</code> branch contains the stable version. Use <code>develop</code> branch for latest features.</p>
-<h2>
-</h2>
-<p>Before</p>
-
-<p><img src="reference/figures/ss_before.png" alt="Before"></p>
-<h2>
-</h2>
-<p>After</p>
-
-<p><img src="reference/figures/ss_after.png" alt="After"></p>
+<p><strong>Fomantic (Semantic) UI wrapper for Shiny</strong></p>
+<p>With this library it is easy to wrap Shiny with <strong><a href="https://fomantic-ui.com/">Fomantic UI</a></strong> (previously <em>Semantic</em>). Add a few simple lines of code to give your UI a <strong>fresh, modern and highly interactive</strong> look.</p>
+<ul>
+<li><strong>shiny</strong></li>
+</ul>
+<p><img src="reference/figures/ss_before.png" alt="shiny" align="right" width="40%"></p>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny</span>)
+<span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span>(
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">div</a></span>(
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">div</a></span>(
+      <span class="fu"><a href="reference/simple_checkbox.html">a</a></span>(<span class="st">"Link"</span>),
+      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">p</a></span>(<span class="st">"Lorem ipsum, lorem ipsum, lorem ipsum"</span>),
+      <span class="fu"><a href="reference/actionButton.html">actionButton</a></span>(<span class="st">"button"</span>, <span class="st">"Click"</span>)
+    )
+  )
+)</pre></div>
+<ul>
+<li><strong>shiny.semantic</strong></li>
+</ul>
+<p><img src="reference/figures/ss_after.png" alt="semantic" align="right" width="40%"></p>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny.semantic</span>)
+<span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/semanticPage.html">semanticPage</a></span>(
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">div</a></span>(<span class="kw">class</span> <span class="kw">=</span> <span class="st">"ui raised segment"</span>,
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">div</a></span>(
+      <span class="fu"><a href="reference/simple_checkbox.html">a</a></span>(<span class="kw">class</span><span class="kw">=</span><span class="st">"ui green ribbon label"</span>, <span class="st">"Link"</span>),
+      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">p</a></span>(<span class="st">"Lorem ipsum, lorem ipsum, lorem ipsum"</span>),
+      <span class="fu"><a href="reference/actionButton.html">actionButton</a></span>(<span class="st">"button"</span>, <span class="st">"Click"</span>)
+    )
+  )
+)</pre></div>
 <div id="component-examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#component-examples" class="anchor"></a>Component examples</h2>
-<p><img src="reference/figures/semantic_components.png" alt="Components"></p>
-<p style="text-align: center; font-size: x-large;">
-</p>
+<p><img src="reference/figures/semantic_components.png" alt="" width="80%"></p>
+<center>
+<h3>
+</h3>
 <p><a href="https://demo.appsilon.ai/semantic/">Components live demo</a></p>
 
-<p>The source code for <strong>Components live demo</strong> is located in <strong>/examples</strong> folder. To run it locally you will have to install:</p>
-<ul>
-<li><a href="https://github.com/Appsilon/highlighter"><strong>highlighter</strong></a></li>
-</ul>
-<!-- end list --><div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"Appsilon/highlighter"</span>)</span></code></pre></div>
+</center>
+<p>See more examples with code in the <code>examples</code> folder.</p>
 <p>Check out also our dashboard examples made with <strong>shiny.semantic</strong> library:</p>
-<ol>
-<li><a href="https://demo.appsilon.ai/churn">Churn analytics</a></li>
-<li><a href="https://demo.appsilon.ai/frauds">Fraud detection</a></li>
-</ol>
+<table class="table">
+<thead><tr class="header">
+<th><a href="https://demo.appsilon.ai/churn">Churn analytics</a></th>
+<th><a href="https://demo.appsilon.ai/frauds">Fraud detection</a></th>
+</tr></thead>
+<tbody></tbody>
+</table>
 </div>
 <div id="how-to-install" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-install" class="anchor"></a>How to install?</h2>
-<p>You can install stable <code>shiny.semantic</code> release from CRAN repository:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">install.packages</span>(<span class="st">"shiny.semantic"</span>)</span></code></pre></div>
+<p>You can install a stable <code>shiny.semantic</code> release from CRAN repository:</p>
+<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"shiny.semantic"</span>)</pre></div>
+<p>and the latest version with devtools:</p>
+<div class="sourceCode" id="cb4"><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"Appsilon/`r params$repo_name`"</span>)</pre></div>
+<p>(<code>master</code> branch contains the stable version. Use <code>develop</code> branch for latest features)</p>
 <p>To install <a href="">previous versions</a> you can run:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"Appsilon/shiny.semantic"</span>, <span class="dt">ref =</span> <span class="st">"0.1.0"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"Appsilon/`r params$repo_name`"</span>, <span class="kw">ref</span> <span class="kw">=</span> <span class="st">"0.1.0"</span>)</pre></div>
 </div>
 <div id="how-to-use-it" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-use-it" class="anchor"></a>How to use it?</h2>
-<p>Firstly, you will have to invoke <code><a href="https://rdrr.io/pkg/shiny/man/shinyUI.html">shinyUI()</a></code> with <code><a href="reference/semanticPage.html">semanticPage()</a></code> instead of standard Shiny UI definitions like e.g. <code><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage()</a></code>. From now on forward all components can ba annotated with <a href="http://semantic-ui.com/introduction/getting-started.html">Semantic UI</a> specific CSS classes and also you will be able to use <a href="https://demo.appsilon.ai/semantic/">shiny.semantic components</a>.</p>
+<p>Firstly, you will have to invoke <code><a href="https://rdrr.io/pkg/shiny/man/shinyUI.html">shinyUI()</a></code> with <code><a href="reference/semanticPage.html">semanticPage()</a></code> instead of standard Shiny UI definitions like e.g. <code><a href="https://rdrr.io/pkg/shiny/man/bootstrapPage.html">bootstrapPage()</a></code>. From now on, all components can be annotated with <a href="https://fomantic-ui.com/">Fomantic UI</a> specific CSS classes and also you will be able to use <a href="https://demo.appsilon.ai/semantic/">shiny.semantic components</a>.</p>
 <p>Basic example for rendering a simple button. will look like this:</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny</span>)
+<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny.semantic</span>)
 <span class="no">ui</span> <span class="kw">&lt;-</span> <span class="kw">function</span>() {
   <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyUI.html">shinyUI</a></span>(
@@ -161,70 +183,71 @@
 <span class="no">server</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyServer.html">shinyServer</a></span>(<span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>) {
 })
 <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span>(<span class="kw">ui</span> <span class="kw">=</span> <span class="fu">ui</span>(), <span class="kw">server</span> <span class="kw">=</span> <span class="no">server</span>)</pre></div>
-<p>For better understanding it’s good to check <a href="http://semantic-ui.com/introduction/getting-started.html">Semantic UI documentation.</a></p>
+<p>For better understanding it’s good to check <a href="https://fomantic-ui.com/">Fomantic UI documentation.</a></p>
 <p><strong>Note #1</strong></p>
 <p>At the moment you have to pass page title in <code><a href="reference/semanticPage.html">semanticPage()</a></code></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">semanticPage</span>(<span class="dt">title =</span> <span class="st">"Your page title"</span>, ...)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">semanticPage</span>(<span class="dt">title =</span> <span class="st">"Your page title"</span>, ...)</span></code></pre></div>
 <p><strong>Note #2</strong></p>
-<p>You can switch off supressing bootstrap by calling <code><a href="reference/semanticPage.html">semanticPage(suppress_bootstrap = FALSE, ...)</a></code></p>
-<p><strong><br><span class="math display"><em>A</em><em>d</em><em>v</em><em>a</em><em>n</em><em>c</em><em>e</em><em>d</em></span><br> Using Semantic UI JavaScript elements</strong></p>
-<p>Some Semantic UI elements require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:</p>
+<p>The <code>shiny</code> package works with <strong>Bootstrap</strong> library under the hood. <code>shiny.semantic</code> uses <a href="https://fomantic-ui.com/">Fomantic UI</a>. Sometimes using both of these libraries may cause troubles with rendering specific UI elements. That is why by default we turn off Bootstrap dependencies.</p>
+<p>However, you can switch off suppressing bootstrap by calling <code><a href="reference/semanticPage.html">semanticPage(suppress_bootstrap = FALSE, ...)</a></code></p>
+<p><strong><br><span class="math display"><em>A</em><em>d</em><em>v</em><em>a</em><em>n</em><em>c</em><em>e</em><em>d</em></span><br> Using Fomantic UI JavaScript elements</strong></p>
+<p>Some Fomantic UI elements require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:</p>
 <ol>
 <li>Use <a href="https://github.com/daattali/shinyjs">shinyjs</a>
 </li>
 </ol>
-<!-- end list --><div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">library</span>(shinyjs)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>...</span>
-<span id="cb6-3"><a href="#cb6-3"></a>jsCode &lt;-<span class="st"> " # Semantic UI componts JS "</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>...</span>
-<span id="cb6-5"><a href="#cb6-5"></a>ui &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb6-6"><a href="#cb6-6"></a>  <span class="kw">shinyUI</span>(</span>
-<span id="cb6-7"><a href="#cb6-7"></a>    <span class="kw">semanticPage</span>(</span>
-<span id="cb6-8"><a href="#cb6-8"></a>      <span class="dt">title =</span> <span class="st">"Your page title"</span>,</span>
-<span id="cb6-9"><a href="#cb6-9"></a>      shinyjs<span class="op">::</span><span class="kw">useShinyjs</span>(),</span>
-<span id="cb6-10"><a href="#cb6-10"></a>      <span class="co"># Your UI code</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a>    )</span>
-<span id="cb6-12"><a href="#cb6-12"></a>  )</span>
-<span id="cb6-13"><a href="#cb6-13"></a>}</span>
-<span id="cb6-14"><a href="#cb6-14"></a>server &lt;-<span class="st"> </span><span class="kw">shinyServer</span>(<span class="cf">function</span>(input, output) {</span>
-<span id="cb6-15"><a href="#cb6-15"></a>  <span class="kw">runjs</span>(jsCode)</span>
-<span id="cb6-16"><a href="#cb6-16"></a>  <span class="co"># Your Shiny logic</span></span>
-<span id="cb6-17"><a href="#cb6-17"></a>})</span>
-<span id="cb6-18"><a href="#cb6-18"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> <span class="kw">ui</span>(), <span class="dt">server =</span> server)</span></code></pre></div>
+<!-- end list --><div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">library</span>(shinyjs)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>...</span>
+<span id="cb8-3"><a href="#cb8-3"></a>jsCode &lt;-<span class="st"> " # Fomantic UI componts JS "</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>...</span>
+<span id="cb8-5"><a href="#cb8-5"></a>ui &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb8-6"><a href="#cb8-6"></a>  <span class="kw">shinyUI</span>(</span>
+<span id="cb8-7"><a href="#cb8-7"></a>    <span class="kw">semanticPage</span>(</span>
+<span id="cb8-8"><a href="#cb8-8"></a>      <span class="dt">title =</span> <span class="st">"Your page title"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9"></a>      shinyjs<span class="op">::</span><span class="kw">useShinyjs</span>(),</span>
+<span id="cb8-10"><a href="#cb8-10"></a>      <span class="co"># Your UI code</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a>    )</span>
+<span id="cb8-12"><a href="#cb8-12"></a>  )</span>
+<span id="cb8-13"><a href="#cb8-13"></a>}</span>
+<span id="cb8-14"><a href="#cb8-14"></a>server &lt;-<span class="st"> </span><span class="kw">shinyServer</span>(<span class="cf">function</span>(input, output) {</span>
+<span id="cb8-15"><a href="#cb8-15"></a>  <span class="kw">runjs</span>(jsCode)</span>
+<span id="cb8-16"><a href="#cb8-16"></a>  <span class="co"># Your Shiny logic</span></span>
+<span id="cb8-17"><a href="#cb8-17"></a>})</span>
+<span id="cb8-18"><a href="#cb8-18"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> <span class="kw">ui</span>(), <span class="dt">server =</span> server)</span></code></pre></div>
 <ol>
 <li>Use <code>shiny::tags$script()</code>
 </li>
 </ol>
-<!-- end list --><div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>...</span>
-<span id="cb7-2"><a href="#cb7-2"></a>jsCode &lt;-<span class="st"> "</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="st">$(document).ready(function() {</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="st">  # Semantic UI components JS code, like:</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="st">  #$('.rating').rating('setting', 'clearable', true);</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="st">  #$('.disabled .rating').rating('disable');</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="st">})</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="st">...</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="st">"</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a></span>
-<span id="cb7-11"><a href="#cb7-11"></a>ui &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb7-12"><a href="#cb7-12"></a>  <span class="kw">shinyUI</span>(</span>
-<span id="cb7-13"><a href="#cb7-13"></a>    <span class="kw">semanticPage</span>(</span>
-<span id="cb7-14"><a href="#cb7-14"></a>      <span class="dt">title =</span> <span class="st">"My page"</span>,</span>
-<span id="cb7-15"><a href="#cb7-15"></a>      tags<span class="op">$</span><span class="kw">script</span>(jsCode),</span>
-<span id="cb7-16"><a href="#cb7-16"></a>      <span class="co"># Your UI code</span></span>
-<span id="cb7-17"><a href="#cb7-17"></a>    )</span>
-<span id="cb7-18"><a href="#cb7-18"></a>  )</span>
-<span id="cb7-19"><a href="#cb7-19"></a>}</span>
-<span id="cb7-20"><a href="#cb7-20"></a>...</span>
-<span id="cb7-21"><a href="#cb7-21"></a>server &lt;-<span class="st"> </span><span class="kw">shinyServer</span>(<span class="cf">function</span>(input, output) {</span>
-<span id="cb7-22"><a href="#cb7-22"></a>  <span class="co"># Your Shiny logic</span></span>
-<span id="cb7-23"><a href="#cb7-23"></a>})</span>
-<span id="cb7-24"><a href="#cb7-24"></a></span>
-<span id="cb7-25"><a href="#cb7-25"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> <span class="kw">ui</span>(), <span class="dt">server =</span> server)</span></code></pre></div>
+<!-- end list --><div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>...</span>
+<span id="cb9-2"><a href="#cb9-2"></a>jsCode &lt;-<span class="st"> "</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="st">$(document).ready(function() {</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="st">  # Semantic UI components JS code, like:</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="st">  #$('.rating').rating('setting', 'clearable', true);</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="st">  #$('.disabled .rating').rating('disable');</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="st">})</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="st">...</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="st">"</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a></span>
+<span id="cb9-11"><a href="#cb9-11"></a>ui &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb9-12"><a href="#cb9-12"></a>  <span class="kw">shinyUI</span>(</span>
+<span id="cb9-13"><a href="#cb9-13"></a>    <span class="kw">semanticPage</span>(</span>
+<span id="cb9-14"><a href="#cb9-14"></a>      <span class="dt">title =</span> <span class="st">"My page"</span>,</span>
+<span id="cb9-15"><a href="#cb9-15"></a>      tags<span class="op">$</span><span class="kw">script</span>(jsCode),</span>
+<span id="cb9-16"><a href="#cb9-16"></a>      <span class="co"># Your UI code</span></span>
+<span id="cb9-17"><a href="#cb9-17"></a>    )</span>
+<span id="cb9-18"><a href="#cb9-18"></a>  )</span>
+<span id="cb9-19"><a href="#cb9-19"></a>}</span>
+<span id="cb9-20"><a href="#cb9-20"></a>...</span>
+<span id="cb9-21"><a href="#cb9-21"></a>server &lt;-<span class="st"> </span><span class="kw">shinyServer</span>(<span class="cf">function</span>(input, output) {</span>
+<span id="cb9-22"><a href="#cb9-22"></a>  <span class="co"># Your Shiny logic</span></span>
+<span id="cb9-23"><a href="#cb9-23"></a>})</span>
+<span id="cb9-24"><a href="#cb9-24"></a></span>
+<span id="cb9-25"><a href="#cb9-25"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> <span class="kw">ui</span>(), <span class="dt">server =</span> server)</span></code></pre></div>
 </div>
 <div id="how-to-contribute" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-contribute" class="anchor"></a>How to contribute?</h2>
-<p>If you want to contribute to this project please submit a regular PR, once you’re done with new feature or bug fix.<br></p>
+<p>If you want to contribute to this project please submit a regular PR, once you’re done with new feature or bug fix.</p>
 <p><strong>Changes in documentation</strong></p>
 <p>Both repository <strong>README.md</strong> file and an official documentation page are generated with Rmarkdown, so if there is a need to update them, please modify accordingly a <strong>README.Rmd</strong> file and use “Knit”.</p>
 <p>Documentation is rendered with <code>pkgdown</code>. Just run <code><a href="https://pkgdown.r-lib.org/reference/build_site.html">pkgdown::build_site()</a></code> after rendering new <strong>README.md</strong>.</p>
@@ -241,9 +264,9 @@
 <!-- end list --><ul>
 <li>shiny</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">install.packages</span>(<span class="st">"shiny"</span>, <span class="dt">version=</span><span class="st">'0.14.2.9001'</span>)</span></code></pre></div>
+<!-- end list --><div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">install.packages</span>(<span class="st">"shiny"</span>, <span class="dt">version=</span><span class="st">'0.14.2.9001'</span>)</span></code></pre></div>
 <ol>
-<li>Some bugs may be related directly to Semantic UI. In that case please try to check issues on its <a href="https://github.com/Semantic-Org/Semantic-UI">repository.</a>
+<li>Some bugs may be related directly to Semantic UI. In that case please try to check issues on its <a href="https://github.com/fomantic/fomantic-ui">repository.</a>
 </li>
 <li>Some bugs may be related to <strong>Bootstrap</strong>. Please make sure you have it suppressed. Instructions are above in <strong>How to use it?</strong> section.</li>
 </ol>
@@ -253,18 +276,20 @@
 <a href="#future-enhacements" class="anchor"></a>Future enhacements</h2>
 <ul>
 <li>create all update functions for input components to mimic shiny as close as possible</li>
-<li>add some glue code in dsl.R to make using this package smoother</li>
-<li>adding more semantic componenets</li>
+<li>add some glue code in <code>dsl.R</code> to make using this package smoother</li>
+<li>adding more semantic components</li>
 <li>new version release on CRAN</li>
 </ul>
 </div>
 <div id="appsilon-data-science" class="section level2">
 <h2 class="hasAnchor">
 <a href="#appsilon-data-science" class="anchor"></a>Appsilon Data Science</h2>
+<p><img src="https://avatars0.githubusercontent.com/u/6096772" align="right" alt="" width="6%"></p>
 <p>Appsilon is the <strong>Full Service Certified RStudio Partner</strong>. Learn more at <a href="https://appsilon.com">appsilon.com</a>.</p>
 <p>Get in touch <a href="dev@appsilon.com">dev@appsilon.com</a></p>
 </div>
 </div>
+
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
