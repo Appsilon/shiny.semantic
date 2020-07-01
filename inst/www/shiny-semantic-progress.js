@@ -91,3 +91,78 @@ $.extend(semanticProgressBinding, {
 });
 
 Shiny.inputBindings.register(semanticProgressBinding, 'shiny.semanticProgress');
+
+
+  Shiny.addCustomMessageHandler('ssprogress', function(message) {
+    if (message.type && message.message) {
+      var handler = ssProgressHandlers[message.type];
+      if (handler)
+        handler.call(this, message.message);
+    }
+  });
+
+  var ssProgressHandlers = {
+    // Progress for a particular object
+    binding: function(message) {
+      var key = message.id;
+      var binding = this.$bindings[key];
+      if (binding) {
+        $(binding.el).trigger({
+          type: 'shiny:outputinvalidated',
+          binding: binding,
+          name: key
+        });
+        if (binding.showProgress) binding.showProgress(true);
+      }
+    },
+
+    // Open a page-level progress bar
+    open: function(message) {
+      console.log('Miaow!');
+
+      var sem_progress = document.createElement('div');
+      sem_progress.setAttribute('id', `ss-progress-${message.id}`);
+      sem_progress.setAttribute('class', `ui progress`);
+
+      sem_progress.innerHTML = `<div class="bar"><div class="progress"></div></div><div class="label">message</div></div>`;
+
+      var sem_toast = $('body').toast({
+        position: 'bottom right',
+        displayTime: 0,
+        closeOnClick: false,
+        message: sem_progress
+      });
+
+      console.log('Miaow! 3');
+      $(`#ss-progress-${message.id}`).progress({value: message.min, total: message.max});
+
+      console.log('Miaow! 4');
+    },
+
+    // Update page-level progress bar
+    update: function(message) {
+      // For new-style (starting in Shiny 0.14) progress indicators that use
+      // the notification API.
+      var progress = $('#ss-progress-' + message.id);
+
+      console.log("Woof!");
+
+      if (progress.length === 0)
+        return;
+
+        console.log("Woof! Woof!");
+
+      if (typeof(message.message) !== 'undefined') {
+        progress.progress('set label', message.message);
+      }
+      if (typeof(message.value) !== 'undefined' && message.value !== null) {
+        progress.progress('set progress', message.value);
+      }
+
+    },
+
+    // Close page-level progress bar
+    close: function(message) {
+      window.Shiny.notifications.remove(message.id);
+    }
+  };
