@@ -29,7 +29,7 @@ uibutton <- function(name, label, icon = NULL, class = NULL, ...) {
 
 #' Action button
 #'
-#' Creates an action button  whose value is initially zero, and increments by one each time it is pressed.
+#' Creates an action button whose value is initially zero, and increments by one each time it is pressed.
 #'
 #' @param inputId The input slot that will be used to access the value.
 #' @param label The contents of the button - a text label, but you could also use any other HTML, like an image.
@@ -37,6 +37,20 @@ uibutton <- function(name, label, icon = NULL, class = NULL, ...) {
 #' @param width The width of the input.
 #' @param ... Named attributes to be applied to the button or remaining parameters passed to uibutton,
 #'   like \code{class}.
+#'
+#' @examples
+#' if (interactive()){
+#' library(shiny)
+#' library(shiny.semantic)
+#' ui <- shinyUI(semanticPage(
+#'   actionButton("action_button", "Press Me!"),
+#'   textOutput("button_output")
+#' ))
+#' server <- function(input, output, session) {
+#'   output$button_output <- renderText(as.character(input$action_button))
+#' }
+#' shinyApp(ui, server)
+#' }
 #'
 #' @export
 actionButton <- function(inputId, label, icon = NULL, width = NULL, ...) {
@@ -54,6 +68,46 @@ actionButton <- function(inputId, label, icon = NULL, width = NULL, ...) {
 #' @param inputId The id of the input object.
 #' @param label The label to set for the input object.
 #' @param icon The icon to set for the input object. To remove the current icon, use icon=character(0)
+#'
+#' @examples
+#'
+#' if (interactive()){
+#' library(shiny)
+#' library(shiny.semantic)
+#'
+#' ui <- semanticPage(
+#'   actionButton("update", "Update other buttons"),
+#'   br(),
+#'   actionButton("goButton", "Go"),
+#'   br(),
+#'   actionButton("goButton2", "Go 2", icon = icon("home")),
+#'   br(),
+#'   actionButton("goButton3", "Go 3")
+#' )
+#'
+#' server <- function(input, output, session) {
+#'   observe({
+#'     req(input$update)
+#'
+#'     # Updates goButton's label and icon
+#'     updateActionButton(session, "goButton",
+#'                        label = "New label",
+#'                        icon = icon("calendar"))
+#'
+#'     # Leaves goButton2's label unchaged and
+#'     # removes its icon
+#'     updateActionButton(session, "goButton2",
+#'                        icon = character(0))
+#'
+#'     # Leaves goButton3's icon, if it exists,
+#'     # unchaged and changes its label
+#'     updateActionButton(session, "goButton3",
+#'                        label = "New label 3")
+#'   })
+#' }
+#' shinyApp(ui, server)
+#' }
+#'
 #' @export
 updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
   message <- list(label = label, icon = as.character(icon))
