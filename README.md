@@ -16,9 +16,8 @@
 
 With this library it is easy to wrap Shiny with **[Fomantic
 UI](https://fomantic-ui.com/)** (previously *Semantic*). Add a few
-simple lines of code to give your UI a **fresh, modern and highly
-interactive**
-look.
+simple lines of code to give your UI a **fresh, modern and highly 
+interactive** look.
 
   - **shiny**
 
@@ -249,8 +248,7 @@ However, if you encounter any problems, try the following:
     close as possible
   - add some glue code in `dsl.R` to make using this package smoother
   - adding more semantic components
-  - new version release on
-CRAN
+  - new version release on CRAN
 
 ## Appsilon Data Science
 
