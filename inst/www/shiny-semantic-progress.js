@@ -102,27 +102,13 @@ Shiny.inputBindings.register(semanticProgressBinding, 'shiny.semanticProgress');
   });
 
   var ssProgressHandlers = {
-    // Progress for a particular object
-    binding: function(message) {
-      var key = message.id;
-      var binding = this.$bindings[key];
-      if (binding) {
-        $(binding.el).trigger({
-          type: 'shiny:outputinvalidated',
-          binding: binding,
-          name: key
-        });
-        if (binding.showProgress) binding.showProgress(true);
-      }
-    },
-
     // Open a page-level progress bar
     open: function(message) {
-      console.log('Miaow!');
-
       var sem_progress = document.createElement('div');
       sem_progress.setAttribute('id', `ss-progress-${message.id}`);
       sem_progress.setAttribute('class', `ui progress`);
+      sem_progress.setAttribute('data-value', message.min);
+      sem_progress.setAttribute('data-total', message.max);
 
       sem_progress.innerHTML = `<div class="bar"><div class="progress"></div></div><div class="label">message</div></div>`;
 
@@ -132,11 +118,9 @@ Shiny.inputBindings.register(semanticProgressBinding, 'shiny.semanticProgress');
         closeOnClick: false,
         message: sem_progress
       });
+      $(sem_toast).attr('id', `ss-toast-${message.id}`);
 
-      console.log('Miaow! 3');
-      $(`#ss-progress-${message.id}`).progress({value: message.min, total: message.max});
-
-      console.log('Miaow! 4');
+      $(`#ss-progress-${message.id}`).progress();
     },
 
     // Update page-level progress bar
@@ -163,6 +147,6 @@ Shiny.inputBindings.register(semanticProgressBinding, 'shiny.semanticProgress');
 
     // Close page-level progress bar
     close: function(message) {
-      window.Shiny.notifications.remove(message.id);
+      $(`#ss-toast-${message.id}`).toast('close');
     }
   };
