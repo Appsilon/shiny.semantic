@@ -19,5 +19,20 @@ actionButton(inputId, label, icon = NULL, width = NULL, ...)
 like \code{class}.}
 }
 \description{
-Creates an action button  whose value is initially zero, and increments by one each time it is pressed.
+Creates an action button whose value is initially zero, and increments by one each time it is pressed.
+}
+\examples{
+if (interactive()){
+library(shiny)
+library(shiny.semantic)
+ui <- shinyUI(semanticPage(
+  actionButton("action_button", "Press Me!"),
+  textOutput("button_output")
+))
+server <- function(input, output, session) {
+  output$button_output <- renderText(as.character(input$action_button))
+}
+shinyApp(ui, server)
+}
+
 }

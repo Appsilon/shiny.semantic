@@ -16,7 +16,7 @@
 
 With this library it is easy to wrap Shiny with **[Fomantic
 UI](https://fomantic-ui.com/)** (previously *Semantic*). Add a few
-simple lines of code to give your UI a **fresh, modern and highly
+simple lines of code to give your UI a **fresh, modern and highly 
 interactive** look.
 
   - **shiny**
@@ -101,7 +101,7 @@ devtools::install_github("Appsilon/`r params$repo_name`", ref = "0.1.0")
 ## How to use it?
 
 Firstly, you will have to invoke `shinyUI()` with `semanticPage()`
-instead of standard Shiny UI definitions like e.g. `bootstrapPage()`.
+instead of standard Shiny UI definitions like e.g. `bootstrapPage()`.
 From now on, all components can be annotated with [Fomantic
 UI](https://fomantic-ui.com/) specific CSS classes and also you will be
 able to use [shiny.semantic
@@ -215,6 +215,8 @@ please modify accordingly a **README.Rmd** file and use “Knit”.
 
 Documentation is rendered with `pkgdown`. Just run
 `pkgdown::build_site()` after rendering new **README.md**.
+
+Make sure to check our [Code of Conduct]().
 
 ## Troubleshooting
 
