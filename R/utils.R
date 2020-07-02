@@ -23,3 +23,16 @@ check_proper_color <- function(color) {
     invisible(color)
   }
 }
+
+#' Create a unique ID for HTML object
+create_unique_id <- function(nchar) {
+  paste(sample(c(LETTERS, letters, 0:9), nchar, replace = TRUE), collapse = "")
+}
+
+#' Checks whether argument included as shiny exclusive parameter
+check_shiny_param <- function(name, func, ...) {
+  args <- list(...)
+  args_names <- names(args)
+
+  if (name %in% args_names) message("'", name, "' is a shiny::", func, " specific parameter")
+}
