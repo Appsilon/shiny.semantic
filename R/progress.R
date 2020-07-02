@@ -103,10 +103,6 @@ update_progress <- function(session, name, type = c("increment", "decrement", "l
 #'
 #' @param message A single-element character vector; the message to be
 #'   displayed to the user, or `NULL` to hide the current message (if any).
-#' @param detail A single-element character vector; the detail message to be
-#'   displayed to the user, or `NULL` to hide the current detail message (if
-#'   any). The detail message will be shown with a de-emphasized appearance
-#'   relative to `message`.
 #'
 #' @examples
 #' ## Only run examples in interactive R sessions
@@ -121,8 +117,7 @@ update_progress <- function(session, name, type = c("increment", "decrement", "l
 #'     progress <- Progress$new(session, min=1, max=15)
 #'     on.exit(progress$close())
 #'
-#'     progress$set(message = 'Calculation in progress',
-#'                  detail = 'This may take a while...')
+#'     progress$set(message = 'Calculation in progress')
 #'
 #'     for (i in 1:15) {
 #'       progress$set(value = i)
@@ -149,32 +144,21 @@ Progress <- R6::R6Class(
     #'   bar. Must be less than `max`.
     #' @param max The value that represents the end of the progress bar. Must be
     #'   greater than `min`.
-    #' @param style Progress display style. If `"notification"` (the default),
-    #'   the progress indicator will show using Shiny's notification API. If
-    #'   `"old"`, use the same HTML and CSS used in Shiny 0.13.2 and below (this
-    #'   is for backward-compatibility).
-    initialize = function(session = getDefaultReactiveDomain(),
-                          min = 0, max = 1,
-                          style = getShinyOption("progress.style", default = "notification"))
-    {
-      if (is.null(session$progressStack))
-        stop("'session' is not a ShinySession object.")
+    #' @param ... Arguments that may have been used for `shiny::Progress`
+    initialize = function(session = getDefaultReactiveDomain(), min = 0, max = 1, ...) {
+      if (is.null(session$progressStack)) stop("'session' is not a ShinySession object.")
+      check_shiny_param("style", "Progress", ...)
 
       private$session <- session
-      private$id <- shiny:::createUniqueId(8)
+      private$id <- create_unique_id(8)
       private$min <- min
       private$max <- max
       private$value <- NULL
-      private$style <- match.arg(style, choices = c("notification", "old"))
       private$closed <- FALSE
 
-      data <- list(
-        id = private$id, style = private$style, min = min, max = max
-      )
+      data <- list(id = private$id, min = min, max = max)
 
-      session$sendCustomMessage(
-        "ssprogress", list(type = "open", message = data)
-      )
+      session$sendCustomMessage("ssprogress", list(type = "open", message = data))
     },
 
     #' @description Updates the progress panel. When called the first time, the
@@ -182,28 +166,20 @@ Progress <- R6::R6Class(
     #' @param value Single-element numeric vector; the value at which to set the
     #'   progress bar, relative to `min` and `max`. `NULL` hides the progress
     #'   bar, if it is currently visible.
-    set = function(value = NULL, message = NULL, detail = NULL) {
+    #' @param ... Arguments that may have been used for `shiny::Progress`
+    set = function(value = NULL, message = NULL, ...) {
       if (private$closed) {
         warning("Attempting to set progress, but progress already closed.")
         return()
       }
 
-      if (is.null(value) || is.na(value))
-        value <- NULL
+      check_shiny_param("detail", "Progress", ...)
 
-      if (!is.null(value)) {
-        private$value <- value
-        # Normalize value to number between 0 and 1
-        value <- value
-      }
+      if (is.null(value) || is.na(value)) value <- NULL
+      if (!is.null(value)) private$value <- value
 
-      data <- shiny:::dropNulls(list(
-        id = private$id,
-        message = message,
-        detail = detail,
-        value = value,
-        style = private$style
-      ))
+      data <- list(id = private$id, message = message, value = value, style = private$style)
+      data <- data[!vapply(data, is.null, logical(1))]
 
       private$session$sendCustomMessage("ssprogress", list(type = "update", message = data))
     },
@@ -213,12 +189,14 @@ Progress <- R6::R6Class(
     #'   setting it to a specific value.
     #' @param amount For the `inc()` method, a numeric value to increment the
     #'   progress bar.
-    inc = function(amount = 0.1, message = NULL, detail = NULL) {
-      if (is.null(private$value))
-        private$value <- private$min
+    #' @param ... Arguments that may have been used for `shiny::Progress`
+    inc = function(amount = 0.1, message = NULL, ...) {
+      check_shiny_param("detail", "Progress", ...)
+
+      if (is.null(private$value)) private$value <- private$min
 
       value <- min(private$value + amount, private$max)
-      self$set(value, message, detail)
+      self$set(value, message)
     },
 
     #' @description Returns the minimum value.
@@ -246,7 +224,7 @@ Progress <- R6::R6Class(
   ),
 
   private = list(
-    session = 'ShinySession',
+    session = "ShinySession",
     id = character(0),
     min = numeric(0),
     max = numeric(0),
@@ -279,14 +257,6 @@ Progress <- R6::R6Class(
 #' is not common) or otherwise cannot be encapsulated by a single scope. In that
 #' case, you can use the `Progress` reference class.
 #'
-#' As of version 0.14, the progress indicators use Shiny's new notification API.
-#' If you want to use the old styling (for example, you may have used customized
-#' CSS), you can use `style="old"` each time you call
-#' `withProgress()`. If you don't want to set the style each time
-#' `withProgress` is called, you can instead call
-#' [`shinyOptions(progress.style="old")`][shinyOptions] just once, inside the server
-#' function.
-#'
 #' @param session The Shiny session object, as provided by `shinyServer` to
 #'   the server function. The default is to automatically find the session by
 #'   using the current reactive domain.
@@ -303,16 +273,9 @@ Progress <- R6::R6Class(
 #'   common).
 #' @param message A single-element character vector; the message to be displayed
 #'   to the user, or `NULL` to hide the current message (if any).
-#' @param detail A single-element character vector; the detail message to be
-#'   displayed to the user, or `NULL` to hide the current detail message
-#'   (if any). The detail message will be shown with a de-emphasized appearance
-#'   relative to `message`.
-#' @param style Progress display style. If `"notification"` (the default),
-#'   the progress indicator will show using Shiny's notification API. If
-#'   `"old"`, use the same HTML and CSS used in Shiny 0.13.2 and below
-#'   (this is for backward-compatibility).
 #' @param value Single-element numeric vector; the value at which to set the
 #'   progress bar, relative to `min` and `max`.
+#' @param ... Arguments that may have been used in `shiny::withProgress`
 #'
 #' @examples
 #' ## Only run examples in interactive R sessions
@@ -340,25 +303,20 @@ Progress <- R6::R6Class(
 #' }
 #'
 #' @seealso [Progress()]
-#' @rdname withProgress
+#' @rdname with_progress
 #' @export
 withProgress <- function(expr, min = 0, max = 1,
-                         value = min + (max - min) * 0.1,
-                         message = NULL, detail = NULL,
-                         style = getShinyOption("progress.style", default = "notification"),
+                         value = min + (max - min) * 0.1, message = NULL,
                          session = getDefaultReactiveDomain(),
-                         env = parent.frame(), quoted = FALSE)
-{
+                         env = parent.frame(), quoted = FALSE, ...) {
+  if (is.null(session$progressStack)) stop("'session' is not a ShinySession object.")
 
-  if (!quoted)
-    expr <- substitute(expr)
+  check_shiny_param("style", "withProgress", ...)
+  check_shiny_param("detail", "withProgress", ...)
 
-  if (is.null(session$progressStack))
-    stop("'session' is not a ShinySession object.")
+  if (!quoted) expr <- substitute(expr)
 
-  style <- match.arg(style, c("notification", "old"))
-
-  p <- Progress$new(session, min = min, max = max, style = style)
+  p <- Progress$new(session, min = min, max = max)
 
   session$progressStack$push(p)
   on.exit({
@@ -366,42 +324,73 @@ withProgress <- function(expr, min = 0, max = 1,
     p$close()
   })
 
-  p$set(value, message, detail)
-
+  p$set(value, message)
   eval(expr, env)
 }
 
-#' @rdname withProgress
+#' @rdname with_progress
 #' @export
-setProgress <- function(value = NULL, message = NULL, detail = NULL,
-                        session = getDefaultReactiveDomain()) {
+with_progress <- function(expr, min = 0, max = 1,
+                         value = min + (max - min) * 0.1, message = NULL,
+                         session = getDefaultReactiveDomain(),
+                         env = parent.frame(), quoted = FALSE) {
+  if (is.null(session$progressStack)) stop("'session' is not a ShinySession object.")
 
-  if (is.null(session$progressStack))
-    stop("'session' is not a ShinySession object.")
+  if (!quoted) expr <- substitute(expr)
+
+  p <- Progress$new(session, min = min, max = max)
+
+  session$progressStack$push(p)
+  on.exit({
+    session$progressStack$pop()
+    p$close()
+  })
+
+  p$set(value, message)
+  eval(expr, env)
+}
+
+#' @rdname with_progress
+#' @export
+setProgress <- function(value = NULL, message = NULL, session = getDefaultReactiveDomain(), ...) {
+  check_shiny_param("detail", "withProgress", ...)
+
+  set_progress(value, message, session)
+}
+
+#' @rdname with_progress
+#' @export
+set_progress <- function(value = NULL, message = NULL, session = getDefaultReactiveDomain()) {
+  if (is.null(session$progressStack)) stop("'session' is not a ShinySession object.")
 
   if (session$progressStack$size() == 0) {
-    warning('setProgress was called outside of withProgress; ignoring')
+    warning('set_progress was called outside of with_progress; ignoring')
     return()
   }
 
-  session$progressStack$peek()$set(value, message, detail)
+  session$progressStack$peek()$set(value, message)
   invisible()
 }
 
-#' @rdname withProgress
+#' @rdname with_progress
 #' @export
-incProgress <- function(amount = 0.1, message = NULL, detail = NULL,
-                        session = getDefaultReactiveDomain()) {
+incProgress <- function(amount = 0.1, message = NULL, session = getDefaultReactiveDomain(), ...) {
+  check_shiny_param("detail", "withProgress", ...)
 
-  if (is.null(session$progressStack))
-    stop("'session' is not a ShinySession object.")
+  inc_progress(amount, message, session)
+}
+
+#' @rdname with_pregress
+#' @export
+inc_progress <- function(amount = 0.1, message = NULL, session = getDefaultReactiveDomain(), ...) {
+  if (is.null(session$progressStack)) stop("'session' is not a ShinySession object.")
 
   if (session$progressStack$size() == 0) {
-    warning('incProgress was called outside of withProgress; ignoring')
+    warning('inc_progress was called outside of with_progress; ignoring')
     return()
   }
 
   p <- session$progressStack$peek()
-  p$inc(amount, message, detail)
+  p$inc(amount, message)
   invisible()
 }

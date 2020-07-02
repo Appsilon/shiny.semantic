@@ -42,8 +42,7 @@ server <- function(input, output, session) {
     progress <- Progress$new(session, min=1, max=15)
     on.exit(progress$close())
 
-    progress$set(message = 'Calculation in progress',
-                 detail = 'This may take a while...')
+    progress$set(message = 'Calculation in progress')
 
     for (i in 1:15) {
       progress$set(value = i)
@@ -78,12 +77,7 @@ shinyApp(ui, server)
 \subsection{Method \code{new()}}{
 Creates a new progress panel (but does not display it).
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Progress$new(
-  session = getDefaultReactiveDomain(),
-  min = 0,
-  max = 1,
-  style = getShinyOption("progress.style", default = "notification")
-)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Progress$new(session = getDefaultReactiveDomain(), min = 0, max = 1, ...)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -98,10 +92,7 @@ bar. Must be less than `max`.}
 \item{\code{max}}{The value that represents the end of the progress bar. Must be
 greater than `min`.}
 
-\item{\code{style}}{Progress display style. If `"notification"` (the default),
-the progress indicator will show using Shiny's notification API. If
-`"old"`, use the same HTML and CSS used in Shiny 0.13.2 and below (this
-is for backward-compatibility).}
+\item{\code{...}}{Arguments that may have been used for `shiny::Progress`}
 }
 \if{html}{\out{</div>}}
 }
@@ -113,7 +104,7 @@ is for backward-compatibility).}
 Updates the progress panel. When called the first time, the
   progress panel is displayed.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Progress$set(value = NULL, message = NULL, detail = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Progress$set(value = NULL, message = NULL, ...)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -126,10 +117,7 @@ bar, if it is currently visible.}
 \item{\code{message}}{A single-element character vector; the message to be
 displayed to the user, or `NULL` to hide the current message (if any).}
 
-\item{\code{detail}}{A single-element character vector; the detail message to be
-displayed to the user, or `NULL` to hide the current detail message (if
-any). The detail message will be shown with a de-emphasized appearance
-relative to `message`.}
+\item{\code{...}}{Arguments that may have been used for `shiny::Progress`}
 }
 \if{html}{\out{</div>}}
 }
@@ -142,7 +130,7 @@ Like `set`, this updates the progress panel. The difference
   is that `inc` increases the progress bar by `amount`, instead of
   setting it to a specific value.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Progress$inc(amount = 0.1, message = NULL, detail = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Progress$inc(amount = 0.1, message = NULL, ...)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -154,10 +142,7 @@ progress bar.}
 \item{\code{message}}{A single-element character vector; the message to be
 displayed to the user, or `NULL` to hide the current message (if any).}
 
-\item{\code{detail}}{A single-element character vector; the detail message to be
-displayed to the user, or `NULL` to hide the current detail message (if
-any). The detail message will be shown with a de-emphasized appearance
-relative to `message`.}
+\item{\code{...}}{Arguments that may have been used for `shiny::Progress`}
 }
 \if{html}{\out{</div>}}
 }

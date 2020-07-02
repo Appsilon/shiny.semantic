@@ -2,7 +2,9 @@
 % Please edit documentation in R/progress.R
 \name{withProgress}
 \alias{withProgress}
+\alias{with_progress}
 \alias{setProgress}
+\alias{set_progress}
 \alias{incProgress}
 \title{Reporting progress (functional API)}
 \usage{
@@ -12,8 +14,18 @@ withProgress(
   max = 1,
   value = min + (max - min) * 0.1,
   message = NULL,
-  detail = NULL,
-  style = getShinyOption("progress.style", default = "notification"),
+  session = getDefaultReactiveDomain(),
+  env = parent.frame(),
+  quoted = FALSE,
+  ...
+)
+
+with_progress(
+  expr,
+  min = 0,
+  max = 1,
+  value = min + (max - min) * 0.1,
+  message = NULL,
   session = getDefaultReactiveDomain(),
   env = parent.frame(),
   quoted = FALSE
@@ -22,15 +34,21 @@ withProgress(
 setProgress(
   value = NULL,
   message = NULL,
-  detail = NULL,
+  session = getDefaultReactiveDomain(),
+  ...
+)
+
+set_progress(
+  value = NULL,
+  message = NULL,
   session = getDefaultReactiveDomain()
 )
 
 incProgress(
   amount = 0.1,
   message = NULL,
-  detail = NULL,
-  session = getDefaultReactiveDomain()
+  session = getDefaultReactiveDomain(),
+  ...
 )
 }
 \arguments{
@@ -49,16 +67,6 @@ progress bar, relative to `min` and `max`.}
 \item{message}{A single-element character vector; the message to be displayed
 to the user, or `NULL` to hide the current message (if any).}
 
-\item{detail}{A single-element character vector; the detail message to be
-displayed to the user, or `NULL` to hide the current detail message
-(if any). The detail message will be shown with a de-emphasized appearance
-relative to `message`.}
-
-\item{style}{Progress display style. If `"notification"` (the default),
-the progress indicator will show using Shiny's notification API. If
-`"old"`, use the same HTML and CSS used in Shiny 0.13.2 and below
-(this is for backward-compatibility).}
-
 \item{session}{The Shiny session object, as provided by `shinyServer` to
 the server function. The default is to automatically find the session by
 using the current reactive domain.}
@@ -67,6 +75,8 @@ using the current reactive domain.}
 
 \item{quoted}{Whether `expr` is a quoted expression (this is not
 common).}
+
+\item{...}{Arguments that may have been used in `shiny::withProgress`}
 
 \item{amount}{For `incProgress`, the amount to increment the status bar.
 Default is 0.1.}
@@ -93,14 +103,6 @@ Generally, `withProgress`/`incProgress`/`setProgress` should
 be sufficient; the exception is if the work to be done is asynchronous (this
 is not common) or otherwise cannot be encapsulated by a single scope. In that
 case, you can use the `Progress` reference class.
-
-As of version 0.14, the progress indicators use Shiny's new notification API.
-If you want to use the old styling (for example, you may have used customized
-CSS), you can use `style="old"` each time you call
-`withProgress()`. If you don't want to set the style each time
-`withProgress` is called, you can instead call
-[`shinyOptions(progress.style="old")`][shinyOptions] just once, inside the server
-function.
 }
 \examples{
 ## Only run examples in interactive R sessions
