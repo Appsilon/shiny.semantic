@@ -449,15 +449,11 @@ menu_divider <- function(...) {
 #' @param icon character with
 #'
 #' @import shiny
-list_element <- function(header, description, icon) {
+list_element <- function(header, description, icon = NULL) {
   div(class = "item",  if (!is.null(icon)) uiicon(icon) else "",
-      if (!is.null(description) && !is.null(header)) {
-        div(class = "content",
-            div(class = "header", header),
-            div(class = "description", description))
-      } else {
-        div(class = "content", paste0(header, description))
-      }
+      div(class = "content",
+          div(class = "header", header),
+          div(class = "description", description))
   )
 }
 
@@ -478,7 +474,8 @@ list_element <- function(header, description, icon) {
 #'
 #' list_content <- list(
 #'   list(header = "Head", description = "Lorem ipsum", icon = "cat"),
-#'   list(header = "Head 2", icon = "tree")
+#'   list(header = "Head 2", icon = "tree"),
+#'   list(description = "Lorem ipsum 2", icon = "dog")
 #' )
 #'
 #' uilist(list_content, is_divided = TRUE)
