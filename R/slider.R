@@ -9,7 +9,7 @@
 #' @param min The minimum value allowed to be selected for the slider.
 #' @param max The maximum value allowed to be selected for the slider.
 #' @param step The interval between each selectable value of the slider.
-#' @param type UI class of the slider. Can include \code{"Labeled"} and \code{"ticked"}.
+#' @param class UI class of the slider. Can include \code{"Labeled"} and \code{"ticked"}.
 #'
 #' @details
 #' Use \code{\link{update_slider}} to update the slider/range within the shiny session.
@@ -62,9 +62,9 @@
 #' \url{https://fomantic-ui.com/modules/slider.html} for preset classes.
 #'
 #' @export
-uislider <- function(name, value, min, max, step = 1, type = NULL) {
+uislider <- function(name, value, min, max, step = 1, class = NULL) {
   div(
-    id = name, class = paste("ui slider", type),
+    id = name, class = paste("ui slider", class),
     `data-min` = min, `data-max` = max, `data-step` = step, `data-start` = value
   )
 }
@@ -73,9 +73,9 @@ uislider <- function(name, value, min, max, step = 1, type = NULL) {
 #' @param value2 The initial upper value of the slider.
 #'
 #' @export
-uirange <- function(name, value, value2, min, max, step = 1, type = NULL) {
+uirange <- function(name, value, value2, min, max, step = 1, class = NULL) {
   div(
-    id = name, class = paste("ui range slider", type),
+    id = name, class = paste("ui range slider", class),
     `data-min` = min, `data-max` = max, `data-step` = step, `data-start` = value, `data-end` = value2
   )
 }

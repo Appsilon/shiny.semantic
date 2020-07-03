@@ -4,20 +4,16 @@
 \alias{uilist}
 \title{Create Semantic UI list with header, description and icons}
 \usage{
-uilist(data, is_icon = FALSE, is_divided = FALSE, is_description = FALSE)
+uilist(data, is_divided = FALSE)
 }
 \arguments{
-\item{data}{A dataframe with columns `header` and/or `description`, `icon` containing the list items
-headers, descriptions and icons. `description` column is optional and should be provided
-if `is_description` parameter TRUE. `icon` column is optional and should be provided
-if `is_icon` parameter TRUE. Icon column should contain strings with icon names available
+\item{data}{A dataframe with columns `header` and/or `description`, `icon`
+containing the list items headers, descriptions and icons.
+The `description`  and `icon` columns are optional.
+Icon column should contain strings with icon names available
 here: https://semantic-ui.com/elements/icon.html}
 
-\item{is_icon}{IF TRUE created list has icons}
-
 \item{is_divided}{If TRUE created list elements are divided}
-
-\item{is_description}{If TRUE created list will have a description}
 }
 \description{
 This creates a list with icons using Semantic UI
@@ -32,5 +28,5 @@ list_content <- data.frame(
 )
 
 # Create a 5 element divided list with alert icons and description
-uilist(list_content, is_icon = TRUE, is_divided = TRUE, is_description = TRUE)
+uilist(list_content, is_divided = TRUE)
 }

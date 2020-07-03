@@ -5,9 +5,9 @@
 \alias{uirange}
 \title{Create Semantic UI Slider}
 \usage{
-uislider(name, value, min, max, step = 1, type = NULL)
+uislider(name, value, min, max, step = 1, class = NULL)
 
-uirange(name, value, value2, min, max, step = 1, type = NULL)
+uirange(name, value, value2, min, max, step = 1, class = NULL)
 }
 \arguments{
 \item{name}{Input name. Reactive value is available under \code{input[[name]]}.}
@@ -20,7 +20,7 @@ uirange(name, value, value2, min, max, step = 1, type = NULL)
 
 \item{step}{The interval between each selectable value of the slider.}
 
-\item{type}{UI class of the slider. Can include \code{"Labeled"} and \code{"ticked"}.}
+\item{class}{UI class of the slider. Can include \code{"Labeled"} and \code{"ticked"}.}
 
 \item{value2}{The initial upper value of the slider.}
 }

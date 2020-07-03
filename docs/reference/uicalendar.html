@@ -8,10 +8,12 @@
 
 <title>Create Semantic UI Calendar — uicalendar • SHINY.SEMANTIC</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -36,12 +38,11 @@
 
 
 
-<meta property="og:title" content="Create Semantic UI Calendar — uicalendar" />
 
+<meta property="og:title" content="Create Semantic UI Calendar — uicalendar" />
 <meta property="og:description" content="This creates a default calendar input using Semantic UI. The input is available
 under input[[name]].
 This function updates the date on a calendar" />
-
 
 
 
@@ -73,7 +74,7 @@ This function updates the date on a calendar" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -87,7 +88,6 @@ This function updates the date on a calendar" />
   </a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
@@ -104,7 +104,14 @@ This function updates the date on a calendar" />
   </a>
 </li>
 <li>
-  <a href="https://github.com/ropensci/MODIStsp/">
+  <a href="../CODE_OF_CONDUCT.html">
+    <span class="fa fa-user-o"></span>
+     
+    CoC
+  </a>
+</li>
+<li>
+  <a href="https://github.com/Appsilon/shiny.semantic">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -134,11 +141,9 @@ This function updates the date on a calendar" />
     </div>
 
     <div class="ref-description">
-    
     <p>This creates a default calendar input using Semantic UI. The input is available
 under <code>input[[name]]</code>.</p>
 <p>This function updates the date on a calendar</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>uicalendar</span>(
@@ -151,7 +156,7 @@ under <code>input[[name]]</code>.</p>
 )
 
 <span class='fu'>update_calendar</span>(<span class='no'>session</span>, <span class='no'>id</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -161,7 +166,7 @@ under <code>input[[name]]</code>.</p>
     </tr>
     <tr>
       <th>value</th>
-      <td><p>The date to be set, default NULL</p></td>
+      <td><p>Initial value of the numeric input.</p></td>
     </tr>
     <tr>
       <th>placeholder</th>
@@ -173,11 +178,11 @@ under <code>input[[name]]</code>.</p>
     </tr>
     <tr>
       <th>min</th>
-      <td><p>Minimum date that will be possible to set, default NULL</p></td>
+      <td><p>Minimum allowed value.</p></td>
     </tr>
     <tr>
       <th>max</th>
-      <td><p>Maximum date that will be possible to set, default NULL</p></td>
+      <td><p>Maximum allowed value.</p></td>
     </tr>
     <tr>
       <th>session</th>
@@ -189,7 +194,7 @@ under <code>input[[name]]</code>.</p>
       <td><p>ID of the calendar that will be updated</p></td>
     </tr>
     </table>
-    
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Basic calendar</span>

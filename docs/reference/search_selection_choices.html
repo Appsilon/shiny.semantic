@@ -8,10 +8,12 @@
 
 <title>Add Semantic UI search selection dropdown based on provided choices — search_selection_choices • SHINY.SEMANTIC</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -36,11 +38,10 @@
 
 
 
-<meta property="og:title" content="Add Semantic UI search selection dropdown based on provided choices — search_selection_choices" />
 
+<meta property="og:title" content="Add Semantic UI search selection dropdown based on provided choices — search_selection_choices" />
 <meta property="og:description" content="Define the (multiple) search selection dropdown input component serving
 search options using provided choices." />
-
 
 
 
@@ -72,7 +73,7 @@ search options using provided choices." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -86,7 +87,6 @@ search options using provided choices." />
   </a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
@@ -103,7 +103,14 @@ search options using provided choices." />
   </a>
 </li>
 <li>
-  <a href="https://github.com/ropensci/MODIStsp/">
+  <a href="../CODE_OF_CONDUCT.html">
+    <span class="fa fa-user-o"></span>
+     
+    CoC
+  </a>
+</li>
+<li>
+  <a href="https://github.com/Appsilon/shiny.semantic">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -133,10 +140,8 @@ search options using provided choices." />
     </div>
 
     <div class="ref-description">
-    
     <p>Define the (multiple) search selection dropdown input component serving
 search options using provided choices.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>search_selection_choices</span>(
@@ -148,7 +153,7 @@ search options using provided choices.</p>
   <span class='kw'>groups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>dropdown_settings</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>forceSelection</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 )</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -185,7 +190,7 @@ Specifying the parameter enables group dropdown search implementation.</p></td>
 See https://semantic-ui.com/modules/dropdown.html#/settings</p></td>
     </tr>
     </table>
-    
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Only run examples in interactive R sessions</span>

@@ -28,6 +28,9 @@ $.extend(semanticDropdownBinding, {
     let value = $(el).children('input').val();
     // Enables the dropdown to be a vector if multiple class
     if ($(el).hasClass('multiple')) {
+      if (value === "") {
+        return null;
+      }
       value = value.split(",");
     }
     return value;
@@ -48,7 +51,7 @@ $.extend(semanticDropdownBinding, {
   // callback is a function that queues data to be sent to
   // the server.
   subscribe: function(el, callback) {
-    $(el).on('keyup change', function () { callback(true); });
+    $(el).on('keyup change', function () { callback(); });
   },
 
   // TODO: Remove the event listeners.
@@ -79,6 +82,10 @@ $.extend(semanticDropdownBinding, {
 
     if (data.hasOwnProperty('value')) {
       this.setValue(el, data.value);
+    }
+
+    if (data.hasOwnProperty('label')) {
+      $("label[for='" + el.id + "'").html(data.label);
     }
 
     $(el).trigger('change');

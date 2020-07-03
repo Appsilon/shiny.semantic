@@ -12,6 +12,22 @@ uiicon <- function(type = "", ...) {
   shiny::tags$i(class = paste(type, "icon"), ...)
 }
 
+#' Create an icon
+#'
+#' Create an icon for use within a page.
+#'
+#' @param name Name of icon. See [Fomantic Icons](https://fomantic-ui.com/elements/icon.html).
+#' @param class Additional classes to customize the style of the icon.
+#'   See [Fomantic Icon Definitions](https://fomantic-ui.com/elements/icon.html#/definition).
+#' @param ... Named attributes to be applied to the icon.
+#'
+#' @export
+icon <- function(name, class = NULL, ...) {
+  args_list <- list(...)
+  args_list$type <- paste(args_list$type, name, class)
+  do.call(uiicon, args_list)
+}
+
 #' Create Semantic UI label tag
 #'
 #' This creates a label tag using Semantic UI.
@@ -289,7 +305,6 @@ uimessage <- function(header, content, type = "", icon, closable = FALSE) {
 #'   shinyUI(
 #'     semanticPage(
 #'       title = "My page",
-#'       suppressDependencies("bootstrap"),
 #'       uimenu(menu_item("Menu"),
 #'              uidropdown(
 #'                "Action",
@@ -429,16 +444,14 @@ menu_divider <- function(...) {
 
 #' Helper function to render list element
 #'
-#' @param data data to list; data.frame with fields
-#' header, icon, description
-#' @param is_description description flag
-#' @param is_icon Icon logical to add icon from data
+#' @param data data to list; data.frame with required column `header`
+#' and optionally `icon` and/or `description`.
 #' @param row row character
 #'
 #' @import shiny
-list_element <- function(data, is_description, is_icon, row) {
-  div(class = "item",  if (is_icon) uiicon(data$icon[row]) else "",
-      if (is_description) {
+list_element <- function(data, row) {
+  div(class = "item",  if ("icon" %in% colnames(data)) uiicon(data$icon[row]) else "",
+      if ("description" %in% colnames(data)) {
         div(class = "content",
             div(class = "header", data$header[row]),
             div(class = "description", data$description[row]))
@@ -452,14 +465,12 @@ list_element <- function(data, is_description, is_icon, row) {
 #'
 #' This creates a list with icons using Semantic UI
 #'
-#' @param data A dataframe with columns `header` and/or `description`, `icon` containing the list items
-#' headers, descriptions and icons. `description` column is optional and should be provided
-#' if `is_description` parameter TRUE. `icon` column is optional and should be provided
-#' if `is_icon` parameter TRUE. Icon column should contain strings with icon names available
+#' @param data A dataframe with columns `header` and/or `description`, `icon`
+#' containing the list items headers, descriptions and icons.
+#' The `description`  and `icon` columns are optional.
+#' Icon column should contain strings with icon names available
 #' here: https://semantic-ui.com/elements/icon.html
-#' @param is_icon IF TRUE created list has icons
 #' @param is_divided If TRUE created list elements are divided
-#' @param is_description If TRUE created list will have a description
 #'
 #' @export
 #' @import shiny
@@ -474,14 +485,13 @@ list_element <- function(data, is_description, is_icon, row) {
 #' )
 #'
 #' # Create a 5 element divided list with alert icons and description
-#' uilist(list_content, is_icon = TRUE, is_divided = TRUE, is_description = TRUE)
-uilist <- function(data, is_icon = FALSE, is_divided = FALSE, is_description = FALSE) {
+#' uilist(list_content, is_divided = TRUE)
+uilist <- function(data, is_divided = FALSE) {
   divided_list <- ifelse(is_divided, "divided", "")
   list_class <- paste("ui", divided_list, "list")
-
   div(class = list_class,
       seq_len(nrow(data)) %>% purrr::map(function(row) {
-        list_element(data, is_description, is_icon, row)
+        list_element(data, row)
       })
   )
 }

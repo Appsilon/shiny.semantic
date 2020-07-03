@@ -4,7 +4,7 @@
 \alias{uibutton}
 \title{Create Semantic UI Button}
 \usage{
-uibutton(name, label, icon = NULL, type = NULL, ...)
+uibutton(name, label, icon = NULL, class = NULL, ...)
 }
 \arguments{
 \item{name}{The \code{input} slot that will be used to access the value.}
@@ -13,7 +13,8 @@ uibutton(name, label, icon = NULL, type = NULL, ...)
 
 \item{icon}{An optional \code{\link{uiicon}()} to appear on the button.}
 
-\item{type}{An optional attribute to be added to the button's class.}
+\item{class}{An optional attribute to be added to the button's class. If used
+paramters like \code{color}, \code{size} are ignored.}
 
 \item{...}{Named attributes to be applied to the button}
 }
@@ -21,6 +22,18 @@ uibutton(name, label, icon = NULL, type = NULL, ...)
 Create Semantic UI Button
 }
 \examples{
-uibutton("simple_button", "Press Me!")
+if (interactive()){
+library(shiny)
+library(shiny.semantic)
+ui <- semanticPage(
+  shinyUI(
+    uibutton("simple_button", "Press Me!")
+  )
+)
+server <- function(input, output, session) {
+}
+shinyApp(ui, server)
+}
+
 
 }

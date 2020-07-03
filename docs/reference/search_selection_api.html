@@ -8,10 +8,12 @@
 
 <title>Add Semantic UI search selection dropdown based on REST API — search_selection_api • SHINY.SEMANTIC</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -36,13 +38,12 @@
 
 
 
-<meta property="og:title" content="Add Semantic UI search selection dropdown based on REST API — search_selection_api" />
 
+<meta property="og:title" content="Add Semantic UI search selection dropdown based on REST API — search_selection_api" />
 <meta property="og:description" content="Define the (multiple) search selection dropdown input for retrieving remote
 selection menu content from an API endpoint. API response is expected to be
 a JSON with property fields `name` and `value`. Using a search selection
 dropdown allows to search more easily through large lists." />
-
 
 
 
@@ -74,7 +75,7 @@ dropdown allows to search more easily through large lists." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -88,7 +89,6 @@ dropdown allows to search more easily through large lists." />
   </a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
@@ -105,7 +105,14 @@ dropdown allows to search more easily through large lists." />
   </a>
 </li>
 <li>
-  <a href="https://github.com/ropensci/MODIStsp/">
+  <a href="../CODE_OF_CONDUCT.html">
+    <span class="fa fa-user-o"></span>
+     
+    CoC
+  </a>
+</li>
+<li>
+  <a href="https://github.com/Appsilon/shiny.semantic">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -135,12 +142,10 @@ dropdown allows to search more easily through large lists." />
     </div>
 
     <div class="ref-description">
-    
     <p>Define the (multiple) search selection dropdown input for retrieving remote
 selection menu content from an API endpoint. API response is expected to be
 a JSON with property fields `name` and `value`. Using a search selection
 dropdown allows to search more easily through large lists.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>search_selection_api</span>(
@@ -149,7 +154,7 @@ dropdown allows to search more easily through large lists.</p>
   <span class='kw'>multiple</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>default_text</span> <span class='kw'>=</span> <span class='st'>"Select"</span>
 )</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -203,7 +208,7 @@ if (interactive())
   )  shinyApp(ui = ui(), server = server)</p></td>
     </tr>
     </table>
-    
+
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

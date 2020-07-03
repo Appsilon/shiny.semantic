@@ -19,15 +19,15 @@ update_calendar(session, id, value = NULL, min = NULL, max = NULL)
 \arguments{
 \item{name}{Input name. Reactive value is available under \code{input[[name]]}.}
 
-\item{value}{The date to be set, default NULL}
+\item{value}{Initial value of the numeric input.}
 
 \item{placeholder}{Text visible in the input when nothing is inputted.}
 
 \item{type}{Select from \code{'year'}, \code{'month'}, \code{'date'} and \code{'time'}}
 
-\item{min}{Minimum date that will be possible to set, default NULL}
+\item{min}{Minimum allowed value.}
 
-\item{max}{Maximum date that will be possible to set, default NULL}
+\item{max}{Maximum allowed value.}
 
 \item{session}{The \code{session} object passed to function given to
 \code{shinyServer}.}

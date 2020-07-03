@@ -8,10 +8,12 @@
 
 <title>Create Semantic UI tabs — tabset • SHINY.SEMANTIC</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -36,10 +38,9 @@
 
 
 
+
 <meta property="og:title" content="Create Semantic UI tabs — tabset" />
-
 <meta property="og:description" content="This creates tabs with content using Semantic UI styles." />
-
 
 
 
@@ -71,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -85,7 +86,6 @@
   </a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
@@ -102,7 +102,14 @@
   </a>
 </li>
 <li>
-  <a href="https://github.com/ropensci/MODIStsp/">
+  <a href="../CODE_OF_CONDUCT.html">
+    <span class="fa fa-user-o"></span>
+     
+    CoC
+  </a>
+</li>
+<li>
+  <a href="https://github.com/Appsilon/shiny.semantic">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -132,9 +139,7 @@
     </div>
 
     <div class="ref-description">
-    
     <p>This creates tabs with content using Semantic UI styles.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>tabset</span>(
@@ -144,7 +149,7 @@
   <span class='kw'>menu_class</span> <span class='kw'>=</span> <span class='st'>"top attached tabular"</span>,
   <span class='kw'>tab_content_class</span> <span class='kw'>=</span> <span class='st'>"bottom attached segment"</span>
 )</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -172,11 +177,10 @@ tabular")</p></td>
 segment")</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>You may access active tab id with <code>input$&lt;id&gt;_tab</code>.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>tabset</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
@@ -184,27 +188,27 @@ segment")</p></td>
      <span class='kw'>content</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>div</a></span>(<span class='st'>"First content"</span>)),
 <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>menu</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>div</a></span>(<span class='st'>"Second link"</span>),
      <span class='kw'>content</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>div</a></span>(<span class='st'>"Second content"</span>))
-))</div><div class='output co'>#&gt; &lt;div id="menu-rmqrctuzzklienmufsbj" class="ui menu top attached tabular"&gt;
-#&gt;   &lt;a class="item active" data-tab="tab-cvpeammhtuweaikfkbkz"&gt;
+))</div><div class='output co'>#&gt; &lt;div id="menu-txvafbsnayorehalspkz" class="ui menu top attached tabular"&gt;
+#&gt;   &lt;a class="item active" data-tab="tab-mwlefoodfieexombwkke"&gt;
 #&gt;     &lt;div&gt;First link&lt;/div&gt;
 #&gt;   &lt;/a&gt;
-#&gt;   &lt;a class="item " data-tab="tab-hrtfztbnsrafhqmlsyef"&gt;
+#&gt;   &lt;a class="item " data-tab="tab-ulbfdpbcyvkgufivjubq"&gt;
 #&gt;     &lt;div&gt;Second link&lt;/div&gt;
 #&gt;   &lt;/a&gt;
 #&gt; &lt;/div&gt;
-#&gt; &lt;div class="ui tab bottom attached segment active" data-tab="tab-cvpeammhtuweaikfkbkz"&gt;
+#&gt; &lt;div class="ui tab bottom attached segment active" data-tab="tab-mwlefoodfieexombwkke"&gt;
 #&gt;   &lt;div&gt;First content&lt;/div&gt;
 #&gt; &lt;/div&gt;
-#&gt; &lt;div class="ui tab bottom attached segment " data-tab="tab-hrtfztbnsrafhqmlsyef"&gt;
+#&gt; &lt;div class="ui tab bottom attached segment " data-tab="tab-ulbfdpbcyvkgufivjubq"&gt;
 #&gt;   &lt;div&gt;Second content&lt;/div&gt;
 #&gt; &lt;/div&gt;
 #&gt; &lt;script&gt; $(document).on('shiny:sessioninitialized', function(event) {
-#&gt;         Shiny.onInputChange('menu-rmqrctuzzklienmufsbj_tab', 'tab-cvpeammhtuweaikfkbkz');
+#&gt;         Shiny.onInputChange('menu-txvafbsnayorehalspkz_tab', 'tab-mwlefoodfieexombwkke');
 #&gt;       });
 #&gt;       // Code below is needed to trigger visibility on reactive Shiny outputs.
 #&gt;       // Thanks to that users do not have to set suspendWhenHidden to FALSE.
 #&gt;       var previous_tab;
-#&gt;       $('#menu-rmqrctuzzklienmufsbj.menu .item').tab({
+#&gt;       $('#menu-txvafbsnayorehalspkz.menu .item').tab({
 #&gt;         onVisible: function(target) {
 #&gt;           if (previous_tab) {
 #&gt;             $(this).trigger('hidden');
@@ -212,7 +216,7 @@ segment")</p></td>
 #&gt;           $(window).resize();
 #&gt;           $(this).trigger('shown');
 #&gt;           previous_tab = this;
-#&gt;           Shiny.onInputChange('menu-rmqrctuzzklienmufsbj_tab', $(this).attr('data-tab'))
+#&gt;           Shiny.onInputChange('menu-txvafbsnayorehalspkz_tab', $(this).attr('data-tab'))
 #&gt;         }
 #&gt;       });&lt;/script&gt;</div></pre>
   </div>

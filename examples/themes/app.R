@@ -244,8 +244,8 @@ uilist_demo <- function() {
 
   div(
     h1(class="ui dividing header", id="list", "List"),
-    demo(uilist(list_content, is_divided = FALSE, is_description = FALSE)),
-    demo(uilist(list_content, is_icon = TRUE, is_divided = TRUE, is_description = FALSE))
+    demo(uilist(list_content, is_divided = FALSE)),
+    demo(uilist(list_content, is_divided = TRUE))
   )
 }
 
