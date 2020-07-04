@@ -31,7 +31,7 @@ uibutton <- function(input_id, label, icon = NULL, class = NULL, ...) {
 #'
 #' Creates an action button whose value is initially zero, and increments by one each time it is pressed.
 #'
-#' @param inputId The input slot that will be used to access the value.
+#' @param input_id The input slot that will be used to access the value.
 #' @param label The contents of the button - a text label, but you could also use any other HTML, like an image.
 #' @param icon An optional \link{icon} to appear on the button.
 #' @param width The width of the input.
@@ -53,19 +53,26 @@ uibutton <- function(input_id, label, icon = NULL, class = NULL, ...) {
 #' }
 #'
 #' @export
-actionButton <- function(inputId, label, icon = NULL, width = NULL, ...) {
+#' @rdname action_button
+action_button <- function(input_id, label, icon = NULL, width = NULL, ...) {
   args_list <- list(...)
-  args_list$input_id <- inputId
+  args_list$input_id <- input_id
   args_list$label <- label
   args_list$icon <- icon
   args_list$style <- if (!is.null(width)) paste0("width: ", width, "; ", args_list$style) else args_list$style
   do.call(uibutton, args_list)
 }
 
+#' @export
+#' @rdname action_button
+actionButton <- function(inputId, label, icon = NULL, width = NULL, ...) {
+  action_button(inputId, label, icon, width, ...)
+}
+
 #' Change the label or icon of an action button on the client
 #'
 #' @param session The session object passed to function given to shinyServer.
-#' @param inputId The id of the input object.
+#' @param input_id The id of the input object.
 #' @param label The label to set for the input object.
 #' @param icon The icon to set for the input object. To remove the current icon, use icon=character(0)
 #'
@@ -96,13 +103,19 @@ actionButton <- function(inputId, label, icon = NULL, width = NULL, ...) {
 #' }
 #'
 #' @export
-updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
+#' @rdname update_action_button
+update_action_button <- function(session, input_id, label = NULL, icon = NULL) {
   message <- list(label = label, icon = as.character(icon))
   message <- message[!vapply(message, is.null, FUN.VALUE = logical(1))]
 
-  session$sendInputMessage(inputId, message)
+  session$sendInputMessage(input_id, message)
 }
 
+#' @rdname update_action_button
+#' @export
+updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
+  update_action_button(session, inputId, label, icon)
+}
 
 #' Counter Button
 #'
@@ -123,7 +136,7 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #' library(shiny)
 #' library(shiny.semantic)
 #' ui <-semanticPage(
-#'      counterbutton("counter", "My Counter Button",
+#'      counter_button("counter", "My Counter Button",
 #'                    icon = uiicon("world"),
 #'                    size = "big", color = "purple")
 #'  )
@@ -134,13 +147,13 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #'  }
 #' shinyApp(ui, server)
 #' }
-counterbutton <- function(input_id, label = "", icon = NULL, value = 0, color = "", size = "",
-                          big_mark = " ") {
+counter_button <- function(input_id, label = "", icon = NULL, value = 0,
+                           color = "", size = "", big_mark = " ") {
   big_mark_regex <- if (big_mark == " ") "\\s" else big_mark
   shiny::div(
     class = "ui labeled button", tabindex = "0",
     shiny::tagList(
-      uibutton(name = input_id, label, icon,
+      uibutton(input_id = input_id, label, icon,
                class = paste(c(size, color), collapse = " "),
                `data-val` = value),
       shiny::tags$span(class = glue::glue("ui basic {color} label"),
@@ -158,7 +171,7 @@ counterbutton <- function(input_id, label = "", icon = NULL, value = 0, color = 
 
 #' @rdname counterbutton
 #' @export
-counterButton <- function(inputId, label = "", icon = NULL, value = 0, color = "", size = "",
-              big_mark = " ") {
-  counterbutton(inputId, label, icon, value, color, size, big_mark)
+counterButton <- function(inputId, label = "", icon = NULL, value = 0,
+                          color = "", size = "", big_mark = " ") {
+  counter_button(inputId, label, icon, value, color, size, big_mark)
 }

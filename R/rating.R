@@ -54,8 +54,15 @@ rating <- function(input_id, label = "", value = 0, max = 3, icon = "star",
 #' @param value new rating value
 #'
 #' @export
-updateRating <- function(session, input_id, label = NULL, value = NULL) {
+#' @rdname update_rating
+update_rating <- function(session, input_id, label = NULL, value = NULL) {
   message <- list(label = label, value = value)
   message <- message[!vapply(message, is.null, FUN.VALUE = logical(1))]
   session$sendInputMessage(input_id, message)
+}
+
+#' @export
+#' @rdname update_rating
+updateRating <- function(session, inputId, label = NULL, value = NULL) {
+  update_rating(session, inputId, label, value)
 }
