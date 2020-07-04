@@ -1,7 +1,6 @@
 pandoc: 2.9.2.1
 pkgdown: 1.5.1
 pkgdown_sha: ~
-articles:
-  intro-to-semantic: intro-to-semantic.html
-last_built: 2020-07-12T15:47Z
+articles: []
+last_built: 2020-07-04T11:26Z
 

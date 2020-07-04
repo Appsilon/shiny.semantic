@@ -1,6 +1,3 @@
-#' allowed sizes
-FOMANTIC_SIZE_LEVELS <- c("mini", "tiny", "small", "", "large", "huge", "massive")
-
 #' Extract icon name
 #'
 #' @param icon uiicon object
@@ -28,7 +25,7 @@ extract_icon_name <- function(icon) {
 #' @export
 rating <- function(input_id, label = "", value = 0, max = 3, icon = "star",
                    color = "yellow", size = "") {
-  if (!(size %in% FOMANTIC_SIZE_LEVELS)) {
+  if (!(size %in% SIZE_LEVELS)) {
     warning("Size value not supported.")
     size <- ""
   }

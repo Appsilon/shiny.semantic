@@ -13,7 +13,6 @@ SUPPORTED_THEMES <- c("cerulean", "darkly", "paper", "simplex",  # nolint
                       "readable",  "united", "journal", "solar",
                       "cyborg", "sandstone", "yeti", "lumen", "spacelab")
 
-#' Checkbox positions
-#'
+#' Allowed sizes
 #' @export
-checkbox_positions <- c("grouped", "inline")
+SIZE_LEVELS <- c("mini", "tiny", "small", "", "large", "huge", "massive")
