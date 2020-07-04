@@ -1,6 +1,6 @@
 #' Create Semantic UI Button
 #'
-#' @param name The \code{input} slot that will be used to access the value.
+#' @param input_id The \code{input} slot that will be used to access the value.
 #' @param label The contents of the button or link
 #' @param icon An optional \code{\link{uiicon}()} to appear on the button.
 #' @param class An optional attribute to be added to the button's class. If used
@@ -23,8 +23,8 @@
 #'
 #'
 #' @export
-uibutton <- function(name, label, icon = NULL, class = NULL, ...) {
-  tags$button(id = name, class = paste("ui", class, "button"), icon, " ", label, ...)
+uibutton <- function(input_id, label, icon = NULL, class = NULL, ...) {
+  tags$button(id = input_id, class = paste("ui", class, "button"), icon, " ", label, ...)
 }
 
 #' Action button
@@ -55,7 +55,7 @@ uibutton <- function(name, label, icon = NULL, class = NULL, ...) {
 #' @export
 actionButton <- function(inputId, label, icon = NULL, width = NULL, ...) {
   args_list <- list(...)
-  args_list$name <- inputId
+  args_list$input_id <- inputId
   args_list$label <- label
   args_list$icon <- icon
   args_list$style <- if (!is.null(width)) paste0("width: ", width, "; ", args_list$style) else args_list$style
@@ -108,7 +108,7 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #'
 #' Creates a counter button whose value increments by one each time it is pressed.
 #'
-#' @param name The \code{input} slot that will be used to access the value.
+#' @param input_id The \code{input} slot that will be used to access the value.
 #' @param label the content of the item to display
 #' @param icon an optional \code{\link{uiicon}()} to appear on the button.
 #' @param value initial rating value (integer)
@@ -134,20 +134,20 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #'  }
 #' shinyApp(ui, server)
 #' }
-counterbutton <- function(name, label = "", icon = NULL, value = 0, color = "", size = "",
+counterbutton <- function(input_id, label = "", icon = NULL, value = 0, color = "", size = "",
                           big_mark = " ") {
   big_mark_regex <- if (big_mark == " ") "\\s" else big_mark
   shiny::div(
     class = "ui labeled button", tabindex = "0",
     shiny::tagList(
-      uibutton(name = name, label, icon,
+      uibutton(name = input_id, label, icon,
                class = paste(c(size, color), collapse = " "),
                `data-val` = value),
       shiny::tags$span(class = glue::glue("ui basic {color} label"),
                        format(value, big.mark = big_mark)),
       shiny::tags$script(HTML(
-        glue::glue("$('#{name}').on('click', function() {{
-          let $label = $('#{name} + .label')
+        glue::glue("$('#{input_id}').on('click', function() {{
+          let $label = $('#{input_id} + .label')
           let value = parseInt($label.html().replace(/{big_mark_regex}/g, ''))
           $label.html((value + 1).toString().replace(/\\B(?=(\\d{{3}})+(?!\\d))/g, '{big_mark}'))
         }})")
@@ -158,7 +158,7 @@ counterbutton <- function(name, label = "", icon = NULL, value = 0, color = "", 
 
 #' @rdname counterbutton
 #' @export
-counterButton <- function(name, label = "", icon = NULL, value = 0, color = "", size = "",
+counterButton <- function(inputId, label = "", icon = NULL, value = 0, color = "", size = "",
               big_mark = " ") {
-  counterbutton(name, label, icon, value, color, size, big_mark)
+  counterbutton(inputId, label, icon, value, color, size, big_mark)
 }

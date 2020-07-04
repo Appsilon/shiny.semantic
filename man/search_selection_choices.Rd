@@ -5,7 +5,7 @@
 \title{Add Semantic UI search selection dropdown based on provided choices}
 \usage{
 search_selection_choices(
-  name,
+  input_id,
   choices,
   value = NULL,
   multiple = FALSE,
@@ -15,7 +15,7 @@ search_selection_choices(
 )
 }
 \arguments{
-\item{name}{Input name. Reactive value is available under input[[name]].}
+\item{input_id}{Input name. Reactive value is available under input[[input_id]].}
 
 \item{choices}{Vector or a list of choices to search through.}
 

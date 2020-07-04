@@ -142,15 +142,21 @@
     <p>Create Semantic UI checkbox</p>
     </div>
 
-    <pre class="usage"><span class='fu'>simple_checkbox</span>(<span class='no'>id</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>simple_checkbox</span>(
+  <span class='no'>input_id</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>toggle</span>(<span class='no'>id</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>toggle</span>(<span class='no'>input_id</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>id</th>
+      <th>input_id</th>
       <td><p>Input name. Reactive value is available under input[[name]].</p></td>
     </tr>
     <tr>
@@ -159,7 +165,7 @@
     </tr>
     <tr>
       <th>type</th>
-      <td><p>Type of checkbox.</p></td>
+      <td><p>Type of checkbox: NULL, 'toggle'</p></td>
     </tr>
     <tr>
       <th>is_marked</th>

@@ -142,7 +142,7 @@
     <p>This creates a menu using Semantic UI.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>uimenu</span>(<span class='no'>...</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
+    <pre class="usage"><span class='fu'>uimenu</span>(<span class='no'>...</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -154,8 +154,9 @@ Use uidropdown(is_menu_item = TRUE, ...) function to create new dropdown menu it
 Use menu_header and menu_divider functions to customize menu format.</p></td>
     </tr>
     <tr>
-      <th>type</th>
-      <td><p>Type of the menu. Look at https://semantic-ui.com/collections/menu.html for all possiblities.</p></td>
+      <th>class</th>
+      <td><p>Class extension.Look at https://semantic-ui.com/collections/menu.html
+for all possibilities.</p></td>
     </tr>
     </table>
 
@@ -182,13 +183,13 @@ Use menu_header and menu_divider functions to customize menu format.</p></td>
                  <span class='fu'><a href='menu_header.html'>menu_header</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"user"</span>), <span class='st'>"User"</span>, <span class='kw'>is_item</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>),
                  <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"add user"</span>), <span class='st'>"Add"</span>),
                  <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"remove user"</span>), <span class='st'>"Remove"</span>)),
-               <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>""</span>,
+               <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>""</span>,
                <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"unique_name"</span>,
                <span class='kw'>is_menu_item</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
              <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"user"</span>), <span class='st'>"Profile"</span>, <span class='kw'>href</span> <span class='kw'>=</span> <span class='st'>"#index"</span>, <span class='kw'>item_feature</span> <span class='kw'>=</span> <span class='st'>"active"</span>),
              <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='st'>"Projects"</span>, <span class='kw'>href</span> <span class='kw'>=</span> <span class='st'>"#projects"</span>),
              <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"users"</span>), <span class='st'>"Team"</span>),
-             <span class='fu'>uimenu</span>(<span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"add icon"</span>), <span class='st'>"New tab"</span>), <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"right"</span>))
+             <span class='fu'>uimenu</span>(<span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"add icon"</span>), <span class='st'>"New tab"</span>), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"right"</span>))
     )
   )
 }

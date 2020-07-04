@@ -1,10 +1,3 @@
-#' Supported semantic themes
-#' @export
-SUPPORTED_THEMES <- c("cerulean", "darkly", "paper", "simplex",  # nolint
-                      "superhero", "flatly", "slate", "cosmo",
-                      "readable",  "united", "journal", "solar",
-                      "cyborg", "sandstone", "yeti", "lumen", "spacelab")
-
 #' Get CDN path semantic dependencies
 #'
 #' Internal function that returns path string from `shiny.custom.semantic.cdn` options.

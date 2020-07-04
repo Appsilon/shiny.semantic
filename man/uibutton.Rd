@@ -4,10 +4,10 @@
 \alias{uibutton}
 \title{Create Semantic UI Button}
 \usage{
-uibutton(name, label, icon = NULL, class = NULL, ...)
+uibutton(input_id, label, icon = NULL, class = NULL, ...)
 }
 \arguments{
-\item{name}{The \code{input} slot that will be used to access the value.}
+\item{input_id}{The \code{input} slot that will be used to access the value.}
 
 \item{label}{The contents of the button or link}
 

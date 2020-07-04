@@ -5,7 +5,7 @@
 \title{Create Semantic UI Numeric Input}
 \usage{
 uinumericinput(
-  name,
+  input_id,
   value,
   min = NA,
   max = NA,
@@ -17,7 +17,7 @@ uinumericinput(
 )
 }
 \arguments{
-\item{name}{Input name. Reactive value is available under \code{input[[name]]}.}
+\item{input_id}{Input input_id Reactive value is available under \code{input[[input_id]]}.}
 
 \item{value}{Initial value of the numeric input.}
 
@@ -38,7 +38,7 @@ See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.}
 }
 \description{
 This creates a default numeric input using Semantic UI. The input is available
-under \code{input[[name]]}.
+under \code{input[[input_id]]}.
 }
 \details{
 The inputs are updateable by using \code{\link{updateNumericInput}}.

@@ -41,7 +41,7 @@
 
 <meta property="og:title" content="Create Semantic UI Calendar — uicalendar" />
 <meta property="og:description" content="This creates a default calendar input using Semantic UI. The input is available
-under input[[name]].
+under input[[input_id]].
 This function updates the date on a calendar" />
 
 
@@ -142,12 +142,12 @@ This function updates the date on a calendar" />
 
     <div class="ref-description">
     <p>This creates a default calendar input using Semantic UI. The input is available
-under <code>input[[name]]</code>.</p>
+under <code>input[[input_id]]</code>.</p>
 <p>This function updates the date on a calendar</p>
     </div>
 
     <pre class="usage"><span class='fu'>uicalendar</span>(
-  <span class='no'>name</span>,
+  <span class='no'>input_id</span>,
   <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>placeholder</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"date"</span>,
@@ -155,14 +155,14 @@ under <code>input[[name]]</code>.</p>
   <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>NA</span>
 )
 
-<span class='fu'>update_calendar</span>(<span class='no'>session</span>, <span class='no'>id</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>update_calendar</span>(<span class='no'>session</span>, <span class='no'>input_id</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>name</th>
-      <td><p>Input name. Reactive value is available under <code>input[[name]]</code>.</p></td>
+      <th>input_id</th>
+      <td><p>ID of the calendar that will be updated</p></td>
     </tr>
     <tr>
       <th>value</th>
@@ -188,10 +188,6 @@ under <code>input[[name]]</code>.</p>
       <th>session</th>
       <td><p>The <code>session</code> object passed to function given to
 <code>shinyServer</code>.</p></td>
-    </tr>
-    <tr>
-      <th>id</th>
-      <td><p>ID of the calendar that will be updated</p></td>
     </tr>
     </table>
 

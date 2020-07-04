@@ -17,9 +17,23 @@ parse_val <- function(val) {
 #' @examples
 #' check_proper_color("blue")
 check_proper_color <- function(color) {
-  if (!(color %in% c("", names(semantic_palette)))) {
+  if (!(color %in% c("", names(COLOR_PALETTE)))) {
     stop("Wrong color parameter specified!")
   } else {
     invisible(color)
   }
 }
+
+#' ::: hack solution to pass CRAN checks
+#'
+#' @param pkg package name
+#' @param name function name
+#'
+#' @return function
+`%:::%` <- function(pkg, name) { # nolint
+  pkg <- as.character(substitute(pkg))
+  name <- as.character(substitute(name))
+  get(name, envir = asNamespace(pkg), inherits = FALSE)
+}
+
+

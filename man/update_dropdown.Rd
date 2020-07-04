@@ -6,7 +6,7 @@
 \usage{
 update_dropdown(
   session,
-  name,
+  input_id,
   choices = NULL,
   choices_value = choices,
   value = NULL
@@ -15,7 +15,7 @@ update_dropdown(
 \arguments{
 \item{session}{The \code{session} object passed to function given to \code{shinyServer}.}
 
-\item{name}{The id of the input object}
+\item{input_id}{The id of the input object}
 
 \item{choices}{All available options one can select from. If no need to update then leave as \code{NULL}}
 

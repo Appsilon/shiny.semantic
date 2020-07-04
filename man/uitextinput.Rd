@@ -5,7 +5,7 @@
 \title{Create Semantic UI Text Input}
 \usage{
 uitextinput(
-  name,
+  input_id,
   value = "",
   type = "text",
   placeholder = NULL,
@@ -13,7 +13,7 @@ uitextinput(
 )
 }
 \arguments{
-\item{name}{Input name. Reactive value is available under \code{input[[name]]}.}
+\item{input_id}{Input name. Reactive value is available under \code{input[[input_id]]}.}
 
 \item{value}{Pass value if you want to have default text.}
 
@@ -25,7 +25,7 @@ uitextinput(
 }
 \description{
 This creates a default text input using Semantic UI. The input is available
-under \code{input[[name]]}.
+under \code{input[[input_id]]}.
 }
 \details{
 The following \code{type}s are allowed:

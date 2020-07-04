@@ -5,12 +5,12 @@
 \alias{uirange}
 \title{Create Semantic UI Slider}
 \usage{
-uislider(name, value, min, max, step = 1, class = NULL)
+uislider(input_id, value, min, max, step = 1, class = NULL)
 
-uirange(name, value, value2, min, max, step = 1, class = NULL)
+uirange(input_id, value, value2, min, max, step = 1, class = NULL)
 }
 \arguments{
-\item{name}{Input name. Reactive value is available under \code{input[[name]]}.}
+\item{input_id}{Input name. Reactive value is available under \code{input[[input_id]]}.}
 
 \item{value}{The initial value to be selected for the sldier (lower value if using range).}
 
@@ -26,7 +26,7 @@ uirange(name, value, value2, min, max, step = 1, class = NULL)
 }
 \description{
 This creates a slider input using Semantic UI. Slider is already initialized and
-available under \code{input[[name]]}.
+available under \code{input[[input_id]]}.
 }
 \details{
 Use \code{\link{update_slider}} to update the slider/range within the shiny session.
