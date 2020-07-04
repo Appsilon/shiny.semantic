@@ -4,7 +4,7 @@
 \alias{render_menu_link}
 \title{Render menu link}
 \usage{
-render_menu_link(location, title, active_location = "", icon = NA)
+render_menu_link(location, title, active_location = "", icon = NULL)
 }
 \arguments{
 \item{location}{character url with location}

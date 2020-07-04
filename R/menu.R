@@ -71,6 +71,8 @@ horizontal_menu <- function(menu_items, active_location = "", logo = NULL) {
   if (!is.list(menu_items))
     stop("'menu_items' must be a list with specific entry names Check docs.")
   number_items <- length(menu_items)
+  if (number_items == 0)
+    stop("Empty list! No menu elements detected. Check docs.")
   if (is.null(logo))
     logo_ui <- ""
   else {

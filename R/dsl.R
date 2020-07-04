@@ -444,12 +444,12 @@ menu_divider <- function(...) {
 
 #' Helper function to render list element
 #'
-#' @param header character with
-#' @param description character with
-#' @param icon character with
+#' @param header character with header element
+#' @param description character with content of the list
+#' @param icon character with optional icon
 #'
 #' @import shiny
-list_element <- function(header, description, icon = NULL) {
+list_element <- function(header = NULL, description = NULL, icon = NULL) {
   div(class = "item",  if (!is.null(icon)) uiicon(icon) else "",
       div(class = "content",
           div(class = "header", header),
