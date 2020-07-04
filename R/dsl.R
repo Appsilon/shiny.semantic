@@ -2,14 +2,14 @@
 #'
 #' This creates an icon tag using Semantic UI styles.
 #'
-#' @param type A name of an icon. Look at
+#' @param class A name of an icon. Look at
 #' http://semantic-ui.com/elements/icon.html for all possibilities.
 #' @param ... Other arguments to be added as attributes of the
 #' tag (e.g. style, class etc.)
 #'
 #' @export
-uiicon <- function(type = "", ...) {
-  shiny::tags$i(class = paste(type, "icon"), ...)
+uiicon <- function(class = "", ...) {
+  shiny::tags$i(class = paste(class, "icon"), ...)
 }
 
 #' Create an icon
@@ -33,15 +33,15 @@ icon <- function(name, class = NULL, ...) {
 #' This creates a label tag using Semantic UI.
 #'
 #' @param ... Other arguments to be added such as content of the tag (text, icons) and/or attributes (style)
-#' @param type Type of the label. Look at https://semantic-ui.com/elements/label.html for all possibilities.
+#' @param class class of the label. Look at https://semantic-ui.com/elements/label.html for all possibilities.
 #' @param is_link If TRUE creates label with 'a' tag, otherwise with 'div' tag.
 #' #'
 #' @export
 #'
 #' @import shiny
-uilabel <- function(..., type = "", is_link = TRUE) {
+uilabel <- function(..., class = "", is_link = TRUE) {
   label_tag <- if (is_link) tags$a else tags$div
-  label_tag(class = paste("ui label", type),
+  label_tag(class = paste("ui label", class),
             list(...))
 }
 
@@ -246,7 +246,7 @@ label <- function(...) {
 #' @param header Header of the message
 #' @param content Content of the message. If it is a vector, creates a list of
 #' vector's elements
-#' @param type Type of the message. Look at
+#' @param class class of the message. Look at
 #' https://semantic-ui.com/collections/message.html for all possibilities.
 #' @param icon If the message is of the type 'icon', specify the icon.
 #' Look at http://semantic-ui.com/elements/icon.html for all possibilities.
@@ -254,13 +254,13 @@ label <- function(...) {
 #' Default is FALSE - not closable
 #'
 #' @export
-uimessage <- function(header, content, type = "", icon, closable = FALSE) {
+uimessage <- function(header, content, class = "", icon, closable = FALSE) {
   if (length(content) > 1) {
     content <- shiny::tags$ul(class = "list", lapply(content, shiny::tags$li))
   }
-  if (grepl("icon", type)) {
+  if (grepl("icon", class)) {
     if (missing(icon)) {
-      stop("Type 'icon' requires an icon!")
+      stop("If you give a class 'icon', then an icon argument is required")
     }
     icon_else_header <- uiicon(icon)
     message_else_content <- shiny::div(class = "content",
@@ -270,7 +270,7 @@ uimessage <- function(header, content, type = "", icon, closable = FALSE) {
     icon_else_header <- shiny::div(class = "header", header)
     message_else_content <- content
   }
-  div(class = paste("ui message", type),
+  div(class = paste("ui message", class),
       if (closable) {
         closable_messages <- "$('.message .close')
           .on('click', function() {
@@ -293,7 +293,8 @@ uimessage <- function(header, content, type = "", icon, closable = FALSE) {
 #' @param ... Menu items to be created. Use menu_item function to create new menu item.
 #' Use uidropdown(is_menu_item = TRUE, ...) function to create new dropdown menu item.
 #' Use menu_header and menu_divider functions to customize menu format.
-#' @param type Type of the menu. Look at https://semantic-ui.com/collections/menu.html for all possiblities.
+#' @param class Class extension.Look at https://semantic-ui.com/collections/menu.html
+#' for all possibilities.
 #'
 #' @examples
 #'
@@ -317,13 +318,13 @@ uimessage <- function(header, content, type = "", icon, closable = FALSE) {
 #'                  menu_header(uiicon("user"), "User", is_item = FALSE),
 #'                  menu_item(uiicon("add user"), "Add"),
 #'                  menu_item(uiicon("remove user"), "Remove")),
-#'                type = "",
+#'                class = "",
 #'                name = "unique_name",
 #'                is_menu_item = TRUE),
 #'              menu_item(uiicon("user"), "Profile", href = "#index", item_feature = "active"),
 #'              menu_item("Projects", href = "#projects"),
 #'              menu_item(uiicon("users"), "Team"),
-#'              uimenu(menu_item(uiicon("add icon"), "New tab"), type = "right"))
+#'              uimenu(menu_item(uiicon("add icon"), "New tab"), class = "right"))
 #'     )
 #'   )
 #' }
@@ -334,9 +335,9 @@ uimessage <- function(header, content, type = "", icon, closable = FALSE) {
 #' shinyApp(ui = ui(), server = server)
 #'}
 #' @export
-uimenu <- function(..., type = "") {
-  class <- "ui menu"
-  div(class = paste(class, type),
+uimenu <- function(..., class = "") {
+  class <- paste("ui menu", class)
+  div(class =  class,
       list(...))
 }
 
@@ -366,7 +367,7 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
 #' This creates a dropdown using Semantic UI.
 #'
 #' @param ... Dropdown content.
-#' @param type Type of the dropdown. Look at https://semantic-ui.com/modules/dropdown.html for all possibilities.
+#' @param class class of the dropdown. Look at https://semantic-ui.com/modules/dropdown.html for all possibilities.
 #' @param name Unique name of the created dropdown.
 #' @param is_menu_item TRUE if the dropdown is a menu item. Default is FALSE.
 #' @param dropdown_specs A list of dropdown functionalities.
@@ -376,7 +377,7 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
 #'
 #' uidropdown(
 #'   "Dropdown menu",
-#'   uiicon(type = "dropdown"),
+#'   uiicon(class = "dropdown"),
 #'   uimenu(
 #'     menu_header("Header"),
 #'     menu_divider(),
@@ -388,7 +389,7 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
 #' )
 #' @import shiny
 #' @export
-uidropdown <- function(..., type = "", name, is_menu_item = FALSE, dropdown_specs = list()) {
+uidropdown <- function(..., class = "", name, is_menu_item = FALSE, dropdown_specs = list()) {
 
   if (missing(name)) {
     stop("Dropdown requires unique name. Specify \"name\" argument.")
@@ -397,9 +398,9 @@ uidropdown <- function(..., type = "", name, is_menu_item = FALSE, dropdown_spec
   unique_dropdown_class <- paste0("dropdown_name_", name)
 
   if (is_menu_item) {
-    class <- paste("ui dropdown item", type, unique_dropdown_class)
+    class <- paste("ui dropdown item", class, unique_dropdown_class)
   } else {
-    class <- paste("ui dropdown", type, unique_dropdown_class)
+    class <- paste("ui dropdown", class, unique_dropdown_class)
   }
 
   dropdown_functionality <- paste(dropdown_specs, collapse = ", ")

@@ -26,7 +26,7 @@ uicheckbox <- function(..., type = "") {
 #'
 #' @param id Input name. Reactive value is available under input[[name]].
 #' @param label Text to be displayed with checkbox.
-#' @param type Type of checkbox.
+#' @param type Type of checkbox: NULL, 'toggle'
 #' @param is_marked Defines if checkbox should be marked. Default TRUE.
 #' @param style Style of the widget.
 #'
