@@ -18,8 +18,8 @@ suppressWarnings(library(shiny))
 
 <img src="man/figures/hexsticker.png" align="right" alt="" width="130" />
 
-  `r params$repo_name`
-===========
+#  `r params$repo_name`
+
 
 <!-- badges: start -->
 ![R-CMD-check](https://github.com/Appsilon/shiny.semantic/workflows/R-CMD-check/badge.svg)
@@ -95,7 +95,7 @@ install.packages("shiny.semantic")
 and the latest version with devtools:
 
 ```{r, eval=FALSE}
-devtools::install_github("Appsilon/`r params$repo_name`")
+devtools::install_github("Appsilon/shiny.semantic@develop")
 ```
 
 (`master` branch contains the stable version. Use `develop` branch for latest features)
@@ -103,7 +103,7 @@ devtools::install_github("Appsilon/`r params$repo_name`")
 To install [previous versions](`r params$changelog_url`) you can run:
 
 ```{r, eval=FALSE}
-devtools::install_github("Appsilon/`r params$repo_name`", ref = "0.1.0")
+devtools::install_github("Appsilon/shiny.semantic", ref = "0.1.0")
 ```
 
 How to use it?

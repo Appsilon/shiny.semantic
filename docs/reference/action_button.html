@@ -144,7 +144,7 @@
 
     <pre class="usage"><span class='fu'>action_button</span>(<span class='no'>input_id</span>, <span class='no'>label</span>, <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
-<span class='fu'><a href='actionButton.html'>actionButton</a></span>(<span class='no'>inputId</span>, <span class='no'>label</span>, <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>actionButton</span>(<span class='no'>inputId</span>, <span class='no'>label</span>, <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -178,7 +178,7 @@ like <code>class</code>.</p></td>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
 <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(<span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-  <span class='fu'><a href='actionButton.html'>actionButton</a></span>(<span class='st'>"action_button"</span>, <span class='st'>"Press Me!"</span>),
+  <span class='fu'>actionButton</span>(<span class='st'>"action_button"</span>, <span class='st'>"Press Me!"</span>),
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/textOutput.html'>textOutput</a></span>(<span class='st'>"button_output"</span>)
 ))
 <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
