@@ -16,13 +16,10 @@ suppressWarnings(library(shiny.semantic))
 suppressWarnings(library(shiny))
 ```
 
+<img src="man/figures/hexsticker.png" align="right" alt="" width="130" />
 
   `r params$repo_name`
 ===========
-
-<img src="man/figures/hexsticker.png" align="right" alt="" width="120" />
-
-**Semantic UI wrapper for Shiny**
 
 <!-- badges: start -->
 ![R-CMD-check](https://github.com/Appsilon/shiny.semantic/workflows/R-CMD-check/badge.svg)
@@ -32,61 +29,87 @@ suppressWarnings(library(shiny))
 [![total](https://cranlogs.r-pkg.org/badges/grand-total/shiny.semantic)](https://CRAN.R-project.org/package=shiny.semantic)
 <!-- badges: end -->
 
+**Fomantic (Semantic) UI wrapper for Shiny**
 
-With this library it's easy to wrap Shiny with [Semantic UI components][semantic_repo_url]. Add a few simple lines of code and some CSS classes to give your UI a fresh, modern and highly interactive look.
+With this library it is easy to wrap Shiny with **[Fomantic UI][fomantic_website_url]** (previously *Semantic*).
+Add a few simple lines of code to give your UI a **fresh, modern and highly interactive** look.
 
-`master` branch contains the stable version. Use `develop` branch for latest features.
+- **shiny**
 
-<h2> Before </h2>
+<img src="man/figures/ss_before.png" alt="shiny" align="right" width="40%" />
 
-![Before](man/figures/ss_before.png)
+```{r, eval=FALSE}
+library(shiny)
+ui <- fluidPage(
+  div(
+    div(
+      a("Link"),
+      p("Lorem ipsum, lorem ipsum, lorem ipsum"),
+      actionButton("button", "Click")
+    )
+  )
+)
+```
 
-<h2> After </h2>
+- **shiny.semantic**
 
-![After](man/figures/ss_after.png)
+<img src="man/figures/ss_after.png" alt="semantic" align="right" width="40%" />
+
+```{r, eval=FALSE}
+library(shiny.semantic)
+ui <- semanticPage(
+  div(class = "ui raised segment",
+    div(
+      a(class="ui green ribbon label", "Link"),
+      p("Lorem ipsum, lorem ipsum, lorem ipsum"),
+      actionButton("button", "Click")
+    )
+  )
+)
+```
 
 Component examples
 ------------------
 
-![Components](man/figures/semantic_components.png)
+<img src="man/figures/semantic_components.png" alt="" width="80%" />
 
-<p style="text-align: center; font-size: x-large;">
-<a href="`r params$demo_url`">Components live demo</a>
-</p>
+<center><h3><a href="`r params$demo_url`">Components live demo</a></h4></center>
 
-
-The source code for **Components live demo** is located in **/examples** folder. To run it locally you will have to install:
-
-
-* [**highlighter**](https://github.com/Appsilon/highlighter)
-```
-devtools::install_github("Appsilon/highlighter")
-```
+See more examples with code in the `examples` folder.
 
 Check out also our dashboard examples made with **shiny.semantic** library:
 
-1. [Churn analytics](https://demo.appsilon.ai/churn)
-2. [Fraud detection](https://demo.appsilon.ai/frauds)
+| [Churn analytics](https://demo.appsilon.ai/churn) | [Fraud detection](https://demo.appsilon.ai/frauds) |
+|---|---|
 
 
 How to install?
 ---------------
 
-You can install stable `shiny.semantic` release from CRAN repository:
+You can install a stable `shiny.semantic` release from CRAN repository:
 
-```
+```{r, eval=FALSE}
 install.packages("shiny.semantic")
 ```
 
+and the latest version with devtools:
+
+```{r, eval=FALSE}
+devtools::install_github("Appsilon/`r params$repo_name`")
+```
+
+(`master` branch contains the stable version. Use `develop` branch for latest features)
+
 To install [previous versions](`r params$changelog_url`) you can run:
 
-```
+```{r, eval=FALSE}
 devtools::install_github("Appsilon/`r params$repo_name`", ref = "0.1.0")
 ```
 
 How to use it?
--------
-  Firstly, you will have to invoke `shinyUI()` with `semanticPage()` instead of standard Shiny UI definitions like e.g. `fluidPage()`. From now on forward all components can ba annotated with [Semantic UI][semantic_website_url] specific CSS classes and also you will be able to use [shiny.semantic  components](`r params$demo_url`).
+-------------
+
+Firstly, you will have to invoke `shinyUI()` with `semanticPage()` instead of standard Shiny UI definitions like e.g. `bootstrapPage()`. From now on, all components can be annotated with [Fomantic UI][fomantic_website_url] specific CSS classes and also you will be able to use [shiny.semantic components](`r params$demo_url`).
 
 Basic example for rendering a simple button. will look like this:
 
@@ -106,7 +129,7 @@ server <- shinyServer(function(input, output) {
 shinyApp(ui = ui(), server = server)
 ```
 
-For better understanding it's good to check [Semantic UI documentation.][semantic_website_url]
+For better understanding it's good to check [Fomantic UI documentation.][fomantic_website_url]
 
 **Note #1**
 
@@ -116,19 +139,24 @@ semanticPage(title = "Your page title", ...)
 ```
 **Note #2**
 
-You can switch off supressing bootstrap by calling `semanticPage(suppress_bootstrap = FALSE, ...)`
+The `shiny` package works with **Bootstrap** library under the hood. `shiny.semantic` uses
+[Fomantic UI][fomantic_website_url]. Sometimes using both of these libraries may cause
+troubles with rendering specific UI elements. That is why by default we turn off Bootstrap
+dependencies.
+
+However, you can switch off suppressing bootstrap by calling `semanticPage(suppress_bootstrap = FALSE, ...)`
 
 
-**[Advanced] Using Semantic UI JavaScript elements**
+**[Advanced] Using Fomantic UI JavaScript elements**
 
-  Some Semantic UI elements require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:
+  Some Fomantic UI elements require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:
 
   1. Use [shinyjs][shinyjs_repo_url]
 
 ```
 library(shinyjs)
 ...
-jsCode <- " # Semantic UI componts JS "
+jsCode <- " # Fomantic UI componts JS "
 ...
 ui <- function() {
   shinyUI(
@@ -175,7 +203,7 @@ server <- shinyServer(function(input, output) {
 shinyApp(ui = ui(), server = server)
 ```
 
-How to contribute?  {.darkslide}
+How to contribute?
 -----------------
 
 We welcome contributions of all types!
@@ -204,24 +232,26 @@ However, if you encounter any problems, try the following:
 ```
 install.packages("shiny", version='0.14.2.9001')
 ```
-3. Some bugs may be related directly to Semantic UI. In that case please try to check issues on its [repository.][semantic_repo_url]
+3. Some bugs may be related directly to Semantic UI. In that case please try to check issues on its [repository.][fomantic_repo_url]
 4. Some bugs may be related to **Bootstrap**. Please make sure you have it suppressed. Instructions are above in **How to use it?** section.
 
 
 Future enhacements
 ------------------
 * create all update functions for input components to mimic shiny as close as possible
-* add some glue code in dsl.R to make using this package smoother
-* adding more semantic componenets
+* add some glue code in `dsl.R` to make using this package smoother
+* adding more semantic components
 * new version release on CRAN 
 
 Appsilon Data Science
 ------------------
 
+<img src="https://avatars0.githubusercontent.com/u/6096772" align="right" alt="" width="6%" />
+
 Appsilon is the **Full Service Certified RStudio Partner**. Learn more at [appsilon.com](https://appsilon.com).
 
 Get in touch [dev@appsilon.com](dev@appsilon.com)
 
-[semantic_website_url]: http://semantic-ui.com/introduction/getting-started.html
-[semantic_repo_url]: https://github.com/Semantic-Org/Semantic-UI
+[fomantic_website_url]: https://fomantic-ui.com/
+[fomantic_repo_url]: https://github.com/fomantic/fomantic-ui
 [shinyjs_repo_url]: https://github.com/daattali/shinyjs
