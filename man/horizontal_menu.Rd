@@ -23,6 +23,7 @@ shiny div with horizontal menu
 Renders UI with horizontal menu
 }
 \examples{
+library(shiny.semantic)
 menu_content <- list(
  list(name = "AA", link = "http://example.com", icon = "dog"),
  list(name = "BB", link = "#", icon="cat"),

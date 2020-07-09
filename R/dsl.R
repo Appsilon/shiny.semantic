@@ -471,14 +471,20 @@ list_element <- function(header = NULL, description = NULL, icon = NULL) {
 #' @import shiny
 #' @import magrittr
 #' @examples
-#'
+#' library(shiny.semantic)
 #' list_content <- list(
 #'   list(header = "Head", description = "Lorem ipsum", icon = "cat"),
 #'   list(header = "Head 2", icon = "tree"),
 #'   list(description = "Lorem ipsum 2", icon = "dog")
 #' )
-#'
-#' uilist(list_content, is_divided = TRUE)
+#' if (interactive()){
+#'   ui <- semanticPage(
+#'     uilist(list_content, is_divided = TRUE)
+#'  )
+#'   server <- function(input, output) {}
+#'   shinyApp(ui, server)
+#' }
+#' }
 uilist <- function(content_list, is_divided = FALSE) {
   divided_list <- ifelse(is_divided, "divided", "")
   list_class <- paste("ui", divided_list, "list")

@@ -55,6 +55,7 @@ render_menu_link <- function(location, title, active_location = "", icon = NULL)
 #' @export
 #'
 #' @examples
+#' library(shiny.semantic)
 #' menu_content <- list(
 #'  list(name = "AA", link = "http://example.com", icon = "dog"),
 #'  list(name = "BB", link = "#", icon="cat"),
