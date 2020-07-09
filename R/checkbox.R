@@ -1,23 +1,3 @@
-#' Create Semantic UI checkox
-#'
-#' This creates a checkbox using Semantic UI styles.
-#'
-#' @param ... Other arguments to be added as attributes of the
-#' tag (e.g. style, childrens etc.)
-#' @param type Type of checkbox to be used.
-#'
-#' The following \code{type}s are allowed:
-#' \itemize{
-#' \item{NULL}{The standard checkbox (default)}
-#' \item{toggle}{Checkbox with toggle form}
-#' \item{slider}{Checkbox with slider form}
-#' }
-#'
-#' @export
-uicheckbox <- function(..., type = "") {
-  shiny::div(class = paste("ui checkbox", type), ...)
-}
-
 #' Create Semantic UI checkbox
 #' @aliases simple_checkbox
 #' @aliases toggle

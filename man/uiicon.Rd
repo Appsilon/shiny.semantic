@@ -16,3 +16,59 @@ tag (e.g. style, class etc.)}
 \description{
 This creates an icon tag using Semantic UI styles.
 }
+\examples{
+
+if (interactive()){
+library(shiny)
+library(shiny.semantic)
+
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      # Basic icon
+      uiicon("home"),
+      br(),
+      # Different size
+      uiicon("small home"),
+      uiicon("large home"),
+      br(),
+      # Disabled icon
+      uiicon("disabled home"),
+      br(),
+      # Loading icon
+      uiicon("spinner loading"),
+      br(),
+      # Icon formatted as link
+      uiicon("close link"),
+      br(),
+      # Flipped
+      uiicon("horizontally flipped cloud"),
+      uiicon("vertically flipped cloud"),
+      br(),
+      # Rotated
+      uiicon("clockwise rotated cloud"),
+      uiicon("counterclockwise rotated cloud"),
+      br(),
+      # Circular
+      uiicon("circular home"),
+      br(),
+      # Bordered
+      uiicon("bordered home"),
+      br(),
+      # Colored
+      uiicon("red home"),
+      br(),
+      # inverted
+      uisegment(class = "inverted", uiicon("inverted home"))
+    )
+  )
+}
+
+server <- shinyServer(function(input, output, session) {
+
+})
+
+shinyApp(ui = ui(), server = server)
+}
+
+}
