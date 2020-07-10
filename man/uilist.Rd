@@ -17,3 +17,19 @@ here: https://fomantic-ui.com/elements/icon.html}
 \description{
 This creates a list with icons using Semantic UI
 }
+\examples{
+library(shiny.semantic)
+list_content <- list(
+  list(header = "Head", description = "Lorem ipsum", icon = "cat"),
+  list(header = "Head 2", icon = "tree"),
+  list(description = "Lorem ipsum 2", icon = "dog")
+)
+if (interactive()){
+  ui <- semanticPage(
+    uilist(list_content, is_divided = TRUE)
+ )
+  server <- function(input, output) {}
+  shinyApp(ui, server)
+}
+
+}
