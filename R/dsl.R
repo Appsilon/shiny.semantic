@@ -539,7 +539,7 @@ list_element <- function(header = NULL, description = NULL, icon = NULL) {
 #'   server <- function(input, output) {}
 #'   shinyApp(ui, server)
 #' }
-#' }
+#'
 uilist <- function(content_list, is_divided = FALSE) {
   divided_list <- ifelse(is_divided, "divided", "")
   list_class <- paste("ui", divided_list, "list")
