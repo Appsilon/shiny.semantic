@@ -235,7 +235,7 @@ tabs <- function () {
 uilist_demo <- function() {
   list_content <- list(
     list(header = "Head 1", description = "Lorem ipsum", icon = "home"),
-    list(header = "Head 2", description = "Lorem ipsum", icon = "start"),
+    list(header = "Head 2", description = "Lorem ipsum", icon = "dog"),
     list(header = "Head 3", description = "Lorem ipsum", icon = "sun")
   )
 
