@@ -15,7 +15,8 @@ function(input, another_argument){}
 
 ## Constants
 
-Constants are defined with capital letter snake case.
+Constants are defined with capital letter snake case and kept in the
+`constants.R` script (unless they're internal).
 
 ```r
 COLORS <- c("red", "green", "blue")
@@ -23,13 +24,19 @@ COLORS <- c("red", "green", "blue")
 
 ## Function names
 
-TODO
+Function are called with `snake_case`.
+
+- Functions that define UI should contain name of the element, eg. `box`, `horizontal_menu`
+
+- Functions that define active elements should contain `input` in their name, eg. `checkbox_input`.
 
 ## Overriding shiny functions
 
 When overriding shiny functions we usually follow `shiny` styling. Usually it requires
 creating a function with `shiny.semantic` syntax and then implementing a wrapper that
 follows `shiny` syntax.
+
+**!!** Here argument names can actually follow `camelCase` syntax.
 
 Example:
 
