@@ -252,3 +252,26 @@ test_that("test uilist", {
   si_str <- as.character(uilist(list_content, is_divided = TRUE))
   expect_true(any(grepl("divided list", si_str)))
 })
+
+test_that("test dropdown_menu", {
+  # test missing input
+  expect_error(dropdown_menu(), "Specify \"name\" argument.")
+  expect_is(dropdown_menu("a",name="a"), "shiny.tag.list")
+  si_str <- as.character(
+    dropdown_menu(
+      "Dropdown menu",
+      icon(class = "dropdown"),
+      menu(
+        menu_header("Header"),
+        menu_divider(),
+        menu_item("Option 1")
+      ),
+      name = "dropdown_menu"
+    )
+  )
+  expect_true(any(grepl("<div class=\"ui dropdown  dropdown_name_dropdown_menu\">",
+                        si_str, fixed = TRUE)))
+  expect_true(any(grepl("<div class=\"item header\">", si_str, fixed = TRUE)))
+  expect_true(any(grepl("<div class=\"divider\"></div>", si_str, fixed = TRUE)))
+  expect_true(any(grepl("<div class=\"item \">Option 1", si_str, fixed = TRUE)))
+})
