@@ -2,10 +2,11 @@
 % Please edit documentation in R/date_input.R
 \name{date_input}
 \alias{date_input}
+\alias{dateInput}
 \title{Define simple date input with semantic ui styling}
 \usage{
 date_input(
-  name,
+  input_id,
   label = NULL,
   value = NULL,
   min = NULL,
@@ -13,9 +14,20 @@ date_input(
   style = NULL,
   icon = uiicon("calendar")
 )
+
+dateInput(
+  inputId,
+  label = NULL,
+  icon = NULL,
+  value = NULL,
+  min = NULL,
+  max = NULL,
+  width = NULL,
+  ...
+)
 }
 \arguments{
-\item{name}{Input id.}
+\item{input_id}{Input id.}
 
 \item{label}{Label to be displayed with date input.}
 

@@ -1,6 +1,6 @@
 #' Define simple date input with semantic ui styling
 #'
-#' @param name Input id.
+#' @param input_id Input id.
 #' @param label Label to be displayed with date input.
 #' @param value Default date chosen for input.
 #' @param min Minimum date that can be selected.
@@ -43,9 +43,10 @@
 #'}
 #'
 #' @export
-date_input <- function(name, label = NULL, value = NULL, min = NULL, max = NULL,
+#' @rdname date_input
+date_input <- function(input_id, label = NULL, value = NULL, min = NULL, max = NULL,
                        style = NULL, icon = uiicon("calendar")) {
-  class <- paste(name, "ui input")
+  class <- paste(input_id, "ui input")
   if (!is.null(icon))
     class <- paste(class, "icon")
 
@@ -54,8 +55,23 @@ date_input <- function(name, label = NULL, value = NULL, min = NULL, max = NULL,
                style = style,
                label,
                shiny.semantic::shiny_text_input(
-                 name,
-                 shiny::tags$input(type = "date", name = name, min = min, max = max),
+                 input_id,
+                 shiny::tags$input(type = "date", name = input_id, min = min, max = max),
                  value = value),
                icon))
+}
+
+#' @rdname date_input
+dateInput <- function(inputId, label = NULL, icon = NULL, value = NULL,
+                      min = NULL, max = NULL, width = NULL, ...) {
+  # TODO match arguments with shiny::dateInput
+  args_list <- list(...)
+  args_list$input_id <- inputId
+  args_list$label <- label
+  args_list$icon <- icon
+  args_list$value <- value
+  args_list$min <- min
+  args_list$max <- max
+  args_list$style <- if (!is.null(width)) paste0("width: ", width, "; ", args_list$style) else args_list$style
+  do.call(date_input, args_list)
 }

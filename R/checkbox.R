@@ -1,5 +1,5 @@
 #' Create Semantic UI checkbox
-#' @aliases simple_checkbox
+#' @aliases checkbox_input
 #' @aliases toggle
 #'
 #' This creates a checkbox using Semantic UI styles.
@@ -11,7 +11,7 @@
 #' @param style Style of the widget.
 #'
 #' @examples
-#' simple_checkbox("example", "Check me", is_marked = FALSE)
+#' checkbox_input("example", "Check me", is_marked = FALSE)
 #'
 #' if (interactive()){
 #' ui <- semanticPage(
@@ -36,9 +36,9 @@
 #' \item{slider}{Each checkbox has a simple slider form}
 #' }
 #'
-#' @rdname simple_checkbox
+#' @rdname checkbox
 #' @export
-simple_checkbox <- function(id, label = "", type = NULL, is_marked = TRUE, style = NULL) {
+checkbox_input <- function(id, label = "", type = NULL, is_marked = TRUE, style = NULL) {
   div(
     class = paste("ui", type, if (is_marked) "checked", "checkbox"), style = style,
     tags$input(id = id, type = "checkbox", checked = if (is_marked) NA else NULL),
@@ -46,10 +46,10 @@ simple_checkbox <- function(id, label = "", type = NULL, is_marked = TRUE, style
   )
 }
 
-#' @rdname simple_checkbox
+#' @rdname checkbox
 #' @export
 toggle <- function(id, label = "", is_marked = TRUE, style = NULL) {
-  simple_checkbox(id, label, type = "toggle", is_marked = is_marked, style = style)
+  checkbox_input(id, label, type = "toggle", is_marked = is_marked, style = style)
 }
 
 #' Create Semantic UI multiple checkbox
