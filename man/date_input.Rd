@@ -2,6 +2,7 @@
 % Please edit documentation in R/date_input.R
 \name{date_input}
 \alias{date_input}
+\alias{dateInput}
 \title{Define simple date input with semantic ui styling}
 \usage{
 date_input(
@@ -12,6 +13,17 @@ date_input(
   max = NULL,
   style = NULL,
   icon = uiicon("calendar")
+)
+
+dateInput(
+  inputId,
+  label = NULL,
+  icon = NULL,
+  value = NULL,
+  min = NULL,
+  max = NULL,
+  width = NULL,
+  ...
 )
 }
 \arguments{

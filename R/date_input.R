@@ -43,6 +43,7 @@
 #'}
 #'
 #' @export
+#' @rdname date_input
 date_input <- function(input_id, label = NULL, value = NULL, min = NULL, max = NULL,
                        style = NULL, icon = uiicon("calendar")) {
   class <- paste(input_id, "ui input")
@@ -58,4 +59,19 @@ date_input <- function(input_id, label = NULL, value = NULL, min = NULL, max = N
                  shiny::tags$input(type = "date", name = input_id, min = min, max = max),
                  value = value),
                icon))
+}
+
+#' @rdname date_input
+dateInput <- function(inputId, label = NULL, icon = NULL, value = NULL,
+                      min = NULL, max = NULL, width = NULL, ...) {
+  # TODO match arguments with shiny::dateInput
+  args_list <- list(...)
+  args_list$input_id <- inputId
+  args_list$label <- label
+  args_list$icon <- icon
+  args_list$value <- value
+  args_list$min <- min
+  args_list$max <- max
+  args_list$style <- if (!is.null(width)) paste0("width: ", width, "; ", args_list$style) else args_list$style
+  do.call(date_input, args_list)
 }
