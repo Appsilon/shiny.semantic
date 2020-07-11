@@ -30,7 +30,7 @@ numericInput(
 
 \item{width}{The width of the input.}
 
-\item{...}{Other parameters passed to \code{\link{uinumericinput}} like \code{type} or \code{icon}.}
+\item{...}{Other parameters passed to \code{\link{numeric_input}} like \code{type} or \code{icon}.}
 }
 \description{
 Create a numeric input control

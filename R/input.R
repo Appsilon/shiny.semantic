@@ -12,10 +12,10 @@
 #' # Text input
 #' uiinput(
 #'   tags$label("Text input"),
-#'   uitextinput("ex", type = "text", placeholder = "Enter Text")
+#'   text_input("ex", type = "text", placeholder = "Enter Text")
 #' )
 #'
-#' @seealso uitextinput
+#' @seealso text_input
 #'
 #' @export
 uiinput <- function(..., class = "") {
@@ -54,11 +54,11 @@ uiinput <- function(..., class = "") {
 #' # Text input
 #' uiinput(
 #'   tags$label("Text input"),
-#'   uitextinput("ex", type = "text", placeholder = "Enter Text")
+#'   text_input("ex", type = "text", placeholder = "Enter Text")
 #' )
 #'
 #' @export
-uitextinput <- function(input_id, value = "", type = "text", placeholder = NULL, attribs = list()) {
+text_input <- function(input_id, value = "", type = "text", placeholder = NULL, attribs = list()) {
   if (!type %in% c("text", "textarea", "password", "email", "url", "tel")) {
     stop(type, " is not a valid Semantic UI input")
   }
@@ -78,7 +78,7 @@ uitextinput <- function(input_id, value = "", type = "text", placeholder = NULL,
 #' This creates a default numeric input using Semantic UI. The input is available
 #' under \code{input[[input_id]]}.
 #'
-#' @param input_id Input input_id Reactive value is available under \code{input[[input_id]]}.
+#' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
 #' @param value Initial value of the numeric input.
 #' @param min Minimum allowed value.
 #' @param max Maximum allowed value.
@@ -99,11 +99,11 @@ uitextinput <- function(input_id, value = "", type = "text", placeholder = NULL,
 #' # Text input
 #' uiinput(
 #'   tags$label("Numeric Input"),
-#'   uinumericinput("ex", 10)
+#'   numeric_input("ex", 10)
 #' )
 #'
 #' @export
-uinumericinput <- function(input_id, value, min = NA, max = NA, step = NA,
+numeric_input <- function(input_id, value, min = NA, max = NA, step = NA,
                            type = NULL, icon = NULL, placeholder = NULL, ...) {
   if (!is.numeric(value) & !grepl("^\\d*(\\.\\d*|)$", value)) stop("Non-numeric input detected")
 
@@ -130,7 +130,7 @@ uinumericinput <- function(input_id, value, min = NA, max = NA, step = NA,
 #' @param max Maximum allowed value.
 #' @param step Interval to use when stepping between min and max.
 #' @param width The width of the input.
-#' @param ... Other parameters passed to \code{\link{uinumericinput}} like \code{type} or \code{icon}.
+#' @param ... Other parameters passed to \code{\link{numeric_input}} like \code{type} or \code{icon}.
 #' @export
 numericInput <- function(inputId, label, value, min = NA, max = NA, step = NA, width = NULL, ...) {
   shiny::div(
@@ -138,7 +138,7 @@ numericInput <- function(inputId, label, value, min = NA, max = NA, step = NA, w
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
     shiny::div(class = "field",
                if (!is.null(label)) tags$label(label, `for` = inputId),
-               uinumericinput(inputId, value, min, max, step, ...)
+               numeric_input(inputId, value, min, max, step, ...)
     )
   )
 }
