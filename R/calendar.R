@@ -37,7 +37,7 @@
 #'
 #' \dontrun{
 #' # Calendar with max and min
-#' uicalendar(
+#' calendar(
 #'   name = "date_finish",
 #'   placeholder = "Select End Date",
 #'   min = "2019-01-01",
@@ -45,14 +45,14 @@
 #' )
 #'
 #' # Selecting month
-#' uicalendar(
+#' calendar(
 #'   name = "month",
 #'   type = "month"
 #' )
 #' }
-#' @rdname uicalendar
+#' @rdname calendar
 #' @export
-uicalendar <- function(name, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
+calendar <- function(name, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
   cal_widget <-
     div(
       id = name, class = "ui calendar ss-input-date", `data-type` = type, `data-date` = value,
@@ -77,7 +77,7 @@ uicalendar <- function(name, value = NULL, placeholder = NULL, type = "date", mi
 #'   \code{shinyServer}.
 #' @param id ID of the calendar that will be updated
 #'
-#' @rdname uicalendar
+#' @rdname calendar
 #'
 #' @export
 update_calendar <- function(session, id, value = NULL, min = NULL, max = NULL) {
