@@ -5,7 +5,8 @@ ui <- function() {
   shinyUI(
     semanticPage(
       title = "Rating example",
-      rating("rating", "How much do you like this example?", size = "huge"),
+      rating("rating", "How much do you like this example?",
+             icon = "heart", max = 8, color = "green", size = "huge"),
       p("Your rate:"),
       textOutput("your_rate"),
       uibutton("update", "Update rate")

@@ -12,10 +12,10 @@
 #' # Text input
 #' uiinput(
 #'   tags$label("Text input"),
-#'   uitextinput("ex", type = "text", placeholder = "Enter Text")
+#'   text_input("ex", type = "text", placeholder = "Enter Text")
 #' )
 #'
-#' @seealso uitextinput
+#' @seealso text_input
 #'
 #' @export
 uiinput <- function(..., class = "") {
@@ -25,9 +25,9 @@ uiinput <- function(..., class = "") {
 #' Create Semantic UI Text Input
 #'
 #' This creates a default text input using Semantic UI. The input is available
-#' under \code{input[[name]]}.
+#' under \code{input[[input_id]]}.
 #'
-#' @param name Input name. Reactive value is available under \code{input[[name]]}.
+#' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
 #' @param value Pass value if you want to have default text.
 #' @param type Change depending what type of input is wanted. See details for options.
 #' @param placeholder Text visible in the input when nothing is inputted.
@@ -54,19 +54,19 @@ uiinput <- function(..., class = "") {
 #' # Text input
 #' uiinput(
 #'   tags$label("Text input"),
-#'   uitextinput("ex", type = "text", placeholder = "Enter Text")
+#'   text_input("ex", type = "text", placeholder = "Enter Text")
 #' )
 #'
 #' @export
-uitextinput <- function(name, value = "", type = "text", placeholder = NULL, attribs = list()) {
+text_input <- function(input_id, value = "", type = "text", placeholder = NULL, attribs = list()) {
   if (!type %in% c("text", "textarea", "password", "email", "url", "tel")) {
     stop(type, " is not a valid Semantic UI input")
   }
 
   if (type == "textarea") {
-    input <- tags$textarea(id = name, value = value, placeholder = placeholder)
+    input <- tags$textarea(id = input_id, value = value, placeholder = placeholder)
   } else {
-    input <- tags$input(id = name, value = value, type = type, placeholder = placeholder)
+    input <- tags$input(id = input_id, value = value, type = type, placeholder = placeholder)
   }
 
   for (i in names(attribs)) input$attribs[[i]] <- attribs[[i]]
@@ -76,9 +76,9 @@ uitextinput <- function(name, value = "", type = "text", placeholder = NULL, att
 #' Create Semantic UI Numeric Input
 #'
 #' This creates a default numeric input using Semantic UI. The input is available
-#' under \code{input[[name]]}.
+#' under \code{input[[input_id]]}.
 #'
-#' @param name Input name. Reactive value is available under \code{input[[name]]}.
+#' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
 #' @param value Initial value of the numeric input.
 #' @param min Minimum allowed value.
 #' @param max Maximum allowed value.
@@ -99,15 +99,15 @@ uitextinput <- function(name, value = "", type = "text", placeholder = NULL, att
 #' # Text input
 #' uiinput(
 #'   tags$label("Numeric Input"),
-#'   uinumericinput("ex", 10)
+#'   numeric_input("ex", 10)
 #' )
 #'
 #' @export
-uinumericinput <- function(name, value, min = NA, max = NA, step = NA,
+numeric_input <- function(input_id, value, min = NA, max = NA, step = NA,
                            type = NULL, icon = NULL, placeholder = NULL, ...) {
   if (!is.numeric(value) & !grepl("^\\d*(\\.\\d*|)$", value)) stop("Non-numeric input detected")
 
-  input_tag <- tags$input(id = name, value = value, type = "number")
+  input_tag <- tags$input(id = input_id, value = value, type = "number")
   if (!is.na(min)) input_tag$attribs$min <- min
   if (!is.na(max)) input_tag$attribs$max <- max
   if (!is.na(step)) input_tag$attribs$step <- step
@@ -130,7 +130,7 @@ uinumericinput <- function(name, value, min = NA, max = NA, step = NA,
 #' @param max Maximum allowed value.
 #' @param step Interval to use when stepping between min and max.
 #' @param width The width of the input.
-#' @param ... Other parameters passed to \code{\link{uinumericinput}} like \code{type} or \code{icon}.
+#' @param ... Other parameters passed to \code{\link{numeric_input}} like \code{type} or \code{icon}.
 #' @export
 numericInput <- function(inputId, label, value, min = NA, max = NA, step = NA, width = NULL, ...) {
   shiny::div(
@@ -138,7 +138,7 @@ numericInput <- function(inputId, label, value, min = NA, max = NA, step = NA, w
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
     shiny::div(class = "field",
                if (!is.null(label)) tags$label(label, `for` = inputId),
-               uinumericinput(inputId, value, min, max, step, ...)
+               numeric_input(inputId, value, min, max, step, ...)
     )
   )
 }
