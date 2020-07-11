@@ -123,15 +123,6 @@ test_that("test label", {
   expect_match(as.character(label()), "<label></label>")
 })
 
-test_that("test uicheckbox", {
-  # test missing input
-  expect_match(as.character(uicheckbox()), "<div class=\"ui checkbox \"></div>")
-  # test class
-  expect_match(as.character(uicheckbox(class = "ch")),
-               "<div class=\"ui checkbox  ch\"></div>")
-})
-
-
 test_that("test uimessage", {
   # test missing input
   expect_error(uimessage())
@@ -142,8 +133,8 @@ test_that("test uimessage", {
   expect_true(any(grepl("<div class=\"ui message \">", si_str, fixed = TRUE)))
   expect_true(any(grepl("<ul class=\"list\">", si_str, fixed = TRUE)))
   expect_true(any(grepl("<li>b</li>", si_str, fixed = TRUE)))
-  expect_error(uimessage(shiny::h2("a"), c("b", "c"), type = "icon"),
-               "Type 'icon' requires an icon!")
+  expect_error(uimessage(shiny::h2("a"), c("b", "c"), class = "icon"),
+               "If you give a class 'icon', then an icon argument is required")
 })
 
 test_that("test dropdown", {

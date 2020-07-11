@@ -4,7 +4,7 @@
 \alias{uimessage}
 \title{Create Semantic UI Message}
 \usage{
-uimessage(header, content, type = "", icon, closable = FALSE)
+uimessage(header, content, class = "", icon, closable = FALSE)
 }
 \arguments{
 \item{header}{Header of the message}
@@ -12,7 +12,7 @@ uimessage(header, content, type = "", icon, closable = FALSE)
 \item{content}{Content of the message. If it is a vector, creates a list of
 vector's elements}
 
-\item{type}{Type of the message. Look at
+\item{class}{class of the message. Look at
 https://semantic-ui.com/collections/message.html for all possibilities.}
 
 \item{icon}{If the message is of the type 'icon', specify the icon.
