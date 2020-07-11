@@ -36,7 +36,7 @@ render_menu_link <- function(location, title, active_location = "", icon = NULL)
   if (is.null(icon))
     icon_ui <- ""
   else
-    icon_ui <- uiicon(icon)
+    icon_ui <- icon(icon)
   shiny::tags$a(class = class, href = location, icon_ui, title)
 }
 

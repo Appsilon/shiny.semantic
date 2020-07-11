@@ -29,7 +29,7 @@
 #'   }
 #'   server <- shinyServer(function(input, output) {
 #'      output$dropdown <- renderUI({
-#'          dropdown("simple_dropdown", LETTERS, value = "A")
+#'          dropdown_input("simple_dropdown", LETTERS, value = "A")
 #'      })
 #'      output$selected_letter <- renderText(input[["simple_dropdown"]])
 #'   })
@@ -38,15 +38,15 @@
 #' }
 #'
 #' @export
-dropdown <- function(name, choices, choices_value = choices,
+dropdown_input <- function(name, choices, choices_value = choices,
                      default_text = "Select", value = NULL, type = "selection fluid") {
     if (!is.null(value)) value <- paste(as.character(value), collapse = ",")
     shiny::div(
       id = name, class = paste("ui", type, "dropdown semantic-select-input"),
       tags$input(type = "hidden", name = name, value = value),
-      uiicon("dropdown"),
+      icon("dropdown"),
       shiny::div(class = "default text", default_text),
-      uimenu(
+      menu(
         purrr::when(
           choices,
           is.null(names(.)) ~
@@ -121,7 +121,7 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
     shiny::div(class = "field",
       if (!is.null(label)) tags$label(label, `for` = inputId),
-      do.call(dropdown, args)
+      do.call(dropdown_input, args)
     )
   )
 }

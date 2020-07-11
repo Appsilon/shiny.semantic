@@ -26,40 +26,40 @@ ui <- function() {
   shinyUI(
     semanticPage(
       # Basic icon
-      uiicon("home"),
+      icon("home"),
       br(),
       # Different size
-      uiicon("small home"),
-      uiicon("large home"),
+      icon("small home"),
+      icon("large home"),
       br(),
       # Disabled icon
-      uiicon("disabled home"),
+      icon("disabled home"),
       br(),
       # Loading icon
-      uiicon("spinner loading"),
+      icon("spinner loading"),
       br(),
       # Icon formatted as link
-      uiicon("close link"),
+      icon("close link"),
       br(),
       # Flipped
-      uiicon("horizontally flipped cloud"),
-      uiicon("vertically flipped cloud"),
+      icon("horizontally flipped cloud"),
+      icon("vertically flipped cloud"),
       br(),
       # Rotated
-      uiicon("clockwise rotated cloud"),
-      uiicon("counterclockwise rotated cloud"),
+      icon("clockwise rotated cloud"),
+      icon("counterclockwise rotated cloud"),
       br(),
       # Circular
-      uiicon("circular home"),
+      icon("circular home"),
       br(),
       # Bordered
-      uiicon("bordered home"),
+      icon("bordered home"),
       br(),
       # Colored
-      uiicon("red home"),
+      icon("red home"),
       br(),
       # inverted
-      uisegment(class = "inverted", uiicon("inverted home"))
+      segment(class = "inverted", icon("inverted home"))
     )
   )
 }

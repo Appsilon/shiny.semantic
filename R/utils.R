@@ -23,3 +23,12 @@ check_proper_color <- function(color) {
     invisible(color)
   }
 }
+
+#' Generates random id of element
+#'
+#' @param prefix character with prefix add to id
+#' @param id_length numeric with length of id (default 20)
+generate_random_id <- function(prefix, id_length = 20) {
+  random_id <- paste(sample(letters, id_length, replace = TRUE), collapse = "")
+  paste0(prefix, "-", random_id)
+}

@@ -4,15 +4,15 @@
 \alias{icon}
 \title{Create an icon}
 \usage{
-icon(name, class = NULL, ...)
+icon(class = "", ...)
 }
 \arguments{
-\item{name}{Name of icon. See [Fomantic Icons](https://fomantic-ui.com/elements/icon.html).}
-
 \item{class}{Additional classes to customize the style of the icon.
 See [Fomantic Icon Definitions](https://fomantic-ui.com/elements/icon.html#/definition).}
 
 \item{...}{Named attributes to be applied to the icon.}
+
+\item{name}{Name of icon. See [Fomantic Icons](https://fomantic-ui.com/elements/icon.html).}
 }
 \description{
 Create an icon for use within a page.

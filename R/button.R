@@ -13,7 +13,7 @@
 #' library(shiny.semantic)
 #' ui <- semanticPage(
 #'   shinyUI(
-#'     uibutton("simple_button", "Press Me!")
+#'     button("simple_button", "Press Me!")
 #'   )
 #' )
 #' server <- function(input, output, session) {
@@ -23,7 +23,7 @@
 #'
 #'
 #' @export
-uibutton <- function(name, label, icon = NULL, class = NULL, ...) {
+button <- function(name, label, icon = NULL, class = NULL, ...) {
   tags$button(id = name, class = paste("ui", class, "button"), icon, " ", label, ...)
 }
 
@@ -59,7 +59,7 @@ actionButton <- function(inputId, label, icon = NULL, width = NULL, ...) {
   args_list$label <- label
   args_list$icon <- icon
   args_list$style <- if (!is.null(width)) paste0("width: ", width, "; ", args_list$style) else args_list$style
-  do.call(uibutton, args_list)
+  do.call(button, args_list)
 }
 
 #' Change the label or icon of an action button on the client
@@ -140,7 +140,7 @@ counterbutton <- function(name, label = "", icon = NULL, value = 0, color = "", 
   shiny::div(
     class = "ui labeled button", tabindex = "0",
     shiny::tagList(
-      uibutton(name = name, label, icon,
+      button(name = name, label, icon,
                class = paste(c(size, color), collapse = " "),
                `data-val` = value),
       shiny::tags$span(class = glue::glue("ui basic {color} label"),

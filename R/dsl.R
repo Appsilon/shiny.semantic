@@ -17,40 +17,40 @@
 #'   shinyUI(
 #'     semanticPage(
 #'       # Basic icon
-#'       uiicon("home"),
+#'       icon("home"),
 #'       br(),
 #'       # Different size
-#'       uiicon("small home"),
-#'       uiicon("large home"),
+#'       icon("small home"),
+#'       icon("large home"),
 #'       br(),
 #'       # Disabled icon
-#'       uiicon("disabled home"),
+#'       icon("disabled home"),
 #'       br(),
 #'       # Loading icon
-#'       uiicon("spinner loading"),
+#'       icon("spinner loading"),
 #'       br(),
 #'       # Icon formatted as link
-#'       uiicon("close link"),
+#'       icon("close link"),
 #'       br(),
 #'       # Flipped
-#'       uiicon("horizontally flipped cloud"),
-#'       uiicon("vertically flipped cloud"),
+#'       icon("horizontally flipped cloud"),
+#'       icon("vertically flipped cloud"),
 #'       br(),
 #'       # Rotated
-#'       uiicon("clockwise rotated cloud"),
-#'       uiicon("counterclockwise rotated cloud"),
+#'       icon("clockwise rotated cloud"),
+#'       icon("counterclockwise rotated cloud"),
 #'       br(),
 #'       # Circular
-#'       uiicon("circular home"),
+#'       icon("circular home"),
 #'       br(),
 #'       # Bordered
-#'       uiicon("bordered home"),
+#'       icon("bordered home"),
 #'       br(),
 #'       # Colored
-#'       uiicon("red home"),
+#'       icon("red home"),
 #'       br(),
 #'       # inverted
-#'       uisegment(class = "inverted", uiicon("inverted home"))
+#'       segment(class = "inverted", icon("inverted home"))
 #'     )
 #'   )
 #' }
@@ -77,9 +77,9 @@ uiicon <- function(class = "", ...) {
 #' @param ... Named attributes to be applied to the icon.
 #'
 #' @export
-icon <- function(name, class = NULL, ...) {
+icon <- function(class = "", ...) {
   args_list <- list(...)
-  args_list$type <- paste(args_list$type, name, class)
+  args_list$class <- class
   do.call(uiicon, args_list)
 }
 
@@ -94,7 +94,7 @@ icon <- function(name, class = NULL, ...) {
 #' @export
 #'
 #' @import shiny
-uilabel <- function(..., class = "", is_link = TRUE) {
+label_tag <- function(..., class = "", is_link = TRUE) {
   label_tag <- if (is_link) tags$a else tags$div
   label_tag(class = paste("ui label", class),
             list(...))
@@ -181,11 +181,6 @@ tabset <- function(tabs,
   )
 }
 
-generate_random_id <- function(prefix, id_length = 20) {
-  random_id <- paste(sample(letters, id_length, replace = TRUE), collapse = "")
-  paste0(prefix, "-", random_id)
-}
-
 #' Create Semantic UI header
 #'
 #' This creates a header with optional icon using Semantic UI styles.
@@ -195,9 +190,9 @@ generate_random_id <- function(prefix, id_length = 20) {
 #' @param icon Optional icon name
 #'
 #' @export
-uiheader <- function(title, description, icon = NULL) {
+header <- function(title, description, icon = NULL) {
   shiny::h2(class = "ui header",
-            if (!is.null(icon)) uiicon(icon),
+            if (!is.null(icon)) icon(icon),
             shiny::div(class = "content", title,
                        shiny::div(class = "sub header", description)
             )
@@ -213,7 +208,7 @@ uiheader <- function(title, description, icon = NULL) {
 #' @param class Additional classes to add to html tag.
 #'
 #' @export
-uicards <- function(..., class = "") {
+cards <- function(..., class = "") {
   shiny::div(class = paste("ui cards", class), ...)
 }
 
@@ -226,7 +221,7 @@ uicards <- function(..., class = "") {
 #' @param class Additional classes to add to html tag.
 #'
 #' @export
-uicard <- function(..., class = "") {
+card <- function(..., class = "") {
   shiny::div(class = paste("ui card", class), ...)
 }
 
@@ -239,7 +234,7 @@ uicard <- function(..., class = "") {
 #' @param class Additional classes to add to html tag.
 #'
 #' @export
-uisegment <- function(..., class = "") {
+segment <- function(..., class = "") {
   shiny::div(class = paste("ui segment", class), ...)
 }
 
@@ -252,7 +247,7 @@ uisegment <- function(..., class = "") {
 #' @param class Additional classes to add to html tag.
 #'
 #' @export
-uiform <- function(..., class = "") {
+form <- function(..., class = "") {
   shiny::tags$form(class = paste("ui form", class),
                    ...
   )
@@ -267,7 +262,7 @@ uiform <- function(..., class = "") {
 #' @param class Additional classes to add to html tag.
 #'
 #' @export
-uifields <- function(..., class = "") {
+fields <- function(..., class = "") {
   shiny::div(class = paste("fields", class), ...)
 }
 
@@ -280,7 +275,7 @@ uifields <- function(..., class = "") {
 #' @param class Additional classes to add to html tag.
 #'
 #' @export
-uifield <- function(..., class = "") {
+field <- function(..., class = "") {
   shiny::div(class = paste("field", class), ...)
 }
 
@@ -309,7 +304,7 @@ label <- function(...) {
 #' Default is FALSE - not closable
 #'
 #' @export
-uimessage <- function(header, content, class = "", icon, closable = FALSE) {
+message <- function(header, content, class = "", icon, closable = FALSE) {
   if (length(content) > 1) {
     content <- shiny::tags$ul(class = "list", lapply(content, shiny::tags$li))
   }
@@ -361,10 +356,10 @@ uimessage <- function(header, content, class = "", icon, closable = FALSE) {
 #'   shinyUI(
 #'     semanticPage(
 #'       title = "My page",
-#'       uimenu(menu_item("Menu"),
+#'       menu(menu_item("Menu"),
 #'              uidropdown(
 #'                "Action",
-#'                uimenu(
+#'                menu(
 #'                  menu_header(uiicon("file"), "File", is_item = FALSE),
 #'                  menu_item(uiicon("wrench"), "Open"),
 #'                  menu_item(uiicon("upload"), "Upload"),
@@ -379,7 +374,7 @@ uimessage <- function(header, content, class = "", icon, closable = FALSE) {
 #'              menu_item(uiicon("user"), "Profile", href = "#index", item_feature = "active"),
 #'              menu_item("Projects", href = "#projects"),
 #'              menu_item(uiicon("users"), "Team"),
-#'              uimenu(menu_item(uiicon("add icon"), "New tab"), class = "right"))
+#'              menu(menu_item(uiicon("add icon"), "New tab"), class = "right"))
 #'     )
 #'   )
 #' }
@@ -390,7 +385,7 @@ uimessage <- function(header, content, class = "", icon, closable = FALSE) {
 #' shinyApp(ui = ui(), server = server)
 #'}
 #' @export
-uimenu <- function(..., class = "") {
+menu <- function(..., class = "") {
   class <- paste("ui menu", class)
   div(class =  class,
       list(...))
@@ -432,8 +427,8 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
 #'
 #' uidropdown(
 #'   "Dropdown menu",
-#'   uiicon(class = "dropdown"),
-#'   uimenu(
+#'   icon(class = "dropdown"),
+#'   menu(
 #'     menu_header("Header"),
 #'     menu_divider(),
 #'     menu_item("Option 1"),
@@ -535,13 +530,13 @@ list_element <- function(header = NULL, description = NULL, icon = NULL) {
 #' )
 #' if (interactive()){
 #'   ui <- semanticPage(
-#'     uilist(list_content, is_divided = TRUE)
+#'     list_container(list_content, is_divided = TRUE)
 #'  )
 #'   server <- function(input, output) {}
 #'   shinyApp(ui, server)
 #' }
 #'
-uilist <- function(content_list, is_divided = FALSE) {
+list_container <- function(content_list, is_divided = FALSE) {
   divided_list <- ifelse(is_divided, "divided", "")
   list_class <- paste("ui", divided_list, "list")
   div(class = list_class,

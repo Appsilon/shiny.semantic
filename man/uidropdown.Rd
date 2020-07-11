@@ -31,8 +31,8 @@ This creates a dropdown using Semantic UI.
 
 uidropdown(
   "Dropdown menu",
-  uiicon(class = "dropdown"),
-  uimenu(
+  icon(class = "dropdown"),
+  menu(
     menu_header("Header"),
     menu_divider(),
     menu_item("Option 1"),

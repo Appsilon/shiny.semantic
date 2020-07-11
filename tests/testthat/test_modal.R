@@ -78,7 +78,7 @@ test_that("test modal created with given settings", {
 
 test_that("test modal created with arguments list", {
   si_str <- as.character(modal(
-    header = list(class = "ui icon", shiny.semantic::uiicon("archive")),
+    header = list(class = "ui icon", icon("archive")),
     content = div(class = "children", "content"),
     footer = list(id = "footer_modal_id", "footer")
   ))

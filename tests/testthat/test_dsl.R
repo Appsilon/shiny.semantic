@@ -1,39 +1,39 @@
 context("dsl")
 
-test_that("test uiicon type and input values", {
+test_that("test icon type and input values", {
   # type
-  expect_is(uiicon("deaf"), "shiny.tag")
+  expect_is(icon("deaf"), "shiny.tag")
   # empty input
-  si_str <- as.character(uiicon("deaf"))
+  si_str <- as.character(icon("deaf"))
   expect_true(any(grepl("<i class=\"deaf icon\"></i>",
                         si_str, fixed = TRUE)))
   # multiple input
-  si_str <- as.character(uiicon("deaf", "a", "b", "c"))
+  si_str <- as.character(icon("deaf", "a", "b", "c"))
   expect_true(any(grepl("<i class=\"deaf icon\">\n  a\n  b\n  c\n</i>",
                         si_str, fixed = TRUE)))
 })
 
-test_that("test uimessage type and input values", {
+test_that("test message type and input values", {
   # type
-  expect_is(uimessage(shiny::p("a"), c("b", "c")),
+  expect_is(message(shiny::p("a"), c("b", "c")),
             "shiny.tag")
   # empty input
-  expect_error(uimessage())
+  expect_error(message())
   # text input
-  si_str <- as.character(uimessage(shiny::p("a"), "abcb"))
+  si_str <- as.character(message(shiny::p("a"), "abcb"))
   expect_true(any(grepl("<div class=\"header\">",
                         si_str, fixed = TRUE)))
   expect_true(any(grepl("abcb", si_str, fixed = TRUE)))
 })
 
-test_that("test uilabel type and input values", {
+test_that("test label_tag type and input values", {
   # type
-  expect_is(uilabel(p("a")), "shiny.tag")
+  expect_is(label_tag(p("a")), "shiny.tag")
   # test input
-  si_str <- as.character(uilabel(p("a")))
+  si_str <- as.character(label_tag(p("a")))
   expect_true(any(grepl("class=\"ui label \"",
                         si_str, fixed = TRUE)))
-  expect_match(as.character(uilabel()), "<a class=\"ui label \"></a>")
+  expect_match(as.character(label_tag()), "<a class=\"ui label \"></a>")
 
 })
 
@@ -53,66 +53,66 @@ test_that("test tabset type and input values", {
 })
 
 
-test_that("test uiheader", {
+test_that("test header", {
   # test missing input
-  expect_error(uiheader())
-  expect_error(uiheader("title"))
-  si_str <- as.character(uiheader(p("title"), "description"))
+  expect_error(header())
+  expect_error(header("title"))
+  si_str <- as.character(header(p("title"), "description"))
   expect_true(any(grepl(paste0("<div class=\"sub header\">",
                                "description</div>"), si_str, fixed = TRUE)))
   # check icons
-  si_str_with_icon <- as.character(uiheader("title", "description", "car"))
+  si_str_with_icon <- as.character(header("title", "description", "car"))
   expect_true(any(grepl(paste0("<div class=\"sub header\">",
                                "description</div>"), si_str, fixed = TRUE)))
   expect_true(any(grepl(paste0("<i class=\"car icon\"></i>"),
                         si_str_with_icon, fixed = TRUE)))
 })
 
-test_that("test uicards", {
+test_that("test cards", {
   # test missing input
-  expect_match(as.character(uicards()), "<div class=\"ui cards \"></div>")
+  expect_match(as.character(cards()), "<div class=\"ui cards \"></div>")
   # test class
-  expect_match(as.character(uicards(class = "three")),
+  expect_match(as.character(cards(class = "three")),
                "<div class=\"ui cards three\"></div>")
 })
 
-test_that("test uicard", {
+test_that("test card", {
   # test missing input
-  expect_match(as.character(uicard()), "<div class=\"ui card \"></div>")
+  expect_match(as.character(card()), "<div class=\"ui card \"></div>")
   # test class
-  expect_match(as.character(uicard(class = "one")),
+  expect_match(as.character(card(class = "one")),
                "<div class=\"ui card one\"></div>")
 })
 
-test_that("test uisegment", {
+test_that("test segment", {
   # test missing input
-  expect_match(as.character(uisegment()), "<div class=\"ui segment \"></div>")
+  expect_match(as.character(segment()), "<div class=\"ui segment \"></div>")
   # test class
-  expect_match(as.character(uisegment(class = "one")),
+  expect_match(as.character(segment(class = "one")),
                "<div class=\"ui segment one\"></div>")
 })
 
-test_that("test uiform", {
+test_that("test form", {
   # test missing input
-  expect_match(as.character(uiform()), "<form class=\"ui form \"></form>")
+  expect_match(as.character(form()), "<form class=\"ui form \"></form>")
   # test class
-  expect_match(as.character(uiform(class = "form")),
+  expect_match(as.character(form(class = "form")),
                "<form class=\"ui form form\"></form>")
 })
 
-test_that("test uifields", {
+test_that("test fields", {
   # test missing input
-  expect_match(as.character(uifields()), "<div class=\"fields \"></div>")
+  expect_match(as.character(fields()), "<div class=\"fields \"></div>")
   # test class
-  expect_match(as.character(uifields(class = "fl")),
+  expect_match(as.character(fields(class = "fl")),
                "<div class=\"fields fl\"></div>")
 })
 
-test_that("test uifield", {
+test_that("test field", {
   # test missing input
-  expect_match(as.character(uifield()), "<div class=\"field \"></div>")
+  expect_match(as.character(field()), "<div class=\"field \"></div>")
   # test class
-  expect_match(as.character(uifield(class = "fl")),
+  expect_match(as.character(field(class = "fl")),
                "<div class=\"field fl\"></div>")
 })
 
@@ -123,54 +123,19 @@ test_that("test label", {
   expect_match(as.character(label()), "<label></label>")
 })
 
-test_that("test uimessage", {
+test_that("test message", {
   # test missing input
-  expect_error(uimessage())
+  expect_error(message())
   si_str <- as.character(
-    uimessage(shiny::h2("a"), c("b", "c"))
+    message(shiny::h2("a"), c("b", "c"))
   )
   # test output
   expect_true(any(grepl("<div class=\"ui message \">", si_str, fixed = TRUE)))
   expect_true(any(grepl("<ul class=\"list\">", si_str, fixed = TRUE)))
   expect_true(any(grepl("<li>b</li>", si_str, fixed = TRUE)))
-  expect_error(uimessage(shiny::h2("a"), c("b", "c"), class = "icon"),
+  expect_error(message(shiny::h2("a"), c("b", "c"), class = "icon"),
                "If you give a class 'icon', then an icon argument is required")
 })
-
-test_that("test dropdown", {
-  # test missing input
-  expect_error(dropdown())
-  expect_error(dropdown("dd"))
-  # test output
-  si_str <- as.character(
-    dropdown("simple_dropdown", LETTERS, value = "A")
-  )
-  expect_true(any(grepl("<div class=\"item\" data-value=\"C\">C</div>",
-                        si_str, fixed = TRUE)))
-  expect_true(any(grepl(
-    "<input type=\"hidden\" name=\"simple_dropdown\" value=\"A\"", si_str, fixed = TRUE
-  )))
-})
-
-test_that("test dropdown header", {
-  # test output
-  si_str <- as.character(
-    dropdown("header_dropdown",
-             list("LETTERS" = LETTERS, "month.name" = month.name),
-             value = "A")
-  )
-
-  expect_true(any(grepl("<div class=\"item\" data-value=\"C\">C</div>",
-                        si_str, fixed = TRUE)))
-  expect_true(any(grepl(
-    "<input type=\"hidden\" name=\"header_dropdown\" value=\"A\"", si_str, fixed = TRUE
-  )))
-  expect_true(any(grepl("<div class=\"header\">month.name</div>",
-                        si_str, fixed = TRUE)))
-  expect_true(any(grepl("<div class=\"divider\"></div>",
-                        si_str, fixed = TRUE)))
-})
-
 
 test_that("test menu_item", {
   # test missing input
@@ -178,7 +143,7 @@ test_that("test menu_item", {
                "<div class=\"item \"></div>")
   #test with icon
   si_str <- as.character(
-    menu_item(uiicon("add icon"), "New tab")
+    menu_item(icon("add icon"), "New tab")
   )
   expect_true(any(grepl("<i class=\"add icon icon\"></i>",
                         si_str, fixed = TRUE)))
@@ -186,12 +151,12 @@ test_that("test menu_item", {
                         si_str, fixed = TRUE)))
 })
 
-test_that("test uimenu", {
+test_that("test menu", {
   # test missing input
-  expect_match(as.character(uimenu()), "<div class=\"ui menu \"></div>")
+  expect_match(as.character(menu()), "<div class=\"ui menu \"></div>")
   #test with icon
   si_str <- as.character(
-    uimenu(menu_item(uiicon("add icon"), "New tab"), type = "right")
+    menu(menu_item(icon("add icon"), "New tab"), type = "right")
   )
   expect_true(any(grepl("<i class=\"add icon icon\"></i>",
                         si_str, fixed = TRUE)))
@@ -223,15 +188,15 @@ test_that("test list_element", {
   expect_true(any(grepl("<div class=\"description\">B</div>", si_str)))
 })
 
-test_that("test uilist", {
+test_that("test list_container", {
   # test missing input
-  expect_error(uilist())
+  expect_error(list_container())
   # test default input
   list_content <- list(
     list(header = "Head", icon = "tree"),
     list(description = "Lorem ipsum")
   )
-  si_str <- as.character(uilist(list_content))
+  si_str <- as.character(list_container(list_content))
   expect_true(any(grepl("<div class=\"ui  list\">", si_str)))
   expect_true(any(grepl("Lorem ipsum", si_str)))
   #' wrong input
@@ -239,16 +204,17 @@ test_that("test uilist", {
     list(icon = "cat"),
     list(header = "Head", icon = "tree")
   )
-  expect_error(uilist(list_content),
+  expect_error(list_container(list_content),
                "content_list needs to have either header or description")
   #' input with icon
   list_content <- list(
     list(header = "Head", icon = "tree"),
     list(description = "Lorem ipsum")
   )
-  si_str <- as.character(uilist(list_content))
+  si_str <- as.character(list_container(list_content))
   expect_true(any(grepl("tree icon", si_str)))
   #' divided
-  si_str <- as.character(uilist(list_content, is_divided = TRUE))
+  si_str <- as.character(list_container(list_content, is_divided = TRUE))
   expect_true(any(grepl("divided list", si_str)))
-})
+
+  })

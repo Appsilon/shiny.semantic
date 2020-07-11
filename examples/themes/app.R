@@ -35,11 +35,11 @@ header <- function() {
     demo(h1(class="ui header", "First header")),
     demo(h2(class="ui header", "Second header")),
     demo(h2(class="ui icon header",
-            uiicon("settings"),
+            icon("settings"),
             div(class="content", "Account Settings",
                 div(class="sub header", "Manage your account")))),
-    demo(h2(class="ui header", uiicon("plug"), div(class="content", "Second header"))),
-    demo(h2(class="ui header", uiicon("settings"),
+    demo(h2(class="ui header", icon("plug"), div(class="content", "Second header"))),
+    demo(h2(class="ui header", icon("settings"),
             div(class="content", "Second header",
                 div(class="sub header", "Manage preferences"))))
   )
