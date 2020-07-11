@@ -32,3 +32,15 @@ generate_random_id <- function(prefix, id_length = 20) {
   random_id <- paste(sample(letters, id_length, replace = TRUE), collapse = "")
   paste0(prefix, "-", random_id)
 }
+
+
+#' Check for extra arguments
+#'
+#' This throws warning if there're parameters not supported by semantic.
+#'
+#' @param args list with extra arguments
+check_extra_arguments <- function(args) {
+  to_wrn <- paste0(as.character(names(args)), collapse = ',')
+if (nchar(to_wrn) > 1)
+  warning(glue::glue("arguments: `{to_wrn}` not supported yet in semantic version"))
+}

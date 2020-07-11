@@ -11,7 +11,8 @@ demo <- function(code) {
   div(class = "ui raised segment",
       code,
       div(style = "width: 100%; height:10px"),
-      highlight(formatR::tidy_source(width.cutoff = 40, text = deparse(substitute(code)))$text.tidy)
+      highlight(formatR::tidy_source(width.cutoff = 40,
+                                     text = deparse(substitute(code)))$text.tidy)
   )
 }
 

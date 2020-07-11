@@ -3,24 +3,30 @@
 \name{update_slider}
 \alias{update_slider}
 \alias{update_range}
+\alias{updateSliderInput}
+\alias{updateRangeInput}
 \title{Update slider Semantic UI component}
 \usage{
-update_slider(session, name, value)
+update_slider(session, input_id, value)
 
-update_range(session, name, value, value2)
+update_range(session, input_id, value, value2)
+
+updateSliderInput(session, inputId, value, ...)
+
+updateRangeInput(session, inputId, value, value2)
 }
 \arguments{
 \item{session}{The \code{session} object passed to function given to \code{shinyServer}.}
 
-\item{name}{The id of the input object}
-
 \item{value}{The value to be selected for the sldier (lower value if using range).}
 
 \item{value2}{The upper value of the slider.}
+
+\item{name}{The id of the input object}
 }
 \description{
 Change the value of a \code{\link{uislider}} input on the client.
 }
 \seealso{
-uislider
+slider
 }

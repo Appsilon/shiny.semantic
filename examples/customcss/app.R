@@ -1,14 +1,18 @@
 library(shiny)
 library(shiny.semantic)
 
-options(shiny.custom.semantic = "styles/")
+options(semantic.themes = TRUE)
+# Uncomment this line to use your custom style
+#options(shiny.custom.semantic = "styles/")
 
 ui <- shinyUI(
   semanticPage(
     title = "Website", theme = "cosmo",
     div(
       style = "margin-left: 210px",
-      p("website content"))
+      p("website content"),
+      actionButton("button1", "Go!")
+      )
   )
 )
 
