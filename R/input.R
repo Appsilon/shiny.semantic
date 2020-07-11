@@ -32,6 +32,8 @@ uiinput <- function(..., class = "") {
 #' @param type Change depending what type of input is wanted. See details for options.
 #' @param placeholder Text visible in the input when nothing is inputted.
 #' @param attribs A named list of attributes to assign to the input.
+#' @param label character with label put above the input
+#' @param width The width of the input, eg. "40px"
 #'
 #' @details
 #' The following \code{type}s are allowed:
@@ -52,13 +54,12 @@ uiinput <- function(..., class = "") {
 #' library(shiny.semantic)
 #'
 #' # Text input
-#' uiinput(
-#'   tags$label("Text input"),
-#'   text_input("ex", type = "text", placeholder = "Enter Text")
-#' )
+#' text_input("ex", label = "Your text", type = "text", placeholder = "Enter Text")
 #'
+#' @rdname text_input
 #' @export
-text_input <- function(input_id, value = "", type = "text", placeholder = NULL, attribs = list()) {
+text_input <- function(input_id, label = NULL, value = "", type = "text",
+                       placeholder = NULL, attribs = list()) {
   if (!type %in% c("text", "textarea", "password", "email", "url", "tel")) {
     stop(type, " is not a valid Semantic UI input")
   }
@@ -70,7 +71,62 @@ text_input <- function(input_id, value = "", type = "text", placeholder = NULL, 
   }
 
   for (i in names(attribs)) input$attribs[[i]] <- attribs[[i]]
-  input
+  if (is.null(label))
+    input
+  else
+    uiinput(
+      tags$label(label),
+      input
+    )
+
+}
+
+#' Create a semantic Text Area input
+#'
+#' Create a text area input control for entry of unstructured text values.
+#'
+#' @param inputId Input name. Reactive value is available under \code{input[[input_id]]}.
+#' @param label character with label put above the input
+#' @param value Pass value if you want to have default text.
+#' @param width The width of the input, eg. "40px"
+#' @param placeholder Text visible in the input when nothing is inputted.
+#'
+#' @examples
+#' if (interactive()) {
+#' ui <- semanticPage(
+#'   textAreaInput("a", "Area:", width = "200px"),
+#'   verbatimTextOutput("value")
+#' )
+#' server <- function(input, output, session) {
+#'   output$value <- renderText({ input$a })
+#' }
+#' shinyApp(ui, server)
+#' }
+#' @export
+textAreaInput <- function(inputId, label, value = "", width = NULL, placeholder = NULL) {
+  shiny::div(
+    class = "ui form",
+    style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
+    shiny::div(class = "field",
+               if (!is.null(label)) tags$label(label, `for` = inputId),
+               text_input(inputId, value,
+                          placeholder = placeholder, type = "textarea")
+    )
+  )
+}
+
+#' @rdname text_input
+#' @export
+textInput <- function(inputId, label, value = "", width = NULL,
+                      placeholder = NULL, type = "text") {
+  shiny::div(
+    class = "ui form",
+    style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
+    shiny::div(class = "field",
+               if (!is.null(label)) tags$label(label, `for` = inputId),
+               text_input(inputId, value, placeholder = placeholder, type = type)
+    )
+  )
 }
 
 #' Create Semantic UI Numeric Input
@@ -132,7 +188,8 @@ numeric_input <- function(input_id, value, min = NA, max = NA, step = NA,
 #' @param width The width of the input.
 #' @param ... Other parameters passed to \code{\link{numeric_input}} like \code{type} or \code{icon}.
 #' @export
-numericInput <- function(inputId, label, value, min = NA, max = NA, step = NA, width = NULL, ...) {
+numericInput <- function(inputId, label, value,
+                         min = NA, max = NA, step = NA, width = NULL, ...) {
   shiny::div(
     class = "ui form",
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),

@@ -2,18 +2,31 @@
 % Please edit documentation in R/input.R
 \name{text_input}
 \alias{text_input}
+\alias{textInput}
 \title{Create Semantic UI Text Input}
 \usage{
 text_input(
   input_id,
+  label = NULL,
   value = "",
   type = "text",
   placeholder = NULL,
   attribs = list()
 )
+
+textInput(
+  inputId,
+  label,
+  value = "",
+  width = NULL,
+  placeholder = NULL,
+  type = "text"
+)
 }
 \arguments{
 \item{input_id}{Input name. Reactive value is available under \code{input[[input_id]]}.}
+
+\item{label}{character with label put above the input}
 
 \item{value}{Pass value if you want to have default text.}
 
@@ -22,6 +35,8 @@ text_input(
 \item{placeholder}{Text visible in the input when nothing is inputted.}
 
 \item{attribs}{A named list of attributes to assign to the input.}
+
+\item{width}{The width of the input, eg. "40px"}
 }
 \description{
 This creates a default text input using Semantic UI. The input is available
@@ -46,9 +61,6 @@ library(shiny)
 library(shiny.semantic)
 
 # Text input
-uiinput(
-  tags$label("Text input"),
-  text_input("ex", type = "text", placeholder = "Enter Text")
-)
+text_input("ex", label = "Your text", type = "text", placeholder = "Enter Text")
 
 }
