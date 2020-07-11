@@ -425,7 +425,7 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
 #'
 #' @examples
 #'
-#' uidropdown(
+#' dropdown_menu(
 #'   "Dropdown menu",
 #'   icon(class = "dropdown"),
 #'   menu(
@@ -439,7 +439,7 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
 #' )
 #' @import shiny
 #' @export
-uidropdown <- function(..., class = "", name, is_menu_item = FALSE, dropdown_specs = list()) {
+dropdown_menu <- function(..., class = "", name, is_menu_item = FALSE, dropdown_specs = list()) {
 
   if (missing(name)) {
     stop("Dropdown requires unique name. Specify \"name\" argument.")
