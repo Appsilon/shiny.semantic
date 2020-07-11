@@ -5,11 +5,11 @@ ui <- function() {
   shinyUI(
     semanticPage(
       title = "Dropdown example",
-      dropdown("simple_dropdown", LETTERS[1:5], value = "A", type = "selection multiple"),
+      dropdown_input("simple_dropdown", LETTERS[1:5], value = "A", type = "selection multiple"),
       p("Selected letter:"),
       textOutput("selected_letter"),
-      uibutton("simple_button", "Update input to D"),
-      uibutton("simple_button2", "Update input to use all letters")
+      actionButton("simple_button", "Update input to D"),
+      actionButton("simple_button2", "Update input to use all letters")
     )
   )
 }
