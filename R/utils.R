@@ -36,4 +36,13 @@ check_proper_color <- function(color) {
   get(name, envir = asNamespace(pkg), inherits = FALSE)
 }
 
-
+#' Check for extra arguments
+#'
+#' This throws warning if there're parameters not supported by semantic.
+#'
+#' @param args list with extra arguments
+check_extra_arguments <- function(args) {
+  to_wrn <- paste0(as.character(names(args)), collapse = ',')
+if (nchar(to_wrn) > 1)
+  warning(glue::glue("arguments: `{to_wrn}` not supported yet in semantic version"))
+}

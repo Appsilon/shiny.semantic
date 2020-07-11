@@ -2,7 +2,7 @@
 #'
 #' @description
 #' This creates a slider input using Semantic UI. Slider is already initialized and
-#' available under \code{input[[input_id]]}.
+#' available under \code{input[[input_id]]}. Use Range for range of values.
 #'
 #' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
 #' @param value The initial value to be selected for the sldier (lower value if using range).
@@ -14,7 +14,7 @@
 #' @details
 #' Use \code{\link{update_slider}} to update the slider/range within the shiny session.
 #'
-#' @rdname uislider
+#' @rdname slider
 #'
 #' @examples
 #' if (interactive()) {
@@ -27,7 +27,7 @@
 #'     semanticPage(
 #'       title = "Slider example",
 #'       tags$br(),
-#'       uislider("slider", 10, 0, 20),
+#'       slider("slider", 10, 0, 20),
 #'       p("Selected value:"),
 #'       textOutput("slider")
 #'     )
@@ -44,7 +44,7 @@
 #'      semanticPage(
 #'        title = "Range example",
 #'        tags$br(),
-#'        uirange("range", 10, 15, 0, 20),
+#'        range("range", 10, 15, 0, 20),
 #'        p("Selected values:"),
 #'        textOutput("range")
 #'     )
@@ -62,21 +62,43 @@
 #' \url{https://fomantic-ui.com/modules/slider.html} for preset classes.
 #'
 #' @export
-uislider <- function(input_id, value, min, max, step = 1, class = NULL) {
+slider_input <- function(input_id, value, min, max, step = 1, class = NULL) {
   div(
     id = input_id, class = paste("ui slider", class),
     `data-min` = min, `data-max` = max, `data-step` = step, `data-start` = value
   )
 }
 
-#' @rdname uislider
+#' @rdname slider
+#' @export
+sliderInput <- function(inputId, label, min, max, value, step = 1, width = NULL, ...) {
+  check_extra_arguments(list(...))
+  form(
+    style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
+    label(label),
+    slider_input(inputId, value, min, max, step = step)
+  )
+}
+
+#' @rdname slider
 #' @param value2 The initial upper value of the slider.
 #'
 #' @export
-uirange <- function(input_id, value, value2, min, max, step = 1, class = NULL) {
+range_input <- function(input_id, value, value2, min, max, step = 1, class = NULL) {
   div(
     id = input_id, class = paste("ui range slider", class),
     `data-min` = min, `data-max` = max, `data-step` = step, `data-start` = value, `data-end` = value2
+  )
+}
+
+#' @rdname slider
+#' @export
+rangeInput <- function(inputId, label, min, max, value, step = 1, width = NULL, ...) {
+  check_extra_arguments(list(...))
+  form(
+    style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
+    label(label),
+    range_input(inputId, value, min, max, step = step)
   )
 }
 
@@ -88,7 +110,7 @@ uirange <- function(input_id, value, value2, min, max, step = 1, class = NULL) {
 #' @param input_id The id of the input object
 #' @param value The value to be selected for the sldier (lower value if using range).
 #'
-#' @seealso uislider
+#' @seealso slider
 #'
 #' @rdname update_slider
 #' @export
@@ -104,4 +126,17 @@ update_slider <- function(session, input_id, value) {
 update_range <- function(session, input_id, value, value2) {
   message <- list(value = jsonlite::toJSON(c(value, value2)))
   session$sendInputMessage(input_id, message)
+}
+
+#' @rdname update_slider
+#' @export
+updateSliderInput <- function(session, inputId, value,  ...) {
+  check_extra_arguments(list(...))
+  update_slider(session, inputId, value)
+}
+
+#' @rdname update_slider
+#' @export
+updateRangeInput <- function(session, inputId, value, value2) {
+  update_range(session, inputId, value, value2)
 }
