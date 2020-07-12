@@ -7,7 +7,8 @@
 horizontal_menu(menu_items, active_location = "", logo = NULL)
 }
 \arguments{
-\item{menu_items}{data.frame with columns: "name", "link" and optional "icon"}
+\item{menu_items}{list with list that can have fields: "name" (mandatory),
+"link" and "icon"}
 
 \item{active_location}{active location of the menu (should match
 one from "link")}
@@ -22,10 +23,11 @@ shiny div with horizontal menu
 Renders UI with horizontal menu
 }
 \examples{
-menu_content <- data.frame(
- name = paste("Menu", 1:3),
- link = paste("page", 1:3),
- icon = c("home", "car", 'tree')
+library(shiny.semantic)
+menu_content <- list(
+ list(name = "AA", link = "http://example.com", icon = "dog"),
+ list(name = "BB", link = "#", icon="cat"),
+ list(name = "CC")
 )
 if (interactive()){
   ui <- semanticPage(

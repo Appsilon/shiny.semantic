@@ -214,7 +214,41 @@ test_that("test menu_divider", {
                "<div class=\"divider\"></div>")
 })
 
+test_that("test list_element", {
+  si_str <- as.character(list_element())
+  expect_true(any(grepl("<div class=\"item\">", si_str)))
+  si_str <- as.character(list_element(header = "A"))
+  expect_true(any(grepl("<div class=\"header\">A</div>", si_str)))
+  si_str <- as.character(list_element(description = "B"))
+  expect_true(any(grepl("<div class=\"description\">B</div>", si_str)))
+})
+
 test_that("test uilist", {
   # test missing input
   expect_error(uilist())
+  # test default input
+  list_content <- list(
+    list(header = "Head", icon = "tree"),
+    list(description = "Lorem ipsum")
+  )
+  si_str <- as.character(uilist(list_content))
+  expect_true(any(grepl("<div class=\"ui  list\">", si_str)))
+  expect_true(any(grepl("Lorem ipsum", si_str)))
+  #' wrong input
+  list_content <- list(
+    list(icon = "cat"),
+    list(header = "Head", icon = "tree")
+  )
+  expect_error(uilist(list_content),
+               "content_list needs to have either header or description")
+  #' input with icon
+  list_content <- list(
+    list(header = "Head", icon = "tree"),
+    list(description = "Lorem ipsum")
+  )
+  si_str <- as.character(uilist(list_content))
+  expect_true(any(grepl("tree icon", si_str)))
+  #' divided
+  si_str <- as.character(uilist(list_content, is_divided = TRUE))
+  expect_true(any(grepl("divided list", si_str)))
 })

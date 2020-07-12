@@ -19,30 +19,47 @@ test_that("test render_menu_link", {
                         si_str, fixed = TRUE)))
 })
 
-test_that("test horizontal_menu", {
-  # empty input
+test_that("test horizontal_menu edge cases", {
+  # expect list
   expect_error(horizontal_menu(data.frame()))
+  expect_error(horizontal_menu(matrix()))
+  expect_error(horizontal_menu(c(1,2)))
+  # empty input
+  expect_error(horizontal_menu(list()),
+               "Empty list! No menu elements detected.")
+})
+
+test_that("test horizontal_menu inputs", {
   # no icon input
-  menu_content <- data.frame(
-    name = paste("Menu", 1:4),
-    link = paste("subpage", 1:4)
+  menu_content <- list(
+    list(name = "Menu1", link = "#subpage1"),
+    list(name = "Menu2", link = "#subpage2")
   )
   si_str <- as.character(horizontal_menu(menu_content))
-  expect_true(any(grepl("<div class=\"ui four item menu\" ",
+  expect_true(any(grepl("<div class=\"ui two item menu\" ",
                         si_str, fixed = TRUE)))
-  menu_content <- data.frame(
-    name = paste("Menu", 1:7),
-    link = paste("subpage", 1:7)
+  expect_true(any(grepl("Menu1", si_str, fixed = TRUE)))
+  expect_true(any(grepl("#subpage2", si_str, fixed = TRUE)))
+  # missing name
+  menu_content <- list(
+    list(link = "#"),
+    list(name = "Menu2", link = "#subpage2")
+  )
+  expect_error(horizontal_menu(menu_content),
+               "Menu list entry needs to have a name")
+  # missing link
+  menu_content <- list(
+    list(name = "Menu1"),
+    list(name = "Menu2", link = "#subpage2")
   )
   si_str <- as.character(horizontal_menu(menu_content))
-  expect_true(any(grepl("<div class=\"ui seven item menu\" ",
+  expect_true(any(grepl("<a class=\"item\" href=\"#\">",
                         si_str, fixed = TRUE)))
   # with icon
-  menu_content <- data.frame(
-    name = paste("Menu", 1:3),
-    link = paste("subpage", 1:3),
-    icon = c("home", "car", 'tree')
+  menu_content <- list(
+    list(name = "Menu1"),
+    list(name = "Menu2", icon = "dog")
   )
   si_str <- as.character(horizontal_menu(menu_content))
-  expect_true(any(grepl("icon", si_str)))
+  expect_true(any(grepl("dog icon", si_str)))
 })

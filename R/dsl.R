@@ -500,20 +500,16 @@ menu_divider <- function(...) {
 
 #' Helper function to render list element
 #'
-#' @param data data to list; data.frame with required column `header`
-#' and optionally `icon` and/or `description`.
-#' @param row row character
+#' @param header character with header element
+#' @param description character with content of the list
+#' @param icon character with optional icon
 #'
 #' @import shiny
-list_element <- function(data, row) {
-  div(class = "item",  if ("icon" %in% colnames(data)) uiicon(data$icon[row]) else "",
-      if ("description" %in% colnames(data)) {
-        div(class = "content",
-            div(class = "header", data$header[row]),
-            div(class = "description", data$description[row]))
-      } else {
-        div(class = "content", data$header[row])
-      }
+list_element <- function(header = NULL, description = NULL, icon = NULL) {
+  div(class = "item",  if (!is.null(icon)) uiicon(icon) else "",
+      div(class = "content",
+          div(class = "header", header),
+          div(class = "description", description))
   )
 }
 
@@ -521,33 +517,38 @@ list_element <- function(data, row) {
 #'
 #' This creates a list with icons using Semantic UI
 #'
-#' @param data A dataframe with columns `header` and/or `description`, `icon`
-#' containing the list items headers, descriptions and icons.
-#' The `description`  and `icon` columns are optional.
-#' Icon column should contain strings with icon names available
-#' here: https://semantic-ui.com/elements/icon.html
+#' @param content_list list of lists with fields: `header` and/or `description`,
+#' `icon` containing the list items headers, descriptions (one of these is mandatory)
+#' and icons. Icon column should contain strings with icon names available
+#' here: https://fomantic-ui.com/elements/icon.html
 #' @param is_divided If TRUE created list elements are divided
 #'
 #' @export
 #' @import shiny
 #' @import magrittr
 #' @examples
-#'
-#' list_content <- data.frame(
-#'   header = paste("Header", 1:5),
-#'   description = paste("Description", 1:5),
-#'   icon = paste("home", 1:5),
-#'   stringsAsFactors = FALSE
+#' library(shiny.semantic)
+#' list_content <- list(
+#'   list(header = "Head", description = "Lorem ipsum", icon = "cat"),
+#'   list(header = "Head 2", icon = "tree"),
+#'   list(description = "Lorem ipsum 2", icon = "dog")
 #' )
+#' if (interactive()){
+#'   ui <- semanticPage(
+#'     uilist(list_content, is_divided = TRUE)
+#'  )
+#'   server <- function(input, output) {}
+#'   shinyApp(ui, server)
+#' }
 #'
-#' # Create a 5 element divided list with alert icons and description
-#' uilist(list_content, is_divided = TRUE)
-uilist <- function(data, is_divided = FALSE) {
+uilist <- function(content_list, is_divided = FALSE) {
   divided_list <- ifelse(is_divided, "divided", "")
   list_class <- paste("ui", divided_list, "list")
   div(class = list_class,
-      seq_len(nrow(data)) %>% purrr::map(function(row) {
-        list_element(data, row)
+      content_list %>% purrr::map(function(x) {
+        if (is.null(x$header) && is.null(x$descriptio))
+          stop("content_list needs to have either header or description.")
+        list_element(x$header, x$description, x$icon)
       })
   )
 }
