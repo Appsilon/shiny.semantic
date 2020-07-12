@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create an icon — icon • SHINY.SEMANTIC</title>
+<title>Create Semantic UI checkbox — checkbox_input • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Create an icon — icon" />
-<meta property="og:description" content="Create an icon for use within a page." />
+<meta property="og:title" content="Create Semantic UI checkbox — checkbox_input" />
+<meta property="og:description" content="Create Semantic UI checkbox" />
 
 
 
@@ -133,36 +133,72 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create an icon</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/dsl.R'><code>R/dsl.R</code></a></small>
-    <div class="hidden name"><code>icon.Rd</code></div>
+    <h1>Create Semantic UI checkbox</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/checkbox.R'><code>R/checkbox.R</code></a></small>
+    <div class="hidden name"><code>checkbox.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create an icon for use within a page.</p>
+    <p>Create Semantic UI checkbox</p>
     </div>
 
-    <pre class="usage"><span class='fu'>icon</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>checkbox_input</span>(<span class='no'>id</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'><a href='simple_checkbox.html'>toggle</a></span>(<span class='no'>id</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>class</th>
-      <td><p>Additional classes to customize the style of the icon.
-See [Fomantic Icon Definitions](https://fomantic-ui.com/elements/icon.html#/definition).</p></td>
+      <th>id</th>
+      <td><p>Input name. Reactive value is available under input[[name]].</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Named attributes to be applied to the icon.</p></td>
+      <th>label</th>
+      <td><p>Text to be displayed with checkbox.</p></td>
     </tr>
     <tr>
-      <th>name</th>
-      <td><p>Name of icon. See [Fomantic Icons](https://fomantic-ui.com/elements/icon.html).</p></td>
+      <th>type</th>
+      <td><p>Type of checkbox: NULL, 'toggle'</p></td>
+    </tr>
+    <tr>
+      <th>is_marked</th>
+      <td><p>Defines if checkbox should be marked. Default TRUE.</p></td>
+    </tr>
+    <tr>
+      <th>style</th>
+      <td><p>Style of the widget.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p>The inputs are updateable by using <code><a href='https://rdrr.io/pkg/shiny/man/updateCheckboxInput.html'>updateCheckboxInput</a></code>.</p>
+<p>The following <code>type</code>s are allowed:</p><ul>
+<li><p>NULLThe standard checkbox (default)</p></li>
+<li><p>toggleEach checkbox has a toggle form</p></li>
+<li><p>sliderEach checkbox has a simple slider form</p></li>
+</ul>
+
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>checkbox_input</span>(<span class='st'>"example"</span>, <span class='st'>"Check me"</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; &lt;div class="ui   checkbox"&gt;
+#&gt;   &lt;input id="example" type="checkbox"/&gt;
+#&gt;   &lt;label&gt;Check me&lt;/label&gt;
+#&gt; &lt;/div&gt;</div><div class='input'>
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
+ <span class='fu'>shinyUI</span>(
+   <span class='fu'><a href='simple_checkbox.html'>toggle</a></span>(<span class='st'>"tog1"</span>, <span class='st'>"My Label"</span>, <span class='fl'>TRUE</span>)
+ )
+)
+<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
+  <span class='fu'>observeEvent</span>(<span class='no'>input</span>$<span class='no'>tog1</span>, {
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>input</span>$<span class='no'>tog1</span>)
+  })
+}
+<span class='fu'>shinyApp</span>(<span class='no'>ui</span>, <span class='no'>server</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

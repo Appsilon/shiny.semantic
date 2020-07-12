@@ -142,9 +142,13 @@
     <p>Change the value of a <code><a href='uislider.html'>uislider</a></code> input on the client.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>update_slider</span>(<span class='no'>session</span>, <span class='no'>name</span>, <span class='no'>value</span>)
+    <pre class="usage"><span class='fu'>update_slider</span>(<span class='no'>session</span>, <span class='no'>input_id</span>, <span class='no'>value</span>)
 
-<span class='fu'>update_range</span>(<span class='no'>session</span>, <span class='no'>name</span>, <span class='no'>value</span>, <span class='no'>value2</span>)</pre>
+<span class='fu'>update_range</span>(<span class='no'>session</span>, <span class='no'>input_id</span>, <span class='no'>value</span>, <span class='no'>value2</span>)
+
+<span class='fu'>updateSliderInput</span>(<span class='no'>session</span>, <span class='no'>inputId</span>, <span class='no'>value</span>, <span class='no'>...</span>)
+
+<span class='fu'>updateRangeInput</span>(<span class='no'>session</span>, <span class='no'>inputId</span>, <span class='no'>value</span>, <span class='no'>value2</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -154,10 +158,6 @@
       <td><p>The <code>session</code> object passed to function given to <code>shinyServer</code>.</p></td>
     </tr>
     <tr>
-      <th>name</th>
-      <td><p>The id of the input object</p></td>
-    </tr>
-    <tr>
       <th>value</th>
       <td><p>The value to be selected for the sldier (lower value if using range).</p></td>
     </tr>
@@ -165,11 +165,15 @@
       <th>value2</th>
       <td><p>The upper value of the slider.</p></td>
     </tr>
+    <tr>
+      <th>name</th>
+      <td><p>The id of the input object</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>uislider</p></div>
+    <div class='dont-index'><p>slider</p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

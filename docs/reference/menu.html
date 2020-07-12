@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create Semantic UI icon tag — uiicon • SHINY.SEMANTIC</title>
+<title>Create Semantic UI Menu — menu • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Create Semantic UI icon tag — uiicon" />
-<meta property="og:description" content="This creates an icon tag using Semantic UI styles." />
+<meta property="og:title" content="Create Semantic UI Menu — menu" />
+<meta property="og:description" content="This creates a menu using Semantic UI." />
 
 
 
@@ -133,83 +133,68 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create Semantic UI icon tag</h1>
+    <h1>Create Semantic UI Menu</h1>
     <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/dsl.R'><code>R/dsl.R</code></a></small>
-    <div class="hidden name"><code>uiicon.Rd</code></div>
+    <div class="hidden name"><code>menu.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This creates an icon tag using Semantic UI styles.</p>
+    <p>This creates a menu using Semantic UI.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>uiicon</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/menu.html'>menu</a></span>(<span class='no'>...</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>class</th>
-      <td><p>A name of an icon. Look at
-http://semantic-ui.com/elements/icon.html for all possibilities.</p></td>
+      <th>...</th>
+      <td><p>Menu items to be created. Use menu_item function to create new menu item.
+Use uidropdown(is_menu_item = TRUE, ...) function to create new dropdown menu item.
+Use menu_header and menu_divider functions to customize menu format.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Other arguments to be added as attributes of the
-tag (e.g. style, class etc.)</p></td>
+      <th>class</th>
+      <td><p>Class extension.Look at https://semantic-ui.com/collections/menu.html
+for all possibilities.</p></td>
     </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
 
 <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
     <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-      <span class='co'># Basic icon</span>
-      <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"home"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
-      <span class='co'># Different size</span>
-      <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"small home"</span>),
-      <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"large home"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
-      <span class='co'># Disabled icon</span>
-      <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"disabled home"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
-      <span class='co'># Loading icon</span>
-      <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"spinner loading"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
-      <span class='co'># Icon formatted as link</span>
-      <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"close link"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
-      <span class='co'># Flipped</span>
-      <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"horizontally flipped cloud"</span>),
-      <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"vertically flipped cloud"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
-      <span class='co'># Rotated</span>
-      <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"clockwise rotated cloud"</span>),
-      <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"counterclockwise rotated cloud"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
-      <span class='co'># Circular</span>
-      <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"circular home"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
-      <span class='co'># Bordered</span>
-      <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"bordered home"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
-      <span class='co'># Colored</span>
-      <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"red home"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
-      <span class='co'># inverted</span>
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/segment.html'>segment</a></span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"inverted"</span>, <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"inverted home"</span>))
+      <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"My page"</span>,
+      <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/menu.html'>menu</a></span>(<span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='st'>"Menu"</span>),
+             <span class='fu'><a href='uidropdown.html'>uidropdown</a></span>(
+               <span class='st'>"Action"</span>,
+               <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/menu.html'>menu</a></span>(
+                 <span class='fu'><a href='menu_header.html'>menu_header</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"file"</span>), <span class='st'>"File"</span>, <span class='kw'>is_item</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>),
+                 <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"wrench"</span>), <span class='st'>"Open"</span>),
+                 <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"upload"</span>), <span class='st'>"Upload"</span>),
+                <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"remove"</span>), <span class='st'>"Upload"</span>),
+                 <span class='fu'><a href='menu_divider.html'>menu_divider</a></span>(),
+                 <span class='fu'><a href='menu_header.html'>menu_header</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"user"</span>), <span class='st'>"User"</span>, <span class='kw'>is_item</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>),
+                 <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"add user"</span>), <span class='st'>"Add"</span>),
+                 <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"remove user"</span>), <span class='st'>"Remove"</span>)),
+               <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>""</span>,
+               <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"unique_name"</span>,
+               <span class='kw'>is_menu_item</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
+             <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"user"</span>), <span class='st'>"Profile"</span>, <span class='kw'>href</span> <span class='kw'>=</span> <span class='st'>"#index"</span>, <span class='kw'>item_feature</span> <span class='kw'>=</span> <span class='st'>"active"</span>),
+             <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='st'>"Projects"</span>, <span class='kw'>href</span> <span class='kw'>=</span> <span class='st'>"#projects"</span>),
+             <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"users"</span>), <span class='st'>"Team"</span>),
+             <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/menu.html'>menu</a></span>(<span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"add icon"</span>), <span class='st'>"New tab"</span>), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"right"</span>))
     )
   )
 }
 
-<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
-
+<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
 })
 
 <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span>(<span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'>ui</span>(), <span class='kw'>server</span> <span class='kw'>=</span> <span class='no'>server</span>)

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NA • SHINY.SEMANTIC</title>
+<title>Create Semantic UI Numeric Input — numeric_input • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -18,8 +18,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
-<link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script>
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
@@ -33,13 +33,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 
 
-<meta property="og:title" content="NA" />
+<meta property="og:title" content="Create Semantic UI Numeric Input — numeric_input" />
+<meta property="og:description" content="This creates a default numeric input using Semantic UI. The input is available
+under input[[input_id]]." />
 
 
 
@@ -58,7 +60,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-title-body">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -70,7 +72,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">SHINY.SEMANTIC</a>
+        <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
@@ -78,7 +80,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fa fa-home"></span>
      
     Start
@@ -87,21 +89,21 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="reference/index.html">
+  <a href="../reference/index.html">
     <span class="fa fa-file-code-o"></span>
      
     Functions
   </a>
 </li>
 <li>
-  <a href="CHANGELOG.html">
+  <a href="../CHANGELOG.html">
     <span class="fa fa-newspaper-o"></span>
      
     Changes
   </a>
 </li>
 <li>
-  <a href="CODE_OF_CONDUCT.html">
+  <a href="../CODE_OF_CONDUCT.html">
     <span class="fa fa-user-o"></span>
      
     CoC
@@ -130,50 +132,98 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>NA</h1>
+    <h1>Create Semantic UI Numeric Input</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/input.R'><code>R/input.R</code></a></small>
+    <div class="hidden name"><code>numeric_input.Rd</code></div>
     </div>
 
+    <div class="ref-description">
+    <p>This creates a default numeric input using Semantic UI. The input is available
+under <code>input[[input_id]]</code>.</p>
+    </div>
 
-<p>Short description (with a reference to an issue).</p>
-<p><strong>DoD</strong></p>
-<ul class="task-list">
-<li><p><input type="checkbox" disabled>
-Major project work has a corresponding task. If there’s no task for what you are doing, create it. Each task needs to be well defined and described.</p></li>
-<li><p><input type="checkbox" disabled>
-Change has been tested (manually or with automated tests), everything runs correctly and works as expected. No existing functionality is broken.</p></li>
-<li><p><input type="checkbox" disabled>
-No new error or warning messages are introduced.</p></li>
-<li><p><input type="checkbox" disabled>
-All interaction with a semantic functions, examples and docs are written from the perspective of the person using or receiving it. They are understandable and helpful to this person.</p></li>
-<li><p><input type="checkbox" disabled>
-If the change affects code or repo sctructure, README, documentation and code comments should be updated.</p></li>
-<li><p><input type="checkbox" disabled>
-All code has been peer-reviewed before merging into any main branch.</p></li>
-<li><p><input type="checkbox" disabled>
-All changes have been merged into the main branch we use for development (develop).</p></li>
-<li><p><input type="checkbox" disabled>
-Continuous integration checks (linter, unit tests) are configured and passed.</p></li>
-<li><p><input type="checkbox" disabled>
-Unit tests added for all new or changed logic.</p></li>
-<li><p><input type="checkbox" disabled>
-All task requirements satisfied. The reviewer is responsible to verify each aspect of the task.</p></li>
-<li><p><input type="checkbox" disabled>
-Any added or touched code follows our style-guide.</p></li>
-</ul>
+    <pre class="usage"><span class='fu'>numeric_input</span>(
+  <span class='no'>input_id</span>,
+  <span class='no'>value</span>,
+  <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>placeholder</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>
+)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>input_id</th>
+      <td><p>Input name. Reactive value is available under <code>input[[input_id]]</code>.</p></td>
+    </tr>
+    <tr>
+      <th>value</th>
+      <td><p>Initial value of the numeric input.</p></td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td><p>Minimum allowed value.</p></td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td><p>Maximum allowed value.</p></td>
+    </tr>
+    <tr>
+      <th>step</th>
+      <td><p>Interval to use when stepping between min and max.</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>Input type specifying class attached to input container.
+See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.</p></td>
+    </tr>
+    <tr>
+      <th>icon</th>
+      <td><p>Icon or label attached to numeric input.</p></td>
+    </tr>
+    <tr>
+      <th>placeholder</th>
+      <td><p>Inner input label displayed when no value is specified.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Unused.</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The inputs are updateable by using <code><a href='https://rdrr.io/pkg/shiny/man/updateNumericInput.html'>updateNumericInput</a></code>.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
+
+<span class='co'># Text input</span>
+<span class='fu'><a href='uiinput.html'>uiinput</a></span>(
+  <span class='no'>tags</span>$<span class='fu'><a href='label.html'>label</a></span>(<span class='st'>"Numeric Input"</span>),
+  <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/numeric_input.html'>numeric_input</a></span>(<span class='st'>"ex"</span>, <span class='fl'>10</span>)
+)</div><div class='output co'>#&gt; &lt;div class="ui  input"&gt;
+#&gt;   &lt;label&gt;Numeric Input&lt;/label&gt;
+#&gt;   &lt;div class="ui  input"&gt;
+#&gt;     &lt;input id="ex" value="10" type="number"/&gt;
+#&gt;   &lt;/div&gt;
+#&gt; &lt;/div&gt;</div><div class='input'>
+</div></pre>
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
-
 
 
       <footer>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a numeric input control — numericInput • SHINY.SEMANTIC</title>
+<title>Create Semantic UI Calendar — calendar • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Create a numeric input control — numericInput" />
-<meta property="og:description" content="Create a numeric input control" />
+<meta property="og:title" content="Create Semantic UI Calendar — calendar" />
+<meta property="og:description" content="This creates a default calendar input using Semantic UI. The input is available
+under input[[name]].
+This function updates the date on a calendar" />
 
 
 
@@ -133,40 +135,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a numeric input control</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/input.R'><code>R/input.R</code></a></small>
-    <div class="hidden name"><code>numericInput.Rd</code></div>
+    <h1>Create Semantic UI Calendar</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/calendar.R'><code>R/calendar.R</code></a></small>
+    <div class="hidden name"><code>calendar.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a numeric input control</p>
+    <p>This creates a default calendar input using Semantic UI. The input is available
+under <code>input[[name]]</code>.</p>
+<p>This function updates the date on a calendar</p>
     </div>
 
-    <pre class="usage"><span class='fu'>numericInput</span>(
-  <span class='no'>inputId</span>,
-  <span class='no'>label</span>,
-  <span class='no'>value</span>,
+    <pre class="usage"><span class='fu'>calendar</span>(
+  <span class='no'>name</span>,
+  <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>placeholder</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"date"</span>,
   <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>
-)</pre>
+  <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>NA</span>
+)
+
+<span class='fu'><a href='uicalendar.html'>update_calendar</a></span>(<span class='no'>session</span>, <span class='no'>id</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>inputId</th>
-      <td><p>The input slot that will be used to access the value.</p></td>
-    </tr>
-    <tr>
-      <th>label</th>
-      <td><p>Display label for the control, or NULL for no label.</p></td>
+      <th>name</th>
+      <td><p>Input name. Reactive value is available under <code>input[[name]]</code>.</p></td>
     </tr>
     <tr>
       <th>value</th>
       <td><p>Initial value of the numeric input.</p></td>
+    </tr>
+    <tr>
+      <th>placeholder</th>
+      <td><p>Text visible in the input when nothing is inputted.</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>Select from <code>'year'</code>, <code>'month'</code>, <code>'date'</code> and <code>'time'</code></p></td>
     </tr>
     <tr>
       <th>min</th>
@@ -177,20 +185,57 @@
       <td><p>Maximum allowed value.</p></td>
     </tr>
     <tr>
-      <th>step</th>
-      <td><p>Interval to use when stepping between min and max.</p></td>
+      <th>session</th>
+      <td><p>The <code>session</code> object passed to function given to
+<code>shinyServer</code>.</p></td>
     </tr>
     <tr>
-      <th>width</th>
-      <td><p>The width of the input.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Other parameters passed to <code>numeric_input</code> like <code>type</code> or <code>icon</code>.</p></td>
+      <th>id</th>
+      <td><p>ID of the calendar that will be updated</p></td>
     </tr>
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Basic calendar</span>
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
+
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
+
+  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
+    <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
+      <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Calendar example"</span>,
+      <span class='fu'><a href='uicalendar.html'>uicalendar</a></span>(<span class='st'>"date"</span>),
+      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>p</a></span>(<span class='st'>"Selected date:"</span>),
+      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/textOutput.html'>textOutput</a></span>(<span class='st'>"selected_date"</span>)
+    )
+  )
+
+   <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
+     <span class='no'>output</span>$<span class='no'>selected_date</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderText.html'>renderText</a></span>(
+       <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>input</span>$<span class='no'>date</span>)
+     )
+   })
+
+   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span>(<span class='kw'>ui</span> <span class='kw'>=</span> <span class='no'>ui</span>, <span class='kw'>server</span> <span class='kw'>=</span> <span class='no'>server</span>)
+ }
+
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'># Calendar with max and min</span>
+<span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/calendar.html'>calendar</a></span>(
+  <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"date_finish"</span>,
+  <span class='kw'>placeholder</span> <span class='kw'>=</span> <span class='st'>"Select End Date"</span>,
+  <span class='kw'>min</span> <span class='kw'>=</span> <span class='st'>"2019-01-01"</span>,
+  <span class='kw'>max</span> <span class='kw'>=</span> <span class='st'>"2020-01-01"</span>
+)
+
+<span class='co'># Selecting month</span>
+<span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/calendar.html'>calendar</a></span>(
+  <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"month"</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"month"</span>
+)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

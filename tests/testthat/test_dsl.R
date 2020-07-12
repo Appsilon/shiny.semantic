@@ -241,4 +241,3 @@ test_that("test dropdown_menu", {
   expect_true(any(grepl("<div class=\"divider\"></div>", si_str, fixed = TRUE)))
   expect_true(any(grepl("<div class=\"item \">Option 1", si_str, fixed = TRUE)))
 })
->>>>>>> [chane] uidropdown is dropdown_menu now
