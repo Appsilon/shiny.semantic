@@ -83,10 +83,10 @@ You can install a stable `shiny.semantic` release from CRAN repository:
 install.packages("shiny.semantic")
 ```
 
-and the latest version with devtools:
+and the latest version with `remotes`:
 
 ``` r
-devtools::install_github("Appsilon/shiny.semantic@develop")
+remotes::install_github("Appsilon/shiny.semantic@develop")
 ```
 
 (`master` branch contains the stable version. Use `develop` branch for
@@ -95,7 +95,7 @@ latest features)
 To install [previous versions]() you can run:
 
 ``` r
-devtools::install_github("Appsilon/shiny.semantic", ref = "0.1.0")
+remotes::install_github("Appsilon/shiny.semantic", ref = "0.1.0")
 ```
 
 ## How to use it?

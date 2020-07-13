@@ -6,7 +6,7 @@
 \usage{
 update_numeric_input(
   session,
-  inputId,
+  input_id,
   label = NULL,
   value = NULL,
   min = NULL,
@@ -17,6 +17,8 @@ update_numeric_input(
 \arguments{
 \item{session}{The session object passed to function given to shinyServer.}
 
+\item{input_id}{The id of the input object.}
+
 \item{label}{The label to set for the input object.}
 
 \item{value}{The value to set for the input object.}
@@ -26,8 +28,6 @@ update_numeric_input(
 \item{max}{Maximum value.}
 
 \item{step}{Step size.}
-
-\item{input_id}{The id of the input object.}
 }
 \description{
 Change numeric input value and settings
