@@ -6,7 +6,8 @@ params:
   repo_name: shiny.semantic
   repo_url: https://github.com/Appsilon/shiny.semantic
   demo_url: https://demo.appsilon.ai/semantic/
-  chagelog_url: https://github.com/Appsilon/shiny.semantic/blob/develop/CHANGELOG.md
+  chagelog_url: https://github.com/Appsilon/shiny.semantic/blob/master/CHANGELOG.md
+  styleguide: https://github.com/Appsilon/shiny.semantic/blob/develop/STYLEGUIDE.md
   code_of_coduct: https://github.com/Appsilon/shiny.semantic/blob/develop/CODE_OF_CONDUCT.md
 ---
 
@@ -218,7 +219,11 @@ Both repository **README.md** file and an official documentation page are genera
 
 Documentation is rendered with `pkgdown`. Just run `pkgdown::build_site()` after rendering new **README.md**.
 
-We have a Contributor [Code of Conduct](`r params$code_of_conduct`). Make sure to check it and to follow it.
+*Important:*
+
+1) Please follow the code style from out [styleguide](`r params$styleguide`).
+
+2) We have a Contributor [Code of Conduct](`r params$code_of_conduct`). Make sure to check it and to follow it.
 
 Troubleshooting
 -----------------
