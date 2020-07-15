@@ -2,11 +2,22 @@
 % Please edit documentation in R/input.R
 \name{update_numeric_input}
 \alias{update_numeric_input}
+\alias{updateNumericInput}
 \title{Change numeric input value and settings}
 \usage{
 update_numeric_input(
   session,
   input_id,
+  label = NULL,
+  value = NULL,
+  min = NULL,
+  max = NULL,
+  step = NULL
+)
+
+updateNumericInput(
+  session,
+  inputId,
   label = NULL,
   value = NULL,
   min = NULL,

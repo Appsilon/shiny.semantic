@@ -2,21 +2,10 @@
 % Please edit documentation in R/button.R
 \name{counter_button}
 \alias{counter_button}
-\alias{counterButton}
 \title{Counter Button}
 \usage{
 counter_button(
   input_id,
-  label = "",
-  icon = NULL,
-  value = 0,
-  color = "",
-  size = "",
-  big_mark = " "
-)
-
-counterButton(
-  inputId,
   label = "",
   icon = NULL,
   value = 0,

@@ -168,10 +168,3 @@ counter_button <- function(input_id, label = "", icon = NULL, value = 0,
     )
   )
 }
-
-#' @rdname counterbutton
-#' @export
-counterButton <- function(inputId, label = "", icon = NULL, value = 0,
-                          color = "", size = "", big_mark = " ") {
-  counter_button(inputId, label, icon, value, color, size, big_mark)
-}

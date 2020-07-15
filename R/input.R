@@ -153,8 +153,13 @@ numericInput <- function(inputId, label, value, min = NA, max = NA, step = NA, w
 #' @param max Maximum value.
 #' @param step Step size.
 #' @export
+#' @rdname update_numeric
 update_numeric_input <- function(session, input_id, label = NULL, value = NULL,
                                  min = NULL, max = NULL, step = NULL) {
   shiny::updateNumericInput(session, input_id, label = label, value = value,
                             min = min, max = max, step = step)
 }
+
+#' @export
+#' @rdname update_numeric
+updateNumericInput <- shiny::updateNumericInput
