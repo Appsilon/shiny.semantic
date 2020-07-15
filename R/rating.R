@@ -10,7 +10,7 @@ extract_icon_name <- function(icon) {
   gsub(" icon", "", icon$attribs$class)
 }
 
-#' Rating
+#' Rating Input.
 #'
 #' Crates rating component
 #'
@@ -24,9 +24,23 @@ extract_icon_name <- function(icon) {
 #' @param size character with legal semantic size, eg. "medium", "huge", "tiny"
 #'
 #' @return rating object
-#'
+#' @examples
+#' if (interactive()) {
+#'   library(shiny)
+#'   library(shiny.semantic)
+#'   ui <- shinyUI(
+#'     semanticPage(
+#'       rating_input("rate", "How do you like it?", max = 5,
+#'                    icon = "heart", color = "yellow"),
+#'     )
+#'   )
+#'   server <- function(input, output) {
+#'     observeEvent(input$rate,{print(input$rate)})
+#'   }
+#'   shinyApp(ui = ui, server = server)
+#' }
 #' @export
-rating <- function(name, label = "", value = 0, max = 3, icon = "star",
+rating_input <- function(name, label = "", value = 0, max = 3, icon = "star",
                    color = "yellow", size = "") {
   if (!(size %in% FOMANTIC_SIZE_LEVELS)) {
     warning("Size value not supported.")
@@ -48,7 +62,7 @@ rating <- function(name, label = "", value = 0, max = 3, icon = "star",
 
 #' Update rating
 #'
-#' check \code{rating} to learn more.
+#' check \code{rating_input} to learn more.
 #'
 #' @param session shiny object with session info
 #'
@@ -57,7 +71,7 @@ rating <- function(name, label = "", value = 0, max = 3, icon = "star",
 #' @param value new rating value
 #'
 #' @export
-updateRating <- function(session, name, label = NULL, value = NULL) {
+update_rating_input <- function(session, name, label = NULL, value = NULL) {
   message <- list(label = label, value = value)
   message <- message[!vapply(message, is.null, FUN.VALUE = logical(1))]
   session$sendInputMessage(name, message)
