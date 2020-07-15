@@ -27,7 +27,7 @@
 #'     semanticPage(
 #'       title = "Slider example",
 #'       tags$br(),
-#'       slider("slider", 10, 0, 20),
+#'       slider_input("slider", 10, 0, 20),
 #'       p("Selected value:"),
 #'       textOutput("slider")
 #'     )
@@ -44,7 +44,7 @@
 #'      semanticPage(
 #'        title = "Range example",
 #'        tags$br(),
-#'        range("range", 10, 15, 0, 20),
+#'        range_input("range", 10, 15, 0, 20),
 #'        p("Selected values:"),
 #'        textOutput("range")
 #'     )
