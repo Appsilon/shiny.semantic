@@ -22,7 +22,11 @@ updateRangeInput(session, inputId, value, value2)
 
 \item{value}{The value to be selected for the sldier (lower value if using range).}
 
-\item{value2}{The upper value of the slider.}
+\item{value2}{The upper value of the range.}
+
+\item{inputId}{Input name.}
+
+\item{...}{additional arguments}
 }
 \description{
 Change the value of a \code{\link{slider_input}} input on the client.

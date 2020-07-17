@@ -1,6 +1,6 @@
 context("button")
 
-test_that("test uibutton", {
+test_that("test button", {
   # type
   expect_is(uibutton("simple_button", "Button!"), "shiny.tag")
   # empty input
@@ -43,7 +43,7 @@ test_that("test counter_button", {
   expect_true(any(grepl("html((value + 1).toString()", si_str, fixed = TRUE)))
 
   # input with parameters
-  si_str <- as.character(counter_button("cb", "CB", icon = uiicon("user"),
+  si_str <- as.character(counter_button("cb", "CB", icon = icon("user"),
                                        size = "huge", color = "orange"))
   expect_true(any(grepl("orange", si_str, fixed = TRUE)))
   expect_true(any(grepl("huge", si_str, fixed = TRUE)))

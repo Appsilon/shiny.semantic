@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Update slider Semantic UI component — update_slider • SHINY.SEMANTIC</title>
+<title>Update rating — update_rating_input • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Update slider Semantic UI component — update_slider" />
-<meta property="og:description" content="Change the value of a slider_input input on the client." />
+<meta property="og:title" content="Update rating — update_rating_input" />
+<meta property="og:description" content="Change the value of a rating input on the client. Check
+rating_input to learn more." />
 
 
 
@@ -133,55 +134,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Update slider Semantic UI component</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/slider.R'><code>R/slider.R</code></a></small>
-    <div class="hidden name"><code>update_slider.Rd</code></div>
+    <h1>Update rating</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/rating.R'><code>R/rating.R</code></a></small>
+    <div class="hidden name"><code>update_rating_input.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Change the value of a <code><a href='slider.html'>slider_input</a></code> input on the client.</p>
+    <p>Change the value of a rating input on the client. Check
+<code>rating_input</code> to learn more.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>update_slider</span>(<span class='no'>session</span>, <span class='no'>input_id</span>, <span class='no'>value</span>)
-
-<span class='fu'>update_range</span>(<span class='no'>session</span>, <span class='no'>input_id</span>, <span class='no'>value</span>, <span class='no'>value2</span>)
-
-<span class='fu'>updateSliderInput</span>(<span class='no'>session</span>, <span class='no'>inputId</span>, <span class='no'>value</span>, <span class='no'>...</span>)
-
-<span class='fu'>updateRangeInput</span>(<span class='no'>session</span>, <span class='no'>inputId</span>, <span class='no'>value</span>, <span class='no'>value2</span>)</pre>
+    <pre class="usage"><span class='fu'>update_rating_input</span>(<span class='no'>session</span>, <span class='no'>name</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>session</th>
-      <td><p>The <code>session</code> object passed to function given to <code>shinyServer</code>.</p></td>
+      <td><p>shiny object with session info</p></td>
     </tr>
     <tr>
-      <th>input_id</th>
-      <td><p>The id of the input object</p></td>
+      <th>name</th>
+      <td><p>rating input name</p></td>
+    </tr>
+    <tr>
+      <th>label</th>
+      <td><p>character with updated label</p></td>
     </tr>
     <tr>
       <th>value</th>
-      <td><p>The value to be selected for the sldier (lower value if using range).</p></td>
-    </tr>
-    <tr>
-      <th>value2</th>
-      <td><p>The upper value of the range.</p></td>
-    </tr>
-    <tr>
-      <th>inputId</th>
-      <td><p>Input name.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>additional arguments</p></td>
+      <td><p>new rating value</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>slider_input</p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

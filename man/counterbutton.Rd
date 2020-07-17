@@ -25,6 +25,8 @@ counter_button(
 
 \item{color}{character with semantic color}
 
+\item{size}{character with size of the button, eg. "medium", "big"}
+
 \item{big_mark}{big numbers separator}
 }
 \value{
@@ -39,7 +41,7 @@ library(shiny)
 library(shiny.semantic)
 ui <-semanticPage(
      counter_button("counter", "My Counter Button",
-                   icon = uiicon("world"),
+                   icon = icon("world"),
                    size = "big", color = "purple")
  )
 server <- function(input, output) {

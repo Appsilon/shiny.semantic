@@ -127,6 +127,7 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #' @param value initial rating value (integer)
 #' @param color character with semantic color
 #' @param big_mark big numbers separator
+#' @param size character with size of the button, eg. "medium", "big"
 #'
 #' @return counter button object
 #' @export
@@ -137,7 +138,7 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #' library(shiny.semantic)
 #' ui <-semanticPage(
 #'      counter_button("counter", "My Counter Button",
-#'                    icon = uiicon("world"),
+#'                    icon = icon("world"),
 #'                    size = "big", color = "purple")
 #'  )
 #' server <- function(input, output) {

@@ -20,6 +20,8 @@ numeric_input(
 \arguments{
 \item{input_id}{Input name. Reactive value is available under \code{input[[input_id]]}.}
 
+\item{label}{character with label}
+
 \item{value}{Initial value of the numeric input.}
 
 \item{min}{Minimum allowed value.}

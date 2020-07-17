@@ -62,6 +62,15 @@ date_input <- function(input_id, label = NULL, value = NULL, min = NULL, max = N
     )
 }
 
+#' @param inputId Input id.
+#' @param label Label to be displayed with date input.
+#' @param value Default date chosen for input.
+#' @param min Minimum date that can be selected.
+#' @param max Maximum date that can be selected.
+#' @param icon Icon that should be displayed on widget.
+#' @param width character width of the object
+#' @param ... other arguments
+#'
 #' @rdname date_input
 dateInput <- function(inputId, label = NULL, icon = NULL, value = NULL,
                       min = NULL, max = NULL, width = NULL, ...) {
@@ -69,7 +78,7 @@ dateInput <- function(inputId, label = NULL, icon = NULL, value = NULL,
   args_list <- list(...)
   args_list$input_id <- inputId
   args_list$label <- label
-  args_list$icon <- icon
+  args_list$icon_name <- icon
   args_list$value <- value
   args_list$min <- min
   args_list$max <- max

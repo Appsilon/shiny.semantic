@@ -28,6 +28,14 @@ rangeInput(inputId, label, min, max, value, step = 1, width = NULL, ...)
 
 \item{class}{UI class of the slider. Can include \code{"Labeled"} and \code{"ticked"}.}
 
+\item{inputId}{Input name.}
+
+\item{label}{Display label for the control, or NULL for no label.}
+
+\item{width}{character with width of slider.}
+
+\item{...}{additional arguments}
+
 \item{value2}{The initial upper value of the slider.}
 }
 \description{

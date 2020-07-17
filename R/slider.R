@@ -69,6 +69,10 @@ slider_input <- function(input_id, value, min, max, step = 1, class = NULL) {
   )
 }
 
+#' @param inputId Input name.
+#' @param label Display label for the control, or NULL for no label.
+#' @param width character with width of slider.
+#' @param ... additional arguments
 #' @rdname slider
 #' @export
 sliderInput <- function(inputId, label, min, max, value, step = 1, width = NULL, ...) {
@@ -91,6 +95,7 @@ range_input <- function(input_id, value, value2, min, max, step = 1, class = NUL
   )
 }
 
+#' @param inputId Input name.
 #' @rdname slider
 #' @export
 rangeInput <- function(inputId, label, min, max, value, step = 1, width = NULL, ...) {
@@ -120,7 +125,7 @@ update_slider <- function(session, input_id, value) {
 }
 
 #' @rdname update_slider
-#' @param value2 The upper value of the slider.
+#' @param value2 The upper value of the range.
 #'
 #' @export
 update_range <- function(session, input_id, value, value2) {
@@ -128,6 +133,8 @@ update_range <- function(session, input_id, value, value2) {
   session$sendInputMessage(input_id, message)
 }
 
+#' @param inputId Input name.
+#' @param ... additional arguments
 #' @rdname update_slider
 #' @export
 updateSliderInput <- function(session, inputId, value,  ...) {
@@ -135,6 +142,7 @@ updateSliderInput <- function(session, inputId, value,  ...) {
   update_slider(session, inputId, value)
 }
 
+#' @param inputId Input name.
 #' @rdname update_slider
 #' @export
 updateRangeInput <- function(session, inputId, value, value2) {
