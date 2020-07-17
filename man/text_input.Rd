@@ -26,7 +26,7 @@ textInput(
 \arguments{
 \item{input_id}{Input name. Reactive value is available under \code{input[[input_id]]}.}
 
-\item{label}{character with label put above the input}
+\item{label}{character with label put on the left from the input}
 
 \item{value}{Pass value if you want to have default text.}
 
@@ -43,7 +43,7 @@ This creates a default text input using Semantic UI. The input is available
 under \code{input[[input_id]]}.
 }
 \details{
-The following \code{type}s are allowed:
+The following \code{type} s are allowed:
 \itemize{
 \item{text}{The standard input}
 \item{textarea}{An extended space for text}
@@ -58,9 +58,15 @@ The inputs are updateable by using \code{\link[shiny]{updateTextInput}} or
 }
 \examples{
 library(shiny)
-library(shiny.semantic)
-
-# Text input
-text_input("ex", label = "Your text", type = "text", placeholder = "Enter Text")
-
+library(shiny.semenitc)
+if (interactive()) {
+  ui <- semanticPage(
+    uiinput(
+      text_input("ex", label = "Your text", type = "text", placeholder = "Enter Text")
+    )
+  )
+  server <- function(input, output, session) {
+ }
+ shinyApp(ui, server)
+ }
 }

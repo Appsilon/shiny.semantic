@@ -20,7 +20,7 @@
 #'   ui <- shinyUI(
 #'     semanticPage(
 #'       title = "Calendar example",
-#'       uicalendar("date"),
+#'       calendar("date"),
 #'       p("Selected date:"),
 #'       textOutput("selected_date")
 #'     )

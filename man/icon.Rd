@@ -2,18 +2,73 @@
 % Please edit documentation in R/dsl.R
 \name{icon}
 \alias{icon}
-\title{Create an icon}
+\title{Create Semantic UI icon tag}
 \usage{
-icon(name, class = NULL, ...)
+icon(class = "", ...)
 }
 \arguments{
-\item{name}{Name of icon. See [Fomantic Icons](https://fomantic-ui.com/elements/icon.html).}
+\item{class}{A name of an icon. Look at
+http://semantic-ui.com/elements/icon.html for all possibilities.}
 
-\item{class}{Additional classes to customize the style of the icon.
-See [Fomantic Icon Definitions](https://fomantic-ui.com/elements/icon.html#/definition).}
-
-\item{...}{Named attributes to be applied to the icon.}
+\item{...}{Other arguments to be added as attributes of the
+tag (e.g. style, class etc.)}
 }
 \description{
-Create an icon for use within a page.
+This creates an icon tag using Semantic UI styles.
+}
+\examples{
+
+if (interactive()){
+library(shiny)
+library(shiny.semantic)
+
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      # Basic icon
+      uiicon("home"),
+      br(),
+      # Different size
+      uiicon("small home"),
+      uiicon("large home"),
+      br(),
+      # Disabled icon
+      uiicon("disabled home"),
+      br(),
+      # Loading icon
+      uiicon("spinner loading"),
+      br(),
+      # Icon formatted as link
+      uiicon("close link"),
+      br(),
+      # Flipped
+      uiicon("horizontally flipped cloud"),
+      uiicon("vertically flipped cloud"),
+      br(),
+      # Rotated
+      uiicon("clockwise rotated cloud"),
+      uiicon("counterclockwise rotated cloud"),
+      br(),
+      # Circular
+      uiicon("circular home"),
+      br(),
+      # Bordered
+      uiicon("bordered home"),
+      br(),
+      # Colored
+      uiicon("red home"),
+      br(),
+      # inverted
+      uisegment(class = "inverted", uiicon("inverted home"))
+    )
+  )
+}
+
+server <- shinyServer(function(input, output, session) {
+
+})
+
+shinyApp(ui = ui(), server = server)
+}
+
 }

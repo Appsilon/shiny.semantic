@@ -1,12 +1,3 @@
-#' Extract icon name
-#'
-#' @param icon uiicon object
-#'
-#' @return character with icon name
-extract_icon_name <- function(icon) {
-  gsub(" icon", "", icon$attribs$class)
-}
-
 #' Rating Input.
 #'
 #' Crates rating component
@@ -15,7 +6,7 @@ extract_icon_name <- function(icon) {
 #' @param label the contents of the item to display
 #' @param value initial rating value
 #' @param max maximum value
-#' @param icon character with name of the icon or \code{\link{uiicon}()} that is
+#' @param icon character with name of the icon or \code{\link{icon}()} that is
 #' an element of the rating
 #' @param color character with colour name
 #' @param size character with legal semantic size, eg. "medium", "huge", "tiny"
@@ -59,7 +50,8 @@ rating_input <- function(name, label = "", value = 0, max = 3, icon = "star",
 
 #' Update rating
 #'
-#' check \code{rating_input} to learn more.
+#' Change the value of a rating input on the client. Check
+#' \code{rating_input} to learn more.
 #'
 #' @param session shiny object with session info
 #'

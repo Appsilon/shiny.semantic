@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Update rating — update_rating • SHINY.SEMANTIC</title>
+<title>Update rating — update_rating_input • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Update rating — update_rating" />
-<meta property="og:description" content="check rating to learn more." />
+<meta property="og:title" content="Update rating — update_rating_input" />
+<meta property="og:description" content="Change the value of a rating input on the client. Check
+rating_input to learn more." />
 
 
 
@@ -139,10 +140,11 @@
     </div>
 
     <div class="ref-description">
-    <p>check <code>rating</code> to learn more.</p>
+    <p>Change the value of a rating input on the client. Check
+<code>rating_input</code> to learn more.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>update_rating</span>(<span class='no'>session</span>, <span class='no'>input_id</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>update_rating_input</span>(<span class='no'>session</span>, <span class='no'>name</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>updateRating</span>(<span class='no'>session</span>, <span class='no'>inputId</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
@@ -154,16 +156,16 @@
       <td><p>shiny object with session info</p></td>
     </tr>
     <tr>
-      <th>input_id</th>
-      <td><p>rating input name</p></td>
-    </tr>
-    <tr>
       <th>label</th>
       <td><p>character with updated label</p></td>
     </tr>
     <tr>
       <th>value</th>
       <td><p>new rating value</p></td>
+    </tr>
+    <tr>
+      <th>input_id</th>
+      <td><p>rating input name</p></td>
     </tr>
     </table>
 

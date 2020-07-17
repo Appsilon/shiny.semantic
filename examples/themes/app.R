@@ -51,13 +51,13 @@ button <- function() {
     demo(div(class = "ui raised segment", "Raised segment")),
     demo(div(class = "ui button", "Button")),
     demo(div(class = "ui basic button", "Basic button")),
-    demo(div(class = "ui basic button", uiicon("user"), "Icon button")),
-    demo(div(class = "ui olive basic button", uiicon("user"), "Color icon button")),
+    demo(div(class = "ui basic button", icon("user"), "Icon button")),
+    demo(div(class = "ui olive basic button", icon("user"), "Color icon button")),
     demo(div(class = "ui animated button", tabindex="0",
              div(class="visible content", "Next"),
              div(class="hidden content", "Step"))),
     demo(div(class = "ui labeled button", tabindex="0",
-             div(class="ui button", uiicon("heart"), "Like"),
+             div(class="ui button", icon("heart"), "Like"),
              a(class="ui basic label", "2,048"))),
     demo(div(class = "ui mini button", "Mini")),
     demo(div(class = "ui tiny button", "Tiny")),
@@ -87,15 +87,15 @@ divider <- function() {
     h1(class="ui header", id="divider", "Divider"),
     demo(div(class="ui divider")),
     demo(div(class="ui horizontal divider", "Or")),
-    demo(div(class="ui horizontal divider", uiicon("tag"), "Description"))
+    demo(div(class="ui horizontal divider", icon("tag"), "Description"))
   )
 }
 uiinput <- function() {
   div(
     h1(class="ui header", id="input", "Input"),
     demo(div(class="ui input", input(placeholder="Search..."))),
-    demo(div(class="ui icon input", input(placeholder="Search..."), uiicon("search"))),
-    demo(div(class="ui icon input", input(placeholder="Search..."), uiicon("circular link search"))),
+    demo(div(class="ui icon input", input(placeholder="Search..."), icon("search"))),
+    demo(div(class="ui icon input", input(placeholder="Search..."), icon("circular link search"))),
     demo(div(class="ui right labeled input",
              tags$input(type="text", placeholder="Enter weight..."),
              div(class="ui basic label" ,"kg")))
@@ -112,15 +112,15 @@ breadcrumb <- function() {
              a(class="section", "T-shirts"))),
     demo(div(class="ui breadcrumb",
              a(class="section", "Home"),
-             uiicon("right angle divider"),
+             icon("right angle divider"),
              a(class="section", "Store"),
-             uiicon("right angle divider"),
+             icon("right angle divider"),
              a(class="section", "T-shirts"))),
     demo(div(class="ui huge breadcrumb",
              a(class="section", "Home"),
-             uiicon("right angle divider"),
+             icon("right angle divider"),
              a(class="section", "Store"),
-             uiicon("right angle divider"),
+             icon("right angle divider"),
              a(class="section", "T-shirts")))
   )
 }
@@ -128,9 +128,9 @@ accordion <- function() {
   div(
     h1(class="ui header", id="accordion", "Accordion"),
     demo(div(class="ui styled accordion",
-             div(class="active title", uiicon('dropdown icon'), "What is dog?"),
+             div(class="active title", icon('dropdown icon'), "What is dog?"),
              div(class="active content", p("A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.")),
-             div(class="title", uiicon('dropdown icon'), "What kinds of dogs are there?"),
+             div(class="title", icon('dropdown icon'), "What kinds of dogs are there?"),
              div(class="content", p("There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion."))
     )
     )
@@ -196,13 +196,13 @@ card <- function() {
           ),
           div(class="image", img(src="images/wireframe.png")),
           div(class="content",
-              span(class="right floated", uiicon("heart outline like"), "17 likes"),
-              uiicon("comment"),
+              span(class="right floated", icon("heart outline like"), "17 likes"),
+              icon("comment"),
               "3 comments"
           ),
           div(class="extra content",
               div(class="ui large transparent left icon input",
-                  uiicon("heart ouline"),
+                  icon("heart ouline"),
                   tags$input(type="text", placeholder ="Add Comment...")
               )
           )

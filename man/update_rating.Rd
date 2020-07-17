@@ -19,5 +19,6 @@ updateRating(session, inputId, label = NULL, value = NULL)
 \item{input_id}{rating input name}
 }
 \description{
-check \code{rating_input} to learn more.
+Change the value of a rating input on the client. Check
+\code{rating_input} to learn more.
 }

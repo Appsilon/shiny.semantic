@@ -121,7 +121,7 @@ ui <- function() {
   shinyUI(
     semanticPage(
       title = "My page",
-      div(class = "ui button", uiicon("user"),  "Icon button")
+      div(class = "ui button", icon("user"),  "Icon button")
     )
   )
 }
