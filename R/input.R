@@ -32,11 +32,11 @@ uiinput <- function(..., class = "") {
 #' @param type Change depending what type of input is wanted. See details for options.
 #' @param placeholder Text visible in the input when nothing is inputted.
 #' @param attribs A named list of attributes to assign to the input.
-#' @param label character with label put above the input
+#' @param label character with label put on the left from the input
 #' @param width The width of the input, eg. "40px"
 #'
 #' @details
-#' The following \code{type}s are allowed:
+#' The following \code{type} s are allowed:
 #' \itemize{
 #' \item{text}{The standard input}
 #' \item{textarea}{An extended space for text}
@@ -51,11 +51,17 @@ uiinput <- function(..., class = "") {
 #'
 #' @examples
 #' library(shiny)
-#' library(shiny.semantic)
-#'
-#' # Text input
-#' text_input("ex", label = "Your text", type = "text", placeholder = "Enter Text")
-#'
+#' library(shiny.semenitc)
+#' if (interactive()) {
+#'   ui <- semanticPage(
+#'     uiinput(
+#'       text_input("ex", label = "Your text", type = "text", placeholder = "Enter Text")
+#'     )
+#'   )
+#'   server <- function(input, output, session) {
+#'  }
+#'  shinyApp(ui, server)
+#'  }
 #' @rdname text_input
 #' @export
 text_input <- function(input_id, label = NULL, value = "", type = "text",
@@ -152,14 +158,10 @@ textInput <- function(inputId, label, value = "", width = NULL,
 #' library(shiny)
 #' library(shiny.semantic)
 #'
-#' # Text input
-#' uiinput(
-#'   tags$label("Numeric Input"),
-#'   numeric_input("ex", 10)
-#' )
+#' numeric_input("ex", "Select number", 10)
 #'
 #' @export
-numeric_input <- function(input_id, value, min = NA, max = NA, step = NA,
+numeric_input <- function(input_id, label, value, min = NA, max = NA, step = NA,
                            type = NULL, icon = NULL, placeholder = NULL, ...) {
   if (!is.numeric(value) & !grepl("^\\d*(\\.\\d*|)$", value)) stop("Non-numeric input detected")
 
@@ -170,10 +172,13 @@ numeric_input <- function(input_id, value, min = NA, max = NA, step = NA,
   if (!is.null(icon)) {
     type <- paste(type, "icon")
   }
-  shiny::div(
-    class = paste("ui", type, "input"),
-    input_tag,
-    icon
+  shiny::div(class = "field",
+    if (!is.null(label)) tags$label(label, `for` = input_id),
+    shiny::div(
+      class = paste("ui", type, "input"),
+      input_tag,
+      icon
+    )
   )
 }
 
@@ -193,10 +198,7 @@ numericInput <- function(inputId, label, value,
   shiny::div(
     class = "ui form",
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
-    shiny::div(class = "field",
-               if (!is.null(label)) tags$label(label, `for` = inputId),
-               numeric_input(inputId, value, min, max, step, ...)
-    )
+    numeric_input(inputId, label, value, min, max, step, ...)
   )
 }
 

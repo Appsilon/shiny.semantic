@@ -8,7 +8,7 @@ menu(..., class = "")
 }
 \arguments{
 \item{...}{Menu items to be created. Use menu_item function to create new menu item.
-Use uidropdown(is_menu_item = TRUE, ...) function to create new dropdown menu item.
+Use dropdown(is_menu_item = TRUE, ...) function to create new dropdown menu item.
 Use menu_header and menu_divider functions to customize menu format.}
 
 \item{class}{Class extension.Look at https://semantic-ui.com/collections/menu.html
@@ -18,41 +18,36 @@ for all possibilities.}
 This creates a menu using Semantic UI.
 }
 \examples{
-
 if (interactive()) {
-library(shiny)
-library(shiny.semantic)
-
-ui <- function() {
-  shinyUI(
-    semanticPage(
-      title = "My page",
-      menu(menu_item("Menu"),
-             uidropdown(
+  library(shiny)
+  library(shiny.semantic)
+  ui <- function() {
+    shinyUI(
+      semanticPage(
+        title = "My page",
+        menu(menu_item("Menu"),
+             dropdown_menu(
                "Action",
                menu(
-                 menu_header(uiicon("file"), "File", is_item = FALSE),
-                 menu_item(uiicon("wrench"), "Open"),
-                 menu_item(uiicon("upload"), "Upload"),
-                menu_item(uiicon("remove"), "Upload"),
+                 menu_header(icon("file"), "File", is_item = FALSE),
+                 menu_item(icon("wrench"), "Open"),
+                 menu_item(icon("upload"), "Upload"),
+                 menu_item(icon("remove"), "Upload"),
                  menu_divider(),
-                 menu_header(uiicon("user"), "User", is_item = FALSE),
-                 menu_item(uiicon("add user"), "Add"),
-                 menu_item(uiicon("remove user"), "Remove")),
+                 menu_header(icon("user"), "User", is_item = FALSE),
+                 menu_item(icon("add user"), "Add"),
+                 menu_item(icon("remove user"), "Remove")),
                class = "",
                name = "unique_name",
                is_menu_item = TRUE),
-             menu_item(uiicon("user"), "Profile", href = "#index", item_feature = "active"),
+             menu_item(icon("user"), "Profile", href = "#index", item_feature = "active"),
              menu_item("Projects", href = "#projects"),
-             menu_item(uiicon("users"), "Team"),
-             menu(menu_item(uiicon("add icon"), "New tab"), class = "right"))
+             menu_item(icon("users"), "Team"),
+             menu(menu_item(icon("add icon"), "New tab"), class = "right"))
+      )
     )
-  )
-}
-
-server <- shinyServer(function(input, output) {
-})
-
-shinyApp(ui = ui(), server = server)
+  }
+  server <- shinyServer(function(input, output) {})
+  shinyApp(ui = ui(), server = server)
 }
 }

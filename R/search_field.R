@@ -82,7 +82,7 @@ search_field <- function(name,
                          oninput = "null"),
               value = value
             ),
-            uiicon("search")
+            icon("search")
         ),
         div(class = "results")
     ),

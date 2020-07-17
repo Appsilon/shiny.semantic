@@ -48,17 +48,17 @@ test_that("test textAreaInput", {
 
 test_that("test numeric_input", {
   # type
-  expect_is(numeric_input("number_input", 20), "shiny.tag")
+  expect_is(numeric_input("number_input", "label", 20), "shiny.tag")
   # empty input
   expect_error(numeric_input())
   # text input
-  expect_error(numeric_input("number input", "Text input"))
+  expect_error(numeric_input("number input", "label","Text input"))
   # number input
-  si_str <- as.character(numeric_input("number_input", 20))
+  si_str <- as.character(numeric_input("number_input", "label", 20))
   expect_true(any(grepl("<input id=\"number_input\" value=\"20\" type=\"number\"/>",
                         si_str, fixed = TRUE)))
   # all parameters
-  expect_is(numeric_input("number_input", 20, min = 10, max = 40, step = 1),
+  expect_is(numeric_input("number_input", "label", 20, min = 10, max = 40, step = 1),
             "shiny.tag")
 })
 

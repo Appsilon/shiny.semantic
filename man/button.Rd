@@ -11,7 +11,7 @@ button(name, label, icon = NULL, class = NULL, ...)
 
 \item{label}{The contents of the button or link}
 
-\item{icon}{An optional \code{\link{uiicon}()} to appear on the button.}
+\item{icon}{An optional \code{\link{icon}()} to appear on the button.}
 
 \item{class}{An optional attribute to be added to the button's class. If used
 paramters like \code{color}, \code{size} are ignored.}

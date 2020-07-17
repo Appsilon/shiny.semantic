@@ -6,6 +6,7 @@
 \usage{
 numeric_input(
   input_id,
+  label,
   value,
   min = NA,
   max = NA,
@@ -47,10 +48,6 @@ The inputs are updateable by using \code{\link{updateNumericInput}}.
 library(shiny)
 library(shiny.semantic)
 
-# Text input
-uiinput(
-  tags$label("Numeric Input"),
-  numeric_input("ex", 10)
-)
+numeric_input("ex", "Select number", 10)
 
 }

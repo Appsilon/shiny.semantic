@@ -85,7 +85,7 @@ search_selection_api <- function(name,
                                     name = name),
                          type = "text"
              ),
-             uiicon("search"),
+             icon("search"),
              tags$div(class = "default text", default_text),
              tags$div(class = "menu")
     ),
@@ -168,7 +168,7 @@ search_selection_choices <- function(name,
                          value = value,
                          type = "text"
              ),
-             uiicon("search"),
+             icon("search"),
              tags$div(class = "default text", default_text),
              tags$div(class = "menu",
                if (is.null(choices)) {

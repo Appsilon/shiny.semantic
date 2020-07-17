@@ -12,5 +12,6 @@ generate_random_id(prefix, id_length = 20)
 \item{id_length}{numeric with length of id (default 20)}
 }
 \description{
-Generates random id of element
+Some elements require input id, but this does not need to be
+specified by the user. Thus we assign random value with prefix where needed.
 }

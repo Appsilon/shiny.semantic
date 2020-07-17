@@ -17,7 +17,7 @@ parse_val <- function(val) {
 #' @examples
 #' check_proper_color("blue")
 check_proper_color <- function(color) {
-  if (!(color %in% c("", names(semantic_palette)))) {
+  if (!(color %in% c("", names(SEMANTIC_PALETTE)))) {
     stop("Wrong color parameter specified!")
   } else {
     invisible(color)
@@ -25,6 +25,9 @@ check_proper_color <- function(color) {
 }
 
 #' Generates random id of element
+#'
+#' Some elements require input id, but this does not need to be
+#' specified by the user. Thus we assign random value with prefix where needed.
 #'
 #' @param prefix character with prefix add to id
 #' @param id_length numeric with length of id (default 20)
@@ -36,11 +39,20 @@ generate_random_id <- function(prefix, id_length = 20) {
 
 #' Check for extra arguments
 #'
-#' This throws warning if there're parameters not supported by semantic.
+#' This throws warning if there are parameters not supported by semantic.
 #'
 #' @param args list with extra arguments
 check_extra_arguments <- function(args) {
   to_wrn <- paste0(as.character(names(args)), collapse = ',')
 if (nchar(to_wrn) > 1)
   warning(glue::glue("arguments: `{to_wrn}` not supported yet in semantic version"))
+}
+
+#' Extract icon name
+#'
+#' @param icon icon object
+#'
+#' @return character with icon name
+extract_icon_name <- function(icon) {
+  gsub(" icon", "", icon$attribs$class)
 }

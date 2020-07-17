@@ -25,8 +25,8 @@ updateRangeInput(session, inputId, value, value2)
 \item{name}{The id of the input object}
 }
 \description{
-Change the value of a \code{\link{uislider}} input on the client.
+Change the value of a \code{\link{slider_input}} input on the client.
 }
 \seealso{
-slider
+slider_input
 }

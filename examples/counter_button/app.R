@@ -3,7 +3,7 @@ library(shiny.semantic)
 
 ui <-semanticPage(
      counterbutton("counter", "How many dogs?",
-                   icon = uiicon("dog"),
+                   icon = icon("dog"),
                    size = "big", color = "green"),
      h1("Dog count:"),
      h2(shiny::textOutput("dogs"))

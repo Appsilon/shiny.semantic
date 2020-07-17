@@ -3,7 +3,7 @@
 \name{date_input}
 \alias{date_input}
 \alias{dateInput}
-\title{Define simple date input with semantic ui styling}
+\title{Define simple date input with Semantic UI styling}
 \usage{
 date_input(
   input_id,
@@ -12,7 +12,7 @@ date_input(
   min = NULL,
   max = NULL,
   style = NULL,
-  icon = uiicon("calendar")
+  icon_name = "calendar"
 )
 
 dateInput(
@@ -39,14 +39,14 @@ dateInput(
 
 \item{style}{Css style for widget.}
 
-\item{icon}{Icon that should be displayed on widget.}
+\item{icon_name}{Icon that should be displayed on widget.}
 }
 \description{
-Define simple date input with semantic ui styling
+Define simple date input with Semantic UI styling
 }
 \examples{
 if (interactive()) {
-# Below example shows how to imlement simple date range input using \code{date_input}
+# Below example shows how to implement simple date range input using \code{date_input}
 
 library(shiny)
 library(shiny.semantic)

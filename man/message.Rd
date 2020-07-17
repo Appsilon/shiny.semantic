@@ -4,7 +4,7 @@
 \alias{message}
 \title{Create Semantic UI Message}
 \usage{
-message(header, content, class = "", icon, closable = FALSE)
+message(header, content, class = "", icon_name, closable = FALSE)
 }
 \arguments{
 \item{header}{Header of the message}
@@ -15,7 +15,7 @@ vector's elements}
 \item{class}{class of the message. Look at
 https://semantic-ui.com/collections/message.html for all possibilities.}
 
-\item{icon}{If the message is of the type 'icon', specify the icon.
+\item{icon_name}{If the message is of the type 'icon', specify the icon.
 Look at http://semantic-ui.com/elements/icon.html for all possibilities.}
 
 \item{closable}{Determines whether the message should be closable.

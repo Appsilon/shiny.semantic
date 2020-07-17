@@ -30,7 +30,7 @@ counterButton(
 
 \item{label}{the content of the item to display}
 
-\item{icon}{an optional \code{\link{uiicon}()} to appear on the button.}
+\item{icon}{an optional \code{\link{icon}()} to appear on the button.}
 
 \item{value}{initial rating value (integer)}
 
@@ -50,7 +50,7 @@ library(shiny)
 library(shiny.semantic)
 ui <-semanticPage(
      counterbutton("counter", "My Counter Button",
-                   icon = uiicon("world"),
+                   icon = icon("world"),
                    size = "big", color = "purple")
  )
 server <- function(input, output) {

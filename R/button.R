@@ -2,7 +2,7 @@
 #'
 #' @param name The \code{input} slot that will be used to access the value.
 #' @param label The contents of the button or link
-#' @param icon An optional \code{\link{uiicon}()} to appear on the button.
+#' @param icon An optional \code{\link{icon}()} to appear on the button.
 #' @param class An optional attribute to be added to the button's class. If used
 #' paramters like \code{color}, \code{size} are ignored.
 #' @param ... Named attributes to be applied to the button
@@ -110,7 +110,7 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #'
 #' @param name The \code{input} slot that will be used to access the value.
 #' @param label the content of the item to display
-#' @param icon an optional \code{\link{uiicon}()} to appear on the button.
+#' @param icon an optional \code{\link{icon}()} to appear on the button.
 #' @param value initial rating value (integer)
 #' @param color character with semantic color
 #' @param big_mark big numbers separator
@@ -124,7 +124,7 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #' library(shiny.semantic)
 #' ui <-semanticPage(
 #'      counterbutton("counter", "My Counter Button",
-#'                    icon = uiicon("world"),
+#'                    icon = icon("world"),
 #'                    size = "big", color = "purple")
 #'  )
 #' server <- function(input, output) {

@@ -4,14 +4,14 @@
 \alias{list_element}
 \title{Helper function to render list element}
 \usage{
-list_element(header = NULL, description = NULL, icon = NULL)
+list_element(header = NULL, description = NULL, icon_name = NULL)
 }
 \arguments{
 \item{header}{character with header element}
 
 \item{description}{character with content of the list}
 
-\item{icon}{character with optional icon}
+\item{icon_name}{character with optional icon}
 }
 \description{
 Helper function to render list element

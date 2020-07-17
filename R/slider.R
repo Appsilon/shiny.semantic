@@ -104,13 +104,13 @@ rangeInput <- function(inputId, label, min, max, value, step = 1, width = NULL, 
 
 #' Update slider Semantic UI component
 #'
-#' Change the value of a \code{\link{uislider}} input on the client.
+#' Change the value of a \code{\link{slider_input}} input on the client.
 #'
 #' @param session The \code{session} object passed to function given to \code{shinyServer}.
 #' @param name The id of the input object
 #' @param value The value to be selected for the sldier (lower value if using range).
 #'
-#' @seealso slider
+#' @seealso slider_input
 #'
 #' @rdname update_slider
 #' @export

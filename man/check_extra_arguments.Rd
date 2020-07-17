@@ -10,5 +10,5 @@ check_extra_arguments(args)
 \item{args}{list with extra arguments}
 }
 \description{
-This throws warning if there're parameters not supported by semantic.
+This throws warning if there are parameters not supported by semantic.
 }

@@ -114,7 +114,7 @@
 <span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span>(
   <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">div</a></span>(
     <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">div</a></span>(
-      <span class="fu"><a href="reference/simple_checkbox.html">a</a></span>(<span class="st">"Link"</span>),
+      <span class="fu"><a href="reference/checkbox.html">a</a></span>(<span class="st">"Link"</span>),
       <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">p</a></span>(<span class="st">"Lorem ipsum, lorem ipsum, lorem ipsum"</span>),
       <span class="fu"><a href="reference/actionButton.html">actionButton</a></span>(<span class="st">"button"</span>, <span class="st">"Click"</span>)
     )
@@ -128,7 +128,7 @@
 <span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/semanticPage.html">semanticPage</a></span>(
   <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">div</a></span>(<span class="kw">class</span> <span class="kw">=</span> <span class="st">"ui raised segment"</span>,
     <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">div</a></span>(
-      <span class="fu"><a href="reference/simple_checkbox.html">a</a></span>(<span class="kw">class</span><span class="kw">=</span><span class="st">"ui green ribbon label"</span>, <span class="st">"Link"</span>),
+      <span class="fu"><a href="reference/checkbox.html">a</a></span>(<span class="kw">class</span><span class="kw">=</span><span class="st">"ui green ribbon label"</span>, <span class="st">"Link"</span>),
       <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">p</a></span>(<span class="st">"Lorem ipsum, lorem ipsum, lorem ipsum"</span>),
       <span class="fu"><a href="reference/actionButton.html">actionButton</a></span>(<span class="st">"button"</span>, <span class="st">"Click"</span>)
     )
@@ -176,7 +176,7 @@
   <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyUI.html">shinyUI</a></span>(
     <span class="fu"><a href="reference/semanticPage.html">semanticPage</a></span>(
       <span class="kw">title</span> <span class="kw">=</span> <span class="st">"My page"</span>,
-      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">div</a></span>(<span class="kw">class</span> <span class="kw">=</span> <span class="st">"ui button"</span>, <span class="fu"><a href="reference/uiicon.html">uiicon</a></span>(<span class="st">"user"</span>),  <span class="st">"Icon button"</span>)
+      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">div</a></span>(<span class="kw">class</span> <span class="kw">=</span> <span class="st">"ui button"</span>, <span class="fu"><a href="reference/icon.html">icon</a></span>(<span class="st">"user"</span>),  <span class="st">"Icon button"</span>)
     )
   )
 }
@@ -253,7 +253,9 @@
 <p><strong>Changes in documentation</strong></p>
 <p>Both repository <strong>README.md</strong> file and an official documentation page are generated with Rmarkdown, so if there is a need to update them, please modify accordingly a <strong>README.Rmd</strong> file and use “Knit”.</p>
 <p>Documentation is rendered with <code>pkgdown</code>. Just run <code><a href="https://pkgdown.r-lib.org/reference/build_site.html">pkgdown::build_site()</a></code> after rendering new <strong>README.md</strong>.</p>
-<p>We have a Contributor <a href="">Code of Conduct</a>. Make sure to check it and to follow it.</p>
+<p><em>Important:</em></p>
+<p>1) Please follow the code style from out <a href="https://github.com/Appsilon/shiny.semantic/blob/develop/STYLEGUIDE.md">styleguide</a>.</p>
+<p>2) We have a Contributor <a href="">Code of Conduct</a>. Make sure to check it and to follow it.</p>
 </div>
 <div id="troubleshooting" class="section level2">
 <h2 class="hasAnchor">
