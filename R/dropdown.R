@@ -85,7 +85,7 @@ dropdown_input <- function(name, choices, choices_value = choices,
 #'   values for multiple select lists.
 #' @param multiple Is selection of multiple items allowed?
 #' @param width The width of the input.
-#' @param ... Arguments passed to \link{dropdown}.
+#' @param ... Arguments passed to \link{dropdown_input}.
 #'
 #' @export
 selectInput <- function(inputId, label, choices, selected = NULL, multiple = FALSE, width = NULL, ...) {
@@ -128,7 +128,7 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
 
 #' Update dropdown Semantic UI component
 #'
-#' Change the value of a \code{\link{dropdown}} input on the client.
+#' Change the value of a \code{\link{dropdown_input}} input on the client.
 #'
 #' @param session The \code{session} object passed to function given to \code{shinyServer}.
 #' @param name The id of the input object

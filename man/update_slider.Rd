@@ -18,11 +18,15 @@ updateRangeInput(session, inputId, value, value2)
 \arguments{
 \item{session}{The \code{session} object passed to function given to \code{shinyServer}.}
 
+\item{input_id}{The id of the input object}
+
 \item{value}{The value to be selected for the sldier (lower value if using range).}
 
-\item{value2}{The upper value of the slider.}
+\item{value2}{The upper value of the range.}
 
-\item{name}{The id of the input object}
+\item{inputId}{Input name.}
+
+\item{...}{additional arguments}
 }
 \description{
 Change the value of a \code{\link{slider_input}} input on the client.

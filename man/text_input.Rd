@@ -36,6 +36,8 @@ textInput(
 
 \item{attribs}{A named list of attributes to assign to the input.}
 
+\item{inputId}{Input name. The same as \code{input_id}.}
+
 \item{width}{The width of the input, eg. "40px"}
 }
 \description{
@@ -57,9 +59,9 @@ The inputs are updateable by using \code{\link[shiny]{updateTextInput}} or
 \code{\link[shiny]{updateTextAreaInput}} if \code{type = "textarea"}.
 }
 \examples{
-library(shiny)
-library(shiny.semenitc)
 if (interactive()) {
+  library(shiny)
+  library(shiny.semantic)
   ui <- semanticPage(
     uiinput(
       text_input("ex", label = "Your text", type = "text", placeholder = "Enter Text")

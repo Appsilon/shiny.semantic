@@ -114,6 +114,7 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #' @param value initial rating value (integer)
 #' @param color character with semantic color
 #' @param big_mark big numbers separator
+#' @param size character with size of the button, eg. "medium", "big"
 #'
 #' @return counter button object
 #' @export
@@ -123,7 +124,7 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #' library(shiny)
 #' library(shiny.semantic)
 #' ui <-semanticPage(
-#'      counterbutton("counter", "My Counter Button",
+#'      counter_button("counter", "My Counter Button",
 #'                    icon = icon("world"),
 #'                    size = "big", color = "purple")
 #'  )
@@ -134,7 +135,7 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #'  }
 #' shinyApp(ui, server)
 #' }
-counterbutton <- function(name, label = "", icon = NULL, value = 0, color = "", size = "",
+counter_button <- function(name, label = "", icon = NULL, value = 0, color = "", size = "",
                           big_mark = " ") {
   big_mark_regex <- if (big_mark == " ") "\\s" else big_mark
   shiny::div(
@@ -160,5 +161,5 @@ counterbutton <- function(name, label = "", icon = NULL, value = 0, color = "", 
 #' @export
 counterButton <- function(name, label = "", icon = NULL, value = 0, color = "", size = "",
               big_mark = " ") {
-  counterbutton(name, label, icon, value, color, size, big_mark)
+  counter_button(name, label, icon, value, color, size, big_mark)
 }

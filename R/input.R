@@ -50,9 +50,9 @@ uiinput <- function(..., class = "") {
 #' \code{\link[shiny]{updateTextAreaInput}} if \code{type = "textarea"}.
 #'
 #' @examples
-#' library(shiny)
-#' library(shiny.semenitc)
 #' if (interactive()) {
+#'   library(shiny)
+#'   library(shiny.semantic)
 #'   ui <- semanticPage(
 #'     uiinput(
 #'       text_input("ex", label = "Your text", type = "text", placeholder = "Enter Text")
@@ -121,6 +121,7 @@ textAreaInput <- function(inputId, label, value = "", width = NULL, placeholder 
   )
 }
 
+#' @param inputId Input name. The same as \code{input_id}.
 #' @rdname text_input
 #' @export
 textInput <- function(inputId, label, value = "", width = NULL,
@@ -150,6 +151,7 @@ textInput <- function(inputId, label, value = "", width = NULL,
 #' @param icon Icon or label attached to numeric input.
 #' @param placeholder Inner input label displayed when no value is specified.
 #' @param ... Unused.
+#' @param label character with label
 #'
 #' @details
 #' The inputs are updateable by using \code{\link{updateNumericInput}}.

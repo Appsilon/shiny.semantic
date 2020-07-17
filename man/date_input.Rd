@@ -40,6 +40,14 @@ dateInput(
 \item{style}{Css style for widget.}
 
 \item{icon_name}{Icon that should be displayed on widget.}
+
+\item{inputId}{Input id.}
+
+\item{icon}{Icon that should be displayed on widget.}
+
+\item{width}{character width of the object}
+
+\item{...}{other arguments}
 }
 \description{
 Define simple date input with Semantic UI styling

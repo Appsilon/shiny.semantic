@@ -24,5 +24,5 @@ update_dropdown(
 \item{value}{The initially selected value.}
 }
 \description{
-Change the value of a \code{\link{dropdown}} input on the client.
+Change the value of a \code{\link{dropdown_input}} input on the client.
 }

@@ -30,7 +30,7 @@ values for multiple select lists.}
 
 \item{width}{The width of the input.}
 
-\item{...}{Arguments passed to \link{dropdown}.}
+\item{...}{Arguments passed to \link{dropdown_input}.}
 }
 \description{
 Create a select list that can be used to choose a single or multiple items from a list of values.
