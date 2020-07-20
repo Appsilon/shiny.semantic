@@ -123,15 +123,6 @@ test_that("test label", {
   expect_match(as.character(label()), "<label></label>")
 })
 
-test_that("test uicheckbox", {
-  # test missing input
-  expect_match(as.character(uicheckbox()), "<div class=\"ui checkbox \"></div>")
-  # test class
-  expect_match(as.character(uicheckbox(class = "ch")),
-               "<div class=\"ui checkbox  ch\"></div>")
-})
-
-
 test_that("test uimessage", {
   # test missing input
   expect_error(uimessage())
@@ -142,8 +133,8 @@ test_that("test uimessage", {
   expect_true(any(grepl("<div class=\"ui message \">", si_str, fixed = TRUE)))
   expect_true(any(grepl("<ul class=\"list\">", si_str, fixed = TRUE)))
   expect_true(any(grepl("<li>b</li>", si_str, fixed = TRUE)))
-  expect_error(uimessage(shiny::h2("a"), c("b", "c"), type = "icon"),
-               "Type 'icon' requires an icon!")
+  expect_error(uimessage(shiny::h2("a"), c("b", "c"), class = "icon"),
+               "If you give a class 'icon', then an icon argument is required")
 })
 
 test_that("test dropdown", {
@@ -223,7 +214,41 @@ test_that("test menu_divider", {
                "<div class=\"divider\"></div>")
 })
 
+test_that("test list_element", {
+  si_str <- as.character(list_element())
+  expect_true(any(grepl("<div class=\"item\">", si_str)))
+  si_str <- as.character(list_element(header = "A"))
+  expect_true(any(grepl("<div class=\"header\">A</div>", si_str)))
+  si_str <- as.character(list_element(description = "B"))
+  expect_true(any(grepl("<div class=\"description\">B</div>", si_str)))
+})
+
 test_that("test uilist", {
   # test missing input
   expect_error(uilist())
+  # test default input
+  list_content <- list(
+    list(header = "Head", icon = "tree"),
+    list(description = "Lorem ipsum")
+  )
+  si_str <- as.character(uilist(list_content))
+  expect_true(any(grepl("<div class=\"ui  list\">", si_str)))
+  expect_true(any(grepl("Lorem ipsum", si_str)))
+  #' wrong input
+  list_content <- list(
+    list(icon = "cat"),
+    list(header = "Head", icon = "tree")
+  )
+  expect_error(uilist(list_content),
+               "content_list needs to have either header or description")
+  #' input with icon
+  list_content <- list(
+    list(header = "Head", icon = "tree"),
+    list(description = "Lorem ipsum")
+  )
+  si_str <- as.character(uilist(list_content))
+  expect_true(any(grepl("tree icon", si_str)))
+  #' divided
+  si_str <- as.character(uilist(list_content, is_divided = TRUE))
+  expect_true(any(grepl("divided list", si_str)))
 })

@@ -102,7 +102,14 @@
   </a>
 </li>
 <li>
-  <a href="https://github.com/ropensci/MODIStsp/">
+  <a href="../CODE_OF_CONDUCT.html">
+    <span class="fa fa-user-o"></span>
+     
+    CoC
+  </a>
+</li>
+<li>
+  <a href="https://github.com/Appsilon/shiny.semantic">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -159,6 +166,31 @@
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
+
+<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
+  <span class='fu'><a href='actionButton.html'>actionButton</a></span>(<span class='st'>"update"</span>, <span class='st'>"Update button"</span>),
+  <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
+  <span class='fu'><a href='actionButton.html'>actionButton</a></span>(<span class='st'>"go_button"</span>, <span class='st'>"Go"</span>)
+)
+
+<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
+  <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/observe.html'>observe</a></span>({
+    <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/req.html'>req</a></span>(<span class='no'>input</span>$<span class='no'>update</span>)
+
+    <span class='co'># Updates go_button's label and icon</span>
+    <span class='fu'>updateActionButton</span>(<span class='no'>session</span>, <span class='st'>"go_button"</span>,
+                       <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"New label"</span>,
+                       <span class='kw'>icon</span> <span class='kw'>=</span> <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"calendar"</span>))
+
+  })
+}
+<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

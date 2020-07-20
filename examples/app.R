@@ -233,25 +233,16 @@ tabs <- function () {
   )
 }
 uilist_demo <- function() {
-  list_content <- data.frame(
-    header = paste("Header", 1:5),
-    description = paste("Description", 1:5),
-    icon = paste("home", 1:5),
-    stringsAsFactors = FALSE
-  )
-
-  icons_names <- c("home", "circle", "github", "star", "sun")
-  list_content_with_icons <- data.frame(
-    header = paste("Header", 1:5),
-    description = paste("Description", icons_names),
-    icon = icons_names,
-    stringsAsFactors = FALSE
+  list_content <- list(
+    list(header = "Head 1", description = "Lorem ipsum", icon = "home"),
+    list(header = "Head 2", description = "Lorem ipsum", icon = "dog"),
+    list(header = "Head 3", description = "Lorem ipsum", icon = "sun")
   )
 
   div(
     h1(class="ui dividing header", id = "list", "List"),
     demo(uilist(list_content, is_divided = FALSE)),
-    demo(uilist(list_content_with_icons, is_divided = TRUE))
+    demo(uilist(list_content, is_divided = TRUE))
   )
 }
 
