@@ -9,40 +9,35 @@ get_row <- function(arg) {
   HTML(glue::glue("<div class='{class}' style='{style}'>{arg}</div>"))
 }
 
-# Sidebar Panel ................................................................
+default_sidebar_panel_grid = grid(
+  grid_template = grid_template(default = list(
+    areas = rbind(c("")),
+    cols_width = c("1fr")
+  )),
+  container_style = "background-color: tomato;",
+)
 
-sidebar_panel <- function(grid, ...) {
+# Panels .......................................................................
+panel <- function(grid, ...) {
   args <- list(...)
-
   if(is.null(grid)) {
-
     div(lapply(args, get_row))
-
   } else {
-
-    container_style <- "align-content: start;"
     grid
   }
 }
 
-# Main Panel ...................................................................
+sidebar_panel <- function(grid, ...) {
+  panel(grid, ...)
+  # adjustments
+}
 
 main_panel <- function(grid, ...) {
-  args <- list(...)
-
-  if(is.null(grid)) {
-
-    div(lapply(args, get_row))
-
-  } else {
-
-    container_style <- "align-content: start;"
-    grid
-  }
+  panel(grid, ...)
+  # adjustments
 }
 
 # Sidebar Layout ...............................................................
-
 sidebar_layout <- function(sidebar_panel,
                           main_panel,
                           sidebar_width,
@@ -88,6 +83,19 @@ ui <- function() {
     title = "Sidebar Layout Test",
     theme = "spacelab",
     sidebar_layout(
+      # sidebar_panel(
+      #   grid = NULL,
+      #   "Side Item 1",
+      #   "Side Item 2",
+      #   "Side Item 3"
+      # ),
+      # main_panel(
+      #   grid = NULL,
+      #   "Main 1",
+      #   "Main 2",
+      #   "Main 3",
+      #   "Main 4"
+      # ),
       sidebar_panel(
         grid = NULL,
         "Side Item 1",
@@ -95,11 +103,17 @@ ui <- function() {
         "Side Item 3"
       ),
       main_panel(
-        grid = NULL,
-        "Main 1",
-        "Main 2",
-        "Main 3",
-        "Main 4"
+        grid = grid(
+          grid_template = grid_template(default = list(
+            areas = rbind(c("test1", "test2"), c("test3", "test4")),
+            cols_width = c("1fr", "1fr")
+          )),
+          container_style = "border: 2px dotted black;",
+          test1 = "test-1",
+          test2 = "test-2",
+          test3 = "test-3",
+          test4 = "test-4"
+        )
       ),
       sidebar_width = 30,
       min_height = "400px",
