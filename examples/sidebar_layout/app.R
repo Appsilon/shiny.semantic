@@ -2,28 +2,14 @@ library(shiny)
 library(shiny.semantic)
 library(glue)
 
-# UI ---------------------------------------------------------------------------
 ui <- function() {
   shinyUI(semanticPage(
     title = "Sidebar Layout Test",
     theme = "spacelab",
     sidebar_layout(
-      # sidebar_panel(
-      #   grid = NULL,
-      #   "Side Item 1",
-      #   "Side Item 2",
-      #   "Side Item 3"
-      # ),
-      # main_panel(
-      #   grid = NULL,
-      #   "Main 1",
-      #   "Main 2",
-      #   "Main 3",
-      #   "Main 4"
-      # ),
       sidebar_panel(
         grid_list = list(
-          layout = grid_template(default = list(
+          layout = shiny.semantic::grid_template(default = list(
             areas = rbind(
               c("top_left",    "top_right"   ),
               c("bottom_left", "bottom_right")
@@ -47,7 +33,7 @@ ui <- function() {
       ),
       main_panel(
         grid_list = list(
-          layout = grid_template(default = list(
+          layout = shiny.semantic::grid_template(default = list(
             areas = rbind(
               c("top_left",    "top_center",    "top_right"   ),
               c("middle_left", "middle_center", "middle_right"),
@@ -80,7 +66,7 @@ ui <- function() {
         bottom_right = "Bottom right part of main panel"
       ),
       sidebar_width = 20,
-      min_height = "400px",
+      min_height = "600px",
       mirrored = FALSE,
       container_style = "background-color: white;",
       area_styles = list(
@@ -91,6 +77,5 @@ ui <- function() {
   ))
 }
 
-# SERVER -----------------------------------------------------------------------
 server <- shinyServer(function(input, output) {})
 shinyApp(ui = ui(), server = server)
