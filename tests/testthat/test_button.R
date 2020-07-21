@@ -22,7 +22,7 @@ test_that("test actionButton", {
                         si_str, fixed = TRUE)))
   expect_true(any(grepl("AB!", si_str, fixed = TRUE)))
   # input with parameters
-  si_str <- as.character(actionButton("action_button", "AB!", icon = uiicon("user"),
+  si_str <- as.character(actionButton("action_button", "AB!", icon = icon("user"),
                                       class = "huge orange"))
   expect_true(any(grepl("<button id=\"action_button\" class=\"ui huge orange button\">",
                         si_str, fixed = TRUE)))

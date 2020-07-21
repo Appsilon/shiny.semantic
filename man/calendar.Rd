@@ -6,7 +6,7 @@
 \title{Create Semantic UI Calendar}
 \usage{
 calendar(
-  name,
+  input_id,
   value = NULL,
   placeholder = NULL,
   type = "date",
@@ -17,6 +17,8 @@ calendar(
 update_calendar(session, input_id, value = NULL, min = NULL, max = NULL)
 }
 \arguments{
+\item{input_id}{ID of the calendar that will be updated}
+
 \item{value}{Initial value of the numeric input.}
 
 \item{placeholder}{Text visible in the input when nothing is inputted.}
@@ -29,8 +31,6 @@ update_calendar(session, input_id, value = NULL, min = NULL, max = NULL)
 
 \item{session}{The \code{session} object passed to function given to
 \code{shinyServer}.}
-
-\item{input_id}{ID of the calendar that will be updated}
 }
 \description{
 This creates a default calendar input using Semantic UI. The input is available

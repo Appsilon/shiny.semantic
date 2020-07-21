@@ -28,7 +28,7 @@
 #'   shinyApp(ui = ui, server = server)
 #' }
 #' @export
-rating_input <- function(name, label = "", value = 0, max = 3, icon = "star",
+rating_input <- function(input_id, label = "", value = 0, max = 3, icon = "star",
                    color = "yellow", size = "") {
   if (!(size %in% SIZE_LEVELS)) {
     warning("Size value not supported.")

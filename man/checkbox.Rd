@@ -13,11 +13,19 @@
 \alias{styles.}
 \title{Create Semantic UI checkbox}
 \usage{
-checkbox_input(id, label = "", type = NULL, is_marked = TRUE, style = NULL)
+checkbox_input(
+  input_id,
+  label = "",
+  type = NULL,
+  is_marked = TRUE,
+  style = NULL
+)
 
 toggle(id, label = "", is_marked = TRUE, style = NULL)
 }
 \arguments{
+\item{input_id}{Input name. Reactive value is available under input[[name]].}
+
 \item{label}{Text to be displayed with checkbox.}
 
 \item{type}{Type of checkbox: NULL, 'toggle'}
@@ -25,8 +33,6 @@ toggle(id, label = "", is_marked = TRUE, style = NULL)
 \item{is_marked}{Defines if checkbox should be marked. Default TRUE.}
 
 \item{style}{Style of the widget.}
-
-\item{input_id}{Input name. Reactive value is available under input[[name]].}
 }
 \description{
 Create Semantic UI checkbox

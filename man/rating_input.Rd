@@ -5,7 +5,7 @@
 \title{Rating Input.}
 \usage{
 rating_input(
-  name,
+  input_id,
   label = "",
   value = 0,
   max = 3,
@@ -15,6 +15,8 @@ rating_input(
 )
 }
 \arguments{
+\item{input_id}{The \code{input} slot that will be used to access the value.}
+
 \item{label}{the contents of the item to display}
 
 \item{value}{initial rating value}
@@ -27,8 +29,6 @@ an element of the rating}
 \item{color}{character with colour name}
 
 \item{size}{character with legal semantic size, eg. "medium", "huge", "tiny"}
-
-\item{input_id}{The \code{input} slot that will be used to access the value.}
 }
 \value{
 rating object

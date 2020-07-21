@@ -52,7 +52,7 @@
 #' }
 #' @rdname calendar
 #' @export
-calendar <- function(name, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
+calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
   cal_widget <-
     div(
       id = input_id, class = "ui calendar ss-input-date", `data-type` = type, `data-date` = value,

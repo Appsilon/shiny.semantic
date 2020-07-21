@@ -38,7 +38,8 @@
 #'
 #' @rdname checkbox
 #' @export
-checkbox_input <- function(id, label = "", type = NULL, is_marked = TRUE, style = NULL) {
+checkbox_input <- function(input_id, label = "", type = NULL, is_marked = TRUE,
+                           style = NULL) {
   div(
     class = paste("ui", type, if (is_marked) "checked", "checkbox"), style = style,
     tags$input(id = input_id, type = "checkbox", checked = if (is_marked) NA else NULL),
