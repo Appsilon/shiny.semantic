@@ -7,7 +7,7 @@
 panel(grid_list, ...)
 }
 \arguments{
-\item{grid_list}{List to create grid from. It allows to}
+\item{grid_list}{List to create grid from}
 
 \item{...}{Container's children elements}
 }

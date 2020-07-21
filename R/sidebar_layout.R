@@ -14,7 +14,7 @@ get_row <- function(arg) {
 
 #' Creates div containing elements in order or grid container for specific panels
 #'
-#' @param grid_list List to create grid from. It allows to
+#' @param grid_list List to create grid from
 #' @param ... Container's children elements
 #' @return Div containing elements or grid container for specific panel
 
@@ -28,6 +28,9 @@ panel <- function(grid_list, ...) {
 }
 
 #' Creates div containing elements in order or grid container for sidebar panel
+#'
+#' @param grid_list List to create grid from
+#' @param ... Container's children elements
 #' @export
 
 sidebar_panel <- function(grid_list, ...) {
@@ -36,6 +39,9 @@ sidebar_panel <- function(grid_list, ...) {
 }
 
 #' Creates div containing elements in order or grid container for main panel
+#'
+#' @param grid_list List to create grid from
+#' @param ... Container's children elements
 #' @export
 
 main_panel <- function(grid_list, ...) {
@@ -70,6 +76,14 @@ main_panel <- function(grid_list, ...) {
 #'     "Top Main Panel Item",
 #'     "Middle Main Panel Item",
 #'     "Bottom Main Panel Item"
+#'   ),
+#'   sidebar_width = 20,
+#'   min_height = "400px",
+#'   mirrored = FALSE,
+#'   container_style = "background-color: white;",
+#'   area_styles = list(
+#'     sidebar_panel = "border: 5px solid orange; color: white;",
+#'     main_panel = "border: 5px solid hotpink;"
 #'   )
 #' )
 #'

@@ -6,6 +6,11 @@
 \usage{
 main_panel(grid_list, ...)
 }
+\arguments{
+\item{grid_list}{List to create grid from}
+
+\item{...}{Container's children elements}
+}
 \description{
 Creates div containing elements in order or grid container for main panel
 }

@@ -22,7 +22,7 @@ toggle(id, label = "", is_marked = TRUE, style = NULL)
 
 \item{label}{Text to be displayed with checkbox.}
 
-\item{type}{Type of checkbox.}
+\item{type}{Type of checkbox: NULL, 'toggle'}
 
 \item{is_marked}{Defines if checkbox should be marked. Default TRUE.}
 

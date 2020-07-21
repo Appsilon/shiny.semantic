@@ -51,6 +51,14 @@ sidebar_layout(
     "Top Main Panel Item",
     "Middle Main Panel Item",
     "Bottom Main Panel Item"
+  ),
+  sidebar_width = 20,
+  min_height = "400px",
+  mirrored = FALSE,
+  container_style = "background-color: white;",
+  area_styles = list(
+    sidebar_panel = "border: 5px solid orange; color: white;",
+    main_panel = "border: 5px solid hotpink;"
   )
 )
 
