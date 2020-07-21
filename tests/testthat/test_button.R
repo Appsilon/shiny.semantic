@@ -31,19 +31,19 @@ test_that("test actionButton", {
 })
 
 
-test_that("test counterbutton", {
+test_that("test counter_button", {
   # type
-  expect_is(counterbutton("cb"), "shiny.tag")
+  expect_is(counter_button("cb"), "shiny.tag")
   # empty input
-  expect_error(counterbutton())
+  expect_error(counter_button())
   # simple input
-  si_str <- as.character(counterbutton("cb", "CB"))
+  si_str <- as.character(counter_button("cb", "CB"))
   # is JS code included?
   expect_true(any(grepl("function", si_str, fixed = TRUE)))
   expect_true(any(grepl("html((value + 1).toString()", si_str, fixed = TRUE)))
 
   # input with parameters
-  si_str <- as.character(counterbutton("cb", "CB", icon = uiicon("user"),
+  si_str <- as.character(counter_button("cb", "CB", icon = uiicon("user"),
                                        size = "huge", color = "orange"))
   expect_true(any(grepl("orange", si_str, fixed = TRUE)))
   expect_true(any(grepl("huge", si_str, fixed = TRUE)))

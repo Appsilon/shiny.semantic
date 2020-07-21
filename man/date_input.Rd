@@ -5,7 +5,7 @@
 \title{Define simple date input with semantic ui styling}
 \usage{
 date_input(
-  name,
+  input_id,
   label = NULL,
   value = NULL,
   min = NULL,
@@ -15,7 +15,7 @@ date_input(
 )
 }
 \arguments{
-\item{name}{Input id.}
+\item{input_id}{Input id.}
 
 \item{label}{Label to be displayed with date input.}
 

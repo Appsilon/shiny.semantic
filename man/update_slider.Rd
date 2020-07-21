@@ -5,14 +5,14 @@
 \alias{update_range}
 \title{Update slider Semantic UI component}
 \usage{
-update_slider(session, name, value)
+update_slider(session, input_id, value)
 
-update_range(session, name, value, value2)
+update_range(session, input_id, value, value2)
 }
 \arguments{
 \item{session}{The \code{session} object passed to function given to \code{shinyServer}.}
 
-\item{name}{The id of the input object}
+\item{input_id}{The id of the input object}
 
 \item{value}{The value to be selected for the sldier (lower value if using range).}
 

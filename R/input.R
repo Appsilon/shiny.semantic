@@ -25,9 +25,9 @@ uiinput <- function(..., class = "") {
 #' Create Semantic UI Text Input
 #'
 #' This creates a default text input using Semantic UI. The input is available
-#' under \code{input[[name]]}.
+#' under \code{input[[input_id]]}.
 #'
-#' @param name Input name. Reactive value is available under \code{input[[name]]}.
+#' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
 #' @param value Pass value if you want to have default text.
 #' @param type Change depending what type of input is wanted. See details for options.
 #' @param placeholder Text visible in the input when nothing is inputted.
@@ -58,15 +58,15 @@ uiinput <- function(..., class = "") {
 #' )
 #'
 #' @export
-uitextinput <- function(name, value = "", type = "text", placeholder = NULL, attribs = list()) {
+uitextinput <- function(input_id, value = "", type = "text", placeholder = NULL, attribs = list()) {
   if (!type %in% c("text", "textarea", "password", "email", "url", "tel")) {
     stop(type, " is not a valid Semantic UI input")
   }
 
   if (type == "textarea") {
-    input <- tags$textarea(id = name, value = value, placeholder = placeholder)
+    input <- tags$textarea(id = input_id, value = value, placeholder = placeholder)
   } else {
-    input <- tags$input(id = name, value = value, type = type, placeholder = placeholder)
+    input <- tags$input(id = input_id, value = value, type = type, placeholder = placeholder)
   }
 
   for (i in names(attribs)) input$attribs[[i]] <- attribs[[i]]
@@ -76,9 +76,9 @@ uitextinput <- function(name, value = "", type = "text", placeholder = NULL, att
 #' Create Semantic UI Numeric Input
 #'
 #' This creates a default numeric input using Semantic UI. The input is available
-#' under \code{input[[name]]}.
+#' under \code{input[[input_id]]}.
 #'
-#' @param name Input name. Reactive value is available under \code{input[[name]]}.
+#' @param input_id Input input_id Reactive value is available under \code{input[[input_id]]}.
 #' @param value Initial value of the numeric input.
 #' @param min Minimum allowed value.
 #' @param max Maximum allowed value.
@@ -103,11 +103,11 @@ uitextinput <- function(name, value = "", type = "text", placeholder = NULL, att
 #' )
 #'
 #' @export
-uinumericinput <- function(name, value, min = NA, max = NA, step = NA,
+uinumericinput <- function(input_id, value, min = NA, max = NA, step = NA,
                            type = NULL, icon = NULL, placeholder = NULL, ...) {
   if (!is.numeric(value) & !grepl("^\\d*(\\.\\d*|)$", value)) stop("Non-numeric input detected")
 
-  input_tag <- tags$input(id = name, value = value, type = "number")
+  input_tag <- tags$input(id = input_id, value = value, type = "number")
   if (!is.na(min)) input_tag$attribs$min <- min
   if (!is.na(max)) input_tag$attribs$max <- max
   if (!is.na(step)) input_tag$attribs$step <- step
@@ -146,11 +146,20 @@ numericInput <- function(inputId, label, value, min = NA, max = NA, step = NA, w
 #' Change numeric input value and settings
 #'
 #' @param session The session object passed to function given to shinyServer.
-#' @param inputId The id of the input object.
+#' @param input_id The id of the input object.
 #' @param label The label to set for the input object.
 #' @param value The value to set for the input object.
 #' @param min Minimum value.
 #' @param max Maximum value.
 #' @param step Step size.
 #' @export
+#' @rdname update_numeric_input
+update_numeric_input <- function(session, input_id, label = NULL, value = NULL,
+                                 min = NULL, max = NULL, step = NULL) {
+  shiny::updateNumericInput(session, input_id, label = label, value = value,
+                            min = min, max = max, step = step)
+}
+
+#' @export
+#' @rdname update_numeric_input
 updateNumericInput <- shiny::updateNumericInput

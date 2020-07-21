@@ -5,7 +5,7 @@
 \title{Create dropdown Semantic UI component}
 \usage{
 dropdown(
-  name,
+  input_id,
   choices,
   choices_value = choices,
   default_text = "Select",
@@ -14,7 +14,7 @@ dropdown(
 )
 }
 \arguments{
-\item{name}{Input name. Reactive value is available under input[[name]].}
+\item{input_id}{Input name. Reactive value is available under input[[input_id]].}
 
 \item{choices}{All available options one can select from.}
 
@@ -29,7 +29,7 @@ choice.}
 }
 \description{
 This creates a default dropdown using Semantic UI styles with Shiny input.
-Dropdown is already initialized and available under input[[name]].
+Dropdown is already initialized and available under input[[input_id]].
 }
 \examples{
 ## Only run examples in interactive R sessions

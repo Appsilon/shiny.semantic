@@ -2,10 +2,12 @@ library(shiny)
 library(shinyjs)
 library(shiny.semantic)
 library(magrittr)
-library(highlighter)
+library(highlighter) # devtools::install_github("Appsilon/highlighter")
 library(formatR)
 library(httr)
 library(rjson)
+
+options(semantic.themes = TRUE)
 
 demo <- function(code) {
   div(class = "ui raised segment",
@@ -15,8 +17,6 @@ demo <- function(code) {
   )
 }
 
-options(semantic.themes = TRUE)
-
 input <- function(class = "ui input", style = "", type = "text", name = "", placeholder = "") {
   div(class = class, style = style,
       tags$input(type = type, name = name, placeholder = placeholder)
@@ -24,9 +24,9 @@ input <- function(class = "ui input", style = "", type = "text", name = "", plac
 }
 
 jsCode <- "
-$('.accordion').accordion({selector: {trigger: '.title .icon'}}).accordion('close');
-$('.ui.dropdown').dropdown({});
-$('.rating').rating('setting', 'clearable', true);
+  $('.accordion').accordion({selector: {trigger: '.title .icon'}}).accordion('close');
+  $('.ui.dropdown').dropdown({});
+  $('.rating').rating('setting', 'clearable', true);
 "
 
 header <- function() {
@@ -235,15 +235,14 @@ tabs <- function () {
   )
 }
 uilist_demo <- function() {
-  list_content <- data.frame(
-    header = paste("Header", 1:5),
-    description = paste("Description", 1:5),
-    stringsAsFactors = FALSE,
-    icon = "alarm"
+  list_content <- list(
+    list(header = "Head 1", description = "Lorem ipsum", icon = "home"),
+    list(header = "Head 2", description = "Lorem ipsum", icon = "dog"),
+    list(header = "Head 3", description = "Lorem ipsum", icon = "sun")
   )
 
   div(
-    h1(class="ui dividing header", id="list", "List"),
+    h1(class="ui dividing header", id = "list", "List"),
     demo(uilist(list_content, is_divided = FALSE)),
     demo(uilist(list_content, is_divided = TRUE))
   )
@@ -281,16 +280,30 @@ sidebar <- function() {
           div(class="menu",
               a(class="item", href="#accordion", "Accordion"),
               a(class="item", href="#rating", "Rating"),
-              a(class="item", href="#tabset", "Tabset")
+              a(class="item", href="#tabset", "Tabset"),
+              a(class="item", href="#calendar", "Calendar")
           )))
 }
+
+calendar <- function() {
+  div(
+    h1(class="ui header", id="calendar", "Calendar"),
+    demo(
+      uicalendar("date", type = "date", value = "20.2.2020", placeholder = "Select Date",
+                 min = "2.2.2020", max = "25.2.2020")),
+    demo(
+      uicalendar("month", type = "month", placeholder = "Pick Month"))
+  )
+}
+
+
 css <- "
 #examples > div > .header {
-margin-top: 1em;
+  margin-top: 1em;
 }"
 
 ui <- function() {
-  shinyUI(semanticPage(
+  shinyUI(semanticPage( theme = "cerulean",
     tags$head(tags$style(HTML(css))),
     useShinyjs(),
     sidebar(),
@@ -307,9 +320,10 @@ ui <- function() {
             card(),
             accordion(),
             rating(),
-            tabs()
+            tabs(),
+            calendar()
         )
-    ), theme = "yeti" # a list of all available themes sits in SUPPORTED_THEMES
+    )
   ))
 }
 

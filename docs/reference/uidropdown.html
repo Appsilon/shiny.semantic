@@ -142,7 +142,13 @@
     <p>This creates a dropdown using Semantic UI.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>uidropdown</span>(<span class='no'>...</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='no'>name</span>, <span class='kw'>is_menu_item</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>dropdown_specs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>())</pre>
+    <pre class="usage"><span class='fu'>uidropdown</span>(
+  <span class='no'>...</span>,
+  <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='no'>name</span>,
+  <span class='kw'>is_menu_item</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>dropdown_specs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,8 +158,8 @@
       <td><p>Dropdown content.</p></td>
     </tr>
     <tr>
-      <th>type</th>
-      <td><p>Type of the dropdown. Look at https://semantic-ui.com/modules/dropdown.html for all possibilities.</p></td>
+      <th>class</th>
+      <td><p>class of the dropdown. Look at https://semantic-ui.com/modules/dropdown.html for all possibilities.</p></td>
     </tr>
     <tr>
       <th>name</th>
@@ -175,7 +181,7 @@ Look at https://semantic-ui.com/modules/dropdown.html#/settings for all possibil
     <pre class="examples"><div class='input'>
 <span class='fu'>uidropdown</span>(
   <span class='st'>"Dropdown menu"</span>,
-  <span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"dropdown"</span>),
+  <span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"dropdown"</span>),
   <span class='fu'><a href='uimenu.html'>uimenu</a></span>(
     <span class='fu'><a href='menu_header.html'>menu_header</a></span>(<span class='st'>"Header"</span>),
     <span class='fu'><a href='menu_divider.html'>menu_divider</a></span>(),

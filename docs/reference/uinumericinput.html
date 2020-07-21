@@ -41,7 +41,7 @@
 
 <meta property="og:title" content="Create Semantic UI Numeric Input — uinumericinput" />
 <meta property="og:description" content="This creates a default numeric input using Semantic UI. The input is available
-under input[[name]]." />
+under input[[input_id]]." />
 
 
 
@@ -141,11 +141,11 @@ under input[[name]]." />
 
     <div class="ref-description">
     <p>This creates a default numeric input using Semantic UI. The input is available
-under <code>input[[name]]</code>.</p>
+under <code>input[[input_id]]</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>uinumericinput</span>(
-  <span class='no'>name</span>,
+  <span class='no'>input_id</span>,
   <span class='no'>value</span>,
   <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
   <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
@@ -160,8 +160,8 @@ under <code>input[[name]]</code>.</p>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>name</th>
-      <td><p>Input name. Reactive value is available under <code>input[[name]]</code>.</p></td>
+      <th>input_id</th>
+      <td><p>Input input_id Reactive value is available under <code>input[[input_id]]</code>.</p></td>
     </tr>
     <tr>
       <th>value</th>
@@ -200,7 +200,7 @@ See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.</p
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The inputs are updateable by using <code><a href='updateNumericInput.html'>updateNumericInput</a></code>.</p>
+    <p>The inputs are updateable by using <code><a href='https://rdrr.io/pkg/shiny/man/updateNumericInput.html'>updateNumericInput</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)

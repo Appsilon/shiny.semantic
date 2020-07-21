@@ -2,9 +2,9 @@
 #'
 #' @description
 #' This creates a slider input using Semantic UI. Slider is already initialized and
-#' available under \code{input[[name]]}.
+#' available under \code{input[[input_id]]}.
 #'
-#' @param name Input name. Reactive value is available under \code{input[[name]]}.
+#' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
 #' @param value The initial value to be selected for the sldier (lower value if using range).
 #' @param min The minimum value allowed to be selected for the slider.
 #' @param max The maximum value allowed to be selected for the slider.
@@ -62,9 +62,9 @@
 #' \url{https://fomantic-ui.com/modules/slider.html} for preset classes.
 #'
 #' @export
-uislider <- function(name, value, min, max, step = 1, class = NULL) {
+uislider <- function(input_id, value, min, max, step = 1, class = NULL) {
   div(
-    id = name, class = paste("ui slider", class),
+    id = input_id, class = paste("ui slider", class),
     `data-min` = min, `data-max` = max, `data-step` = step, `data-start` = value
   )
 }
@@ -73,9 +73,9 @@ uislider <- function(name, value, min, max, step = 1, class = NULL) {
 #' @param value2 The initial upper value of the slider.
 #'
 #' @export
-uirange <- function(name, value, value2, min, max, step = 1, class = NULL) {
+uirange <- function(input_id, value, value2, min, max, step = 1, class = NULL) {
   div(
-    id = name, class = paste("ui range slider", class),
+    id = input_id, class = paste("ui range slider", class),
     `data-min` = min, `data-max` = max, `data-step` = step, `data-start` = value, `data-end` = value2
   )
 }
@@ -85,23 +85,23 @@ uirange <- function(name, value, value2, min, max, step = 1, class = NULL) {
 #' Change the value of a \code{\link{uislider}} input on the client.
 #'
 #' @param session The \code{session} object passed to function given to \code{shinyServer}.
-#' @param name The id of the input object
+#' @param input_id The id of the input object
 #' @param value The value to be selected for the sldier (lower value if using range).
 #'
 #' @seealso uislider
 #'
 #' @rdname update_slider
 #' @export
-update_slider <- function(session, name, value) {
+update_slider <- function(session, input_id, value) {
   message <- list(value = jsonlite::toJSON(value))
-  session$sendInputMessage(name, message)
+  session$sendInputMessage(input_id, message)
 }
 
 #' @rdname update_slider
 #' @param value2 The upper value of the slider.
 #'
 #' @export
-update_range <- function(session, name, value, value2) {
+update_range <- function(session, input_id, value, value2) {
   message <- list(value = jsonlite::toJSON(c(value, value2)))
-  session$sendInputMessage(name, message)
+  session$sendInputMessage(input_id, message)
 }
