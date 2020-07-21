@@ -167,8 +167,27 @@ then that name — rather than the value — is displayed to the user.</p></td>
     <tr>
       <th>selected</th>
       <td><p>The initially selected value (or multiple values if multiple = TRUE).
-If not specified then defaults to the first value for single-select lists and no
-values for multiple select lists.</p></td>
+  If not specified then defaults to the first value for single-select lists and no
+  values for multiple select lists.</p>
+<p>@examples
+  ## Only run examples in interactive R sessions
+if (interactive())   ui &lt;- semanticPage(
+    p("The checkbox group controls the select input"),
+    multiple_checkbox("checkboxes", "Input checkbox",
+                      c("Item A", "Item B", "Item C")),
+    selectInput("inSelect", "Select input",
+                c("Item A", "Item B"))
+  )  server &lt;- function(input, output, session) 
+    observe(
+      x &lt;- input$checkboxes      # Can use character(0) to remove all choices
+      if (is.null(x))
+        x &lt;- character(0)      # Can also set the label and select items
+      updateSelectInput(session, "inSelect",
+                        label = paste(input$checkboxes, collapse = ", "),
+                        choices = x,
+                        selected = tail(x, 1)
+      )
+    )  shinyApp(ui, server)</p></td>
     </tr>
     </table>
 

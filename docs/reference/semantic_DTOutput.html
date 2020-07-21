@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create Semantic UI label tag — label_tag • SHINY.SEMANTIC</title>
+<title>Semantic DT Output — semantic_DTOutput • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Create Semantic UI label tag — label_tag" />
-<meta property="og:description" content="This creates a label tag using Semantic UI." />
+<meta property="og:title" content="Semantic DT Output — semantic_DTOutput" />
+<meta property="og:description" content="Semantic DT Output" />
 
 
 
@@ -133,68 +133,30 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create Semantic UI label tag</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/dsl.R'><code>R/dsl.R</code></a></small>
-    <div class="hidden name"><code>label_tag.Rd</code></div>
+    <h1>Semantic DT Output</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/tables.R'><code>R/tables.R</code></a></small>
+    <div class="hidden name"><code>semantic_DTOutput.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This creates a label tag using Semantic UI.</p>
+    <p>Semantic DT Output</p>
     </div>
 
-    <pre class="usage"><span class='fu'>label_tag</span>(<span class='no'>...</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>is_link</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>semantic_DTOutput</span>(<span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>Other arguments to be added such as content of the tag (text, icons) and/or attributes (style)</p></td>
-    </tr>
-    <tr>
-      <th>class</th>
-      <td><p>class of the label. Look at https://semantic-ui.com/elements/label.html for all possibilities.</p></td>
-    </tr>
-    <tr>
-      <th>is_link</th>
-      <td><p>If TRUE creates label with 'a' tag, otherwise with 'div' tag.
-#'</p></td>
+      <td><p>datatable parameters, check <code><a href='https://rdrr.io/pkg/DT/man/datatable.html'>?DT::datatable</a></code> to learn more.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Only run examples in interactive R sessions</span>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
-  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'>shinyUI</span>(
-    <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-      <span class='co'>## label</span>
-      <span class='fu'>label_tag</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui label"</span>,
-                <span class='kw'>icon</span> <span class='kw'>=</span> <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"mail icon"</span>), <span class='fl'>23</span>),
-      <span class='fu'>p</span>(),
-      <span class='co'>## pointing label</span>
-      <span class='fu'><a href='field.html'>field</a></span>(
-        <span class='fu'><a href='text_input.html'>text_input</a></span>(<span class='st'>"ex"</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"text"</span>, <span class='kw'>placeholder</span> <span class='kw'>=</span> <span class='st'>"Your name"</span>)),
-      <span class='fu'>label_tag</span>(<span class='st'>"Please enter a valid name"</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui pointing red basic label"</span>),
-      <span class='fu'>p</span>(),
-      <span class='co'>## tag</span>
-      <span class='fu'>label_tag</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui tag label"</span>, <span class='st'>"New"</span>),
-      <span class='fu'>label_tag</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui red tag label"</span>, <span class='st'>"Upcoming"</span>),
-      <span class='fu'>label_tag</span>(<span class='kw'>class</span> <span class='kw'>=</span><span class='st'>" ui teal tag label"</span>,<span class='st'>"Featured"</span>),
-      <span class='co'>## ribbon</span>
-      <span class='fu'><a href='segment.html'>segment</a></span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui raised segment"</span>,
-              <span class='fu'>label_tag</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui red ribbon label"</span>, <span class='st'>"Overview"</span>),
-              <span class='st'>"Text"</span>),
-      <span class='co'>## attached</span>
-      <span class='fu'><a href='segment.html'>segment</a></span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui raised segment"</span>,
-              <span class='fu'>label_tag</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui top attached label"</span>, <span class='st'>"HTML"</span>),
-              <span class='fu'>p</span>(<span class='st'>"Text"</span>))
-    ))
-  <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
-  }
-  <span class='fu'>shinyApp</span>(<span class='no'>ui</span>, <span class='no'>server</span>)
-}</div></pre>
+    <p>DT Output with semanitc style</p>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

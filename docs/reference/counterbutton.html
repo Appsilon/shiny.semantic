@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Counter Button — counterbutton • SHINY.SEMANTIC</title>
+<title>Counter Button — counter_button • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Counter Button — counterbutton" />
+<meta property="og:title" content="Counter Button — counter_button" />
 <meta property="og:description" content="Creates a counter button whose value increments by one each time it is pressed." />
 
 
@@ -142,7 +142,7 @@
     <p>Creates a counter button whose value increments by one each time it is pressed.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>counterbutton</span>(
+    <pre class="usage"><span class='fu'>counter_button</span>(
   <span class='no'>name</span>,
   <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>,
   <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -186,6 +186,10 @@
       <td><p>character with semantic color</p></td>
     </tr>
     <tr>
+      <th>size</th>
+      <td><p>character with size of the button, eg. "medium", "big"</p></td>
+    </tr>
+    <tr>
       <th>big_mark</th>
       <td><p>big numbers separator</p></td>
     </tr>
@@ -200,7 +204,7 @@
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
 <span class='no'>ui</span> <span class='kw'>&lt;-</span><span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-     <span class='fu'>counterbutton</span>(<span class='st'>"counter"</span>, <span class='st'>"My Counter Button"</span>,
+     <span class='fu'>counter_button</span>(<span class='st'>"counter"</span>, <span class='st'>"My Counter Button"</span>,
                    <span class='kw'>icon</span> <span class='kw'>=</span> <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"world"</span>),
                    <span class='kw'>size</span> <span class='kw'>=</span> <span class='st'>"big"</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"purple"</span>)
  )
