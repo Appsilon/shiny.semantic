@@ -20,7 +20,7 @@ get_row <- function(arg) {
 
 panel <- function(grid_list, ...) {
   args <- list(...)
-  if(is.null(layout)) {
+  if(is.null(grid_list)) {
     div(lapply(args, get_row))
   } else {
     grid(grid_list$layout, grid_list$container_style, grid_list$area_styles, ...)
@@ -66,13 +66,13 @@ main_panel <- function(grid_list, ...) {
 #'
 #' sidebar_layout(
 #'   sidebar_panel(
-#'     grid = NULL,
+#'     grid_list = NULL,
 #'     "Top Sidebar Item",
 #'     "Middle Sidebar Item",
 #'     "Bottom Sidebar Item"
 #'   ),
 #'   main_panel(
-#'     grid = NULL,
+#'     grid_list = NULL,
 #'     "Top Main Panel Item",
 #'     "Middle Main Panel Item",
 #'     "Bottom Main Panel Item"

@@ -41,13 +41,13 @@ Creates grid layout composed of sidebar and main panels
 
 sidebar_layout(
   sidebar_panel(
-    grid = NULL,
+    grid_list = NULL,
     "Top Sidebar Item",
     "Middle Sidebar Item",
     "Bottom Sidebar Item"
   ),
   main_panel(
-    grid = NULL,
+    grid_list = NULL,
     "Top Main Panel Item",
     "Middle Main Panel Item",
     "Bottom Main Panel Item"
