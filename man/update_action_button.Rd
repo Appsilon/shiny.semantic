@@ -17,6 +17,8 @@ updateActionButton(session, inputId, label = NULL, icon = NULL)
 \item{label}{The label to set for the input object.}
 
 \item{icon}{The icon to set for the input object. To remove the current icon, use icon=character(0)}
+
+\item{inputId}{the same as \code{input_id}}
 }
 \description{
 Change the label or icon of an action button on the client

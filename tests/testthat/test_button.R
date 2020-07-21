@@ -2,11 +2,11 @@ context("button")
 
 test_that("test button", {
   # type
-  expect_is(uibutton("simple_button", "Button!"), "shiny.tag")
+  expect_is(button("simple_button", "Button!"), "shiny.tag")
   # empty input
-  expect_error(uibutton())
+  expect_error(button())
   # text input
-  si_str <- as.character(uibutton("simple_button", "Button!"))
+  si_str <- as.character(button("simple_button", "Button!"))
   expect_true(any(grepl("<button id=\"simple_button\" class=\"ui  button\">", si_str, fixed = TRUE)))
   expect_true(any(grepl("Button!", si_str, fixed = TRUE)))
 })
@@ -15,7 +15,7 @@ test_that("test actionButton", {
   # type
   expect_is(actionButton("action_button", "AB!"), "shiny.tag")
   # empty input
-  expect_error(uibutton())
+  expect_error(actionButton())
   # text input
   si_str <- as.character(actionButton("action_button", "AB!"))
   expect_true(any(grepl("<button id=\"action_button\" class=\"ui  button\">",

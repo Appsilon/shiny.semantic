@@ -21,7 +21,7 @@ checkbox_input(
   style = NULL
 )
 
-toggle(id, label = "", is_marked = TRUE, style = NULL)
+toggle(input_id, label = "", is_marked = TRUE, style = NULL)
 }
 \arguments{
 \item{input_id}{Input name. Reactive value is available under input[[name]].}

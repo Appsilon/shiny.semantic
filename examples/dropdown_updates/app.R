@@ -18,11 +18,11 @@ server <- shinyServer(function(input, output, session) {
   output$selected_letter <- renderText(paste(input[["simple_dropdown"]], collapse = ", "))
 
   observeEvent(input$simple_button, {
-    update_dropdown(session, "simple_dropdown", value = "D")
+    update_dropdown_input(session, "simple_dropdown", value = "D")
   })
 
   observeEvent(input$simple_button2, {
-    update_dropdown(session, "simple_dropdown", choices = LETTERS, value = input$simple_dropdown)
+    update_dropdown_input(session, "simple_dropdown", choices = LETTERS, value = input$simple_dropdown)
   })
 })
 

@@ -13,7 +13,7 @@
 #' library(shiny.semantic)
 #' ui <- semanticPage(
 #'   shinyUI(
-#'     uibutton("simple_button", "Press Me!")
+#'     button("simple_button", "Press Me!")
 #'   )
 #' )
 #' server <- function(input, output, session) {
@@ -23,7 +23,7 @@
 #'
 #'
 #' @export
-uibutton <- function(input_id, label, icon = NULL, class = NULL, ...) {
+button <- function(input_id, label, icon = NULL, class = NULL, ...) {
   tags$button(id = input_id, class = paste("ui", class, "button"), icon, " ", label, ...)
 }
 
@@ -35,7 +35,7 @@ uibutton <- function(input_id, label, icon = NULL, class = NULL, ...) {
 #' @param label The contents of the button - a text label, but you could also use any other HTML, like an image.
 #' @param icon An optional \link{icon} to appear on the button.
 #' @param width The width of the input.
-#' @param ... Named attributes to be applied to the button or remaining parameters passed to uibutton,
+#' @param ... Named attributes to be applied to the button or remaining parameters passed to button,
 #'   like \code{class}.
 #'
 #' @examples
@@ -60,9 +60,10 @@ action_button <- function(input_id, label, icon = NULL, width = NULL, ...) {
   args_list$label <- label
   args_list$icon <- icon
   args_list$style <- if (!is.null(width)) paste0("width: ", width, "; ", args_list$style) else args_list$style
-  do.call(uibutton, args_list)
+  do.call(button, args_list)
 }
 
+#' @param inputId the same as \code{input_id}
 #' @export
 #' @rdname action_button
 actionButton <- function(inputId, label, icon = NULL, width = NULL, ...) {
@@ -111,6 +112,7 @@ update_action_button <- function(session, input_id, label = NULL, icon = NULL) {
   session$sendInputMessage(input_id, message)
 }
 
+#' @param inputId the same as \code{input_id}
 #' @rdname update_action_button
 #' @export
 updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
@@ -154,7 +156,7 @@ counter_button <- function(input_id, label = "", icon = NULL, value = 0,
   shiny::div(
     class = "ui labeled button", tabindex = "0",
     shiny::tagList(
-      uibutton(input_id = input_id, label, icon,
+      button(input_id = input_id, label, icon,
                class = paste(c(size, color), collapse = " "),
                `data-val` = value),
       shiny::tags$span(class = glue::glue("ui basic {color} label"),

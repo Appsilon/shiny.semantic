@@ -40,8 +40,8 @@
 
 
 <meta property="og:title" content="Create dropdown Semantic UI component — dropdown_input" />
-<meta property="og:description" content="This creates a default dropdown using Semantic UI styles with Shiny input.
-Dropdown is already initialized and available under input[[name]]." />
+<meta property="og:description" content="This creates a default *dropdown_input* using Semantic UI styles with Shiny input.
+Dropdown is already initialized and available under input[[input_id]]." />
 
 
 
@@ -140,12 +140,12 @@ Dropdown is already initialized and available under input[[name]]." />
     </div>
 
     <div class="ref-description">
-    <p>This creates a default dropdown using Semantic UI styles with Shiny input.
-Dropdown is already initialized and available under input[[name]].</p>
+    <p>This creates a default *dropdown_input* using Semantic UI styles with Shiny input.
+Dropdown is already initialized and available under input[[input_id]].</p>
     </div>
 
     <pre class="usage"><span class='fu'>dropdown_input</span>(
-  <span class='no'>name</span>,
+  <span class='no'>input_id</span>,
   <span class='no'>choices</span>,
   <span class='kw'>choices_value</span> <span class='kw'>=</span> <span class='no'>choices</span>,
   <span class='kw'>default_text</span> <span class='kw'>=</span> <span class='st'>"Select"</span>,
@@ -157,8 +157,8 @@ Dropdown is already initialized and available under input[[name]].</p>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>name</th>
-      <td><p>Input name. Reactive value is available under input[[name]].</p></td>
+      <th>input_id</th>
+      <td><p>Input name. Reactive value is available under input[[input_id]].</p></td>
     </tr>
     <tr>
       <th>choices</th>
@@ -202,7 +202,7 @@ choice.</p></td>
   }
   <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
      <span class='no'>output</span>$<span class='no'>dropdown</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderUI.html'>renderUI</a></span>({
-         <span class='fu'>dropdown_input</span>(<span class='st'>"simple_dropdown"</span>, <span class='no'>LETTERS</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"A"</span>)
+         <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/dropdown_input.html'>dropdown_input</a></span>(<span class='st'>"simple_dropdown"</span>, <span class='no'>LETTERS</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"A"</span>)
      })
      <span class='no'>output</span>$<span class='no'>selected_letter</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderText.html'>renderText</a></span>(<span class='no'>input</span><span class='kw'>[[</span><span class='st'>"simple_dropdown"</span>]])
   })

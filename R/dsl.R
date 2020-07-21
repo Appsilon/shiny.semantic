@@ -325,7 +325,7 @@ message <- function(header, content, class = "", icon_name, closable = FALSE) {
 #' This creates a menu using Semantic UI.
 #'
 #' @param ... Menu items to be created. Use menu_item function to create new menu item.
-#' Use dropdown(is_menu_item = TRUE, ...) function to create new dropdown menu item.
+#' Use dropdown_menu(is_menu_item = TRUE, ...) function to create new dropdown menu item.
 #' Use menu_header and menu_divider functions to customize menu format.
 #' @param class Class extension.Look at https://semantic-ui.com/collections/menu.html
 #' for all possibilities.

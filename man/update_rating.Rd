@@ -2,21 +2,18 @@
 % Please edit documentation in R/rating.R
 \name{update_rating_input}
 \alias{update_rating_input}
-\alias{updateRating}
 \title{Update rating}
 \usage{
-update_rating_input(session, name, label = NULL, value = NULL)
-
-updateRating(session, inputId, label = NULL, value = NULL)
+update_rating_input(session, input_id, label = NULL, value = NULL)
 }
 \arguments{
 \item{session}{shiny object with session info}
 
+\item{input_id}{rating input name}
+
 \item{label}{character with updated label}
 
 \item{value}{new rating value}
-
-\item{input_id}{rating input name}
 }
 \description{
 Change the value of a rating input on the client. Check

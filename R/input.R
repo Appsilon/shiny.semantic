@@ -221,6 +221,7 @@ update_numeric_input <- function(session, input_id, label = NULL, value = NULL,
                             min = min, max = max, step = step)
 }
 
+#' @param inputId the same as \code{input_id}
 #' @export
 #' @rdname update_numeric_input
 updateNumericInput <- shiny::updateNumericInput
