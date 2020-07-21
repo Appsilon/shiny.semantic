@@ -1,79 +1,108 @@
-#'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-#' Sidebar layout composed of main and sidebar panels
+# ------------------------------------------------------------------------------
+# Sidebar layout composed of main and sidebar panels
+# ------------------------------------------------------------------------------
 #'
-#' vector of number days to be determine column width in grid
-numbers <- c("one", "two", "three", "four", "five", "six", "seven", "eight",
-             "nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
-             "fifteen", "sixteen")
-#' create row wrapping specified elements
+#' @param arg Element to be wrapped in row container
+#' @return Row wrapping specified elements
+
 get_row <- function(arg) {
   class <- "row"
   style <- "padding: 20px;"
   HTML(glue::glue("<div class='{class}' style='{style}'>{arg}</div>"))
 }
-#' create row wrapping specified elements
-get_width <- function(percent) {
-  width <- round(percent / 100 * 16, digits = 0)
-  width <- min(15, max(1, width))
-}
-#' Sidebar Panel '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+# Panels -----------------------------------------------------------------------
 #'
-#' @param ... Elements included in sidebar panel
-#' @param width Width of sidebar panel in percents as numeric value
-#'
-#' @export
-sidebarPanel <- function(..., width = 25) {
+#' @param grid_list List to create grid from
+#' @param ... Container's children elements
+#' @return Div containing elements or grid container for specific panel
+
+panel <- function(grid_list, ...) {
   args <- list(...)
-  style <- "padding: 20px;"
-  width <- numbers[get_width(width)]
-  div(
-    class = glue::glue("{width} wide column center aligned grey"),
-    style = style,
-    lapply(args, get_row)
-  )
+  if(is.null(layout)) {
+    div(lapply(args, get_row))
+  } else {
+    grid(grid_list$layout, grid_list$container_style, grid_list$area_styles, ...)
+  }
 }
-#' Main Panel ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-#' @param ... Content of main panel
-#' @param width Specified with of main panel
-#'
+
 #' @export
-mainPanel <- function(...) {
-  args <- list(...)
-  style <- "flex-grow: 1"
-  div(
-    class = glue::glue("column center aligned"),
-    style = style,
-    lapply(args, get_row)
-  )
+
+sidebar_panel <- function(grid_list, ...) {
+  panel(grid_list, ...)
+  # adjustments for sidebar panel
 }
-#' Sidebar Layout ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+#' @export
+
+main_panel <- function(grid_list, ...) {
+  panel(grid_list, ...)
+  # adjustments for main panel
+}
+
+# Sidebar Layout ---------------------------------------------------------------
+#'
 #' @param sidebar_panel Sidebar panel component
 #' @param main_panel Main panel component
+#' @param sidebar_width Width of sidebar panel in percents
 #' @param mirrored If TRUE sidebar is located on the right side,
 #' if FALSE - on the left side (default)
 #' @param min_height Sidebar layout container keeps the minimum height, if
 #' specified. It should be formatted as a string with css units
+#' @param container_style CSS declarations for grid container
+#' @param area_styles List of CSS declarations for each grid area inside container
 #'
 #' @return Container with sidebar and main panels
 #'
 #' @examples
-#' sidebarLayout(
-#'   sidebarPanel("Side Item 1", "Side Item 2", "Side Item 3", width = 20),
-#'   mainPanel("Main 1", "Main 2", "Main 3", "Main 4"),
-#'   mirrored = FALSE,
-#'   min_height = "400px"
-#' )
 #'
 #' @export
-sidebarLayout <- function(sidebar_panel,
-                          main_panel,
-                          mirrored = FALSE,
-                          min_height = "auto") {
-  class <- "ui celled relaxed grid divided"
-  style <- glue::glue("min-height: {min_height};")
-  if (mirrored) {
-    div(class = class, style = style, main_panel, sidebar_panel)
+
+sidebar_layout <- function(sidebar_panel,
+                           main_panel,
+                           sidebar_width,
+                           mirrored = FALSE,
+                           min_height = "auto",
+                           container_style,
+                           area_styles) {
+
+  # set normal or mirrored sidebar layout
+  if (!mirrored) {
+    layout <- grid_template(default = list(
+      areas = rbind(c("sidebar_panel", "main_panel")),
+      cols_width = c(glue::glue("{sidebar_width}%"), "1fr")
+    ))
   } else {
-    div(class = class, style = style, sidebar_panel, main_panel)
+    layout <- grid_template(default = list(
+      areas = rbind(c("main_panel", "sidebar_panel")),
+      cols_width = c("1fr", glue::glue("{sidebar_width}%"))
+    ))
   }
+
+  # grid container's default styling
+  container_style <- glue::glue("
+    height: auto;
+    min-height: {min_height};
+    {container_style}
+  ")
+
+  # grid container's children default styling
+  area_styles <- list(
+    sidebar_panel = glue::glue("
+      border: 1px solid orange;
+      {area_styles$sidebar_panel}
+    "),
+    main_panel = glue::glue("
+      border: 1px solid blue;
+      {area_styles$main_panel}
+    ")
+  )
+
+  grid(
+    layout,
+    container_style,
+    area_styles,
+    sidebar_panel = sidebar_panel,
+    main_panel = main_panel
+  )
 }
