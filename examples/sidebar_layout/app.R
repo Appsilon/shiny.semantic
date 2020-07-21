@@ -3,6 +3,7 @@ library(shiny.semantic)
 library(glue)
 library(dplyr)
 
+# Functions --------------------------------------------------------------------
 get_row <- function(arg) {
   class <- "row"
   style <- "padding: 20px;"
@@ -14,27 +15,28 @@ default_sidebar_panel_grid = grid(
     areas = rbind(c("")),
     cols_width = c("1fr")
   )),
-  container_style = "background-color: tomato;",
+  container_style = "background-color: tomato; align-content: start;"
 )
 
-# Panels .......................................................................
+# Panels -----------------------------------------------------------------------
+
 panel <- function(grid, ...) {
   args <- list(...)
-  if(is.null(grid)) {
+  if(is.null(layout)) {
     div(lapply(args, get_row))
   } else {
-    grid
+    grid(grid$layout, grid$container_style, grid$area_styles, ...)
   }
 }
 
 sidebar_panel <- function(grid, ...) {
   panel(grid, ...)
-  # adjustments
+  # adjustments for sidebar panel
 }
 
 main_panel <- function(grid, ...) {
   panel(grid, ...)
-  # adjustments
+  # adjustments for main panel
 }
 
 # Sidebar Layout ---------------------------------------------------------------
