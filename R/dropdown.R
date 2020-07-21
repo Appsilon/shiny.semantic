@@ -87,6 +87,29 @@ dropdown_input <- function(name, choices, choices_value = choices,
 #' @param width The width of the input.
 #' @param ... Arguments passed to \link{dropdown_input}.
 #'
+#' @examples
+#' ## Only run examples in interactive R sessions
+#' if (interactive()) {
+#'
+#'   library(shiny.semantic)
+#'
+#'   # basic example
+#'   shinyApp(
+#'     ui = semanticPage(
+#'       selectInput("variable", "Variable:",
+#'                   c("Cylinders" = "cyl",
+#'                     "Transmission" = "am",
+#'                     "Gears" = "gear")),
+#'       tableOutput("data")
+#'     ),
+#'     server = function(input, output) {
+#'       output$data <- renderTable({
+#'         mtcars[, c("mpg", input$variable), drop = FALSE]
+#'       }, rownames = TRUE)
+#'     }
+#'   )
+#' }
+#'
 #' @export
 selectInput <- function(inputId, label, choices, selected = NULL, multiple = FALSE, width = NULL, ...) {
 
@@ -136,6 +159,36 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
 #' @param choices_value What reactive value should be used for corresponding choice.
 #' @param value The initially selected value.
 #'
+#'@examples
+#' if (interactive()) {
+#'
+#' library(shiny)
+#' library(shiny.semantic)
+#'
+#' ui <- function() {
+#'   shinyUI(
+#'     semanticPage(
+#'       title = "Dropdown example",
+#'       dropdown_input("simple_dropdown", LETTERS[1:5], value = "A", type = "selection multiple"),
+#'       p("Selected letter:"),
+#'       textOutput("selected_letter"),
+#'       shiny.semantic::actionButton("simple_button", "Update input to D")
+#'     )
+#'   )
+#' }
+#'
+#' server <- shinyServer(function(input, output, session) {
+#'   output$selected_letter <- renderText(paste(input[["simple_dropdown"]], collapse = ", "))
+#'
+#'   observeEvent(input$simple_button, {
+#'     update_dropdown(session, "simple_dropdown", value = "D")
+#'   })
+#' })
+#'
+#' shinyApp(ui = ui(), server = server)
+#'
+#' }
+#'
 #' @export
 update_dropdown <- function(session, name, choices = NULL, choices_value = choices, value = NULL) {
   if (!is.null(value)) value <- paste(as.character(value), collapse = ",") else value <- NULL
@@ -163,6 +216,38 @@ update_dropdown <- function(session, name, choices = NULL, choices_value = choic
 #' @param selected The initially selected value (or multiple values if multiple = TRUE).
 #'   If not specified then defaults to the first value for single-select lists and no
 #'   values for multiple select lists.
+#'
+#'   @examples
+#'   ## Only run examples in interactive R sessions
+#' if (interactive()) {
+#'
+#'   ui <- semanticPage(
+#'     p("The checkbox group controls the select input"),
+#'     multiple_checkbox("checkboxes", "Input checkbox",
+#'                       c("Item A", "Item B", "Item C")),
+#'     selectInput("inSelect", "Select input",
+#'                 c("Item A", "Item B"))
+#'   )
+#'
+#'   server <- function(input, output, session) {
+#'     observe({
+#'       x <- input$checkboxes
+#'
+#'       # Can use character(0) to remove all choices
+#'       if (is.null(x))
+#'         x <- character(0)
+#'
+#'       # Can also set the label and select items
+#'       updateSelectInput(session, "inSelect",
+#'                         label = paste(input$checkboxes, collapse = ", "),
+#'                         choices = x,
+#'                         selected = tail(x, 1)
+#'       )
+#'     })
+#'   }
+#'
+#'   shinyApp(ui, server)
+#' }
 #'
 #' @export
 updateSelectInput <- function(session, inputId, label, choices = NULL, selected = NULL) {
