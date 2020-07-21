@@ -148,11 +148,11 @@ grid <- function() {
              div(class="column", "Column")))
   )
 }
-card <- function() {
+card_demo <- function() {
   div(
     h1(class="ui header", id="card", "Card"),
     demo(
-      uicard(
+      card(
         div(class="content",
           div(class="header", "Elliot Fu"),
           div(class="meta", "Friend"),
@@ -161,11 +161,11 @@ card <- function() {
       )
     ),
     demo(
-      uicards(
+      cards(
         class = "three",
         mtcars %>% tibble::rownames_to_column() %>% head %>%
           purrrlyr::by_row(~ {
-            uicard(
+            card(
               div(class="content",
                 div(class="header", .$rowname),
                 div(class="meta", paste("Number of cylinders:", .$cyl)),
@@ -176,7 +176,7 @@ card <- function() {
       )
     ),
     demo(
-      uicard(
+      card(
         div(class="content",
           div(class="header", "Elliot Fu"),
           div(class="meta", "Friend"),
@@ -232,7 +232,7 @@ tabs <- function () {
     )
   )
 }
-uilist_demo <- function() {
+list_demo <- function() {
   list_content <- list(
     list(header = "Head 1", description = "Lorem ipsum", icon = "home"),
     list(header = "Head 2", description = "Lorem ipsum", icon = "dog"),
@@ -241,8 +241,8 @@ uilist_demo <- function() {
 
   div(
     h1(class="ui dividing header", id = "list", "List"),
-    demo(uilist(list_content, is_divided = FALSE)),
-    demo(uilist(list_content, is_divided = TRUE))
+    demo(list_container(list_content, is_divided = FALSE)),
+    demo(list_container(list_content, is_divided = TRUE))
   )
 }
 
@@ -283,14 +283,16 @@ sidebar <- function() {
               )))
 }
 
-calendar <- function() {
+calendar_demo <- function() {
   div(
     h1(class="ui header", id="calendar", "Calendar"),
     demo(
-      uicalendar("date", type = "date", value = "20.2.2020", placeholder = "Select Date",
-                 min = "2.2.2020", max = "25.2.2020")),
+      calendar("date", type = "date", value = "20.2.2020", placeholder = "Select Date",
+               min = "2.2.2020", max = "25.2.2020")
+      ),
     demo(
-      uicalendar("month", type = "month", placeholder = "Pick Month"))
+      calendar("month", type = "month", placeholder = "Pick Month")
+    )
   )
 }
 
@@ -311,15 +313,15 @@ ui <- function() {
         button(),
         divider(),
         uiinput(),
-        uilabel(),
-        uilist_demo(),
+        label(),
+        list_demo(),
         grid(),
         breadcrumb(),
-        card(),
+        card_demo(),
         accordion(),
         rating(),
         tabs(),
-        calendar()
+        calendar_demo()
       )
     )
   ))

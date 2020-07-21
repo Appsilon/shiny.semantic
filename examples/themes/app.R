@@ -7,14 +7,11 @@ library(formatR)
 library(httr)
 library(rjson)
 
-options(semantic.themes = TRUE)
-
 demo <- function(code) {
   div(class = "ui raised segment",
       code,
       div(style = "width: 100%; height:10px"),
-      highlight(formatR::tidy_source(width.cutoff = 40,
-                                     text = deparse(substitute(code)))$text.tidy)
+      highlight(formatR::tidy_source(width.cutoff = 40, text = deparse(substitute(code)))$text.tidy)
   )
 }
 
@@ -36,11 +33,11 @@ header <- function() {
     demo(h1(class="ui header", "First header")),
     demo(h2(class="ui header", "Second header")),
     demo(h2(class="ui icon header",
-            uiicon("settings"),
+            icon("settings"),
             div(class="content", "Account Settings",
                 div(class="sub header", "Manage your account")))),
-    demo(h2(class="ui header", uiicon("plug"), div(class="content", "Second header"))),
-    demo(h2(class="ui header", uiicon("settings"),
+    demo(h2(class="ui header", icon("plug"), div(class="content", "Second header"))),
+    demo(h2(class="ui header", icon("settings"),
             div(class="content", "Second header",
                 div(class="sub header", "Manage preferences"))))
   )
@@ -151,11 +148,11 @@ grid <- function() {
              div(class="column", "Column")))
   )
 }
-card <- function() {
+card_demo <- function() {
   div(
     h1(class="ui header", id="card", "Card"),
     demo(
-      uicard(
+      card(
         div(class="content",
             div(class="header", "Elliot Fu"),
             div(class="meta", "Friend"),
@@ -164,11 +161,11 @@ card <- function() {
       )
     ),
     demo(
-      uicards(
+      cards(
         class = "three",
         mtcars %>% tibble::rownames_to_column() %>% head %>%
           purrrlyr::by_row(~ {
-            uicard(
+            card(
               div(class="content",
                   div(class="header", .$rowname),
                   div(class="meta", paste("Number of cylinders:", .$cyl)),
@@ -179,7 +176,7 @@ card <- function() {
       )
     ),
     demo(
-      uicard(
+      card(
         div(class="content",
             div(class="header", "Elliot Fu"),
             div(class="meta", "Friend"),
@@ -235,7 +232,7 @@ tabs <- function () {
     )
   )
 }
-uilist_demo <- function() {
+list_demo <- function() {
   list_content <- list(
     list(header = "Head 1", description = "Lorem ipsum", icon = "home"),
     list(header = "Head 2", description = "Lorem ipsum", icon = "dog"),
@@ -244,8 +241,8 @@ uilist_demo <- function() {
 
   div(
     h1(class="ui dividing header", id = "list", "List"),
-    demo(uilist(list_content, is_divided = FALSE)),
-    demo(uilist(list_content, is_divided = TRUE))
+    demo(list_container(list_content, is_divided = FALSE)),
+    demo(list_container(list_content, is_divided = TRUE))
   )
 }
 
@@ -286,14 +283,16 @@ sidebar <- function() {
           )))
 }
 
-calendar <- function() {
+calendar_demo <- function() {
   div(
     h1(class="ui header", id="calendar", "Calendar"),
     demo(
-      uicalendar("date", type = "date", value = "20.2.2020", placeholder = "Select Date",
-                 min = "2.2.2020", max = "25.2.2020")),
+      calendar("date", type = "date", value = "20.2.2020", placeholder = "Select Date",
+               min = "2.2.2020", max = "25.2.2020")
+    ),
     demo(
-      uicalendar("month", type = "month", placeholder = "Pick Month"))
+      calendar("month", type = "month", placeholder = "Pick Month")
+    )
   )
 }
 
@@ -303,8 +302,12 @@ css <- "
   margin-top: 1em;
 }"
 
+##################### !!! Remember to set to true
+options(semantic.themes = TRUE)
+#####################
+
 ui <- function() {
-  shinyUI(semanticPage( theme = "cerulean",
+  shinyUI(semanticPage(theme = "cerulean", # full list of themes can be found in shiny.semantic::SUPPORTED_THEMES
     tags$head(tags$style(HTML(css))),
     useShinyjs(),
     sidebar(),
@@ -314,15 +317,15 @@ ui <- function() {
             button(),
             divider(),
             uiinput(),
-            uilabel(),
-            uilist_demo(),
+            label(),
+            list_demo(),
             grid(),
             breadcrumb(),
-            card(),
+            card_demo(),
             accordion(),
             rating(),
             tabs(),
-            calendar()
+            calendar_demo()
         )
     )
   ))
