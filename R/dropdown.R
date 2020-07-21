@@ -110,7 +110,7 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
   if (!("default_text" %in% args_names))
     args$default_text <- ""
 
-  args$name <- inputId
+  args$input_id <- inputId
   named_choices <- !is.null(attr(choices, "names"))
   args$choices <- if (named_choices) names(choices) else choices
   args$choices_value <- unname(choices)
