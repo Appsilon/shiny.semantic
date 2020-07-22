@@ -38,8 +38,7 @@ ui <- shinyUI(
                 text_input("url_ex", value = "", type = "url", placeholder = "Enter URL")
               ),
               field(
-                tags$label("Numeric"),
-                numeric_input("number_ex", value = 50, min = 0, max = 100)
+                numeric_input("number_ex", "Numeric", value = 50, min = 0, max = 100)
               ),
               field(
                 tags$label("Checkbox"),
