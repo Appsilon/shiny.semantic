@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create Semantic UI checkbox — checkbox_input • SHINY.SEMANTIC</title>
+<title>Render semanticui htmlwidget — uirender • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Create Semantic UI checkbox — checkbox_input" />
-<meta property="og:description" content="Create Semantic UI checkbox" />
+<meta property="og:title" content="Render semanticui htmlwidget — uirender" />
+<meta property="og:description" content="htmlwidget that adds semanticui dependencies and
+renders in viewer or rmarkdown." />
 
 
 
@@ -133,78 +134,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create Semantic UI checkbox</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/checkbox.R'><code>R/checkbox.R</code></a></small>
-    <div class="hidden name"><code>checkbox.Rd</code></div>
+    <h1>Render semanticui htmlwidget</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/uirender.R'><code>R/uirender.R</code></a></small>
+    <div class="hidden name"><code>uirender.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create Semantic UI checkbox</p>
+    <p>htmlwidget that adds semanticui dependencies and
+renders in viewer or rmarkdown.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>checkbox_input</span>(
-  <span class='no'>input_id</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
-
-<span class='fu'>toggle</span>(<span class='no'>input_id</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>uirender</span>(<span class='no'>ui</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>element_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>input_id</th>
-      <td><p>Input name. Reactive value is available under input[[name]].</p></td>
+      <th>ui</th>
+      <td><p>UI, which will be wraped in an htmlwidget.</p></td>
     </tr>
     <tr>
-      <th>label</th>
-      <td><p>Text to be displayed with checkbox.</p></td>
+      <th>width</th>
+      <td><p>Fixed width for widget (in css units). The default is NULL,
+which results in intelligent automatic sizing.</p></td>
     </tr>
     <tr>
-      <th>type</th>
-      <td><p>Type of checkbox: NULL, 'toggle'</p></td>
+      <th>height</th>
+      <td><p>Fixed height for widget (in css units). The default is NULL,
+which results in intelligent automatic sizing.</p></td>
     </tr>
     <tr>
-      <th>is_marked</th>
-      <td><p>Defines if checkbox should be marked. Default TRUE.</p></td>
-    </tr>
-    <tr>
-      <th>style</th>
-      <td><p>Style of the widget.</p></td>
+      <th>element_id</th>
+      <td><p>Use an explicit element ID for the widget
+(rather than an automatically generated one).</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The inputs are updateable by using <code><a href='https://rdrr.io/pkg/shiny/man/updateCheckboxInput.html'>updateCheckboxInput</a></code>.</p>
-<p>The following <code>type</code>s are allowed:</p><ul>
-<li><p>NULL The standard checkbox (default)</p></li>
-<li><p>toggle Each checkbox has a toggle form</p></li>
-<li><p>slider Each checkbox has a simple slider form</p></li>
-</ul>
-
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>checkbox_input</span>(<span class='st'>"example"</span>, <span class='st'>"Check me"</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; &lt;div class="ui   checkbox"&gt;
-#&gt;   &lt;input id="example" type="checkbox"/&gt;
-#&gt;   &lt;label&gt;Check me&lt;/label&gt;
-#&gt; &lt;/div&gt;</div><div class='input'>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
-<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
- <span class='fu'>shinyUI</span>(
-   <span class='fu'>toggle</span>(<span class='st'>"tog1"</span>, <span class='st'>"My Label"</span>, <span class='fl'>TRUE</span>)
- )
-)
-<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
-  <span class='fu'>observeEvent</span>(<span class='no'>input</span>$<span class='no'>tog1</span>, {
-    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>input</span>$<span class='no'>tog1</span>)
-  })
-}
-<span class='fu'>shinyApp</span>(<span class='no'>ui</span>, <span class='no'>server</span>)
-}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

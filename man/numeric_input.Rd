@@ -2,6 +2,7 @@
 % Please edit documentation in R/input.R
 \name{numeric_input}
 \alias{numeric_input}
+\alias{numericInput}
 \title{Create Semantic UI Numeric Input}
 \usage{
 numeric_input(
@@ -16,11 +17,22 @@ numeric_input(
   placeholder = NULL,
   ...
 )
+
+numericInput(
+  inputId,
+  label,
+  value,
+  min = NA,
+  max = NA,
+  step = NA,
+  width = NULL,
+  ...
+)
 }
 \arguments{
 \item{input_id}{Input name. Reactive value is available under \code{input[[input_id]]}.}
 
-\item{label}{character with label}
+\item{label}{Display label for the control, or NULL for no label.}
 
 \item{value}{Initial value of the numeric input.}
 
@@ -37,7 +49,11 @@ See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.}
 
 \item{placeholder}{Inner input label displayed when no value is specified.}
 
-\item{...}{Unused.}
+\item{...}{Other parameters passed to \code{\link{numeric_input}} like \code{type} or \code{icon}.}
+
+\item{inputId}{The input slot that will be used to access the value.}
+
+\item{width}{The width of the input.}
 }
 \description{
 This creates a default numeric input using Semantic UI. The input is available
