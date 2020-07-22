@@ -155,7 +155,7 @@ textInput <- function(inputId, label, value = "", width = NULL,
 #'
 #' @details
 #' The inputs are updateable by using \code{\link{updateNumericInput}}.
-#'
+#' @rdname numeric_input
 #' @examples
 #' library(shiny)
 #' library(shiny.semantic)
@@ -194,6 +194,7 @@ numeric_input <- function(input_id, label, value, min = NA, max = NA, step = NA,
 #' @param step Interval to use when stepping between min and max.
 #' @param width The width of the input.
 #' @param ... Other parameters passed to \code{\link{numeric_input}} like \code{type} or \code{icon}.
+#' @rdname numeric_input
 #' @export
 numericInput <- function(inputId, label, value,
                          min = NA, max = NA, step = NA, width = NULL, ...) {

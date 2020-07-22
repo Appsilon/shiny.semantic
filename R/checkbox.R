@@ -31,9 +31,9 @@
 #'
 #' The following \code{type}s are allowed:
 #' \itemize{
-#' \item{NULL}{The standard checkbox (default)}
-#' \item{toggle}{Each checkbox has a toggle form}
-#' \item{slider}{Each checkbox has a simple slider form}
+#' \item{NULL}{ The standard checkbox (default)}
+#' \item{toggle}{ Each checkbox has a toggle form}
+#' \item{slider}{ Each checkbox has a simple slider form}
 #' }
 #'
 #' @rdname checkbox
