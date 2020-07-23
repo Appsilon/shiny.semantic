@@ -21,10 +21,10 @@ library(shiny.semantic)
 # Text input
 uiinput(
   tags$label("Text input"),
-  uitextinput("ex", type = "text", placeholder = "Enter Text")
+  text_input("ex", type = "text", placeholder = "Enter Text")
 )
 
 }
 \seealso{
-uitextinput
+text_input
 }

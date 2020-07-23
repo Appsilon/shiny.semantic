@@ -2,19 +2,19 @@ library(shiny)
 library(shiny.semantic)
 
 ui <- semanticPage(
-  uisegment(
+  segment(
     class = "basic",
-    uirange("range_ex", 5, 10, 0, 20, 1, class = "labeled ticked"),
+    range_input("range_ex", 5, 10, 0, 20, 1, class = "labeled ticked"),
     tags$br(),
     textOutput("range_ex"),
     tags$br(), tags$br(),
-    uislider("slider_ex", 5, 0, 20, 1),
+    slider_input("slider_ex", 5, 0, 20, 1),
     tags$br(),
     textOutput("slider_ex"),
     tags$br(), tags$br(),
 
     p("Update range to 10-17"),
-    uibutton("button", "Update")
+    button("button", "Update")
   )
 )
 

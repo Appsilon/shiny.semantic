@@ -143,7 +143,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>multiple_checkbox</span>(
-  <span class='no'>name</span>,
+  <span class='no'>input_id</span>,
   <span class='no'>label</span>,
   <span class='no'>choices</span>,
   <span class='kw'>choices_value</span> <span class='kw'>=</span> <span class='no'>choices</span>,
@@ -154,7 +154,7 @@
 )
 
 <span class='fu'>multiple_radio</span>(
-  <span class='no'>name</span>,
+  <span class='no'>input_id</span>,
   <span class='no'>label</span>,
   <span class='no'>choices</span>,
   <span class='kw'>choices_value</span> <span class='kw'>=</span> <span class='no'>choices</span>,
@@ -168,8 +168,8 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>name</th>
-      <td><p>Input name. Reactive value is available under <code>input[[name]]</code>.</p></td>
+      <th>input_id</th>
+      <td><p>Input name. Reactive value is available under <code>input[[input_id]]</code>.</p></td>
     </tr>
     <tr>
       <th>label</th>
@@ -224,14 +224,14 @@ tag (e.g. style, childrens etc.)</p></td>
       <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
         <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
           <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Checkbox example"</span>,
-          <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>h1</a></span>(<span class='st'>"Checkboxes"</span>),
+          <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/reexports.html'>h1</a></span>(<span class='st'>"Checkboxes"</span>),
           <span class='fu'>multiple_checkbox</span>(<span class='st'>"checkboxes"</span>, <span class='st'>"Select Letters"</span>, <span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>6</span>], <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"A"</span>),
-          <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>p</a></span>(<span class='st'>"Selected letters:"</span>),
+          <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/reexports.html'>p</a></span>(<span class='st'>"Selected letters:"</span>),
           <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/textOutput.html'>textOutput</a></span>(<span class='st'>"selected_letters"</span>),
-          <span class='no'>tags</span>$<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
-          <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>h1</a></span>(<span class='st'>"Radioboxes"</span>),
+          <span class='no'>tags</span>$<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/reexports.html'>br</a></span>(),
+          <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/reexports.html'>h1</a></span>(<span class='st'>"Radioboxes"</span>),
           <span class='fu'>multiple_radio</span>(<span class='st'>"radioboxes"</span>, <span class='st'>"Select Letter"</span>, <span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>6</span>], <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"A"</span>),
-          <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>p</a></span>(<span class='st'>"Selected letter:"</span>),
+          <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/reexports.html'>p</a></span>(<span class='st'>"Selected letter:"</span>),
           <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/textOutput.html'>textOutput</a></span>(<span class='st'>"selected_letter"</span>)
        )
      )

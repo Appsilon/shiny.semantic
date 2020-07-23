@@ -1,11 +1,11 @@
 #' Define search type if multiple
 #'
-#' @param name character with name
+#' @param input_id character with name
 #' @param multiple multiple flag
-define_selection_type <- function(name, multiple) {
+define_selection_type <- function(input_id, multiple) {
   multiple_class <- switch(multiple, "multiple", NULL)
   classes <- c("ui", "fluid", "search", "selection",
-              "dropdown", multiple_class, name)
+              "dropdown", multiple_class, input_id)
   paste(classes, collapse = " ")
 }
 
@@ -16,7 +16,7 @@ define_selection_type <- function(name, multiple) {
 #' a JSON with property fields `name` and `value`. Using a search selection
 #' dropdown allows to search more easily through large lists.
 #'
-#' @param name Input name. Reactive value is available under input[[name]].
+#' @param input_id Input name. Reactive value is available under input[[input_id]].
 #' @param search_api_url Register API url with server JSON Response containing
 #' fields `name` and `value`.
 #' @param multiple TRUE if the dropdown should allow multiple selections,
@@ -72,25 +72,25 @@ define_selection_type <- function(name, multiple) {
 #'
 #' @import shiny
 #' @export
-search_selection_api <- function(name,
+search_selection_api <- function(input_id,
                                  search_api_url,
                                  multiple = FALSE,
                                  default_text = "Select") {
-  selection_type <- define_selection_type(name, multiple)
+  selection_type <- define_selection_type(input_id, multiple)
   shiny::tagList(
     tags$div(class = selection_type,
-             shiny_input(name,
+             shiny_input(input_id,
                          tags$input(class = "prompt",
                                     type = "hidden",
-                                    name = name),
+                                    name = input_id),
                          type = "text"
              ),
-             uiicon("search"),
+             icon("search"),
              tags$div(class = "default text", default_text),
              tags$div(class = "menu")
     ),
 
-    HTML(paste0("<script>$('.ui.dropdown.", name, "').dropdown({
+    HTML(paste0("<script>$('.ui.dropdown.", input_id, "').dropdown({
                   forceSelection: false,
                   apiSettings: {
                     url: '", search_api_url, "&q={query}'
@@ -105,7 +105,7 @@ search_selection_api <- function(name,
 #' Define the (multiple) search selection dropdown input component serving
 #' search options using provided choices.
 #'
-#' @param name Input name. Reactive value is available under input[[name]].
+#' @param input_id Input name. Reactive value is available under input[[input_id]].
 #' @param choices Vector or a list of choices to search through.
 #' @param value String with default values to set when initialize the component.
 #' Values should be delimited with a comma when multiple to set. Default NULL.
@@ -147,28 +147,28 @@ search_selection_api <- function(name,
 #' @importFrom magrittr "%>%"
 #' @import shiny
 #' @export
-search_selection_choices <- function(name,
+search_selection_choices <- function(input_id,
                                      choices,
                                      value = NULL,
                                      multiple = FALSE,
                                      default_text = "Select",
                                      groups = NULL,
                                      dropdown_settings = list(forceSelection = FALSE)) {
-  input_class <- define_selection_type(name, multiple)
+  input_class <- define_selection_type(input_id, multiple)
   if (is.null(value)) {
     value <- ""
   }
 
   shiny::tagList(
     tags$div(class = input_class,
-             shiny_input(name,
+             shiny_input(input_id,
                          tags$input(class = "prompt",
                                     type = "hidden",
-                                    name = name),
+                                    name = input_id),
                          value = value,
                          type = "text"
              ),
-             uiicon("search"),
+             icon("search"),
              tags$div(class = "default text", default_text),
              tags$div(class = "menu",
                if (is.null(choices)) {
@@ -196,21 +196,9 @@ search_selection_choices <- function(name,
     HTML(
       sprintf(
         "<script>$('.ui.dropdown.%s').dropdown(%s).dropdown('set selected', '%s'.split(','));</script>",
-        name, jsonlite::toJSON(dropdown_settings, auto_unbox = TRUE), value) #nolint
+        input_id, jsonlite::toJSON(dropdown_settings, auto_unbox = TRUE), value) #nolint
     )
   )
-}
-
-#' ::: hack solution
-#'
-#' @param pkg package name
-#' @param name function name
-#'
-#' @return function
-`%:::%` <- function(pkg, name) { # nolint
-  pkg <- as.character(substitute(pkg))
-  name <- as.character(substitute(name))
-  get(name, envir = asNamespace(pkg), inherits = FALSE)
 }
 
 #' Register search api url

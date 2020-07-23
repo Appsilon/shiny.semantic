@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Update dropdown Semantic UI component — update_dropdown" />
-<meta property="og:description" content="Change the value of a dropdown input on the client." />
+<meta property="og:description" content="Change the value of a dropdown_input input on the client." />
 
 
 
@@ -139,12 +139,12 @@
     </div>
 
     <div class="ref-description">
-    <p>Change the value of a <code><a href='dropdown.html'>dropdown</a></code> input on the client.</p>
+    <p>Change the value of a <code>dropdown_input</code> input on the client.</p>
     </div>
 
     <pre class="usage"><span class='fu'>update_dropdown</span>(
   <span class='no'>session</span>,
-  <span class='no'>name</span>,
+  <span class='no'>input_id</span>,
   <span class='kw'>choices</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>choices_value</span> <span class='kw'>=</span> <span class='no'>choices</span>,
   <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
@@ -158,7 +158,7 @@
       <td><p>The <code>session</code> object passed to function given to <code>shinyServer</code>.</p></td>
     </tr>
     <tr>
-      <th>name</th>
+      <th>input_id</th>
       <td><p>The id of the input object</p></td>
     </tr>
     <tr>

@@ -145,17 +145,35 @@
 <h3 class="hasAnchor">
 <a href="#added" class="anchor"></a>Added</h3>
 <ul>
+<li><p>new STYLEGUIDE introduced</p></li>
 <li><p>horizontal menu</p></li>
-<li><p>shiny-like API introduced to actionButton, updateActionButton, selectInput, updateSelectInput, icon, numericInput, updateNumericInput</p></li>
-<li><p>counterbutton</p></li>
+<li><p>shiny-like API introduced to actionButton, updateActionButton, selectInput, updateSelectInput, icon, numericInput, updateNumericInput, textAreaInput, textInput, numericInput</p></li>
+<li><p>counter_button</p></li>
+<li><p>new examples to documentation</p></li>
 </ul>
 </div>
 <div id="changed" class="section level3">
 <h3 class="hasAnchor">
 <a href="#changed" class="anchor"></a>Changed</h3>
 <ul>
-<li><p>uilist modified</p></li>
+<li><p>ui (static) elements are renamed to the name of the object they generate, eg. <code>uiicon</code> -&gt; <code>icon</code>, <code>uibutton</code> -&gt; <code>button</code>, etc.</p></li>
+<li><p><code>uimessage</code> is <code>messagebox</code> now</p></li>
+<li><p><code>uilist</code> is <code>list_container</code> now</p></li>
+<li><p><code>dropdown</code> is <code>dropdown_input</code> now</p></li>
+<li><p><code>rating</code> changed to <code>rating_input</code>, <code>uislider</code> is now <code>slider_input</code>, same with <code>range</code></p></li>
+<li><p>renamed <code>uicalendar</code> to <code>calendar</code></p></li>
+<li><p><code>uidropdown</code> is <code>dropdown_menu</code> now</p></li>
+<li><p><code>checkbox_input</code> replaces <code>simple_checkbox</code></p></li>
+<li><p><code>input_id</code> is default handler for input objects now</p></li>
+<li><p>dateInput exported</p></li>
 <li><p>supressing bootstrap parametrised in semanticPage</p></li>
+</ul>
+</div>
+<div id="removed" class="section level3">
+<h3 class="hasAnchor">
+<a href="#removed" class="anchor"></a>Removed</h3>
+<ul>
+<li>checkbox constant</li>
 </ul>
 </div>
 </div>
@@ -180,9 +198,9 @@
 <li><p>updated slider</p></li>
 </ul>
 </div>
-<div id="removed" class="section level3">
+<div id="removed-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#removed" class="anchor"></a>Removed</h3>
+<a href="#removed-1" class="anchor"></a>Removed</h3>
 <ul>
 <li>slider_input was removed</li>
 </ul>
@@ -240,9 +258,9 @@
 <li><p>Fixed suspendWhenHidden problem with tabset.</p></li>
 </ul>
 </div>
-<div id="removed-1" class="section level3">
+<div id="removed-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#removed-1" class="anchor"></a>Removed</h3>
+<a href="#removed-2" class="anchor"></a>Removed</h3>
 <ul>
 <li>Deleted repetition of dropdown_choice function</li>
 </ul>

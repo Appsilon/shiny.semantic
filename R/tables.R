@@ -16,7 +16,6 @@
 #'  }
 #'  shinyApp(ui, server)
 #' }
-#' @rdname semantic_DT
 #'
 #' @export
 semantic_DT <- function(...) {
@@ -30,8 +29,7 @@ semantic_DT <- function(...) {
 #'
 #' @param ... datatable parameters, check \code{?DT::datatable} to learn more.
 #'
-#' @return
-#' @rdname semantic_DT
+#' @return DT Output with semanitc style
 semantic_DTOutput <- function(...) {
     DT::DTOutput(...)
 }
