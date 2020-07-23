@@ -75,15 +75,23 @@ grid_container_css <- function(css_grid_template_areas, rows_height, cols_width)
 list_of_area_tags <- function(area_names) {
   lapply(area_names,
     function(name) shiny::tags$div(
-     style = glue::glue("grid-area: {name}; {{custom_style_grid_area_{name}}}"), paste("{{", name, "}}")
+     style = as.character(glue::glue("grid-area: {name}; {{custom_style_grid_area_{name}}}")), paste("{{", name, "}}")
     )
   )
 }
 
 #' Define a template of a CSS grid
 #'
-#' @param default Template for desktop: list(areas = [data.frame of strings], rows_height = [vector of strings], cols_width = [vector of strings])
-#' @param mobile Template for mobile: list(areas = [data.frame of strings], rows_height = [vector of strings], cols_width = [vector of strings])
+#' @param default
+#' Template for desktop:
+#' list(areas = [data.frame of strings],
+#'      rows_height = [vector of strings],
+#'      cols_width = [vector of strings])
+#' @param mobile
+#' Template for mobile:
+#' list(areas = [data.frame of strings],
+#'      rows_height = [vector of strings],
+#'      cols_width = [vector of strings])
 #'
 #' @return
 #' list(template = [string], area_names = [vector of strings])
@@ -150,10 +158,14 @@ grid_template <- function(
 #'
 #' @details This is a helper function used in grid()
 #'
-apply_custom_styles_to_html_template <- function(html_template = "", area_names = c(), container_style = "", area_styles = list()) {
+apply_custom_styles_to_html_template <- function(html_template = "",
+                                                 area_names = c(),
+                                                 container_style = "",
+                                                 area_styles = list()) {
   custom_styles <- list(custom_style_grid_container = container_style)
   for (area in area_names) {
-    custom_styles[[glue::glue("custom_style_grid_area_{area}")]] <- ifelse(area %in% names(area_styles), area_styles[[area]], "")
+    custom_styles[[glue::glue("custom_style_grid_area_{area}")]] <- ifelse(
+      area %in% names(area_styles), area_styles[[area]], "")
   }
   styled_template <- do.call(function(...) glue::glue(html_template, ...), custom_styles)
   return(styled_template)
@@ -163,7 +175,8 @@ apply_custom_styles_to_html_template <- function(html_template = "", area_names 
 #'
 #' @param styled_html_template string
 #' @param area_names vector of strings
-#' @param display_mode boolean - if TRUE it replaces \{\{\}\} mustache with <> so they can be displayed in the debug mode
+#' @param display_mode
+#' boolean - if TRUE it replaces \{\{\}\} mustache with <> so they can be displayed in the debug mode
 #'
 #' @return string
 #'
@@ -245,7 +258,8 @@ grid <- function(grid_template, container_style = "", area_styles = list(), disp
     grid_template$template, grid_template$area_names, container_style, area_styles)
 
   # Replace {areas} for glue::glue with {{areas}} for rendering htmlTemplate
-  mustached_html_template <- prepare_mustache_for_html_template(styled_html_template, grid_template$area_names, display_mode)
+  mustached_html_template <- prepare_mustache_for_html_template(
+    styled_html_template, grid_template$area_names, display_mode)
 
   htmltools::htmlTemplate(text_ = mustached_html_template, ...)
 }
@@ -269,7 +283,8 @@ display_grid <- function(grid_template) {
     rep("border: 1px dotted #444", length(grid_template$area_names)),
     grid_template$area_names))
 
-  html <- grid(grid_template, container_style = "border: 1px dashed #000", area_styles = area_styles, display_mode = TRUE)
+  html <- grid(grid_template, container_style = "border: 1px dashed #000",
+               area_styles = area_styles, display_mode = TRUE)
 
   base::write(unlist(html), temporary_html_file)
   utils::browseURL(temporary_html_file)
