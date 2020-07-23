@@ -39,6 +39,8 @@ updateNumericInput(
 \item{max}{Maximum value.}
 
 \item{step}{Step size.}
+
+\item{inputId}{the same as \code{input_id}}
 }
 \description{
 Change numeric input value and settings

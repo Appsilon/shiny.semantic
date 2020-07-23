@@ -150,16 +150,6 @@
   <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>""</span>,
   <span class='kw'>size</span> <span class='kw'>=</span> <span class='st'>""</span>,
   <span class='kw'>big_mark</span> <span class='kw'>=</span> <span class='st'>" "</span>
-)
-
-<span class='fu'>counterButton</span>(
-  <span class='no'>inputId</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>size</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>big_mark</span> <span class='kw'>=</span> <span class='st'>" "</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -175,7 +165,7 @@
     </tr>
     <tr>
       <th>icon</th>
-      <td><p>an optional <code><a href='uiicon.html'>uiicon</a>()</code> to appear on the button.</p></td>
+      <td><p>an optional <code><a href='icon.html'>icon</a>()</code> to appear on the button.</p></td>
     </tr>
     <tr>
       <th>value</th>
@@ -184,6 +174,10 @@
     <tr>
       <th>color</th>
       <td><p>character with semantic color</p></td>
+    </tr>
+    <tr>
+      <th>size</th>
+      <td><p>character with size of the button, eg. "medium", "big"</p></td>
     </tr>
     <tr>
       <th>big_mark</th>
@@ -201,7 +195,7 @@
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
 <span class='no'>ui</span> <span class='kw'>&lt;-</span><span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
      <span class='fu'>counter_button</span>(<span class='st'>"counter"</span>, <span class='st'>"My Counter Button"</span>,
-                   <span class='kw'>icon</span> <span class='kw'>=</span> <span class='fu'><a href='uiicon.html'>uiicon</a></span>(<span class='st'>"world"</span>),
+                   <span class='kw'>icon</span> <span class='kw'>=</span> <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"world"</span>),
                    <span class='kw'>size</span> <span class='kw'>=</span> <span class='st'>"big"</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"purple"</span>)
  )
 <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {

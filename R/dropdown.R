@@ -1,6 +1,6 @@
 #' Create dropdown Semantic UI component
 #'
-#' This creates a default dropdown using Semantic UI styles with Shiny input.
+#' This creates a default *dropdown_input* using Semantic UI styles with Shiny input.
 #' Dropdown is already initialized and available under input[[input_id]].
 #'
 #' @param input_id Input name. Reactive value is available under input[[input_id]].
@@ -29,7 +29,7 @@
 #'   }
 #'   server <- shinyServer(function(input, output) {
 #'      output$dropdown <- renderUI({
-#'          dropdown("simple_dropdown", LETTERS, value = "A")
+#'          dropdown_input("simple_dropdown", LETTERS, value = "A")
 #'      })
 #'      output$selected_letter <- renderText(input[["simple_dropdown"]])
 #'   })
@@ -38,15 +38,15 @@
 #' }
 #'
 #' @export
-dropdown <- function(input_id, choices, choices_value = choices,
+dropdown_input <- function(input_id, choices, choices_value = choices,
                      default_text = "Select", value = NULL, type = "selection fluid") {
     if (!is.null(value)) value <- paste(as.character(value), collapse = ",")
     shiny::div(
       id = input_id, class = paste("ui", type, "dropdown semantic-select-input"),
       tags$input(type = "hidden", name = input_id, value = value),
-      uiicon("dropdown"),
+      icon("dropdown"),
       shiny::div(class = "default text", default_text),
-      uimenu(
+      menu(
         purrr::when(
           choices,
           is.null(names(.)) ~
@@ -85,7 +85,7 @@ dropdown <- function(input_id, choices, choices_value = choices,
 #'   values for multiple select lists.
 #' @param multiple Is selection of multiple items allowed?
 #' @param width The width of the input.
-#' @param ... Arguments passed to \link{dropdown}.
+#' @param ... Arguments passed to \link{dropdown_input}.
 #'
 #' @export
 selectInput <- function(inputId, label, choices, selected = NULL, multiple = FALSE, width = NULL, ...) {
@@ -121,14 +121,14 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
     shiny::div(class = "field",
       if (!is.null(label)) tags$label(label, `for` = inputId),
-      do.call(dropdown, args)
+      do.call(dropdown_input, args)
     )
   )
 }
 
 #' Update dropdown Semantic UI component
 #'
-#' Change the value of a \code{\link{dropdown}} input on the client.
+#' Change the value of a \code{\link{dropdown_input}} input on the client.
 #'
 #' @param session The \code{session} object passed to function given to \code{shinyServer}.
 #' @param input_id The id of the input object
@@ -137,7 +137,7 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
 #' @param value The initially selected value.
 #'
 #' @export
-update_dropdown <- function(session, input_id, choices = NULL, choices_value = choices, value = NULL) {
+update_dropdown_input <- function(session, input_id, choices = NULL, choices_value = choices, value = NULL) {
   if (!is.null(value)) value <- paste(as.character(value), collapse = ",") else value <- NULL
   if (!is.null(choices)) {
     options <- jsonlite::toJSON(data.frame(name = choices, text = choices, value = choices_value))

@@ -5,17 +5,43 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- new STYLEGUIDE introduced 
+
 - horizontal menu
 
-- shiny-like API introduced to actionButton, updateActionButton, selectInput, updateSelectInput, icon, numericInput, updateNumericInput
+- shiny-like API introduced to actionButton, updateActionButton, selectInput, updateSelectInput, icon, numericInput, updateNumericInput, textAreaInput, textInput, numericInput
 
-- counterbutton
+- counter_button
+
+- new examples to documentation
 
 ### Changed
 
-- uilist modified
+- ui (static) elements are renamed to the name of the object they generate, eg. `uiicon` -> `icon`, `uibutton` -> `button`, etc.
+
+- `uimessage` is `messagebox` now
+
+- `uilist` is `list_container` now
+
+- `dropdown` is `dropdown_input` now
+
+- `rating` changed to `rating_input`, `uislider` is now `slider_input`, same with `range`
+
+- renamed `uicalendar` to `calendar`
+
+- `uidropdown` is `dropdown_menu` now
+
+- `checkbox_input` replaces `simple_checkbox`
+
+- `input_id` is default handler for input objects now
+
+- dateInput exported
 
 - supressing bootstrap parametrised in semanticPage
+
+### Removed
+
+- checkbox constant
 
 ## [0.3.0]
 

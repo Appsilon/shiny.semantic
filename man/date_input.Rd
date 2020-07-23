@@ -2,7 +2,8 @@
 % Please edit documentation in R/date_input.R
 \name{date_input}
 \alias{date_input}
-\title{Define simple date input with semantic ui styling}
+\alias{dateInput}
+\title{Define simple date input with Semantic UI styling}
 \usage{
 date_input(
   input_id,
@@ -11,7 +12,18 @@ date_input(
   min = NULL,
   max = NULL,
   style = NULL,
-  icon = uiicon("calendar")
+  icon_name = "calendar"
+)
+
+dateInput(
+  inputId,
+  label = NULL,
+  icon = NULL,
+  value = NULL,
+  min = NULL,
+  max = NULL,
+  width = NULL,
+  ...
 )
 }
 \arguments{
@@ -27,14 +39,22 @@ date_input(
 
 \item{style}{Css style for widget.}
 
+\item{icon_name}{Icon that should be displayed on widget.}
+
+\item{inputId}{Input id.}
+
 \item{icon}{Icon that should be displayed on widget.}
+
+\item{width}{character width of the object}
+
+\item{...}{other arguments}
 }
 \description{
-Define simple date input with semantic ui styling
+Define simple date input with Semantic UI styling
 }
 \examples{
 if (interactive()) {
-# Below example shows how to imlement simple date range input using \code{date_input}
+# Below example shows how to implement simple date range input using \code{date_input}
 
 library(shiny)
 library(shiny.semantic)

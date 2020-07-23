@@ -19,3 +19,6 @@ parameeter defines its href attribute.}
 \description{
 This creates a menu item using Semantic UI
 }
+\seealso{
+menu
+}

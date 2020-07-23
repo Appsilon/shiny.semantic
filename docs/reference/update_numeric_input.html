@@ -144,6 +144,16 @@
 
     <pre class="usage"><span class='fu'>update_numeric_input</span>(
   <span class='no'>session</span>,
+  <span class='no'>input_id</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>max</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
+
+<span class='fu'>updateNumericInput</span>(
+  <span class='no'>session</span>,
   <span class='no'>inputId</span>,
   <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -158,6 +168,10 @@
     <tr>
       <th>session</th>
       <td><p>The session object passed to function given to shinyServer.</p></td>
+    </tr>
+    <tr>
+      <th>input_id</th>
+      <td><p>The id of the input object.</p></td>
     </tr>
     <tr>
       <th>label</th>
@@ -180,8 +194,8 @@
       <td><p>Step size.</p></td>
     </tr>
     <tr>
-      <th>input_id</th>
-      <td><p>The id of the input object.</p></td>
+      <th>inputId</th>
+      <td><p>the same as <code>input_id</code></p></td>
     </tr>
     </table>
 

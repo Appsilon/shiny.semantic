@@ -116,7 +116,7 @@ ui <- function() {
   shinyUI(
     semanticPage(
       title = "My page",
-      div(class = "ui button", uiicon("user"),  "Icon button")
+      div(class = "ui button", icon("user"),  "Icon button")
     )
   )
 }
@@ -222,8 +222,13 @@ please modify accordingly a **README.Rmd** file and use “Knit”.
 Documentation is rendered with `pkgdown`. Just run
 `pkgdown::build_site()` after rendering new **README.md**.
 
-We have a Contributor [Code of Conduct](). Make sure to check it and to
-follow it.
+*Important:*
+
+1)  Please follow the code style from out
+    [styleguide](https://github.com/Appsilon/shiny.semantic/blob/develop/STYLEGUIDE.md).
+
+2)  We have a Contributor [Code of Conduct](). Make sure to check it and
+    to follow it.
 
 ## Troubleshooting
 
