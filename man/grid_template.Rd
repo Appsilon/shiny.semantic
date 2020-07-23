@@ -10,9 +10,15 @@ grid_template(
 )
 }
 \arguments{
-\item{default}{Template for desktop: list(areas = [data.frame of strings], rows_height = [vector of strings], cols_width = [vector of strings])}
+\item{default}{Template for desktop:
+list(areas = [data.frame of strings],
+     rows_height = [vector of strings],
+     cols_width = [vector of strings])}
 
-\item{mobile}{Template for mobile: list(areas = [data.frame of strings], rows_height = [vector of strings], cols_width = [vector of strings])}
+\item{mobile}{Template for mobile:
+list(areas = [data.frame of strings],
+     rows_height = [vector of strings],
+     cols_width = [vector of strings])}
 }
 \value{
 list(template = [string], area_names = [vector of strings])

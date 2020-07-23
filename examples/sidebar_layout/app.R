@@ -9,7 +9,7 @@ ui <- function() {
     sidebar_layout(
       sidebar_panel(
         grid_list = list(
-          layout = shiny.semantic::grid_template(default = list(
+          layout = grid_template(default = list(
             areas = rbind(
               c("top_left",    "top_right"   ),
               c("bottom_left", "bottom_right")
@@ -33,7 +33,7 @@ ui <- function() {
       ),
       main_panel(
         grid_list = list(
-          layout = shiny.semantic::grid_template(default = list(
+          layout = grid_template(default = list(
             areas = rbind(
               c("top_left",    "top_center",    "top_right"   ),
               c("middle_left", "middle_center", "middle_right"),
