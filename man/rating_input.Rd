@@ -5,7 +5,7 @@
 \title{Rating Input.}
 \usage{
 rating_input(
-  name,
+  input_id,
   label = "",
   value = 0,
   max = 3,
@@ -15,7 +15,7 @@ rating_input(
 )
 }
 \arguments{
-\item{name}{The \code{input} slot that will be used to access the value.}
+\item{input_id}{The \code{input} slot that will be used to access the value.}
 
 \item{label}{the contents of the item to display}
 

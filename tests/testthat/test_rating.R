@@ -12,6 +12,7 @@ test_that("test basic rating_input behaviour", {
 })
 test_that("test extract_icon_name", {
   expect_equal(extract_icon_name(icon("cat")), "cat")
+  # input is not an icon
   expect_error(extract_icon_name("error"))
 })
 

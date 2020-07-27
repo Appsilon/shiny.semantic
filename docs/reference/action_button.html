@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Action button — actionButton • SHINY.SEMANTIC</title>
+<title>Action button — action_button • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Action button — actionButton" />
+<meta property="og:title" content="Action button — action_button" />
 <meta property="og:description" content="Creates an action button whose value is initially zero, and increments by one each time it is pressed." />
 
 
@@ -135,20 +135,22 @@
     <div class="page-header">
     <h1>Action button</h1>
     <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/button.R'><code>R/button.R</code></a></small>
-    <div class="hidden name"><code>actionButton.Rd</code></div>
+    <div class="hidden name"><code>action_button.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Creates an action button whose value is initially zero, and increments by one each time it is pressed.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>actionButton</span>(<span class='no'>inputId</span>, <span class='no'>label</span>, <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>action_button</span>(<span class='no'>input_id</span>, <span class='no'>label</span>, <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+
+<span class='fu'>actionButton</span>(<span class='no'>inputId</span>, <span class='no'>label</span>, <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>inputId</th>
+      <th>input_id</th>
       <td><p>The input slot that will be used to access the value.</p></td>
     </tr>
     <tr>
@@ -165,8 +167,12 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Named attributes to be applied to the button or remaining parameters passed to uibutton,
+      <td><p>Named attributes to be applied to the button or remaining parameters passed to button,
 like <code>class</code>.</p></td>
+    </tr>
+    <tr>
+      <th>inputId</th>
+      <td><p>the same as <code>input_id</code></p></td>
     </tr>
     </table>
 

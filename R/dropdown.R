@@ -1,9 +1,9 @@
 #' Create dropdown Semantic UI component
 #'
-#' This creates a default dropdown using Semantic UI styles with Shiny input.
-#' Dropdown is already initialized and available under input[[name]].
+#' This creates a default *dropdown_input* using Semantic UI styles with Shiny input.
+#' Dropdown is already initialized and available under input[[input_id]].
 #'
-#' @param name Input name. Reactive value is available under input[[name]].
+#' @param input_id Input name. Reactive value is available under input[[input_id]].
 #' @param choices All available options one can select from.
 #' @param choices_value What reactive value should be used for corresponding
 #' choice.
@@ -38,12 +38,12 @@
 #' }
 #'
 #' @export
-dropdown_input <- function(name, choices, choices_value = choices,
+dropdown_input <- function(input_id, choices, choices_value = choices,
                      default_text = "Select", value = NULL, type = "selection fluid") {
     if (!is.null(value)) value <- paste(as.character(value), collapse = ",")
     shiny::div(
-      id = name, class = paste("ui", type, "dropdown semantic-select-input"),
-      tags$input(type = "hidden", name = name, value = value),
+      id = input_id, class = paste("ui", type, "dropdown semantic-select-input"),
+      tags$input(type = "hidden", name = input_id, value = value),
       icon("dropdown"),
       shiny::div(class = "default text", default_text),
       menu(
@@ -133,7 +133,7 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
   if (!("default_text" %in% args_names))
     args$default_text <- ""
 
-  args$name <- inputId
+  args$input_id <- inputId
   named_choices <- !is.null(attr(choices, "names"))
   args$choices <- if (named_choices) names(choices) else choices
   args$choices_value <- unname(choices)
@@ -154,7 +154,7 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
 #' Change the value of a \code{\link{dropdown_input}} input on the client.
 #'
 #' @param session The \code{session} object passed to function given to \code{shinyServer}.
-#' @param name The id of the input object
+#' @param input_id The id of the input object
 #' @param choices All available options one can select from. If no need to update then leave as \code{NULL}
 #' @param choices_value What reactive value should be used for corresponding choice.
 #' @param value The initially selected value.
@@ -190,7 +190,7 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
 #' }
 #'
 #' @export
-update_dropdown <- function(session, name, choices = NULL, choices_value = choices, value = NULL) {
+update_dropdown_input <- function(session, input_id, choices = NULL, choices_value = choices, value = NULL) {
   if (!is.null(value)) value <- paste(as.character(value), collapse = ",") else value <- NULL
   if (!is.null(choices)) {
     options <- jsonlite::toJSON(data.frame(name = choices, text = choices, value = choices_value))
@@ -201,7 +201,7 @@ update_dropdown <- function(session, name, choices = NULL, choices_value = choic
   message <- list(choices = options, value = value)
   message <- message[!vapply(message, is.null, FUN.VALUE = logical(1))]
 
-  session$sendInputMessage(name, message)
+  session$sendInputMessage(input_id, message)
 }
 
 #' Change the value of a select input on the client

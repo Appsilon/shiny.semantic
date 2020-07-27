@@ -1,35 +1,19 @@
 context("dropdown")
 
-test_that("test dropdown", {
-  # test missing input
-  expect_error(dropdown_input())
-  expect_error(dropdown_input("dd"))
-  # test output
-  si_str <- as.character(
-    dropdown_input("simple_dropdown", LETTERS, value = "A")
-  )
-  expect_true(any(grepl("<div class=\"item\" data-value=\"C\">C</div>",
+test_that("test dropdown_input", {
+  # type
+  expect_is(dropdown_input("a", c(1,2,3)), "shiny.tag")
+  # wrong input
+  expect_error(dropdown_input("a"),
+               "argument \"choices\" is missing, with no default")
+  # simple input
+  si_str <- as.character(dropdown_input("a", c(1,2,3)))
+  expect_true(any(grepl("<div class=\"item\" data-value=\"1\">1</div>",
                         si_str, fixed = TRUE)))
-  expect_true(any(grepl(
-    "<input type=\"hidden\" name=\"simple_dropdown\" value=\"A\"", si_str, fixed = TRUE
-  )))
-})
-
-test_that("test dropdown header", {
-  # test output
-  si_str <- as.character(
-    dropdown_input(name = "header_dropdown",
-             list("LETTERS" = LETTERS, "month.name" = month.name),
-             value = "A")
-  )
-
-  expect_true(any(grepl("<div class=\"item\" data-value=\"C\">C</div>",
+  expect_true(any(grepl("<div class=\"item\" data-value=\"2\">2</div>",
                         si_str, fixed = TRUE)))
-  expect_true(any(grepl(
-    "<input type=\"hidden\" name=\"header_dropdown\" value=\"A\"", si_str, fixed = TRUE
-  )))
-  expect_true(any(grepl("<div class=\"header\">month.name</div>",
+  expect_true(any(grepl("<div class=\"item\" data-value=\"3\">3</div>",
                         si_str, fixed = TRUE)))
-  expect_true(any(grepl("<div class=\"divider\"></div>",
+  expect_false(any(grepl("<div class=\"item\" data-value=\"0\">0</div>",
                         si_str, fixed = TRUE)))
 })

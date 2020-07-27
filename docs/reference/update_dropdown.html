@@ -139,12 +139,16 @@
     </div>
 
     <div class="ref-description">
+<<<<<<< HEAD
     <p>Change the value of a <code><a href='dropdown_input.html'>dropdown_input</a></code> input on the client.</p>
+=======
+    <p>Change the value of a <code>dropdown_input</code> input on the client.</p>
+>>>>>>> develop
     </div>
 
     <pre class="usage"><span class='fu'>update_dropdown</span>(
   <span class='no'>session</span>,
-  <span class='no'>name</span>,
+  <span class='no'>input_id</span>,
   <span class='kw'>choices</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>choices_value</span> <span class='kw'>=</span> <span class='no'>choices</span>,
   <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
@@ -158,7 +162,7 @@
       <td><p>The <code>session</code> object passed to function given to <code>shinyServer</code>.</p></td>
     </tr>
     <tr>
-      <th>name</th>
+      <th>input_id</th>
       <td><p>The id of the input object</p></td>
     </tr>
     <tr>

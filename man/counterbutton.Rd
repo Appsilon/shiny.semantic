@@ -6,7 +6,7 @@
 \title{Counter Button}
 \usage{
 counter_button(
-  name,
+  input_id,
   label = "",
   icon = NULL,
   value = 0,
@@ -26,7 +26,7 @@ counterButton(
 )
 }
 \arguments{
-\item{name}{The \code{input} slot that will be used to access the value.}
+\item{input_id}{The \code{input} slot that will be used to access the value.}
 
 \item{label}{the content of the item to display}
 

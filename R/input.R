@@ -155,7 +155,7 @@ textInput <- function(inputId, label, value = "", width = NULL,
 #'
 #' @details
 #' The inputs are updateable by using \code{\link{updateNumericInput}}.
-#'
+#' @rdname numeric_input
 #' @examples
 #' library(shiny)
 #' library(shiny.semantic)
@@ -194,6 +194,7 @@ numeric_input <- function(input_id, label, value, min = NA, max = NA, step = NA,
 #' @param step Interval to use when stepping between min and max.
 #' @param width The width of the input.
 #' @param ... Other parameters passed to \code{\link{numeric_input}} like \code{type} or \code{icon}.
+#' @rdname numeric_input
 #' @export
 numericInput <- function(inputId, label, value,
                          min = NA, max = NA, step = NA, width = NULL, ...) {
@@ -207,11 +208,21 @@ numericInput <- function(inputId, label, value,
 #' Change numeric input value and settings
 #'
 #' @param session The session object passed to function given to shinyServer.
-#' @param inputId The id of the input object.
+#' @param input_id The id of the input object.
 #' @param label The label to set for the input object.
 #' @param value The value to set for the input object.
 #' @param min Minimum value.
 #' @param max Maximum value.
 #' @param step Step size.
 #' @export
+#' @rdname update_numeric_input
+update_numeric_input <- function(session, input_id, label = NULL, value = NULL,
+                                 min = NULL, max = NULL, step = NULL) {
+  shiny::updateNumericInput(session, input_id, label = label, value = value,
+                            min = min, max = max, step = step)
+}
+
+#' @param inputId the same as \code{input_id}
+#' @export
+#' @rdname update_numeric_input
 updateNumericInput <- shiny::updateNumericInput

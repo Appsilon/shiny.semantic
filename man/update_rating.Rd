@@ -4,12 +4,12 @@
 \alias{update_rating_input}
 \title{Update rating}
 \usage{
-update_rating_input(session, name, label = NULL, value = NULL)
+update_rating_input(session, input_id, label = NULL, value = NULL)
 }
 \arguments{
 \item{session}{shiny object with session info}
 
-\item{name}{rating input name}
+\item{input_id}{rating input name}
 
 \item{label}{character with updated label}
 

@@ -142,15 +142,21 @@
     <p>Create Semantic UI checkbox</p>
     </div>
 
-    <pre class="usage"><span class='fu'>checkbox_input</span>(<span class='no'>id</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>checkbox_input</span>(
+  <span class='no'>input_id</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)
 
-<span class='fu'>toggle</span>(<span class='no'>id</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>toggle</span>(<span class='no'>input_id</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>id</th>
+      <th>input_id</th>
       <td><p>Input name. Reactive value is available under input[[name]].</p></td>
     </tr>
     <tr>
@@ -175,9 +181,9 @@
 
     <p>The inputs are updateable by using <code><a href='https://rdrr.io/pkg/shiny/man/updateCheckboxInput.html'>updateCheckboxInput</a></code>.</p>
 <p>The following <code>type</code>s are allowed:</p><ul>
-<li><p>NULLThe standard checkbox (default)</p></li>
-<li><p>toggleEach checkbox has a toggle form</p></li>
-<li><p>sliderEach checkbox has a simple slider form</p></li>
+<li><p>NULL The standard checkbox (default)</p></li>
+<li><p>toggle Each checkbox has a toggle form</p></li>
+<li><p>slider Each checkbox has a simple slider form</p></li>
 </ul>
 
 

@@ -2,7 +2,7 @@
 #'
 #' Crates rating component
 #'
-#' @param name The \code{input} slot that will be used to access the value.
+#' @param input_id The \code{input} slot that will be used to access the value.
 #' @param label the contents of the item to display
 #' @param value initial rating value
 #' @param max maximum value
@@ -28,9 +28,9 @@
 #'   shinyApp(ui = ui, server = server)
 #' }
 #' @export
-rating_input <- function(name, label = "", value = 0, max = 3, icon = "star",
+rating_input <- function(input_id, label = "", value = 0, max = 3, icon = "star",
                    color = "yellow", size = "") {
-  if (!(size %in% FOMANTIC_SIZE_LEVELS)) {
+  if (!(size %in% SIZE_LEVELS)) {
     warning("Size value not supported.")
     size <- ""
   }
@@ -41,8 +41,8 @@ rating_input <- function(name, label = "", value = 0, max = 3, icon = "star",
   shiny::div(
     class = "ui form",
     shiny::div(class = "field",
-      if (!is.null(label)) tags$label(label, `for` = name),
-      shiny::div(id = name, class = class, `data-icon` = icon,
+      if (!is.null(label)) tags$label(label, `for` = input_id),
+      shiny::div(id = input_id, class = class, `data-icon` = icon,
                  `data-rating` = value, `data-max-rating` = max)
     )
   )
@@ -55,13 +55,14 @@ rating_input <- function(name, label = "", value = 0, max = 3, icon = "star",
 #'
 #' @param session shiny object with session info
 #'
-#' @param name rating input name
+#' @param input_id rating input name
 #' @param label character with updated label
 #' @param value new rating value
 #'
 #' @export
-update_rating_input <- function(session, name, label = NULL, value = NULL) {
+#' @rdname update_rating
+update_rating_input <- function(session, input_id, label = NULL, value = NULL) {
   message <- list(label = label, value = value)
   message <- message[!vapply(message, is.null, FUN.VALUE = logical(1))]
-  session$sendInputMessage(name, message)
+  session$sendInputMessage(input_id, message)
 }

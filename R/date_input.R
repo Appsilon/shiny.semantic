@@ -72,6 +72,7 @@ date_input <- function(input_id, label = NULL, value = NULL, min = NULL, max = N
 #' @param ... other arguments
 #'
 #' @rdname date_input
+#' @export
 dateInput <- function(inputId, label = NULL, icon = NULL, value = NULL,
                       min = NULL, max = NULL, width = NULL, ...) {
   # TODO match arguments with shiny::dateInput

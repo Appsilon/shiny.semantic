@@ -13,14 +13,14 @@ test_that("test icon type and input values", {
                         si_str, fixed = TRUE)))
 })
 
-test_that("test message type and input values", {
+test_that("test messagebox type and input values", {
   # type
-  expect_is(message(shiny::p("a"), c("b", "c")),
+  expect_is(messagebox(shiny::p("a"), c("b", "c")),
             "shiny.tag")
   # empty input
-  expect_error(message())
+  expect_error(messagebox())
   # text input
-  si_str <- as.character(message(shiny::p("a"), "abcb"))
+  si_str <- as.character(messagebox(shiny::p("a"), "abcb"))
   expect_true(any(grepl("<div class=\"header\">",
                         si_str, fixed = TRUE)))
   expect_true(any(grepl("abcb", si_str, fixed = TRUE)))
@@ -123,17 +123,17 @@ test_that("test label", {
   expect_match(as.character(label()), "<label></label>")
 })
 
-test_that("test message", {
+test_that("test messagebox", {
   # test missing input
-  expect_error(message())
+  expect_error(messagebox())
   si_str <- as.character(
-    message(shiny::h2("a"), c("b", "c"))
+    messagebox(shiny::h2("a"), c("b", "c"))
   )
   # test output
   expect_true(any(grepl("<div class=\"ui message \">", si_str, fixed = TRUE)))
   expect_true(any(grepl("<ul class=\"list\">", si_str, fixed = TRUE)))
   expect_true(any(grepl("<li>b</li>", si_str, fixed = TRUE)))
-  expect_error(message(shiny::h2("a"), c("b", "c"), class = "icon"),
+  expect_error(messagebox(shiny::h2("a"), c("b", "c"), class = "icon"),
                "If you give a class 'icon', then an icon_name argument is required")
 })
 

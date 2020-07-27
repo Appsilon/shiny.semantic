@@ -13,12 +13,18 @@
 \alias{styles.}
 \title{Create Semantic UI checkbox}
 \usage{
-checkbox_input(id, label = "", type = NULL, is_marked = TRUE, style = NULL)
+checkbox_input(
+  input_id,
+  label = "",
+  type = NULL,
+  is_marked = TRUE,
+  style = NULL
+)
 
-toggle(id, label = "", is_marked = TRUE, style = NULL)
+toggle(input_id, label = "", is_marked = TRUE, style = NULL)
 }
 \arguments{
-\item{id}{Input name. Reactive value is available under input[[name]].}
+\item{input_id}{Input name. Reactive value is available under input[[name]].}
 
 \item{label}{Text to be displayed with checkbox.}
 
@@ -36,9 +42,9 @@ The inputs are updateable by using \code{\link[shiny]{updateCheckboxInput}}.
 
 The following \code{type}s are allowed:
 \itemize{
-\item{NULL}{The standard checkbox (default)}
-\item{toggle}{Each checkbox has a toggle form}
-\item{slider}{Each checkbox has a simple slider form}
+\item{NULL}{ The standard checkbox (default)}
+\item{toggle}{ Each checkbox has a toggle form}
+\item{slider}{ Each checkbox has a simple slider form}
 }
 }
 \examples{

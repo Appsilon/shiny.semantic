@@ -4,10 +4,10 @@
 \alias{define_selection_type}
 \title{Define search type if multiple}
 \usage{
-define_selection_type(name, multiple)
+define_selection_type(input_id, multiple)
 }
 \arguments{
-\item{name}{character with name}
+\item{input_id}{character with name}
 
 \item{multiple}{multiple flag}
 }

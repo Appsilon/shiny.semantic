@@ -307,11 +307,11 @@ label <- function(...) {
   shiny::tags$label(...)
 }
 
-#' Create Semantic UI Message
+#' Create Semantic UI Message box
 #'
-#' @param header Header of the message
-#' @param content Content of the message. If it is a vector, creates a list of
-#' vector's elements
+#' @param header Header of the message box
+#' @param content Content of the message box . If it is a vector, creates a list
+#' of vector's elements
 #' @param class class of the message. Look at
 #' https://semantic-ui.com/collections/message.html for all possibilities.
 #' @param icon_name If the message is of the type 'icon', specify the icon.
@@ -320,7 +320,7 @@ label <- function(...) {
 #' Default is FALSE - not closable
 #'
 #' @export
-message <- function(header, content, class = "", icon_name, closable = FALSE) {
+messagebox <- function(header, content, class = "", icon_name, closable = FALSE) {
   if (length(content) > 1) {
     content <- shiny::tags$ul(class = "list", lapply(content, shiny::tags$li))
   }
@@ -357,7 +357,7 @@ message <- function(header, content, class = "", icon_name, closable = FALSE) {
 #' This creates a menu using Semantic UI.
 #'
 #' @param ... Menu items to be created. Use menu_item function to create new menu item.
-#' Use dropdown(is_menu_item = TRUE, ...) function to create new dropdown menu item.
+#' Use dropdown_menu(is_menu_item = TRUE, ...) function to create new dropdown menu item.
 #' Use menu_header and menu_divider functions to customize menu format.
 #' @param class Class extension.Look at https://semantic-ui.com/collections/menu.html
 #' for all possibilities.

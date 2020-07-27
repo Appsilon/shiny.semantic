@@ -2,7 +2,7 @@ library(shiny)
 library(shinyjs)
 library(shiny.semantic)
 library(magrittr)
-library(highlighter)
+library(highlighter) # devtools::install_github("Appsilon/highlighter")
 library(formatR)
 library(httr)
 library(rjson)
@@ -16,8 +16,6 @@ demo <- function(code) {
   )
 }
 
-options(semantic.themes = TRUE)
-
 input <- function(class = "ui input", style = "", type = "text", name = "", placeholder = "") {
   div(class = class, style = style,
       tags$input(type = type, name = name, placeholder = placeholder)
@@ -25,9 +23,9 @@ input <- function(class = "ui input", style = "", type = "text", name = "", plac
 }
 
 jsCode <- "
-$('.accordion').accordion({selector: {trigger: '.title .icon'}}).accordion('close');
-$('.ui.dropdown').dropdown({});
-$('.rating').rating('setting', 'clearable', true);
+  $('.accordion').accordion({selector: {trigger: '.title .icon'}}).accordion('close');
+  $('.ui.dropdown').dropdown({});
+  $('.rating').rating('setting', 'clearable', true);
 "
 
 header <- function() {
@@ -151,11 +149,11 @@ grid <- function() {
              div(class="column", "Column")))
   )
 }
-card <- function() {
+card_demo <- function() {
   div(
     h1(class="ui header", id="card", "Card"),
     demo(
-      uicard(
+      card(
         div(class="content",
             div(class="header", "Elliot Fu"),
             div(class="meta", "Friend"),
@@ -164,11 +162,11 @@ card <- function() {
       )
     ),
     demo(
-      uicards(
+      cards(
         class = "three",
         mtcars %>% tibble::rownames_to_column() %>% head %>%
           purrrlyr::by_row(~ {
-            uicard(
+            card(
               div(class="content",
                   div(class="header", .$rowname),
                   div(class="meta", paste("Number of cylinders:", .$cyl)),
@@ -179,7 +177,7 @@ card <- function() {
       )
     ),
     demo(
-      uicard(
+      card(
         div(class="content",
             div(class="header", "Elliot Fu"),
             div(class="meta", "Friend"),
@@ -235,18 +233,17 @@ tabs <- function () {
     )
   )
 }
-uilist_demo <- function() {
-  list_content <- data.frame(
-    header = paste("Header", 1:5),
-    description = paste("Description", 1:5),
-    stringsAsFactors = FALSE,
-    icon = "alarm"
+list_demo <- function() {
+  list_content <- list(
+    list(header = "Head 1", description = "Lorem ipsum", icon = "home"),
+    list(header = "Head 2", description = "Lorem ipsum", icon = "dog"),
+    list(header = "Head 3", description = "Lorem ipsum", icon = "sun")
   )
 
   div(
-    h1(class="ui dividing header", id="list", "List"),
-    demo(uilist(list_content, is_divided = FALSE)),
-    demo(uilist(list_content, is_divided = TRUE))
+    h1(class="ui dividing header", id = "list", "List"),
+    demo(list_container(list_content, is_divided = FALSE)),
+    demo(list_container(list_content, is_divided = TRUE))
   )
 }
 
@@ -282,16 +279,36 @@ sidebar <- function() {
           div(class="menu",
               a(class="item", href="#accordion", "Accordion"),
               a(class="item", href="#rating", "Rating"),
-              a(class="item", href="#tabset", "Tabset")
+              a(class="item", href="#tabset", "Tabset"),
+              a(class="item", href="#calendar", "Calendar")
           )))
 }
+
+calendar_demo <- function() {
+  div(
+    h1(class="ui header", id="calendar", "Calendar"),
+    demo(
+      calendar("date", type = "date", value = "20.2.2020", placeholder = "Select Date",
+               min = "2.2.2020", max = "25.2.2020")
+    ),
+    demo(
+      calendar("month", type = "month", placeholder = "Pick Month")
+    )
+  )
+}
+
+
 css <- "
 #examples > div > .header {
-margin-top: 1em;
+  margin-top: 1em;
 }"
 
+##################### !!! Remember to set to true
+options(semantic.themes = TRUE)
+#####################
+
 ui <- function() {
-  shinyUI(semanticPage(
+  shinyUI(semanticPage(theme = "cerulean", # full list of themes can be found in shiny.semantic::SUPPORTED_THEMES
     tags$head(tags$style(HTML(css))),
     useShinyjs(),
     sidebar(),
@@ -301,16 +318,17 @@ ui <- function() {
             button(),
             divider(),
             uiinput(),
-            uilabel(),
-            uilist_demo(),
+            label(),
+            list_demo(),
             grid(),
             breadcrumb(),
-            card(),
+            card_demo(),
             accordion(),
             rating(),
-            tabs()
+            tabs(),
+            calendar_demo()
         )
-    ), theme = "yeti" # a list of all available themes sits in SUPPORTED_THEMES
+    )
   ))
 }
 

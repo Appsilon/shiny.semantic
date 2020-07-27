@@ -155,6 +155,17 @@ under <code>input[[input_id]]</code>.</p>
   <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>placeholder</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='no'>...</span>
+)
+
+<span class='fu'>numericInput</span>(
+  <span class='no'>inputId</span>,
+  <span class='no'>label</span>,
+  <span class='no'>value</span>,
+  <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -166,7 +177,7 @@ under <code>input[[input_id]]</code>.</p>
     </tr>
     <tr>
       <th>label</th>
-      <td><p>character with label</p></td>
+      <td><p>Display label for the control, or NULL for no label.</p></td>
     </tr>
     <tr>
       <th>value</th>
@@ -199,13 +210,21 @@ See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.</p
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Unused.</p></td>
+      <td><p>Other parameters passed to <code>numeric_input</code> like <code>type</code> or <code>icon</code>.</p></td>
+    </tr>
+    <tr>
+      <th>inputId</th>
+      <td><p>The input slot that will be used to access the value.</p></td>
+    </tr>
+    <tr>
+      <th>width</th>
+      <td><p>The width of the input.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The inputs are updateable by using <code><a href='updateNumericInput.html'>updateNumericInput</a></code>.</p>
+    <p>The inputs are updateable by using <code><a href='update_numeric_input.html'>updateNumericInput</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
