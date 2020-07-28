@@ -3,12 +3,11 @@
 #' @param val value to get from JSON
 #'
 #' @return Value of type defined in `shiny_input`
-#' @export
 parse_val <- function(val) {
   jsonlite::fromJSON(ifelse(is.null(val), '""', val))
 }
 
-#' Check if color is set from Semanti-UI palette
+#' Check if color is set from Fomantic-UI palette
 #'
 #' @param color character with color name
 #'

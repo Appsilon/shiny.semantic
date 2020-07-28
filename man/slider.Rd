@@ -5,7 +5,7 @@
 \alias{sliderInput}
 \alias{range_input}
 \alias{rangeInput}
-\title{Create Semantic UI Slider}
+\title{Create Semantic UI Slider / Range}
 \usage{
 slider_input(input_id, value, min, max, step = 1, class = NULL)
 
