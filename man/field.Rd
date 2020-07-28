@@ -15,3 +15,35 @@ tag (e.g. style, class or childrens etc.)}
 \description{
 This creates a field tag using Semantic UI styles.
 }
+\examples{
+## Only run examples in interactive R sessions
+if (interactive()){
+  library(shiny.semantic)
+
+  ui <- shinyUI(semanticPage(
+    form(
+      field(
+        label("Name"),
+        text_input("name", value = "", type = "text", placeholder = "Enter Name...")
+      ),
+      # error field
+      field(
+        class = "error",
+        label("Name"),
+        text_input("name", value = "", type = "text", placeholder = "Enter Name...")
+      ),
+      # disabled
+      field(
+        class = "disabled",
+        label("Name"),
+        text_input("name", value = "", type = "text", placeholder = "Enter Name...")
+      )
+    )
+  ))
+  server <- shinyServer(function(input, output) {
+  })
+
+  shiny::shinyApp(ui, server)
+}
+
+}

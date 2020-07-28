@@ -15,3 +15,24 @@ tag (e.g. style, class or childrens etc.)}
 \description{
 This creates a card tag using Semantic UI styles.
 }
+\examples{
+## Only run examples in interactive R sessions
+if (interactive()){
+  library(shiny.semantic)
+
+  ui <- shinyUI(semanticPage(
+    card(
+      div(class="content",
+          div(class="header", "Elliot Fu"),
+          div(class="meta", "Friend"),
+          div(class="description", "Elliot Fu is a film-maker from New York.")
+      )
+    )
+  ))
+  server <- shinyServer(function(input, output) {
+  })
+
+  shiny::shinyApp(ui, server)
+}
+
+}

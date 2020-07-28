@@ -159,6 +159,35 @@ tag (e.g. style, class or childrens etc.)</p></td>
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'>## Only run examples in interactive R sessions</span>
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
+
+  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'>shinyUI</span>(<span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
+    <span class='fu'>cards</span>(
+      <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"two"</span>,
+      <span class='fu'><a href='card.html'>card</a></span>(
+        <span class='fu'>div</span>(<span class='kw'>class</span><span class='kw'>=</span><span class='st'>"content"</span>,
+            <span class='fu'>div</span>(<span class='kw'>class</span><span class='kw'>=</span><span class='st'>"header"</span>, <span class='st'>"Elliot Fu"</span>),
+            <span class='fu'>div</span>(<span class='kw'>class</span><span class='kw'>=</span><span class='st'>"meta"</span>, <span class='st'>"Friend"</span>),
+            <span class='fu'>div</span>(<span class='kw'>class</span><span class='kw'>=</span><span class='st'>"description"</span>, <span class='st'>"Elliot Fu is a film-maker from New York."</span>)
+        )
+      ),
+      <span class='fu'><a href='card.html'>card</a></span>(
+        <span class='fu'>div</span>(<span class='kw'>class</span><span class='kw'>=</span><span class='st'>"content"</span>,
+            <span class='fu'>div</span>(<span class='kw'>class</span><span class='kw'>=</span><span class='st'>"header"</span>, <span class='st'>"John Bean"</span>),
+            <span class='fu'>div</span>(<span class='kw'>class</span><span class='kw'>=</span><span class='st'>"meta"</span>, <span class='st'>"Friend"</span>),
+            <span class='fu'>div</span>(<span class='kw'>class</span><span class='kw'>=</span><span class='st'>"description"</span>, <span class='st'>"John Bean is a film-maker from London."</span>)
+        )
+      )
+    )
+  ))
+  <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'>shinyServer</span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
+  })
+
+  <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

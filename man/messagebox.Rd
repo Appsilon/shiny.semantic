@@ -24,3 +24,30 @@ Default is FALSE - not closable}
 \description{
 Create Semantic UI Message box
 }
+\examples{
+## Only run examples in interactive R sessions
+if (interactive()){
+  library(shiny.semantic)
+
+  ui <- shinyUI(semanticPage(
+    messagebox(header = "Main header", content = "text"),
+    # message with icon
+    messagebox(class = "icon", header = "Main header", content = "text", icon_name = "dog"),
+    # closable message
+    messagebox(header = "Main header", content = "text", closable =  TRUE),
+    # floating
+    messagebox(class = "floating", header = "Main header", content = "text"),
+    # compact
+    messagebox(class = "compact", header = "Main header", content = "text"),
+    # warning
+    messagebox(class = "warning", header = "Warning", content = "text"),
+    # info
+    messagebox(class = "info", header = "Info", content = "text")
+  ))
+  server <- shinyServer(function(input, output) {
+  })
+
+  shiny::shinyApp(ui, server)
+}
+
+}
