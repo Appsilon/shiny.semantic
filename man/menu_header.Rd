@@ -14,3 +14,6 @@ menu_header(..., is_item = TRUE)
 \description{
 This creates a dropdown header item using Semantic UI.
 }
+\seealso{
+menu
+}

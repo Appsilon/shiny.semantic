@@ -637,19 +637,31 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
 #' Look at https://semantic-ui.com/modules/dropdown.html#/settings for all possibilities.
 #'
 #' @examples
+#' ## Only run examples in interactive R sessions
+#' if (interactive()){
+#'   library(shiny.semantic)
 #'
-#' dropdown_menu(
-#'   "Dropdown menu",
-#'   icon(class = "dropdown"),
-#'   menu(
-#'     menu_header("Header"),
-#'     menu_divider(),
-#'     menu_item("Option 1"),
-#'     menu_item("Option 2")
-#'   ),
-#'   name = "dropdown_menu",
-#'   dropdown_specs = list("duration: 500")
-#' )
+#'   ui <- shinyUI(semanticPage(
+#'     dropdown_menu(
+#'       "Dropdown menu",
+#'       icon(class = "dropdown"),
+#'       menu(
+#'         menu_header("Header"),
+#'         menu_divider(),
+#'         menu_item("Option 1"),
+#'         menu_item("Option 2")
+#'       ),
+#'       name = "dropdown_menu",
+#'       dropdown_specs = list("duration: 500")
+#'     )
+#'
+#'   ))
+#'   server <- shinyServer(function(input, output) {
+#'   })
+#'
+#'   shiny::shinyApp(ui, server)
+#' }
+#'
 #' @import shiny
 #' @export
 dropdown_menu <- function(..., class = "", name, is_menu_item = FALSE, dropdown_specs = list()) {
@@ -683,6 +695,8 @@ dropdown_menu <- function(..., class = "", name, is_menu_item = FALSE, dropdown_
 #' @param ... Content of the header: text, icons, etc.
 #' @param is_item If TRUE created header is item of Semantic UI Menu.
 #'
+#' @seealso menu
+#'
 #' @export
 #'
 #' @import shiny
@@ -699,6 +713,8 @@ menu_header <- function(..., is_item = TRUE) {
 #' This creates a menu divider item using Semantic UI.
 #'
 #' @param ... Other attributes of the divider such as style.
+#'
+#' @seealso menu
 #'
 #' @export
 #'

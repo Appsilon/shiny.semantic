@@ -28,17 +28,29 @@ Look at https://semantic-ui.com/modules/dropdown.html#/settings for all possibil
 This creates a dropdown using Semantic UI.
 }
 \examples{
+## Only run examples in interactive R sessions
+if (interactive()){
+  library(shiny.semantic)
 
-dropdown_menu(
-  "Dropdown menu",
-  icon(class = "dropdown"),
-  menu(
-    menu_header("Header"),
-    menu_divider(),
-    menu_item("Option 1"),
-    menu_item("Option 2")
-  ),
-  name = "dropdown_menu",
-  dropdown_specs = list("duration: 500")
-)
+  ui <- shinyUI(semanticPage(
+    dropdown_menu(
+      "Dropdown menu",
+      icon(class = "dropdown"),
+      menu(
+        menu_header("Header"),
+        menu_divider(),
+        menu_item("Option 1"),
+        menu_item("Option 2")
+      ),
+      name = "dropdown_menu",
+      dropdown_specs = list("duration: 500")
+    )
+
+  ))
+  server <- shinyServer(function(input, output) {
+  })
+
+  shiny::shinyApp(ui, server)
+}
+
 }

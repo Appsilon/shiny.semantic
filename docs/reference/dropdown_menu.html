@@ -178,29 +178,30 @@ Look at https://semantic-ui.com/modules/dropdown.html#/settings for all possibil
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'>dropdown_menu</span>(
-  <span class='st'>"Dropdown menu"</span>,
-  <span class='fu'><a href='icon.html'>icon</a></span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"dropdown"</span>),
-  <span class='fu'><a href='menu.html'>menu</a></span>(
-    <span class='fu'><a href='menu_header.html'>menu_header</a></span>(<span class='st'>"Header"</span>),
-    <span class='fu'><a href='menu_divider.html'>menu_divider</a></span>(),
-    <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='st'>"Option 1"</span>),
-    <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='st'>"Option 2"</span>)
-  ),
-  <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"dropdown_menu"</span>,
-  <span class='kw'>dropdown_specs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"duration: 500"</span>)
-)</div><div class='output co'>#&gt; &lt;div class="ui dropdown  dropdown_name_dropdown_menu"&gt;
-#&gt;   Dropdown menu
-#&gt;   &lt;i class="dropdown icon"&gt;&lt;/i&gt;
-#&gt;   &lt;div class="ui menu "&gt;
-#&gt;     &lt;div class="item header"&gt;Header&lt;/div&gt;
-#&gt;     &lt;div class="divider"&gt;&lt;/div&gt;
-#&gt;     &lt;div class="item "&gt;Option 1&lt;/div&gt;
-#&gt;     &lt;div class="item "&gt;Option 2&lt;/div&gt;
-#&gt;   &lt;/div&gt;
-#&gt; &lt;/div&gt;
-#&gt; &lt;script&gt;$('.ui.dropdown.dropdown_name_dropdown_menu').dropdown({duration: 500});&lt;/script&gt;</div></pre>
+    <pre class="examples"><div class='input'><span class='co'>## Only run examples in interactive R sessions</span>
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
+
+  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'>shinyUI</span>(<span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
+    <span class='fu'>dropdown_menu</span>(
+      <span class='st'>"Dropdown menu"</span>,
+      <span class='fu'><a href='icon.html'>icon</a></span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"dropdown"</span>),
+      <span class='fu'><a href='menu.html'>menu</a></span>(
+        <span class='fu'><a href='menu_header.html'>menu_header</a></span>(<span class='st'>"Header"</span>),
+        <span class='fu'><a href='menu_divider.html'>menu_divider</a></span>(),
+        <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='st'>"Option 1"</span>),
+        <span class='fu'><a href='menu_item.html'>menu_item</a></span>(<span class='st'>"Option 2"</span>)
+      ),
+      <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"dropdown_menu"</span>,
+      <span class='kw'>dropdown_specs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"duration: 500"</span>)
+    )
+
+  ))
+  <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'>shinyServer</span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
+  })
+
+  <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
