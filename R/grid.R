@@ -2,6 +2,7 @@
 #' @param areas_dataframe data.frame of character representing grid areas
 #' @return character
 #' @details This is a helper function used in grid_template()
+#'
 #' \preformatted{
 #' areas_dataframe <- rbind(
 #'    c("header", "header", "header"),
@@ -14,8 +15,8 @@
 #'
 data_frame_to_css_grid_template_areas <- function(areas_dataframe) {
   apply(areas_dataframe, 1, function(row) paste(row, collapse = ' ')) %>%
-    lapply(., function(row) glue::glue("'{row}'")) %>%
-    paste(., collapse = ' ')
+    lapply(function(row) glue::glue("'{row}'")) %>%
+    paste(collapse = ' ')
 }
 
 #' Generate template string representing CSS styles of grid container div.
@@ -57,7 +58,7 @@ grid_container_css <- function(css_grid_template_areas, rows_height, cols_width)
 
 #' Generate list of HTML div elements representing grid areas.
 #'
-#' @param area_names
+#' @param area_names vector with area names
 #'
 #' @return list of \code{shiny::tags$div}
 #'
@@ -101,7 +102,6 @@ list_of_area_tags <- function(area_names) {
 #' area_names - contain all unique area names used in grid definition
 #'
 #' @examples
-#'
 #' myGrid <- grid_template(default = list(
 #'   areas = rbind(
 #'     c("header", "header", "header"),
@@ -111,10 +111,7 @@ list_of_area_tags <- function(area_names) {
 #'   rows_height = c("50px", "auto", "100px"),
 #'   cols_width = c("100px", "2fr", "1fr")
 #' ))
-#'
 #' display_grid(myGrid)
-#'
-#'
 #' subGrid <- grid_template(default = list(
 #'   areas = rbind(
 #'     c("top_left", "top_right"),
@@ -125,9 +122,7 @@ list_of_area_tags <- function(area_names) {
 #' ))
 #'
 #' display_grid(subGrid)
-#'
 #' @export
-#'
 grid_template <- function(
   default = list(areas = rbind(c("main_area")), rows_height = c("100%"), cols_width = c("100%")),
   mobile = list(areas = rbind(c("main_area")), rows_height = c("100%"), cols_width = c("100%"))) {
@@ -139,7 +134,7 @@ grid_template <- function(
   grid_template <- shiny::tags$div(
     style = grid_container_css(css_grid_template_areas, default$rows_height, default$cols_width),
     shiny::tagList(list_of_area_tags(area_names))
-  ) %>% htmltools::renderTags(.)
+  ) %>% htmltools::renderTags()
 
   return(list(template = grid_template$html, area_names = area_names))
 }
@@ -178,7 +173,7 @@ apply_custom_styles_to_html_template <- function(html_template = "",
 #' @return character
 #'
 #' @details This is a helper function used in grid()
-#'
+#' @importFrom stats setNames
 prepare_mustache_for_html_template <- function(styled_html_template = "", area_names = c(), display_mode = FALSE) {
   mustache <- sapply(area_names, function(area) ifelse(display_mode, paste("<", area, ">"), paste("{{", area, "}}")))
   areas_mustache <- as.list(setNames(mustache, area_names))
@@ -215,36 +210,38 @@ prepare_mustache_for_html_template <- function(styled_html_template = "", area_n
 #'     c("top_left", "top_right"),
 #'     c("bottom_left", "bottom_right")
 #'   ),
-#'   rows_height = c("50\%", "50\%"),
-#'   cols_width = c("50\%", "50\%")
+#'   rows_height = c("50%", "50%"),
+#'   cols_width = c("50%", "50%")
 #' ))
 #'
+#' if (interactive()){
 #' library(shiny)
-#'
+#' library(shiny.semantic)
 #' shinyApp(
 #'   ui = semanticPage(
 #'     grid(myGrid,
 #'          container_style = "border: 1px solid #f00",
-#'          area_styles = list(header = "background: #0099f9", menu = "border-right: 1px solid #0099f9"),
+#'          area_styles = list(header = "background: #0099f9",
+#'                             menu = "border-right: 1px solid #0099f9"),
 #'          header = div(shiny::tags$h1("Hello CSS Grid!")),
-#'          menu = simple_checkbox("example", "Check me", is_marked = FALSE),
+#'          menu = checkbox_input("example", "Check me", is_marked = FALSE),
 #'          main = grid(subGrid,
-#'                      top_left = uicalendar("my_calendar"),
+#'                      top_left = calendar("my_calendar"),
 #'                      top_right = div("hello 1"),
 #'                      bottom_left = div("hello 2"),
 #'                      bottom_right = div("hello 3")
 #'          ),
 #'          right1 = div(
 #'            toggle("toggle", "let's toggle"),
-#'            multiple_checkbox("mycheckbox", "mycheckbox", c("option A","option B","option C"))),
+#'            multiple_checkbox("mycheckbox", "mycheckbox",
+#'                              c("option A","option B","option C"))),
 #'          right2 = div("right 2")
 #'     )
 #'   ),
 #'   server = shinyServer(function(input, output) {})
 #' )
-#'
+#' }
 #' @export
-#'
 grid <- function(grid_template, container_style = "", area_styles = list(), display_mode = FALSE, ...) {
 
   # Replace {custom_style_grid_container} and {custom_style_grid_area_{name}} with custom CSS
@@ -285,5 +282,3 @@ display_grid <- function(grid_template) {
   Sys.sleep(1) # Let's wait for browser to load the file until we delete it
   invisible(file.remove(temporary_html_file))
 }
-
-

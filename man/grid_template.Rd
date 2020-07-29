@@ -33,7 +33,6 @@ area_names - contain all unique area names used in grid definition
 Define a template of a CSS grid
 }
 \examples{
-
 myGrid <- grid_template(default = list(
   areas = rbind(
     c("header", "header", "header"),
@@ -43,10 +42,7 @@ myGrid <- grid_template(default = list(
   rows_height = c("50px", "auto", "100px"),
   cols_width = c("100px", "2fr", "1fr")
 ))
-
 display_grid(myGrid)
-
-
 subGrid <- grid_template(default = list(
   areas = rbind(
     c("top_left", "top_right"),
@@ -57,5 +53,4 @@ subGrid <- grid_template(default = list(
 ))
 
 display_grid(subGrid)
-
 }

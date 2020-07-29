@@ -17,6 +17,7 @@ Generate CSS string representing grid template areas.
 }
 \details{
 This is a helper function used in grid_template()
+
 \preformatted{
 areas_dataframe <- rbind(
    c("header", "header", "header"),

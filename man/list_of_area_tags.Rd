@@ -7,7 +7,7 @@
 list_of_area_tags(area_names)
 }
 \arguments{
-\item{area_names}{}
+\item{area_names}{vector with area names}
 }
 \value{
 list of \code{shiny::tags$div}
