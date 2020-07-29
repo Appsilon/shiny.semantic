@@ -21,6 +21,7 @@ textAreaInput(inputId, label, value = "", width = NULL, placeholder = NULL)
 Create a text area input control for entry of unstructured text values.
 }
 \examples{
+## Only run examples in interactive R sessions
 if (interactive()) {
 ui <- semanticPage(
   textAreaInput("a", "Area:", width = "200px"),

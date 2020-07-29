@@ -15,14 +15,22 @@ uiinput(..., class = "")
 This creates an input shell for the actual input
 }
 \examples{
+#' ## Only run examples in interactive R sessions
+if (interactive()) {
 library(shiny)
 library(shiny.semantic)
 
-# Text input
-uiinput(
-  tags$label("Text input"),
-  text_input("ex", type = "text", placeholder = "Enter Text")
+ui <- semanticPage(
+  uiinput(icon("dog"),
+          numeric_input("input", value = 0, label = "")
+  )
 )
+
+server <- function(input, output, session) {
+}
+
+shinyApp(ui, server)
+}
 
 }
 \seealso{
