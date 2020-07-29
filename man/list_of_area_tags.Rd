@@ -10,7 +10,7 @@ list_of_area_tags(area_names)
 \item{area_names}{}
 }
 \value{
-list of shiny::tags$div
+list of \code{shiny::tags$div}
 }
 \description{
 Generate list of HTML div elements representing grid areas.

@@ -7,10 +7,10 @@
 data_frame_to_css_grid_template_areas(areas_dataframe)
 }
 \arguments{
-\item{areas_dataframe}{data.frame of strings representing grid areas}
+\item{areas_dataframe}{data.frame of character representing grid areas}
 }
 \value{
-string
+character
 }
 \description{
 Generate CSS string representing grid template areas.

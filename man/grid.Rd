@@ -15,7 +15,7 @@ grid(
 \arguments{
 \item{grid_template}{grid template created with grid_template() function}
 
-\item{container_style}{string of custom CSS for the main grid container}
+\item{container_style}{character - string of custom CSS for the main grid container}
 
 \item{area_styles}{list of custom CSS styles for provided area names}
 
@@ -31,9 +31,8 @@ Use CSS grid template in Shiny UI
 }
 \details{
 Grids can be nested.
-
-Example:
-
+}
+\examples{
 \preformatted{
   myGrid <- grid_template(default = list(
     areas = rbind(
@@ -50,8 +49,8 @@ Example:
       c("top_left", "top_right"),
       c("bottom_left", "bottom_right")
     ),
-    rows_height = c("50\%", "50\%"),
-    cols_width = c("50\%", "50\%")
+    rows_height = c("50\\%", "50\\%"),
+    cols_width = c("50\\%", "50\\%")
   ))
 
   library(shiny)
@@ -78,4 +77,5 @@ Example:
     server = shinyServer(function(input, output) {})
   )
 }
+
 }

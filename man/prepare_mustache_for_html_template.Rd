@@ -11,14 +11,14 @@ prepare_mustache_for_html_template(
 )
 }
 \arguments{
-\item{styled_html_template}{string}
+\item{styled_html_template}{character}
 
-\item{area_names}{vector of strings}
+\item{area_names}{vector of character}
 
 \item{display_mode}{boolean - if TRUE it replaces \{\{\}\} mustache with <> so they can be displayed in the debug mode}
 }
 \value{
-string
+character
 }
 \description{
 After applying custom CSS, prepares glue() template to be ready to use with htmltools::htmlTemplate()

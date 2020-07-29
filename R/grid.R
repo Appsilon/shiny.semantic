@@ -1,6 +1,6 @@
 #' Generate CSS string representing grid template areas.
-#' @param areas_dataframe data.frame of strings representing grid areas
-#' @return string
+#' @param areas_dataframe data.frame of character representing grid areas
+#' @return character
 #' @details This is a helper function used in grid_template()
 #' \preformatted{
 #' areas_dataframe <- rbind(
@@ -20,11 +20,11 @@ data_frame_to_css_grid_template_areas <- function(areas_dataframe) {
 
 #' Generate template string representing CSS styles of grid container div.
 #'
-#' @param css_grid_template_areas string, CSS value for grid-template-areas
-#' @param rows_height vector of strings
-#' @param cols_width vector of strings
+#' @param css_grid_template_areas character, CSS value for grid-template-areas
+#' @param rows_height vector of character
+#' @param cols_width vector of character
 #'
-#' @return string
+#' @return character
 #' @details This is a helper function used in grid_template()
 #' \preformatted{
 #'   grid_container_css(
@@ -59,7 +59,7 @@ grid_container_css <- function(css_grid_template_areas, rows_height, cols_width)
 #'
 #' @param area_names
 #'
-#' @return list of shiny::tags$div
+#' @return list of \code{shiny::tags$div}
 #'
 #' @details This is a helper function used in grid_template()
 #' \preformatted{
@@ -84,24 +84,23 @@ list_of_area_tags <- function(area_names) {
 #'
 #' @param default
 #' Template for desktop:
-#' list(areas = [data.frame of strings],
-#'      rows_height = [vector of strings],
-#'      cols_width = [vector of strings])
+#' list(areas = [data.frame of character],
+#'      rows_height = [vector of character],
+#'      cols_width = [vector of character])
 #' @param mobile
 #' Template for mobile:
-#' list(areas = [data.frame of strings],
-#'      rows_height = [vector of strings],
-#'      cols_width = [vector of strings])
+#' list(areas = [data.frame of character],
+#'      rows_height = [vector of character],
+#'      cols_width = [vector of character])
 #'
 #' @return
-#' list(template = [string], area_names = [vector of strings])
+#' list(template = [character], area_names = [vector of character])
 #'
 #' template - contains template that can be formatted with glue::glue() function
 #'
 #' area_names - contain all unique area names used in grid definition
 #'
-#' @details
-#' Example usage:
+#' @examples
 #' \preformatted{
 #'   myGrid <- grid_template(default = list(
 #'     areas = rbind(
@@ -122,8 +121,8 @@ list_of_area_tags <- function(area_names) {
 #'       c("top_left", "top_right"),
 #'       c("bottom_left", "bottom_right")
 #'     ),
-#'     rows_height = c("50\%", "50\%"),
-#'     cols_width = c("50\%", "50\%")
+#'     rows_height = c("50%", "50%"),
+#'     cols_width = c("50%", "50%")
 #'   ))
 #'
 #'   display_grid(subGrid)
@@ -132,8 +131,8 @@ list_of_area_tags <- function(area_names) {
 #' @export
 #'
 grid_template <- function(
-  default = list(areas = "", rows_height = c(), cols_width = c()),
-  mobile = list(areas = "", rows_height = c(), cols_width = c())) {
+  default = list(areas = rbind(c("main_area")), rows_height = c("100%"), cols_width = c("100%")),
+  mobile = list(areas = rbind(c("main_area")), rows_height = c("100%"), cols_width = c("100%"))) {
   # TODO: Support for mobile grid version. Only `default` argument is used right now.
 
   area_names <- default$areas %>% as.vector %>% unique
@@ -149,12 +148,12 @@ grid_template <- function(
 
 #' Format string template (that represents HTML template) with custom CSS styles.
 #'
-#' @param html_template string
-#' @param area_names vector of strings
-#' @param container_style string
-#' @param area_styles list of strings
+#' @param html_template character
+#' @param area_names vector of character
+#' @param container_style character
+#' @param area_styles list of character
 #'
-#' @return string
+#' @return character
 #'
 #' @details This is a helper function used in grid()
 #'
@@ -173,12 +172,12 @@ apply_custom_styles_to_html_template <- function(html_template = "",
 
 #' After applying custom CSS, prepares glue() template to be ready to use with htmltools::htmlTemplate()
 #'
-#' @param styled_html_template string
-#' @param area_names vector of strings
+#' @param styled_html_template character
+#' @param area_names vector of character
 #' @param display_mode
 #' boolean - if TRUE it replaces \{\{\}\} mustache with <> so they can be displayed in the debug mode
 #'
-#' @return string
+#' @return character
 #'
 #' @details This is a helper function used in grid()
 #'
@@ -192,7 +191,7 @@ prepare_mustache_for_html_template <- function(styled_html_template = "", area_n
 #' Use CSS grid template in Shiny UI
 #'
 #' @param grid_template grid template created with grid_template() function
-#' @param container_style string of custom CSS for the main grid container
+#' @param container_style character - string of custom CSS for the main grid container
 #' @param area_styles list of custom CSS styles for provided area names
 #' @param display_mode replaces areas HTML content with <area name> text. Used by display_grid() function
 #' @param ... areas HTML content provided by named arguments
@@ -202,8 +201,7 @@ prepare_mustache_for_html_template <- function(styled_html_template = "", area_n
 #' @details
 #' Grids can be nested.
 #'
-#' Example:
-#'
+#' @examples
 #' \preformatted{
 #'   myGrid <- grid_template(default = list(
 #'     areas = rbind(

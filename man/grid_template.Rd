@@ -10,12 +10,18 @@ grid_template(
 )
 }
 \arguments{
-\item{default}{Template for desktop: list(areas = [data.frame of strings], rows_height = [vector of strings], cols_width = [vector of strings])}
+\item{default}{Template for desktop:
+list(areas = [data.frame of character],
+     rows_height = [vector of character],
+     cols_width = [vector of character])}
 
-\item{mobile}{Template for mobile: list(areas = [data.frame of strings], rows_height = [vector of strings], cols_width = [vector of strings])}
+\item{mobile}{Template for mobile:
+list(areas = [data.frame of character],
+     rows_height = [vector of character],
+     cols_width = [vector of character])}
 }
 \value{
-list(template = [string], area_names = [vector of strings])
+list(template = [character], area_names = [vector of character])
 
 template - contains template that can be formatted with glue::glue() function
 
@@ -24,8 +30,7 @@ area_names - contain all unique area names used in grid definition
 \description{
 Define a template of a CSS grid
 }
-\details{
-Example usage:
+\examples{
 \preformatted{
   myGrid <- grid_template(default = list(
     areas = rbind(
@@ -52,4 +57,5 @@ Second example:
 
   display_grid(subGrid)
 }
+
 }
