@@ -75,6 +75,38 @@ icon <- function(class = "", ...) {
 #' @param class class of the label. Look at https://semantic-ui.com/elements/label.html for all possibilities.
 #' @param is_link If TRUE creates label with 'a' tag, otherwise with 'div' tag.
 #' #'
+#' @examples
+#' ## Only run examples in interactive R sessions
+#' if (interactive()){
+#'   library(shiny.semantic)
+#'   ui <- shinyUI(
+#'     semanticPage(
+#'       ## label
+#'       label_tag(class = "ui label",
+#'                 icon = icon("mail icon"), 23),
+#'       p(),
+#'       ## pointing label
+#'       field(
+#'         text_input("ex", label = "", type = "text", placeholder = "Your name")),
+#'       label_tag("Please enter a valid name", class = "ui pointing red basic label"),
+#'       p(),
+#'       ## tag
+#'       label_tag(class = "ui tag label", "New"),
+#'       label_tag(class = "ui red tag label", "Upcoming"),
+#'       label_tag(class =" ui teal tag label","Featured"),
+#'       ## ribbon
+#'       segment(class = "ui raised segment",
+#'               label_tag(class = "ui red ribbon label", "Overview"),
+#'               "Text"),
+#'       ## attached
+#'       segment(class = "ui raised segment",
+#'               label_tag(class = "ui top attached label", "HTML"),
+#'               p("Text"))
+#'     ))
+#'   server <- function(input, output, session) {
+#'   }
+#'   shinyApp(ui, server)
+#' }
 #' @export
 #'
 #' @import shiny
