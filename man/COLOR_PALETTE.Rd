@@ -3,8 +3,7 @@
 \docType{data}
 \name{COLOR_PALETTE}
 \alias{COLOR_PALETTE}
-\title{Semantic colors
-https://github.com/Semantic-Org/Semantic-UI/blob/master/src/themes/default/globals/site.variables}
+\title{Semantic colors}
 \format{
 An object of class \code{character} of length 13.
 }
@@ -12,7 +11,6 @@ An object of class \code{character} of length 13.
 COLOR_PALETTE
 }
 \description{
-Semantic colors
 https://github.com/Semantic-Org/Semantic-UI/blob/master/src/themes/default/globals/site.variables
 }
 \keyword{datasets}
