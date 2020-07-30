@@ -18,9 +18,11 @@ for all possibilities.}
 This creates a menu using Semantic UI.
 }
 \examples{
+## Only run examples in interactive R sessions
 if (interactive()) {
   library(shiny)
   library(shiny.semantic)
+
   ui <- function() {
     shinyUI(
       semanticPage(

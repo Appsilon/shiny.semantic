@@ -15,3 +15,42 @@ tag (e.g. style, class or childrens etc.)}
 \description{
 This creates a form tag using Semantic UI styles.
 }
+\examples{
+## Only run examples in interactive R sessions
+if (interactive()){
+  library(shiny)
+  library(shiny.semantic)
+
+  ui <- shinyUI(semanticPage(
+    form(
+      field(
+        label("Text"),
+        text_input("text_ex", value = "", type = "text", placeholder = "Enter Text...")
+      )
+    ),
+    # loading form
+    form(class = "loading form",
+         field(
+           label("Text"),
+           text_input("text_ex", value = "", type = "text", placeholder = "Enter Text...")
+         )),
+    # size variations mini form
+    form(class = "mini",
+         field(
+           label("Text"),
+           text_input("text_ex", value = "", type = "text", placeholder = "Enter Text...")
+         )),
+    # massive
+    form(class = "massive",
+         field(
+           label("Text"),
+           text_input("text_ex", value = "", type = "text", placeholder = "Enter Text...")
+         ))
+  ))
+  server <- shinyServer(function(input, output) {
+  })
+
+  shinyApp(ui, server)
+}
+
+}
