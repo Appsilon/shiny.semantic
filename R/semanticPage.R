@@ -125,7 +125,6 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
 #' @export
 semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE,
                          margin = "10px") {
-  content <- shiny::tags$div(class = "wrapper", ...)
   if (supress_bootstrap) {
     supress_bootstrap <- suppressDependencies("bootstrap")
   }
@@ -149,6 +148,6 @@ semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE
     ),
     shiny::tags$body(style = glue::glue("margin:{margin}; min-height: 611px;"),
                      supress_bootstrap,
-                     content)
+                     ...)
   )
 }
