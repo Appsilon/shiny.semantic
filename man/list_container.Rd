@@ -18,6 +18,7 @@ here: https://fomantic-ui.com/elements/icon.html}
 This creates a list with icons using Semantic UI
 }
 \examples{
+library(shiny)
 library(shiny.semantic)
 list_content <- list(
   list(header = "Head", description = "Lorem ipsum", icon = "cat"),

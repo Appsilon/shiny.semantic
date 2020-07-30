@@ -20,7 +20,9 @@ This creates a label tag using Semantic UI.
 \examples{
 ## Only run examples in interactive R sessions
 if (interactive()){
+  library(shiny)
   library(shiny.semantic)
+
   ui <- shinyUI(
     semanticPage(
       ## label
