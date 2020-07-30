@@ -1,0 +1,26 @@
+library(shiny)
+library(shiny.semantic)
+
+ui <- semanticPage(
+  titlePanel("Hello Shiny!"),
+  sidebar_layout(
+    sidebar_panel(
+      slider_input("obs",
+                  "Number of observations:",
+                  min = 0,
+                  max = 1000,
+                  value = 500)
+    ),
+  main_panel(
+      plotOutput("distPlot")
+    )
+  )
+)
+
+server <- function(input, output) {
+  output$distPlot <- renderPlot({
+    hist(rnorm(input$obs))
+  })
+}
+
+shinyApp(ui, server)
