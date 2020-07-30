@@ -78,7 +78,9 @@ icon <- function(class = "", ...) {
 #' @examples
 #' ## Only run examples in interactive R sessions
 #' if (interactive()){
+#'   library(shiny)
 #'   library(shiny.semantic)
+#'
 #'   ui <- shinyUI(
 #'     semanticPage(
 #'       ## label
@@ -168,7 +170,7 @@ set_tab_id <- function(tab) {
 #'   server <- shinyServer(function(input, output) {
 #'   })
 #'
-#'   shiny::shinyApp(ui, server)
+#'   shinyApp(ui, server)
 #' }
 #'
 tabset <- function(tabs,
@@ -235,7 +237,7 @@ tabset <- function(tabs,
 #'   server <- shinyServer(function(input, output) {
 #'   })
 #'
-#'   shiny::shinyApp(ui, server)
+#'   shinyApp(ui, server)
 #' }
 #' @export
 header <- function(title, description, icon = NULL) {
@@ -257,6 +259,7 @@ header <- function(title, description, icon = NULL) {
 #' @examples
 #' ## Only run examples in interactive R sessions
 #' if (interactive()){
+#'   library(shiny)
 #'   library(shiny.semantic)
 #'
 #'   ui <- shinyUI(semanticPage(
@@ -281,7 +284,7 @@ header <- function(title, description, icon = NULL) {
 #'   server <- shinyServer(function(input, output) {
 #'   })
 #'
-#'   shiny::shinyApp(ui, server)
+#'   shinyApp(ui, server)
 #' }
 #'
 #' @export
@@ -299,6 +302,7 @@ cards <- function(..., class = "") {
 #' @examples
 #' ## Only run examples in interactive R sessions
 #' if (interactive()){
+#'   library(shiny)
 #'   library(shiny.semantic)
 #'
 #'   ui <- shinyUI(semanticPage(
@@ -313,7 +317,7 @@ cards <- function(..., class = "") {
 #'   server <- shinyServer(function(input, output) {
 #'   })
 #'
-#'   shiny::shinyApp(ui, server)
+#'   shinyApp(ui, server)
 #' }
 #'
 #' @export
@@ -331,6 +335,7 @@ card <- function(..., class = "") {
 #' @examples
 #' ## Only run examples in interactive R sessions
 #' if (interactive()){
+#'   library(shiny)
 #'   library(shiny.semantic)
 #'
 #'   ui <- shinyUI(semanticPage(
@@ -347,7 +352,7 @@ card <- function(..., class = "") {
 #'   server <- shinyServer(function(input, output) {
 #'   })
 #'
-#'   shiny::shinyApp(ui, server)
+#'   shinyApp(ui, server)
 #' }
 #'
 #' @export
@@ -365,6 +370,7 @@ segment <- function(..., class = "") {
 #' @examples
 #' ## Only run examples in interactive R sessions
 #' if (interactive()){
+#'   library(shiny)
 #'   library(shiny.semantic)
 #'
 #'   ui <- shinyUI(semanticPage(
@@ -396,7 +402,7 @@ segment <- function(..., class = "") {
 #'   server <- shinyServer(function(input, output) {
 #'   })
 #'
-#'   shiny::shinyApp(ui, server)
+#'   shinyApp(ui, server)
 #' }
 #'
 #' @export
@@ -416,6 +422,7 @@ form <- function(..., class = "") {
 #' @examples
 #' ## Only run examples in interactive R sessions
 #' if (interactive()){
+#'   library(shiny)
 #'   library(shiny.semantic)
 #'
 #'   ui <- shinyUI(semanticPage(
@@ -434,7 +441,7 @@ form <- function(..., class = "") {
 #'   server <- shinyServer(function(input, output) {
 #'   })
 #'
-#'   shiny::shinyApp(ui, server)
+#'   shinyApp(ui, server)
 #' }
 #'
 #' @export
@@ -452,6 +459,7 @@ fields <- function(..., class = "") {
 #' @examples
 #' ## Only run examples in interactive R sessions
 #' if (interactive()){
+#'   library(shiny)
 #'   library(shiny.semantic)
 #'
 #'   ui <- shinyUI(semanticPage(
@@ -477,7 +485,7 @@ fields <- function(..., class = "") {
 #'   server <- shinyServer(function(input, output) {
 #'   })
 #'
-#'   shiny::shinyApp(ui, server)
+#'   shinyApp(ui, server)
 #' }
 #'
 #' @export
@@ -494,6 +502,7 @@ field <- function(..., class = "") {
 #' @examples
 #' ## Only run examples in interactive R sessions
 #' if (interactive()){
+#'   library(shiny)
 #'   library(shiny.semantic)
 #'
 #'   ui <- shinyUI(semanticPage(
@@ -507,7 +516,7 @@ field <- function(..., class = "") {
 #'   server <- shinyServer(function(input, output) {
 #'   })
 #'
-#'   shiny::shinyApp(ui, server)
+#'   shinyApp(ui, server)
 #' }
 #'
 #' @export
@@ -529,6 +538,7 @@ label <- function(...) {
 #' @examples
 #' ## Only run examples in interactive R sessions
 #' if (interactive()){
+#'   library(shiny)
 #'   library(shiny.semantic)
 #'
 #'   ui <- shinyUI(semanticPage(
@@ -549,7 +559,7 @@ label <- function(...) {
 #'   server <- shinyServer(function(input, output) {
 #'   })
 #'
-#'   shiny::shinyApp(ui, server)
+#'   shinyApp(ui, server)
 #' }
 #'
 #' @export
@@ -597,9 +607,11 @@ messagebox <- function(header, content, class = "", icon_name, closable = FALSE)
 #'
 #' @rdname menu
 #' @examples
+#' ## Only run examples in interactive R sessions
 #' if (interactive()) {
 #'   library(shiny)
 #'   library(shiny.semantic)
+#'
 #'   ui <- function() {
 #'     shinyUI(
 #'       semanticPage(
@@ -671,6 +683,7 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
 #' @examples
 #' ## Only run examples in interactive R sessions
 #' if (interactive()){
+#'   library(shiny)
 #'   library(shiny.semantic)
 #'
 #'   ui <- shinyUI(semanticPage(
@@ -691,7 +704,7 @@ menu_item <- function(..., item_feature = "", style = NULL, href = NULL) {
 #'   server <- shinyServer(function(input, output) {
 #'   })
 #'
-#'   shiny::shinyApp(ui, server)
+#'   shinyApp(ui, server)
 #' }
 #'
 #' @import shiny
@@ -783,6 +796,7 @@ list_element <- function(header = NULL, description = NULL, icon_name = NULL) {
 #' @import shiny
 #' @import magrittr
 #' @examples
+#' library(shiny)
 #' library(shiny.semantic)
 #' list_content <- list(
 #'   list(header = "Head", description = "Lorem ipsum", icon = "cat"),

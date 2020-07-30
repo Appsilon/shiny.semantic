@@ -18,6 +18,7 @@ This creates a fields tag using Semantic UI styles.
 \examples{
 ## Only run examples in interactive R sessions
 if (interactive()){
+  library(shiny)
   library(shiny.semantic)
 
   ui <- shinyUI(semanticPage(
@@ -36,7 +37,7 @@ if (interactive()){
   server <- shinyServer(function(input, output) {
   })
 
-  shiny::shinyApp(ui, server)
+  shinyApp(ui, server)
 }
 
 }

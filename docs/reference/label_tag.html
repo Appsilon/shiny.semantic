@@ -166,18 +166,20 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Only run examples in interactive R sessions</span>
 <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
   <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
-  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'>shinyUI</span>(
+
+  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
     <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
       <span class='co'>## label</span>
       <span class='fu'>label_tag</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui label"</span>,
                 <span class='kw'>icon</span> <span class='kw'>=</span> <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"mail icon"</span>), <span class='fl'>23</span>),
-      <span class='fu'>p</span>(),
+      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>p</a></span>(),
       <span class='co'>## pointing label</span>
       <span class='fu'><a href='field.html'>field</a></span>(
         <span class='fu'><a href='text_input.html'>text_input</a></span>(<span class='st'>"ex"</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"text"</span>, <span class='kw'>placeholder</span> <span class='kw'>=</span> <span class='st'>"Your name"</span>)),
       <span class='fu'>label_tag</span>(<span class='st'>"Please enter a valid name"</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui pointing red basic label"</span>),
-      <span class='fu'>p</span>(),
+      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>p</a></span>(),
       <span class='co'>## tag</span>
       <span class='fu'>label_tag</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui tag label"</span>, <span class='st'>"New"</span>),
       <span class='fu'>label_tag</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui red tag label"</span>, <span class='st'>"Upcoming"</span>),
@@ -189,11 +191,11 @@
       <span class='co'>## attached</span>
       <span class='fu'><a href='segment.html'>segment</a></span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui raised segment"</span>,
               <span class='fu'>label_tag</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui top attached label"</span>, <span class='st'>"HTML"</span>),
-              <span class='fu'>p</span>(<span class='st'>"Text"</span>))
+              <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>p</a></span>(<span class='st'>"Text"</span>))
     ))
   <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
   }
-  <span class='fu'>shinyApp</span>(<span class='no'>ui</span>, <span class='no'>server</span>)
+  <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

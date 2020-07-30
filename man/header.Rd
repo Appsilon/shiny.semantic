@@ -29,6 +29,6 @@ if (interactive()){
   server <- shinyServer(function(input, output) {
   })
 
-  shiny::shinyApp(ui, server)
+  shinyApp(ui, server)
 }
 }
