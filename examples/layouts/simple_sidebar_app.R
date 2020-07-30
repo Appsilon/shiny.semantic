@@ -5,7 +5,7 @@ ui <- semanticPage(
   titlePanel("Hello Shiny!"),
   sidebar_layout(
     sidebar_panel(
-      slider_input("obs",
+      sliderInput("obs",
                   "Number of observations:",
                   min = 0,
                   max = 1000,

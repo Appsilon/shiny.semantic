@@ -14,13 +14,9 @@ get_row <- function(arg) {
 #' @param grid_list List to create grid from
 #' @param ... Container's children elements
 #' @return Div containing elements or grid container for specific panel
-panel <- function(grid_list, ...) {
-  args <- list(...)
-  if(is.null(grid_list)) {
-    div(lapply(args, get_row))
-  } else {
-    grid(grid_list$layout, grid_list$container_style, grid_list$area_styles, ...)
-  }
+panel <- function(args) {
+  args <- list(args)
+  div(lapply(args, get_row))
 }
 
 #' Creates div containing elements in order or grid container for sidebar panel
@@ -29,8 +25,8 @@ panel <- function(grid_list, ...) {
 #' @param ... Container's children elements
 #' @rdname sidebar_layout
 #' @export
-sidebar_panel <- function(grid_list, ...) {
-  panel(grid_list, ...)
+sidebar_panel <- function(args = "") {
+  panel(args)
   # adjustments for sidebar panel
 }
 
@@ -40,8 +36,8 @@ sidebar_panel <- function(grid_list, ...) {
 #' @param ... Container's children elements
 #' @rdname sidebar_layout
 #' @export
-main_panel <- function(grid_list, ...) {
-  panel(grid_list, ...)
+main_panel <- function(args = "") {
+  panel(args)
   # adjustments for main panel
 }
 
@@ -87,11 +83,13 @@ main_panel <- function(grid_list, ...) {
 #' @export
 sidebar_layout <- function(sidebar_panel,
                            main_panel,
-                           sidebar_width,
+                           sidebar_width = "25",
                            mirrored = FALSE,
                            min_height = "auto",
-                           container_style,
-                           area_styles) {
+                           container_style = "",
+                           area_styles = list(
+                             sidebar_panel = "",
+                             main_panel = "")) {
 
   # set normal or mirrored sidebar layout
   if (!mirrored) {
