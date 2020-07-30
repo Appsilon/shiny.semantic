@@ -17,11 +17,14 @@ it gets highlighted), default empty (\code{""})}
 \item{icon}{non-mandatory parameter with icon name}
 }
 \value{
-shiny.tag.a link
+shiny tag a link
 }
 \description{
 This function renders horizontal menu item.
 }
 \examples{
 render_menu_link("#subpage1", "SUBPAGE")
+}
+\seealso{
+horizontal_menu
 }

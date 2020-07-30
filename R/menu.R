@@ -26,7 +26,8 @@ digits2words <- function(number) {
 #' it gets highlighted), default empty (\code{""})
 #' @param icon non-mandatory parameter with icon name
 #'
-#' @return shiny.tag.a link
+#' @return shiny tag a link
+#' @seealso horizontal_menu
 #' @export
 #'
 #' @examples
