@@ -6,14 +6,22 @@
 #' @param class Additional classes to add to html tag.
 #'
 #' @examples
+#' #' ## Only run examples in interactive R sessions
+#' if (interactive()) {
 #' library(shiny)
 #' library(shiny.semantic)
 #'
-#' # Text input
-#' uiinput(
-#'   tags$label("Text input"),
-#'   text_input("ex", type = "text", placeholder = "Enter Text")
+#' ui <- semanticPage(
+#'   uiinput(icon("dog"),
+#'           numeric_input("input", value = 0, label = "")
+#'   )
 #' )
+#'
+#' server <- function(input, output, session) {
+#' }
+#'
+#' shinyApp(ui, server)
+#' }
 #'
 #' @seealso text_input
 #'
@@ -38,18 +46,19 @@ uiinput <- function(..., class = "") {
 #' @details
 #' The following \code{type} s are allowed:
 #' \itemize{
-#' \item{text}{The standard input}
-#' \item{textarea}{An extended space for text}
-#' \item{password}{A censored version of the text input}
-#' \item{email}{A special version of the text input specific for email addresses}
-#' \item{url}{A special version of the text input specific for URLs}
-#' \item{tel}{A special version of the text input specific for telephone numbers}
+#' \item{text} {The standard input}
+#' \item{textarea} {An extended space for text}
+#' \item{password} {A censored version of the text input}
+#' \item{email} {A special version of the text input specific for email addresses}
+#' \item{url} {A special version of the text input specific for URLs}
+#' \item{tel} {A special version of the text input specific for telephone numbers}
 #' }
 #'
 #' The inputs are updateable by using \code{\link[shiny]{updateTextInput}} or
 #' \code{\link[shiny]{updateTextAreaInput}} if \code{type = "textarea"}.
 #'
 #' @examples
+#' ## Only run examples in interactive R sessions
 #' if (interactive()) {
 #'   library(shiny)
 #'   library(shiny.semantic)
@@ -98,6 +107,7 @@ text_input <- function(input_id, label = NULL, value = "", type = "text",
 #' @param placeholder Text visible in the input when nothing is inputted.
 #'
 #' @examples
+#' ## Only run examples in interactive R sessions
 #' if (interactive()) {
 #' ui <- semanticPage(
 #'   textAreaInput("a", "Area:", width = "200px"),
@@ -157,10 +167,16 @@ textInput <- function(inputId, label, value = "", width = NULL,
 #' The inputs are updateable by using \code{\link{updateNumericInput}}.
 #' @rdname numeric_input
 #' @examples
-#' library(shiny)
-#' library(shiny.semantic)
-#'
-#' numeric_input("ex", "Select number", 10)
+#' ## Only run examples in interactive R sessions
+#' if (interactive()) {
+#'   library(shiny)
+#'   library(shiny.semantic)
+#'   ui <- semanticPage(
+#'     numeric_input("ex", "Select number", 10),
+#'   )
+#'   server <- function(input, output, session) {}
+#'   shinyApp(ui, server)
+#' }
 #'
 #' @export
 numeric_input <- function(input_id, label, value, min = NA, max = NA, step = NA,
@@ -214,6 +230,28 @@ numericInput <- function(inputId, label, value,
 #' @param min Minimum value.
 #' @param max Maximum value.
 #' @param step Step size.
+#' @examples
+#' ## Only run examples in interactive R sessions
+#' if (interactive()) {
+#' library(shiny)
+#' library(shiny.semantic)
+#'
+#' ui <- semanticPage(
+#'   slider_input("slider_in", 5, 0, 10),
+#'   numeric_input("input", "Numeric input:", 0)
+#' )
+#'
+#' server <- function(input, output, session) {
+#'
+#'   observeEvent(input$slider_in, {
+#'     x <- input$slider_in
+#'
+#'     update_numeric_input(session, "input", value = x)
+#'   })
+#' }
+#'
+#' shinyApp(ui, server)
+#' }
 #' @export
 #' @rdname update_numeric_input
 update_numeric_input <- function(session, input_id, label = NULL, value = NULL,

@@ -46,6 +46,23 @@ NULL
 #' @param value An optional argument with value that should be set for this input. Can be used to store persisten input
 #' valus in dynamic UIs.
 #' @param type Type of input value (could be "JSON" or "text").
+#' @examples
+#' library(shiny)
+#' library(shiny.semantic)
+#' # Create a week field
+#' uirender(
+#'   tagList(
+#'     div(class = "ui icon input",
+#'         style = NULL,
+#'         "",
+#'         shiny_input(
+#'           "my_id",
+#'           tags$input(type = "week", name = "my_id", min = NULL, max = NULL),
+#'           value = NULL,
+#'           type = "text"),
+#'         icon("calendar"))
+#'   )
+#' )
 #'
 #' @export
 shiny_input <- function(input_id, shiny_ui, value = NULL, type = "JSON") {
@@ -82,6 +99,20 @@ shiny_input <- function(input_id, shiny_ui, value = NULL, type = "JSON") {
 #'
 #' @param ... Possible arguments are the same as in shiny_input() method:
 #' input_id, shiny_ui, value. Type is already predefined as "text"
+#' @examples
+#' library(shiny)
+#' library(shiny.semantic)
+#' # Create a color picker
+#' uirender(
+#'   tagList(
+#'     div(class = "ui input",
+#'         style = NULL,
+#'         "Color picker",
+#'         shiny_text_input(
+#'           "my_id",
+#'           tags$input(type = "color", name = "my_id", value = "#ff0000"))
+#'     )
+#'   ))
 #'
 #' @export
 shiny_text_input <- function(...) {

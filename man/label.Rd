@@ -13,3 +13,24 @@ tag (e.g. style, class or childrens etc.)}
 \description{
 This creates a HTML label tag.
 }
+\examples{
+## Only run examples in interactive R sessions
+if (interactive()){
+  library(shiny)
+  library(shiny.semantic)
+
+  ui <- shinyUI(semanticPage(
+    form(
+      field(
+        label("Name"),
+        text_input("name", value = "", type = "text", placeholder = "Enter Name...")
+      )
+    )
+  ))
+  server <- shinyServer(function(input, output) {
+  })
+
+  shinyApp(ui, server)
+}
+
+}
