@@ -2,18 +2,16 @@
 % Please edit documentation in R/layouts.R
 \name{panel}
 \alias{panel}
-\title{Creates div containing elements in order or grid container for specific panels}
+\title{Creates div containing children elements in separate rows}
 \usage{
 panel(...)
 }
 \arguments{
 \item{...}{Container's children elements}
-
-\item{grid_list}{List to create grid from}
 }
 \value{
-Div containing elements or grid container for specific panel
+Div containing children elements in separate rows
 }
 \description{
-Creates div containing elements in order or grid container for specific panels
+Creates div containing children elements in separate rows
 }

@@ -7,7 +7,7 @@
 \alias{sidebarPanel}
 \alias{mainPanel}
 \alias{sidebarLayout}
-\title{Creates div containing elements in order or grid container for sidebar panel}
+\title{Creates div containing children elements of sidebar panel}
 \usage{
 sidebar_panel(..., width = 4)
 
@@ -36,6 +36,8 @@ sidebarLayout(
 \arguments{
 \item{...}{Container's children elements}
 
+\item{width}{Width of main panel container}
+
 \item{sidebar_panel}{Sidebar panel component}
 
 \item{main_panel}{Main panel component}
@@ -48,43 +50,42 @@ specified. It should be formatted as a string with css units}
 
 \item{container_style}{CSS declarations for grid container}
 
-\item{area_styles}{List of CSS declarations for each grid area inside container}
-
-\item{sidebar_width}{Width of sidebar panel in percents}
+\item{area_styles}{List of CSS declarations for each grid area inside
+container}
 }
 \value{
 Container with sidebar and main panels
 }
 \description{
-Creates div containing elements in order or grid container for sidebar panel
+Creates div containing children elements of sidebar panel
 
-Creates div containing elements in order or grid container for main panel
+Creates div containing children elements of main panel
 
 Creates grid layout composed of sidebar and main panels
 }
 \examples{
 if (interactive()){
-library(shiny)
-library(shiny.semantic)
-ui <- semanticPage(
-  titlePanel("Hello Shiny!"),
-  sidebar_layout(
-    sidebar_panel(
-      shiny.semantic::sliderInput("obs",
-                                  "Number of observations:",
-                                 min = 0,
-                                  max = 1000,
-                                  value = 500)
-    ),
-    main_panel(
-      plotOutput("distPlot")
+  library(shiny)
+  library(shiny.semantic)
+  ui <- semanticPage(
+    titlePanel("Hello Shiny!"),
+    sidebar_layout(
+      sidebar_panel(
+        shiny.semantic::sliderInput("obs",
+                                    "Number of observations:",
+                                    min = 0,
+                                    max = 1000,
+                                    value = 500)
+      ),
+      main_panel(
+        plotOutput("distPlot")
+      )
     )
   )
-)
-server <- function(input, output) {
-  output$distPlot <- renderPlot({
-    hist(rnorm(input$obs))
-  })
-}
+  server <- function(input, output) {
+    output$distPlot <- renderPlot({
+      hist(rnorm(input$obs))
+    })
+  }
 }
 }

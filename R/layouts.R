@@ -9,77 +9,80 @@ get_row <- function(arg) {
   shiny::HTML(glue::glue("<div class='{class}' style='{style}'>{arg}</div>"))
 }
 
+#' Returns percentage value of width based on 12-units grid
+#' @param width value to be converted to percentage value
+#' @return percentage value of width based on 12-units grid
 get_percent <- function(width) {
+  width <- min(11, max(1, width))
   percent <- round(width / 12 * 100, digits = 0)
 }
 
-#' Creates div containing elements in order or grid container for specific panels
+#' Creates div containing children elements in separate rows
 #'
-#' @param grid_list List to create grid from
 #' @param ... Container's children elements
-#' @return Div containing elements or grid container for specific panel
+#' @return Div containing children elements in separate rows
 panel <- function(...) {
   args <- list(...)
   div(lapply(args, get_row))
 }
 
-#' Creates div containing elements in order or grid container for sidebar panel
+#' Creates div containing children elements of sidebar panel
 #'
 #' @param ... Container's children elements
+#' @param width Width of sidebar panel container
 #' @rdname sidebar_layout
 #' @export
 sidebar_panel <- function(..., width = 4) {
   list(panel = panel(...), width = width)
-  # adjustments for sidebar panel
 }
 
-#' Creates div containing elements in order or grid container for main panel
+#' Creates div containing children elements of main panel
 #'
 #' @param ... Container's children elements
+#' @param width Width of main panel container
 #' @rdname sidebar_layout
 #' @export
 main_panel <- function(..., width = 8) {
   list(panel = panel(...), width = width)
-  # adjustments for main panel
 }
 
 #' Creates grid layout composed of sidebar and main panels
 #'
 #' @param sidebar_panel Sidebar panel component
 #' @param main_panel Main panel component
-#' @param sidebar_width Width of sidebar panel in percents
 #' @param mirrored If TRUE sidebar is located on the right side,
 #' if FALSE - on the left side (default)
 #' @param min_height Sidebar layout container keeps the minimum height, if
 #' specified. It should be formatted as a string with css units
 #' @param container_style CSS declarations for grid container
-#' @param area_styles List of CSS declarations for each grid area inside container
+#' @param area_styles List of CSS declarations for each grid area inside
+#' container
 #'
 #' @return Container with sidebar and main panels
 #' @examples
 #' if (interactive()){
-#' library(shiny)
-#' library(shiny.semantic)
-#' ui <- semanticPage(
-#'   titlePanel("Hello Shiny!"),
-#'   sidebar_layout(
-#'     sidebar_panel(
-#'       shiny.semantic::sliderInput("obs",
-#'                                   "Number of observations:",
-#'                                  min = 0,
-#'                                   max = 1000,
-#'                                   value = 500)
-#'     ),
-#'     main_panel(
-#'       plotOutput("distPlot")
+#'   library(shiny)
+#'   library(shiny.semantic)
+#'   ui <- semanticPage(
+#'     titlePanel("Hello Shiny!"),
+#'     sidebar_layout(
+#'       sidebar_panel(
+#'         shiny.semantic::sliderInput("obs",
+#'                                     "Number of observations:",
+#'                                     min = 0,
+#'                                     max = 1000,
+#'                                     value = 500)
+#'       ),
+#'       main_panel(
+#'         plotOutput("distPlot")
+#'       )
 #'     )
 #'   )
-#' )
-#' server <- function(input, output) {
-#'   output$distPlot <- renderPlot({
-#'     hist(rnorm(input$obs))
-#'   })
-#' }
+#'   server <- function(input, output) {
+#'     output$distPlot <- renderPlot({
+#'       hist(rnorm(input$obs))
+#'     })
+#'   }
 #' }
 #' @rdname sidebar_layout
 #' @export
@@ -96,7 +99,6 @@ sidebar_layout <- function(sidebar_panel,
   main_width = main_panel$width
   sidebar_panel = sidebar_panel$panel
   main_panel = main_panel$panel
-
   sidebar_width = get_percent(sidebar_width)
   main_width = get_percent(main_width)
 
@@ -140,7 +142,6 @@ sidebar_layout <- function(sidebar_panel,
     main_panel = main_panel
   )
 }
-
 
 #' @rdname sidebar_layout
 sidebarPanel <- function(..., width = 4) {
