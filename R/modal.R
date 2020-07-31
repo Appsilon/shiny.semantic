@@ -210,7 +210,10 @@ modalDialog <- function(..., title = NULL, footer = NULL) {
   for (arg in not_supported_modal_args) {
     args[[arg]] <- NULL
   }
-  modal(args, id = generate_random_id("modal"), header = title, footer = footer)
+  args$id <- generate_random_id("modal")
+  args$header <- title
+  args$footer <- footer
+  do.call(modal, args)
 }
 
 #' Allows for the creation of modals in the server side without being tied to a specific HTML element.
