@@ -96,7 +96,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="semantic_integration_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Integration of shiny.semantic with other packages</h1>
@@ -177,13 +177,13 @@
   <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html">shinyUI</a></span>(
     <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span>(
       <span class="kw">title</span> <span class="kw">=</span> <span class="st">"Your page title"</span>,
-      <span class="kw pkg">shinyjs</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/shinyjs/man/useShinyjs.html">useShinyjs</a></span>(),
+      <span class="kw pkg">shinyjs</span><span class="kw ns">::</span><span class="fu">useShinyjs</span>(),
       <span class="co"># Your UI code</span>
     )
   )
 }
 <span class="no">server</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html">shinyServer</a></span>(<span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>) {
-  <span class="fu"><a href="https://rdrr.io/pkg/shinyjs/man/runjs.html">runjs</a></span>(<span class="no">jsCode</span>)
+  <span class="fu">runjs</span>(<span class="no">jsCode</span>)
   <span class="co"># Your Shiny logic</span>
 })
 <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html">shinyApp</a></span>(<span class="kw">ui</span> <span class="kw">=</span> <span class="fu">ui</span>(), <span class="kw">server</span> <span class="kw">=</span> <span class="no">server</span>)</pre></body></html></div>

@@ -96,7 +96,7 @@
 
       
 
-      </header><script src="intro_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="intro_files/uirender-binding-0.3.3.9001/uirender.js"></script><div class="row">
+      </header><script src="intro_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="intro_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="intro_files/uirender-binding-0.3.3.9001/uirender.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Intro to shiny.semantic</h1>
@@ -118,8 +118,8 @@
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="../reference/uirender.html">uirender</a></span>(<span class="fu"><a href="../reference/uiinput.html">uiinput</a></span>(<span class="fu"><a href="../reference/icon.html">icon</a></span>(<span class="st">"dog"</span>),
         <span class="fu"><a href="../reference/numeric_input.html">numeric_input</a></span>(<span class="st">"input"</span>, <span class="kw">value</span> <span class="kw">=</span> <span class="fl">0</span>, <span class="kw">label</span> <span class="kw">=</span> <span class="st">""</span>)
 ), <span class="kw">width</span> <span class="kw">=</span> <span class="st">"200px"</span>, <span class="kw">height</span> <span class="kw">=</span> <span class="st">"100px"</span>)</pre></body></html></div>
-<div id="htmlwidget-952df8f1edefe15443c4" style="width:200px;height:100px;" class="uirender html-widget"></div>
-<script type="application/json" data-for="htmlwidget-952df8f1edefe15443c4">{"x":{"ui":"<div class=\"ui  input\">\n  <i class=\"dog icon\"><\/i>\n  <div class=\"field\">\n    <label for=\"input\"><\/label>\n    <div class=\"ui  input\">\n      <input id=\"input\" value=\"0\" type=\"number\"/>\n    <\/div>\n  <\/div>\n<\/div>","shiny_custom_semantic":"https://d335w9rbwpvuxm.cloudfront.net/2.8.3"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-3501138facded1fa9901" style="width:200px;height:100px;" class="uirender html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3501138facded1fa9901">{"x":{"ui":"<div class=\"ui  input\">\n  <i class=\"dog icon\"><\/i>\n  <div class=\"field\">\n    <label for=\"input\"><\/label>\n    <div class=\"ui  input\">\n      <input id=\"input\" value=\"0\" type=\"number\"/>\n    <\/div>\n  <\/div>\n<\/div>","shiny_custom_semantic":"https://d335w9rbwpvuxm.cloudfront.net/2.8.3"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="create-a-simple-shiny-app" class="section level2">
 <h2 class="hasAnchor">
@@ -134,28 +134,28 @@
 <span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {}
 
 <span class="fu">shinyApp</span>(<span class="no">ui</span>, <span class="no">server</span>)</pre></body></html></div>
-<p>Now let’s add sidebar layout <code><a href="../reference/sidebar_layout.html">sidebar_layout()</a></code> with a sidebar panel <code><a href="../reference/sidebar_layout.html">sidebar_panel()</a></code> and main panel <code><a href="../reference/sidebar_layout.html">main_panel()</a></code>. The sidebar is displayed with a distinct background color and typically contains input controls. The main area occupies 2/3 of the horizontal width and typically contains outputs.</p>
+<p>Now let’s add sidebar layout <code>sidebar_layout()</code> with a sidebar panel <code>sidebar_panel()</code> and main panel <code>main_panel()</code>. The sidebar is displayed with a distinct background color and typically contains input controls. The main area occupies 2/3 of the horizontal width and typically contains outputs.</p>
 <p><img src="intro_images/Screenshot%20from%202020-08-18%2010-49-57.png" alt="screen2" width="800"></p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span>(
   <span class="kw">title</span> <span class="kw">=</span> <span class="st">"My first page"</span>,
   <span class="fu">h1</span>(<span class="st">"My page"</span>),
-  <span class="fu"><a href="../reference/sidebar_layout.html">sidebar_layout</a></span>(
-    <span class="fu"><a href="../reference/sidebar_layout.html">sidebar_panel</a></span>(),
-    <span class="fu"><a href="../reference/sidebar_layout.html">main_panel</a></span>()
+  <span class="fu">sidebar_layout</span>(
+    <span class="fu">sidebar_panel</span>(),
+    <span class="fu">main_panel</span>()
     )
 )
 
 <span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {}
 
 <span class="fu">shinyApp</span>(<span class="no">ui</span>, <span class="no">server</span>)</pre></body></html></div>
-<p>Next let’s fill in the main panel <code><a href="../reference/sidebar_layout.html">main_panel()</a></code> with a Fomantic (Semantic previously) UI segment containing 2 cards.</p>
+<p>Next let’s fill in the main panel <code>main_panel()</code> with a Fomantic (Semantic previously) UI segment containing 2 cards.</p>
 <p><img src="intro_images/Screenshot%20from%202020-08-18%2010-51-02.png" alt="screen3" width="800"></p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span>(
   <span class="kw">title</span> <span class="kw">=</span> <span class="st">"My first page"</span>,
   <span class="fu">h1</span>(<span class="st">"My page"</span>),
-  <span class="fu"><a href="../reference/sidebar_layout.html">sidebar_layout</a></span>(
-    <span class="fu"><a href="../reference/sidebar_layout.html">sidebar_panel</a></span>(),
-    <span class="fu"><a href="../reference/sidebar_layout.html">main_panel</a></span>(
+  <span class="fu">sidebar_layout</span>(
+    <span class="fu">sidebar_panel</span>(),
+    <span class="fu">main_panel</span>(
       <span class="fu"><a href="../reference/segment.html">segment</a></span>(
          <span class="fu"><a href="../reference/cards.html">cards</a></span>(
            <span class="kw">class</span> <span class="kw">=</span> <span class="st">"two"</span>,
@@ -182,17 +182,17 @@
 <span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {}
 
 <span class="fu">shinyApp</span>(<span class="no">ui</span>, <span class="no">server</span>)</pre></body></html></div>
-<p>Time to fill in sidebar <code><a href="../reference/sidebar_layout.html">sidebar_panel()</a></code>, so let’s add a dropdown. We create it input using <code><a href="../reference/dropdown_input.html">dropdown_input()</a></code>.</p>
+<p>Time to fill in sidebar <code>sidebar_panel()</code>, so let’s add a dropdown. We create it input using <code><a href="../reference/dropdown_input.html">dropdown_input()</a></code>.</p>
 <p><img src="intro_images/Screenshot%20from%202020-08-18%2010-52-24.png" alt="screen4" width="800"></p>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span>(
   <span class="kw">title</span> <span class="kw">=</span> <span class="st">"My first page"</span>,
   <span class="fu">h1</span>(<span class="st">"My page"</span>),
-  <span class="fu"><a href="../reference/sidebar_layout.html">sidebar_layout</a></span>(
-    <span class="fu"><a href="../reference/sidebar_layout.html">sidebar_panel</a></span>(
+  <span class="fu">sidebar_layout</span>(
+    <span class="fu">sidebar_panel</span>(
       <span class="fu"><a href="../reference/dropdown_input.html">dropdown_input</a></span>(<span class="st">"mtcars_dropdown"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"mpg"</span>, <span class="st">"cyl"</span>, <span class="st">"disp"</span>, <span class="st">"hp"</span>), <span class="kw">value</span> <span class="kw">=</span> <span class="st">"mpg"</span>),
       <span class="fu">textOutput</span>(<span class="st">"dropdown"</span>)
     ),
-    <span class="fu"><a href="../reference/sidebar_layout.html">main_panel</a></span>(
+    <span class="fu">main_panel</span>(
       <span class="fu"><a href="../reference/segment.html">segment</a></span>(
          <span class="fu"><a href="../reference/cards.html">cards</a></span>(
            <span class="kw">class</span> <span class="kw">=</span> <span class="st">"two"</span>,
@@ -226,12 +226,12 @@
 <div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span>(
   <span class="kw">title</span> <span class="kw">=</span> <span class="st">"My first page"</span>,
   <span class="fu">h1</span>(<span class="st">"My page"</span>),
-  <span class="fu"><a href="../reference/sidebar_layout.html">sidebar_layout</a></span>(
-    <span class="fu"><a href="../reference/sidebar_layout.html">sidebar_panel</a></span>(
+  <span class="fu">sidebar_layout</span>(
+    <span class="fu">sidebar_panel</span>(
       <span class="fu">p</span>(<span class="st">"Select variable for plots:"</span>),
       <span class="fu"><a href="../reference/dropdown_input.html">dropdown_input</a></span>(<span class="st">"mtcars_dropdown"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"mpg"</span>, <span class="st">"cyl"</span>, <span class="st">"disp"</span>, <span class="st">"hp"</span>), <span class="kw">value</span> <span class="kw">=</span> <span class="st">"mpg"</span>)
     ),
-    <span class="fu"><a href="../reference/sidebar_layout.html">main_panel</a></span>(
+    <span class="fu">main_panel</span>(
       <span class="fu"><a href="../reference/segment.html">segment</a></span>(
          <span class="fu"><a href="../reference/cards.html">cards</a></span>(
            <span class="kw">class</span> <span class="kw">=</span> <span class="st">"two"</span>,
@@ -260,7 +260,7 @@
 <span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {
   <span class="no">output</span>$<span class="no">dropdown</span> <span class="kw">&lt;-</span> <span class="fu">renderText</span>(<span class="no">input</span>$<span class="no">mtcars_dropdown</span>)
   <span class="no">output</span>$<span class="no">histogram</span> <span class="kw">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span>(<span class="no">mtcars</span><span class="kw">[[</span><span class="no">input</span>$<span class="no">mtcars_dropdown</span>]]))
-  <span class="no">output</span>$<span class="no">plot</span> <span class="kw">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">mtcars</span><span class="kw">[[</span><span class="no">input</span>$<span class="no">mtcars_dropdown</span>]]))
+  <span class="no">output</span>$<span class="no">plot</span> <span class="kw">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">mtcars</span><span class="kw">[[</span><span class="no">input</span>$<span class="no">mtcars_dropdown</span>]]))
 }
 
 <span class="fu">shinyApp</span>(<span class="no">ui</span>, <span class="no">server</span>)</pre></body></html></div>
@@ -275,12 +275,12 @@
 <div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span>(
   <span class="kw">title</span> <span class="kw">=</span> <span class="st">"My first page"</span>,
   <span class="fu">h1</span>(<span class="st">"My page"</span>),
-  <span class="fu"><a href="../reference/sidebar_layout.html">sidebar_layout</a></span>(
-    <span class="fu"><a href="../reference/sidebar_layout.html">sidebar_panel</a></span>(
+  <span class="fu">sidebar_layout</span>(
+    <span class="fu">sidebar_panel</span>(
       <span class="fu">p</span>(<span class="st">"Select variable for plots:"</span>),
       <span class="fu"><a href="../reference/dropdown_input.html">dropdown_input</a></span>(<span class="st">"mtcars_dropdown"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"mpg"</span>, <span class="st">"cyl"</span>, <span class="st">"disp"</span>, <span class="st">"hp"</span>), <span class="kw">value</span> <span class="kw">=</span> <span class="st">"mpg"</span>)
     ),
-    <span class="fu"><a href="../reference/sidebar_layout.html">main_panel</a></span>(
+    <span class="fu">main_panel</span>(
       <span class="fu"><a href="../reference/segment.html">segment</a></span>(
          <span class="fu"><a href="../reference/cards.html">cards</a></span>(
            <span class="kw">class</span> <span class="kw">=</span> <span class="st">"two"</span>,
@@ -311,7 +311,7 @@
 <span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {
   <span class="no">output</span>$<span class="no">dropdown</span> <span class="kw">&lt;-</span> <span class="fu">renderText</span>(<span class="no">input</span>$<span class="no">mtcars_dropdown</span>)
   <span class="no">output</span>$<span class="no">histogram</span> <span class="kw">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span>(<span class="no">mtcars</span><span class="kw">[[</span><span class="no">input</span>$<span class="no">mtcars_dropdown</span>]]))
-  <span class="no">output</span>$<span class="no">plot</span> <span class="kw">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">mtcars</span><span class="kw">[[</span><span class="no">input</span>$<span class="no">mtcars_dropdown</span>]]))
+  <span class="no">output</span>$<span class="no">plot</span> <span class="kw">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">mtcars</span><span class="kw">[[</span><span class="no">input</span>$<span class="no">mtcars_dropdown</span>]]))
 }
 
 <span class="fu">shinyApp</span>(<span class="no">ui</span>, <span class="no">server</span>)</pre></body></html></div>
