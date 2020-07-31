@@ -9,9 +9,9 @@
 \alias{sidebarLayout}
 \title{Creates div containing children elements of sidebar panel}
 \usage{
-sidebar_panel(..., width = 4)
+sidebar_panel(..., width = 1)
 
-main_panel(..., width = 8)
+main_panel(..., width = 3)
 
 sidebar_layout(
   sidebar_panel,
@@ -22,9 +22,9 @@ sidebar_layout(
   area_styles = list(sidebar_panel = "", main_panel = "")
 )
 
-sidebarPanel(..., width = 4)
+sidebarPanel(..., width = 6)
 
-mainPanel(..., width = 8)
+mainPanel(..., width = 10)
 
 sidebarLayout(
   sidebarPanel,
@@ -36,7 +36,7 @@ sidebarLayout(
 \arguments{
 \item{...}{Container's children elements}
 
-\item{width}{Width of main panel container}
+\item{width}{Width of main panel container as relative value}
 
 \item{sidebar_panel}{Sidebar panel component}
 
