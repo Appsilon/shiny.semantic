@@ -67,7 +67,38 @@ ui <- semanticPage(
 
 </center>
 
-See more examples with code in the `examples` folder.
+See more examples with code in the `examples` folder:
+
+  - [Static Semantic componenets
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/app.R)
+  - [Static Semantic componenets demo with different
+    theme](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/themes/app.R)
+  - [Calendar date and month demo with
+    update](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/calendar/app.R)
+  - [Counter button
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/counter_button/app.R)
+  - [Custom CSS
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/customcss/app.R)
+  - [Dropdown update
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/dropdown_updates/app.R)
+  - [Form inputs
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/form_inputs/app.R)
+  - [Modal
+    demos](https://github.com/Appsilon/shiny.semantic/tree/develop/examples/modal)
+  - [Multiple checkbox
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/multiple_checkbox/app.R)
+  - [Rating with update
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/rating/app.R)
+  - [Search selection
+    demos](https://github.com/Appsilon/shiny.semantic/tree/develop/examples/search_selection)
+  - [Shiny numericInput
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/numericInput.R)
+  - [Shiny selectInput
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R)
+  - [Slider and range with update
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R)
+  - [Multiple tab
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/tabset/app.R)
 
 Check out also our dashboard examples made with **shiny.semantic**
 library:
@@ -101,7 +132,7 @@ remotes::install_github("Appsilon/shiny.semantic", ref = "0.1.0")
 ## How to use it?
 
 Firstly, you will have to invoke `shinyUI()` with `semanticPage()`
-instead of standard Shiny UI definitions like e.g. `bootstrapPage()`.
+instead of standard Shiny UI definitions like e.g. `bootstrapPage()`.
 From now on, all components can be annotated with [Fomantic
 UI](https://fomantic-ui.com/) specific CSS classes and also you will be
 able to use [shiny.semantic

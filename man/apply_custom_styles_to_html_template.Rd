@@ -12,16 +12,16 @@ apply_custom_styles_to_html_template(
 )
 }
 \arguments{
-\item{html_template}{string}
+\item{html_template}{character}
 
-\item{area_names}{vector of strings}
+\item{area_names}{vector of character}
 
-\item{container_style}{string}
+\item{container_style}{character}
 
-\item{area_styles}{list of strings}
+\item{area_styles}{list of character}
 }
 \value{
-string
+character
 }
 \description{
 Format string template (that represents HTML template) with custom CSS styles.

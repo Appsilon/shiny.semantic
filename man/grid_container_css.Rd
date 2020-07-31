@@ -7,14 +7,14 @@
 grid_container_css(css_grid_template_areas, rows_height, cols_width)
 }
 \arguments{
-\item{css_grid_template_areas}{string, CSS value for grid-template-areas}
+\item{css_grid_template_areas}{character, CSS value for grid-template-areas}
 
-\item{rows_height}{vector of strings}
+\item{rows_height}{vector of character}
 
-\item{cols_width}{vector of strings}
+\item{cols_width}{vector of character}
 }
 \value{
-string
+character
 }
 \description{
 Generate template string representing CSS styles of grid container div.

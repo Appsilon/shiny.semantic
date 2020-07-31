@@ -5,23 +5,25 @@
 \title{Define a template of a CSS grid}
 \usage{
 grid_template(
-  default = list(areas = "", rows_height = c(), cols_width = c()),
-  mobile = list(areas = "", rows_height = c(), cols_width = c())
+  default = list(areas = rbind(c("main_area")), rows_height = c("100\%"), cols_width =
+    c("100\%")),
+  mobile = list(areas = rbind(c("main_area")), rows_height = c("100\%"), cols_width =
+    c("100\%"))
 )
 }
 \arguments{
 \item{default}{Template for desktop:
-list(areas = [data.frame of strings],
-     rows_height = [vector of strings],
-     cols_width = [vector of strings])}
+list(areas = [data.frame of character],
+     rows_height = [vector of character],
+     cols_width = [vector of character])}
 
 \item{mobile}{Template for mobile:
-list(areas = [data.frame of strings],
-     rows_height = [vector of strings],
-     cols_width = [vector of strings])}
+list(areas = [data.frame of character],
+     rows_height = [vector of character],
+     cols_width = [vector of character])}
 }
 \value{
-list(template = [string], area_names = [vector of strings])
+list(template = [character], area_names = [vector of character])
 
 template - contains template that can be formatted with glue::glue() function
 
@@ -30,32 +32,25 @@ area_names - contain all unique area names used in grid definition
 \description{
 Define a template of a CSS grid
 }
-\details{
-Example usage:
-\preformatted{
-  myGrid <- grid_template(default = list(
-    areas = rbind(
-      c("header", "header", "header"),
-      c("menu",   "main",   "right1"),
-      c("menu",   "main",   "right2")
-    ),
-    rows_height = c("50px", "auto", "100px"),
-    cols_width = c("100px", "2fr", "1fr")
-  ))
+\examples{
+myGrid <- grid_template(default = list(
+  areas = rbind(
+    c("header", "header", "header"),
+    c("menu",   "main",   "right1"),
+    c("menu",   "main",   "right2")
+  ),
+  rows_height = c("50px", "auto", "100px"),
+  cols_width = c("100px", "2fr", "1fr")
+))
+display_grid(myGrid)
+subGrid <- grid_template(default = list(
+  areas = rbind(
+    c("top_left", "top_right"),
+    c("bottom_left", "bottom_right")
+  ),
+  rows_height = c("50\%", "50\%"),
+  cols_width = c("50\%", "50\%")
+))
 
-  display_grid(myGrid)
-}
-Second example:
-\preformatted{
-  subGrid <- grid_template(default = list(
-    areas = rbind(
-      c("top_left", "top_right"),
-      c("bottom_left", "bottom_right")
-    ),
-    rows_height = c("50\%", "50\%"),
-    cols_width = c("50\%", "50\%")
-  ))
-
-  display_grid(subGrid)
-}
+display_grid(subGrid)
 }

@@ -33,10 +33,27 @@ This creates tabs with content using Semantic UI styles.
 You may access active tab id with \code{input$<id>_tab}.
 }
 \examples{
-tabset(list(
-list(menu = shiny::div("First link"),
-     content = shiny::div("First content")),
-list(menu = shiny::div("Second link"),
-     content = shiny::div("Second content"))
-))
+## Only run examples in interactive R sessions
+if (interactive()){
+  library(shiny)
+  library(shiny.semantic)
+
+  ui <- shinyUI(semanticPage(
+    tabset(tabs =
+             list(
+               list(menu = "First Tab", content = "Tab 1"),
+               list(menu = "Second Tab", content = "Tab 2", id = "second_tab")
+             ),
+           active = "second_tab",
+           id = "exampletabset"
+    ),
+    h2("Active Tab:"),
+    textOutput("activetab")
+  ))
+  server <- shinyServer(function(input, output) {
+  })
+
+  shinyApp(ui, server)
+}
+
 }
