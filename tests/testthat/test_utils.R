@@ -12,3 +12,12 @@ test_that("test check_proper_color", {
   expect_error(check_proper_color("blue1"))
   expect_silent(check_proper_color("blue"))
 })
+
+test_that("test check_extra_arguments", {
+  expect_error(check_extra_arguments(1), "Wrong input type!")
+  expect_warning(check_extra_arguments(c("a","b")), "arguments: `a,b` not supported")
+  expect_warning(check_extra_arguments(list(a=1,b=2)), "arguments: `a,b` not supported")
+  expect_failure(
+    expect_warning(check_extra_arguments(list()))
+  )
+})

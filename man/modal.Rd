@@ -2,6 +2,7 @@
 % Please edit documentation in R/modal.R
 \name{modal}
 \alias{modal}
+\alias{modalDialog}
 \title{Create Semantic UI modal}
 \usage{
 modal(
@@ -15,6 +16,8 @@ modal(
   settings = NULL,
   modal_tags = NULL
 )
+
+modalDialog(..., title = NULL, footer = NULL)
 }
 \arguments{
 \item{...}{Content elements to be added to the modal body.
@@ -35,9 +38,9 @@ If given in form of a list, HTML attributes for the container can also be change
 
 \item{target}{Javascript selector for the element that will open the modal. Default NULL.}
 
-\item{settings}{List of vectors of Semantic UI settings to be added to the modal. Default NULL.}
+\item{settings}{list of vectors of Semantic UI settings to be added to the modal. Default NULL.}
 
-\item{modal_tags}{Other modal elements. Default NULL.}
+\item{modal_tags}{character with title for \code{modalDialog} - equivalent to header}
 }
 \description{
 This creates a modal using Semantic UI styles.
@@ -137,6 +140,25 @@ server = function(input, output) {
       p("This is also part of the content!")
     ))
   })
+}
+
+if (interactive()) {
+library(shiny)
+library(shiny.semantic)
+shinyApp(
+  ui = semanticPage(
+    actionButton("show", "Show modal dialog")
+  ),
+  server = function(input, output) {
+    observeEvent(input$show, {
+      showModal(modalDialog(
+        title = "Important message",
+        "This is an important message!", easyClose = FALSE
+      ))
+      removeModal()
+    })
+  }
+)
 }
 
 }

@@ -92,3 +92,23 @@ test_that("test modal created with arguments list", {
     "<div class=\"header ui icon\">\n    <i class=\"archive icon\"></i>",
     si_str, fixed = TRUE)))
 })
+
+test_that("test modalDialog", {
+  si_str <- as.character(modalDialog(
+    title = "Important message",
+    "This is an important message!"
+  ))
+  expect_true(any(grepl(
+    "<div class=\"header\">Important message</div>",
+    si_str, fixed = TRUE)))
+  expect_true(any(grepl(
+    "<div class=\"content\">This is an important message!</div>",
+    si_str, fixed = TRUE)))
+
+  # warning when not supported arguments passed
+  expect_warning(modalDialog(
+    title = "Important message",
+    "This is an important message!", easyClose = FALSE
+  ))
+
+})

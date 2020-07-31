@@ -13,8 +13,9 @@
 #' @param footer Content to be displayed in the modal footer. Usually for buttons.
 #' If given in form of a list, HTML attributes for the container can also be changed. Default NULL.
 #' @param target Javascript selector for the element that will open the modal. Default NULL.
-#' @param settings List of vectors of Semantic UI settings to be added to the modal. Default NULL.
-#' @param modal_tags Other modal elements. Default NULL.
+#' @param settings list of vectors of Semantic UI settings to be added to the modal. Default NULL.
+#' @param modal_tags other modal elements. Default NULL.
+#' @param modal_tags character with title for \code{modalDialog} - equivalent to header
 #'
 #' @examples
 #' ## Create a simple server modal
@@ -113,6 +114,26 @@
 #'   })
 #' }
 #'
+#' if (interactive()) {
+#' library(shiny)
+#' library(shiny.semantic)
+#' shinyApp(
+#'   ui = semanticPage(
+#'     actionButton("show", "Show modal dialog")
+#'   ),
+#'   server = function(input, output) {
+#'     observeEvent(input$show, {
+#'       showModal(modalDialog(
+#'         title = "Important message",
+#'         "This is an important message!", easyClose = FALSE
+#'       ))
+#'       removeModal()
+#'     })
+#'   }
+#' )
+#' }
+#'
+#' @rdname modal
 #' @import shiny
 #' @export
 modal <- function(...,
@@ -181,6 +202,17 @@ modal <- function(...,
   )
 }
 
+#' @rdname modal
+modalDialog <- function(..., title = NULL, footer = NULL) {
+  args <- list(...)
+  not_supported_modal_args <- c("size", "easyClose", "fade")
+  check_extra_arguments(intersect(names(args), not_supported_modal_args))
+  for (arg in not_supported_modal_args) {
+    args[[arg]] <- NULL
+  }
+  modal(args, id = generate_random_id("modal"), header = title, footer = footer)
+}
+
 #' Allows for the creation of modals in the server side without being tied to a specific HTML element.
 #'
 #' @param ui_modal HTML containing the modal.
@@ -189,6 +221,7 @@ modal <- function(...,
 #' @seealso modal
 #'
 #' @import shiny
+#' @rdname create_modal
 #' @export
 create_modal <- function(ui_modal, show = TRUE, session = shiny::getDefaultReactiveDomain()) {
   session$sendCustomMessage( # nolint
@@ -220,9 +253,16 @@ attach_rule <- function(id, behavior, target, value) {
 #'   \code{shinyServer}.
 #' @seealso modal
 #'
+#' @rdname show_modal
+#'
 #' @export
 show_modal <- function(id, session = shiny::getDefaultReactiveDomain()) {
   session$sendCustomMessage("showSemanticModal", list(id = id, action = "show")) # nolint
+}
+
+#' @rdname create_modal
+showModal <- function(ui, session = shiny::getDefaultReactiveDomain()) {
+  create_modal(ui, show = TRUE, session = session)
 }
 
 #' @rdname show_modal
@@ -230,6 +270,19 @@ show_modal <- function(id, session = shiny::getDefaultReactiveDomain()) {
 remove_modal <- function(id, session = shiny::getDefaultReactiveDomain()) {
   shiny::removeUI(paste0("#", id))
 }
+
+#' @rdname show_modal
+#' @export
+remove_all_modals <- function(session = shiny::getDefaultReactiveDomain()) {
+  session$sendCustomMessage("hideAllSemanticModals", list())
+}
+
+#' @rdname show_modal
+#' @export
+removeModal <- function(session = shiny::getDefaultReactiveDomain()) {
+  session$sendCustomMessage("hideAllSemanticModals", list())
+}
+
 
 #' @rdname show_modal
 #' @export

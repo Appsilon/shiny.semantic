@@ -7,7 +7,7 @@
 check_extra_arguments(args)
 }
 \arguments{
-\item{args}{list with extra arguments}
+\item{args}{list or vector with extra arguments}
 }
 \description{
 This throws warning if there are parameters not supported by semantic.
