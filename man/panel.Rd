@@ -4,12 +4,12 @@
 \alias{panel}
 \title{Creates div containing elements in order or grid container for specific panels}
 \usage{
-panel(args)
+panel(...)
 }
 \arguments{
-\item{grid_list}{List to create grid from}
-
 \item{...}{Container's children elements}
+
+\item{grid_list}{List to create grid from}
 }
 \value{
 Div containing elements or grid container for specific panel

@@ -9,14 +9,13 @@
 \alias{sidebarLayout}
 \title{Creates div containing elements in order or grid container for sidebar panel}
 \usage{
-sidebar_panel(items)
+sidebar_panel(..., width = 4)
 
-main_panel(args)
+main_panel(..., width = 8)
 
 sidebar_layout(
   sidebar_panel,
   main_panel,
-  sidebar_width = "25",
   mirrored = FALSE,
   min_height = "auto",
   container_style = "",
@@ -35,11 +34,11 @@ sidebarLayout(
 )
 }
 \arguments{
+\item{...}{Container's children elements}
+
 \item{sidebar_panel}{Sidebar panel component}
 
 \item{main_panel}{Main panel component}
-
-\item{sidebar_width}{Width of sidebar panel in percents}
 
 \item{mirrored}{If TRUE sidebar is located on the right side,
 if FALSE - on the left side (default)}
@@ -51,9 +50,7 @@ specified. It should be formatted as a string with css units}
 
 \item{area_styles}{List of CSS declarations for each grid area inside container}
 
-\item{...}{Container's children elements}
-
-\item{grid_list}{List to create grid from}
+\item{sidebar_width}{Width of sidebar panel in percents}
 }
 \value{
 Container with sidebar and main panels

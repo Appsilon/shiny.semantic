@@ -11,8 +11,9 @@ ui <- semanticPage(
                   max = 1000,
                   value = 500)
     ),
-  main_panel(
-      plotOutput("distPlot")
+    main_panel(
+      plotOutput("distPlot"),
+      "trestrsd"
     )
   )
 )

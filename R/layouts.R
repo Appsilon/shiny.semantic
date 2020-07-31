@@ -9,35 +9,37 @@ get_row <- function(arg) {
   shiny::HTML(glue::glue("<div class='{class}' style='{style}'>{arg}</div>"))
 }
 
+get_percent <- function(width) {
+  percent <- round(width / 12 * 100, digits = 0)
+}
+
 #' Creates div containing elements in order or grid container for specific panels
 #'
 #' @param grid_list List to create grid from
 #' @param ... Container's children elements
 #' @return Div containing elements or grid container for specific panel
-panel <- function(args) {
-  args <- list(args)
+panel <- function(...) {
+  args <- list(...)
   div(lapply(args, get_row))
 }
 
 #' Creates div containing elements in order or grid container for sidebar panel
 #'
-#' @param grid_list List to create grid from
 #' @param ... Container's children elements
 #' @rdname sidebar_layout
 #' @export
-sidebar_panel <- function(args = "") {
-  panel(args)
+sidebar_panel <- function(..., width = 4) {
+  list(panel = panel(...), width = width)
   # adjustments for sidebar panel
 }
 
 #' Creates div containing elements in order or grid container for main panel
 #'
-#' @param grid_list List to create grid from
 #' @param ... Container's children elements
 #' @rdname sidebar_layout
 #' @export
-main_panel <- function(args = "") {
-  panel(args)
+main_panel <- function(..., width = 8) {
+  list(panel = panel(...), width = width)
   # adjustments for main panel
 }
 
@@ -83,7 +85,6 @@ main_panel <- function(args = "") {
 #' @export
 sidebar_layout <- function(sidebar_panel,
                            main_panel,
-                           sidebar_width = "25",
                            mirrored = FALSE,
                            min_height = "auto",
                            container_style = "",
@@ -91,16 +92,24 @@ sidebar_layout <- function(sidebar_panel,
                              sidebar_panel = "",
                              main_panel = "")) {
 
+  sidebar_width = sidebar_panel$width
+  main_width = main_panel$width
+  sidebar_panel = sidebar_panel$panel
+  main_panel = main_panel$panel
+
+  sidebar_width = get_percent(sidebar_width)
+  main_width = get_percent(main_width)
+
   # set normal or mirrored sidebar layout
   if (!mirrored) {
     layout <- grid_template(default = list(
       areas = rbind(c("sidebar_panel", "main_panel")),
-      cols_width = c(glue::glue("{sidebar_width}%"), "1fr")
+      cols_width = c(glue::glue("{sidebar_width}% {main_width}%"))
     ))
   } else {
     layout <- grid_template(default = list(
       areas = rbind(c("main_panel", "sidebar_panel")),
-      cols_width = c("1fr", glue::glue("{sidebar_width}%"))
+      cols_width = c(glue::glue("{main_width}% {sidebar_width}%"))
     ))
   }
 
@@ -134,16 +143,24 @@ sidebar_layout <- function(sidebar_panel,
 
 
 #' @rdname sidebar_layout
-sidebarPanel <- function(..., width = 4) { #TODO here replace width with some default value
-  sidebar_panel() #TODO here adjust the above parameters such that they match params of sidebar_panel
+sidebarPanel <- function(..., width = 4) {
+  sidebar_panel(..., width = width)
 }
 
 #' @rdname sidebar_layout
-mainPanel <- function(..., width = 8) { #TODO here replace width with some default value
-  main_panel() #TODO here adjust the above parameters such that they match params of main_panel
+mainPanel <- function(..., width = 8) {
+  main_panel(..., width = width)
 }
 
 #' @rdname sidebar_layout
-sidebarLayout <- function(sidebarPanel, mainPanel, position = c("left", "right"), fluid = TRUE) {
-  sidebar_layout() #TODO here adjust the above parameters such that they match params of sidebar_layout
+sidebarLayout <- function(sidebarPanel,
+                          mainPanel,
+                          position = c("left", "right"),
+                          fluid = TRUE) {
+  if (position == "left") mirrored <- FALSE else mirrored <- TRUE
+  sidebar_layout (
+    sidebar_panel,
+    main_panel,
+    mirrored = mirrored
+  )
 }

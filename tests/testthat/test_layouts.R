@@ -13,9 +13,9 @@ test_that("test get_row", {
 
 test_that("test sidebar_panel", {
   # type
-  expect_is(sidebar_panel(), "shiny.tag")
+  expect_is(sidebar_panel(), "list")
   # simple input
-  si_str <- as.character(sidebar_panel(h1("abc"), p("qqq")))
+  si_str <- as.character(sidebar_panel(h1("abc"), p("qqq"))$panel)
   expect_true(any(grepl("<h1>abc</h1>",
                         si_str, fixed = TRUE)))
   expect_true(any(grepl("qqq",
@@ -24,9 +24,9 @@ test_that("test sidebar_panel", {
 
 test_that("test main_panel", {
   # type
-  expect_is(main_panel(), "shiny.tag")
+  expect_is(main_panel(), "list")
   # simple input
-  si_str <- as.character(main_panel(h1("abc"), p("qqq")))
+  si_str <- as.character(main_panel(h1("abc"), p("qqq"))$panel)
   expect_true(any(grepl("<h1>abc</h1>",
                         si_str, fixed = TRUE)))
   expect_true(any(grepl("qqq",
@@ -36,7 +36,8 @@ test_that("test main_panel", {
 test_that("test sidebar_layout", {
   # type
   expect_error(sidebar_layout(), "argument \"sidebar_panel\" is missing")
-  expect_error(sidebar_layout(sidebar_panel()), "argument \"main_panel\" is missing")
+  expect_error(sidebar_layout(sidebar_panel()),
+               "argument \"main_panel\" is missing")
   # empty input
-  expect_is(sidebar_layout(sidebar_panel(),main_panel()), "shiny.tag")
+  expect_is(sidebar_layout(sidebar_panel(),main_panel()), "list")
 })
