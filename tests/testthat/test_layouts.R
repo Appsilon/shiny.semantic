@@ -63,5 +63,8 @@ test_that("test split_layout", {
     split_layout(cell_widths = c("25%", "75%"), p("p1"), p("p2"))
   )
   expect_true(any(grepl("grid-template-columns: 25% 75%", si_str, fixed = TRUE)))
-
+  si_str <- as.character(
+    split_layout(p("p1"), p("p2"), style = "background:red;")
+  )
+  expect_true(any(grepl("background:red;", si_str, fixed = TRUE)))
 })

@@ -211,6 +211,7 @@ sidebarLayout <- function(sidebarPanel,
 #'     split_layout(
 #'     cell_widths = 300,
 #'     cell_args = "padding: 6px;",
+#'     style = "border: 1px solid silver;",
 #'     plotOutput("plot1"),
 #'     plotOutput("plot2"),
 #'     plotOutput("plot3")
@@ -237,7 +238,7 @@ split_layout <- function(..., cell_widths = NULL, cell_args = "", style = NULL){
   if (is.null(style))
     container_style <- "background: #d8d8d8; margin: 5px;"
   else
-    style <- "background: #d8d8d8; margin: 5px;"
+    container_style <- style
   area_styles <- as.list(rep(cell_args, n_elems))
   names(area_styles) <- columns
   args_list <- ui_elements

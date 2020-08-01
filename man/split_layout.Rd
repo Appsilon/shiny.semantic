@@ -58,6 +58,7 @@ if (interactive()) {
     split_layout(
     cell_widths = 300,
     cell_args = "padding: 6px;",
+    style = "border: 1px solid silver;",
     plotOutput("plot1"),
     plotOutput("plot2"),
     plotOutput("plot3")
