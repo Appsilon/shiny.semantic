@@ -2,9 +2,12 @@
 % Please edit documentation in R/layouts.R
 \name{split_layout}
 \alias{split_layout}
+\alias{splitLayout}
 \title{Split layout}
 \usage{
 split_layout(..., cell_widths = NULL, cell_args = "", style = NULL)
+
+splitLayout(..., cellWidths = NULL, cellArgs = "", style = NULL)
 }
 \arguments{
 \item{...}{Unnamed arguments will become child elements of the layout.}

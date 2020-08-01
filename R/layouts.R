@@ -181,6 +181,8 @@ sidebarLayout <- function(sidebarPanel,
 #' @return split layout grid object
 #' @export
 #'
+#' @rdname split_layout
+#'
 #' @examples
 #' if (interactive()) {
 #'   #' Server code used for all examples
@@ -246,4 +248,10 @@ split_layout <- function(..., cell_widths = NULL, cell_args = "", style = NULL){
   args_list$container_style <- container_style
   args_list$area_styles <- area_styles
   do.call(grid, args_list)
+}
+
+#' @export
+#' @rdname split_layout
+splitLayout <- function(..., cellWidths = NULL, cellArgs = "", style = NULL) {
+  split_layout(..., cell_widths = cellWidths, cell_args = cellArgs, style = style)
 }

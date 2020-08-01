@@ -68,3 +68,10 @@ test_that("test split_layout", {
   )
   expect_true(any(grepl("background:red;", si_str, fixed = TRUE)))
 })
+
+test_that("test splitLayout", {
+  # test equivalence
+  expect_equal(split_layout(p("a")), splitLayout(p("a")))
+  expect_equal(split_layout(p("a"), cell_widths = c("25%", "75%")),
+               splitLayout(p("a"), cellWidths = c("25%", "75%")))
+})
