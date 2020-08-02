@@ -2,21 +2,21 @@ library(shiny)
 library(shiny.semantic)
 
 ui <- semanticPage(
-  uisegment(
+  segment(
     class = "basic",
-    uiprogress("value_ex", value = 20, total = 100, label = "Label showing {value} of {total}"),
+    progress("value_ex", value = 20, total = 100, label = "Label showing {value} of {total}"),
     tags$br(),
-    uibutton("button", "Change value to 40"),
-    uibutton("button4", "Change text to 'Updated Label'"),
+    button("button", "Change value to 40"),
+    button("button4", "Change text to 'Updated Label'"),
     textOutput("value_ex"),
     tags$br(), tags$br(),
 
-    uiprogress(
+    progress(
       "percent_ex", percent = 35, progress_lab = TRUE, label = "{percent}% complete", label_complete = "All done!"
     ),
     tags$br(),
-    uibutton("button2", "Increase b 5%"),
-    uibutton("button3", "Decrease by 5%"),
+    button("button2", "Increase b 5%"),
+    button("button3", "Decrease by 5%"),
     textOutput("percent_ex")
   )
 )

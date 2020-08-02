@@ -23,6 +23,7 @@ Imports:
     htmltools (>= 0.2.6),
     htmlwidgets (>= 0.8),
     purrr (>= 0.2.2),
+    stats,
     magrittr,
     jsonlite,
     glue,
@@ -34,4 +35,4 @@ Suggests:
     lintr,
     DT,
     covr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1

@@ -120,6 +120,7 @@ var ssProgressHandlers = {
       message: sem_progress
     });
     $(sem_toast).attr('id', `ss-toast-${message.id}`);
+    $(sem_toast).attr('style', $(sem_toast).attr('style') + ' padding-top: 1.75em;');
 
     $(`#ss-progress-${message.id}`).progress();
   },

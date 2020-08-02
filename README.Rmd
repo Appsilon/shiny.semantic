@@ -6,7 +6,8 @@ params:
   repo_name: shiny.semantic
   repo_url: https://github.com/Appsilon/shiny.semantic
   demo_url: https://demo.appsilon.ai/semantic/
-  chagelog_url: https://github.com/Appsilon/shiny.semantic/blob/develop/CHANGELOG.md
+  chagelog_url: https://github.com/Appsilon/shiny.semantic/blob/master/CHANGELOG.md
+  styleguide: https://github.com/Appsilon/shiny.semantic/blob/develop/STYLEGUIDE.md
   code_of_coduct: https://github.com/Appsilon/shiny.semantic/blob/develop/CODE_OF_CONDUCT.md
 ---
 
@@ -18,8 +19,8 @@ suppressWarnings(library(shiny))
 
 <img src="man/figures/hexsticker.png" align="right" alt="" width="130" />
 
-  `r params$repo_name`
-===========
+#  `r params$repo_name`
+
 
 <!-- badges: start -->
 ![R-CMD-check](https://github.com/Appsilon/shiny.semantic/workflows/R-CMD-check/badge.svg)
@@ -75,7 +76,23 @@ Component examples
 
 <center><h3><a href="`r params$demo_url`">Components live demo</a></h4></center>
 
-See more examples with code in the `examples` folder.
+See more examples with code in the `examples` folder:
+
+* [Static Semantic componenets demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/app.R)
+* [Static Semantic componenets demo with different theme](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/themes/app.R)
+* [Calendar date and month demo with update](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/calendar/app.R)
+* [Counter button demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/counter_button/app.R)
+* [Custom CSS demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/customcss/app.R)
+* [Dropdown update demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/dropdown_updates/app.R)
+* [Form inputs demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/form_inputs/app.R)
+* [Modal demos](https://github.com/Appsilon/shiny.semantic/tree/develop/examples/modal)
+* [Multiple checkbox demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/multiple_checkbox/app.R)
+* [Rating with update demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/rating/app.R)
+* [Search selection demos](https://github.com/Appsilon/shiny.semantic/tree/develop/examples/search_selection)
+* [Shiny numericInput demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/numericInput.R)
+* [Shiny selectInput demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R)
+* [Slider and range with update demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R)
+* [Multiple tab demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/tabset/app.R)
 
 Check out also our dashboard examples made with **shiny.semantic** library:
 
@@ -92,10 +109,10 @@ You can install a stable `shiny.semantic` release from CRAN repository:
 install.packages("shiny.semantic")
 ```
 
-and the latest version with devtools:
+and the latest version with `remotes`:
 
 ```{r, eval=FALSE}
-devtools::install_github("Appsilon/`r params$repo_name`")
+remotes::install_github("Appsilon/shiny.semantic@develop")
 ```
 
 (`master` branch contains the stable version. Use `develop` branch for latest features)
@@ -103,7 +120,7 @@ devtools::install_github("Appsilon/`r params$repo_name`")
 To install [previous versions](`r params$changelog_url`) you can run:
 
 ```{r, eval=FALSE}
-devtools::install_github("Appsilon/`r params$repo_name`", ref = "0.1.0")
+remotes::install_github("Appsilon/shiny.semantic", ref = "0.1.0")
 ```
 
 How to use it?
@@ -120,7 +137,7 @@ ui <- function() {
   shinyUI(
     semanticPage(
       title = "My page",
-      div(class = "ui button", uiicon("user"),  "Icon button")
+      div(class = "ui button", icon("user"),  "Icon button")
     )
   )
 }
@@ -205,7 +222,12 @@ shinyApp(ui = ui(), server = server)
 
 How to contribute?
 -----------------
-If you want to contribute to this project please submit a regular PR, once you're done with new feature or bug fix.
+
+We welcome contributions of all types!
+
+We encourage typo corrections, bug reports, bug fixes and feature requests. Feedback on the clarity of the documentation and examples is especially valuable.
+
+If you want to contribute to this project please submit a regular PR, once you're done with new feature or bug fix.<br>
 
 **Changes in documentation**
 
@@ -213,7 +235,11 @@ Both repository **README.md** file and an official documentation page are genera
 
 Documentation is rendered with `pkgdown`. Just run `pkgdown::build_site()` after rendering new **README.md**.
 
-Make sure to check our [Code of Conduct](`r params$code_of_conduct`).
+*Important:*
+
+1) Please follow the code style from out [styleguide](`r params$styleguide`).
+
+2) We have a Contributor [Code of Conduct](`r params$code_of_conduct`). Make sure to check it and to follow it.
 
 Troubleshooting
 -----------------

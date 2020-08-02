@@ -1,82 +1,65 @@
-#' Create Semantic UI checkox
-#'
-#' This creates a checkbox using Semantic UI styles.
-#'
-#' @param ... Other arguments to be added as attributes of the
-#' tag (e.g. style, childrens etc.)
-#' @param type Type of checkbox to be used.
-#'
-#' The following \code{type}s are allowed:
-#' \itemize{
-#' \item{NULL}{The standard checkbox (default)}
-#' \item{toggle}{Checkbox with toggle form}
-#' \item{slider}{Checkbox with slider form}
-#' }
-#'
-#' @export
-uicheckbox <- function(..., type = "") {
-  shiny::div(class = paste("ui checkbox", type), ...)
-}
-
 #' Create Semantic UI checkbox
-#' @aliases simple_checkbox
+#' @aliases checkbox_input
 #' @aliases toggle
 #'
 #' This creates a checkbox using Semantic UI styles.
 #'
-#' @param id Input name. Reactive value is available under input[[name]].
+#' @param input_id Input name. Reactive value is available under input[[name]].
 #' @param label Text to be displayed with checkbox.
-#' @param type Type of checkbox.
+#' @param type Type of checkbox: NULL, 'toggle'
 #' @param is_marked Defines if checkbox should be marked. Default TRUE.
 #' @param style Style of the widget.
 #'
 #' @examples
-#' simple_checkbox("example", "Check me", is_marked = FALSE)
-#'
 #' if (interactive()){
-#' ui <- semanticPage(
-#'  shinyUI(
-#'    toggle("tog1", "My Label", TRUE)
-#'  )
-#' )
-#' server <- function(input, output, session) {
-#'   observeEvent(input$tog1, {
-#'     print(input$tog1)
-#'   })
-#' }
-#' shinyApp(ui, server)
+#'   ui <- shinyUI(
+#'     semanticPage(
+#'       p("Simple checkbox:"),
+#'       checkbox_input("example", "Check me", is_marked = FALSE),
+#'       p(),
+#'       p("Simple toggle:"),
+#'       toggle("tog1", "My Label", TRUE)
+#'     )
+#'   )
+#'   server <- function(input, output, session) {
+#'     observeEvent(input$tog1, {
+#'       print(input$tog1)
+#'     })
+#'   }
+#'   shinyApp(ui, server)
 #' }
 #' @details
 #' The inputs are updateable by using \code{\link[shiny]{updateCheckboxInput}}.
 #'
 #' The following \code{type}s are allowed:
 #' \itemize{
-#' \item{NULL}{The standard checkbox (default)}
-#' \item{toggle}{Each checkbox has a toggle form}
-#' \item{slider}{Each checkbox has a simple slider form}
+#' \item{NULL}{ The standard checkbox (default)}
+#' \item{toggle}{ Each checkbox has a toggle form}
+#' \item{slider}{ Each checkbox has a simple slider form}
 #' }
 #'
-#' @rdname simple_checkbox
+#' @rdname checkbox
 #' @export
-simple_checkbox <- function(id, label = "", type = NULL, is_marked = TRUE, style = NULL) {
+checkbox_input <- function(input_id, label = "", type = NULL, is_marked = TRUE,
+                           style = NULL) {
   div(
     class = paste("ui", type, if (is_marked) "checked", "checkbox"), style = style,
-    tags$input(id = id, type = "checkbox", checked = if (is_marked) NA else NULL),
+    tags$input(id = input_id, type = "checkbox", checked = if (is_marked) NA else NULL),
     tags$label(label)
   )
 }
 
-#' @rdname simple_checkbox
+#' @rdname checkbox
 #' @export
-toggle <- function(id, label = "", is_marked = TRUE, style = NULL) {
-  simple_checkbox(id, label, type = "toggle", is_marked = is_marked, style = style)
+toggle <- function(input_id, label = "", is_marked = TRUE, style = NULL) {
+  checkbox_input(input_id, label, type = "toggle", is_marked = is_marked, style = style)
 }
 
 #' Create Semantic UI multiple checkbox
 #'
 #' This creates a multiple checkbox using Semantic UI styles.
 #'
-#' @param name Input name. Reactive value is available under \code{input[[name]]}.
+#' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
 #' @param label Text to be displayed with checkbox.
 #' @param choices Vector of labels to show checkboxes for.
 #' @param choices_value Vector of values that should be used for corresponding choice.
@@ -131,7 +114,7 @@ toggle <- function(id, label = "", is_marked = TRUE, style = NULL) {
 #' }
 #'
 #' @export
-multiple_checkbox <- function(name, label, choices, choices_value = choices,
+multiple_checkbox <- function(input_id, label, choices, choices_value = choices,
                               selected = NULL, position = "grouped", type = NULL, ...) {
   choices_html <- tagList(lapply(seq_along(choices), function(x) {
     div(
@@ -139,7 +122,7 @@ multiple_checkbox <- function(name, label, choices, choices_value = choices,
       div(
         class = paste("ui checkbox", type, if (choices_value[x] %in% selected) "checked"),
         tags$input(
-          type = "checkbox", name = name, tabindex = "0", value = choices_value[x],
+          type = "checkbox", name = input_id, tabindex = "0", value = choices_value[x],
           checked = if (choices_value[x] %in% selected) NA else NULL
         ),
         tags$label(choices[x])
@@ -148,8 +131,8 @@ multiple_checkbox <- function(name, label, choices, choices_value = choices,
   }))
 
   shiny::div(
-    id = name, class = paste(position, "fields shiny-input-checkboxgroup"),
-    tags$label(`for` = name, label),
+    id = input_id, class = paste(position, "fields shiny-input-checkboxgroup"),
+    tags$label(`for` = input_id, label),
     choices_html,
     ...
   )
@@ -158,7 +141,7 @@ multiple_checkbox <- function(name, label, choices, choices_value = choices,
 #' @rdname multiple_checkbox
 #'
 #' @export
-multiple_radio <- function(name, label, choices, choices_value = choices,
+multiple_radio <- function(input_id, label, choices, choices_value = choices,
                            selected = choices_value[1], position = "grouped",
                            type = "radio", ...) {
   choices_html <- tagList(lapply(seq_along(choices), function(x) {
@@ -167,7 +150,7 @@ multiple_radio <- function(name, label, choices, choices_value = choices,
       div(
         class = paste("ui checkbox", type,  if (choices_value[x] %in% selected) "checked"),
         tags$input(
-          type = "radio", name = name, tabindex = "0", value = choices_value[x],
+          type = "radio", name = input_id, tabindex = "0", value = choices_value[x],
           checked = if (choices_value[x] %in% selected) NA else NULL
         ),
         tags$label(choices[x])
@@ -176,8 +159,8 @@ multiple_radio <- function(name, label, choices, choices_value = choices,
   }))
 
   shiny::div(
-    id = name, class = paste(position, "fields shiny-input-radiogroup"),
-    tags$label(`for` = name, label),
+    id = input_id, class = paste(position, "fields shiny-input-radiogroup"),
+    tags$label(`for` = input_id, label),
     choices_html,
     ...
   )

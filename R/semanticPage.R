@@ -1,10 +1,3 @@
-#' Supported semantic themes
-#' @export
-SUPPORTED_THEMES <- c("cerulean", "darkly", "paper", "simplex",  # nolint
-                      "superhero", "flatly", "slate", "cosmo",
-                      "readable",  "united", "journal", "solar",
-                      "cyborg", "sandstone", "yeti", "lumen", "spacelab")
-
 #' Get CDN path semantic dependencies
 #'
 #' Internal function that returns path string from `shiny.custom.semantic.cdn` options.
@@ -132,7 +125,6 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
 #' @export
 semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE,
                          margin = "10px") {
-  content <- shiny::tags$div(class = "wrapper", ...)
   if (supress_bootstrap) {
     supress_bootstrap <- suppressDependencies("bootstrap")
   }
@@ -157,6 +149,6 @@ semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE
     ),
     shiny::tags$body(style = glue::glue("margin:{margin}; min-height: 611px;"),
                      supress_bootstrap,
-                     content)
+                     ...)
   )
 }

@@ -12,3 +12,6 @@ menu_divider(...)
 \description{
 This creates a menu divider item using Semantic UI.
 }
+\seealso{
+menu
+}
