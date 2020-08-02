@@ -137,7 +137,7 @@ update_progress <- function(session, input_id, type = c("increment", "decrement"
 #' @rdname Progress-R6
 #' @export
 Progress <- R6::R6Class(
-  'Progress',
+  "Progress",
   public = list(
     #' @description Creates a new progress panel (but does not display it).
     #' @param session The Shiny session object, as provided by `shinyServer` to
@@ -367,7 +367,7 @@ set_progress <- function(value = NULL, message = NULL, session = getDefaultReact
   if (is.null(session$progressStack)) stop("'session' is not a ShinySession object.")
 
   if (session$progressStack$size() == 0) {
-    warning('set_progress was called outside of with_progress; ignoring')
+    warning("set_progress was called outside of with_progress; ignoring")
     return()
   }
 
@@ -389,7 +389,7 @@ inc_progress <- function(amount = 0.1, message = NULL, session = getDefaultReact
   if (is.null(session$progressStack)) stop("'session' is not a ShinySession object.")
 
   if (session$progressStack$size() == 0) {
-    warning('inc_progress was called outside of with_progress; ignoring')
+    warning("inc_progress was called outside of with_progress; ignoring")
     return()
   }
 
