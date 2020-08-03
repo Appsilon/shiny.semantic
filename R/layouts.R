@@ -228,19 +228,15 @@ split_layout <- function(..., cell_widths = NULL, cell_args = "", style = NULL){
   n_elems <- length(ui_elements)
   columns <- paste0("col", seq(1, n_elems))
   names(ui_elements) <- columns
-  if (is.null(cell_widths)) {
-    split_width <- floor(100/n_elems)
-    cell_widths <- mapply(function(x) paste0(x, "%"), rep(split_width, n_elems))
-  }
-  layout <- grid_template(default = list(
-    areas = rbind(columns),
-    cols_width = cell_widths
+  if (is.null(cell_widths))
+    cell_widths <- rep("1fr", n_elems)
+  layout <- grid_template(
+    default = list(
+      areas = rbind(columns),
+      cols_width = cell_widths
     )
   )
-  if (is.null(style))
-    container_style <- "background: #d8d8d8; margin: 5px;"
-  else
-    container_style <- style
+  container_style <- if (is.null(style)) "background: #d8d8d8; margin: 5px;" else style
   area_styles <- as.list(rep(cell_args, n_elems))
   names(area_styles) <- columns
   args_list <- ui_elements
