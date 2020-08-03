@@ -162,3 +162,92 @@ sidebarLayout <- function(sidebarPanel,
     mirrored = mirrored
   )
 }
+
+
+#' Split layout
+#'
+#' Lays out elements horizontally, dividing the available horizontal space into
+#' equal parts (by default) or specified by parameters.
+#'
+#' @param ... Unnamed arguments will become child elements of the layout.
+#' @param cell_widths Character or numeric vector indicating the widths of the
+#' individual cells. Recycling will be used if needed.
+#' @param cell_args character with additional attributes that should be used for
+#' each cell of the layout.
+#' @param style character with style of outer box surrounding all elements
+#' @param cellWidths same as \code{cell_widths}
+#' @param cellArgs same as \code{cell_args}
+#'
+#' @return split layout grid object
+#' @export
+#'
+#' @rdname split_layout
+#'
+#' @examples
+#' if (interactive()) {
+#'   #' Server code used for all examples
+#'   server <- function(input, output) {
+#'     output$plot1 <- renderPlot(plot(cars))
+#'     output$plot2 <- renderPlot(plot(pressure))
+#'     output$plot3 <- renderPlot(plot(AirPassengers))
+#'   }
+#'   #' Equal sizing
+#'   ui <- semanticPage(
+#'     split_layout(
+#'       plotOutput("plot1"),
+#'       plotOutput("plot2")
+#'     )
+#'   )
+#'   shinyApp(ui, server)
+#'   #' Custom widths
+#'   ui <- semanticPage(
+#'     split_layout(cell_widths = c("25%", "75%"),
+#'                 plotOutput("plot1"),
+#'                 plotOutput("plot2")
+#'     )
+#'   )
+#'   shinyApp(ui, server)
+#'   #' All cells at 300 pixels wide, with cell padding
+#'   #' and a border around everything
+#'   ui <- semanticPage(
+#'     split_layout(
+#'     cell_widths = 300,
+#'     cell_args = "padding: 6px;",
+#'     style = "border: 1px solid silver;",
+#'     plotOutput("plot1"),
+#'     plotOutput("plot2"),
+#'     plotOutput("plot3")
+#'   )
+#'   )
+#'   shinyApp(ui, server)
+#' }
+split_layout <- function(..., cell_widths = NULL, cell_args = "", style = NULL){
+  if (class(cell_args) == "list")
+    stop("In this implementation of `split_layout` cell_args must be character with style css")
+  ui_elements <- list(...)
+  n_elems <- length(ui_elements)
+  columns <- paste0("col", seq(1, n_elems))
+  names(ui_elements) <- columns
+  if (is.null(cell_widths))
+    cell_widths <- rep("1fr", n_elems)
+  layout <- grid_template(
+    default = list(
+      areas = rbind(columns),
+      cols_width = cell_widths
+    )
+  )
+  container_style <- if (is.null(style)) "background: #d8d8d8; margin: 5px;" else style
+  area_styles <- as.list(rep(cell_args, n_elems))
+  names(area_styles) <- columns
+  args_list <- ui_elements
+  args_list$grid_template <- layout
+  args_list$container_style <- container_style
+  args_list$area_styles <- area_styles
+  do.call(grid, args_list)
+}
+
+#' @export
+#' @rdname split_layout
+splitLayout <- function(..., cellWidths = NULL, cellArgs = "", style = NULL) {
+  split_layout(..., cell_widths = cellWidths, cell_args = cellArgs, style = style)
+}
