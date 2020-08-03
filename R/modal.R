@@ -202,6 +202,7 @@ modal <- function(...,
   )
 }
 
+#' @export
 #' @rdname modal
 modalDialog <- function(..., title = NULL, footer = NULL) {
   args <- list(...)
