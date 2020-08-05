@@ -64,3 +64,14 @@ if (nchar(to_wrn) > 1)
 extract_icon_name <- function(icon) {
   gsub(" icon", "", icon$attribs$class)
 }
+
+#' Split arguments to positional and named
+splitArgs <- function(...) {
+  args <- list(...)
+  if (is.null(names(args))) {
+    isNamed <- logical(length(args))
+  } else {
+    isNamed <- nzchar(names(args))
+  }
+  return(list(positional = args[!isNamed], named = args[isNamed]))
+}
