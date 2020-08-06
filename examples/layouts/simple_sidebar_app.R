@@ -9,10 +9,12 @@ ui <- semanticPage(
                   "Number of observations:",
                   min = 0,
                   max = 1000,
-                  value = 500)
+                  value = 500),
+      width = 3
     ),
     main_panel(
-      plotOutput("distPlot")
+      plotOutput("distPlot"),
+      width = 4
     )
   )
 )

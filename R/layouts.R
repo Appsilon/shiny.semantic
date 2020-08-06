@@ -9,6 +9,11 @@ get_row <- function(arg) {
   shiny::HTML(glue::glue("<div class='{class}' style='{style}'>{arg}</div>"))
 }
 
+#' Extracts numeric values
+#' @param value Value to be converted to numeric
+#' @return Numeric value
+get_numeric <- function(value) as.numeric(gsub("([0-9]+).*$", "\\1", value))
+
 #' Creates div containing children elements in separate rows
 #'
 #' @param ... Container's children elements
@@ -25,7 +30,7 @@ panel <- function(...) {
 #' @rdname sidebar_layout
 #' @export
 sidebar_panel <- function(..., width = 1) {
-  list(panel = panel(...), width = width)
+  list(panel = panel(...), width = get_numeric(width))
 }
 
 #' Creates div containing children elements of main panel
@@ -35,7 +40,7 @@ sidebar_panel <- function(..., width = 1) {
 #' @rdname sidebar_layout
 #' @export
 main_panel <- function(..., width = 3) {
-  list(panel = panel(...), width = width)
+  list(panel = panel(...), width = get_numeric(width))
 }
 
 #' Creates grid layout composed of sidebar and main panels
