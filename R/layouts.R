@@ -101,7 +101,7 @@ sidebar_layout <- function(sidebar_panel,
   if (!mirrored) {
     layout <- grid_template(default = list(
       areas = rbind(c("sidebar_panel", "main_panel")),
-      cols_width = c(glue::glue("{sidebar_width}fr {main_width}fr"))
+      cols_width = c(glue::glue("{sidebar_width}fr"), glue::glue("{main_width}fr"))
     ))
   } else {
     layout <- grid_template(default = list(
