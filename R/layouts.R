@@ -50,11 +50,14 @@ main_panel <- function(..., width = 3) {
 #'                                     "Number of observations:",
 #'                                     min = 0,
 #'                                     max = 1000,
-#'                                     value = 500)
+#'                                     value = 500),
+#'                                     width = 3
 #'       ),
 #'       main_panel(
-#'         plotOutput("distPlot")
-#'       )
+#'         plotOutput("distPlot"),
+#'         width = 4
+#'       ),
+#'       mirrored = TRUE
 #'     )
 #'   )
 #'   server <- function(input, output) {
@@ -74,15 +77,14 @@ sidebar_layout <- function(sidebar_panel,
                              sidebar_panel = "",
                              main_panel = "")) {
 
-  sidebar_panel <- sidebar_panel$children
-  main_panel <- main_panel$children
+  sidebar_children <- sidebar_panel$children
+  main_children <- main_panel$children
   sidebar_width <- sidebar_panel$width
   main_width <- main_panel$width
 
   # set normal or mirrored sidebar layout
   layout_areas <- c("sidebar_panel", "main_panel")
   layout_cols <- c(glue::glue("{sidebar_width}fr"), glue::glue("{main_width}fr"))
-
   layout <- grid_template(default = list(
     areas = rbind(if(mirrored) rev(layout_areas) else layout_areas),
     cols_width = if(mirrored) rev(layout_cols) else layout_cols
@@ -121,11 +123,11 @@ sidebar_layout <- function(sidebar_panel,
   )
 
   grid(
-    layout,
+    grid_template = layout,
     container_style,
     area_styles,
-    sidebar_panel = sidebar_panel,
-    main_panel = main_panel
+    sidebar_panel = sidebar_children,
+    main_panel = main_children
   )
 }
 
