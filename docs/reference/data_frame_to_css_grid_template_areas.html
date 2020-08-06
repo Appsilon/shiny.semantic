@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Allows for the creation of modals in the server side without being tied to a specific HTML element. — create_modal • SHINY.SEMANTIC</title>
+<title>Generate CSS string representing grid template areas. — data_frame_to_css_grid_template_areas • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Allows for the creation of modals in the server side without being tied to a specific HTML element. — create_modal" />
-<meta property="og:description" content="Allows for the creation of modals in the server side without being tied to a specific HTML element." />
+<meta property="og:title" content="Generate CSS string representing grid template areas. — data_frame_to_css_grid_template_areas" />
+<meta property="og:description" content="Generate CSS string representing grid template areas." />
 
 
 
@@ -133,41 +133,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Allows for the creation of modals in the server side without being tied to a specific HTML element.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/modal.R'><code>R/modal.R</code></a></small>
-    <div class="hidden name"><code>create_modal.Rd</code></div>
+    <h1>Generate CSS string representing grid template areas.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/grid.R'><code>R/grid.R</code></a></small>
+    <div class="hidden name"><code>data_frame_to_css_grid_template_areas.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Allows for the creation of modals in the server side without being tied to a specific HTML element.</p>
+    <p>Generate CSS string representing grid template areas.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_modal</span>(
-  <span class='no'>ui_modal</span>,
-  <span class='kw'>show</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/domains.html'>getDefaultReactiveDomain</a></span>()
-)</pre>
+    <pre class="usage"><span class='fu'>data_frame_to_css_grid_template_areas</span>(<span class='no'>areas_dataframe</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ui_modal</th>
-      <td><p>HTML containing the modal.</p></td>
-    </tr>
-    <tr>
-      <th>show</th>
-      <td><p>If the modal should only be created or open when called (open by default).</p></td>
-    </tr>
-    <tr>
-      <th>session</th>
-      <td><p>Current session.</p></td>
+      <th>areas_dataframe</th>
+      <td><p>data.frame of character representing grid areas</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <div class='dont-index'><p>modal</p></div>
+    <p>character</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This is a helper function used in grid_template()</p>
+<pre>
+<span class='no'>areas_dataframe</span> <span class='kw'>&amp;</span><span class='no'>lt</span>;- <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span>(
+   <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"header"</span>, <span class='st'>"header"</span>, <span class='st'>"header"</span>),
+   <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"menu"</span>,   <span class='st'>"main"</span>,   <span class='st'>"right1"</span>),
+   <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"menu"</span>,   <span class='st'>"main"</span>,   <span class='st'>"right2"</span>)
+)
+
+<span class='no'>result</span> <span class='kw'>==</span> <span class='st'>"'header header header' 'menu main right1' 'menu main right2'"</span></pre>
+
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

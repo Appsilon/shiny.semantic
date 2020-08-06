@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Allows for the creation of modals in the server side without being tied to a specific HTML element. — create_modal • SHINY.SEMANTIC</title>
+<title>Format string template (that represents HTML template) with custom CSS styles. — apply_custom_styles_to_html_template • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Allows for the creation of modals in the server side without being tied to a specific HTML element. — create_modal" />
-<meta property="og:description" content="Allows for the creation of modals in the server side without being tied to a specific HTML element." />
+<meta property="og:title" content="Format string template (that represents HTML template) with custom CSS styles. — apply_custom_styles_to_html_template" />
+<meta property="og:description" content="Format string template (that represents HTML template) with custom CSS styles." />
 
 
 
@@ -133,41 +133,49 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Allows for the creation of modals in the server side without being tied to a specific HTML element.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/modal.R'><code>R/modal.R</code></a></small>
-    <div class="hidden name"><code>create_modal.Rd</code></div>
+    <h1>Format string template (that represents HTML template) with custom CSS styles.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/grid.R'><code>R/grid.R</code></a></small>
+    <div class="hidden name"><code>apply_custom_styles_to_html_template.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Allows for the creation of modals in the server side without being tied to a specific HTML element.</p>
+    <p>Format string template (that represents HTML template) with custom CSS styles.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_modal</span>(
-  <span class='no'>ui_modal</span>,
-  <span class='kw'>show</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/domains.html'>getDefaultReactiveDomain</a></span>()
+    <pre class="usage"><span class='fu'>apply_custom_styles_to_html_template</span>(
+  <span class='kw'>html_template</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>area_names</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(),
+  <span class='kw'>container_style</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>area_styles</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ui_modal</th>
-      <td><p>HTML containing the modal.</p></td>
+      <th>html_template</th>
+      <td><p>character</p></td>
     </tr>
     <tr>
-      <th>show</th>
-      <td><p>If the modal should only be created or open when called (open by default).</p></td>
+      <th>area_names</th>
+      <td><p>vector of character</p></td>
     </tr>
     <tr>
-      <th>session</th>
-      <td><p>Current session.</p></td>
+      <th>container_style</th>
+      <td><p>character</p></td>
+    </tr>
+    <tr>
+      <th>area_styles</th>
+      <td><p>list of character</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <div class='dont-index'><p>modal</p></div>
+    <p>character</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This is a helper function used in grid()</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

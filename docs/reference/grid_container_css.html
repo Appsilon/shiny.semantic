@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Allows for the creation of modals in the server side without being tied to a specific HTML element. — create_modal • SHINY.SEMANTIC</title>
+<title>Generate template string representing CSS styles of grid container div. — grid_container_css • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Allows for the creation of modals in the server side without being tied to a specific HTML element. — create_modal" />
-<meta property="og:description" content="Allows for the creation of modals in the server side without being tied to a specific HTML element." />
+<meta property="og:title" content="Generate template string representing CSS styles of grid container div. — grid_container_css" />
+<meta property="og:description" content="Generate template string representing CSS styles of grid container div." />
 
 
 
@@ -133,41 +133,52 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Allows for the creation of modals in the server side without being tied to a specific HTML element.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/modal.R'><code>R/modal.R</code></a></small>
-    <div class="hidden name"><code>create_modal.Rd</code></div>
+    <h1>Generate template string representing CSS styles of grid container div.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/grid.R'><code>R/grid.R</code></a></small>
+    <div class="hidden name"><code>grid_container_css.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Allows for the creation of modals in the server side without being tied to a specific HTML element.</p>
+    <p>Generate template string representing CSS styles of grid container div.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_modal</span>(
-  <span class='no'>ui_modal</span>,
-  <span class='kw'>show</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/domains.html'>getDefaultReactiveDomain</a></span>()
-)</pre>
+    <pre class="usage"><span class='fu'>grid_container_css</span>(<span class='no'>css_grid_template_areas</span>, <span class='no'>rows_height</span>, <span class='no'>cols_width</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ui_modal</th>
-      <td><p>HTML containing the modal.</p></td>
+      <th>css_grid_template_areas</th>
+      <td><p>character, CSS value for grid-template-areas</p></td>
     </tr>
     <tr>
-      <th>show</th>
-      <td><p>If the modal should only be created or open when called (open by default).</p></td>
+      <th>rows_height</th>
+      <td><p>vector of character</p></td>
     </tr>
     <tr>
-      <th>session</th>
-      <td><p>Current session.</p></td>
+      <th>cols_width</th>
+      <td><p>vector of character</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <div class='dont-index'><p>modal</p></div>
+    <p>character</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This is a helper function used in grid_template()</p><pre>
+  <span class='fu'>grid_container_css</span>(
+    <span class='st'>"'a a a' 'b b b'"</span>,
+    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"50%"</span>, <span class='st'>"50%"</span>),
+    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"100px"</span>, <span class='st'>"2fr"</span>, <span class='st'>"1fr"</span>)
+  )</pre><p>returns</p><pre>
+  <span class='st'>"display: grid;
+   height: 100%;
+   grid-template-rows: 50% 50%;
+   grid-template-columns: 100px 2fr 1fr;
+   grid-template-areas: 'a a a' 'b b b';
+   {custom_style_grid_container}"</span></pre>
+
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

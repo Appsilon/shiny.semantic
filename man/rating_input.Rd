@@ -37,9 +37,11 @@ rating object
 Crates rating component
 }
 \examples{
+## Only run examples in interactive R sessions
 if (interactive()) {
   library(shiny)
   library(shiny.semantic)
+
   ui <- shinyUI(
     semanticPage(
       rating_input("rate", "How do you like it?", max = 5,

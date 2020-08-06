@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Allows for the creation of modals in the server side without being tied to a specific HTML element. — create_modal • SHINY.SEMANTIC</title>
+<title>Generate list of HTML div elements representing grid areas. — list_of_area_tags • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Allows for the creation of modals in the server side without being tied to a specific HTML element. — create_modal" />
-<meta property="og:description" content="Allows for the creation of modals in the server side without being tied to a specific HTML element." />
+<meta property="og:title" content="Generate list of HTML div elements representing grid areas. — list_of_area_tags" />
+<meta property="og:description" content="Generate list of HTML div elements representing grid areas." />
 
 
 
@@ -133,41 +133,38 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Allows for the creation of modals in the server side without being tied to a specific HTML element.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/modal.R'><code>R/modal.R</code></a></small>
-    <div class="hidden name"><code>create_modal.Rd</code></div>
+    <h1>Generate list of HTML div elements representing grid areas.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/grid.R'><code>R/grid.R</code></a></small>
+    <div class="hidden name"><code>list_of_area_tags.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Allows for the creation of modals in the server side without being tied to a specific HTML element.</p>
+    <p>Generate list of HTML div elements representing grid areas.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_modal</span>(
-  <span class='no'>ui_modal</span>,
-  <span class='kw'>show</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/domains.html'>getDefaultReactiveDomain</a></span>()
-)</pre>
+    <pre class="usage"><span class='fu'>list_of_area_tags</span>(<span class='no'>area_names</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ui_modal</th>
-      <td><p>HTML containing the modal.</p></td>
-    </tr>
-    <tr>
-      <th>show</th>
-      <td><p>If the modal should only be created or open when called (open by default).</p></td>
-    </tr>
-    <tr>
-      <th>session</th>
-      <td><p>Current session.</p></td>
+      <th>area_names</th>
+      <td><p>vector with area names</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <div class='dont-index'><p>modal</p></div>
+    <p>list of <code>shiny::tags$div</code></p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This is a helper function used in grid_template()</p><pre>
+  <span class='fu'>list_of_area_tags</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"header"</span>, <span class='st'>"main"</span>, <span class='st'>"footer"</span>))</pre><p>returns the following list:</p><pre>
+  [[1]] &amp;lt;div style="grid-area: header; {custom_style_grid_area_header}"&amp;gt;{{ header }}&amp;lt;/div&amp;gt;
+  [[2]] &amp;lt;div style="grid-area: main; {custom_style_grid_area_main}"&amp;gt;{{ main }}&amp;lt;/div&amp;gt;
+  [[3]] &amp;lt;div style="grid-area: footer; {custom_style_grid_area_footer}"&amp;gt;{{ footer }}&amp;lt;/div&amp;gt;
+</pre>
+
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

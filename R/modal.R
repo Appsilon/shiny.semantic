@@ -186,6 +186,7 @@ modal <- function(...,
 #' @param ui_modal HTML containing the modal.
 #' @param show If the modal should only be created or open when called (open by default).
 #' @param session Current session.
+#' @seealso modal
 #'
 #' @import shiny
 #' @export
@@ -217,6 +218,7 @@ attach_rule <- function(id, behavior, target, value) {
 #' @param id ID of the modal that will be displayed.
 #' @param session The \code{session} object passed to function given to
 #'   \code{shinyServer}.
+#' @seealso modal
 #'
 #' @export
 show_modal <- function(id, session = shiny::getDefaultReactiveDomain()) {

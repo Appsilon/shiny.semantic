@@ -79,6 +79,14 @@ button <- function() {
     demo(div(class = "ui black button", "Black"))
   )
 }
+counter_button_demo <- function() {
+  div(
+    h1(class="ui header", id="counter_button", "Counter button"),
+    demo(counter_button("counter", "My Counter Button",
+                        icon = icon("world"),
+                        size = "", color = "purple"))
+  )
+}
 divider <- function() {
   div(
     h1(class="ui header", id="divider", "Divider"),
@@ -217,8 +225,16 @@ uilabel <- function() {
 rating <- function() {
   div(
     h1(class="ui header", id="rating", "Rating"),
-    demo(div(class = "ui star rating"))
-  )
+    demo(rating_input(
+      input_id,
+      label = "",
+      value = 0,
+      max = 3,
+      icon = "star",
+      color = "yellow",
+      size = ""
+    )
+  ))
 }
 tabs <- function () {
   div(
@@ -311,6 +327,7 @@ ui <- function() {
       div(id="examples", class="ui container",
         header(),
         button(),
+        counter_button_demo(),
         divider(),
         uiinput(),
         label(),

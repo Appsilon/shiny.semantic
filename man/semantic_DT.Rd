@@ -14,6 +14,9 @@ This creates DT table styled with Semantic UI.
 }
 \examples{
 if (interactive()){
+ library(shiny)
+ library(shiny.semantic)
+
  ui <- semanticPage(
    semantic_DTOutput("table")
  )
