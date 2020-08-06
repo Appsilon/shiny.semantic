@@ -52,7 +52,7 @@ ui <- semanticPage(
   slider_input("obs", value = 500, min = 0, max = 1000),
   segment(
     plotOutput("dist_plot")
-    )
+  )
 )
 
 server <- function(input, output) {

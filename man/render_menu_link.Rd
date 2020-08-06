@@ -17,7 +17,7 @@ it gets highlighted), default empty (\code{""})}
 \item{icon}{non-mandatory parameter with icon name}
 }
 \value{
-shiny tag a link
+shiny tag link
 }
 \description{
 This function renders horizontal menu item.
