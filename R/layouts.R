@@ -92,23 +92,19 @@ sidebar_layout <- function(sidebar_panel,
                              sidebar_panel = "",
                              main_panel = "")) {
 
-  sidebar_width <- sidebar_panel$width
-  main_width <- main_panel$width
   sidebar_panel <- sidebar_panel$panel
   main_panel <- main_panel$panel
+  sidebar_width <- sidebar_panel$width
+  main_width <- main_panel$width
 
   # set normal or mirrored sidebar layout
-  if (!mirrored) {
-    layout <- grid_template(default = list(
-      areas = rbind(c("sidebar_panel", "main_panel")),
-      cols_width = c(glue::glue("{sidebar_width}fr"), glue::glue("{main_width}fr"))
-    ))
-  } else {
-    layout <- grid_template(default = list(
-      areas = rbind(c("main_panel", "sidebar_panel")),
-      cols_width = c(glue::glue("{main_width}fr {sidebar_width}fr"))
-    ))
-  }
+  layout_areas <- c("sidebar_panel", "main_panel")
+  layout_cols <- c(glue::glue("{sidebar_width}fr"), glue::glue("{main_width}fr"))
+
+  layout <- grid_template(default = list(
+    areas = rbind(if(mirrored) rev(layout_areas) else layout_areas),
+    cols_width = if(mirrored) rev(layout_cols) else layout_cols
+  ))
 
   # grid container's default styling
   container_style <- glue::glue("
@@ -160,11 +156,10 @@ sidebarLayout <- function(sidebarPanel,
                           mainPanel,
                           position = c("left", "right"),
                           fluid = TRUE) {
-  if (position == "left") mirrored <- FALSE else mirrored <- TRUE
   sidebar_layout (
     sidebar_panel,
     main_panel,
-    mirrored = mirrored
+    mirrored = position == "right"
   )
 }
 

@@ -1,6 +1,5 @@
 library(shiny)
 library(shiny.semantic)
-library(glue)
 
 ui <- function() {
   shinyUI(semanticPage(

@@ -10,12 +10,13 @@ ui <- semanticPage(
                   min = 0,
                   max = 1000,
                   value = 500),
-      width = 3
+      width = 5
     ),
     main_panel(
       plotOutput("distPlot"),
-      width = 4
-    )
+      width = 2
+    ),
+    mirrored = FALSE
   )
 )
 
