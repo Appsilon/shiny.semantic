@@ -1,27 +1,9 @@
 # Layouts
 
-#' Creates row wrapping specified elements
-#' @param arg Element to be wrapped in row container
-#' @return character with row wrapping specified elements
-get_row <- function(arg) {
-  class <- "row"
-  style <- "padding: 20px;"
-  shiny::HTML(glue::glue("<div class='{class}' style='{style}'>{arg}</div>"))
-}
-
 #' Extracts numeric values
 #' @param value Value to be converted to numeric
 #' @return Numeric value
 get_numeric <- function(value) as.numeric(gsub("([0-9]+).*$", "\\1", value))
-
-#' Creates div containing children elements in separate rows
-#'
-#' @param ... Container's children elements
-#' @return Div containing children elements in separate rows
-panel <- function(...) {
-  args <- list(...)
-  div(lapply(args, get_row))
-}
 
 #' Creates div containing children elements of sidebar panel
 #'
@@ -30,7 +12,7 @@ panel <- function(...) {
 #' @rdname sidebar_layout
 #' @export
 sidebar_panel <- function(..., width = 1) {
-  list(panel = panel(...), width = get_numeric(width))
+  list(children = list(...), width = get_numeric(width))
 }
 
 #' Creates div containing children elements of main panel
@@ -40,7 +22,7 @@ sidebar_panel <- function(..., width = 1) {
 #' @rdname sidebar_layout
 #' @export
 main_panel <- function(..., width = 3) {
-  list(panel = panel(...), width = get_numeric(width))
+  list(children = list(...), width = get_numeric(width))
 }
 
 #' Creates grid layout composed of sidebar and main panels
@@ -92,8 +74,8 @@ sidebar_layout <- function(sidebar_panel,
                              sidebar_panel = "",
                              main_panel = "")) {
 
-  sidebar_panel <- sidebar_panel$panel
-  main_panel <- main_panel$panel
+  sidebar_panel <- sidebar_panel$children
+  main_panel <- main_panel$children
   sidebar_width <- sidebar_panel$width
   main_width <- main_panel$width
 
@@ -120,14 +102,20 @@ sidebar_layout <- function(sidebar_panel,
       background-color: #f5f5f5;
       border-radius: 5px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
       min-width: 160px;
+      padding: 10px;
       {area_styles$sidebar_panel}
     "),
     main_panel = glue::glue("
       background-color: #fff;
       border-radius: 5px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
       min-width: 160px;
+      padding: 10px;
       {area_styles$main_panel}
     ")
   )
