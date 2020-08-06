@@ -196,8 +196,7 @@
     ),
     <span class='kw'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
       <span class='fu'>observe</span>({
-        <span class='no'>val</span> <span class='kw'>&lt;-</span> <span class='no'>input</span>$<span class='no'>control</span>
-        <span class='fu'>update_slider</span>(<span class='no'>session</span>, <span class='st'>"receive"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='no'>val</span>)
+        <span class='fu'>update_slider</span>(<span class='no'>session</span>, <span class='st'>"receive"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='no'>input</span>$<span class='no'>control</span>)
       })
     }
   )

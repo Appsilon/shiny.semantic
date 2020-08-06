@@ -44,8 +44,7 @@ if (interactive()) {
     ),
     server = function(input, output, session) {
       observe({
-        val <- input$control
-        update_slider(session, "receive", value = val)
+        update_slider(session, "receive", value = input$control)
       })
     }
   )

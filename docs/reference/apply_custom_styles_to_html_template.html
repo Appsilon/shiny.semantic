@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Update rating — update_rating_input • SHINY.SEMANTIC</title>
+<title>Format string template (that represents HTML template) with custom CSS styles. — apply_custom_styles_to_html_template • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="Update rating — update_rating_input" />
-<meta property="og:description" content="Change the value of a rating input on the client. Check
-rating_input to learn more." />
+<meta property="og:title" content="Format string template (that represents HTML template) with custom CSS styles. — apply_custom_styles_to_html_template" />
+<meta property="og:description" content="Format string template (that represents HTML template) with custom CSS styles." />
 
 
 
@@ -134,62 +133,50 @@ rating_input to learn more." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Update rating</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/rating.R'><code>R/rating.R</code></a></small>
-    <div class="hidden name"><code>update_rating.Rd</code></div>
+    <h1>Format string template (that represents HTML template) with custom CSS styles.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/grid.R'><code>R/grid.R</code></a></small>
+    <div class="hidden name"><code>apply_custom_styles_to_html_template.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Change the value of a rating input on the client. Check
-<code>rating_input</code> to learn more.</p>
+    <p>Format string template (that represents HTML template) with custom CSS styles.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>update_rating_input</span>(<span class='no'>session</span>, <span class='no'>input_id</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>apply_custom_styles_to_html_template</span>(
+  <span class='kw'>html_template</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>area_names</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(),
+  <span class='kw'>container_style</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>area_styles</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>session</th>
-      <td><p>shiny object with session info</p></td>
+      <th>html_template</th>
+      <td><p>character</p></td>
     </tr>
     <tr>
-      <th>input_id</th>
-      <td><p>rating input name</p></td>
+      <th>area_names</th>
+      <td><p>vector of character</p></td>
     </tr>
     <tr>
-      <th>label</th>
-      <td><p>character with updated label</p></td>
+      <th>container_style</th>
+      <td><p>character</p></td>
     </tr>
     <tr>
-      <th>value</th>
-      <td><p>new rating value</p></td>
+      <th>area_styles</th>
+      <td><p>list of character</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Only run examples in interactive R sessions</span>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
+    <p>character</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
-  <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-    <span class='fu'><a href='rating_input.html'>rating_input</a></span>(<span class='st'>"rate"</span>, <span class='st'>"How do you like it?"</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>5</span>,
-                 <span class='kw'>icon</span> <span class='kw'>=</span> <span class='st'>"heart"</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"yellow"</span>),
-    <span class='fu'><a href='numeric_input.html'>numeric_input</a></span>(<span class='st'>"numeric_in"</span>, <span class='st'>""</span>, <span class='fl'>0</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>5</span>)
-  )
-)
-<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>session</span>, <span class='no'>input</span>, <span class='no'>output</span>) {
-  <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>numeric_in</span>, {
-    <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>input</span>$<span class='no'>numeric_in</span>
-    <span class='fu'>update_rating_input</span>(<span class='no'>session</span>, <span class='st'>"rate"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='no'>x</span>)
-  }
-  )
-}
-<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span>(<span class='kw'>ui</span> <span class='kw'>=</span> <span class='no'>ui</span>, <span class='kw'>server</span> <span class='kw'>=</span> <span class='no'>server</span>)
-}</div></pre>
+    <p>This is a helper function used in grid()</p>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

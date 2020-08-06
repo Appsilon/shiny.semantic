@@ -129,10 +129,11 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
 #'
 #' ui <- semanticPage(
 #'   title = "Hello Shiny Semantic!",
-#'   label("Number of observations:",
-#'         slider_input("obs", value = 500, min = 0, max = 1000)),
+#'   label("Number of observations:"),
+#'   slider_input("obs", value = 500, min = 0, max = 1000),
 #'   segment(
-#'     plotOutput("dist_plot"))
+#'     plotOutput("dist_plot")
+#'     )
 #' )
 #'
 #' server <- function(input, output) {

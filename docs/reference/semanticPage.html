@@ -197,10 +197,11 @@ in <code>shiny.minified = TRUE</code> mode.</p>
 
 <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'>semanticPage</span>(
   <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Hello Shiny Semantic!"</span>,
-  <span class='fu'><a href='label.html'>label</a></span>(<span class='st'>"Number of observations:"</span>,
-        <span class='fu'><a href='slider.html'>slider_input</a></span>(<span class='st'>"obs"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>1000</span>)),
+  <span class='fu'><a href='label.html'>label</a></span>(<span class='st'>"Number of observations:"</span>),
+  <span class='fu'><a href='slider.html'>slider_input</a></span>(<span class='st'>"obs"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>1000</span>),
   <span class='fu'><a href='segment.html'>segment</a></span>(
-    <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/plotOutput.html'>plotOutput</a></span>(<span class='st'>"dist_plot"</span>))
+    <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/plotOutput.html'>plotOutput</a></span>(<span class='st'>"dist_plot"</span>)
+    )
 )
 
 <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
