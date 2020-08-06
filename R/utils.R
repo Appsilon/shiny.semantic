@@ -66,6 +66,15 @@ extract_icon_name <- function(icon) {
 }
 
 #' Split arguments to positional and named
+#'
+#' @param ... arguments to split
+#'
+#' @return
+#' A list with two named elements:
+#' * `positional`, a list of the positional arguments,
+#' * `named`, a list of the named arguments.
+#'
+#' @md
 split_args <- function(...) {
   args <- list(...)
   if (is.null(names(args))) {

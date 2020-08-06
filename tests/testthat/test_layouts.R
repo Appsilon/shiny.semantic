@@ -75,3 +75,37 @@ test_that("test splitLayout", {
   expect_equal(split_layout(p("a"), cell_widths = c("25%", "75%")),
                splitLayout(p("a"), cellWidths = c("25%", "75%")))
 })
+
+test_that("test flow_layout", {
+  actual <- as.character(flow_layout(
+    cell_args = list(class = "cell"),
+    cell_width = "30%",
+    column_gap = "15px",
+    row_gap = 10,
+    shiny::tags$p("a"),
+    shiny::tags$p("b")
+  ))
+  has <- function(expected) {
+    any(grepl(expected, actual, fixed = TRUE))
+  }
+  expect_true(has("display: grid"))
+  expect_true(has("align-self: start"))
+  expect_true(has('class="cell"'))
+  expect_true(has("grid-template-columns: repeat(auto-fill, 30%)"))
+  expect_true(has("column-gap: 15px"))
+  expect_true(has("row-gap: 10px"))
+  expect_true(has("<p>a</p>"))
+  expect_true(has("<p>b</p>"))
+})
+
+test_that("test flowLayout", {
+  actual <- as.character(flowLayout(
+    cellArgs = list(class = "cell"),
+    shiny::tags$p("a")
+  ))
+  expected <- as.character(flow_layout(
+    cell_args = list(class = "cell"),
+    shiny::tags$p("a")
+  ))
+  expect_equal(actual, expected)
+})
