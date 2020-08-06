@@ -254,24 +254,24 @@ splitLayout <- function(..., cellWidths = NULL, cellArgs = "", style = NULL) {
 
 #' @export
 #' @rdname flow_layout
-flow_layout <- function(..., cellArgs = list(), itemWidth = "208px", columnGap = "12px", rowGap = "0px") {
-  containerStyle <- glue::glue(
+flow_layout <- function(..., cell_args = list(), item_width = "208px", column_gap = "12px", row_gap = "0px") {
+  container_style <- glue::glue(
     "display: grid;",
-    "grid-template-columns: repeat(auto-fill, {itemWidth});",
-    "column-gap: {columnGap};",
-    "row-gap: {rowGap};"
+    "grid-template-columns: repeat(auto-fill, {item_width});",
+    "column-gap: {column_gap};",
+    "row-gap: {row_gap};"
   )
-  itemStyle <- "align-self: start;"
+  item_style <- "align-self: start;"
   args <- splitArgs(...)
   children <- lapply(args$positional, function(child) {
-    do.call(shiny::tags$div, c(style = itemStyle, cellArgs, list(child)))
+    do.call(shiny::tags$div, c(style = item_style, cellArgs, list(child)))
   })
   attributes <- args$named
-  do.call(shiny::tags$div, c(style = containerStyle, attributes, children))
+  do.call(shiny::tags$div, c(style = container_style, attributes, children))
 }
 
 #' @export
 #' @rdname flow_layout
 flowLayout <- function(..., cellArgs = list()) {
-  flow_layout(..., cellArgs = cellArgs)
+  flow_layout(..., cell_args = cellArgs)
 }

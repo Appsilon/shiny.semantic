@@ -66,12 +66,12 @@ extract_icon_name <- function(icon) {
 }
 
 #' Split arguments to positional and named
-splitArgs <- function(...) {
+split_args <- function(...) {
   args <- list(...)
   if (is.null(names(args))) {
-    isNamed <- logical(length(args))
+    is_named <- logical(length(args))
   } else {
-    isNamed <- nzchar(names(args))
+    is_named <- nzchar(names(args))
   }
-  return(list(positional = args[!isNamed], named = args[isNamed]))
+  return(list(positional = args[!is_named], named = args[is_named]))
 }
