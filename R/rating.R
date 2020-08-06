@@ -44,8 +44,10 @@ rating_input <- function(input_id, label = "", value = 0, max = 3, icon = "star"
     class = "ui form",
     shiny::div(class = "field",
       if (!is.null(label)) tags$label(label, `for` = input_id),
-      shiny::div(id = input_id, class = class, `data-icon` = icon,
-                 `data-rating` = value, `data-max-rating` = max)
+      shiny::div(
+        id = input_id, class = class, `data-icon` = icon,
+        `data-rating` = value, `data-max-rating` = max
+      )
     )
   )
 }
