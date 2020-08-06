@@ -23,6 +23,24 @@ check_proper_color <- function(color) {
   }
 }
 
+#' Checks whether argument included as shiny exclusive parameter
+#'
+#' @description
+#' A quick function to check a shiny.semantic wrapper of a shiny function to see whether any
+#' extra arguments are called that aren't required for the shiny.semantic version
+#'
+#' @param name Function argument name
+#' @param func Name of the function in the
+#' @param ... Arguments passed to the shiny.semantic version of the shiny function
+#'
+#' @return If the shiny exclusive argument is called in a shiny.semantic, then a message is posted in the UI
+check_shiny_param <- function(name, func, ...) {
+  args <- list(...)
+  args_names <- names(args)
+
+  if (name %in% args_names) message("'", name, "' is a shiny::", func, " specific parameter")
+}
+
 #' ::: hack solution to pass CRAN checks
 #'
 #' @param pkg package name

@@ -26,7 +26,8 @@ Imports:
     stats,
     magrittr,
     jsonlite,
-    glue
+    glue,
+    R6
 Suggests:
     dplyr,
     gapminder,
