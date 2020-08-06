@@ -12,7 +12,7 @@ get_numeric <- function(value) as.numeric(gsub("([0-9]+).*$", "\\1", value))
 #' @rdname sidebar_layout
 #' @export
 sidebar_panel <- function(..., width = 1) {
-  list(children = list(...), width = get_numeric(width))
+  list(children = div(...), width = get_numeric(width))
 }
 
 #' Creates div containing children elements of main panel
@@ -22,7 +22,7 @@ sidebar_panel <- function(..., width = 1) {
 #' @rdname sidebar_layout
 #' @export
 main_panel <- function(..., width = 3) {
-  list(children = list(...), width = get_numeric(width))
+  list(children = div(...), width = get_numeric(width))
 }
 
 #' Creates grid layout composed of sidebar and main panels
