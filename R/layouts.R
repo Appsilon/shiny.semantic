@@ -263,11 +263,10 @@ splitLayout <- function(..., cellWidths = NULL, cellArgs = "", style = NULL) {
 #' With the default settings this layout closely resembles the `flowLayout`
 #' from Shiny.
 #'
-#' @param ...
-#' Unnamed arguments will become child elements of the layout.
+#' @param ... Unnamed arguments will become child elements of the layout.
 #' Named arguments will become HTML attributes on the outermost tag.
-#' @param cell_args
-#' Any additional attributes that should be used for each cell of the layout.
+#' @param cell_args Any additional attributes that should be used for each cell
+#' of the layout.
 #' @param cell_width The width of the cells.
 #' @param column_gap The spacing between columns.
 #' @param row_gap The spacing between rows.

@@ -19,7 +19,8 @@ flowLayout(..., cellArgs = list())
 \item{...}{Unnamed arguments will become child elements of the layout.
 Named arguments will become HTML attributes on the outermost tag.}
 
-\item{cell_args}{Any additional attributes that should be used for each cell of the layout.}
+\item{cell_args}{Any additional attributes that should be used for each cell
+of the layout.}
 
 \item{cell_width}{The width of the cells.}
 
