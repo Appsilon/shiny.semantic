@@ -132,7 +132,7 @@ remotes::install_github("Appsilon/shiny.semantic", ref = "0.1.0")
 ## How to use it?
 
 Firstly, you will have to invoke `shinyUI()` with `semanticPage()`
-instead of standard Shiny UI definitions like e.g. `bootstrapPage()`.
+instead of standard Shiny UI definitions like e.g. `bootstrapPage()`.
 From now on, all components can be annotated with [Fomantic
 UI](https://fomantic-ui.com/) specific CSS classes and also you will be
 able to use [shiny.semantic
@@ -143,17 +143,12 @@ Basic example for rendering a simple button. will look like this:
 ``` r
 library(shiny)
 library(shiny.semantic)
-ui <- function() {
-  shinyUI(
-    semanticPage(
+ui <- semanticPage(
       title = "My page",
       div(class = "ui button", icon("user"),  "Icon button")
     )
-  )
-}
-server <- shinyServer(function(input, output) {
-})
-shinyApp(ui = ui(), server = server)
+server <- function(input, output) {}
+shinyApp(ui, server)
 ```
 
 For better understanding it’s good to check [Fomantic UI
@@ -174,64 +169,6 @@ UI elements. That is why by default we turn off Bootstrap dependencies.
 
 However, you can switch off suppressing bootstrap by calling
 `semanticPage(suppress_bootstrap = FALSE, ...)`
-
-**\[Advanced\] Using Fomantic UI JavaScript elements**
-
-Some Fomantic UI elements require to run a specific JS code when DOM
-document is ready. There are at least 2 options to do this:
-
-1.  Use [shinyjs](https://github.com/daattali/shinyjs)
-
-<!-- end list -->
-
-    library(shinyjs)
-    ...
-    jsCode <- " # Fomantic UI componts JS "
-    ...
-    ui <- function() {
-      shinyUI(
-        semanticPage(
-          title = "Your page title",
-          shinyjs::useShinyjs(),
-          # Your UI code
-        )
-      )
-    }
-    server <- shinyServer(function(input, output) {
-      runjs(jsCode)
-      # Your Shiny logic
-    })
-    shinyApp(ui = ui(), server = server)
-
-2.  Use `shiny::tags$script()`
-
-<!-- end list -->
-
-    ...
-    jsCode <- "
-    $(document).ready(function() {
-      # Semantic UI components JS code, like:
-      #$('.rating').rating('setting', 'clearable', true);
-      #$('.disabled .rating').rating('disable');
-    })
-    ...
-    "
-    
-    ui <- function() {
-      shinyUI(
-        semanticPage(
-          title = "My page",
-          tags$script(jsCode),
-          # Your UI code
-        )
-      )
-    }
-    ...
-    server <- shinyServer(function(input, output) {
-      # Your Shiny logic
-    })
-    
-    shinyApp(ui = ui(), server = server)
 
 ## How to contribute?
 
@@ -277,7 +214,9 @@ However, if you encounter any problems, try the following:
 
 <!-- end list -->
 
-    install.packages("shiny", version='0.14.2.9001')
+``` r
+install.packages("shiny", version='0.14.2.9001')
+```
 
 3.  Some bugs may be related directly to Semantic UI. In that case
     please try to check issues on its
