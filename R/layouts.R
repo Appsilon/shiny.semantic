@@ -252,6 +252,8 @@ splitLayout <- function(..., cellWidths = NULL, cellArgs = "", style = NULL) {
 #' individual cells. Recycling will be used if needed.
 #' @param cell_args character with additional attributes that should be used for
 #' each cell of the layout.
+#' @param adjusted_to_page if TRUE it adjust elements position in equal spaces to
+#' the size of the page
 #' @param fluid not supported yet (here for consistency with \code{shiny})
 #'
 #' @return vertical layout grid object
@@ -274,7 +276,7 @@ splitLayout <- function(..., cellWidths = NULL, cellArgs = "", style = NULL) {
 #'   )
 #'   shinyApp(ui, server = function(input, output) { })
 #' }
-vertical_layout <- function(..., rows_heights = NULL, cell_args = "") {
+vertical_layout <- function(..., rows_heights = NULL, cell_args = "", adjusted_to_page = TRUE) {
   ui_elements <- list(...)
   n_elems <- length(ui_elements)
   rows <- paste0("row", seq(1, n_elems))
@@ -294,6 +296,7 @@ vertical_layout <- function(..., rows_heights = NULL, cell_args = "") {
   args_list <- ui_elements
   args_list$grid_template <- layout
   args_list$area_styles <- area_styles
+  args_list$container_style <- if (adjusted_to_page) "" else "align-content: start;"
   do.call(grid, args_list)
 }
 
@@ -302,5 +305,5 @@ vertical_layout <- function(..., rows_heights = NULL, cell_args = "") {
 verticalLayout <- function(..., fluid = NULL) {
   if (!is.null(fluid))
     check_extra_arguments(c("fluid"))
-  vertical_layout(...)
+  vertical_layout(..., adjusted_to_page = FALSE)
 }

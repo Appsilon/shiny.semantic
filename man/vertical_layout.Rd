@@ -5,7 +5,12 @@
 \alias{verticalLayout}
 \title{Vertical layout}
 \usage{
-vertical_layout(..., rows_heights = NULL, cell_args = "")
+vertical_layout(
+  ...,
+  rows_heights = NULL,
+  cell_args = "",
+  adjusted_to_page = TRUE
+)
 
 verticalLayout(..., fluid = NULL)
 }
@@ -17,6 +22,9 @@ individual cells. Recycling will be used if needed.}
 
 \item{cell_args}{character with additional attributes that should be used for
 each cell of the layout.}
+
+\item{adjusted_to_page}{if TRUE it adjust elements position in equal spaces to
+the size of the page}
 
 \item{fluid}{not supported yet (here for consistency with \code{shiny})}
 }
