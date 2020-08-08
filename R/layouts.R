@@ -241,3 +241,66 @@ split_layout <- function(..., cell_widths = NULL, cell_args = "", style = NULL){
 splitLayout <- function(..., cellWidths = NULL, cellArgs = "", style = NULL) {
   split_layout(..., cell_widths = cellWidths, cell_args = cellArgs, style = style)
 }
+
+
+#' Vertical layout
+#'
+#' Lays out elements vertically, one by one below one another.
+#'
+#' @param ... Unnamed arguments will become child elements of the layout.
+#' @param rows_heights Character or numeric vector indicating the widths of the
+#' individual cells. Recycling will be used if needed.
+#' @param cell_args character with additional attributes that should be used for
+#' each cell of the layout.
+#' @param fluid not supported yet (here for consistency with \code{shiny})
+#'
+#' @return vertical layout grid object
+#' @export
+#' @rdname vertical_layout
+#' @examples
+#' if (interactive()) {
+#'   ui <- semanticPage(
+#'     verticalLayout(
+#'       a(href="http://example.com/link1", "Link One"),
+#'       a(href="http://example.com/link2", "Link Two"),
+#'       a(href="http://example.com/link3", "Link Three")
+#'     )
+#'   )
+#'   shinyApp(ui, server = function(input, output) { })
+#' }
+#' if (interactive()) {
+#'   ui <- semanticPage(
+#'     vertical_layout(h1("Title"), h4("Subtitle"), p("paragraph"), h3("footer"))
+#'   )
+#'   shinyApp(ui, server = function(input, output) { })
+#' }
+vertical_layout <- function(..., rows_heights = NULL, cell_args = "") {
+  ui_elements <- list(...)
+  n_elems <- length(ui_elements)
+  rows <- paste0("row", seq(1, n_elems))
+  names(ui_elements) <- rows
+  if (is.null(rows_heights))
+    rows_heights <- rep("auto", n_elems)
+  layout <- grid_template(
+    default = list(
+      areas = t(rbind(rows)),
+      rows_height = rows_heights,
+      cols_width = c("auto")
+    )
+  )
+
+  area_styles <- as.list(rep(cell_args, n_elems))
+  names(area_styles) <- rows
+  args_list <- ui_elements
+  args_list$grid_template <- layout
+  args_list$area_styles <- area_styles
+  do.call(grid, args_list)
+}
+
+#' @export
+#' @rdname vertical_layout
+verticalLayout <- function(..., fluid = NULL) {
+  if (!is.null(fluid))
+    check_extra_arguments(c("fluid"))
+  vertical_layout(...)
+}
