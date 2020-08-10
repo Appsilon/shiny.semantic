@@ -241,3 +241,62 @@ split_layout <- function(..., cell_widths = NULL, cell_args = "", style = NULL){
 splitLayout <- function(..., cellWidths = NULL, cellArgs = "", style = NULL) {
   split_layout(..., cell_widths = cellWidths, cell_args = cellArgs, style = style)
 }
+
+#' Flow layout
+#'
+#' Lays out elements in a left-to-right, top-to-bottom arrangement.
+#' The elements on a given row will be top-aligned with each other.
+#'
+#' The width of the elements and spacing between them is configurable.
+#' Lengths can be given as numeric values (interpreted as pixels)
+#' or character values (interpreted as CSS lengths).
+#' With the default settings this layout closely resembles the `flowLayout`
+#' from Shiny.
+#'
+#' @param ... Unnamed arguments will become child elements of the layout.
+#' Named arguments will become HTML attributes on the outermost tag.
+#' @param cell_args Any additional attributes that should be used for each cell
+#' of the layout.
+#' @param cell_width The width of the cells.
+#' @param column_gap The spacing between columns.
+#' @param row_gap The spacing between rows.
+#'
+#' @md
+#' @export
+#' @rdname flow_layout
+#'
+#' @examples
+#' if (interactive()) {
+#'   ui <- semanticPage(
+#'     flow_layout(
+#'       numericInput("rows", "How many rows?", 5),
+#'       selectInput("letter", "Which letter?", LETTERS),
+#'       sliderInput("value", "What value?", 0, 100, 50)
+#'     )
+#'   )
+#'   shinyApp(ui, server = function(input, output) {})
+#' }
+flow_layout <- function(..., cell_args = list(), cell_width = "208px", column_gap = "12px", row_gap = "0px") {
+  container_style <- glue::glue(
+    "display: grid;",
+    "grid-template-columns: repeat(auto-fill, {shiny::validateCssUnit(cell_width)});",
+    "column-gap: {shiny::validateCssUnit(column_gap)};",
+    "row-gap: {shiny::validateCssUnit(row_gap)};"
+  )
+  item_style <- "align-self: start;"
+  args <- split_args(...)
+  children <- lapply(args$positional, function(child) {
+    do.call(shiny::tags$div, c(style = item_style, cell_args, list(child)))
+  })
+  attributes <- args$named
+  do.call(shiny::tags$div, c(style = container_style, attributes, children))
+}
+
+#' @param cellArgs Same as `cell_args`.
+#'
+#' @md
+#' @export
+#' @rdname flow_layout
+flowLayout <- function(..., cellArgs = list()) {
+  flow_layout(..., cell_args = cellArgs)
+}
