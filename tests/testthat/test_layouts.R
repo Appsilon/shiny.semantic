@@ -81,4 +81,18 @@ test_that("test vertical_layout", {
     p("p1")
   ))
   expect_true(any(grepl("background: red", si_str, fixed = TRUE)))
+
+  # test row_heights param
+  si_str <- as.character(vertical_layout(h1("H"), p("a"), rows_heights = "20px"))
+  expect_true(any(grepl("grid-template-rows: 20px 20px;", si_str, fixed = TRUE)))
+  si_str <- as.character(vertical_layout(h1("H"), p("a"),
+                                         rows_heights = c("20px", "40px")))
+  expect_true(any(grepl("grid-template-rows: 20px 40px;", si_str, fixed = TRUE)))
+})
+
+
+test_that("test verticalLayout", {
+  v1 <- vertical_layout(p("a"), adjusted_to_page = F)
+  v2 <- verticalLayout(p("a"))
+  expect_equal(v1,v2)
 })

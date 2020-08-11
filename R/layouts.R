@@ -283,6 +283,8 @@ vertical_layout <- function(..., rows_heights = NULL, cell_args = "", adjusted_t
   names(ui_elements) <- rows
   if (is.null(rows_heights))
     rows_heights <- rep("auto", n_elems)
+  if (length(rows_heights) == 1)
+    rows_heights <- rep(rows_heights, n_elems)
   layout <- grid_template(
     default = list(
       areas = t(rbind(rows)),
