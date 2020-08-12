@@ -19,6 +19,7 @@ library(shiny)
 library(shiny.semantic)
 ```
 
+## Create UI inside documents
 This is how you generate your first UI with `shiny.semantic`:
 
 ```{r echo=T, include = T}
@@ -27,6 +28,238 @@ uirender(uiinput(icon("dog"),
 ), width = "200px", height = "100px")
 ```
 
+## Create a Shiny App
+Let's create a Shiny app with `semanticPage()` and just a `h1` title.
 
-To define a new page use:
+```{r echo=TRUE, include=TRUE}
+ui <- semanticPage(
+  title = "My first page",
+  h1("My page")
+)
+
+server <- function(input, output, session) {}
+
+shinyApp(ui, server)
+```
+
+Now let's add sidebar layout `sidebar_layout()`.
+
+```{r echo=TRUE, include=TRUE}
+ui <- semanticPage(
+  title = "My first page",
+  h1("My page"),
+  sidebar_layout(
+    sidebar_panel(),
+    main_panel()
+    )
+)
+
+server <- function(input, output, session) {}
+
+shinyApp(ui, server)
+```
+
+Next let's fill in the main panel `main_panel()` with a Semantic UI segment containing 2 cards.
+
+```{r}
+ui <- semanticPage(
+  title = "My first page",
+  h1("My page"),
+  sidebar_layout(
+    sidebar_panel(),
+    main_panel(
+      segment(
+         cards(
+           class = "two",
+           card(class = "red",
+             div(class = "content",
+                 div(class = "header", "Main title card 1"),
+                 div(class = "meta", "Sub title card 1"),
+                 div(class = "description", "More detail description card 1")
+             )
+           ),
+           card(class = "blue",
+             div(class = "content",
+                 div(class = "header", "Main title card 2"),
+                 div(class = "meta", "Sub title card 2"),
+                 div(class = "description", "More detail description card 2")
+                 )
+             )
+           )
+         )
+      )
+    )
+  )
+
+server <- function(input, output, session) {}
+
+shinyApp(ui, server)
+```
+
+Time to fill in sidebar `sidebar_panel()`, so let's add dropdown. We create a dropdown input using `dropdown_input()`.
+
+```{r}
+ui <- semanticPage(
+  title = "My first page",
+  h1("My page"),
+  sidebar_layout(
+    sidebar_panel(
+      uiOutput("dropdown")
+    ),
+    main_panel(
+      segment(
+         cards(
+           class = "two",
+           card(class = "red",
+             div(class = "content",
+                 div(class = "header", "Main title card 1"),
+                 div(class = "meta", "Sub title card 1"),
+                 div(class = "description", "More detail description card 1")
+             )
+           ),
+           card(class = "blue",
+             div(class = "content",
+                 div(class = "header", "Main title card 2"),
+                 div(class = "meta", "Sub title card 2"),
+                 div(class = "description", "More detail description card 2")
+             )
+           )
+         )
+      )
+      )
+    )
+)
+
+server <- function(input, output, session) {
+  output$dropdown <- renderUI({
+    dropdown_input("mtcars_dropdown", c("mpg", "cyl", "disp", "hp"), value = "mpg")
+  })
+}
+
+shinyApp(ui, server)
+```
+
+Let's make dropdown do something and generate a histogram from a selected `mtcars` column and a plot.
+
+```{r}
+ui <- semanticPage(
+  title = "My first page",
+  h1("My page"),
+  sidebar_layout(
+    sidebar_panel(
+      p("Select variable for plots:"),
+      uiOutput("dropdown")
+    ),
+    main_panel(
+      segment(
+         cards(
+           class = "two",
+           card(class = "red",
+             div(class = "content",
+                 div(class = "header", "Main title card 1"),
+                 div(class = "meta", "Sub title card 1"),
+                 div(class = "description", "More detail description card 1")
+             )
+           ),
+           card(class = "blue",
+             div(class = "content",
+                 div(class = "header", "Main title card 2"),
+                 div(class = "meta", "Sub title card 2"),
+                 div(class = "description", "More detail description card 2")
+             )
+           )
+         )
+      ),
+      plotOutput("plot"),
+      plotOutput("plot2")
+      )
+    )
+)
+
+server <- function(input, output, session) {
+  output$dropdown <- renderUI({
+    dropdown_input("mtcars_dropdown", c("mpg", "cyl", "disp", "hp"), value = "mpg")
+  })
+
+  data_plot <- reactive({
+    validate(
+      need(input$mtcars_dropdown, "")
+    )
+    mtcars[[input$mtcars_dropdown]]
+    })
+
+  output$plot <- renderPlot(hist(data_plot()))
+  output$plot2 <- renderPlot(plot(data_plot()))
+}
+
+shinyApp(ui, server)
+```
+
+Finally let's change the layout of the plots on the page and make them appear next to each other. We will use `grid()` for it and define a grid template using `grid_template()` with 1 row and 2 columns of the same size. Our grid template will contain 2 areas `chart1` and `chart2`
+
+```{r}
+grid_charts <- grid_template(
+  default = list(areas = rbind(c("chart1", "chart2")),
+                 rows_height = c("100%"),
+                 cols_width = c("50%", "50%"))
+)
+```
+
+We assign plots' outputs `plotOutput()` to both areas inside the `grid` function.
+
+```{r}
+ui <- semanticPage(
+  title = "My first page",
+  h1("My page"),
+  sidebar_layout(
+    sidebar_panel(
+      p("Select variable for plots:"),
+      uiOutput("dropdown")
+    ),
+    main_panel(
+      segment(
+         cards(
+           class = "two",
+           card(class = "red",
+             div(class = "content",
+                 div(class = "header", "Main title card 1"),
+                 div(class = "meta", "Sub title card 1"),
+                 div(class = "description", "More detail description card 1")
+             )
+           ),
+           card(class = "blue",
+             div(class = "content",
+                 div(class = "header", "Main title card 2"),
+                 div(class = "meta", "Sub title card 2"),
+                 div(class = "description", "More detail description card 2")
+             )
+           )
+         )
+      ),
+      grid(grid_charts,
+           chart1 = plotOutput("plot"),
+           chart2 = plotOutput("plot2")
+         )
+      )
+    )
+)
+
+server <- function(input, output, session) {
+  output$dropdown <- renderUI({
+    dropdown_input("mtcars_dropdown", c("mpg", "cyl", "disp", "hp"), value = "mpg")
+  })
+
+  data_plot <- reactive({
+    validate(
+      need(input$mtcars_dropdown, "")
+    )
+    mtcars[[input$mtcars_dropdown]]
+    })
+
+  output$plot <- renderPlot(hist(data_plot()))
+  output$plot2 <- renderPlot(plot(data_plot()))
+}
+
+shinyApp(ui, server)
+```
 
