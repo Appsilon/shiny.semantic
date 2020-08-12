@@ -32,7 +32,7 @@ test_that("test sidebar_layout", {
 })
 
 test_that("test split_layout", {
-  # empty imput gives error
+  # empty input gives error
   expect_error(sidebar_layout())
   # simple input
   si_str <- as.character(split_layout(p("a")))
@@ -63,6 +63,38 @@ test_that("test splitLayout", {
   expect_equal(split_layout(p("a")), splitLayout(p("a")))
   expect_equal(split_layout(p("a"), cell_widths = c("25%", "75%")),
                splitLayout(p("a"), cellWidths = c("25%", "75%")))
+})
+
+test_that("test vertical_layout", {
+  # empty input gives error
+  expect_error(vertical_layout())
+  # simple input
+  si_str <- as.character(vertical_layout(h1("H"), p("a")))
+  expect_true(any(grepl("<h1>H</h1>", si_str, fixed = TRUE)))
+  expect_true(any(grepl("<p>a</p>", si_str, fixed = TRUE)))
+  expect_true(any(grepl("row1", si_str, fixed = TRUE)))
+  expect_false(any(grepl("row22", si_str, fixed = TRUE)))
+
+  # check parameters passed to cell
+  si_str <- as.character(vertical_layout(
+    cell_args = "padding: 6px; background: red;",
+    p("p1")
+  ))
+  expect_true(any(grepl("background: red", si_str, fixed = TRUE)))
+
+  # test row_heights param
+  si_str <- as.character(vertical_layout(h1("H"), p("a"), rows_heights = "20px"))
+  expect_true(any(grepl("grid-template-rows: 20px 20px;", si_str, fixed = TRUE)))
+  si_str <- as.character(vertical_layout(h1("H"), p("a"),
+                                         rows_heights = c("20px", "40px")))
+  expect_true(any(grepl("grid-template-rows: 20px 40px;", si_str, fixed = TRUE)))
+})
+
+
+test_that("test verticalLayout", {
+  v1 <- vertical_layout(p("a"), adjusted_to_page = F)
+  v2 <- verticalLayout(p("a"))
+  expect_equal(v1,v2)
 })
 
 test_that("test flow_layout", {
