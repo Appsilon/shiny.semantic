@@ -85,6 +85,13 @@
     Start
   </a>
 </li>
+<li>
+  <a href="../articles/index.html">
+    <span class="fa fa-university"></span>
+     
+    Tutorials
+  </a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -205,28 +212,28 @@
 <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span>(
+<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(
   <span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
     <span class='fu'>grid</span>(<span class='no'>myGrid</span>,
          <span class='kw'>container_style</span> <span class='kw'>=</span> <span class='st'>"border: 1px solid #f00"</span>,
          <span class='kw'>area_styles</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>header</span> <span class='kw'>=</span> <span class='st'>"background: #0099f9"</span>,
                             <span class='kw'>menu</span> <span class='kw'>=</span> <span class='st'>"border-right: 1px solid #0099f9"</span>),
-         <span class='kw'>header</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>div</a></span>(<span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>tags</a></span>$<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>h1</a></span>(<span class='st'>"Hello CSS Grid!"</span>)),
+         <span class='kw'>header</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='no'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>tags</a></span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>h1</a></span>(<span class='st'>"Hello CSS Grid!"</span>)),
          <span class='kw'>menu</span> <span class='kw'>=</span> <span class='fu'><a href='checkbox.html'>checkbox_input</a></span>(<span class='st'>"example"</span>, <span class='st'>"Check me"</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>),
          <span class='kw'>main</span> <span class='kw'>=</span> <span class='fu'>grid</span>(<span class='no'>subGrid</span>,
                      <span class='kw'>top_left</span> <span class='kw'>=</span> <span class='fu'><a href='calendar.html'>calendar</a></span>(<span class='st'>"my_calendar"</span>),
-                     <span class='kw'>top_right</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>div</a></span>(<span class='st'>"hello 1"</span>),
-                     <span class='kw'>bottom_left</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>div</a></span>(<span class='st'>"hello 2"</span>),
-                     <span class='kw'>bottom_right</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>div</a></span>(<span class='st'>"hello 3"</span>)
+                     <span class='kw'>top_right</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='st'>"hello 1"</span>),
+                     <span class='kw'>bottom_left</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='st'>"hello 2"</span>),
+                     <span class='kw'>bottom_right</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='st'>"hello 3"</span>)
          ),
-         <span class='kw'>right1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>div</a></span>(
+         <span class='kw'>right1</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(
            <span class='fu'><a href='checkbox.html'>toggle</a></span>(<span class='st'>"toggle"</span>, <span class='st'>"let's toggle"</span>),
            <span class='fu'><a href='multiple_checkbox.html'>multiple_checkbox</a></span>(<span class='st'>"mycheckbox"</span>, <span class='st'>"mycheckbox"</span>,
                              <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"option A"</span>,<span class='st'>"option B"</span>,<span class='st'>"option C"</span>))),
-         <span class='kw'>right2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>div</a></span>(<span class='st'>"right 2"</span>)
+         <span class='kw'>right2</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='st'>"right 2"</span>)
     )
   ),
-  <span class='kw'>server</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {})
+  <span class='kw'>server</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {})
 )
 }</div></pre>
   </div>

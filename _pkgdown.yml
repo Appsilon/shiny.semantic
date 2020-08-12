@@ -9,6 +9,9 @@ navbar:
     - icon: fa-home
       href: index.html
       text: "Start"
+    - icon: fa-university
+      text: "Tutorials"
+      href: articles/index.html
   right:
     - icon: fa-file-code-o
       text: "Reference"
@@ -23,6 +26,12 @@ navbar:
       href: https://github.com/Appsilon/shiny.semantic
     - icon: fa-twitter fa-lg
       href: https://twitter.com/Appsilon
+
+articles:
+- title: All tutorials
+  desc: ~
+  contents:
+  - '`semantic_integration`'
 
 reference:
 - title: Fomantic (semantic) page

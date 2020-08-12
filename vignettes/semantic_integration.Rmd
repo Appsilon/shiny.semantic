@@ -1,0 +1,139 @@
+---
+title: "Integration of shiny.semantic with other packages"
+author: "Appsilon"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+runtime: shiny
+vignette: >
+  %\VignetteIndexEntry{Integration of shiny.semantic with other packages}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  collapse = TRUE,
+  comment = "#>"
+)
+library(shiny)
+library(shiny.semantic)
+library(plotly)
+library(leaflet)
+```
+
+## Integration with plotly or leaflet
+
+Similarly to `shiny`, `shiny.semantic` works well with other popular R packages.
+Let's see how to create a simple application with `plotly`.
+
+```{r echo=T, include = T, eval = FALSE}
+library(shiny)
+library(shiny.semantic)
+library(plotly)
+
+ui <- semanticPage(
+  segment(
+    class = "basic",
+    a(class="ui green ribbon label", "Plotly demo"),
+    plotlyOutput("plot")
+
+  )
+)
+
+server <- function(input, output, session) {
+  output$plot <- renderPlotly({
+    plot_ly(economics, x = ~date, color = I("black")) %>%
+      add_lines(y = ~uempmed) %>%
+      add_lines(y = ~psavert, color = I("red"))
+  })
+}
+
+shinyApp(ui = ui, server = server)
+
+```
+And now let's have a look at similar example, but with `leaflet`.
+
+```{r echo=T, include = T, eval = FALSE}
+library(shiny)
+library(shiny.semantic)
+library(leaflet)
+
+ui <- semanticPage(
+  segment(
+    class = "basic",
+    a(class="ui blue ribbon label", "Leaflet demo"),
+    leafletOutput("map")
+
+  )
+)
+
+server <- function(input, output, session) {
+  output$map <- renderLeaflet({
+    m <- leaflet() %>% addTiles()
+    m <- m %>% setView(21.00, 52.21, zoom = 12)
+    m
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+
+
+## [Advanced] Using Fomantic UI JavaScript elements
+
+Some Fomantic UI elements require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:
+
+1) Use `shinyjs`
+
+```r
+library(shinyjs)
+...
+jsCode <- " # Fomantic UI componts JS "
+...
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      title = "Your page title",
+      shinyjs::useShinyjs(),
+      # Your UI code
+    )
+  )
+}
+server <- shinyServer(function(input, output) {
+  runjs(jsCode)
+  # Your Shiny logic
+})
+shinyApp(ui = ui(), server = server)
+```
+
+2) Use `shiny::tags$script()`
+
+```r
+...
+jsCode <- "
+$(document).ready(function() {
+  # Semantic UI components JS code, like:
+  #$('.rating').rating('setting', 'clearable', true);
+  #$('.disabled .rating').rating('disable');
+})
+...
+"
+
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      title = "My page",
+      tags$script(jsCode),
+      # Your UI code
+    )
+  )
+}
+...
+server <- shinyServer(function(input, output) {
+  # Your Shiny logic
+})
+
+shinyApp(ui = ui(), server = server)
+```

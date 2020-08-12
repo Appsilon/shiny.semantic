@@ -85,6 +85,13 @@
     Start
   </a>
 </li>
+<li>
+  <a href="../articles/index.html">
+    <span class="fa fa-university"></span>
+     
+    Tutorials
+  </a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -200,17 +207,17 @@ in <code>shiny.minified = TRUE</code> mode.</p>
   <span class='fu'><a href='label.html'>label</a></span>(<span class='st'>"Number of observations:"</span>),
   <span class='fu'><a href='slider.html'>slider_input</a></span>(<span class='st'>"obs"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>1000</span>),
   <span class='fu'><a href='segment.html'>segment</a></span>(
-    <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/plotOutput.html'>plotOutput</a></span>(<span class='st'>"dist_plot"</span>)
+    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/plotOutput.html'>plotOutput</a></span>(<span class='st'>"dist_plot"</span>)
   )
 )
 
 <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
-  <span class='no'>output</span>$<span class='no'>dist_plot</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderPlot.html'>renderPlot</a></span>({
+  <span class='no'>output</span>$<span class='no'>dist_plot</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderPlot.html'>renderPlot</a></span>({
     <span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>input</span>$<span class='no'>obs</span>))
   })
 }
 
-<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
+<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
