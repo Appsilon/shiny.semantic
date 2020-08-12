@@ -20,3 +20,6 @@ create_modal(
 \description{
 Allows for the creation of modals in the server side without being tied to a specific HTML element.
 }
+\seealso{
+modal
+}

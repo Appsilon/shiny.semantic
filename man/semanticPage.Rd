@@ -40,3 +40,28 @@ either "min" or standard version. The folder should contain: \code{semantic.css}
 \code{semantic.js} files, or \code{semantic.min.css} and \code{semantic.min.js}
 in \code{shiny.minified = TRUE} mode.
 }
+\examples{
+## Only run examples in interactive R sessions
+if (interactive()) {
+library(shiny)
+library(shiny.semantic)
+
+ui <- semanticPage(
+  title = "Hello Shiny Semantic!",
+  label("Number of observations:"),
+  slider_input("obs", value = 500, min = 0, max = 1000),
+  segment(
+    plotOutput("dist_plot")
+  )
+)
+
+server <- function(input, output) {
+  output$dist_plot <- renderPlot({
+    hist(rnorm(input$obs))
+  })
+}
+
+shinyApp(ui, server)
+}
+
+}

@@ -22,3 +22,12 @@ which results in intelligent automatic sizing.}
 htmlwidget that adds semanticui dependencies and
 renders in viewer or rmarkdown.
 }
+\examples{
+library(shiny)
+library(shiny.semantic)
+uirender(card(div(class="content",
+                  div(class="header", "Elliot Fu"),
+                  div(class="meta", "Friend"),
+                  div(class="description", "Elliot Fu is a film-maker from New York."))))
+
+}

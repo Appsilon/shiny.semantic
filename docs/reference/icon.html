@@ -85,6 +85,13 @@
     Start
   </a>
 </li>
+<li>
+  <a href="../articles/index.html">
+    <span class="fa fa-university"></span>
+     
+    Tutorials
+  </a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -167,52 +174,52 @@ tag (e.g. style, class etc.)</p></td>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
 
 <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
-  <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
+  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span>(
     <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
       <span class='co'># Basic icon</span>
       <span class='fu'>icon</span>(<span class='st'>"home"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>br</a></span>(),
       <span class='co'># Different size</span>
       <span class='fu'>icon</span>(<span class='st'>"small home"</span>),
       <span class='fu'>icon</span>(<span class='st'>"large home"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>br</a></span>(),
       <span class='co'># Disabled icon</span>
       <span class='fu'>icon</span>(<span class='st'>"disabled home"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>br</a></span>(),
       <span class='co'># Loading icon</span>
       <span class='fu'>icon</span>(<span class='st'>"spinner loading"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>br</a></span>(),
       <span class='co'># Icon formatted as link</span>
       <span class='fu'>icon</span>(<span class='st'>"close link"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>br</a></span>(),
       <span class='co'># Flipped</span>
       <span class='fu'>icon</span>(<span class='st'>"horizontally flipped cloud"</span>),
       <span class='fu'>icon</span>(<span class='st'>"vertically flipped cloud"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>br</a></span>(),
       <span class='co'># Rotated</span>
       <span class='fu'>icon</span>(<span class='st'>"clockwise rotated cloud"</span>),
       <span class='fu'>icon</span>(<span class='st'>"counterclockwise rotated cloud"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>br</a></span>(),
       <span class='co'># Circular</span>
       <span class='fu'>icon</span>(<span class='st'>"circular home"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>br</a></span>(),
       <span class='co'># Bordered</span>
       <span class='fu'>icon</span>(<span class='st'>"bordered home"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>br</a></span>(),
       <span class='co'># Colored</span>
       <span class='fu'>icon</span>(<span class='st'>"red home"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>br</a></span>(),
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>br</a></span>(),
       <span class='co'># inverted</span>
       <span class='fu'><a href='segment.html'>segment</a></span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"inverted"</span>, <span class='fu'>icon</span>(<span class='st'>"inverted home"</span>))
     )
   )
 }
 
-<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
+<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
 
 })
 
-<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span>(<span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'>ui</span>(), <span class='kw'>server</span> <span class='kw'>=</span> <span class='no'>server</span>)
+<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'>ui</span>(), <span class='kw'>server</span> <span class='kw'>=</span> <span class='no'>server</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

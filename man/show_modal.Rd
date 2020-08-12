@@ -21,3 +21,6 @@ hide_modal(id, session = shiny::getDefaultReactiveDomain())
 \description{
 This displays a hidden Semantic UI modal.
 }
+\seealso{
+modal
+}
