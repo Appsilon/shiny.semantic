@@ -2,18 +2,73 @@
 % Please edit documentation in R/dsl.R
 \name{icon}
 \alias{icon}
-\title{Create an icon}
+\title{Create Semantic UI icon tag}
 \usage{
-icon(name, class = NULL, ...)
+icon(class = "", ...)
 }
 \arguments{
-\item{name}{Name of icon. See [Fomantic Icons](https://fomantic-ui.com/elements/icon.html).}
+\item{class}{A name of an icon. Look at
+http://semantic-ui.com/elements/icon.html for all possibilities.}
 
-\item{class}{Additional classes to customize the style of the icon.
-See [Fomantic Icon Definitions](https://fomantic-ui.com/elements/icon.html#/definition).}
-
-\item{...}{Named attributes to be applied to the icon.}
+\item{...}{Other arguments to be added as attributes of the
+tag (e.g. style, class etc.)}
 }
 \description{
-Create an icon for use within a page.
+This creates an icon tag using Semantic UI styles.
+}
+\examples{
+
+if (interactive()){
+library(shiny)
+library(shiny.semantic)
+
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      # Basic icon
+      icon("home"),
+      br(),
+      # Different size
+      icon("small home"),
+      icon("large home"),
+      br(),
+      # Disabled icon
+      icon("disabled home"),
+      br(),
+      # Loading icon
+      icon("spinner loading"),
+      br(),
+      # Icon formatted as link
+      icon("close link"),
+      br(),
+      # Flipped
+      icon("horizontally flipped cloud"),
+      icon("vertically flipped cloud"),
+      br(),
+      # Rotated
+      icon("clockwise rotated cloud"),
+      icon("counterclockwise rotated cloud"),
+      br(),
+      # Circular
+      icon("circular home"),
+      br(),
+      # Bordered
+      icon("bordered home"),
+      br(),
+      # Colored
+      icon("red home"),
+      br(),
+      # inverted
+      segment(class = "inverted", icon("inverted home"))
+    )
+  )
+}
+
+server <- shinyServer(function(input, output, session) {
+
+})
+
+shinyApp(ui = ui(), server = server)
+}
+
 }

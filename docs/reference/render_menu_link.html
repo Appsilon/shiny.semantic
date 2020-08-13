@@ -85,13 +85,20 @@
     Start
   </a>
 </li>
+<li>
+  <a href="../articles/index.html">
+    <span class="fa fa-university"></span>
+     
+    Tutorials
+  </a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
     <span class="fa fa-file-code-o"></span>
      
-    Functions
+    Reference
   </a>
 </li>
 <li>
@@ -142,7 +149,7 @@
     <p>This function renders horizontal menu item.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>render_menu_link</span>(<span class='no'>location</span>, <span class='no'>title</span>, <span class='kw'>active_location</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>icon</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
+    <pre class="usage"><span class='fu'>render_menu_link</span>(<span class='no'>location</span>, <span class='no'>title</span>, <span class='kw'>active_location</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,7 +175,10 @@ it gets highlighted), default empty (<code>""</code>)</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>shiny.tag.a link</p>
+    <p>shiny tag link</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>horizontal_menu</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>render_menu_link</span>(<span class='st'>"#subpage1"</span>, <span class='st'>"SUBPAGE"</span>)</div><div class='output co'>#&gt; &lt;a class="item" href="#subpage1"&gt;

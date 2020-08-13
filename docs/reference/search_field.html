@@ -41,7 +41,7 @@
 
 <meta property="og:title" content="Create search field Semantic UI component — search_field" />
 <meta property="og:description" content="This creates a default search field using Semantic UI styles with Shiny
-input. Search field is already initialized and available under input[[name]].
+input. Search field is already initialized and available under input[[input_id]].
 Search will automatically route to the named API endpoint provided
 as parameter. API response is expected to be a JSON with property fields
 `title` and `description`.
@@ -90,13 +90,20 @@ See https://semantic-ui.com/modules/search.html#behaviors for more details." />
     Start
   </a>
 </li>
+<li>
+  <a href="../articles/index.html">
+    <span class="fa fa-university"></span>
+     
+    Tutorials
+  </a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
     <span class="fa fa-file-code-o"></span>
      
-    Functions
+    Reference
   </a>
 </li>
 <li>
@@ -145,21 +152,21 @@ See https://semantic-ui.com/modules/search.html#behaviors for more details." />
 
     <div class="ref-description">
     <p>This creates a default search field using Semantic UI styles with Shiny
-input. Search field is already initialized and available under input[[name]].
+input. Search field is already initialized and available under input[[input_id]].
 Search will automatically route to the named API endpoint provided
 as parameter. API response is expected to be a JSON with property fields
 `title` and `description`.
 See https://semantic-ui.com/modules/search.html#behaviors for more details.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>search_field</span>(<span class='no'>name</span>, <span class='no'>search_api_url</span>, <span class='kw'>default_text</span> <span class='kw'>=</span> <span class='st'>"Search"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
+    <pre class="usage"><span class='fu'>search_field</span>(<span class='no'>input_id</span>, <span class='no'>search_api_url</span>, <span class='kw'>default_text</span> <span class='kw'>=</span> <span class='st'>"Search"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>name</th>
-      <td><p>Input name. Reactive value is available under input[[name]].</p></td>
+      <th>input_id</th>
+      <td><p>Input name. Reactive value is available under input[[input_id]].</p></td>
     </tr>
     <tr>
       <th>search_api_url</th>
@@ -188,18 +195,18 @@ is selected.</p></td>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
 
 <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
-  <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyUI.html'>shinyUI</a></span>(
+  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span>(
     <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
       <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Dropdown example"</span>,
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>p</a></span>(<span class='st'>"Search country:"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/htmlOutput.html'>uiOutput</a></span>(<span class='st'>"search_country"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>p</a></span>(<span class='st'>"Selected country:"</span>),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/textOutput.html'>textOutput</a></span>(<span class='st'>"selected_country"</span>)
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>p</a></span>(<span class='st'>"Search country:"</span>),
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/htmlOutput.html'>uiOutput</a></span>(<span class='st'>"search_country"</span>),
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>p</a></span>(<span class='st'>"Selected country:"</span>),
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"selected_country"</span>)
    )
   )
 }
 
-<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
+<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
 
  <span class='no'>search_api</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>gapminder</span>, <span class='no'>q</span>) {
    <span class='no'>has_matching</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>field</span>) {
@@ -216,14 +223,14 @@ is selected.</p></td>
  }
 
  <span class='no'>search_api_url</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='register_search.html'>register_search</a></span>(<span class='no'>session</span>, <span class='no'>gapminder</span>, <span class='no'>search_api</span>)
- <span class='no'>output</span>$<span class='no'>search_letters</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderUI.html'>renderUI</a></span>(
+ <span class='no'>output</span>$<span class='no'>search_letters</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderUI.html'>renderUI</a></span>(
    <span class='fu'>search_field</span>(<span class='st'>"search_result"</span>, <span class='no'>search_api_url</span>)
  )
- <span class='no'>output</span>$<span class='no'>selected_country</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderText.html'>renderText</a></span>(<span class='no'>input</span><span class='kw'>[[</span><span class='st'>"search_result"</span>]])
+ <span class='no'>output</span>$<span class='no'>selected_country</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderText.html'>renderText</a></span>(<span class='no'>input</span><span class='kw'>[[</span><span class='st'>"search_result"</span>]])
 })
 }
 
-<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span>(<span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'>ui</span>(), <span class='kw'>server</span> <span class='kw'>=</span> <span class='no'>server</span>)
+<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'>ui</span>(), <span class='kw'>server</span> <span class='kw'>=</span> <span class='no'>server</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

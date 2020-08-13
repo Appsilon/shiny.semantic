@@ -1,9 +1,9 @@
 #' Create Semantic UI Calendar
 #'
 #' This creates a default calendar input using Semantic UI. The input is available
-#' under \code{input[[name]]}.
+#' under \code{input[[input_id]]}.
 #'
-#' @param name Input name. Reactive value is available under \code{input[[name]]}.
+#' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
 #' @param value Initial value of the numeric input.
 #' @param placeholder Text visible in the input when nothing is inputted.
 #' @param type Select from \code{'year'}, \code{'month'}, \code{'date'} and \code{'time'}
@@ -20,7 +20,7 @@
 #'   ui <- shinyUI(
 #'     semanticPage(
 #'       title = "Calendar example",
-#'       uicalendar("date"),
+#'       calendar("date"),
 #'       p("Selected date:"),
 #'       textOutput("selected_date")
 #'     )
@@ -37,7 +37,7 @@
 #'
 #' \dontrun{
 #' # Calendar with max and min
-#' uicalendar(
+#' calendar(
 #'   name = "date_finish",
 #'   placeholder = "Select End Date",
 #'   min = "2019-01-01",
@@ -45,17 +45,17 @@
 #' )
 #'
 #' # Selecting month
-#' uicalendar(
+#' calendar(
 #'   name = "month",
 #'   type = "month"
 #' )
 #' }
-#' @rdname uicalendar
+#' @rdname calendar
 #' @export
-uicalendar <- function(name, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
+calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
   cal_widget <-
     div(
-      id = name, class = "ui calendar ss-input-date", `data-type` = type, `data-date` = value,
+      id = input_id, class = "ui calendar ss-input-date", `data-type` = type, `data-date` = value,
       div(
         class = "ui input left icon",
         tags$i(class = "calendar icon"),
@@ -75,12 +75,12 @@ uicalendar <- function(name, value = NULL, placeholder = NULL, type = "date", mi
 #'
 #' @param session The \code{session} object passed to function given to
 #'   \code{shinyServer}.
-#' @param id ID of the calendar that will be updated
+#' @param input_id ID of the calendar that will be updated
 #'
-#' @rdname uicalendar
+#' @rdname calendar
 #'
 #' @export
-update_calendar <- function(session, id, value = NULL, min = NULL, max = NULL) {
+update_calendar <- function(session, input_id, value = NULL, min = NULL, max = NULL) {
   message <- list(value = value, min = min, max = max)
-  session$sendInputMessage(id, message = message)
+  session$sendInputMessage(input_id, message = message)
 }

@@ -88,13 +88,20 @@ dropdown allows to search more easily through large lists." />
     Start
   </a>
 </li>
+<li>
+  <a href="../articles/index.html">
+    <span class="fa fa-university"></span>
+     
+    Tutorials
+  </a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
     <span class="fa fa-file-code-o"></span>
      
-    Functions
+    Reference
   </a>
 </li>
 <li>
@@ -149,7 +156,7 @@ dropdown allows to search more easily through large lists.</p>
     </div>
 
     <pre class="usage"><span class='fu'>search_selection_api</span>(
-  <span class='no'>name</span>,
+  <span class='no'>input_id</span>,
   <span class='no'>search_api_url</span>,
   <span class='kw'>multiple</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>default_text</span> <span class='kw'>=</span> <span class='st'>"Select"</span>
@@ -159,8 +166,8 @@ dropdown allows to search more easily through large lists.</p>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>name</th>
-      <td><p>Input name. Reactive value is available under input[[name]].</p></td>
+      <th>input_id</th>
+      <td><p>Input name. Reactive value is available under input[[input_id]].</p></td>
     </tr>
     <tr>
       <th>search_api_url</th>

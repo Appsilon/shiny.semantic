@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{check_proper_color}
 \alias{check_proper_color}
-\title{Check if color is set from Semanti-UI palette}
+\title{Check if color is set from Fomantic-UI palette}
 \usage{
 check_proper_color(color)
 }
@@ -13,7 +13,7 @@ check_proper_color(color)
 Error when \code{color} does not belong to palette
 }
 \description{
-Check if color is set from Semanti-UI palette
+Check if color is set from Fomantic-UI palette
 }
 \examples{
 check_proper_color("blue")
