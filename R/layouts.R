@@ -35,7 +35,10 @@ main_panel <- function(..., width = 3) {
 #' specified. It should be formatted as a string with css units
 #' @param container_style CSS declarations for grid container
 #' @param area_styles List of CSS declarations for each grid area inside
-#' container
+#' @param sidebarPanel same as \code{sidebar_panel}
+#' @param mainPanel same as \code{main_panel}
+#' @param position vector with position of sidebar elements in order sidebar, main
+#' @param fluid TRUE to use fluid layout; FALSE to use fixed layout.
 #'
 #' @return Container with sidebar and main panels
 #' @examples

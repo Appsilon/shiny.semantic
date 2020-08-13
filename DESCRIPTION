@@ -30,7 +30,6 @@ Imports:
     R6
 Suggests:
     dplyr,
-    gapminder,
     testthat,
     lintr,
     DT,
