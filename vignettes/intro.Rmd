@@ -28,10 +28,12 @@ uirender(uiinput(icon("dog"),
 ), width = "200px", height = "100px")
 ```
 
-## Create a Shiny App
-Let's create a Shiny app with `semanticPage()` and just a `h1` title.
+## Create a simple Shiny App
+Let's create a Shiny app with `semanticPage()` and just an `h1` title.
 
-```{r echo=TRUE, include=TRUE}
+<img src="intro_images/Screenshot from 2020-08-18 10-47-58.png" alt="screen1" width="800"/>
+
+```{r echo=TRUE, include=TRUE, eval=FALSE}
 ui <- semanticPage(
   title = "My first page",
   h1("My page")
@@ -42,9 +44,11 @@ server <- function(input, output, session) {}
 shinyApp(ui, server)
 ```
 
-Now let's add sidebar layout `sidebar_layout()`.
+Now let's add sidebar layout `sidebar_layout()` with a sidebar panel `sidebar_panel()` and main panel `main_panel()`. The sidebar is displayed with a distinct background color and typically contains input controls. The main area occupies 2/3 of the horizontal width and typically contains outputs.
 
-```{r echo=TRUE, include=TRUE}
+<img src="intro_images/Screenshot from 2020-08-18 10-49-57.png" alt="screen2" width="800"/>
+
+```{r echo=TRUE, include=TRUE, eval=FALSE}
 ui <- semanticPage(
   title = "My first page",
   h1("My page"),
@@ -59,9 +63,11 @@ server <- function(input, output, session) {}
 shinyApp(ui, server)
 ```
 
-Next let's fill in the main panel `main_panel()` with a Semantic UI segment containing 2 cards.
+Next let's fill in the main panel `main_panel()` with a Fomantic (Semantic previously) UI segment containing 2 cards.
 
-```{r}
+<img src="intro_images/Screenshot from 2020-08-18 10-51-02.png" alt="screen3" width="800"/>
+
+```{r echo=TRUE, include=TRUE, eval=FALSE}
 ui <- semanticPage(
   title = "My first page",
   h1("My page"),
@@ -96,15 +102,18 @@ server <- function(input, output, session) {}
 shinyApp(ui, server)
 ```
 
-Time to fill in sidebar `sidebar_panel()`, so let's add dropdown. We create a dropdown input using `dropdown_input()`.
+Time to fill in sidebar `sidebar_panel()`, so let's add a dropdown. We create it input using `dropdown_input()`.
 
-```{r}
+<img src="intro_images/Screenshot from 2020-08-18 10-52-24.png" alt="screen4" width="800"/>
+
+```{r echo=TRUE, include=TRUE, eval=FALSE}
 ui <- semanticPage(
   title = "My first page",
   h1("My page"),
   sidebar_layout(
     sidebar_panel(
-      uiOutput("dropdown")
+      dropdown_input("mtcars_dropdown", c("mpg", "cyl", "disp", "hp"), value = "mpg"),
+      textOutput("dropdown")
     ),
     main_panel(
       segment(
@@ -131,24 +140,24 @@ ui <- semanticPage(
 )
 
 server <- function(input, output, session) {
-  output$dropdown <- renderUI({
-    dropdown_input("mtcars_dropdown", c("mpg", "cyl", "disp", "hp"), value = "mpg")
-  })
+  output$dropdown <- renderText(input$mtcars_dropdown)
 }
 
 shinyApp(ui, server)
 ```
 
-Let's make dropdown do something and generate a histogram from a selected `mtcars` column and a plot.
+Let's make dropdown do something and generate a histogram and a simple plot from a selected `mtcars` column using dropdown.
 
-```{r}
+<img src="intro_images/Screenshot from 2020-08-18 10-53-23.png" alt="screen5" width="800"/>
+
+```{r echo=TRUE, include=TRUE, eval=FALSE}
 ui <- semanticPage(
   title = "My first page",
   h1("My page"),
   sidebar_layout(
     sidebar_panel(
       p("Select variable for plots:"),
-      uiOutput("dropdown")
+      dropdown_input("mtcars_dropdown", c("mpg", "cyl", "disp", "hp"), value = "mpg")
     ),
     main_panel(
       segment(
@@ -170,26 +179,16 @@ ui <- semanticPage(
            )
          )
       ),
-      plotOutput("plot"),
-      plotOutput("plot2")
+      plotOutput("histogram"),
+      plotOutput("plot")
       )
     )
 )
 
 server <- function(input, output, session) {
-  output$dropdown <- renderUI({
-    dropdown_input("mtcars_dropdown", c("mpg", "cyl", "disp", "hp"), value = "mpg")
-  })
-
-  data_plot <- reactive({
-    validate(
-      need(input$mtcars_dropdown, "")
-    )
-    mtcars[[input$mtcars_dropdown]]
-    })
-
-  output$plot <- renderPlot(hist(data_plot()))
-  output$plot2 <- renderPlot(plot(data_plot()))
+  output$dropdown <- renderText(input$mtcars_dropdown)
+  output$histogram <- renderPlot(hist(mtcars[[input$mtcars_dropdown]]))
+  output$plot <- renderPlot(plot(mtcars[[input$mtcars_dropdown]]))
 }
 
 shinyApp(ui, server)
@@ -197,7 +196,7 @@ shinyApp(ui, server)
 
 Finally let's change the layout of the plots on the page and make them appear next to each other. We will use `grid()` for it and define a grid template using `grid_template()` with 1 row and 2 columns of the same size. Our grid template will contain 2 areas `chart1` and `chart2`
 
-```{r}
+```{r echo=TRUE, include=TRUE, eval=FALSE}
 grid_charts <- grid_template(
   default = list(areas = rbind(c("chart1", "chart2")),
                  rows_height = c("100%"),
@@ -207,14 +206,16 @@ grid_charts <- grid_template(
 
 We assign plots' outputs `plotOutput()` to both areas inside the `grid` function.
 
-```{r}
+<img src="intro_images/Screenshot from 2020-08-18 10-54-33.png" alt="screen6" width="800"/>
+
+```{r echo=TRUE, include=TRUE, eval=FALSE}
 ui <- semanticPage(
   title = "My first page",
   h1("My page"),
   sidebar_layout(
     sidebar_panel(
       p("Select variable for plots:"),
-      uiOutput("dropdown")
+      dropdown_input("mtcars_dropdown", c("mpg", "cyl", "disp", "hp"), value = "mpg")
     ),
     main_panel(
       segment(
@@ -237,27 +238,17 @@ ui <- semanticPage(
          )
       ),
       grid(grid_charts,
-           chart1 = plotOutput("plot"),
-           chart2 = plotOutput("plot2")
+           chart1 = plotOutput("histogram"),
+           chart2 = plotOutput("plot")
          )
       )
     )
 )
 
 server <- function(input, output, session) {
-  output$dropdown <- renderUI({
-    dropdown_input("mtcars_dropdown", c("mpg", "cyl", "disp", "hp"), value = "mpg")
-  })
-
-  data_plot <- reactive({
-    validate(
-      need(input$mtcars_dropdown, "")
-    )
-    mtcars[[input$mtcars_dropdown]]
-    })
-
-  output$plot <- renderPlot(hist(data_plot()))
-  output$plot2 <- renderPlot(plot(data_plot()))
+  output$dropdown <- renderText(input$mtcars_dropdown)
+  output$histogram <- renderPlot(hist(mtcars[[input$mtcars_dropdown]]))
+  output$plot <- renderPlot(plot(mtcars[[input$mtcars_dropdown]]))
 }
 
 shinyApp(ui, server)

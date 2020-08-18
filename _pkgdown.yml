@@ -31,6 +31,7 @@ articles:
 - title: All tutorials
   desc: ~
   contents:
+  - '`intro`'
   - '`semantic_integration`'
 
 reference:

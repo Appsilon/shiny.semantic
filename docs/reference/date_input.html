@@ -231,17 +231,17 @@
   <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
     <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Date range example"</span>,
     <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/htmlOutput.html'>uiOutput</a></span>(<span class='st'>"date_range"</span>),
-    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>p</a></span>(<span class='st'>"Selected dates:"</span>),
+    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>p</a></span>(<span class='st'>"Selected dates:"</span>),
     <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"selected_dates"</span>)
   )
 )
 
 <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
   <span class='no'>output</span>$<span class='no'>date_range</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderUI.html'>renderUI</a></span>({
-    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>tagList</a></span>(
-      <span class='no'>tags</span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='no'>tags</span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>HTML</a></span>(<span class='st'>"From"</span>)),
+    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/tag.html'>tagList</a></span>(
+      <span class='no'>tags</span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>div</a></span>(<span class='no'>tags</span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>div</a></span>(<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/HTML.html'>HTML</a></span>(<span class='st'>"From"</span>)),
                <span class='fu'>date_input</span>(<span class='st'>"date_from"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>() - <span class='fl'>30</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"width: 10%;"</span>)),
-      <span class='no'>tags</span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='no'>tags</span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>HTML</a></span>(<span class='st'>"To"</span>)),
+      <span class='no'>tags</span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>div</a></span>(<span class='no'>tags</span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>div</a></span>(<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/HTML.html'>HTML</a></span>(<span class='st'>"To"</span>)),
                <span class='fu'>date_input</span>(<span class='st'>"date_to"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(), <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"width: 10%;"</span>))
     )
   })

@@ -218,19 +218,19 @@
          <span class='kw'>container_style</span> <span class='kw'>=</span> <span class='st'>"border: 1px solid #f00"</span>,
          <span class='kw'>area_styles</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>header</span> <span class='kw'>=</span> <span class='st'>"background: #0099f9"</span>,
                             <span class='kw'>menu</span> <span class='kw'>=</span> <span class='st'>"border-right: 1px solid #0099f9"</span>),
-         <span class='kw'>header</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='no'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>tags</a></span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>h1</a></span>(<span class='st'>"Hello CSS Grid!"</span>)),
+         <span class='kw'>header</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>div</a></span>(<span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='no'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>tags</a></span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>h1</a></span>(<span class='st'>"Hello CSS Grid!"</span>)),
          <span class='kw'>menu</span> <span class='kw'>=</span> <span class='fu'><a href='checkbox.html'>checkbox_input</a></span>(<span class='st'>"example"</span>, <span class='st'>"Check me"</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>),
          <span class='kw'>main</span> <span class='kw'>=</span> <span class='fu'>grid</span>(<span class='no'>subGrid</span>,
                      <span class='kw'>top_left</span> <span class='kw'>=</span> <span class='fu'><a href='calendar.html'>calendar</a></span>(<span class='st'>"my_calendar"</span>),
-                     <span class='kw'>top_right</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='st'>"hello 1"</span>),
-                     <span class='kw'>bottom_left</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='st'>"hello 2"</span>),
-                     <span class='kw'>bottom_right</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='st'>"hello 3"</span>)
+                     <span class='kw'>top_right</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>div</a></span>(<span class='st'>"hello 1"</span>),
+                     <span class='kw'>bottom_left</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>div</a></span>(<span class='st'>"hello 2"</span>),
+                     <span class='kw'>bottom_right</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>div</a></span>(<span class='st'>"hello 3"</span>)
          ),
-         <span class='kw'>right1</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(
+         <span class='kw'>right1</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>div</a></span>(
            <span class='fu'><a href='checkbox.html'>toggle</a></span>(<span class='st'>"toggle"</span>, <span class='st'>"let's toggle"</span>),
            <span class='fu'><a href='multiple_checkbox.html'>multiple_checkbox</a></span>(<span class='st'>"mycheckbox"</span>, <span class='st'>"mycheckbox"</span>,
                              <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"option A"</span>,<span class='st'>"option B"</span>,<span class='st'>"option C"</span>))),
-         <span class='kw'>right2</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='st'>"right 2"</span>)
+         <span class='kw'>right2</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>div</a></span>(<span class='st'>"right 2"</span>)
     )
   ),
   <span class='kw'>server</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {})
