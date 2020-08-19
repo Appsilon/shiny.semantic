@@ -1382,7 +1382,7 @@ ui &lt;- function() {
     semanticPage(
       title = &quot;My page&quot;,
       suppressDependencies(&quot;bootstrap&quot;),
-      div(class = &quot;ui button&quot;, uiicon(&quot;user&quot;),  &quot;Icon button&quot;)
+      div(class = &quot;ui button&quot;, icon(&quot;user&quot;),  &quot;Icon button&quot;)
     )
   )
 }
@@ -1477,7 +1477,7 @@ shinyApp(ui = ui(), server = server)
     ) %&gt;%
       purrr::map(~ div(
         class = "item",
-        uiicon("large github middle aligned"),
+        icon("large github middle aligned"),
         div(
           class = "content",
           a(
@@ -1521,17 +1521,17 @@ shinyApp(ui = ui(), server = server)
     class = "content",
     span(
       class = "right floated",
-      uiicon("heart outline like"),
+      icon("heart outline like"),
       "17 likes"
     ),
-    uiicon("comment"),
+    icon("comment"),
     "3 comments"
   ),
   div(
     class = "extra content",
     div(
       class = "ui large transparent left icon input",
-      uiicon("heart ouline"),
+      icon("heart ouline"),
       tags$input(
         type = "text",
         placeholder = "Add Comment..."

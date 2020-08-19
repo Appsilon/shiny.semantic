@@ -9,9 +9,12 @@ navbar:
     - icon: fa-home
       href: index.html
       text: "Start"
+    - icon: fa-university
+      text: "Tutorials"
+      href: articles/index.html
   right:
     - icon: fa-file-code-o
-      text: "Functions"
+      text: "Reference"
       href: reference/index.html
     - icon: fa-newspaper-o
       text: "Changes"
@@ -23,3 +26,101 @@ navbar:
       href: https://github.com/Appsilon/shiny.semantic
     - icon: fa-twitter fa-lg
       href: https://twitter.com/Appsilon
+
+articles:
+- title: All tutorials
+  desc: ~
+  contents:
+  - '`semantic_integration`'
+
+reference:
+- title: Fomantic (semantic) page
+  contents:
+  - '`semanticPage`'
+
+- title: UI elements
+  desc: All functions that generate static UI elements.
+  contents:
+  - '`button`'
+  - '`card`'
+  - '`cards`'
+  - '`dropdown_menu`'
+  - '`fields`'
+  - '`field`'
+  - '`form`'
+  - '`header`'
+  - '`horizontal_menu`'
+  - '`icon`'
+  - '`label`'
+  - '`label_tag`'
+  - '`list_container`'
+  - '`menu`'
+  - '`menu_divider`'
+  - '`menu_header`'
+  - '`menu_item`'
+  - '`messagebox`'
+  - '`segment`'
+  - '`tabset`'
+
+- title: Action elements
+  desc: All functions that generate or update active `shiny.semantic` objects.
+  contents:
+  - '`actionButton`'
+  - '`action_button`'
+  - '`calendar`'
+  - '`checkbox_input`'
+  - '`counter_button`'
+  - '`dateInput`'
+  - '`date_input`'
+  - '`dropdown_input`'
+  - '`multiple_checkbox`'
+  - '`multiple_radio`'
+  - '`numericInput`'
+  - '`numeric_input`'
+  - '`rangeInput`'
+  - '`range_input`'
+  - '`rating_input`'
+  - '`render_menu_link`'
+  - '`selectInput`'
+  - '`sliderInput`'
+  - '`slider_input`'
+  - '`textAreaInput`'
+  - '`textInput`'
+  - '`text_input`'
+  - '`toggle`'
+  - '`updateActionButton`'
+  - '`update_action_button`'
+  - '`updateNumericInput`'
+  - '`update_numeric_input`'
+  - '`updateRangeInput`'
+  - '`updateSelectInput`'
+  - '`update_dropdown_input`'
+  - '`updateSliderInput`'
+  - '`update_calendar`'
+  - '`update_range`'
+  - '`update_rating_input`'
+  - '`update_slider`'
+
+- title: Search functions
+  desc: Functions for search API.
+  contents:
+  - '`register_search`'
+  - '`search_field`'
+  - '`search_selection_api`'
+  - '`search_selection_choices`'
+
+- title: Constants
+  desc: These constants contain important `shiny.semantic` values.
+  contents:
+  - '`COLOR_PALETTE`'
+  - '`SIZE_LEVELS`'
+  - '`SUPPORTED_THEMES`'
+
+- title: Other
+  desc: Other useful functions or objects.
+  contents:
+  - '`semantic_DT`'
+  - '`shiny_input`'
+  - '`shiny_text_input`'
+  - '`uiinput`'
+  - '`uirender`'

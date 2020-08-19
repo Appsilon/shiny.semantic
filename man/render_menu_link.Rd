@@ -4,7 +4,7 @@
 \alias{render_menu_link}
 \title{Render menu link}
 \usage{
-render_menu_link(location, title, active_location = "", icon = NA)
+render_menu_link(location, title, active_location = "", icon = NULL)
 }
 \arguments{
 \item{location}{character url with location}
@@ -17,11 +17,14 @@ it gets highlighted), default empty (\code{""})}
 \item{icon}{non-mandatory parameter with icon name}
 }
 \value{
-shiny.tag.a link
+shiny tag link
 }
 \description{
 This function renders horizontal menu item.
 }
 \examples{
 render_menu_link("#subpage1", "SUBPAGE")
+}
+\seealso{
+horizontal_menu
 }

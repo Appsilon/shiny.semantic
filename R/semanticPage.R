@@ -1,10 +1,3 @@
-#' Supported semantic themes
-#' @export
-SUPPORTED_THEMES <- c("cerulean", "darkly", "paper", "simplex",  # nolint
-                      "superhero", "flatly", "slate", "cosmo",
-                      "readable",  "united", "journal", "solar",
-                      "cyborg", "sandstone", "yeti", "lumen", "spacelab")
-
 #' Get CDN path semantic dependencies
 #'
 #' Internal function that returns path string from `shiny.custom.semantic.cdn` options.
@@ -128,11 +121,33 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
 #' \code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.
 #' @param supress_bootstrap boolean flag that supresses bootstrap when turned on
 #' @param margin character with body margin size
+#' @examples
+#' ## Only run examples in interactive R sessions
+#' if (interactive()) {
+#' library(shiny)
+#' library(shiny.semantic)
+#'
+#' ui <- semanticPage(
+#'   title = "Hello Shiny Semantic!",
+#'   label("Number of observations:"),
+#'   slider_input("obs", value = 500, min = 0, max = 1000),
+#'   segment(
+#'     plotOutput("dist_plot")
+#'   )
+#' )
+#'
+#' server <- function(input, output) {
+#'   output$dist_plot <- renderPlot({
+#'     hist(rnorm(input$obs))
+#'   })
+#' }
+#'
+#' shinyApp(ui, server)
+#' }
 #'
 #' @export
 semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE,
                          margin = "10px") {
-  content <- shiny::tags$div(class = "wrapper", ...)
   if (supress_bootstrap) {
     supress_bootstrap <- suppressDependencies("bootstrap")
   }
@@ -152,10 +167,11 @@ semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-slider.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-calendar.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-numericinput.js"),
-      shiny::tags$script(src = "shiny.semantic/shiny-semantic-rating.js")
+      shiny::tags$script(src = "shiny.semantic/shiny-semantic-rating.js"),
+      shiny::tags$script(src = "shiny.semantic/shiny-semantic-progress.js")
     ),
     shiny::tags$body(style = glue::glue("margin:{margin}; min-height: 611px;"),
                      supress_bootstrap,
-                     content)
+                     ...)
   )
 }

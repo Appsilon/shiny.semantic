@@ -67,7 +67,38 @@ ui <- semanticPage(
 
 </center>
 
-See more examples with code in the `examples` folder.
+See more examples with code in the `examples` folder:
+
+  - [Static Semantic componenets
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/app.R)
+  - [Static Semantic componenets demo with different
+    theme](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/themes/app.R)
+  - [Calendar date and month demo with
+    update](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/calendar/app.R)
+  - [Counter button
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/counter_button/app.R)
+  - [Custom CSS
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/customcss/app.R)
+  - [Dropdown update
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/dropdown_updates/app.R)
+  - [Form inputs
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/form_inputs/app.R)
+  - [Modal
+    demos](https://github.com/Appsilon/shiny.semantic/tree/develop/examples/modal)
+  - [Multiple checkbox
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/multiple_checkbox/app.R)
+  - [Rating with update
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/rating/app.R)
+  - [Search selection
+    demos](https://github.com/Appsilon/shiny.semantic/tree/develop/examples/search_selection)
+  - [Shiny numericInput
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/numericInput.R)
+  - [Shiny selectInput
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R)
+  - [Slider and range with update
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R)
+  - [Multiple tab
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/tabset/app.R)
 
 Check out also our dashboard examples made with **shiny.semantic**
 library:
@@ -83,10 +114,10 @@ You can install a stable `shiny.semantic` release from CRAN repository:
 install.packages("shiny.semantic")
 ```
 
-and the latest version with devtools:
+and the latest version with `remotes`:
 
 ``` r
-devtools::install_github("Appsilon/`r params$repo_name`")
+remotes::install_github("Appsilon/shiny.semantic@develop")
 ```
 
 (`master` branch contains the stable version. Use `develop` branch for
@@ -95,7 +126,7 @@ latest features)
 To install [previous versions]() you can run:
 
 ``` r
-devtools::install_github("Appsilon/`r params$repo_name`", ref = "0.1.0")
+remotes::install_github("Appsilon/shiny.semantic", ref = "0.1.0")
 ```
 
 ## How to use it?
@@ -112,17 +143,12 @@ Basic example for rendering a simple button. will look like this:
 ``` r
 library(shiny)
 library(shiny.semantic)
-ui <- function() {
-  shinyUI(
-    semanticPage(
+ui <- semanticPage(
       title = "My page",
-      div(class = "ui button", uiicon("user"),  "Icon button")
+      div(class = "ui button", icon("user"),  "Icon button")
     )
-  )
-}
-server <- shinyServer(function(input, output) {
-})
-shinyApp(ui = ui(), server = server)
+server <- function(input, output) {}
+shinyApp(ui, server)
 ```
 
 For better understanding it’s good to check [Fomantic UI
@@ -144,68 +170,16 @@ UI elements. That is why by default we turn off Bootstrap dependencies.
 However, you can switch off suppressing bootstrap by calling
 `semanticPage(suppress_bootstrap = FALSE, ...)`
 
-**\[Advanced\] Using Fomantic UI JavaScript elements**
-
-Some Fomantic UI elements require to run a specific JS code when DOM
-document is ready. There are at least 2 options to do this:
-
-1.  Use [shinyjs](https://github.com/daattali/shinyjs)
-
-<!-- end list -->
-
-    library(shinyjs)
-    ...
-    jsCode <- " # Fomantic UI componts JS "
-    ...
-    ui <- function() {
-      shinyUI(
-        semanticPage(
-          title = "Your page title",
-          shinyjs::useShinyjs(),
-          # Your UI code
-        )
-      )
-    }
-    server <- shinyServer(function(input, output) {
-      runjs(jsCode)
-      # Your Shiny logic
-    })
-    shinyApp(ui = ui(), server = server)
-
-2.  Use `shiny::tags$script()`
-
-<!-- end list -->
-
-    ...
-    jsCode <- "
-    $(document).ready(function() {
-      # Semantic UI components JS code, like:
-      #$('.rating').rating('setting', 'clearable', true);
-      #$('.disabled .rating').rating('disable');
-    })
-    ...
-    "
-    
-    ui <- function() {
-      shinyUI(
-        semanticPage(
-          title = "My page",
-          tags$script(jsCode),
-          # Your UI code
-        )
-      )
-    }
-    ...
-    server <- shinyServer(function(input, output) {
-      # Your Shiny logic
-    })
-    
-    shinyApp(ui = ui(), server = server)
-
 ## How to contribute?
 
+We welcome contributions of all types\!
+
+We encourage typo corrections, bug reports, bug fixes and feature
+requests. Feedback on the clarity of the documentation and examples is
+especially valuable.
+
 If you want to contribute to this project please submit a regular PR,
-once you’re done with new feature or bug fix.
+once you’re done with new feature or bug fix.<br>
 
 **Changes in documentation**
 
@@ -215,6 +189,14 @@ please modify accordingly a **README.Rmd** file and use “Knit”.
 
 Documentation is rendered with `pkgdown`. Just run
 `pkgdown::build_site()` after rendering new **README.md**.
+
+*Important:*
+
+1)  Please follow the code style from out
+    [styleguide](https://github.com/Appsilon/shiny.semantic/blob/develop/STYLEGUIDE.md).
+
+2)  We have a Contributor [Code of Conduct](). Make sure to check it and
+    to follow it.
 
 ## Troubleshooting
 
@@ -232,7 +214,9 @@ However, if you encounter any problems, try the following:
 
 <!-- end list -->
 
-    install.packages("shiny", version='0.14.2.9001')
+``` r
+install.packages("shiny", version='0.14.2.9001')
+```
 
 3.  Some bugs may be related directly to Semantic UI. In that case
     please try to check issues on its

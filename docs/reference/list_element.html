@@ -85,13 +85,20 @@
     Start
   </a>
 </li>
+<li>
+  <a href="../articles/index.html">
+    <span class="fa fa-university"></span>
+     
+    Tutorials
+  </a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
     <span class="fa fa-file-code-o"></span>
      
-    Functions
+    Reference
   </a>
 </li>
 <li>
@@ -142,19 +149,22 @@
     <p>Helper function to render list element</p>
     </div>
 
-    <pre class="usage"><span class='fu'>list_element</span>(<span class='no'>data</span>, <span class='no'>row</span>)</pre>
+    <pre class="usage"><span class='fu'>list_element</span>(<span class='kw'>header</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>description</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>icon_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>data to list; data.frame with required column `header`
-and optionally `icon` and/or `description`.</p></td>
+      <th>header</th>
+      <td><p>character with header element</p></td>
     </tr>
     <tr>
-      <th>row</th>
-      <td><p>row character</p></td>
+      <th>description</th>
+      <td><p>character with content of the list</p></td>
+    </tr>
+    <tr>
+      <th>icon_name</th>
+      <td><p>character with optional icon</p></td>
     </tr>
     </table>
 

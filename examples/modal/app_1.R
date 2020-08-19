@@ -9,11 +9,11 @@ ui <- function() {
       modal(
         uiOutput("modalRenderContent"),
         id = "render-example-modal",
-        header = list(class = "ui icon", uiicon("archive")),
+        header = list(class = "ui icon", icon("archive")),
         class = "basic tiny",
         target = "modal-render-button",
         settings = list(c("transition", "fade"), c("closable", "false")),
-        modal_tags = uiicon("ui close")
+        modal_tags = icon("ui close")
       )
     )
   )

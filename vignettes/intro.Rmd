@@ -1,0 +1,32 @@
+---
+title: "Intro to shiny.semantic"
+author: "Appsilon"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Intro to shiny.semantic}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  collapse = TRUE,
+  comment = "#>"
+)
+library(shiny)
+library(shiny.semantic)
+```
+
+This is how you generate your first UI with `shiny.semantic`:
+
+```{r echo=T, include = T}
+uirender(uiinput(icon("dog"),
+        numeric_input("input", value = 0, label = "")
+), width = "200px", height = "100px")
+```
+
+
+To define a new page use:
+

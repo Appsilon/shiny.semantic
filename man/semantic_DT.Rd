@@ -2,24 +2,21 @@
 % Please edit documentation in R/tables.R
 \name{semantic_DT}
 \alias{semantic_DT}
-\alias{semantic_DTOutput}
 \title{Create Semantic DT Table}
 \usage{
 semantic_DT(...)
-
-semantic_DTOutput(...)
 }
 \arguments{
 \item{...}{datatable parameters, check \code{?DT::datatable} to learn more.}
-}
-\value{
-
 }
 \description{
 This creates DT table styled with Semantic UI.
 }
 \examples{
 if (interactive()){
+ library(shiny)
+ library(shiny.semantic)
+
  ui <- semanticPage(
    semantic_DTOutput("table")
  )
@@ -30,4 +27,5 @@ if (interactive()){
  }
  shinyApp(ui, server)
 }
+
 }
