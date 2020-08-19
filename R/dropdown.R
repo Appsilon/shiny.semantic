@@ -193,7 +193,7 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
 update_dropdown_input <- function(session, input_id, choices = NULL, choices_value = choices, value = NULL) {
   if (!is.null(value)) value <- paste(as.character(value), collapse = ",") else value <- NULL
   if (!is.null(choices)) {
-    options <- jsonlite::toJSON(data.frame(name = choices, text = choices, value = choices_value))
+    options <- jsonlite::toJSON(list(values = data.frame(name = choices, text = choices, value = choices_value)))
   } else {
     options <- NULL
   }
@@ -256,7 +256,7 @@ updateSelectInput <- function(session, inputId, label, choices = NULL, selected 
     choices_text <- names(choices)
     if (identical(choices_text, NULL))
       choices_text <- choices
-    options <- jsonlite::toJSON(data.frame(name = choices, text = choices_text, value = choices))
+    options <- jsonlite::toJSON(list(values = data.frame(name = choices, text = choices_text, value = choices)))
   } else {
     options <- NULL
   }

@@ -4,18 +4,12 @@ $.extend(semanticDropdownBinding, {
 
   // This initialize input element. It extracts data-value attribute and use that as value.
   initialize: function(el) {
-    let value = $(el).children('input').val();
-    // Enables the dropdown to be a vector if multiple class
-    if ($(el).hasClass('multiple')) {
-      value.split(",").map(v => $(el).dropdown('set selected', v));
-    } else {
-      $(el).dropdown('set exactly', value);
-    }
+    $(el).dropdown();
   },
 
   // This returns a jQuery object with the DOM element.
   find: function(scope) {
-    return $(scope).find('.dropdown');
+    return $(scope).find('.ui.dropdown');
   },
 
   // Returns the ID of the DOM element.
@@ -25,7 +19,7 @@ $.extend(semanticDropdownBinding, {
 
   // Given the DOM element for the input, return the value as JSON.
   getValue: function(el) {
-    let value = $(el).children('input').val();
+    let value = $(el).dropdown('get value');
     // Enables the dropdown to be a vector if multiple class
     if ($(el).hasClass('multiple')) {
       if (value === "") {
@@ -39,10 +33,10 @@ $.extend(semanticDropdownBinding, {
   // Given the DOM element for the input, set the value.
   setValue: function(el, value) {
     if ($(el).hasClass('multiple')) {
-      $(el).dropdown('set exactly', '');
+      $(el).dropdown('clear', true);
       value.split(",").map(v => $(el).dropdown('set selected', v));
     } else {
-      $(el).dropdown('set exactly', value);
+      $(el).dropdown('set selected', value);
     }
   },
 
@@ -51,33 +45,30 @@ $.extend(semanticDropdownBinding, {
   // callback is a function that queues data to be sent to
   // the server.
   subscribe: function(el, callback) {
-    $(el).on('keyup change', function () { callback(); });
+    $(el).dropdown({
+      onChange: function(value, text, $selectedItem) {
+        callback();
+      }
+    })
   },
 
   // TODO: Remove the event listeners.
   unsubscribe: function(el) {
-    $(el).off('.semanticDropdownBinding');
-  },
-
-  // This returns a full description of the input's state.
-  getState: function(el) {
-    return {
-      value: el.value
-    };
-  },
-
-  // The input rate limiting policy.
-  getRatePolicy: function() {
-    return {
-      // Can be 'debounce' or 'throttle':
-      policy: 'debounce',
-      delay: 500
-    };
+    $(el).off();
   },
 
   receiveMessage: function(el, data) {
     if (data.hasOwnProperty('choices')) {
-      $(el).dropdown('change values', data.choices);
+      // setup menu changes dropdown options without triggering onChange event
+      $(el).dropdown('setup menu', data.choices);
+      // when no value passed, return null for multiple dropdown and first value for single one
+      if (!data.hasOwnProperty('value')) {
+        let value = ""
+        if (!$(el).hasClass('multiple')) {
+          value = data.choices.values[0].value
+        }
+        this.setValue(el, value);
+      }
     }
 
     if (data.hasOwnProperty('value')) {
@@ -87,8 +78,6 @@ $.extend(semanticDropdownBinding, {
     if (data.hasOwnProperty('label')) {
       $("label[for='" + el.id + "'").html(data.label);
     }
-
-    $(el).trigger('change');
   }
 });
 
