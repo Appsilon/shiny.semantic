@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
       </span>
     </div>
 
@@ -231,14 +231,14 @@ tag (e.g. style, childrens etc.)</p></td>
       <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span>(
         <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
           <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Checkbox example"</span>,
-          <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>h1</a></span>(<span class='st'>"Checkboxes"</span>),
+          <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>h1</a></span>(<span class='st'>"Checkboxes"</span>),
           <span class='fu'>multiple_checkbox</span>(<span class='st'>"checkboxes"</span>, <span class='st'>"Select Letters"</span>, <span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>6</span>], <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"A"</span>),
-          <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>p</a></span>(<span class='st'>"Selected letters:"</span>),
+          <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>p</a></span>(<span class='st'>"Selected letters:"</span>),
           <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"selected_letters"</span>),
-          <span class='no'>tags</span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>br</a></span>(),
-          <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>h1</a></span>(<span class='st'>"Radioboxes"</span>),
+          <span class='no'>tags</span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>br</a></span>(),
+          <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>h1</a></span>(<span class='st'>"Radioboxes"</span>),
           <span class='fu'>multiple_radio</span>(<span class='st'>"radioboxes"</span>, <span class='st'>"Select Letter"</span>, <span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>6</span>], <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"A"</span>),
-          <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>p</a></span>(<span class='st'>"Selected letter:"</span>),
+          <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>p</a></span>(<span class='st'>"Selected letter:"</span>),
           <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"selected_letter"</span>)
        )
      )
