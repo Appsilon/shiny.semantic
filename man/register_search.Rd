@@ -48,12 +48,16 @@ if (interactive()) {
 
       output$api_url <- renderText({
         glue::glue(
-          "Registered API url: {session$clientData$url_protocol}//{session$clientData$url_hostname}/{search_api_url}&q={input$txt}"
+          "Registered API url: ",
+          "{session$clientData$url_protocol}//{session$clientData$url_hostname}/{search_api_url}&q={input$txt}"
         )
       })
 
       output$open_url <- renderUI({
-        tags$a("Open", class = "ui button", href = glue::glue("./{search_api_url}&q={input$txt}"), target = "_blank")
+        tags$a(
+          "Open", class = "ui button",
+          href = glue::glue("./{search_api_url}&q={input$txt}"), target = "_blank"
+        )
       })
     }
   )
