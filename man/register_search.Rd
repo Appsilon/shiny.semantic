@@ -49,7 +49,8 @@ if (interactive()) {
       output$api_url <- renderText({
         glue::glue(
           "Registered API url: ",
-          "{session$clientData$url_protocol}//{session$clientData$url_hostname}/{search_api_url}&q={input$txt}"
+          "{session$clientData$url_protocol}//{session$clientData$url_hostname}:{session$clientData$url_port}/",
+          "{search_api_url}&q={input$txt}"
         )
       })
 
