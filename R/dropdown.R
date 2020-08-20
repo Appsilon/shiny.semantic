@@ -217,8 +217,8 @@ update_dropdown_input <- function(session, input_id, choices = NULL, choices_val
 #'   If not specified then defaults to the first value for single-select lists and no
 #'   values for multiple select lists.
 #'
-#'   @examples
-#'   ## Only run examples in interactive R sessions
+#' @examples
+#' ## Only run examples in interactive R sessions
 #' if (interactive()) {
 #'
 #'   ui <- semanticPage(
@@ -256,7 +256,7 @@ updateSelectInput <- function(session, inputId, label, choices = NULL, selected 
     choices_text <- names(choices)
     if (identical(choices_text, NULL))
       choices_text <- choices
-    options <- jsonlite::toJSON(list(values = data.frame(name = choices, text = choices_text, value = choices)))
+    options <- jsonlite::toJSON(list(values = data.frame(name = choices_text, text = choices_text, value = choices)))
   } else {
     options <- NULL
   }
