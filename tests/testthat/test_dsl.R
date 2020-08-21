@@ -26,14 +26,14 @@ test_that("test messagebox type and input values", {
   expect_true(any(grepl("abcb", si_str, fixed = TRUE)))
 })
 
-test_that("test label_tag type and input values", {
+test_that("test label type and input values", {
   # type
-  expect_is(label_tag(p("a")), "shiny.tag")
+  expect_is(label(p("a")), "shiny.tag")
   # test input
-  si_str <- as.character(label_tag(p("a")))
+  si_str <- as.character(label(p("a")))
   expect_true(any(grepl("class=\"ui label \"",
                         si_str, fixed = TRUE)))
-  expect_match(as.character(label_tag()), "<a class=\"ui label \"></a>")
+  expect_match(as.character(label()), "<a class=\"ui label \"></a>")
 
 })
 
@@ -114,13 +114,6 @@ test_that("test field", {
   # test class
   expect_match(as.character(field(class = "fl")),
                "<div class=\"field fl\"></div>")
-})
-
-test_that("test label", {
-  # type
-  expect_is(label(), "shiny.tag")
-
-  expect_match(as.character(label()), "<label></label>")
 })
 
 test_that("test messagebox", {
