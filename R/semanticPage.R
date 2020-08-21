@@ -119,7 +119,7 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
 #' @param title A title to display in the browser's title bar.
 #' @param theme Theme name or path. Full list of supported themes you will find in
 #' \code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.
-#' @param supress_bootstrap boolean flag that supresses bootstrap when turned on
+#' @param suppress_bootstrap boolean flag that supresses bootstrap when turned on
 #' @param margin character with body margin size
 #' @examples
 #' ## Only run examples in interactive R sessions
@@ -146,13 +146,13 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
 #' }
 #'
 #' @export
-semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE,
+semanticPage <- function(..., title = "", theme = NULL, suppress_bootstrap = TRUE,
                          margin = "10px") {
-  if (supress_bootstrap) {
-    supress_bootstrap <- suppressDependencies("bootstrap")
+  if (suppress_bootstrap) {
+    suppress_bootstrap <- suppressDependencies("bootstrap")
   }
   else {
-    supress_bootstrap <- NULL
+    suppress_bootstrap <- NULL
   }
   shiny::tagList(
     shiny::tags$head(
@@ -171,7 +171,7 @@ semanticPage <- function(..., title = "", theme = NULL, supress_bootstrap = TRUE
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-progress.js")
     ),
     shiny::tags$body(style = glue::glue("margin:{margin}; min-height: 611px;"),
-                     supress_bootstrap,
+                     suppress_bootstrap,
                      ...)
   )
 }
