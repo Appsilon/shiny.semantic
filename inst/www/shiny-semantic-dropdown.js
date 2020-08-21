@@ -46,10 +46,8 @@ $.extend(semanticDropdownBinding, {
   // the server.
   subscribe: function(el, callback) {
     $(el).dropdown({
-      onChange: function(value, text, $selectedItem) {
-        callback();
-      }
-    })
+      onChange: callback
+    });
   },
 
   // TODO: Remove the event listeners.
