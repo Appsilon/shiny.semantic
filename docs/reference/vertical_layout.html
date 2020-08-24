@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Update dropdown Semantic UI component — update_dropdown_input • SHINY.SEMANTIC</title>
+<title>Vertical layout — vertical_layout • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Update dropdown Semantic UI component — update_dropdown_input" />
-<meta property="og:description" content="Change the value of a dropdown_input input on the client." />
+<meta property="og:title" content="Vertical layout — vertical_layout" />
+<meta property="og:description" content="Lays out elements vertically, one by one below one another." />
 
 
 
@@ -140,77 +140,72 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Update dropdown Semantic UI component</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/dropdown.R'><code>R/dropdown.R</code></a></small>
-    <div class="hidden name"><code>update_dropdown_input.Rd</code></div>
+    <h1>Vertical layout</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/layouts.R'><code>R/layouts.R</code></a></small>
+    <div class="hidden name"><code>vertical_layout.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Change the value of a <code><a href='dropdown_input.html'>dropdown_input</a></code> input on the client.</p>
+    <p>Lays out elements vertically, one by one below one another.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>update_dropdown_input</span>(
-  <span class='no'>session</span>,
-  <span class='no'>input_id</span>,
-  <span class='kw'>choices</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>choices_value</span> <span class='kw'>=</span> <span class='no'>choices</span>,
-  <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>vertical_layout</span>(
+  <span class='no'>...</span>,
+  <span class='kw'>rows_heights</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>cell_args</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>adjusted_to_page</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)
+
+<span class='fu'>verticalLayout</span>(<span class='no'>...</span>, <span class='kw'>fluid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>session</th>
-      <td><p>The <code>session</code> object passed to function given to <code>shinyServer</code>.</p></td>
+      <th>...</th>
+      <td><p>Unnamed arguments will become child elements of the layout.</p></td>
     </tr>
     <tr>
-      <th>input_id</th>
-      <td><p>The id of the input object</p></td>
+      <th>rows_heights</th>
+      <td><p>Character or numeric vector indicating the widths of the
+individual cells. Recycling will be used if needed.</p></td>
     </tr>
     <tr>
-      <th>choices</th>
-      <td><p>All available options one can select from. If no need to update then leave as <code>NULL</code></p></td>
+      <th>cell_args</th>
+      <td><p>character with additional attributes that should be used for
+each cell of the layout.</p></td>
     </tr>
     <tr>
-      <th>choices_value</th>
-      <td><p>What reactive value should be used for corresponding choice.</p></td>
+      <th>adjusted_to_page</th>
+      <td><p>if TRUE it adjust elements position in equal spaces to
+the size of the page</p></td>
     </tr>
     <tr>
-      <th>value</th>
-      <td><p>The initially selected value.</p></td>
+      <th>fluid</th>
+      <td><p>not supported yet (here for consistency with <code>shiny</code>)</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>vertical layout grid object</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
-
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
-
-<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
-  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span>(
-    <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-      <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Dropdown example"</span>,
-      <span class='fu'><a href='dropdown_input.html'>dropdown_input</a></span>(<span class='st'>"simple_dropdown"</span>, <span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>5</span>], <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"A"</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"selection multiple"</span>),
-      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>p</a></span>(<span class='st'>"Selected letter:"</span>),
-      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"selected_letter"</span>),
-      <span class='kw pkg'>shiny.semantic</span><span class='kw ns'>::</span><span class='fu'><a href='action_button.html'>actionButton</a></span>(<span class='st'>"simple_button"</span>, <span class='st'>"Update input to D"</span>)
+  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
+    <span class='fu'>verticalLayout</span>(
+      <span class='fu'><a href='checkbox.html'>a</a></span>(<span class='kw'>href</span><span class='kw'>=</span><span class='st'>"http://example.com/link1"</span>, <span class='st'>"Link One"</span>),
+      <span class='fu'><a href='checkbox.html'>a</a></span>(<span class='kw'>href</span><span class='kw'>=</span><span class='st'>"http://example.com/link2"</span>, <span class='st'>"Link Two"</span>),
+      <span class='fu'><a href='checkbox.html'>a</a></span>(<span class='kw'>href</span><span class='kw'>=</span><span class='st'>"http://example.com/link3"</span>, <span class='st'>"Link Three"</span>)
     )
   )
+  <span class='fu'>shinyApp</span>(<span class='no'>ui</span>, <span class='kw'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) { })
 }
-
-<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
-  <span class='no'>output</span>$<span class='no'>selected_letter</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderText.html'>renderText</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='no'>input</span><span class='kw'>[[</span><span class='st'>"simple_dropdown"</span>]], <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>", "</span>))
-
-  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>simple_button</span>, {
-    <span class='fu'>update_dropdown</span>(<span class='no'>session</span>, <span class='st'>"simple_dropdown"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"D"</span>)
-  })
-})
-
-<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'>ui</span>(), <span class='kw'>server</span> <span class='kw'>=</span> <span class='no'>server</span>)
-
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
+  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
+    <span class='fu'>vertical_layout</span>(<span class='fu'>h1</span>(<span class='st'>"Title"</span>), <span class='fu'>h4</span>(<span class='st'>"Subtitle"</span>), <span class='fu'>p</span>(<span class='st'>"paragraph"</span>), <span class='fu'>h3</span>(<span class='st'>"footer"</span>))
+  )
+  <span class='fu'>shinyApp</span>(<span class='no'>ui</span>, <span class='kw'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) { })
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -1,7 +1,7 @@
 Package: shiny.semantic
 Type: Package
 Title: Semantic UI Support for Shiny
-Version: 0.3.1
+Version: 0.3.3
 Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com", role = "aut"),
   person("Krystian", "Igras", email = "krystian@appsilon.com", role = "aut"),
   person("Adam", "Forys", email = "adam@appsilon.com", role = "aut"),
@@ -30,7 +30,6 @@ Imports:
     R6
 Suggests:
     dplyr,
-    gapminder,
     testthat,
     lintr,
     DT,
