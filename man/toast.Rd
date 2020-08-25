@@ -8,6 +8,7 @@
 \usage{
 toast(
   message,
+  title = NULL,
   action = NULL,
   duration = 3,
   id = NULL,
@@ -16,9 +17,18 @@ toast(
   session = shiny::getDefaultReactiveDomain()
 )
 
-showNotification(ui)
+showNotification(
+  ui,
+  action = NULL,
+  duration = 5,
+  closeButton = TRUE,
+  id = NULL,
+  type = c("default", "message", "warning", "error"),
+  session = getDefaultReactiveDomain(),
+  ...
+)
 
-removeNotification()
+removeNotification(id, session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
 \item{id}{ID to be added to the toast div. Default "".}

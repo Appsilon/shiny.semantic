@@ -43,27 +43,29 @@ toast <- function(message,
                   action = NULL,
                   duration = 3,
                   id = NULL,
-                  type = c("", "info", "success", "error", "warning"),
+                  class = "",
                   toast_tags = NULL,
                   session = shiny::getDefaultReactiveDomain()) {
-
-  type <- match.arg(type)
 
   data <- list(
     message = message,
     title = title,
     actions = action,
-    class = type,
+    class = class,
     displayTime = duration * 1000
   )
 
   if (!is.null(toast_tags)) {
+    if (any(names(toast_tags) %in% names(data))) {
+      stop("Duplicate tags detected. Please avoid using `message`, `title`, `actions`, `class` and `displayTime`")
+    }
     data <- append(data, toast_tags)
   }
 
   if (is.null(id)) id <- generate_random_id("")
 
   session$sendCustomMessage("createSemanticToast", list(id = id, message = data))
+  id
 }
 
 #' Close Semantic UI toast
@@ -77,17 +79,43 @@ toast <- function(message,
 #'
 #' @export
 close_toast <- function(id, session = shiny::getDefaultReactiveDomain()) {
-  shiny::removeUI(paste0("#", id))
+  session$sendCustomMessage("closeSemanticToast", list(id = id))
 }
 
 #' @rdname toast
 #' @export
-showNotification <- function(ui) {
+showNotification <- function(ui, action = NULL, duration = 5, closeButton = TRUE,
+                             id = NULL, type = c("default", "message", "warning", "error"),
+                             session = getDefaultReactiveDomain(),
+                             ...) {
 
+  type <- match.arg(type)
+  type <- switch(type, default = "", message = "info", type)
+
+  if (is.null(id)) id <- generate_random_id("")
+
+  if (!is.null(action)) if (inherits(action, "shiny.tag")) action <- as.character(action)
+
+  toast_tags <- list(...)
+  if ("title" %in% names(toast_tags)) {
+    title <- toast_tags$title
+    toast_tags$title <- NULL
+  } else {
+    title <- NULL
+  }
+
+  toast_tags$closeIcon <- closeButton
+
+  toast(
+    message = as.character(ui),
+    title = title, action = action, duration = duration, id = id, class = type,
+    toast_tags = toast_tags, session = session
+  )
+  id
 }
 
 #' @rdname toast
 #' @export
-removeNotification <- function() {
-
+removeNotification <- function(id, session = shiny::getDefaultReactiveDomain()) {
+  close_toast(id, session)
 }

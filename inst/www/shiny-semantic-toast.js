@@ -1,8 +1,13 @@
 Shiny.initSemanticToast = function(id) {
-  $('[id="ss-toast-' + id + '"]:not(:first)').remove();
+  $('[id="' + id + '"]:not(:first)').remove();
 };
 
 Shiny.addCustomMessageHandler('createSemanticToast', function(message) {
   Shiny.initSemanticToast(message.id);
-  $('body').toast(message.message);
+  const sem_toast = $('body').toast(message.message);
+  $(sem_toast).attr('id', `${message.id}`);
+});
+
+Shiny.addCustomMessageHandler('closeSemanticToast', function(message) {
+  $(`#${message.id}`).toast('close');
 });
