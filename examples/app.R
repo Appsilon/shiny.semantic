@@ -103,9 +103,13 @@ uiinput <- function() {
     demo(div(class="ui icon input", input(placeholder="Search..."), icon("circular link search"))),
     demo(div(class="ui right labeled input",
              tags$input(type="text", placeholder="Enter weight..."),
-             div(class="ui basic label" ,"kg")))
+             div(class="ui basic label" ,"kg"))),
+    demo(date_input("date", value = Sys.Date(), style = "width: 200px;")),
+    demo(dateInput("date_2", value = Sys.Date(), style = "width: 200px;")),
+    demo(dropdown_input("simple_dropdown", LETTERS, value = "A"))
   )
 }
+
 breadcrumb <- function() {
   div(
     h1(class="ui header", id="breadcrumb", "Breadcrumb"),
@@ -236,6 +240,15 @@ rating <- function() {
     )
   ))
 }
+
+checkbox <- function() {
+  div(
+    h1(class="ui header", id="checkbox", "Checkbox"),
+    demo(checkbox_input("example", "Check me", is_marked = FALSE)),
+    demo(toggle("tog1", "My Label", TRUE))
+    )
+}
+
 tabs <- function () {
   div(
     h1(class="ui header", id="tabset", "Tabset"),
@@ -248,6 +261,38 @@ tabs <- function () {
     )
   )
 }
+
+menu_demo <- function() {
+  div(
+    h1(class="ui dividing header", id = "menu", "Menu"),
+    demo(menu(
+      menu_item("Home"),
+      menu_item("Tab 1")
+    )),
+    demo(menu(
+      menu_item("Home"),
+      menu_item("Tab 1"),
+      class = "vertical"
+    )),
+    demo(menu(menu_item("Menu"),
+              dropdown_menu(
+                "Action",
+                menu(
+                  menu_header(icon("file"), "File", is_item = FALSE),
+                  menu_item(icon("wrench"), "Open"),
+                  menu_item(icon("upload"), "Upload"),
+                  menu_item(icon("remove"), "Upload"),
+                  menu_divider(),
+                  menu_header(icon("user"), "User", is_item = FALSE),
+                  menu_item(icon("add user"), "Add"),
+                  menu_item(icon("remove user"), "Remove")),
+                class = "",
+                name = "unique_name",
+                is_menu_item = TRUE)
+              ))
+  )
+}
+
 list_demo <- function() {
   list_content <- list(
     list(header = "Head 1", description = "Lorem ipsum", icon = "home"),
@@ -278,6 +323,7 @@ sidebar <- function() {
               a(class="item", href="#divider", "Divider"),
               a(class="item", href="#input", "Input"),
               a(class="item", href="#label", "Label"),
+              a(class="item", href="#menu", "Menu"),
               a(class="item", href="#list", "List"),
               a(class="item", href="#button", "Button"))),
       div(class="item",
@@ -294,6 +340,7 @@ sidebar <- function() {
           div(class="menu",
               a(class="item", href="#accordion", "Accordion"),
               a(class="item", href="#rating", "Rating"),
+              a(class="item", href="#checkbox", "Checkbox"),
               a(class="item", href="#tabset", "Tabset"),
               a(class="item", href="#calendar", "Calendar")
               )))
@@ -331,12 +378,14 @@ ui <- function() {
         divider(),
         uiinput(),
         uilabel(),
+        menu_demo(),
         list_demo(),
         grid(),
         breadcrumb(),
         card_demo(),
         accordion(),
         rating(),
+        checkbox(),
         tabs(),
         calendar_demo()
       )
