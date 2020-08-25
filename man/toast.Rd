@@ -3,7 +3,6 @@
 \name{toast}
 \alias{toast}
 \alias{showNotification}
-\alias{removeNotification}
 \title{Create Semantic UI toast}
 \usage{
 toast(
@@ -27,8 +26,6 @@ showNotification(
   session = getDefaultReactiveDomain(),
   ...
 )
-
-removeNotification(id, session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
 \item{id}{ID to be added to the toast div. Default "".}

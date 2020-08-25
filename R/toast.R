@@ -1,10 +1,12 @@
-#' Create Semantic UI toast
+#' Show and remove Semantic UI toast
 #'
-#' This creates a toast using Semantic UI styles.
+#' These functions either create or remove a toast with Semantic UI styling.
 #'
-#' @param ... Content elements to be added to the toast body.
-#' To change attributes of the container please check the `content` argument.
-#' @param id ID to be added to the toast div. Default "".
+#' @param message Content of the message.
+#' @param title A title given to the toast. Defauly is empty (\code{""}).
+#' @param id A unique identifier for the notification. It is optional for \code{toast}, but required
+#' for \code{close_toast}.
+#' @param action A list of lists containing settings for buttons/options to select within the toast.
 #' @param class Classes except "ui toast" to be added to the toast. Semantic UI classes can be used. Default "".
 #' @param header Content to be displayed in the toast header.
 #' If given in form of a list, HTML attributes for the container can also be changed. Default "".
@@ -15,6 +17,7 @@
 #' @param target Javascript selector for the element that will open the toast. Default NULL.
 #' @param settings List of vectors of Semantic UI settings to be added to the toast. Default NULL.
 #' @param toast_tags Other toast elements. Default NULL.
+#' @param session Session object to send notification to.
 #'
 #' @examples
 #' ## Create a simple server toast
@@ -36,6 +39,62 @@
 #'     )
 #'   })
 #' }
+#' if (interactive()) shinyApp(ui, server)
+#'
+#' ## Create a toast with options
+#' ui <- semanticPage(
+#'   actionButton("show", "Show"),
+#' )
+#' server <- function(input, output) {
+#'   observeEvent(input$show, {
+#'     toast(
+#'       title  = "Question",
+#'       "Do you want to see more?",
+#'       duration = 0,
+#'       action = list(
+#'         list(
+#'           text = "OK", class = "green", icon = "check",
+#'           click = "(function() { $('body').toast({message:'Yes clicked'}); })")
+#'         ),
+#'         list(
+#'           text = "No", class = "red", icon = "times",
+#'           click = ("(function() { $('body').toast({message:'No ticked'}); })")
+#'         )
+#'       )
+#'     )
+#'   })
+#' }
+#'
+#' if (interactive()) shinyApp(ui, server)
+#'
+#' ## Closing a toast
+#' ui <- semanticPage(
+#'   action_button("show", "Show"),
+#'   action_button("remove", "Remove")
+#' )
+#' server <- function(input, output) {
+#'   # A queue of notification IDs
+#'   ids <- character(0)
+#'   # A counter
+#'   n <- 0
+#'
+#'   observeEvent(input$show, {
+#'     # Save the ID for removal later
+#'     id <- toast(paste("Message", n), duration = NULL)
+#'     ids <<- c(ids, id)
+#'     n <<- n + 1
+#'   })
+#'
+#'   observeEvent(input$remove, {
+#'     if (length(ids) > 0)
+#'       close_toast(ids[1])
+#'     ids <<- ids[-1]
+#'   })
+#' }
+#'
+#' if (interactive()) shinyApp(ui, server)
+#'
+#' @seealso \url{https://fomantic-ui.com/modules/toast}
 #'
 #' @export
 toast <- function(message,
@@ -64,24 +123,17 @@ toast <- function(message,
 
   if (is.null(id)) id <- generate_random_id("")
 
+  data <- data[!vapply(data, is.null, logical(1))]
   session$sendCustomMessage("createSemanticToast", list(id = id, message = data))
   id
 }
 
-#' Close Semantic UI toast
-#'
-#' This closes a displayed Semantic UI toast.
-#'
-#' @param id ID of the toast that will be displayed.
-#' @param session The \code{session} object passed to function given to
-#'   \code{shinyServer}.
-#' @seealso toast
-#'
-#' @export
+#' @rdname toast
 close_toast <- function(id, session = shiny::getDefaultReactiveDomain()) {
   session$sendCustomMessage("closeSemanticToast", list(id = id))
 }
 
+#' @param ui Content of the message.
 #' @rdname toast
 #' @export
 showNotification <- function(ui, action = NULL, duration = 5, closeButton = TRUE,
@@ -94,7 +146,12 @@ showNotification <- function(ui, action = NULL, duration = 5, closeButton = TRUE
 
   if (is.null(id)) id <- generate_random_id("")
 
-  if (!is.null(action)) if (inherits(action, "shiny.tag")) action <- as.character(action)
+  if (!is.null(action)) {
+    if (inherits(action, "shiny.tag")) {
+      message("shiny.semantic toasts cannot handle HTML actions. The action will be removed from this toast")
+      action <- NULL
+    }
+  }
 
   toast_tags <- list(...)
   if ("title" %in% names(toast_tags)) {

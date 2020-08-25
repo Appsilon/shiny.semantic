@@ -2,9 +2,12 @@
 % Please edit documentation in R/toast.R
 \name{close_toast}
 \alias{close_toast}
+\alias{removeNotification}
 \title{Close Semantic UI toast}
 \usage{
 close_toast(id, session = shiny::getDefaultReactiveDomain())
+
+removeNotification(id, session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
 \item{id}{ID of the toast that will be displayed.}
@@ -16,5 +19,5 @@ close_toast(id, session = shiny::getDefaultReactiveDomain())
 This closes a displayed Semantic UI toast.
 }
 \seealso{
-toast
+\code{\link{toast}}
 }
