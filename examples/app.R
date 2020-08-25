@@ -87,6 +87,22 @@ counter_button_demo <- function() {
                         size = "", color = "purple"))
   )
 }
+
+icon_demo <- function() {
+  div(
+    h1(class="ui header", id="icon", "Icon"),
+    demo(icon("home")),
+    demo(icon("mini home")),
+    demo(icon("tiny home")),
+    demo(icon("small home")),
+    demo(icon("medium home")),
+    demo(icon("large home")),
+    demo(icon("big home")),
+    demo(icon("huge home")),
+    demo(icon("massive home"))
+  )
+}
+
 divider <- function() {
   div(
     h1(class="ui header", id="divider", "Divider"),
@@ -98,12 +114,11 @@ divider <- function() {
 uiinput <- function() {
   div(
     h1(class="ui header", id="input", "Input"),
-    demo(div(class="ui input", input(placeholder="Search..."))),
-    demo(div(class="ui icon input", input(placeholder="Search..."), icon("search"))),
-    demo(div(class="ui icon input", input(placeholder="Search..."), icon("circular link search"))),
-    demo(div(class="ui right labeled input",
-             tags$input(type="text", placeholder="Enter weight..."),
-             div(class="ui basic label" ,"kg"))),
+    demo(numeric_input("ex", "Select number", 10)),
+    demo(numericInput("ex", "Select number", 10)),
+    demo(text_input("ex", label = "Your text", type = "text", placeholder = "Enter Text")),
+    demo(textInput("ex", label = "Your text", type = "text", placeholder = "Enter Text")),
+    demo(textAreaInput("a", "Area:", width = "200px")),
     demo(date_input("date", value = Sys.Date(), style = "width: 200px;")),
     demo(dateInput("date_2", value = Sys.Date(), style = "width: 200px;")),
     demo(dropdown_input("simple_dropdown", LETTERS, value = "A"))
@@ -258,6 +273,13 @@ checkbox <- function() {
     )
 }
 
+progress_demo <- function() {
+  div(
+    h1(class="ui header", id="progress", "Progress"),
+    demo(shiny.semantic::progress("progress", percent = 24, label = "{percent}% complete"))
+  )
+}
+
 tabs <- function () {
   div(
     h1(class="ui header", id="tabset", "Tabset"),
@@ -334,7 +356,8 @@ sidebar <- function() {
               a(class="item", href="#label", "Label"),
               a(class="item", href="#menu", "Menu"),
               a(class="item", href="#list", "List"),
-              a(class="item", href="#button", "Button"))),
+              a(class="item", href="#button", "Button"),
+              a(class="item", href="#icon", "Icon"))),
       div(class="item",
           div(class="active header", "Collections"),
           div(class="menu",
@@ -350,6 +373,7 @@ sidebar <- function() {
               a(class="item", href="#accordion", "Accordion"),
               a(class="item", href="#rating", "Rating"),
               a(class="item", href="#checkbox", "Checkbox"),
+              a(class="item", href="#progress", "Progress"),
               a(class="item", href="#tabset", "Tabset"),
               a(class="item", href="#calendar", "Calendar")
               )))
@@ -384,6 +408,7 @@ ui <- function() {
         header(),
         button(),
         counter_button_demo(),
+        icon_demo(),
         divider(),
         uiinput(),
         uilabel(),
@@ -395,6 +420,7 @@ ui <- function() {
         accordion(),
         rating(),
         checkbox(),
+        progress_demo(),
         tabs(),
         calendar_demo()
       )
