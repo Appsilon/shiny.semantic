@@ -226,7 +226,7 @@ rating <- function() {
   div(
     h1(class="ui header", id="rating", "Rating"),
     demo(rating_input(
-      input_id,
+      input_id = "rating_example",
       label = "",
       value = 0,
       max = 3,
@@ -330,7 +330,7 @@ ui <- function() {
         counter_button_demo(),
         divider(),
         uiinput(),
-        label(),
+        uilabel(),
         list_demo(),
         grid(),
         breadcrumb(),

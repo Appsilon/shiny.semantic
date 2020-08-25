@@ -79,7 +79,7 @@ sliderInput <- function(inputId, label, min, max, value, step = 1, width = NULL,
   check_extra_arguments(list(...))
   form(
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
-    label(label),
+    tags$label(label),
     slider_input(inputId, value, min, max, step = step)
   )
 }
@@ -102,7 +102,7 @@ rangeInput <- function(inputId, label, min, max, value, step = 1, width = NULL, 
   check_extra_arguments(list(...))
   form(
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
-    label(label),
+    tags$label(label),
     range_input(inputId, value, min, max, step = step)
   )
 }

@@ -69,7 +69,7 @@ icon <- function(class = "", ...) {
 
 #' Create Semantic UI label tag
 #'
-#' This creates a label tag using Semantic UI.
+#' This creates a \code{div} or \code{a} tag with with class \code{ui label} using Semantic UI.
 #'
 #' @param ... Other arguments to be added such as content of the tag (text, icons) and/or attributes (style)
 #' @param class class of the label. Look at https://semantic-ui.com/elements/label.html for all possibilities.
@@ -84,25 +84,24 @@ icon <- function(class = "", ...) {
 #'   ui <- shinyUI(
 #'     semanticPage(
 #'       ## label
-#'       label_tag(class = "ui label",
-#'                 icon = icon("mail icon"), 23),
+#'       label(icon = icon("mail icon"), 23),
 #'       p(),
 #'       ## pointing label
 #'       field(
 #'         text_input("ex", label = "", type = "text", placeholder = "Your name")),
-#'       label_tag("Please enter a valid name", class = "ui pointing red basic label"),
+#'       label("Please enter a valid name", class = "pointing red basic"),
 #'       p(),
 #'       ## tag
-#'       label_tag(class = "ui tag label", "New"),
-#'       label_tag(class = "ui red tag label", "Upcoming"),
-#'       label_tag(class =" ui teal tag label","Featured"),
+#'       label(class = "tag", "New"),
+#'       label(class = "red tag", "Upcoming"),
+#'       label(class =" teal tag","Featured"),
 #'       ## ribbon
 #'       segment(class = "ui raised segment",
-#'               label_tag(class = "ui red ribbon label", "Overview"),
+#'               label(class = "ui red ribbon", "Overview"),
 #'               "Text"),
 #'       ## attached
 #'       segment(class = "ui raised segment",
-#'               label_tag(class = "ui top attached label", "HTML"),
+#'               label(class = "top attached", "HTML"),
 #'               p("Text"))
 #'     ))
 #'   server <- function(input, output, session) {
@@ -112,9 +111,9 @@ icon <- function(class = "", ...) {
 #' @export
 #'
 #' @import shiny
-label_tag <- function(..., class = "", is_link = TRUE) {
-  label_tag <- if (is_link) tags$a else tags$div
-  label_tag(class = paste("ui label", class),
+label <- function(..., class = "", is_link = TRUE) {
+  label_container <- if (is_link) tags$a else tags$div
+  label_container(class = paste("ui label", class),
             list(...))
 }
 
@@ -376,26 +375,26 @@ segment <- function(..., class = "") {
 #'   ui <- shinyUI(semanticPage(
 #'     form(
 #'       field(
-#'         label("Text"),
+#'         tags$label("Text"),
 #'         text_input("text_ex", value = "", type = "text", placeholder = "Enter Text...")
 #'       )
 #'     ),
 #'     # loading form
 #'     form(class = "loading form",
 #'          field(
-#'            label("Text"),
+#'            tags$label("Text"),
 #'            text_input("text_ex", value = "", type = "text", placeholder = "Enter Text...")
 #'          )),
 #'     # size variations mini form
 #'     form(class = "mini",
 #'          field(
-#'            label("Text"),
+#'            tags$label("Text"),
 #'            text_input("text_ex", value = "", type = "text", placeholder = "Enter Text...")
 #'          )),
 #'     # massive
 #'     form(class = "massive",
 #'          field(
-#'            label("Text"),
+#'            tags$label("Text"),
 #'            text_input("text_ex", value = "", type = "text", placeholder = "Enter Text...")
 #'          ))
 #'   ))
@@ -429,11 +428,11 @@ form <- function(..., class = "") {
 #'     form(
 #'       fields(class = "two",
 #'              field(
-#'                label("Name"),
+#'                tags$label("Name"),
 #'                text_input("name", value = "", type = "text", placeholder = "Enter Name...")
 #'              ),
 #'              field(
-#'                label("Surname"),
+#'                tags$label("Surname"),
 #'                text_input("surname", value = "", type = "text", placeholder = "Enter Surname...")
 #'              ))
 #'     )
@@ -465,19 +464,19 @@ fields <- function(..., class = "") {
 #'   ui <- shinyUI(semanticPage(
 #'     form(
 #'       field(
-#'         label("Name"),
+#'         tags$label("Name"),
 #'         text_input("name", value = "", type = "text", placeholder = "Enter Name...")
 #'       ),
 #'       # error field
 #'       field(
 #'         class = "error",
-#'         label("Name"),
+#'         tags$label("Name"),
 #'         text_input("name", value = "", type = "text", placeholder = "Enter Name...")
 #'       ),
 #'       # disabled
 #'       field(
 #'         class = "disabled",
-#'         label("Name"),
+#'         tags$label("Name"),
 #'         text_input("name", value = "", type = "text", placeholder = "Enter Name...")
 #'       )
 #'     )
@@ -491,37 +490,6 @@ fields <- function(..., class = "") {
 #' @export
 field <- function(..., class = "") {
   shiny::div(class = paste("field", class), ...)
-}
-
-#' Create HTML label tag
-#'
-#' This creates a HTML label tag.
-#'
-#' @param ... Other arguments to be added as attributes of the
-#' tag (e.g. style, class or childrens etc.)
-#' @examples
-#' ## Only run examples in interactive R sessions
-#' if (interactive()){
-#'   library(shiny)
-#'   library(shiny.semantic)
-#'
-#'   ui <- shinyUI(semanticPage(
-#'     form(
-#'       field(
-#'         label("Name"),
-#'         text_input("name", value = "", type = "text", placeholder = "Enter Name...")
-#'       )
-#'     )
-#'   ))
-#'   server <- shinyServer(function(input, output) {
-#'   })
-#'
-#'   shinyApp(ui, server)
-#' }
-#'
-#' @export
-label <- function(...) {
-  shiny::tags$label(...)
 }
 
 #' Create Semantic UI Message box
