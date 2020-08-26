@@ -73,7 +73,7 @@ search options using provided choices." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3.9001</span>
       </span>
     </div>
 
@@ -210,7 +210,7 @@ See https://semantic-ui.com/modules/dropdown.html#/settings</p></td>
       <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
         <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Dropdown example"</span>,
         <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/htmlOutput.html'>uiOutput</a></span>(<span class='st'>"search_letters"</span>),
-        <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>p</a></span>(<span class='st'>"Selected letter:"</span>),
+        <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>p</a></span>(<span class='st'>"Selected letter:"</span>),
         <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"selected_letters"</span>)
       )
     )
@@ -221,7 +221,7 @@ See https://semantic-ui.com/modules/dropdown.html#/settings</p></td>
     <span class='no'>output</span>$<span class='no'>search_letters</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderUI.html'>renderUI</a></span>(
       <span class='fu'>search_selection_choices</span>(<span class='st'>"search_result"</span>, <span class='no'>choices</span>, <span class='kw'>multiple</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
     )
-    <span class='no'>output</span>$<span class='no'>selected_letters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderText.html'>renderText</a></span>(<span class='no'>input</span><span class='kw'>[[</span><span class='st'>"search_result"</span>]])
+    <span class='no'>output</span>$<span class='no'>selected_letters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderPrint.html'>renderText</a></span>(<span class='no'>input</span><span class='kw'>[[</span><span class='st'>"search_result"</span>]])
   })
 
   <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'>ui</span>(), <span class='kw'>server</span> <span class='kw'>=</span> <span class='no'>server</span>)

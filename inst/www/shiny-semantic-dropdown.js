@@ -80,3 +80,70 @@ $.extend(semanticDropdownBinding, {
 });
 
 Shiny.inputBindings.register(semanticDropdownBinding, 'shiny.semanticDropdown');
+
+var semanticThemesDropdownBinding = new Shiny.InputBinding();
+const supported_themes = ["", "cerulean", "darkly", "paper", "simplex", "superhero", "flatly", "slate", "cosmo", "readable", "united", "journal", "solar", "cyborg", "sandstone", "yeti", "lumen", "spacelab"];
+
+function _getLinkTheme(link_el) {
+  var theme = link_el.attr('href');
+  theme = theme.replace(/^.*\//, '').replace(/(\.min)?\.css$/, '').replace(/^semantic\.*/, '');
+  return theme;
+}
+
+function _getThemeLink() {
+  var $link = $('link').filter(function() {
+    var theme = _getLinkTheme($(this));
+    return $.inArray(theme, supported_themes) !== -1;
+  });
+  return $link;
+}
+
+$.extend(semanticThemesDropdownBinding, {
+
+  // This initialize input element. It extracts data-value attribute and use that as value.
+  initialize: function(el) {
+    let theme = _getLinkTheme(_getThemeLink());
+    $(el).dropdown('set exactly', theme);
+  },
+
+  // This returns a jQuery object with the DOM element.
+  find: function(scope) {
+    return $(scope).find('.themes-dropdown');
+  },
+
+  // Returns the ID of the DOM element.
+  getId: function(el) {
+    return el.id;
+  },
+
+  // Given the DOM element for the input, return the value as JSON.
+  getValue: function(el) {
+    let value =  $(el).dropdown('get value');
+    var link_el = _getThemeLink();
+    let previous_value = _getLinkTheme(link_el);
+    let link_el_href = link_el.attr('href');
+    if (previous_value === value) {
+      return value;
+    }
+    if (previous_value !== "") {
+      link_el.attr('href', link_el_href.replace(previous_value, value).replace(/\.\./, '.'));
+    } else {
+      link_el.attr('href', link_el_href.replace('semantic.', 'semantic.' + value + '.'));
+    }
+    return value;
+  },
+  // Set up the event listeners so that interactions with the
+  // input will result in data being sent to server.
+  // callback is a function that queues data to be sent to
+  // the server.
+  subscribe: function(el, callback) {
+    $(el).on('keyup change', function () { callback(); });
+  },
+
+  // TODO: Remove the event listeners.
+  unsubscribe: function(el) {
+    $(el).off('.semanticThemesDropdownBinding');
+  }
+});
+
+Shiny.inputBindings.register(semanticThemesDropdownBinding, 'shiny.semanticThemesDropdownBinding');

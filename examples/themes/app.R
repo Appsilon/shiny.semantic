@@ -217,8 +217,8 @@ uilabel <- function() {
 
 rating <- function() {
   div(
-    h1(class="ui header", id="rating", "Rating"),
-    demo(div(class = "ui star rating"))
+    h1(class="ui header", "Rating"),
+    demo(div(class = "ui star rating", id = "rating"))
   )
 }
 tabs <- function () {
@@ -301,6 +301,12 @@ calendar_demo <- function() {
 css <- "
 #examples > div > .header {
   margin-top: 1em;
+}
+.theme.form {
+  position: fixed !important;
+  right: 5px;
+  top: 3px;
+  width: 15em !important;
 }"
 
 ##################### !!! Remember to set to true
@@ -313,6 +319,7 @@ ui <- function() {
     useShinyjs(),
     sidebar(),
     div(style="margin-left: 210px",
+        theme_selector(),
         div(id="examples", class="ui container",
             header(),
             button(),
