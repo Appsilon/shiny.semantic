@@ -98,12 +98,12 @@ range_input <- function(input_id, value, value2, min, max, step = 1, class = NUL
 #' @param inputId Input name.
 #' @rdname slider
 #' @export
-rangeInput <- function(inputId, label, min, max, value, step = 1, width = NULL, ...) {
+rangeInput <- function(inputId, label, min, max, value, value2, step = 1, width = NULL, ...) {
   check_extra_arguments(list(...))
   form(
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
     tags$label(label),
-    range_input(inputId, value, min, max, step = step)
+    range_input(inputId, value, value2, min, max, step = step)
   )
 }
 

@@ -111,7 +111,7 @@ divider <- function() {
     demo(div(class="ui horizontal divider", icon("tag"), "Description"))
   )
 }
-uiinput <- function() {
+uiinput_demo <- function() {
   div(
     h1(class="ui header", id="input", "Input"),
     demo(numeric_input("ex", "Select number", 10)),
@@ -121,7 +121,8 @@ uiinput <- function() {
     demo(textAreaInput("a", "Area:", width = "200px")),
     demo(date_input("date", value = Sys.Date(), style = "width: 200px;")),
     demo(dateInput("date_2", value = Sys.Date(), style = "width: 200px;")),
-    demo(dropdown_input("simple_dropdown", LETTERS, value = "A"))
+    demo(dropdown_input("simple_dropdown", LETTERS, value = "A")),
+    demo(uiinput(icon("dog"), numeric_input("input", value = 0, label = "")))
   )
 }
 
@@ -243,6 +244,20 @@ card_demo <- function() {
     )
   )
 }
+
+msgbox_demo <- function() {
+  div(
+    h1(class="ui header", id="messagebox", "Messagebox"),
+    demo(messagebox(header = "Main header", content = "text")),
+    demo(messagebox(class = "icon", header = "Main header", content = "text", icon_name = "dog")),
+    demo(messagebox(header = "Main header", content = "text", closable =  TRUE)),
+    demo(messagebox(class = "floating", header = "Main header", content = "text")),
+    demo(messagebox(class = "compact", header = "Main header", content = "text")),
+    demo(messagebox(class = "warning", header = "Warning", content = "text")),
+    demo(messagebox(class = "info", header = "Info", content = "text"))
+  )
+}
+
 uilabel <- function() {
   div(
     h1(class="ui header", id="label", "Label"),
@@ -263,6 +278,22 @@ rating <- function() {
       size = ""
     )
   ))
+}
+
+slider_demo <- function() {
+  div(
+    h1(class="ui header", id="slider", "Slider"),
+    demo(slider_input("slider_1", value = 10, min = 0, max = 20)),
+    demo(sliderInput("slider_2", "select value", min = 0, max = 20, value = 1)),
+    demo(range_input("range_1", value = 10, value2 = 15, min = 0, max = 20)),
+    demo(rangeInput(inputId = "range_2",
+                                    label = "select range",
+                                    min = 0,
+                                    max = 20,
+                                    value = 3,
+                                    value2 = 6,
+                                    step = 1))
+  )
 }
 
 checkbox <- function() {
@@ -305,6 +336,11 @@ menu_demo <- function() {
       menu_item("Tab 1"),
       class = "vertical"
     )),
+    demo(horizontal_menu(list(
+      list(name = "AA", link = "http://example.com", icon = "dog"),
+      list(name = "BB", link = "#", icon="cat"),
+      list(name = "CC")
+    ))),
     demo(menu(menu_item("Menu"),
               dropdown_menu(
                 "Action",
@@ -372,8 +408,10 @@ sidebar <- function() {
           div(class="menu",
               a(class="item", href="#accordion", "Accordion"),
               a(class="item", href="#rating", "Rating"),
+              a(class="item", href="#slider", "Slider"),
               a(class="item", href="#checkbox", "Checkbox"),
               a(class="item", href="#progress", "Progress"),
+              a(class="item", href="#messagebox", "Messagebox"),
               a(class="item", href="#tabset", "Tabset"),
               a(class="item", href="#calendar", "Calendar")
               )))
@@ -410,7 +448,7 @@ ui <- function() {
         counter_button_demo(),
         icon_demo(),
         divider(),
-        uiinput(),
+        uiinput_demo(),
         uilabel(),
         menu_demo(),
         list_demo(),
@@ -418,9 +456,11 @@ ui <- function() {
         breadcrumb(),
         card_demo(),
         accordion(),
+        slider_demo(),
         rating(),
         checkbox(),
         progress_demo(),
+        msgbox_demo(),
         tabs(),
         calendar_demo()
       )
