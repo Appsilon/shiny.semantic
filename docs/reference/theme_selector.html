@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create dropdown Semantic UI component — dropdown_input • SHINY.SEMANTIC</title>
+<title>Themes changer — theme_selector • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="Create dropdown Semantic UI component — dropdown_input" />
-<meta property="og:description" content="This creates a default *dropdown_input* using Semantic UI styles with Shiny input.
-Dropdown is already initialized and available under input[[input_id]]." />
+<meta property="og:title" content="Themes changer — theme_selector" />
+<meta property="og:description" content="Themes changer" />
 
 
 
@@ -141,72 +140,35 @@ Dropdown is already initialized and available under input[[input_id]]." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create dropdown Semantic UI component</h1>
+    <h1>Themes changer</h1>
     <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/dropdown.R'><code>R/dropdown.R</code></a></small>
-    <div class="hidden name"><code>dropdown_input.Rd</code></div>
+    <div class="hidden name"><code>theme_selector.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This creates a default *dropdown_input* using Semantic UI styles with Shiny input.
-Dropdown is already initialized and available under input[[input_id]].</p>
+    <p>Themes changer</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dropdown_input</span>(
-  <span class='no'>input_id</span>,
-  <span class='no'>choices</span>,
-  <span class='kw'>choices_value</span> <span class='kw'>=</span> <span class='no'>choices</span>,
-  <span class='kw'>default_text</span> <span class='kw'>=</span> <span class='st'>"Select"</span>,
-  <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"selection fluid"</span>
-)</pre>
+    <pre class="usage"><span class='fu'>theme_selector</span>()</pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>input_id</th>
-      <td><p>Input name. Reactive value is available under input[[input_id]].</p></td>
-    </tr>
-    <tr>
-      <th>choices</th>
-      <td><p>All available options one can select from.</p></td>
-    </tr>
-    <tr>
-      <th>choices_value</th>
-      <td><p>What reactive value should be used for corresponding
-choice.</p></td>
-    </tr>
-    <tr>
-      <th>default_text</th>
-      <td><p>Text to be visible on dropdown when nothing is selected.</p></td>
-    </tr>
-    <tr>
-      <th>value</th>
-      <td><p>Pass value if you want to initialize selection for dropdown.</p></td>
-    </tr>
-    <tr>
-      <th>type</th>
-      <td><p>Change depending what type of dropdown is wanted.</p></td>
-    </tr>
-    </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Only run examples in interactive R sessions</span>
+    <pre class="examples"><div class='input'>
 <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
-<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Dropdown example"</span>,
-  <span class='fu'>dropdown_input</span>(<span class='st'>"simple_dropdown"</span>, <span class='no'>LETTERS</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"A"</span>),
-  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>p</a></span>(<span class='st'>"Selected letter:"</span>),
-  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"dropdown"</span>)
-)
-<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
-  <span class='no'>output</span>$<span class='no'>dropdown</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderPrint.html'>renderText</a></span>(<span class='no'>input</span><span class='kw'>[[</span><span class='st'>"simple_dropdown"</span>]])
-}
-
-<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='kw'>ui</span> <span class='kw'>=</span> <span class='no'>ui</span>, <span class='kw'>server</span> <span class='kw'>=</span> <span class='no'>server</span>)
+ <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
+  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
+    <span class='fu'><a href='action_button.html'>actionButton</a></span>(<span class='st'>"action_button"</span>, <span class='st'>"Press Me!"</span>),
+    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"button_output"</span>),
+    <span class='fu'>theme_selector</span>(),
+    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"theme"</span>)
+  )
+  <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
+    <span class='no'>output</span>$<span class='no'>button_output</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderPrint.html'>renderText</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>input</span>$<span class='no'>action_button</span>))
+    <span class='no'>output</span>$<span class='no'>theme</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderPrint.html'>renderText</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>input</span>$<span class='no'>theme</span>))
+  }
+  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
