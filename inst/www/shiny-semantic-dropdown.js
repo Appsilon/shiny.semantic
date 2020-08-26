@@ -102,8 +102,8 @@ $.extend(semanticThemesDropdownBinding, {
 
   // This initialize input element. It extracts data-value attribute and use that as value.
   initialize: function(el) {
-    let theme_link = _getLinkTheme(_getThemeLink());
-    $(el).dropdown('set value', theme_link);
+    let theme = _getLinkTheme(_getThemeLink());
+    $(el).dropdown('set exactly', theme);
   },
 
   // This returns a jQuery object with the DOM element.

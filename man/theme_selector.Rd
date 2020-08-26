@@ -2,12 +2,17 @@
 % Please edit documentation in R/dropdown.R
 \name{theme_selector}
 \alias{theme_selector}
-\title{Themes changer}
+\title{Themes changer dropdown}
 \usage{
-theme_selector()
+theme_selector(input_id = "theme", label = "Choose theme")
+}
+\arguments{
+\item{input_id}{Id of dropdown. \code{input[[input_id]]} returns the currently selected theme.}
+
+\item{label}{Dropdown label.}
 }
 \description{
-Themes changer
+Themes changer dropdown
 }
 \examples{
 
@@ -15,6 +20,7 @@ if (interactive()) {
 library(shiny)
  library(shiny.semantic)
   ui <- semanticPage(
+    theme = "superhero",
     actionButton("action_button", "Press Me!"),
     textOutput("button_output"),
     theme_selector(),

@@ -258,7 +258,10 @@ updateSelectInput <- function(session, inputId, label, choices = NULL, selected 
   session$sendInputMessage(inputId, message)
 }
 
-#' Themes changer
+#' Themes changer dropdown
+#'
+#' @param input_id Id of dropdown. \code{input[[input_id]]} returns the currently selected theme.
+#' @param label Dropdown label.
 #'
 #' @examples
 #'
@@ -266,6 +269,7 @@ updateSelectInput <- function(session, inputId, label, choices = NULL, selected 
 #' library(shiny)
 #'  library(shiny.semantic)
 #'   ui <- semanticPage(
+#'     theme = "superhero",
 #'     actionButton("action_button", "Press Me!"),
 #'     textOutput("button_output"),
 #'     theme_selector(),
@@ -279,6 +283,17 @@ updateSelectInput <- function(session, inputId, label, choices = NULL, selected 
 #' }
 #'
 #' @export
-theme_selector <- function() {
-  dropdown_input("theme", choices = SUPPORTED_THEMES, type = "selection fluid themes-dropdown")
+theme_selector <- function(input_id = "theme", label = "Choose theme") {
+  dropdown_content <- dropdown_input(
+    "theme", choices = c("default", SUPPORTED_THEMES),
+    choices_value = c("", SUPPORTED_THEMES),
+    type = "selection fluid themes-dropdown"
+  )
+  shiny::div(
+    class = "ui form theme",
+    shiny::div(class = "field",
+               if (!is.null(label)) tags$label(label, `for` = input_id),
+               dropdown_content
+    )
+  )
 }

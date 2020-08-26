@@ -4,6 +4,7 @@ $.extend(semanticRatingBinding, {
     return $(scope).find(".ui.rating");
   },
   initialize: function(el){
+    debugger;
     $("#" + el.id).rating('setting', 'clearable', true);
   },
   getValue: function(el) {
