@@ -151,7 +151,7 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
 #' @param choices_value What reactive value should be used for corresponding choice.
 #' @param value The initially selected value.
 #'
-#'@examples
+#' @examples
 #' if (interactive()) {
 #'
 #' library(shiny)
@@ -256,4 +256,29 @@ updateSelectInput <- function(session, inputId, label, choices = NULL, selected 
   message <- message[!vapply(message, is.null, FUN.VALUE = logical(1))]
 
   session$sendInputMessage(inputId, message)
+}
+
+#' Themes changer
+#'
+#' @examples
+#'
+#' if (interactive()) {
+#' library(shiny)
+#'  library(shiny.semantic)
+#'   ui <- semanticPage(
+#'     actionButton("action_button", "Press Me!"),
+#'     textOutput("button_output"),
+#'     theme_selector(),
+#'     textOutput("theme")
+#'   )
+#'   server <- function(input, output, session) {
+#'     output$button_output <- renderText(as.character(input$action_button))
+#'     output$theme <- renderText(as.character(input$theme))
+#'   }
+#'   shinyApp(ui, server)
+#' }
+#'
+#' @export
+theme_selector <- function() {
+  dropdown_input("theme", choices = SUPPORTED_THEMES, type = "selection fluid themes-dropdown")
 }
