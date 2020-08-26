@@ -360,16 +360,18 @@ menu_demo <- function() {
 }
 
 list_demo <- function() {
-  list_content <- list(
-    list(header = "Head 1", description = "Lorem ipsum", icon = "home"),
-    list(header = "Head 2", description = "Lorem ipsum", icon = "dog"),
-    list(header = "Head 3", description = "Lorem ipsum", icon = "sun")
-  )
-
   div(
     h1(class="ui dividing header", id = "list", "List"),
-    demo(list_container(list_content, is_divided = FALSE)),
-    demo(list_container(list_content, is_divided = TRUE))
+    demo(list_container(list(
+      list(header = "Head 1", description = "Lorem ipsum", icon = "home"),
+      list(header = "Head 2", description = "Lorem ipsum", icon = "dog"),
+      list(header = "Head 3", description = "Lorem ipsum", icon = "sun")
+    ), is_divided = FALSE)),
+    demo(list_container(list(
+      list(header = "Head 1", description = "Lorem ipsum", icon = "home"),
+      list(header = "Head 2", description = "Lorem ipsum", icon = "dog"),
+      list(header = "Head 3", description = "Lorem ipsum", icon = "sun")
+    ), is_divided = TRUE))
   )
 }
 
