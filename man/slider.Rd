@@ -13,7 +13,17 @@ sliderInput(inputId, label, min, max, value, step = 1, width = NULL, ...)
 
 range_input(input_id, value, value2, min, max, step = 1, class = NULL)
 
-rangeInput(inputId, label, min, max, value, step = 1, width = NULL, ...)
+rangeInput(
+  inputId,
+  label,
+  min,
+  max,
+  value,
+  value2,
+  step = 1,
+  width = NULL,
+  ...
+)
 }
 \arguments{
 \item{input_id}{Input name. Reactive value is available under \code{input[[input_id]]}.}
