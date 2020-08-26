@@ -162,27 +162,26 @@ accordion <- function() {
   )
 }
 grid <- function() {
-  myGrid <- grid_template(default = list(
-    areas = rbind(
-      c("header", "header", "header"),
-      c("menu",   "main",   "main"),
-      c("menu",   "main",   "main")
-    ),
-    rows_height = c("50px", "auto", "100px"),
-    cols_width = c("100px", "2fr", "1fr")
-  ))
-
   div(
     h1(class="ui header", id="grid", "Grid"),
-    demo(shiny.semantic::grid(myGrid,
-                              container_style = "border: 1px solid #f00",
-                              area_styles = list(header = "background: #0099f9",
-                                                 menu = "border-right: 1px solid #0099f9"),
-                              header = "header",
-                              menu = "menu",
-                              main = "main"
-                              )
-         )
+    demo(shiny.semantic::grid(
+      grid_template(default = list(
+        areas = rbind(
+          c("header", "header", "header"),
+          c("menu",   "main",   "main"),
+          c("menu",   "main",   "main")
+          ),
+        rows_height = c("50px", "auto", "100px"),
+        cols_width = c("100px", "2fr", "1fr")
+        )),
+      container_style = "border: 1px solid #f00",
+      area_styles = list(header = "background: #0099f9",
+                         menu = "border-right: 1px solid #0099f9"),
+      header = "header",
+      menu = "menu",
+      main = "main"
+      )
+      )
   )
 }
 card_demo <- function() {
