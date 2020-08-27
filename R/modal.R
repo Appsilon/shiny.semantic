@@ -207,7 +207,7 @@ modal <- function(...,
 modalDialog <- function(..., title = NULL, footer = NULL) {
   args <- list(...)
   not_supported_modal_args <- c("size", "easyClose", "fade")
-  check_extra_arguments(intersect(names(args), not_supported_modal_args))
+  warn_unsupported_args(intersect(names(args), not_supported_modal_args))
   for (arg in not_supported_modal_args) {
     args[[arg]] <- NULL
   }

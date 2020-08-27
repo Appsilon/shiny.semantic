@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Update progress Semantic UI component — update_progress • SHINY.SEMANTIC</title>
+<title>Warn that there are not supported arguments — warn_unsupported_args • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Update progress Semantic UI component — update_progress" />
-<meta property="og:description" content="Change the value of a progress input on the client." />
+<meta property="og:title" content="Warn that there are not supported arguments — warn_unsupported_args" />
+<meta property="og:description" content="This throws warning if there are parameters not supported by semantic." />
 
 
 
@@ -140,41 +140,23 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Update progress Semantic UI component</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/progress.R'><code>R/progress.R</code></a></small>
-    <div class="hidden name"><code>update_progress.Rd</code></div>
+    <h1>Warn that there are not supported arguments</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
+    <div class="hidden name"><code>warn_unsupported_args.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Change the value of a <code><a href='progress.html'>progress</a></code> input on the client.</p>
+    <p>This throws warning if there are parameters not supported by semantic.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>update_progress</span>(
-  <span class='no'>session</span>,
-  <span class='no'>input_id</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"increment"</span>, <span class='st'>"decrement"</span>, <span class='st'>"label"</span>, <span class='st'>"value"</span>),
-  <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>1</span>
-)</pre>
+    <pre class="usage"><span class='fu'>warn_unsupported_args</span>(<span class='no'>args</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>session</th>
-      <td><p>The <code>session</code> object passed to function given to <code>shinyServer</code>.</p></td>
-    </tr>
-    <tr>
-      <th>input_id</th>
-      <td><p>The id of the input object</p></td>
-    </tr>
-    <tr>
-      <th>type</th>
-      <td><p>Whether you want to increase the progress bar (<code>"increment"</code>), decrease the
-progress bar (<code>"decrement"</code>), update the label <code>"label"</code>, or set it to a specific value (<code>"value"</code>)</p></td>
-    </tr>
-    <tr>
-      <th>value</th>
-      <td><p>The value to increase/decrease by, or the value to be set to</p></td>
+      <th>args</th>
+      <td><p>list or vector with extra arguments</p></td>
     </tr>
     </table>
 

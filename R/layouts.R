@@ -308,7 +308,7 @@ vertical_layout <- function(..., rows_heights = NULL, cell_args = "", adjusted_t
 #' @rdname vertical_layout
 verticalLayout <- function(..., fluid = NULL) {
   if (!is.null(fluid))
-    check_extra_arguments(c("fluid"))
+    warn_unsupported_args(c("fluid"))
   vertical_layout(..., adjusted_to_page = FALSE)
 }
 
