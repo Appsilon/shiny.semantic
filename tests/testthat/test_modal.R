@@ -32,8 +32,6 @@ test_that("test modal created with given content", {
 
 test_that("test modal created with default footer", {
   si_str <- as.character(modal())
-  expect_true(any(grepl("<div class=\"ui button negative\">Cancel</div>",
-                        si_str, fixed = TRUE)))
   expect_true(any(grepl("<div class=\"ui button positive\">OK</div>",
                         si_str, fixed = TRUE)))
 })

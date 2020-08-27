@@ -125,8 +125,9 @@
 #'     observeEvent(input$show, {
 #'       showModal(modalDialog(
 #'         title = "Important message",
-#'         "This is an important message!", easyClose = FALSE
+#'         "This modal will close after 3 sec.", easyClose = FALSE
 #'       ))
+#'       Sys.sleep(3)
 #'       removeModal()
 #'     })
 #'   }
@@ -150,7 +151,6 @@ modal <- function(...,
 
   if (is.null(footer)) {
     footer <- shiny::tagList(div(
-      div(class = "ui button negative", "Cancel"),
       div(class = "ui button positive", "OK")
     ))
   } else if (class(footer)[[1]] == "shiny.tag") {

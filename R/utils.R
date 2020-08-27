@@ -76,7 +76,9 @@ check_extra_arguments <- function(args) {
   else
     stop("Wrong input type!")
   if (nchar(to_wrn) > 1)
-    warning(glue::glue("arguments: `{to_wrn}` not supported yet in semantic version"))
+    warning(
+      glue::glue("arguments: `{to_wrn}` are not supported yet in this shiny.semantic version")
+    )
 }
 
 #' Extract icon name
