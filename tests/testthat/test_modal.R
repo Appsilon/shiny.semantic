@@ -8,7 +8,7 @@ test_that("test modal created", {
 
 test_that("test modal created with no header", {
   si_str <- as.character(modal())
-  expect_true(any(grepl("<div class=\"header\"></div>",
+  expect_false(any(grepl("<div class=\"header\"></div>",
                         si_str, fixed = TRUE)))
 })
 

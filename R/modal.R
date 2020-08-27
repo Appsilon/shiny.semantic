@@ -11,7 +11,8 @@
 #' @param content Content to be displayed in the modal body.
 #' If given in form of a list, HTML attributes for the container can also be changed. Default NULL.
 #' @param footer Content to be displayed in the modal footer. Usually for buttons.
-#' If given in form of a list, HTML attributes for the container can also be changed. Default NULL.
+#' If given in form of a list, HTML attributes for the container can also be changed.
+#' Set NULL, to make empty.
 #' @param target Javascript selector for the element that will open the modal. Default NULL.
 #' @param settings list of vectors of Semantic UI settings to be added to the modal. Default NULL.
 #' @param modal_tags other modal elements. Default NULL.
@@ -19,6 +20,7 @@
 #'
 #' @examples
 #' ## Create a simple server modal
+#' if (interactive()) {
 #' library(shiny)
 #' library(shiny.semantic)
 #'
@@ -34,13 +36,16 @@
 #'   observeEvent(input$show, {
 #'     create_modal(modal(
 #'       id = "simple-modal",
-#'       title = "Important message",
+#'       header = h2("Important message"),
 #'       "This is an important message!"
 #'     ))
 #'   })
 #' }
-#'
+#' shinyApp(ui, server)
+#' }
 #' ## Create a simple UI modal
+#'
+#' if (interactive()) {
 #' library(shiny)
 #' library(shiny.semantic)
 #' ui <- function() {
@@ -88,8 +93,10 @@
 #'     )
 #'   })
 #' })
-#'
+#' shinyApp(ui, server)
+#' }
 #' ## Changing attributes of header and content.
+#' if (interactive()) {
 #' library(shiny)
 #' library(shiny.semantic)
 #'
@@ -106,14 +113,15 @@
 #'     create_modal(modal(
 #'       id = "simple-modal",
 #'       title = "Important message",
-#'       header = list(style = "background: lightcoral"),
+#'       header = list("!!!", style = "background: lightcoral"),
 #'       content = list(style = "background: lightblue",
 #'                      `data-custom` = "value", "This is an important message!"),
 #'       p("This is also part of the content!")
 #'     ))
 #'   })
 #' }
-#'
+#' shinyApp(ui, server)
+#' }
 #' if (interactive()) {
 #' library(shiny)
 #' library(shiny.semantic)
@@ -140,9 +148,9 @@
 modal <- function(...,
                   id = "",
                   class = "",
-                  header = "",
+                  header = NULL,
                   content = NULL,
-                  footer = NULL,
+                  footer = div(class = "ui button positive", "OK"),
                   target = NULL,
                   settings = NULL,
                   modal_tags = NULL) {
@@ -150,9 +158,7 @@ modal <- function(...,
   div <- shiny::div
 
   if (is.null(footer)) {
-    footer <- shiny::tagList(div(
-      div(class = "ui button positive", "OK")
-    ))
+    footer <- ""
   } else if (class(footer)[[1]] == "shiny.tag") {
     footer <- shiny::tagList(footer)
   }
@@ -182,7 +188,7 @@ modal <- function(...,
     div(
       id = id,
       class = paste0("ui modal ", class),
-      modal_header,
+      if (is.null(header)) "" else modal_header,
       modal_content,
       modal_actions,
       modal_tags
