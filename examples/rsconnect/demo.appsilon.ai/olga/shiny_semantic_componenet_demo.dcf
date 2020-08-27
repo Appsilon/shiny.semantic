@@ -1,0 +1,13 @@
+name: shiny_semantic_componenet_demo
+title: shiny_semantic_componenet_demo
+username: olga
+account: olga
+server: demo.appsilon.ai
+hostUrl: https://demo.appsilon.ai/apps/__api__
+appId: 82
+bundleId: 245
+url: https://demo.appsilon.ai:443/apps/content/82/
+when: 1598448663.67867
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: run.sh|calendar/app.R|counter_button/app.R|customcss/app.R|customcss/styles/semantic.min.css|customcss/styles/semantic.min.js|dropdown_updates/app.R|form_inputs/app.R|layouts/flow_layout_app.R|layouts/sidebar_app.R|layouts/simple_sidebar_app.R|layouts/vertical_layout.R|multiple_checkbox/app.R|progress/app.R|rating/app.R|search_selection/api_choices.R|search_selection/static_choices.R|search_selection/static_grouped_choices.R|shiny_syntax/numericInput.R|shiny_syntax/selectInput.R|slider_input/app.R|tabset/app.R|modal|themes|www
