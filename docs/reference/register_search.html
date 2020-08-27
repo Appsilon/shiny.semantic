@@ -208,7 +208,7 @@ lists or dataframe of search results.</p></td>
 
       <span class='no'>search_api_url</span> <span class='kw'>&lt;-</span> <span class='fu'>register_search</span>(<span class='no'>session</span>, <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/rownames.html'>rownames_to_column</a></span>(<span class='no'>mtcars</span>, <span class='st'>"car"</span>), <span class='no'>api_response</span>)
 
-      <span class='no'>output</span>$<span class='no'>api_url</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderPrint.html'>renderText</a></span>({
+      <span class='no'>output</span>$<span class='no'>api_url</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderText.html'>renderText</a></span>({
         <span class='kw pkg'>glue</span><span class='kw ns'>::</span><span class='fu'><a href='https://glue.tidyverse.org/reference/glue.html'>glue</a></span>(
           <span class='st'>"Registered API url: "</span>,
           <span class='st'>"{session$clientData$url_protocol}//{session$clientData$url_hostname}:{session$clientData$url_port}/"</span>,
