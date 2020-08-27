@@ -153,8 +153,9 @@ shinyApp(
     observeEvent(input$show, {
       showModal(modalDialog(
         title = "Important message",
-        "This is an important message!", easyClose = FALSE
+        "This modal will close after 3 sec.", easyClose = FALSE
       ))
+      Sys.sleep(3)
       removeModal()
     })
   }

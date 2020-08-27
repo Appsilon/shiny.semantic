@@ -317,8 +317,9 @@ If given in form of a list, HTML attributes for the container can also be change
     <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>show</span>, {
       <span class='fu'><a href='create_modal.html'>showModal</a></span>(<span class='fu'>modalDialog</span>(
         <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Important message"</span>,
-        <span class='st'>"This is an important message!"</span>, <span class='kw'>easyClose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+        <span class='st'>"This modal will close after 3 sec."</span>, <span class='kw'>easyClose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
       ))
+      <span class='fu'><a href='https://rdrr.io/r/base/Sys.sleep.html'>Sys.sleep</a></span>(<span class='fl'>3</span>)
       <span class='fu'><a href='show_modal.html'>removeModal</a></span>()
     })
   }
