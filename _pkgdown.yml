@@ -110,6 +110,24 @@ reference:
   - '`search_selection_api`'
   - '`search_selection_choices`'
 
+- title: Layouts functions
+  desc: Functions for search API.
+  contents:
+  - '`grid`'
+  - '`grid_template`'
+  - '`sidebar_layout`'
+  - '`sidebarLayout`'
+  - '`sidebar_panel`'
+  - '`main_panel`'
+  - '`sidebarPanel`'
+  - '`mainPanel`'
+  - '`flow_layout`'
+  - '`flowLayout`'
+  - '`vertical_layout`'
+  - '`verticalLayout`'
+  - '`split_layout`'
+  - '`splitLayout`'
+
 - title: Constants
   desc: These constants contain important `shiny.semantic` values.
   contents:
