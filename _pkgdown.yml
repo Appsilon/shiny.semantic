@@ -62,6 +62,7 @@ reference:
   - '`messagebox`'
   - '`segment`'
   - '`tabset`'
+  - '`accordion`'
 
 - title: Action elements
   desc: All functions that generate or update active `shiny.semantic` objects.
