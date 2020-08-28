@@ -33,6 +33,7 @@ articles:
   contents:
   - '`intro`'
   - '`semantic_integration`'
+  - '`fomantic_js`'
 
 reference:
 - title: Fomantic (semantic) page
