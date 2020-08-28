@@ -69,8 +69,8 @@ ui <- semanticPage(
 
 See more examples with code in the `examples` folder:
 
-  - [Static Semantic components demo with different
-    themes](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/app.R)
+  - [Static Semantic components
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/app.R)
   - [Calendar date and month demo with
     update](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/calendar/app.R)
   - [Counter button
