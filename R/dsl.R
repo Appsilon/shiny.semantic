@@ -835,7 +835,7 @@ accordion <- function(accordion_list, fluid = TRUE, active_title = "",
             stop("There must be both title and content fields in `accordion_list`")
           active <- ifelse(x$title == active_title, "active", "")
           shiny::tagList(
-            div(class = "title", icon("dropdown"), x$title),
+            div(class = paste("title", active), icon("dropdown"), x$title),
             div(class = paste("content", active),
                 p(class = "transition hidden",
                   if (class(x$content) == "shiny.tag") x$content else div(x$content)
