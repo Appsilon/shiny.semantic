@@ -3,12 +3,18 @@
 \name{show_modal}
 \alias{show_modal}
 \alias{remove_modal}
+\alias{remove_all_modals}
+\alias{removeModal}
 \alias{hide_modal}
 \title{Show, Hide or Remove Semantic UI modal}
 \usage{
 show_modal(id, session = shiny::getDefaultReactiveDomain())
 
 remove_modal(id, session = shiny::getDefaultReactiveDomain())
+
+remove_all_modals(session = shiny::getDefaultReactiveDomain())
+
+removeModal(session = shiny::getDefaultReactiveDomain())
 
 hide_modal(id, session = shiny::getDefaultReactiveDomain())
 }
