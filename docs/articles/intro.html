@@ -96,7 +96,7 @@
 
       
 
-      </header><script src="intro_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="intro_files/uirender-binding-0.3.3.9001/uirender.js"></script><div class="row">
+      </header><script src="intro_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="intro_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="intro_files/uirender-binding-0.3.3.9001/uirender.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Build your first dynamic shiny.semantic app using layout and grid</h1>
@@ -260,7 +260,7 @@
 <span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {
   <span class="no">output</span>$<span class="no">dropdown</span> <span class="kw">&lt;-</span> <span class="fu">renderText</span>(<span class="no">input</span>$<span class="no">mtcars_dropdown</span>)
   <span class="no">output</span>$<span class="no">histogram</span> <span class="kw">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span>(<span class="no">mtcars</span><span class="kw">[[</span><span class="no">input</span>$<span class="no">mtcars_dropdown</span>]]))
-  <span class="no">output</span>$<span class="no">plot</span> <span class="kw">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">mtcars</span><span class="kw">[[</span><span class="no">input</span>$<span class="no">mtcars_dropdown</span>]]))
+  <span class="no">output</span>$<span class="no">plot</span> <span class="kw">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">mtcars</span><span class="kw">[[</span><span class="no">input</span>$<span class="no">mtcars_dropdown</span>]]))
 }
 
 <span class="fu">shinyApp</span>(<span class="no">ui</span>, <span class="no">server</span>)</pre></body></html></div>
@@ -311,7 +311,7 @@
 <span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {
   <span class="no">output</span>$<span class="no">dropdown</span> <span class="kw">&lt;-</span> <span class="fu">renderText</span>(<span class="no">input</span>$<span class="no">mtcars_dropdown</span>)
   <span class="no">output</span>$<span class="no">histogram</span> <span class="kw">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span>(<span class="no">mtcars</span><span class="kw">[[</span><span class="no">input</span>$<span class="no">mtcars_dropdown</span>]]))
-  <span class="no">output</span>$<span class="no">plot</span> <span class="kw">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">mtcars</span><span class="kw">[[</span><span class="no">input</span>$<span class="no">mtcars_dropdown</span>]]))
+  <span class="no">output</span>$<span class="no">plot</span> <span class="kw">&lt;-</span> <span class="fu">renderPlot</span>(<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">mtcars</span><span class="kw">[[</span><span class="no">input</span>$<span class="no">mtcars_dropdown</span>]]))
 }
 
 <span class="fu">shinyApp</span>(<span class="no">ui</span>, <span class="no">server</span>)</pre></body></html></div>

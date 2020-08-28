@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- to modals: `modalDialog`, `removeModal`, `remove_all_modals`
+
 - missing examples in package documentation
 
 - new STYLEGUIDE introduced 

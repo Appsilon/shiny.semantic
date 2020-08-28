@@ -63,15 +63,22 @@ generate_random_id <- function(prefix, id_length = 20) {
   paste0(prefix, "-", random_id)
 }
 
-#' Check for extra arguments
+#' Warn that there are not supported arguments
 #'
 #' This throws warning if there are parameters not supported by semantic.
 #'
-#' @param args list with extra arguments
-check_extra_arguments <- function(args) {
-  to_wrn <- paste0(as.character(names(args)), collapse = ',')
-if (nchar(to_wrn) > 1)
-  warning(glue::glue("arguments: `{to_wrn}` not supported yet in semantic version"))
+#' @param args list or vector with extra arguments
+warn_unsupported_args <- function(args) {
+  if (class(args) == "list")
+    to_wrn <- paste0(as.character(names(args)), collapse = ',')
+  else if (class(args) == "character")
+    to_wrn <- paste0(args, collapse = ',')
+  else
+    stop("Wrong input type!")
+  if (nchar(to_wrn) >= 1)
+    warning(
+      glue::glue("arguments: `{to_wrn}` are not supported yet in this shiny.semantic version")
+    )
 }
 
 #' Extract icon name

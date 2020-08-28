@@ -2,6 +2,7 @@
 % Please edit documentation in R/modal.R
 \name{create_modal}
 \alias{create_modal}
+\alias{showModal}
 \title{Allows for the creation of modals in the server side without being tied to a specific HTML element.}
 \usage{
 create_modal(
@@ -9,6 +10,8 @@ create_modal(
   show = TRUE,
   session = shiny::getDefaultReactiveDomain()
 )
+
+showModal(ui, session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
 \item{ui_modal}{HTML containing the modal.}
