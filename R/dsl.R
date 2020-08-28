@@ -797,13 +797,14 @@ list_container <- function(content_list, is_divided = FALSE) {
 #' In accordion you may display a list of elements that can be hidden or
 #' shown with one click.
 #'
-#' @param accordion_list lsit with lists with fields: `title` and `content`
-#' @param fluid if accordin is fluid then it takes width of parent div
+#' @param accordion_list list with lists with fields: `title` and `content`
+#' @param fluid if accordion is fluid then it takes width of parent div
 #' @param active_title if active title matches `title` from \code{accordion_list}
 #' then this element is active by default
 #' @param styled if switched of then raw style (no boxes) is used
+#' @custom_style character with custom style added to CSS of accordion (advanced use)
 #'
-#' @return shiyn tag list with accordion UI
+#' @return shiny tag list with accordion UI
 #' @export
 #'
 #' @examples
@@ -816,17 +817,19 @@ list_container <- function(content_list, is_divided = FALSE) {
 #' )
 #' shinyApp(
 #'   ui = semanticPage(
-#'     accordion(accordion_content, fluid = F, active_title = "AA")
+#'     accordion(accordion_content, fluid = F, active_title = "AA",
+#'               custom_style = "background: #babade;")
 #'   ),
 #'   server = function(input, output) {}
 #' )
 #' }
-accordion <- function(accordion_list, fluid = TRUE, active_title = NA, styled = TRUE) {
+accordion <- function(accordion_list, fluid = TRUE, active_title = "",
+                      styled = TRUE, custom_style = "") {
   fluid <- ifelse(fluid, "fluid", "")
   styled <- ifelse(styled, "styled", "")
   accordion_class = glue::glue("ui {styled} {fluid} accordion")
   shiny::tagList(
-    div(class = accordion_class,
+    div(class = accordion_class, style = custom_style,
         accordion_list %>% purrr::map(function(x) {
           if (is.null(x$title) || is.null(x$content))
             stop("There must be both title and content fields in `accordion_list`")
@@ -834,7 +837,9 @@ accordion <- function(accordion_list, fluid = TRUE, active_title = NA, styled = 
           shiny::tagList(
             div(class = "title", icon("dropdown"), x$title),
             div(class = paste("content", active),
-                p(class = "transition hidden", x$content)
+                p(class = "transition hidden",
+                  if (class(x$content) == "shiny.tag") x$content else div(x$content)
+                )
             )
           )
         })

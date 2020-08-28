@@ -4,12 +4,18 @@
 \alias{accordion}
 \title{Accordion UI}
 \usage{
-accordion(accordion_list, fluid = TRUE, active_title = NA, styled = TRUE)
+accordion(
+  accordion_list,
+  fluid = TRUE,
+  active_title = "",
+  styled = TRUE,
+  custom_style = ""
+)
 }
 \arguments{
-\item{accordion_list}{lsit with lists with fields: `title` and `content`}
+\item{accordion_list}{list with lists with fields: `title` and `content`}
 
-\item{fluid}{if accordin is fluid then it takes width of parent div}
+\item{fluid}{if accordion is fluid then it takes width of parent div}
 
 \item{active_title}{if active title matches `title` from \code{accordion_list}
 then this element is active by default}
@@ -17,7 +23,7 @@ then this element is active by default}
 \item{styled}{if switched of then raw style (no boxes) is used}
 }
 \value{
-shiyn tag list with accordion UI
+shiny tag list with accordion UI
 }
 \description{
 In accordion you may display a list of elements that can be hidden or
@@ -33,7 +39,8 @@ accordion_content <- list(
 )
 shinyApp(
   ui = semanticPage(
-    accordion(accordion_content, fluid = F, active_title = "AA")
+    accordion(accordion_content, fluid = F, active_title = "AA",
+              custom_style = "background: #babade;")
   ),
   server = function(input, output) {}
 )

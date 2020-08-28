@@ -261,10 +261,15 @@ test_that("test accordion", {
     accordion(accordion_content, fluid = FALSE)
   )
   expect_false(any(grepl("ui styled fluid accordion", si_str, fixed = TRUE)))
-  # check parameter
+  # check parameter active_title
   si_str <- as.character(
     accordion(accordion_content, active_title = "AA")
   )
   expect_true(any(grepl("content active", si_str, fixed = TRUE)))
+  # check parameter custom_style
+  si_str <- as.character(
+    accordion(accordion_content, custom_style = "background: red")
+  )
+  expect_true(any(grepl("style=\"background: red\">", si_str, fixed = TRUE)))
 
 })
