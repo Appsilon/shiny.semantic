@@ -2,7 +2,8 @@ pandoc: 2.7.3
 pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
+  basics: basics.html
   intro: intro.html
   semantic_integration: semantic_integration.html
-last_built: 2020-08-29T12:21Z
+last_built: 2020-08-29T14:31Z
 
