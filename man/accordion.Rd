@@ -21,6 +21,8 @@ accordion(
 then this element is active by default}
 
 \item{styled}{if switched of then raw style (no boxes) is used}
+
+\item{custom_style}{character with custom style added to CSS of accordion (advanced use)}
 }
 \value{
 shiny tag list with accordion UI

@@ -19,6 +19,8 @@ showModal(ui, session = shiny::getDefaultReactiveDomain())
 \item{show}{If the modal should only be created or open when called (open by default).}
 
 \item{session}{Current session.}
+
+\item{ui}{Same as \code{ui_modal} in show modal}
 }
 \description{
 Allows for the creation of modals in the server side without being tied to a specific HTML element.

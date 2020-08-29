@@ -3,10 +3,9 @@ title: "Integration of shiny.semantic with other packages"
 author: "Appsilon"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
-runtime: shiny
 vignette: >
   %\VignetteIndexEntry{Integration of shiny.semantic with other packages}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---
 
@@ -18,8 +17,6 @@ knitr::opts_chunk$set(
 )
 library(shiny)
 library(shiny.semantic)
-library(plotly)
-library(leaflet)
 ```
 
 ## Integration with plotly or leaflet

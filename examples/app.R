@@ -284,14 +284,7 @@ slider_demo <- function() {
     h1(class="ui header", id="slider", "Slider"),
     demo(slider_input("slider_1", value = 10, min = 0, max = 20)),
     demo(sliderInput("slider_2", "select value", min = 0, max = 20, value = 1)),
-    demo(range_input("range_1", value = 10, value2 = 15, min = 0, max = 20)),
-    demo(rangeInput(inputId = "range_2",
-                    label = "select range",
-                    min = 0,
-                    max = 20,
-                    value = 3,
-                    value2 = 6,
-                    step = 1))
+    demo(range_input("range_1", value = 10, value2 = 15, min = 0, max = 20))
   )
 }
 

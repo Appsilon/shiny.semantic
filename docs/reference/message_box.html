@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Allows for the creation of modals in the server side without being tied to a specific HTML element. — create_modal • SHINY.SEMANTIC</title>
+<title>Create Semantic UI Message box — message_box • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Allows for the creation of modals in the server side without being tied to a specific HTML element. — create_modal" />
-<meta property="og:description" content="Allows for the creation of modals in the server side without being tied to a specific HTML element." />
+<meta property="og:title" content="Create Semantic UI Message box — message_box" />
+<meta property="og:description" content="Create Semantic UI Message box" />
 
 
 
@@ -140,48 +140,73 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Allows for the creation of modals in the server side without being tied to a specific HTML element.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/modal.R'><code>R/modal.R</code></a></small>
-    <div class="hidden name"><code>create_modal.Rd</code></div>
+    <h1>Create Semantic UI Message box</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/dsl.R'><code>R/dsl.R</code></a></small>
+    <div class="hidden name"><code>message_box.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Allows for the creation of modals in the server side without being tied to a specific HTML element.</p>
+    <p>Create Semantic UI Message box</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_modal</span>(
-  <span class='no'>ui_modal</span>,
-  <span class='kw'>show</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/domains.html'>getDefaultReactiveDomain</a></span>()
-)
-
-<span class='fu'>showModal</span>(<span class='no'>ui</span>, <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/domains.html'>getDefaultReactiveDomain</a></span>())</pre>
+    <pre class="usage"><span class='fu'>message_box</span>(<span class='no'>header</span>, <span class='no'>content</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='no'>icon_name</span>, <span class='kw'>closable</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ui_modal</th>
-      <td><p>HTML containing the modal.</p></td>
+      <th>header</th>
+      <td><p>Header of the message box</p></td>
     </tr>
     <tr>
-      <th>show</th>
-      <td><p>If the modal should only be created or open when called (open by default).</p></td>
+      <th>content</th>
+      <td><p>Content of the message box . If it is a vector, creates a list
+of vector's elements</p></td>
     </tr>
     <tr>
-      <th>session</th>
-      <td><p>Current session.</p></td>
+      <th>class</th>
+      <td><p>class of the message. Look at
+https://semantic-ui.com/collections/message.html for all possibilities.</p></td>
     </tr>
     <tr>
-      <th>ui</th>
-      <td><p>Same as <code>ui_modal</code> in show modal</p></td>
+      <th>icon_name</th>
+      <td><p>If the message is of the type 'icon', specify the icon.
+Look at http://semantic-ui.com/elements/icon.html for all possibilities.</p></td>
+    </tr>
+    <tr>
+      <th>closable</th>
+      <td><p>Determines whether the message should be closable.
+Default is FALSE - not closable</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>modal</p></div>
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'>## Only run examples in interactive R sessions</span>
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
 
+  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span>(<span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
+    <span class='fu'>message_box</span>(<span class='kw'>header</span> <span class='kw'>=</span> <span class='st'>"Main header"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='st'>"text"</span>),
+    <span class='co'># message with icon</span>
+    <span class='fu'>message_box</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"icon"</span>, <span class='kw'>header</span> <span class='kw'>=</span> <span class='st'>"Main header"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='st'>"text"</span>, <span class='kw'>icon_name</span> <span class='kw'>=</span> <span class='st'>"dog"</span>),
+    <span class='co'># closable message</span>
+    <span class='fu'>message_box</span>(<span class='kw'>header</span> <span class='kw'>=</span> <span class='st'>"Main header"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='st'>"text"</span>, <span class='kw'>closable</span> <span class='kw'>=</span>  <span class='fl'>TRUE</span>),
+    <span class='co'># floating</span>
+    <span class='fu'>message_box</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"floating"</span>, <span class='kw'>header</span> <span class='kw'>=</span> <span class='st'>"Main header"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='st'>"text"</span>),
+    <span class='co'># compact</span>
+    <span class='fu'>message_box</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"compact"</span>, <span class='kw'>header</span> <span class='kw'>=</span> <span class='st'>"Main header"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='st'>"text"</span>),
+    <span class='co'># warning</span>
+    <span class='fu'>message_box</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"warning"</span>, <span class='kw'>header</span> <span class='kw'>=</span> <span class='st'>"Warning"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='st'>"text"</span>),
+    <span class='co'># info</span>
+    <span class='fu'>message_box</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"info"</span>, <span class='kw'>header</span> <span class='kw'>=</span> <span class='st'>"Info"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='st'>"text"</span>)
+  ))
+  <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
+  })
+
+  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
