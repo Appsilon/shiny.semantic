@@ -1,0 +1,78 @@
+---
+title: "Using Fomantic UI JavaScript elements [Advanced]"
+author: "Appsilon"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+runtime: shiny
+vignette: >
+  %\VignetteIndexEntry{Using Fomantic UI JavaScript elements [Advanced]}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  collapse = TRUE,
+  comment = "#>"
+)
+library(shiny)
+library(shiny.semantic)
+```
+
+## Using Fomantic UI JavaScript elements [Advanced] 
+
+Some Fomantic UI elements require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:
+
+1) Use `shinyjs`
+
+```r
+library(shinyjs)
+...
+jsCode <- " # Fomantic UI componts JS "
+...
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      title = "Your page title",
+      shinyjs::useShinyjs(),
+      # Your UI code
+    )
+  )
+}
+server <- shinyServer(function(input, output) {
+  runjs(jsCode)
+  # Your Shiny logic
+})
+shinyApp(ui = ui(), server = server)
+```
+
+2) Use `shiny::tags$script()`
+
+```r
+...
+jsCode <- "
+$(document).ready(function() {
+  # Semantic UI components JS code, like:
+  #$('.rating').rating('setting', 'clearable', true);
+  #$('.disabled .rating').rating('disable');
+})
+...
+"
+
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      title = "My page",
+      tags$script(jsCode),
+      # Your UI code
+    )
+  )
+}
+...
+server <- shinyServer(function(input, output) {
+  # Your Shiny logic
+})
+
+shinyApp(ui = ui(), server = server)
+```

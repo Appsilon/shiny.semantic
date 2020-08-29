@@ -1,10 +1,10 @@
 ---
-title: "Intro to shiny.semantic"
+title: "Build your first dynamic shiny.semantic app using layout and grid"
 author: "Appsilon"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Intro to shiny.semantic}
+  %\VignetteIndexEntry{Build your first dynamic shiny.semantic app using layout and grid}
   %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---

@@ -1,10 +1,10 @@
 ---
-title: "Integration of shiny.semantic with other packages"
+title: "Shiny.semantic integration with plotly and leaflet"
 author: "Appsilon"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Integration of shiny.semantic with other packages}
+  %\VignetteIndexEntry{Shiny.semantic integration with plotly and leaflet}
   %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---
@@ -20,6 +20,8 @@ library(shiny.semantic)
 ```
 
 ## Integration with plotly or leaflet
+
+### Plotly integration
 
 Similarly to `shiny`, `shiny.semantic` works well with other popular R packages.
 Let's see how to create a simple application with `plotly`.
@@ -49,6 +51,9 @@ server <- function(input, output, session) {
 shinyApp(ui = ui, server = server)
 
 ```
+
+### Leaflet integration
+
 And now let's have a look at similar example, but with `leaflet`.
 
 ```{r echo=T, include = T, eval = FALSE}
@@ -74,63 +79,4 @@ server <- function(input, output, session) {
 }
 
 shinyApp(ui = ui, server = server)
-```
-
-
-
-## [Advanced] Using Fomantic UI JavaScript elements
-
-Some Fomantic UI elements require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:
-
-1) Use `shinyjs`
-
-```r
-library(shinyjs)
-...
-jsCode <- " # Fomantic UI componts JS "
-...
-ui <- function() {
-  shinyUI(
-    semanticPage(
-      title = "Your page title",
-      shinyjs::useShinyjs(),
-      # Your UI code
-    )
-  )
-}
-server <- shinyServer(function(input, output) {
-  runjs(jsCode)
-  # Your Shiny logic
-})
-shinyApp(ui = ui(), server = server)
-```
-
-2) Use `shiny::tags$script()`
-
-```r
-...
-jsCode <- "
-$(document).ready(function() {
-  # Semantic UI components JS code, like:
-  #$('.rating').rating('setting', 'clearable', true);
-  #$('.disabled .rating').rating('disable');
-})
-...
-"
-
-ui <- function() {
-  shinyUI(
-    semanticPage(
-      title = "My page",
-      tags$script(jsCode),
-      # Your UI code
-    )
-  )
-}
-...
-server <- shinyServer(function(input, output) {
-  # Your Shiny logic
-})
-
-shinyApp(ui = ui(), server = server)
 ```
