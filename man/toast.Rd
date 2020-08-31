@@ -2,8 +2,10 @@
 % Please edit documentation in R/toast.R
 \name{toast}
 \alias{toast}
+\alias{close_toast}
 \alias{showNotification}
-\title{Create Semantic UI toast}
+\alias{removeNotification}
+\title{Show and remove Semantic UI toast}
 \usage{
 toast(
   message,
@@ -16,6 +18,8 @@ toast(
   session = shiny::getDefaultReactiveDomain()
 )
 
+close_toast(id, session = shiny::getDefaultReactiveDomain())
+
 showNotification(
   ui,
   action = NULL,
@@ -26,32 +30,32 @@ showNotification(
   session = getDefaultReactiveDomain(),
   ...
 )
+
+removeNotification(id, session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
-\item{id}{ID to be added to the toast div. Default "".}
+\item{message}{Content of the message.}
+
+\item{title}{A title given to the toast. Defauly is empty (\code{""}).}
+
+\item{action}{A list of lists containing settings for buttons/options to select within the}
+
+\item{duration}{Length in seconds for the toast to appear, default is 3 seconds. To make it not automatically close,
+set to 0.}
+
+\item{id}{A unique identifier for the notification. It is optional for \code{toast}, but required
+for \code{close_toast}.}
 
 \item{class}{Classes except "ui toast" to be added to the toast. Semantic UI classes can be used. Default "".}
 
 \item{toast_tags}{Other toast elements. Default NULL.}
 
-\item{...}{Content elements to be added to the toast body.
-To change attributes of the container please check the `content` argument.}
+\item{session}{Session object to send notification to.}
 
-\item{header}{Content to be displayed in the toast header.
-If given in form of a list, HTML attributes for the container can also be changed. Default "".}
-
-\item{content}{Content to be displayed in the toast body.
-If given in form of a list, HTML attributes for the container can also be changed. Default NULL.}
-
-\item{footer}{Content to be displayed in the toast footer. Usually for buttons.
-If given in form of a list, HTML attributes for the container can also be changed. Default NULL.}
-
-\item{target}{Javascript selector for the element that will open the toast. Default NULL.}
-
-\item{settings}{List of vectors of Semantic UI settings to be added to the toast. Default NULL.}
+\item{ui}{Content of the toast.}
 }
 \description{
-This creates a toast using Semantic UI styles.
+These functions either create or remove a toast notifications with Semantic UI styling.
 }
 \examples{
 ## Create a simple server toast
@@ -73,5 +77,62 @@ server = function(input, output) {
     )
   })
 }
+if (interactive()) shinyApp(ui, server)
 
+## Create a toast with options
+ui <- semanticPage(
+  actionButton("show", "Show"),
+)
+server <- function(input, output) {
+  observeEvent(input$show, {
+    toast(
+      title  = "Question",
+      "Do you want to see more?",
+      duration = 0,
+      action = list(
+        list(
+          text = "OK", class = "green", icon = "check",
+          click = ("(function() { $('body').toast({message:'Yes clicked'}); })")s
+        ),
+        list(
+          text = "No", class = "red", icon = "times",
+          click = ("(function() { $('body').toast({message:'No ticked'}); })")
+        )
+      )
+    )
+  })
+}
+
+if (interactive()) shinyApp(ui, server)
+
+## Closing a toast
+ui <- semanticPage(
+  action_button("show", "Show"),
+  action_button("remove", "Remove")
+)
+server <- function(input, output) {
+  # A queue of notification IDs
+  ids <- character(0)
+  # A counter
+  n <- 0
+
+  observeEvent(input$show, {
+    # Save the ID for removal later
+    id <- toast(paste("Message", n), duration = NULL)
+    ids <<- c(ids, id)
+    n <<- n + 1
+  })
+
+  observeEvent(input$remove, {
+    if (length(ids) > 0)
+      close_toast(ids[1])
+    ids <<- ids[-1]
+  })
+}
+
+if (interactive()) shinyApp(ui, server)
+
+}
+\seealso{
+\url{https://fomantic-ui.com/modules/toast}
 }

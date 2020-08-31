@@ -1,21 +1,15 @@
 #' Show and remove Semantic UI toast
 #'
-#' These functions either create or remove a toast with Semantic UI styling.
+#' These functions either create or remove a toast notifications with Semantic UI styling.
 #'
 #' @param message Content of the message.
 #' @param title A title given to the toast. Defauly is empty (\code{""}).
+#' @param action A list of lists containing settings for buttons/options to select within the
+#' @param duration Length in seconds for the toast to appear, default is 3 seconds. To make it not automatically close,
+#' set to 0.
 #' @param id A unique identifier for the notification. It is optional for \code{toast}, but required
 #' for \code{close_toast}.
-#' @param action A list of lists containing settings for buttons/options to select within the toast.
 #' @param class Classes except "ui toast" to be added to the toast. Semantic UI classes can be used. Default "".
-#' @param header Content to be displayed in the toast header.
-#' If given in form of a list, HTML attributes for the container can also be changed. Default "".
-#' @param content Content to be displayed in the toast body.
-#' If given in form of a list, HTML attributes for the container can also be changed. Default NULL.
-#' @param footer Content to be displayed in the toast footer. Usually for buttons.
-#' If given in form of a list, HTML attributes for the container can also be changed. Default NULL.
-#' @param target Javascript selector for the element that will open the toast. Default NULL.
-#' @param settings List of vectors of Semantic UI settings to be added to the toast. Default NULL.
 #' @param toast_tags Other toast elements. Default NULL.
 #' @param session Session object to send notification to.
 #'
@@ -54,7 +48,7 @@
 #'       action = list(
 #'         list(
 #'           text = "OK", class = "green", icon = "check",
-#'           click = "(function() { $('body').toast({message:'Yes clicked'}); })")
+#'           click = ("(function() { $('body').toast({message:'Yes clicked'}); })")s
 #'         ),
 #'         list(
 #'           text = "No", class = "red", icon = "times",
@@ -129,11 +123,12 @@ toast <- function(message,
 }
 
 #' @rdname toast
+#' @export
 close_toast <- function(id, session = shiny::getDefaultReactiveDomain()) {
   session$sendCustomMessage("closeSemanticToast", list(id = id))
 }
 
-#' @param ui Content of the message.
+#' @param ui Content of the toast.
 #' @rdname toast
 #' @export
 showNotification <- function(ui, action = NULL, duration = 5, closeButton = TRUE,
