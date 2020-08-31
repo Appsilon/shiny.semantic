@@ -53,6 +53,12 @@ for \code{close_toast}.}
 \item{session}{Session object to send notification to.}
 
 \item{ui}{Content of the toast.}
+
+\item{closeButton}{Logical, should a close icon appear on the toast?}
+
+\item{type}{Type of toast}
+
+\item{...}{Arguments that can be passed to \code{toast}}
 }
 \description{
 These functions either create or remove a toast notifications with Semantic UI styling.
