@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create HTML label tag — label • SHINY.SEMANTIC</title>
+<title>Create Semantic UI label tag — label • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Create HTML label tag — label" />
-<meta property="og:description" content="This creates a HTML label tag." />
+<meta property="og:title" content="Create Semantic UI label tag — label" />
+<meta property="og:description" content="This creates a div or a tag with with class ui label using Semantic UI." />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3.9001</span>
       </span>
     </div>
 
@@ -140,24 +140,32 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create HTML label tag</h1>
+    <h1>Create Semantic UI label tag</h1>
     <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/dsl.R'><code>R/dsl.R</code></a></small>
     <div class="hidden name"><code>label.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This creates a HTML label tag.</p>
+    <p>This creates a <code>div</code> or <code>a</code> tag with with class <code>ui label</code> using Semantic UI.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>label</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>label</span>(<span class='no'>...</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>is_link</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>Other arguments to be added as attributes of the
-tag (e.g. style, class or childrens etc.)</p></td>
+      <td><p>Other arguments to be added such as content of the tag (text, icons) and/or attributes (style)</p></td>
+    </tr>
+    <tr>
+      <th>class</th>
+      <td><p>class of the label. Look at https://semantic-ui.com/elements/label.html for all possibilities.</p></td>
+    </tr>
+    <tr>
+      <th>is_link</th>
+      <td><p>If TRUE creates label with 'a' tag, otherwise with 'div' tag.
+#'</p></td>
     </tr>
     </table>
 
@@ -168,17 +176,31 @@ tag (e.g. style, class or childrens etc.)</p></td>
   <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
   <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
 
-  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span>(<span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-    <span class='fu'><a href='form.html'>form</a></span>(
+  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span>(
+    <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
+      <span class='co'>## label</span>
+      <span class='fu'>label</span>(<span class='kw'>icon</span> <span class='kw'>=</span> <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"mail icon"</span>), <span class='fl'>23</span>),
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>p</a></span>(),
+      <span class='co'>## pointing label</span>
       <span class='fu'><a href='field.html'>field</a></span>(
-        <span class='fu'>label</span>(<span class='st'>"Name"</span>),
-        <span class='fu'><a href='text_input.html'>text_input</a></span>(<span class='st'>"name"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"text"</span>, <span class='kw'>placeholder</span> <span class='kw'>=</span> <span class='st'>"Enter Name..."</span>)
-      )
-    )
-  ))
-  <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
-  })
-
+        <span class='fu'><a href='text_input.html'>text_input</a></span>(<span class='st'>"ex"</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"text"</span>, <span class='kw'>placeholder</span> <span class='kw'>=</span> <span class='st'>"Your name"</span>)),
+      <span class='fu'>label</span>(<span class='st'>"Please enter a valid name"</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"pointing red basic"</span>),
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>p</a></span>(),
+      <span class='co'>## tag</span>
+      <span class='fu'>label</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"tag"</span>, <span class='st'>"New"</span>),
+      <span class='fu'>label</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"red tag"</span>, <span class='st'>"Upcoming"</span>),
+      <span class='fu'>label</span>(<span class='kw'>class</span> <span class='kw'>=</span><span class='st'>" teal tag"</span>,<span class='st'>"Featured"</span>),
+      <span class='co'>## ribbon</span>
+      <span class='fu'><a href='segment.html'>segment</a></span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui raised segment"</span>,
+              <span class='fu'>label</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui red ribbon"</span>, <span class='st'>"Overview"</span>),
+              <span class='st'>"Text"</span>),
+      <span class='co'>## attached</span>
+      <span class='fu'><a href='segment.html'>segment</a></span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui raised segment"</span>,
+              <span class='fu'>label</span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"top attached"</span>, <span class='st'>"HTML"</span>),
+              <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>p</a></span>(<span class='st'>"Text"</span>))
+    ))
+  <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
+  }
   <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
 }</div></pre>
   </div>

@@ -92,7 +92,7 @@ server <- function(input, output) {
       action = list(
         list(
           text = "OK", class = "green", icon = "check",
-          click = ("(function() { $('body').toast({message:'Yes clicked'}); })")s
+          click = ("(function() { $('body').toast({message:'Yes clicked'}); })")
         ),
         list(
           text = "No", class = "red", icon = "times",

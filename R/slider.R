@@ -76,10 +76,10 @@ slider_input <- function(input_id, value, min, max, step = 1, class = NULL) {
 #' @rdname slider
 #' @export
 sliderInput <- function(inputId, label, min, max, value, step = 1, width = NULL, ...) {
-  check_extra_arguments(list(...))
+  warn_unsupported_args(list(...))
   form(
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
-    label(label),
+    tags$label(label),
     slider_input(inputId, value, min, max, step = step)
   )
 }
@@ -98,12 +98,12 @@ range_input <- function(input_id, value, value2, min, max, step = 1, class = NUL
 #' @param inputId Input name.
 #' @rdname slider
 #' @export
-rangeInput <- function(inputId, label, min, max, value, step = 1, width = NULL, ...) {
-  check_extra_arguments(list(...))
+rangeInput <- function(inputId, label, min, max, value, value2, step = 1, width = NULL, ...) {
+  warn_unsupported_args(list(...))
   form(
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
-    label(label),
-    range_input(inputId, value, min, max, step = step)
+    tags$label(label),
+    range_input(inputId, value, value2, min, max, step = step)
   )
 }
 
@@ -156,7 +156,7 @@ update_range <- function(session, input_id, value, value2) {
 #' @rdname update_slider
 #' @export
 updateSliderInput <- function(session, inputId, value,  ...) {
-  check_extra_arguments(list(...))
+  warn_unsupported_args(list(...))
   update_slider(session, inputId, value)
 }
 

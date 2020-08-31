@@ -69,10 +69,8 @@ ui <- semanticPage(
 
 See more examples with code in the `examples` folder:
 
-  - [Static Semantic componenets
-    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/app.R)
-  - [Static Semantic componenets demo with different
-    theme](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/themes/app.R)
+  - [Static Semantic components demo with different
+    themes](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/app.R)
   - [Calendar date and month demo with
     update](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/calendar/app.R)
   - [Counter button
@@ -99,6 +97,8 @@ See more examples with code in the `examples` folder:
     demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R)
   - [Multiple tab
     demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/tabset/app.R)
+  - [Notification
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/toast/app.R)
 
 Check out also our dashboard examples made with **shiny.semantic**
 library:

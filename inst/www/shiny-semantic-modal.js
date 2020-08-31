@@ -17,3 +17,8 @@ Shiny.addCustomMessageHandler('createSemanticModal', function(message){
 
   $('#' + id).modal(message.action)
 });
+
+Shiny.addCustomMessageHandler('hideAllSemanticModals', function(message){
+  $(".ui .modal").modal('hide');
+});
+

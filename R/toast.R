@@ -48,7 +48,7 @@
 #'       action = list(
 #'         list(
 #'           text = "OK", class = "green", icon = "check",
-#'           click = ("(function() { $('body').toast({message:'Yes clicked'}); })")s
+#'           click = ("(function() { $('body').toast({message:'Yes clicked'}); })")
 #'         ),
 #'         list(
 #'           text = "No", class = "red", icon = "times",
@@ -129,6 +129,10 @@ close_toast <- function(id, session = shiny::getDefaultReactiveDomain()) {
 }
 
 #' @param ui Content of the toast.
+#' @param closeButton Logical, should a close icon appear on the toast?
+#' @param type Type of toast
+#' @param ... Arguments that can be passed to \code{toast}
+#'
 #' @rdname toast
 #' @export
 showNotification <- function(ui, action = NULL, duration = 5, closeButton = TRUE,

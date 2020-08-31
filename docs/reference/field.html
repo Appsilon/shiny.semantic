@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3.9001</span>
       </span>
     </div>
 
@@ -175,19 +175,19 @@ tag (e.g. style, class or childrens etc.)</p></td>
   <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span>(<span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
     <span class='fu'><a href='form.html'>form</a></span>(
       <span class='fu'>field</span>(
-        <span class='fu'><a href='label.html'>label</a></span>(<span class='st'>"Name"</span>),
+        <span class='no'>tags</span>$<span class='fu'><a href='label.html'>label</a></span>(<span class='st'>"Name"</span>),
         <span class='fu'><a href='text_input.html'>text_input</a></span>(<span class='st'>"name"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"text"</span>, <span class='kw'>placeholder</span> <span class='kw'>=</span> <span class='st'>"Enter Name..."</span>)
       ),
       <span class='co'># error field</span>
       <span class='fu'>field</span>(
         <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"error"</span>,
-        <span class='fu'><a href='label.html'>label</a></span>(<span class='st'>"Name"</span>),
+        <span class='no'>tags</span>$<span class='fu'><a href='label.html'>label</a></span>(<span class='st'>"Name"</span>),
         <span class='fu'><a href='text_input.html'>text_input</a></span>(<span class='st'>"name"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"text"</span>, <span class='kw'>placeholder</span> <span class='kw'>=</span> <span class='st'>"Enter Name..."</span>)
       ),
       <span class='co'># disabled</span>
       <span class='fu'>field</span>(
         <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"disabled"</span>,
-        <span class='fu'><a href='label.html'>label</a></span>(<span class='st'>"Name"</span>),
+        <span class='no'>tags</span>$<span class='fu'><a href='label.html'>label</a></span>(<span class='st'>"Name"</span>),
         <span class='fu'><a href='text_input.html'>text_input</a></span>(<span class='st'>"name"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"text"</span>, <span class='kw'>placeholder</span> <span class='kw'>=</span> <span class='st'>"Enter Name..."</span>)
       )
     )

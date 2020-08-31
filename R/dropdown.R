@@ -14,27 +14,19 @@
 #' @examples
 #' ## Only run examples in interactive R sessions
 #' if (interactive()) {
+#' library(shiny)
+#' library(shiny.semantic)
+#' ui <- semanticPage(
+#'   title = "Dropdown example",
+#'   dropdown_input("simple_dropdown", LETTERS, value = "A"),
+#'   p("Selected letter:"),
+#'   textOutput("dropdown")
+#' )
+#' server <- function(input, output) {
+#'   output$dropdown <- renderText(input[["simple_dropdown"]])
+#' }
 #'
-#'   library(shiny)
-#'   library(shiny.semantic)
-#'   ui <- function() {
-#'       shinyUI(
-#'         semanticPage(
-#'           title = "Dropdown example",
-#'           uiOutput("dropdown"),
-#'           p("Selected letter:"),
-#'           textOutput("selected_letter")
-#'        )
-#'      )
-#'   }
-#'   server <- shinyServer(function(input, output) {
-#'      output$dropdown <- renderUI({
-#'          dropdown_input("simple_dropdown", LETTERS, value = "A")
-#'      })
-#'      output$selected_letter <- renderText(input[["simple_dropdown"]])
-#'   })
-#'
-#'   shinyApp(ui = ui(), server = server)
+#' shinyApp(ui = ui, server = server)
 #' }
 #'
 #' @export
@@ -159,7 +151,7 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
 #' @param choices_value What reactive value should be used for corresponding choice.
 #' @param value The initially selected value.
 #'
-#'@examples
+#' @examples
 #' if (interactive()) {
 #'
 #' library(shiny)
@@ -193,7 +185,7 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
 update_dropdown_input <- function(session, input_id, choices = NULL, choices_value = choices, value = NULL) {
   if (!is.null(value)) value <- paste(as.character(value), collapse = ",") else value <- NULL
   if (!is.null(choices)) {
-    options <- jsonlite::toJSON(data.frame(name = choices, text = choices, value = choices_value))
+    options <- jsonlite::toJSON(list(values = data.frame(name = choices, text = choices, value = choices_value)))
   } else {
     options <- NULL
   }
@@ -217,8 +209,8 @@ update_dropdown_input <- function(session, input_id, choices = NULL, choices_val
 #'   If not specified then defaults to the first value for single-select lists and no
 #'   values for multiple select lists.
 #'
-#'   @examples
-#'   ## Only run examples in interactive R sessions
+#' @examples
+#' ## Only run examples in interactive R sessions
 #' if (interactive()) {
 #'
 #'   ui <- semanticPage(
@@ -256,7 +248,7 @@ updateSelectInput <- function(session, inputId, label, choices = NULL, selected 
     choices_text <- names(choices)
     if (identical(choices_text, NULL))
       choices_text <- choices
-    options <- jsonlite::toJSON(data.frame(name = choices, text = choices_text, value = choices))
+    options <- jsonlite::toJSON(list(values = data.frame(name = choices_text, text = choices_text, value = choices)))
   } else {
     options <- NULL
   }
@@ -264,4 +256,44 @@ updateSelectInput <- function(session, inputId, label, choices = NULL, selected 
   message <- message[!vapply(message, is.null, FUN.VALUE = logical(1))]
 
   session$sendInputMessage(inputId, message)
+}
+
+#' Themes changer dropdown
+#'
+#' @param input_id Id of dropdown. \code{input[[input_id]]} returns the currently selected theme.
+#' @param label Dropdown label.
+#'
+#' @examples
+#'
+#' if (interactive()) {
+#' library(shiny)
+#'  library(shiny.semantic)
+#'   ui <- semanticPage(
+#'     theme = "superhero",
+#'     actionButton("action_button", "Press Me!"),
+#'     textOutput("button_output"),
+#'     theme_selector(),
+#'     textOutput("theme")
+#'   )
+#'   server <- function(input, output, session) {
+#'     output$button_output <- renderText(as.character(input$action_button))
+#'     output$theme <- renderText(as.character(input$theme))
+#'   }
+#'   shinyApp(ui, server)
+#' }
+#'
+#' @export
+theme_selector <- function(input_id = "theme", label = "Choose theme") {
+  dropdown_content <- dropdown_input(
+    "theme", choices = c("default", SUPPORTED_THEMES),
+    choices_value = c("", SUPPORTED_THEMES),
+    type = "selection fluid themes-dropdown"
+  )
+  shiny::div(
+    class = "ui form theme",
+    shiny::div(class = "field",
+               if (!is.null(label)) tags$label(label, `for` = input_id),
+               dropdown_content
+    )
+  )
 }

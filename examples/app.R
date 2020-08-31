@@ -9,9 +9,9 @@ library(rjson)
 
 demo <- function(code) {
   div(class = "ui raised segment",
-    code,
-    div(style = "width: 100%; height:10px"),
-    highlight(formatR::tidy_source(width.cutoff = 40, text = deparse(substitute(code)))$text.tidy)
+      code,
+      div(style = "width: 100%; height:10px"),
+      highlight(formatR::tidy_source(width.cutoff = 40, text = deparse(substitute(code)))$text.tidy)
   )
 }
 
@@ -87,6 +87,22 @@ counter_button_demo <- function() {
                         size = "", color = "purple"))
   )
 }
+
+icon_demo <- function() {
+  div(
+    h1(class="ui header", id="icon", "Icon"),
+    demo(icon("home")),
+    demo(icon("mini home")),
+    demo(icon("tiny home")),
+    demo(icon("small home")),
+    demo(icon("medium home")),
+    demo(icon("large home")),
+    demo(icon("big home")),
+    demo(icon("huge home")),
+    demo(icon("massive home"))
+  )
+}
+
 divider <- function() {
   div(
     h1(class="ui header", id="divider", "Divider"),
@@ -95,17 +111,21 @@ divider <- function() {
     demo(div(class="ui horizontal divider", icon("tag"), "Description"))
   )
 }
-uiinput <- function() {
+uiinput_demo <- function() {
   div(
     h1(class="ui header", id="input", "Input"),
-    demo(div(class="ui input", input(placeholder="Search..."))),
-    demo(div(class="ui icon input", input(placeholder="Search..."), icon("search"))),
-    demo(div(class="ui icon input", input(placeholder="Search..."), icon("circular link search"))),
-    demo(div(class="ui right labeled input",
-             tags$input(type="text", placeholder="Enter weight..."),
-             div(class="ui basic label" ,"kg")))
+    demo(numeric_input("ex", "Select number", 10)),
+    demo(numericInput("ex", "Select number", 10)),
+    demo(text_input("ex", label = "Your text", type = "text", placeholder = "Enter Text")),
+    demo(textInput("ex", label = "Your text", type = "text", placeholder = "Enter Text")),
+    demo(textAreaInput("a", "Area:", width = "200px")),
+    demo(date_input("date", value = Sys.Date(), style = "width: 200px;")),
+    demo(dateInput("date_2", value = Sys.Date(), style = "width: 200px;")),
+    demo(dropdown_input("simple_dropdown", LETTERS, value = "A")),
+    demo(uiinput(icon("dog"), numeric_input("input", value = 0, label = "")))
   )
 }
+
 breadcrumb <- function() {
   div(
     h1(class="ui header", id="breadcrumb", "Breadcrumb"),
@@ -137,23 +157,31 @@ accordion <- function() {
              div(class="active content", p("A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.")),
              div(class="title", icon('dropdown icon'), "What kinds of dogs are there?"),
              div(class="content", p("There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion."))
-             )
-         )
+    )
+    )
   )
 }
 grid <- function() {
   div(
     h1(class="ui header", id="grid", "Grid"),
-    demo(div(class="ui grid",
-             div(class="four wide column", "Column"),
-             div(class="four wide column", "Column"),
-             div(class="four wide column", "Column"),
-             div(class="four wide column", "Column"))),
-    demo(div(class="ui stackable four column grid",
-             div(class="column", "Column"),
-             div(class="column", "Column"),
-             div(class="column", "Column"),
-             div(class="column", "Column")))
+    demo(shiny.semantic::grid(
+      grid_template(default = list(
+        areas = rbind(
+          c("header", "header", "header"),
+          c("menu",   "main",   "main"),
+          c("menu",   "main",   "main")
+        ),
+        rows_height = c("50px", "auto", "100px"),
+        cols_width = c("100px", "2fr", "1fr")
+      )),
+      container_style = "border: 1px solid #f00",
+      area_styles = list(header = "background: #0099f9",
+                         menu = "border-right: 1px solid #0099f9"),
+      header = "header",
+      menu = "menu",
+      main = "main"
+    )
+    )
   )
 }
 card_demo <- function() {
@@ -162,9 +190,9 @@ card_demo <- function() {
     demo(
       card(
         div(class="content",
-          div(class="header", "Elliot Fu"),
-          div(class="meta", "Friend"),
-          div(class="description", "Elliot Fu is a film-maker from New York.")
+            div(class="header", "Elliot Fu"),
+            div(class="meta", "Friend"),
+            div(class="description", "Elliot Fu is a film-maker from New York.")
         )
       )
     ),
@@ -175,9 +203,9 @@ card_demo <- function() {
           purrrlyr::by_row(~ {
             card(
               div(class="content",
-                div(class="header", .$rowname),
-                div(class="meta", paste("Number of cylinders:", .$cyl)),
-                div(class="description", paste("1/4 mile time:", .$qsec))
+                  div(class="header", .$rowname),
+                  div(class="meta", paste("Number of cylinders:", .$cyl)),
+                  div(class="description", paste("1/4 mile time:", .$qsec))
               )
             )
           }) %>% {.$.out}
@@ -186,35 +214,49 @@ card_demo <- function() {
     demo(
       card(
         div(class="content",
-          div(class="header", "Elliot Fu"),
-          div(class="meta", "Friend"),
-          div(class="description", "Elliot Fu is a film-maker from New York.")
+            div(class="header", "Elliot Fu"),
+            div(class="meta", "Friend"),
+            div(class="description", "Elliot Fu is a film-maker from New York.")
         )
       )
     ),
     demo(
       div(class="ui card",
-        div(class="content",
-          div(class="right floated meta", "14h"),
-          img(class="ui avatar image", src="images/elliot.jpg"),
-          "Elliot"
-        ),
-        div(class="image", img(src="images/wireframe.png")),
-        div(class="content",
-          span(class="right floated", icon("heart outline like"), "17 likes"),
-          icon("comment"),
-          "3 comments"
-        ),
-        div(class="extra content",
-          div(class="ui large transparent left icon input",
-            icon("heart ouline"),
-            tags$input(type="text", placeholder ="Add Comment...")
+          div(class="content",
+              div(class="right floated meta", "14h"),
+              img(class="ui avatar image", src="images/elliot.jpg"),
+              "Elliot"
+          ),
+          div(class="image", img(src="images/wireframe.png")),
+          div(class="content",
+              span(class="right floated", icon("heart outline like"), "17 likes"),
+              icon("comment"),
+              "3 comments"
+          ),
+          div(class="extra content",
+              div(class="ui large transparent left icon input",
+                  icon("heart ouline"),
+                  tags$input(type="text", placeholder ="Add Comment...")
+              )
           )
-        )
       )
     )
   )
 }
+
+msgbox_demo <- function() {
+  div(
+    h1(class="ui header", id="messagebox", "Messagebox"),
+    demo(messagebox(header = "Main header", content = "text")),
+    demo(messagebox(class = "icon", header = "Main header", content = "text", icon_name = "dog")),
+    demo(messagebox(header = "Main header", content = "text", closable =  TRUE)),
+    demo(messagebox(class = "floating", header = "Main header", content = "text")),
+    demo(messagebox(class = "compact", header = "Main header", content = "text")),
+    demo(messagebox(class = "warning", header = "Warning", content = "text")),
+    demo(messagebox(class = "info", header = "Info", content = "text"))
+  )
+}
+
 uilabel <- function() {
   div(
     h1(class="ui header", id="label", "Label"),
@@ -226,7 +268,7 @@ rating <- function() {
   div(
     h1(class="ui header", id="rating", "Rating"),
     demo(rating_input(
-      input_id,
+      input_id = "rating_example",
       label = "",
       value = 0,
       max = 3,
@@ -234,8 +276,40 @@ rating <- function() {
       color = "yellow",
       size = ""
     )
-  ))
+    ))
 }
+
+slider_demo <- function() {
+  div(
+    h1(class="ui header", id="slider", "Slider"),
+    demo(slider_input("slider_1", value = 10, min = 0, max = 20)),
+    demo(sliderInput("slider_2", "select value", min = 0, max = 20, value = 1)),
+    demo(range_input("range_1", value = 10, value2 = 15, min = 0, max = 20)),
+    demo(rangeInput(inputId = "range_2",
+                    label = "select range",
+                    min = 0,
+                    max = 20,
+                    value = 3,
+                    value2 = 6,
+                    step = 1))
+  )
+}
+
+checkbox <- function() {
+  div(
+    h1(class="ui header", id="checkbox", "Checkbox"),
+    demo(checkbox_input("example", "Check me", is_marked = FALSE)),
+    demo(toggle("tog1", "My Label", TRUE))
+  )
+}
+
+progress_demo <- function() {
+  div(
+    h1(class="ui header", id="progress", "Progress"),
+    demo(shiny.semantic::progress("progress", percent = 24, label = "{percent}% complete"))
+  )
+}
+
 tabs <- function () {
   div(
     h1(class="ui header", id="tabset", "Tabset"),
@@ -248,17 +322,56 @@ tabs <- function () {
     )
   )
 }
-list_demo <- function() {
-  list_content <- list(
-    list(header = "Head 1", description = "Lorem ipsum", icon = "home"),
-    list(header = "Head 2", description = "Lorem ipsum", icon = "dog"),
-    list(header = "Head 3", description = "Lorem ipsum", icon = "sun")
-  )
 
+menu_demo <- function() {
+  div(
+    h1(class="ui dividing header", id = "menu", "Menu"),
+    demo(menu(
+      menu_item("Home"),
+      menu_item("Tab 1")
+    )),
+    demo(menu(
+      menu_item("Home"),
+      menu_item("Tab 1"),
+      class = "vertical"
+    )),
+    demo(horizontal_menu(list(
+      list(name = "AA", link = "http://example.com", icon = "dog"),
+      list(name = "BB", link = "#", icon="cat"),
+      list(name = "CC")
+    ))),
+    demo(menu(menu_item("Menu"),
+              dropdown_menu(
+                "Action",
+                menu(
+                  menu_header(icon("file"), "File", is_item = FALSE),
+                  menu_item(icon("wrench"), "Open"),
+                  menu_item(icon("upload"), "Upload"),
+                  menu_item(icon("remove"), "Upload"),
+                  menu_divider(),
+                  menu_header(icon("user"), "User", is_item = FALSE),
+                  menu_item(icon("add user"), "Add"),
+                  menu_item(icon("remove user"), "Remove")),
+                class = "",
+                name = "unique_name",
+                is_menu_item = TRUE)
+    ))
+  )
+}
+
+list_demo <- function() {
   div(
     h1(class="ui dividing header", id = "list", "List"),
-    demo(list_container(list_content, is_divided = FALSE)),
-    demo(list_container(list_content, is_divided = TRUE))
+    demo(list_container(list(
+      list(header = "Head 1", description = "Lorem ipsum", icon = "home"),
+      list(header = "Head 2", description = "Lorem ipsum", icon = "dog"),
+      list(header = "Head 3", description = "Lorem ipsum", icon = "sun")
+    ), is_divided = FALSE)),
+    demo(list_container(list(
+      list(header = "Head 1", description = "Lorem ipsum", icon = "home"),
+      list(header = "Head 2", description = "Lorem ipsum", icon = "dog"),
+      list(header = "Head 3", description = "Lorem ipsum", icon = "sun")
+    ), is_divided = TRUE))
   )
 }
 
@@ -278,8 +391,10 @@ sidebar <- function() {
               a(class="item", href="#divider", "Divider"),
               a(class="item", href="#input", "Input"),
               a(class="item", href="#label", "Label"),
+              a(class="item", href="#menu", "Menu"),
               a(class="item", href="#list", "List"),
-              a(class="item", href="#button", "Button"))),
+              a(class="item", href="#button", "Button"),
+              a(class="item", href="#icon", "Icon"))),
       div(class="item",
           div(class="active header", "Collections"),
           div(class="menu",
@@ -294,9 +409,13 @@ sidebar <- function() {
           div(class="menu",
               a(class="item", href="#accordion", "Accordion"),
               a(class="item", href="#rating", "Rating"),
+              a(class="item", href="#slider", "Slider"),
+              a(class="item", href="#checkbox", "Checkbox"),
+              a(class="item", href="#progress", "Progress"),
+              a(class="item", href="#messagebox", "Messagebox"),
               a(class="item", href="#tabset", "Tabset"),
               a(class="item", href="#calendar", "Calendar")
-              )))
+          )))
 }
 
 calendar_demo <- function() {
@@ -305,7 +424,7 @@ calendar_demo <- function() {
     demo(
       calendar("date", type = "date", value = "20.2.2020", placeholder = "Select Date",
                min = "2.2.2020", max = "25.2.2020")
-      ),
+    ),
     demo(
       calendar("month", type = "month", placeholder = "Pick Month")
     )
@@ -316,36 +435,52 @@ calendar_demo <- function() {
 css <- "
 #examples > div > .header {
   margin-top: 1em;
+}
+.theme.form {
+  position: fixed !important;
+  right: 5px;
+  top: 3px;
+  width: 15em !important;
 }"
 
-ui <- function() {
-  shinyUI(semanticPage(
-    tags$head(tags$style(HTML(css))),
-    useShinyjs(),
-    sidebar(),
-    div(style="margin-left: 210px",
+##################### !!! Remember to set to true
+options(semantic.themes = TRUE)
+#####################
+
+ui <- semanticPage(
+  theme = "cerulean",
+  tags$head(tags$style(HTML(css))),
+  useShinyjs(),
+  sidebar(),
+  div(style="margin-left: 210px",
+      theme_selector(),
       div(id="examples", class="ui container",
-        header(),
-        button(),
-        counter_button_demo(),
-        divider(),
-        uiinput(),
-        label(),
-        list_demo(),
-        grid(),
-        breadcrumb(),
-        card_demo(),
-        accordion(),
-        rating(),
-        tabs(),
-        calendar_demo()
+          header(),
+          button(),
+          counter_button_demo(),
+          icon_demo(),
+          divider(),
+          uiinput_demo(),
+          uilabel(),
+          menu_demo(),
+          list_demo(),
+          grid(),
+          breadcrumb(),
+          card_demo(),
+          accordion(),
+          slider_demo(),
+          rating(),
+          checkbox(),
+          progress_demo(),
+          msgbox_demo(),
+          tabs(),
+          calendar_demo()
       )
-    )
-  ))
-}
+  )
+)
 
 server <- shinyServer(function(input, output, session) {
   runjs(jsCode)
 })
 
-shinyApp(ui = ui(), server = server)
+shinyApp(ui = ui, server = server)

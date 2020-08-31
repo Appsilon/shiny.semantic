@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3.9001</span>
       </span>
     </div>
 
@@ -174,31 +174,43 @@ then that name — rather than the value — is displayed to the user.</p></td>
     <tr>
       <th>selected</th>
       <td><p>The initially selected value (or multiple values if multiple = TRUE).
-  If not specified then defaults to the first value for single-select lists and no
-  values for multiple select lists.</p>
-<p>@examples
-  ## Only run examples in interactive R sessions
-if (interactive())   ui &lt;- semanticPage(
-    p("The checkbox group controls the select input"),
-    multiple_checkbox("checkboxes", "Input checkbox",
-                      c("Item A", "Item B", "Item C")),
-    selectInput("inSelect", "Select input",
-                c("Item A", "Item B"))
-  )  server &lt;- function(input, output, session) 
-    observe(
-      x &lt;- input$checkboxes      # Can use character(0) to remove all choices
-      if (is.null(x))
-        x &lt;- character(0)      # Can also set the label and select items
-      updateSelectInput(session, "inSelect",
-                        label = paste(input$checkboxes, collapse = ", "),
-                        choices = x,
-                        selected = tail(x, 1)
-      )
-    )  shinyApp(ui, server)</p></td>
+If not specified then defaults to the first value for single-select lists and no
+values for multiple select lists.</p></td>
     </tr>
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'>## Only run examples in interactive R sessions</span>
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
+
+  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
+    <span class='fu'>p</span>(<span class='st'>"The checkbox group controls the select input"</span>),
+    <span class='fu'><a href='multiple_checkbox.html'>multiple_checkbox</a></span>(<span class='st'>"checkboxes"</span>, <span class='st'>"Input checkbox"</span>,
+                      <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Item A"</span>, <span class='st'>"Item B"</span>, <span class='st'>"Item C"</span>)),
+    <span class='fu'><a href='selectInput.html'>selectInput</a></span>(<span class='st'>"inSelect"</span>, <span class='st'>"Select input"</span>,
+                <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Item A"</span>, <span class='st'>"Item B"</span>))
+  )
+
+  <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
+    <span class='fu'>observe</span>({
+      <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>input</span>$<span class='no'>checkboxes</span>
+
+      <span class='co'># Can use character(0) to remove all choices</span>
+      <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span>(<span class='no'>x</span>))
+        <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(<span class='fl'>0</span>)
+
+      <span class='co'># Can also set the label and select items</span>
+      <span class='fu'>updateSelectInput</span>(<span class='no'>session</span>, <span class='st'>"inSelect"</span>,
+                        <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='no'>input</span>$<span class='no'>checkboxes</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>", "</span>),
+                        <span class='kw'>choices</span> <span class='kw'>=</span> <span class='no'>x</span>,
+                        <span class='kw'>selected</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='no'>x</span>, <span class='fl'>1</span>)
+      )
+    })
+  }
+
+  <span class='fu'>shinyApp</span>(<span class='no'>ui</span>, <span class='no'>server</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

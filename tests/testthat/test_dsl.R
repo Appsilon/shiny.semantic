@@ -26,14 +26,14 @@ test_that("test messagebox type and input values", {
   expect_true(any(grepl("abcb", si_str, fixed = TRUE)))
 })
 
-test_that("test label_tag type and input values", {
+test_that("test label type and input values", {
   # type
-  expect_is(label_tag(p("a")), "shiny.tag")
+  expect_is(label(p("a")), "shiny.tag")
   # test input
-  si_str <- as.character(label_tag(p("a")))
+  si_str <- as.character(label(p("a")))
   expect_true(any(grepl("class=\"ui label \"",
                         si_str, fixed = TRUE)))
-  expect_match(as.character(label_tag()), "<a class=\"ui label \"></a>")
+  expect_match(as.character(label()), "<a class=\"ui label \"></a>")
 
 })
 
@@ -114,13 +114,6 @@ test_that("test field", {
   # test class
   expect_match(as.character(field(class = "fl")),
                "<div class=\"field fl\"></div>")
-})
-
-test_that("test label", {
-  # type
-  expect_is(label(), "shiny.tag")
-
-  expect_match(as.character(label()), "<label></label>")
 })
 
 test_that("test messagebox", {
@@ -240,4 +233,43 @@ test_that("test dropdown_menu", {
   expect_true(any(grepl("<div class=\"item header\">", si_str, fixed = TRUE)))
   expect_true(any(grepl("<div class=\"divider\"></div>", si_str, fixed = TRUE)))
   expect_true(any(grepl("<div class=\"item \">Option 1", si_str, fixed = TRUE)))
+})
+
+test_that("test accordion", {
+  # test missing input
+  accordion_content <- list(
+    list(title = "AA", content = h2("a a a a")),
+    list(content = p("b b b b"))
+  )
+  expect_error(accordion(accordion_content), "There must be both title and content fields")
+  # correct input
+  # test missing input
+  accordion_content <- list(
+    list(title = "AA", content = h2("a a a a")),
+    list(title = "BB", content = p("b b b b"))
+  )
+  expect_is(accordion(accordion_content), "shiny.tag.list")
+  si_str <- as.character(
+    accordion(accordion_content)
+  )
+  expect_true(any(grepl("script", si_str, fixed = TRUE))) # check if attaches JS
+  expect_true(any(grepl("AA", si_str, fixed = TRUE)))
+  expect_true(any(grepl("BB", si_str, fixed = TRUE)))
+  expect_true(any(grepl("a a a a", si_str, fixed = TRUE)))
+  # check parameter fluid
+  si_str <- as.character(
+    accordion(accordion_content, fluid = FALSE)
+  )
+  expect_false(any(grepl("ui styled fluid accordion", si_str, fixed = TRUE)))
+  # check parameter active_title
+  si_str <- as.character(
+    accordion(accordion_content, active_title = "AA")
+  )
+  expect_true(any(grepl("content active", si_str, fixed = TRUE)))
+  # check parameter custom_style
+  si_str <- as.character(
+    accordion(accordion_content, custom_style = "background: red")
+  )
+  expect_true(any(grepl("style=\"background: red\">", si_str, fixed = TRUE)))
+
 })

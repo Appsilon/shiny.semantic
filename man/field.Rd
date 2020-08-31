@@ -24,19 +24,19 @@ if (interactive()){
   ui <- shinyUI(semanticPage(
     form(
       field(
-        label("Name"),
+        tags$label("Name"),
         text_input("name", value = "", type = "text", placeholder = "Enter Name...")
       ),
       # error field
       field(
         class = "error",
-        label("Name"),
+        tags$label("Name"),
         text_input("name", value = "", type = "text", placeholder = "Enter Name...")
       ),
       # disabled
       field(
         class = "disabled",
-        label("Name"),
+        tags$label("Name"),
         text_input("name", value = "", type = "text", placeholder = "Enter Name...")
       )
     )
