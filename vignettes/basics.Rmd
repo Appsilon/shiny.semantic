@@ -103,5 +103,5 @@ If you want to learn how to use a particular UI component, check its documentati
 or use our [documentation website](https://appsilon.github.io/shiny.semantic/).
 
 All examples come with easy to use code snippets that help you get started.
-We hope that this short overview was useful. Good luck with building you first amazing
+We hope that this short overview was useful. Good luck with building your first amazing
 app with `shiny.semantic` :)
