@@ -784,9 +784,68 @@ list_container <- function(content_list, is_divided = FALSE) {
   list_class <- paste("ui", divided_list, "list")
   div(class = list_class,
       content_list %>% purrr::map(function(x) {
-        if (is.null(x$header) && is.null(x$descriptio))
+        if (is.null(x$header) && is.null(x$description))
           stop("content_list needs to have either header or description.")
         list_element(x$header, x$description, x$icon)
       })
+  )
+}
+
+
+#' Accordion UI
+#'
+#' In accordion you may display a list of elements that can be hidden or
+#' shown with one click.
+#'
+#' @param accordion_list list with lists with fields: `title` and `content`
+#' @param fluid if accordion is fluid then it takes width of parent div
+#' @param active_title if active title matches `title` from \code{accordion_list}
+#' then this element is active by default
+#' @param styled if switched of then raw style (no boxes) is used
+#' @custom_style character with custom style added to CSS of accordion (advanced use)
+#'
+#' @return shiny tag list with accordion UI
+#' @export
+#'
+#' @examples
+#' if (interactive()) {
+#' library(shiny)
+#' library(shiny.semantic)
+#' accordion_content <- list(
+#'   list(title = "AA", content = h2("a a a a")),
+#'   list(title = "BB", content = p("b b b b"))
+#' )
+#' shinyApp(
+#'   ui = semanticPage(
+#'     accordion(accordion_content, fluid = F, active_title = "AA",
+#'               custom_style = "background: #babade;")
+#'   ),
+#'   server = function(input, output) {}
+#' )
+#' }
+accordion <- function(accordion_list, fluid = TRUE, active_title = "",
+                      styled = TRUE, custom_style = "") {
+  fluid <- ifelse(fluid, "fluid", "")
+  styled <- ifelse(styled, "styled", "")
+  accordion_class = glue::glue("ui {styled} {fluid} accordion")
+  shiny::tagList(
+    div(class = accordion_class, style = custom_style,
+        accordion_list %>% purrr::map(function(x) {
+          if (is.null(x$title) || is.null(x$content))
+            stop("There must be both title and content fields in `accordion_list`")
+          active <- ifelse(x$title == active_title, "active", "")
+          shiny::tagList(
+            div(class = paste("title", active), icon("dropdown"), x$title),
+            div(class = paste("content", active),
+                p(class = "transition hidden",
+                  if (class(x$content) == "shiny.tag") x$content else div(x$content)
+                )
+            )
+          )
+        })
+    ),
+    shiny::tags$script(HTML(
+      glue::glue("$('.ui.accordion').accordion();")
+    ))
   )
 }

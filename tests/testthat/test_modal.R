@@ -8,7 +8,7 @@ test_that("test modal created", {
 
 test_that("test modal created with no header", {
   si_str <- as.character(modal())
-  expect_true(any(grepl("<div class=\"header\"></div>",
+  expect_false(any(grepl("<div class=\"header\"></div>",
                         si_str, fixed = TRUE)))
 })
 
@@ -32,8 +32,6 @@ test_that("test modal created with given content", {
 
 test_that("test modal created with default footer", {
   si_str <- as.character(modal())
-  expect_true(any(grepl("<div class=\"ui button negative\">Cancel</div>",
-                        si_str, fixed = TRUE)))
   expect_true(any(grepl("<div class=\"ui button positive\">OK</div>",
                         si_str, fixed = TRUE)))
 })
@@ -91,4 +89,24 @@ test_that("test modal created with arguments list", {
   expect_true(any(grepl(
     "<div class=\"header ui icon\">\n    <i class=\"archive icon\"></i>",
     si_str, fixed = TRUE)))
+})
+
+test_that("test modalDialog", {
+  si_str <- as.character(modalDialog(
+    title = "Important message",
+    "This is an important message!"
+  ))
+  expect_true(any(grepl(
+    "<div class=\"header\">Important message</div>",
+    si_str, fixed = TRUE)))
+  expect_true(any(grepl(
+    "<div class=\"content\">This is an important message!</div>",
+    si_str, fixed = TRUE)))
+
+  # warning when not supported arguments passed
+  expect_warning(modalDialog(
+    title = "Important message",
+    "This is an important message!", easyClose = FALSE
+  ))
+
 })
