@@ -454,12 +454,10 @@ css <- "
 
 ui <- function() {
   shinyUI(semanticPage(
-    theme = "", ## TODO add theme name when we switch to Fomantic themes
     tags$head(tags$style(HTML(css))),
     useShinyjs(),
     sidebar(),
     div(style="margin-left: 210px",
-        # theme_selector(), ## TODO uncomment whne we switch to Fomantic themes
         div(id="examples", class="ui container",
             header(),
             button(),
