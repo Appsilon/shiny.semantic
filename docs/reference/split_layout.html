@@ -194,9 +194,9 @@ each cell of the layout.</p></td>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
   <span class='co'>#' Server code used for all examples</span>
   <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
-    <span class='no'>output</span>$<span class='no'>plot1</span> <span class='kw'>&lt;-</span> <span class='fu'>renderPlot</span>(<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>cars</span>))
-    <span class='no'>output</span>$<span class='no'>plot2</span> <span class='kw'>&lt;-</span> <span class='fu'>renderPlot</span>(<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>pressure</span>))
-    <span class='no'>output</span>$<span class='no'>plot3</span> <span class='kw'>&lt;-</span> <span class='fu'>renderPlot</span>(<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>AirPassengers</span>))
+    <span class='no'>output</span>$<span class='no'>plot1</span> <span class='kw'>&lt;-</span> <span class='fu'>renderPlot</span>(<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>cars</span>))
+    <span class='no'>output</span>$<span class='no'>plot2</span> <span class='kw'>&lt;-</span> <span class='fu'>renderPlot</span>(<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>pressure</span>))
+    <span class='no'>output</span>$<span class='no'>plot3</span> <span class='kw'>&lt;-</span> <span class='fu'>renderPlot</span>(<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>AirPassengers</span>))
   }
   <span class='co'>#' Equal sizing</span>
   <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(

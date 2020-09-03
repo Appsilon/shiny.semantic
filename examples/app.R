@@ -7,6 +7,8 @@ library(formatR)
 library(httr)
 library(rjson)
 
+options(semantic.themes = TRUE)
+
 demo <- function(code) {
   div(class = "ui raised segment",
       code,
@@ -154,9 +156,15 @@ accordion <- function() {
     h1(class="ui header", id="accordion", "Accordion"),
     demo(div(class="ui styled accordion",
              div(class="active title", icon('dropdown icon'), "What is dog?"),
-             div(class="active content", p("A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.")),
+             div(class="active content", p("A dog is a type of domesticated animal.
+                                           Known for its loyalty and faithfulness,
+                                           it can be found as a welcome guest in many
+                                           households across the world.")),
              div(class="title", icon('dropdown icon'), "What kinds of dogs are there?"),
-             div(class="content", p("There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion."))
+             div(class="content", p("There are many breeds of dogs. Each breed varies
+                                    in size and temperament. Owners often select a breed of
+                                    dog that they find to be compatible with their own lifestyle
+                                    and desires from a companion."))
     )
     )
   )
@@ -429,6 +437,7 @@ css <- "
 #examples > div > .header {
   margin-top: 1em;
 }
+
 .theme.form {
   position: fixed !important;
   right: 5px;
@@ -436,44 +445,40 @@ css <- "
   width: 15em !important;
 }"
 
-##################### !!! Remember to set to true
-options(semantic.themes = TRUE)
-#####################
-
-ui <- semanticPage(
-  theme = "cerulean",
-  tags$head(tags$style(HTML(css))),
-  useShinyjs(),
-  sidebar(),
-  div(style="margin-left: 210px",
-      theme_selector(),
-      div(id="examples", class="ui container",
-          header(),
-          button(),
-          counter_button_demo(),
-          icon_demo(),
-          divider(),
-          uiinput_demo(),
-          uilabel(),
-          menu_demo(),
-          list_demo(),
-          grid(),
-          breadcrumb(),
-          card_demo(),
-          accordion(),
-          slider_demo(),
-          rating(),
-          checkbox(),
-          progress_demo(),
-          msgbox_demo(),
-          tabs(),
-          calendar_demo()
-      )
-  )
-)
+ui <- function() {
+  shinyUI(semanticPage(
+    tags$head(tags$style(HTML(css))),
+    useShinyjs(),
+    sidebar(),
+    div(style="margin-left: 210px",
+        div(id="examples", class="ui container",
+            header(),
+            button(),
+            counter_button_demo(),
+            icon_demo(),
+            divider(),
+            uiinput_demo(),
+            uilabel(),
+            menu_demo(),
+            list_demo(),
+            grid(),
+            breadcrumb(),
+            card_demo(),
+            accordion(),
+            slider_demo(),
+            rating(),
+            checkbox(),
+            progress_demo(),
+            msgbox_demo(),
+            tabs(),
+            calendar_demo()
+        )
+    )
+  ))
+}
 
 server <- shinyServer(function(input, output, session) {
   runjs(jsCode)
 })
 
-shinyApp(ui = ui, server = server)
+shinyApp(ui = ui(), server = server)
