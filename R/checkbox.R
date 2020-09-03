@@ -9,6 +9,8 @@
 #' @param type Type of checkbox: NULL, 'toggle'
 #' @param is_marked Defines if checkbox should be marked. Default TRUE.
 #' @param style Style of the widget.
+#' @param inputId same as \code{input_id}
+#' @param value same as \code{is_marked}
 #'
 #' @examples
 #' if (interactive()){
@@ -47,6 +49,13 @@ checkbox_input <- function(input_id, label = "", type = NULL, is_marked = TRUE,
     tags$input(id = input_id, type = "checkbox", checked = if (is_marked) NA else NULL),
     tags$label(label)
   )
+}
+
+#' @rdname checkbox
+#' @export
+checkboxInput <- function(inputId, label = "", value = FALSE, width = NULL){
+  warn_unsupported_args(c("width"))
+  checkbox_input(inputId, label, is_marked = value)
 }
 
 #' @rdname checkbox

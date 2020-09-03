@@ -22,7 +22,7 @@ ui <- semanticPage(
 server <- shinyServer(function(input, output, session) {
   output$range_ex <- renderText(paste(input$range_ex, collapse = ", "))
   output$slider_ex <- renderText(input$slider_ex[1])
-  observeEvent(input$button, update_range(session, "range_ex", 10, 17))
+  observeEvent(input$button, update_range_input(session, "range_ex", 10, 17))
 })
 
 shinyApp(ui = ui, server = server)

@@ -255,13 +255,13 @@ card_demo <- function() {
 msgbox_demo <- function() {
   div(
     h1(class="ui header", id="messagebox", "Messagebox"),
-    demo(messagebox(header = "Main header", content = "text")),
-    demo(messagebox(class = "icon", header = "Main header", content = "text", icon_name = "dog")),
-    demo(messagebox(header = "Main header", content = "text", closable =  TRUE)),
-    demo(messagebox(class = "floating", header = "Main header", content = "text")),
-    demo(messagebox(class = "compact", header = "Main header", content = "text")),
-    demo(messagebox(class = "warning", header = "Warning", content = "text")),
-    demo(messagebox(class = "info", header = "Info", content = "text"))
+    demo(message_box(header = "Main header", content = "text")),
+    demo(message_box(class = "icon", header = "Main header", content = "text", icon_name = "dog")),
+    demo(message_box(header = "Main header", content = "text", closable =  TRUE)),
+    demo(message_box(class = "floating", header = "Main header", content = "text")),
+    demo(message_box(class = "compact", header = "Main header", content = "text")),
+    demo(message_box(class = "warning", header = "Warning", content = "text")),
+    demo(message_box(class = "info", header = "Info", content = "text"))
   )
 }
 
