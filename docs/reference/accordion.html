@@ -151,18 +151,24 @@ shown with one click." />
 shown with one click.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>accordion</span>(<span class='no'>accordion_list</span>, <span class='kw'>fluid</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>active_title</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>styled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>accordion</span>(
+  <span class='no'>accordion_list</span>,
+  <span class='kw'>fluid</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>active_title</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>styled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>custom_style</span> <span class='kw'>=</span> <span class='st'>""</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>accordion_list</th>
-      <td><p>lsit with lists with fields: `title` and `content`</p></td>
+      <td><p>list with lists with fields: `title` and `content`</p></td>
     </tr>
     <tr>
       <th>fluid</th>
-      <td><p>if accordin is fluid then it takes width of parent div</p></td>
+      <td><p>if accordion is fluid then it takes width of parent div</p></td>
     </tr>
     <tr>
       <th>active_title</th>
@@ -177,19 +183,20 @@ then this element is active by default</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>shiyn tag list with accordion UI</p>
+    <p>shiny tag list with accordion UI</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
 <span class='no'>accordion_content</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"AA"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>h2</a></span>(<span class='st'>"a a a a"</span>)),
-  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"BB"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>p</a></span>(<span class='st'>"b b b b"</span>))
+  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"AA"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>h2</a></span>(<span class='st'>"a a a a"</span>)),
+  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"BB"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>p</a></span>(<span class='st'>"b b b b"</span>))
 )
 <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(
   <span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-    <span class='fu'>accordion</span>(<span class='no'>accordion_content</span>, <span class='kw'>fluid</span> <span class='kw'>=</span> <span class='no'>F</span>, <span class='kw'>active_title</span> <span class='kw'>=</span> <span class='st'>"AA"</span>)
+    <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/accordion.html'>accordion</a></span>(<span class='no'>accordion_content</span>, <span class='kw'>fluid</span> <span class='kw'>=</span> <span class='no'>F</span>, <span class='kw'>active_title</span> <span class='kw'>=</span> <span class='st'>"AA"</span>,
+              <span class='kw'>custom_style</span> <span class='kw'>=</span> <span class='st'>"background: #babade;"</span>)
   ),
   <span class='kw'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {}
 )
