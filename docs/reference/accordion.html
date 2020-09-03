@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create progress Semantic UI component — progress • SHINY.SEMANTIC</title>
+<title>Accordion UI — accordion • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Create progress Semantic UI component — progress" />
-<meta property="og:description" content="This creates a default progress using Semantic UI styles with Shiny input.
-Progress is already initialized and available under input[[input_id]]." />
+<meta property="og:title" content="Accordion UI — accordion" />
+<meta property="og:description" content="In accordion you may display a list of elements that can be hidden or
+shown with one click." />
 
 
 
@@ -73,7 +73,7 @@ Progress is already initialized and available under input[[input_id]]." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3.9001</span>
       </span>
     </div>
 
@@ -141,94 +141,65 @@ Progress is already initialized and available under input[[input_id]]." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create progress Semantic UI component</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/progress.R'><code>R/progress.R</code></a></small>
-    <div class="hidden name"><code>Progress.Rd</code></div>
+    <h1>Accordion UI</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/dsl.R'><code>R/dsl.R</code></a></small>
+    <div class="hidden name"><code>accordion.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This creates a default progress using Semantic UI styles with Shiny input.
-Progress is already initialized and available under input[[input_id]].</p>
+    <p>In accordion you may display a list of elements that can be hidden or
+shown with one click.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>progress</span>(
-  <span class='no'>input_id</span>,
-  <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>total</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>percent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>progress_lab</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label_complete</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>size</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+    <pre class="usage"><span class='fu'>accordion</span>(
+  <span class='no'>accordion_list</span>,
+  <span class='kw'>fluid</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>active_title</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>styled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>custom_style</span> <span class='kw'>=</span> <span class='st'>""</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>input_id</th>
-      <td><p>Input name. Reactive value is available under input[[input_id]].</p></td>
+      <th>accordion_list</th>
+      <td><p>list with lists with fields: `title` and `content`</p></td>
     </tr>
     <tr>
-      <th>value</th>
-      <td><p>The initial value to be selected for the progress bar.</p></td>
+      <th>fluid</th>
+      <td><p>if accordion is fluid then it takes width of parent div</p></td>
     </tr>
     <tr>
-      <th>total</th>
-      <td><p>The maximum value that will be applied to the progress bar.</p></td>
+      <th>active_title</th>
+      <td><p>if active title matches `title` from <code>accordion_list</code>
+then this element is active by default</p></td>
     </tr>
     <tr>
-      <th>percent</th>
-      <td><p>The initial percentage to be selected for the progress bar.</p></td>
-    </tr>
-    <tr>
-      <th>progress_lab</th>
-      <td><p>Logical, would you like the percentage visible in the progress bar?</p></td>
-    </tr>
-    <tr>
-      <th>label</th>
-      <td><p>The label to be visible underneath the progress bar.</p></td>
-    </tr>
-    <tr>
-      <th>label_complete</th>
-      <td><p>The label to be visible underneath the progress bar when the bar is at 100%.</p></td>
-    </tr>
-    <tr>
-      <th>size</th>
-      <td><p>character with legal semantic size, eg. "medium", "huge", "tiny"</p></td>
-    </tr>
-    <tr>
-      <th>class</th>
-      <td><p>UI class of the progress bar.</p></td>
+      <th>styled</th>
+      <td><p>if switched of then raw style (no boxes) is used</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>To initialize the progress bar, you can either choose <code>value</code> and <code>total</code>, or <code>percent</code>.</p>
+    <p>shiny tag list with accordion UI</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Only run examples in interactive R sessions</span>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
-
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
-  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
-      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span>(
-        <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-          <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Progress example"</span>,
-          <span class='fu'>progress</span>(<span class='st'>"progress"</span>, <span class='kw'>percent</span> <span class='kw'>=</span> <span class='fl'>24</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"{percent}% complete"</span>),
-          <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>p</a></span>(<span class='st'>"Progress completion:"</span>),
-          <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"progress"</span>)
-       )
-     )
-  }
-  <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
-     <span class='no'>output</span>$<span class='no'>progress</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderText.html'>renderText</a></span>(<span class='no'>input</span>$<span class='no'>progress</span>)
-  })
-
-  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'>ui</span>(), <span class='kw'>server</span> <span class='kw'>=</span> <span class='no'>server</span>)
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
+<span class='no'>accordion_content</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"AA"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>h2</a></span>(<span class='st'>"a a a a"</span>)),
+  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"BB"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>p</a></span>(<span class='st'>"b b b b"</span>))
+)
+<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(
+  <span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
+    <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/accordion.html'>accordion</a></span>(<span class='no'>accordion_content</span>, <span class='kw'>fluid</span> <span class='kw'>=</span> <span class='no'>F</span>, <span class='kw'>active_title</span> <span class='kw'>=</span> <span class='st'>"AA"</span>,
+              <span class='kw'>custom_style</span> <span class='kw'>=</span> <span class='st'>"background: #babade;"</span>)
+  ),
+  <span class='kw'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {}
+)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

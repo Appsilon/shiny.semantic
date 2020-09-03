@@ -92,6 +92,7 @@ See more examples with code in the `examples` folder:
 * [Shiny selectInput demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R)
 * [Slider and range with update demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R)
 * [Multiple tab demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/tabset/app.R)
+* [Notification demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/toast/app.R)
 
 Check out also our dashboard examples made with **shiny.semantic** library:
 
