@@ -3,27 +3,33 @@ All notable changes to this project will be documented in this file.
 
 ## Upcoming
 
+## [0.4.0]
+
 ### Added
 
-- to modals: `modalDialog`, `removeModal`, `remove_all_modals`
+- progress bar and notification (toasts)
 
-- missing examples in package documentation
+- `accordion`
+
+- 3 vignettes
+
+- to modals: `modalDialog`, `removeModal`, `remove_all_modals`
 
 - new STYLEGUIDE introduced 
 
 - horizontal menu
 
-- shiny-like API introduced to actionButton, updateActionButton, selectInput, updateSelectInput, icon, numericInput, updateNumericInput, textAreaInput, textInput, numericInput
+- shiny-like API introduced to actionButton, updateActionButton, selectInput, updateSelectInput, icon, numericInput, updateNumericInput, textAreaInput, textInput, numericInput, checkboxInput
 
-- counter_button
+- `counter_button`
 
-- new examples to documentation
+- almost all functions have working examples now
 
 ### Changed
 
 - ui (static) elements are renamed to the name of the object they generate, eg. `uiicon` -> `icon`, `uibutton` -> `button`, etc.
 
-- `uimessage` is `messagebox` now
+- `uimessage` is `message_box` now
 
 - `uilist` is `list_container` now
 
