@@ -1,11 +1,11 @@
 library(shiny)
 library(shinyjs)
-library(shiny.semantic)
 library(magrittr)
 library(highlighter) # devtools::install_github("Appsilon/highlighter")
 library(formatR)
 library(httr)
 library(rjson)
+library(shiny.semantic)
 
 options(semantic.themes = TRUE)
 
@@ -24,7 +24,6 @@ input <- function(class = "ui input", style = "", type = "text", name = "", plac
 }
 
 jsCode <- "
-  $('.accordion').accordion({selector: {trigger: '.title .icon'}}).accordion('close');
   $('.ui.dropdown').dropdown({});
   $('.rating').rating('setting', 'clearable', true);
 "
@@ -105,6 +104,22 @@ icon_demo <- function() {
   )
 }
 
+toast_demo <- function(){
+  toast_code <- "toast(
+           \"This is a semantic toast. Cheers!\",
+           title  = \"Notification\",
+           duration = 3,
+         )"
+  div(
+    h1(class="ui header", id="notification", "Notifications"),
+    div(class = "ui raised segment",
+        action_button("show_toast", "Show notification (toast)!"),
+        div(style = "width: 100%; height:10px"),
+        highlight(formatR::tidy_source(width.cutoff = 40, text = toast_code)$text.tidy)
+    )
+  )
+}
+
 divider <- function() {
   div(
     h1(class="ui header", id="divider", "Divider"),
@@ -118,7 +133,6 @@ uiinput_demo <- function() {
     h1(class="ui header", id="input", "Input"),
     demo(numeric_input("ex", "Select number", 10)),
     demo(numericInput("ex", "Select number", 10)),
-    demo(text_input("ex", label = "Your text", type = "text", placeholder = "Enter Text")),
     demo(textInput("ex", label = "Your text", type = "text", placeholder = "Enter Text")),
     demo(textAreaInput("a", "Area:", width = "200px")),
     demo(date_input("date", value = Sys.Date(), style = "width: 200px;")),
@@ -151,29 +165,33 @@ breadcrumb <- function() {
              a(class="section", "T-shirts")))
   )
 }
-accordion <- function() {
+accordion_demo <- function() {
+  accordion_content <- list(
+    list(title = "What is dog?",
+         content = p("A dog is a type of domesticated animal.
+                     Known for its loyalty and faithfulness,
+                     it can be found as a welcome guest in many
+                     households across the world.")),
+    list(title = "What kinds of dogs are there?",
+         content = p("There are many breeds of dogs. Each breed varies
+                      in size and temperament. Owners often select a breed of
+                      dog that they find to be compatible with their own lifestyle
+                      and desires from a companion."))
+  )
   div(
     h1(class="ui header", id="accordion", "Accordion"),
-    demo(div(class="ui styled accordion",
-             div(class="active title", icon('dropdown icon'), "What is dog?"),
-             div(class="active content", p("A dog is a type of domesticated animal.
-                                           Known for its loyalty and faithfulness,
-                                           it can be found as a welcome guest in many
-                                           households across the world.")),
-             div(class="title", icon('dropdown icon'), "What kinds of dogs are there?"),
-             div(class="content", p("There are many breeds of dogs. Each breed varies
-                                    in size and temperament. Owners often select a breed of
-                                    dog that they find to be compatible with their own lifestyle
-                                    and desires from a companion."))
-    )
+    demo(
+      accordion(accordion_content, fluid = F, active_title = "What is dog?",
+                custom_style = "background: #fffddb;")
     )
   )
 }
-grid <- function() {
+grid_demo <- function() {
   div(
     h1(class="ui header", id="grid", "Grid"),
-    demo(shiny.semantic::grid(
-      grid_template(default = list(
+    demo(
+      grid(
+        grid_template(default = list(
         areas = rbind(
           c("header", "header", "header"),
           c("menu",   "main",   "main"),
@@ -291,7 +309,6 @@ slider_demo <- function() {
   div(
     h1(class="ui header", id="slider", "Slider"),
     demo(slider_input("slider_1", value = 10, min = 0, max = 20)),
-    demo(sliderInput("slider_2", "select value", min = 0, max = 20, value = 1)),
     demo(range_input("range_1", value = 10, value2 = 15, min = 0, max = 20))
   )
 }
@@ -307,7 +324,7 @@ checkbox <- function() {
 progress_demo <- function() {
   div(
     h1(class="ui header", id="progress", "Progress"),
-    demo(shiny.semantic::progress("progress", percent = 24, label = "{percent}% complete"))
+    demo(progress("progress", percent = 24, label = "{percent}% complete"))
   )
 }
 
@@ -415,6 +432,7 @@ sidebar <- function() {
               a(class="item", href="#progress", "Progress"),
               a(class="item", href="#messagebox", "Messagebox"),
               a(class="item", href="#tabset", "Tabset"),
+              a(class="item", href="#notification", "Notification"),
               a(class="item", href="#calendar", "Calendar")
           )))
 }
@@ -461,17 +479,19 @@ ui <- function() {
             uilabel(),
             menu_demo(),
             list_demo(),
-            grid(),
+            grid_demo(),
             breadcrumb(),
             card_demo(),
-            accordion(),
+            accordion_demo(),
             slider_demo(),
             rating(),
             checkbox(),
             progress_demo(),
             msgbox_demo(),
+            toast_demo(),
             tabs(),
-            calendar_demo()
+            calendar_demo(),
+            br(),br()
         )
     )
   ))
@@ -479,6 +499,15 @@ ui <- function() {
 
 server <- shinyServer(function(input, output, session) {
   runjs(jsCode)
+
+  observeEvent(input$show_toast, {
+         toast(
+           "This is a semantic toast. Cheers!",
+           title  = "Notification",
+           duration = 3,
+           session = session
+         )
+  })
 })
 
 shinyApp(ui = ui(), server = server)
