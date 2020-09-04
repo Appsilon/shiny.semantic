@@ -1,10 +1,10 @@
 ---
-title: "Basics of shiny.semantic"
+title: "Shiny vs shiny.semantic - understanding the world of Bootstrap and FomanticUI"
 author: "Appsilon"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Basics of shiny.semantic}
+  %\VignetteIndexEntry{Shiny vs shiny.semantic - understanding the world of Bootstrap and FomanticUI}
   %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---
@@ -28,29 +28,39 @@ First of all, let's answer a few questions:
 
 - **Why do I need `shiny.semantic`?**
 
-You can build your `shiny` apps with standard shiny UI that relies on [Bootstrap](https://getbootstrap.com/).
-This means that `shiny` attaches CSS and JS code that is responsible for its neat look.
-Howver, after a while you might notice that all apps made this way tend to look quite similar.
-`shiny.semantic` helps you to add a fresh look to your web application by providing alternative
+You can build your `Shiny` apps with standard shiny UI that relies on [Bootstrap](https://getbootstrap.com/).
+This means that `Shiny` attaches CSS and JS code that is responsible for its neat look.
+However, after a while you might notice that all apps made this way tend to look quite similar.
+`shiny.semantic` helps you to add a fresh look to your web application by providing an alternative
 UI framework that works under the hood.
 
 - **What `shiny.semantic` has to do with Fomantic UI?**
 
-Similarly to shiny attaching *Bootstrap* CSS and JS libraries, `shiny.semantic` relies on
-[Fomantic UI](fomantic-ui.com/). Historically, we build this package around *Semantic UI*
-library, but it got deprecated and now we rely on the well-supported and maintained 
-community fork: [Fomantic UI](fomantic-ui.com/).
+Similarly to `Shiny` attaching *Bootstrap* CSS and JS libraries, `shiny.semantic` relies on
+[Fomantic UI](fomantic-ui.com/). Historically, we built this package around *Semantic UI*
+library, but it got deprecated and now (since December 2019) we rely on the well-supported
+and maintained community fork called [Fomantic UI](fomantic-ui.com/).
 
 - **Do I need to learn a new syntax to be able to use it?**
 
-Not at all! For you convenience we created wrappers of the most popular functions
-that you know from `shiny`. For example you can create an action button using
-snake case (which is default `shiny.semantic` standard): `action_button`, or
-you can use known from `shiny` camel case with consistent parameters: `actionButton`.
+Not at all! For your convenience, we created wrappers of the most popular functions
+that you know from `Shiny`. For example, you can create an action button using a
+snake case (which is a `shiny.semantic` standard): `action_button`, or
+you can use, more familiar from `Shiny`, camel case with consistent parameters: `actionButton`.
 
-**Note** however that the philosophy behind the *Bootstrap* and *Fomantic* is quite
-different, so some behaviour might be different. Usually `shiny.semantic` warns you about
-that or you can learn about it from the documentation.
+**Note**, however, that the philosophy behind the *Bootstrap* and *Fomantic* is quite
+different, so some behaviour might also differ. Usually `shiny.semantic` warns you or you
+can learn more about it from documentation of a specific function.
+
+- **Can I use standard Shiny components with `shiny.semantic`?**
+
+It depends. In general, to be able to render `shiny.semantic` components correctly,
+your app `UI` code must be surrounded by `semanticPage` (equivalent of `fluidPage`)
+function that switches off standard Bootstrap dependencies. Thus some components from
+Shiny might look just bad, but don't worry - most of them have `shiny.semantic` alternatives.
+Having said that, all of standard HTML elements from Shiny should work just fine
+(like `shiny::div` or `shiny::h2`).
+
 
 
 ## How to use `shiny.semantic`?
@@ -60,10 +70,20 @@ You can use `shiny.semantic` in two ways:
 ### (a) Using Fomantic CSS classes
 
 If you know this and that about web development, you can create a number of components
-by extending standard `shiny` objects with class definitions from [Fomantic UI](fomantic-ui.com/)
+by extending standard `Shiny` objects with class definitions from [Fomantic UI](fomantic-ui.com/)
 documentation. For example:
 
-```{r echo=T, include = T, screenshot.force = FALSE}
+```{r echo=T, include = T, eval = FALSE, screenshot.force = FALSE}
+div(class = "ui raised segment",
+  div(
+    a(class="ui green ribbon label", "Link"),
+    p("Lorem ipsum, lorem ipsum, lorem ipsum"),
+    actionButton("button", "Click")
+  )
+)
+```
+
+```{r echo=F, include = T, screenshot.force = FALSE}
 uirender(
   div(class = "ui raised segment",
     div(
@@ -78,8 +98,8 @@ width = "400px", height = "150px")
 
 ### (b) Using predefined objects
 
-If you are not that comfortable with the web development, you can take advantage of the 
-number of elements that we implemented for you. See some examples it below:
+If you are not that comfortable with web development, you can take advantage of the 
+number of elements that we implemented for you. See some examples below:
 
 ```{r echo = T, include = T, eval = FALSE, screenshot.force = FALSE}
 range_input("range", 10, 15, 0, 20)
@@ -90,11 +110,12 @@ date_input("date")
 For more components visit our [Components live demo website](https://demo.appsilon.ai/semantic/)
 or the `examples/` folder on our [repository](https://github.com/Appsilon/shiny.semantic/).
 
-See some of the interactive elements below:
+Little sneak-peak of what you can get is listed on the graphics below. Most of the components
+you may insert with just single line of code!
 
 <img src="https://raw.githubusercontent.com/Appsilon/shiny.semantic/develop/man/figures/semantic_components.png" alt="compoents" width="500"/>
 
-If you want to learn how to use a particular UI component, check its documentation. For example  you can call in RStudio:
+If you want to learn how to use a particular UI component, check its documentation. For example, you can call in RStudio (to see the docs for a counter button):
 
 ```{r echo = T, include = T, eval = FALSE, screenshot.force = FALSE}
 ?counter_button
@@ -102,6 +123,6 @@ If you want to learn how to use a particular UI component, check its documentati
 
 or use our [documentation website](https://appsilon.github.io/shiny.semantic/).
 
-All examples come with easy to use code snippets that help you get started.
+All examples come with easy to use code snippets that will help you get started.
 We hope that this short overview was useful. Good luck with building your first amazing
 app with `shiny.semantic` :)
