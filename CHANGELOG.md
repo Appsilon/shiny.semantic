@@ -11,7 +11,7 @@ All notable changes to this project will be documented in this file.
 
 - `accordion`
 
-- 3 vignettes
+- 4 vignettes
 
 - to modals: `modalDialog`, `removeModal`, `remove_all_modals`
 
