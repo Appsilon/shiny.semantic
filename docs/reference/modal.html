@@ -207,6 +207,10 @@ Set NULL, to make empty.</p></td>
       <th>modal_tags</th>
       <td><p>character with title for <code>modalDialog</code> - equivalent to header</p></td>
     </tr>
+    <tr>
+      <th>title</th>
+      <td><p>title displayed in header in <code>modalDialog</code></p></td>
+    </tr>
     </table>
 
 
@@ -228,7 +232,7 @@ Set NULL, to make empty.</p></td>
   <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>show</span>, {
     <span class='fu'><a href='create_modal.html'>create_modal</a></span>(<span class='fu'>modal</span>(
       <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"simple-modal"</span>,
-      <span class='kw'>header</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>h2</a></span>(<span class='st'>"Important message"</span>),
+      <span class='kw'>header</span> <span class='kw'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>h2</a></span>(<span class='st'>"Important message"</span>),
       <span class='st'>"This is an important message!"</span>
     ))
   })
@@ -323,12 +327,12 @@ Set NULL, to make empty.</p></td>
   ),
   <span class='kw'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
     <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>show</span>, {
-      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/showModal.html'>showModal</a></span>(<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/modalDialog.html'>modalDialog</a></span>(
+      <span class='fu'><a href='create_modal.html'>showModal</a></span>(<span class='fu'>modalDialog</span>(
         <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Important message"</span>,
         <span class='st'>"This modal will close after 3 sec."</span>, <span class='kw'>easyClose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
       ))
       <span class='fu'><a href='https://rdrr.io/r/base/Sys.sleep.html'>Sys.sleep</a></span>(<span class='fl'>3</span>)
-      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/showModal.html'>removeModal</a></span>()
+      <span class='fu'><a href='show_modal.html'>removeModal</a></span>()
     })
   }
 )

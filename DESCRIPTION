@@ -18,6 +18,7 @@ BugReports: https://github.com/Appsilon/shiny.semantic/issues
 Encoding: UTF-8
 LazyData: TRUE
 License: MIT + file LICENSE
+VignetteBuilder: knitr
 Imports:
     shiny (>= 0.12.1),
     htmltools (>= 0.2.6),
@@ -30,8 +31,12 @@ Imports:
     R6
 Suggests:
     dplyr,
+    tibble,
+    knitr,
     testthat,
     lintr,
     DT,
-    covr
+    covr,
+    leaflet,
+    plotly
 RoxygenNote: 7.1.1

@@ -2,18 +2,15 @@
 % Please edit documentation in R/slider.R
 \name{update_slider}
 \alias{update_slider}
-\alias{update_range}
+\alias{update_range_input}
 \alias{updateSliderInput}
-\alias{updateRangeInput}
 \title{Update slider Semantic UI component}
 \usage{
 update_slider(session, input_id, value)
 
-update_range(session, input_id, value, value2)
+update_range_input(session, input_id, value, value2)
 
 updateSliderInput(session, inputId, value, ...)
-
-updateRangeInput(session, inputId, value, value2)
 }
 \arguments{
 \item{session}{The \code{session} object passed to function given to \code{shinyServer}.}

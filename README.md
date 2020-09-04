@@ -190,6 +190,11 @@ please modify accordingly a **README.Rmd** file and use “Knit”.
 Documentation is rendered with `pkgdown`. Just run
 `pkgdown::build_site()` after rendering new **README.md**.
 
+**Changes in vignettes**
+
+If you modified or added a new vignette, please rebuild them with
+`devtools::build_vignettes()`.
+
 *Important:*
 
 1)  Please follow the code style from out

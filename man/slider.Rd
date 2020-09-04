@@ -4,7 +4,6 @@
 \alias{slider_input}
 \alias{sliderInput}
 \alias{range_input}
-\alias{rangeInput}
 \title{Create Semantic UI Slider / Range}
 \usage{
 slider_input(input_id, value, min, max, step = 1, class = NULL)
@@ -12,18 +11,6 @@ slider_input(input_id, value, min, max, step = 1, class = NULL)
 sliderInput(inputId, label, min, max, value, step = 1, width = NULL, ...)
 
 range_input(input_id, value, value2, min, max, step = 1, class = NULL)
-
-rangeInput(
-  inputId,
-  label,
-  min,
-  max,
-  value,
-  value2,
-  step = 1,
-  width = NULL,
-  ...
-)
 }
 \arguments{
 \item{input_id}{Input name. Reactive value is available under \code{input[[input_id]]}.}

@@ -222,6 +222,7 @@ search_selection_choices <- function(input_id,
 #' @examples
 #' if (interactive()) {
 #'   library(shiny)
+#'   library(tibble)
 #'   library(shiny.semantic)
 #'   shinyApp(
 #'     ui = semanticPage(
@@ -237,13 +238,15 @@ search_selection_choices <- function(input_id,
 #'         dplyr::filter(data, has_matching(car))
 #'       }
 #'
-#'       search_api_url <- register_search(session, tibble::rownames_to_column(mtcars, "car"), api_response)
+#'       search_api_url <- register_search(session,
+#'                            tibble::rownames_to_column(mtcars, "car"), api_response)
 #'
 #'       output$api_url <- renderText({
-#'         glue::glue(
-#'           "Registered API url: ",
-#'           "{session$clientData$url_protocol}//{session$clientData$url_hostname}:{session$clientData$url_port}/",
-#'           "{search_api_url}&q={input$txt}"
+#'        glue::glue(
+#'         "Registered API url: ",
+#'         "{session$clientData$url_protocol}//{session$clientData$url_hostname}",
+#'         ":{session$clientData$url_port}/",
+#'         "{search_api_url}&q={input$txt}"
 #'         )
 #'       })
 #'

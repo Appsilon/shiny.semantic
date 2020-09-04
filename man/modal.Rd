@@ -42,6 +42,8 @@ Set NULL, to make empty.}
 \item{settings}{list of vectors of Semantic UI settings to be added to the modal. Default NULL.}
 
 \item{modal_tags}{character with title for \code{modalDialog} - equivalent to header}
+
+\item{title}{title displayed in header in \code{modalDialog}}
 }
 \description{
 This creates a modal using Semantic UI styles.

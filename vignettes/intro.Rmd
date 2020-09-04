@@ -5,11 +5,11 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Build your first dynamic shiny.semantic app using layout and grid}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include = FALSE}
+```{r setup, include = FALSE, screenshot.force = FALSE}
 knitr::opts_chunk$set(
   echo = TRUE,
   collapse = TRUE,
@@ -22,18 +22,27 @@ library(shiny.semantic)
 ## Create UI inside documents
 This is how you generate your first UI with `shiny.semantic`:
 
-```{r echo=T, include = T}
-uirender(uiinput(icon("dog"),
-        numeric_input("input", value = 0, label = "")
-), width = "200px", height = "100px")
+```{r echo=T, include = T, screenshot.force = FALSE}
+uirender(
+  shiny::tagList(
+    h4("Numeric input", icon("world")),
+    shiny.semantic::numeric_input("input", value = 0, label = ""),
+    shiny.semantic::list_container(list(
+        list(header = "Item 1", description = "My text for item 1", icon = "cat"),
+        list(header = "Item 2", description = "My text for item 2", icon = "tree"),
+        list(header = "Item 3", description = "My text for item 3", icon = "dog")
+      ), is_divided = TRUE
+    )
+  ),
+width = "200px", height = "280px")
 ```
 
 ## Create a simple Shiny App
 Let's create a Shiny app with `semanticPage()` and just an `h1` title.
 
-<img src="intro_images/Screenshot from 2020-08-18 10-47-58.png" alt="screen1" width="800"/>
+<img src="intro_images/s0.png" alt="screen1" width="800"/>
 
-```{r echo=TRUE, include=TRUE, eval=FALSE}
+```{r echo=TRUE, include=TRUE, eval=FALSE, screenshot.force = FALSE}
 ui <- semanticPage(
   title = "My first page",
   h1("My page")
@@ -46,9 +55,9 @@ shinyApp(ui, server)
 
 Now let's add sidebar layout `sidebar_layout()` with a sidebar panel `sidebar_panel()` and main panel `main_panel()`. The sidebar is displayed with a distinct background color and typically contains input controls. The main area occupies 2/3 of the horizontal width and typically contains outputs.
 
-<img src="intro_images/Screenshot from 2020-08-18 10-49-57.png" alt="screen2" width="800"/>
+<img src="intro_images/s1.png" alt="screen2" width="800"/>
 
-```{r echo=TRUE, include=TRUE, eval=FALSE}
+```{r echo=TRUE, include=TRUE, eval=FALSE, screenshot.force = FALSE}
 ui <- semanticPage(
   title = "My first page",
   h1("My page"),
@@ -65,9 +74,9 @@ shinyApp(ui, server)
 
 Next let's fill in the main panel `main_panel()` with a Fomantic (Semantic previously) UI segment containing 2 cards.
 
-<img src="intro_images/Screenshot from 2020-08-18 10-51-02.png" alt="screen3" width="800"/>
+<img src="intro_images/s2.png" alt="screen3" width="800"/>
 
-```{r echo=TRUE, include=TRUE, eval=FALSE}
+```{r echo=TRUE, include=TRUE, eval=FALSE, screenshot.force = FALSE}
 ui <- semanticPage(
   title = "My first page",
   h1("My page"),
@@ -104,9 +113,9 @@ shinyApp(ui, server)
 
 Time to fill in sidebar `sidebar_panel()`, so let's add a dropdown. We create it input using `dropdown_input()`.
 
-<img src="intro_images/Screenshot from 2020-08-18 10-52-24.png" alt="screen4" width="800"/>
+<img src="intro_images/s3.png" alt="screen4" width="800"/>
 
-```{r echo=TRUE, include=TRUE, eval=FALSE}
+```{r echo=TRUE, include=TRUE, eval=FALSE, screenshot.force = FALSE}
 ui <- semanticPage(
   title = "My first page",
   h1("My page"),
@@ -148,9 +157,9 @@ shinyApp(ui, server)
 
 Let's make dropdown do something and generate a histogram and a simple plot from a selected `mtcars` column using dropdown.
 
-<img src="intro_images/Screenshot from 2020-08-18 10-53-23.png" alt="screen5" width="800"/>
+<img src="intro_images/s4.png" alt="screen5" width="800"/>
 
-```{r echo=TRUE, include=TRUE, eval=FALSE}
+```{r echo=TRUE, include=TRUE, eval=FALSE, screenshot.force = FALSE}
 ui <- semanticPage(
   title = "My first page",
   h1("My page"),
@@ -196,7 +205,7 @@ shinyApp(ui, server)
 
 Finally let's change the layout of the plots on the page and make them appear next to each other. We will use `grid()` for it and define a grid template using `grid_template()` with 1 row and 2 columns of the same size. Our grid template will contain 2 areas `chart1` and `chart2`
 
-```{r echo=TRUE, include=TRUE, eval=FALSE}
+```{r echo=TRUE, include=TRUE, eval=FALSE, screenshot.force = FALSE}
 grid_charts <- grid_template(
   default = list(areas = rbind(c("chart1", "chart2")),
                  rows_height = c("100%"),
@@ -206,9 +215,9 @@ grid_charts <- grid_template(
 
 We assign plots' outputs `plotOutput()` to both areas inside the `grid` function.
 
-<img src="intro_images/Screenshot from 2020-08-18 10-54-33.png" alt="screen6" width="800"/>
+<img src="intro_images/s5.png" alt="screen6" width="800"/>
 
-```{r echo=TRUE, include=TRUE, eval=FALSE}
+```{r echo=TRUE, include=TRUE, eval=FALSE, screenshot.force = FALSE}
 ui <- semanticPage(
   title = "My first page",
   h1("My page"),
