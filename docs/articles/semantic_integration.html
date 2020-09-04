@@ -102,7 +102,7 @@
       <h1 data-toc-skip>Shiny.semantic integration with plotly and leaflet</h1>
                         <h4 class="author">Appsilon</h4>
             
-            <h4 class="date">2020-09-03</h4>
+            <h4 class="date">2020-09-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Appsilon/shiny.semantic/blob/master/vignettes/semantic_integration.Rmd"><code>vignettes/semantic_integration.Rmd</code></a></small>
       <div class="hidden name"><code>semantic_integration.Rmd</code></div>
@@ -113,10 +113,10 @@
     
 <div id="integration-with-plotly-or-leaflet" class="section level2">
 <h2 class="hasAnchor">
-<a href="#section-integration-with-plotly-or-leaflet" class="anchor"></a>Integration with plotly or leaflet</h2>
-<div id="section-plotly-integration" class="section level3">
+<a href="#integration-with-plotly-or-leaflet" class="anchor"></a>Integration with plotly or leaflet</h2>
+<div id="plotly-integration" class="section level3">
 <h3 class="hasAnchor">
-<a href="#section-plotly-integration" class="anchor"></a>Plotly integration</h3>
+<a href="#plotly-integration" class="anchor"></a>Plotly integration</h3>
 <p>Similarly to <code>shiny</code>, <code>shiny.semantic</code> works well with other popular R packages. Let’s see how to create a simple application with <code>plotly</code>.</p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny.semantic</span>)
@@ -141,9 +141,9 @@
 
 <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html">shinyApp</a></span>(<span class="kw">ui</span> <span class="kw">=</span> <span class="no">ui</span>, <span class="kw">server</span> <span class="kw">=</span> <span class="no">server</span>)</pre></body></html></div>
 </div>
-<div id="section-leaflet-integration" class="section level3">
+<div id="leaflet-integration" class="section level3">
 <h3 class="hasAnchor">
-<a href="#section-leaflet-integration" class="anchor"></a>Leaflet integration</h3>
+<a href="#leaflet-integration" class="anchor"></a>Leaflet integration</h3>
 <p>And now let’s have a look at similar example, but with <code>leaflet</code>.</p>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shiny.semantic</span>)
@@ -168,62 +168,6 @@
 
 <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html">shinyApp</a></span>(<span class="kw">ui</span> <span class="kw">=</span> <span class="no">ui</span>, <span class="kw">server</span> <span class="kw">=</span> <span class="no">server</span>)</pre></body></html></div>
 </div>
-
-<div id="advanced-using-fomantic-ui-javascript-elements" class="section level2">
-<h2 class="hasAnchor">
-<a href="#advanced-using-fomantic-ui-javascript-elements" class="anchor"></a>[Advanced] Using Fomantic UI JavaScript elements</h2>
-<p>Some Fomantic UI elements require to run a specific JS code when DOM document is ready. There are at least 2 options to do this:</p>
-<ol style="list-style-type: decimal">
-<li>Use <code>shinyjs</code>
-</li>
-</ol>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">shinyjs</span>)
-<span class="no">...</span>
-<span class="no">jsCode</span> <span class="kw">&lt;-</span> <span class="st">" # Fomantic UI componts JS "</span>
-<span class="no">...</span>
-<span class="no">ui</span> <span class="kw">&lt;-</span> <span class="kw">function</span>() {
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html">shinyUI</a></span>(
-    <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span>(
-      <span class="kw">title</span> <span class="kw">=</span> <span class="st">"Your page title"</span>,
-      <span class="kw pkg">shinyjs</span><span class="kw ns">::</span><span class="fu">useShinyjs</span>(),
-      <span class="co"># Your UI code</span>
-    )
-  )
-}
-<span class="no">server</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html">shinyServer</a></span>(<span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>) {
-  <span class="fu">runjs</span>(<span class="no">jsCode</span>)
-  <span class="co"># Your Shiny logic</span>
-})
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html">shinyApp</a></span>(<span class="kw">ui</span> <span class="kw">=</span> <span class="fu">ui</span>(), <span class="kw">server</span> <span class="kw">=</span> <span class="no">server</span>)</pre></body></html></div>
-<ol start="2" style="list-style-type: decimal">
-<li>Use <code>shiny::tags$script()</code>
-</li>
-</ol>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">...</span>
-<span class="no">jsCode</span> <span class="kw">&lt;-</span> <span class="st">"
-$(document).ready(function() {
-  # Semantic UI components JS code, like:
-  #$('.rating').rating('setting', 'clearable', true);
-  #$('.disabled .rating').rating('disable');
-})
-...
-"</span>
-
-<span class="no">ui</span> <span class="kw">&lt;-</span> <span class="kw">function</span>() {
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html">shinyUI</a></span>(
-    <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span>(
-      <span class="kw">title</span> <span class="kw">=</span> <span class="st">"My page"</span>,
-      <span class="no">tags</span>$<span class="fu">script</span>(<span class="no">jsCode</span>),
-      <span class="co"># Your UI code</span>
-    )
-  )
-}
-<span class="no">...</span>
-<span class="no">server</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html">shinyServer</a></span>(<span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>) {
-  <span class="co"># Your Shiny logic</span>
-})
-
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html">shinyApp</a></span>(<span class="kw">ui</span> <span class="kw">=</span> <span class="fu">ui</span>(), <span class="kw">server</span> <span class="kw">=</span> <span class="no">server</span>)</pre></body></html></div>
 </div>
   </div>
 
