@@ -95,18 +95,6 @@ range_input <- function(input_id, value, value2, min, max, step = 1, class = NUL
   )
 }
 
-#' @param inputId Input name.
-#' @rdname slider
-#' @export
-rangeInput <- function(inputId, label, min, max, value, value2, step = 1, width = NULL, ...) {
-  warn_unsupported_args(list(...))
-  form(
-    style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
-    tags$label(label),
-    range_input(inputId, value, value2, min, max, step = step)
-  )
-}
-
 #' Update slider Semantic UI component
 #'
 #' Change the value of a \code{\link{slider_input}} input on the client.
@@ -146,7 +134,7 @@ update_slider <- function(session, input_id, value) {
 #' @param value2 The upper value of the range.
 #'
 #' @export
-update_range <- function(session, input_id, value, value2) {
+update_range_input <- function(session, input_id, value, value2) {
   message <- list(value = jsonlite::toJSON(c(value, value2)))
   session$sendInputMessage(input_id, message)
 }
@@ -160,9 +148,3 @@ updateSliderInput <- function(session, inputId, value,  ...) {
   update_slider(session, inputId, value)
 }
 
-#' @param inputId Input name.
-#' @rdname update_slider
-#' @export
-updateRangeInput <- function(session, inputId, value, value2) {
-  update_range(session, inputId, value, value2)
-}

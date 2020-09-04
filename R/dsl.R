@@ -510,19 +510,19 @@ field <- function(..., class = "") {
 #'   library(shiny.semantic)
 #'
 #'   ui <- shinyUI(semanticPage(
-#'     messagebox(header = "Main header", content = "text"),
+#'     message_box(header = "Main header", content = "text"),
 #'     # message with icon
-#'     messagebox(class = "icon", header = "Main header", content = "text", icon_name = "dog"),
+#'     message_box(class = "icon", header = "Main header", content = "text", icon_name = "dog"),
 #'     # closable message
-#'     messagebox(header = "Main header", content = "text", closable =  TRUE),
+#'     message_box(header = "Main header", content = "text", closable =  TRUE),
 #'     # floating
-#'     messagebox(class = "floating", header = "Main header", content = "text"),
+#'     message_box(class = "floating", header = "Main header", content = "text"),
 #'     # compact
-#'     messagebox(class = "compact", header = "Main header", content = "text"),
+#'     message_box(class = "compact", header = "Main header", content = "text"),
 #'     # warning
-#'     messagebox(class = "warning", header = "Warning", content = "text"),
+#'     message_box(class = "warning", header = "Warning", content = "text"),
 #'     # info
-#'     messagebox(class = "info", header = "Info", content = "text")
+#'     message_box(class = "info", header = "Info", content = "text")
 #'   ))
 #'   server <- shinyServer(function(input, output) {
 #'   })
@@ -531,7 +531,7 @@ field <- function(..., class = "") {
 #' }
 #'
 #' @export
-messagebox <- function(header, content, class = "", icon_name, closable = FALSE) {
+message_box <- function(header, content, class = "", icon_name, closable = FALSE) {
   if (length(content) > 1) {
     content <- shiny::tags$ul(class = "list", lapply(content, shiny::tags$li))
   }
@@ -802,7 +802,7 @@ list_container <- function(content_list, is_divided = FALSE) {
 #' @param active_title if active title matches `title` from \code{accordion_list}
 #' then this element is active by default
 #' @param styled if switched of then raw style (no boxes) is used
-#' @custom_style character with custom style added to CSS of accordion (advanced use)
+#' @param custom_style character with custom style added to CSS of accordion (advanced use)
 #'
 #' @return shiny tag list with accordion UI
 #' @export

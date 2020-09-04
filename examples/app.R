@@ -7,6 +7,8 @@ library(formatR)
 library(httr)
 library(rjson)
 
+options(semantic.themes = TRUE)
+
 demo <- function(code) {
   div(class = "ui raised segment",
       code,
@@ -154,9 +156,15 @@ accordion <- function() {
     h1(class="ui header", id="accordion", "Accordion"),
     demo(div(class="ui styled accordion",
              div(class="active title", icon('dropdown icon'), "What is dog?"),
-             div(class="active content", p("A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.")),
+             div(class="active content", p("A dog is a type of domesticated animal.
+                                           Known for its loyalty and faithfulness,
+                                           it can be found as a welcome guest in many
+                                           households across the world.")),
              div(class="title", icon('dropdown icon'), "What kinds of dogs are there?"),
-             div(class="content", p("There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion."))
+             div(class="content", p("There are many breeds of dogs. Each breed varies
+                                    in size and temperament. Owners often select a breed of
+                                    dog that they find to be compatible with their own lifestyle
+                                    and desires from a companion."))
     )
     )
   )
@@ -247,13 +255,13 @@ card_demo <- function() {
 msgbox_demo <- function() {
   div(
     h1(class="ui header", id="messagebox", "Messagebox"),
-    demo(messagebox(header = "Main header", content = "text")),
-    demo(messagebox(class = "icon", header = "Main header", content = "text", icon_name = "dog")),
-    demo(messagebox(header = "Main header", content = "text", closable =  TRUE)),
-    demo(messagebox(class = "floating", header = "Main header", content = "text")),
-    demo(messagebox(class = "compact", header = "Main header", content = "text")),
-    demo(messagebox(class = "warning", header = "Warning", content = "text")),
-    demo(messagebox(class = "info", header = "Info", content = "text"))
+    demo(message_box(header = "Main header", content = "text")),
+    demo(message_box(class = "icon", header = "Main header", content = "text", icon_name = "dog")),
+    demo(message_box(header = "Main header", content = "text", closable =  TRUE)),
+    demo(message_box(class = "floating", header = "Main header", content = "text")),
+    demo(message_box(class = "compact", header = "Main header", content = "text")),
+    demo(message_box(class = "warning", header = "Warning", content = "text")),
+    demo(message_box(class = "info", header = "Info", content = "text"))
   )
 }
 
@@ -284,14 +292,7 @@ slider_demo <- function() {
     h1(class="ui header", id="slider", "Slider"),
     demo(slider_input("slider_1", value = 10, min = 0, max = 20)),
     demo(sliderInput("slider_2", "select value", min = 0, max = 20, value = 1)),
-    demo(range_input("range_1", value = 10, value2 = 15, min = 0, max = 20)),
-    demo(rangeInput(inputId = "range_2",
-                    label = "select range",
-                    min = 0,
-                    max = 20,
-                    value = 3,
-                    value2 = 6,
-                    step = 1))
+    demo(range_input("range_1", value = 10, value2 = 15, min = 0, max = 20))
   )
 }
 
@@ -436,6 +437,7 @@ css <- "
 #examples > div > .header {
   margin-top: 1em;
 }
+
 .theme.form {
   position: fixed !important;
   right: 5px;
@@ -443,44 +445,40 @@ css <- "
   width: 15em !important;
 }"
 
-##################### !!! Remember to set to true
-options(semantic.themes = TRUE)
-#####################
-
-ui <- semanticPage(
-  theme = "cerulean",
-  tags$head(tags$style(HTML(css))),
-  useShinyjs(),
-  sidebar(),
-  div(style="margin-left: 210px",
-      theme_selector(),
-      div(id="examples", class="ui container",
-          header(),
-          button(),
-          counter_button_demo(),
-          icon_demo(),
-          divider(),
-          uiinput_demo(),
-          uilabel(),
-          menu_demo(),
-          list_demo(),
-          grid(),
-          breadcrumb(),
-          card_demo(),
-          accordion(),
-          slider_demo(),
-          rating(),
-          checkbox(),
-          progress_demo(),
-          msgbox_demo(),
-          tabs(),
-          calendar_demo()
-      )
-  )
-)
+ui <- function() {
+  shinyUI(semanticPage(
+    tags$head(tags$style(HTML(css))),
+    useShinyjs(),
+    sidebar(),
+    div(style="margin-left: 210px",
+        div(id="examples", class="ui container",
+            header(),
+            button(),
+            counter_button_demo(),
+            icon_demo(),
+            divider(),
+            uiinput_demo(),
+            uilabel(),
+            menu_demo(),
+            list_demo(),
+            grid(),
+            breadcrumb(),
+            card_demo(),
+            accordion(),
+            slider_demo(),
+            rating(),
+            checkbox(),
+            progress_demo(),
+            msgbox_demo(),
+            tabs(),
+            calendar_demo()
+        )
+    )
+  ))
+}
 
 server <- shinyServer(function(input, output, session) {
   runjs(jsCode)
 })
 
-shinyApp(ui = ui, server = server)
+shinyApp(ui = ui(), server = server)

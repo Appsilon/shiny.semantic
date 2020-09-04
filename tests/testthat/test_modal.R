@@ -97,7 +97,7 @@ test_that("test modalDialog", {
     "This is an important message!"
   ))
   expect_true(any(grepl(
-    "<div class=\"header\">Important message</div>",
+    "<h2>Important message</h2>",
     si_str, fixed = TRUE)))
   expect_true(any(grepl(
     "<div class=\"content\">This is an important message!</div>",

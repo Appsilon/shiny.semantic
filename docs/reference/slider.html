@@ -155,19 +155,7 @@ available under <code>input[[input_id]]</code>. Use Range for range of values.</
 
 <span class='fu'>sliderInput</span>(<span class='no'>inputId</span>, <span class='no'>label</span>, <span class='no'>min</span>, <span class='no'>max</span>, <span class='no'>value</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
-<span class='fu'>range_input</span>(<span class='no'>input_id</span>, <span class='no'>value</span>, <span class='no'>value2</span>, <span class='no'>min</span>, <span class='no'>max</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='fu'>rangeInput</span>(
-  <span class='no'>inputId</span>,
-  <span class='no'>label</span>,
-  <span class='no'>min</span>,
-  <span class='no'>max</span>,
-  <span class='no'>value</span>,
-  <span class='no'>value2</span>,
-  <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>
-)</pre>
+<span class='fu'>range_input</span>(<span class='no'>input_id</span>, <span class='no'>value</span>, <span class='no'>value2</span>, <span class='no'>min</span>, <span class='no'>max</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -236,9 +224,9 @@ available under <code>input[[input_id]]</code>. Use Range for range of values.</
   <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span>(
     <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
       <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Slider example"</span>,
-      <span class='no'>tags</span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>br</a></span>(),
+      <span class='no'>tags</span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>br</a></span>(),
       <span class='fu'>slider_input</span>(<span class='st'>"slider"</span>, <span class='fl'>10</span>, <span class='fl'>0</span>, <span class='fl'>20</span>),
-      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>p</a></span>(<span class='st'>"Selected value:"</span>),
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>p</a></span>(<span class='st'>"Selected value:"</span>),
       <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"slider"</span>)
     )
   )
@@ -253,9 +241,9 @@ available under <code>input[[input_id]]</code>. Use Range for range of values.</
    <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span>(
      <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
        <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Range example"</span>,
-       <span class='no'>tags</span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>br</a></span>(),
+       <span class='no'>tags</span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>br</a></span>(),
        <span class='fu'>range_input</span>(<span class='st'>"range"</span>, <span class='fl'>10</span>, <span class='fl'>15</span>, <span class='fl'>0</span>, <span class='fl'>20</span>),
-       <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>p</a></span>(<span class='st'>"Selected values:"</span>),
+       <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/builder.html'>p</a></span>(<span class='st'>"Selected values:"</span>),
        <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"range"</span>)
     )
   )

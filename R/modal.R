@@ -17,6 +17,7 @@
 #' @param settings list of vectors of Semantic UI settings to be added to the modal. Default NULL.
 #' @param modal_tags other modal elements. Default NULL.
 #' @param modal_tags character with title for \code{modalDialog} - equivalent to header
+#' @param title title displayed in header in \code{modalDialog}
 #'
 #' @examples
 #' ## Create a simple server modal
@@ -218,7 +219,7 @@ modalDialog <- function(..., title = NULL, footer = NULL) {
     args[[arg]] <- NULL
   }
   args$id <- generate_random_id("modal")
-  args$header <- title
+  args$header <- h2(title)
   args$footer <- footer
   do.call(modal, args)
 }
@@ -228,6 +229,7 @@ modalDialog <- function(..., title = NULL, footer = NULL) {
 #' @param ui_modal HTML containing the modal.
 #' @param show If the modal should only be created or open when called (open by default).
 #' @param session Current session.
+#' @param ui Same as \code{ui_modal} in show modal
 #' @seealso modal
 #'
 #' @import shiny
