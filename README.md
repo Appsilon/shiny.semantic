@@ -53,9 +53,24 @@ ui <- semanticPage(
 )
 ```
 
-## Component examples
+## Shiny.semantic demos
 
-<img src="man/figures/semantic_components.png" alt="" width="80%" />
+### Case studies
+
+| [:link: Churn analytics](https://demo.appsilon.ai/churn) | [:link: Fraud detection](https://demo.appsilon.ai/frauds) |
+| :------------------------------------------------------: | :-------------------------------------------------------: |
+| <img src="man/figures/churn.png" alt="" width="100%" />  |  <img src="man/figures/fraud.png" alt="" width="100%" />  |
+
+### Before and after
+
+We show how `shiny.semantic` can be used to style an app and change it’s
+look.
+
+| [:link: BEFORE Utah Division of Water Quality (DWQ)](https://shiny.rstudio.com/gallery/lake-profile-dashboard.html) | [:link: AFTER Utah Division of Water Quality (DWQ)](https://demo.appsilon.ai/apps/water-quality/) |
+| :-----------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: |
+|                             <img src="man/figures/before_wq.png" alt="" width="100%" />                             |                    <img src="man/figures/after_wq.png" alt="" width="100%" />                     |
+
+## Component examples
 
 <center>
 
@@ -100,12 +115,6 @@ See more examples with code in the `examples` folder:
   - [Notification
     demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/toast/app.R)
 
-Check out also our dashboard examples made with **shiny.semantic**
-library:
-
-| [Churn analytics](https://demo.appsilon.ai/churn) | [Fraud detection](https://demo.appsilon.ai/frauds) |
-| ------------------------------------------------- | -------------------------------------------------- |
-
 ## How to install?
 
 You can install a stable `shiny.semantic` release from CRAN repository:
@@ -132,7 +141,7 @@ remotes::install_github("Appsilon/shiny.semantic", ref = "0.1.0")
 ## How to use it?
 
 Firstly, you will have to invoke `shinyUI()` with `semanticPage()`
-instead of standard Shiny UI definitions like e.g. `bootstrapPage()`.
+instead of standard Shiny UI definitions like e.g. `bootstrapPage()`.
 From now on, all components can be annotated with [Fomantic
 UI](https://fomantic-ui.com/) specific CSS classes and also you will be
 able to use [shiny.semantic
