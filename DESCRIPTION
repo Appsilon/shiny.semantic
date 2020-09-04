@@ -9,6 +9,7 @@ Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com", role = "a
   person("Ashley", "Baldry", role = "ctb"),
   person("Jakub", "Chojna", email = "jakub.chojna@appsilon.com", role = "ctb"),
   person("Olga", "Mierzwa-Sulima", email = "olga@appsilon.com", role = "ctb"),
+  person("Pedro", "Manuel Coutinho da Silva", email = "pedro@appsilon.com", role = "ctb"),
   person("Paweł", "Przytuła", email = "pawel@appsilon.com", role = "ctb"),
   person("Kamil", "Żyła", email = "kamil@appsilon.com", role = "ctb"),
   person(family = "Appsilon Sp. z o.o.", role = c("cph")))
