@@ -249,7 +249,7 @@ for <code>close_toast</code>.</p></td>
 
 <span class='no'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
   <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>show</span>, {
-    <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/toast.html'>toast</a></span>(
+    <span class='fu'>toast</span>(
       <span class='st'>"This is an important message!"</span>
     )
   })
@@ -262,7 +262,7 @@ for <code>close_toast</code>.</p></td>
 )
 <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
   <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>show</span>, {
-    <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/toast.html'>toast</a></span>(
+    <span class='fu'>toast</span>(
       <span class='kw'>title</span>  <span class='kw'>=</span> <span class='st'>"Question"</span>,
       <span class='st'>"Do you want to see more?"</span>,
       <span class='kw'>duration</span> <span class='kw'>=</span> <span class='fl'>0</span>,
@@ -295,14 +295,14 @@ for <code>close_toast</code>.</p></td>
 
   <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>show</span>, {
     <span class='co'># Save the ID for removal later</span>
-    <span class='no'>id</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/toast.html'>toast</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"Message"</span>, <span class='no'>n</span>), <span class='kw'>duration</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <span class='no'>id</span> <span class='kw'>&lt;-</span> <span class='fu'>toast</span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"Message"</span>, <span class='no'>n</span>), <span class='kw'>duration</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
     <span class='no'>ids</span> <span class='kw'>&lt;&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>ids</span>, <span class='no'>id</span>)
     <span class='no'>n</span> <span class='kw'>&lt;&lt;-</span> <span class='no'>n</span> + <span class='fl'>1</span>
   })
 
   <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>remove</span>, {
     <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>ids</span>) <span class='kw'>&gt;</span> <span class='fl'>0</span>)
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny.semantic/man/toast.html'>close_toast</a></span>(<span class='no'>ids</span>[<span class='fl'>1</span>])
+      <span class='fu'>close_toast</span>(<span class='no'>ids</span>[<span class='fl'>1</span>])
     <span class='no'>ids</span> <span class='kw'>&lt;&lt;-</span> <span class='no'>ids</span>[-<span class='fl'>1</span>]
   })
 }
