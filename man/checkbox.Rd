@@ -40,6 +40,8 @@ toggle(input_id, label = "", is_marked = TRUE, style = NULL)
 \item{inputId}{same as \code{input_id}}
 
 \item{value}{same as \code{is_marked}}
+
+\item{width}{The width of the input (currently not supported, but check \code{style})}
 }
 \description{
 Create Semantic UI checkbox

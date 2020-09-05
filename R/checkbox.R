@@ -11,6 +11,7 @@
 #' @param style Style of the widget.
 #' @param inputId same as \code{input_id}
 #' @param value same as \code{is_marked}
+#' @param width The width of the input (currently not supported, but check \code{style})
 #'
 #' @examples
 #' if (interactive()){

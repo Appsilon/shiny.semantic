@@ -191,7 +191,7 @@ list(areas = [data.frame of character],
   <span class='kw'>rows_height</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"50px"</span>, <span class='st'>"auto"</span>, <span class='st'>"100px"</span>),
   <span class='kw'>cols_width</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"100px"</span>, <span class='st'>"2fr"</span>, <span class='st'>"1fr"</span>)
 ))
-<span class='fu'><a href='display_grid.html'>display_grid</a></span>(<span class='no'>myGrid</span>)
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) <span class='fu'><a href='display_grid.html'>display_grid</a></span>(<span class='no'>myGrid</span>)
 <span class='no'>subGrid</span> <span class='kw'>&lt;-</span> <span class='fu'>grid_template</span>(<span class='kw'>default</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
   <span class='kw'>areas</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span>(
     <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"top_left"</span>, <span class='st'>"top_right"</span>),
@@ -201,7 +201,7 @@ list(areas = [data.frame of character],
   <span class='kw'>cols_width</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"50%"</span>, <span class='st'>"50%"</span>)
 ))
 
-<span class='fu'><a href='display_grid.html'>display_grid</a></span>(<span class='no'>subGrid</span>)</div></pre>
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) <span class='fu'><a href='display_grid.html'>display_grid</a></span>(<span class='no'>subGrid</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

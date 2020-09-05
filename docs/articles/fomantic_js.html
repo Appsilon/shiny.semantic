@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -102,7 +102,7 @@
       <h1 data-toc-skip>Using Fomantic UI JavaScript elements [Advanced]</h1>
                         <h4 class="author">Appsilon</h4>
             
-            <h4 class="date">2020-09-04</h4>
+            <h4 class="date">2020-09-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Appsilon/shiny.semantic/blob/master/vignettes/fomantic_js.Rmd"><code>vignettes/fomantic_js.Rmd</code></a></small>
       <div class="hidden name"><code>fomantic_js.Rmd</code></div>
@@ -127,13 +127,13 @@
   <span class="fu">shinyUI</span>(
     <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span>(
       <span class="kw">title</span> <span class="kw">=</span> <span class="st">"Your page title"</span>,
-      <span class="kw pkg">shinyjs</span><span class="kw ns">::</span><span class="fu">useShinyjs</span>(),
+      <span class="kw pkg">shinyjs</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/shinyjs/man/useShinyjs.html">useShinyjs</a></span>(),
       <span class="co"># Your UI code</span>
     )
   )
 }
 <span class="no">server</span> <span class="kw">&lt;-</span> <span class="fu">shinyServer</span>(<span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>) {
-  <span class="fu">runjs</span>(<span class="no">jsCode</span>)
+  <span class="fu"><a href="https://rdrr.io/pkg/shinyjs/man/runjs.html">runjs</a></span>(<span class="no">jsCode</span>)
   <span class="co"># Your Shiny logic</span>
 })
 <span class="fu">shinyApp</span>(<span class="kw">ui</span> <span class="kw">=</span> <span class="fu">ui</span>(), <span class="kw">server</span> <span class="kw">=</span> <span class="no">server</span>)</pre></body></html></div>
@@ -180,7 +180,7 @@ $(document).ready(function() {
 
 
       <footer><div class="copyright">
-  <p>Developed by Filip Stachura, Krystian Igras, Adam Forys, Dominik Krzeminski.</p>
+  <p>Developed by Filip Stachura, Dominik Krzeminski, Krystian Igras, Adam Forys, Paweł Przytuła, Jakub Chojna, Olga Mierzwa-Sulima.</p>
 </div>
 
 <div class="pkgdown">

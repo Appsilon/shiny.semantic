@@ -111,7 +111,7 @@ list_of_area_tags <- function(area_names) {
 #'   rows_height = c("50px", "auto", "100px"),
 #'   cols_width = c("100px", "2fr", "1fr")
 #' ))
-#' display_grid(myGrid)
+#' if (interactive()) display_grid(myGrid)
 #' subGrid <- grid_template(default = list(
 #'   areas = rbind(
 #'     c("top_left", "top_right"),
@@ -121,7 +121,7 @@ list_of_area_tags <- function(area_names) {
 #'   cols_width = c("50%", "50%")
 #' ))
 #'
-#' display_grid(subGrid)
+#' if (interactive()) display_grid(subGrid)
 #' @export
 grid_template <- function(
   default = list(areas = rbind(c("main_area")), rows_height = c("100%"), cols_width = c("100%")),

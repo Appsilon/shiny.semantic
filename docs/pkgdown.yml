@@ -4,5 +4,7 @@ pkgdown_sha: ~
 articles:
   basics: basics.html
   fomantic_js: fomantic_js.html
+  intro: intro.html
   semantic_integration: semantic_integration.html
-last_built: 2020-09-04T11:30Z
+last_built: 2020-09-05T09:51Z
+
