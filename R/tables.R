@@ -34,6 +34,7 @@ semantic_DT <- function(..., options = list()) {
 #' @param ... datatable parameters, check \code{?DT::datatable} to learn more.
 #'
 #' @return DT Output with semanitc style
+#' @export
 semantic_DTOutput <- function(...) {
     DT::DTOutput(...)
 }

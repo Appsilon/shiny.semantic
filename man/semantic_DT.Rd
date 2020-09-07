@@ -4,7 +4,7 @@
 \alias{semantic_DT}
 \title{Create Semantic DT Table}
 \usage{
-semantic_DT(...options = list())
+semantic_DT(..., options = list())
 }
 \arguments{
 \item{...}{datatable parameters, check \code{?DT::datatable} to learn more.}
