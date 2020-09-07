@@ -22,7 +22,7 @@
 #' }
 #'
 #' @export
-semantic_DT <- function(...options = list()) {
+semantic_DT <- function(..., options = list()) {
   DT::datatable(..., options = options,
                 class = 'ui small compact table',
                 style = "semanticui",
