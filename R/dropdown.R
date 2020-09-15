@@ -32,7 +32,10 @@
 #' @export
 dropdown_input <- function(input_id, choices, choices_value = choices,
                      default_text = "Select", value = NULL, type = "selection fluid") {
-    if (!is.null(value)) value <- paste(as.character(value), collapse = ",")
+    if (!is.null(value)) {
+      value <- paste(as.character(value), collapse = ",")
+      value <- paste0(value, ",")
+    }
     shiny::div(
       id = input_id, class = paste("ui", type, "dropdown semantic-select-input"),
       tags$input(type = "hidden", name = input_id, value = value),
