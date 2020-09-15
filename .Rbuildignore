@@ -19,3 +19,6 @@
 ^README.md$
 ^STYLEGUIDE.md$
 ^CODE_OF_CONDUCT.md$
+^doc/*
+^Meta$
+^vignettes$

@@ -17,11 +17,14 @@ updateSelectInput(session, inputId, label, choices = NULL, selected = NULL)
 then that name — rather than the value — is displayed to the user.}
 
 \item{selected}{The initially selected value (or multiple values if multiple = TRUE).
-  If not specified then defaults to the first value for single-select lists and no
-  values for multiple select lists.
-
-  @examples
-  ## Only run examples in interactive R sessions
+If not specified then defaults to the first value for single-select lists and no
+values for multiple select lists.}
+}
+\description{
+Update selecInput widget
+}
+\examples{
+## Only run examples in interactive R sessions
 if (interactive()) {
 
   ui <- semanticPage(
@@ -50,8 +53,6 @@ if (interactive()) {
   }
 
   shinyApp(ui, server)
-}}
 }
-\description{
-Update selecInput widget
+
 }

@@ -8,7 +8,7 @@ semanticPage(
   ...,
   title = "",
   theme = NULL,
-  supress_bootstrap = TRUE,
+  suppress_bootstrap = TRUE,
   margin = "10px"
 )
 }
@@ -21,7 +21,7 @@ wrapper (e.g. style, class etc.)}
 \item{theme}{Theme name or path. Full list of supported themes you will find in
 \code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.}
 
-\item{supress_bootstrap}{boolean flag that supresses bootstrap when turned on}
+\item{suppress_bootstrap}{boolean flag that supresses bootstrap when turned on}
 
 \item{margin}{character with body margin size}
 }
@@ -48,7 +48,7 @@ library(shiny.semantic)
 
 ui <- semanticPage(
   title = "Hello Shiny Semantic!",
-  label("Number of observations:"),
+  tags$label("Number of observations:"),
   slider_input("obs", value = 500, min = 0, max = 1000),
   segment(
     plotOutput("dist_plot")

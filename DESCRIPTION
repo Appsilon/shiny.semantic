@@ -1,12 +1,20 @@
 Package: shiny.semantic
 Type: Package
 Title: Semantic UI Support for Shiny
-Version: 0.3.3
+Version: 0.4.0
 Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com", role = "aut"),
+  person("Dominik", "Krzeminski", email = "dominik@appsilon.com", role = "cre"),
   person("Krystian", "Igras", email = "krystian@appsilon.com", role = "aut"),
   person("Adam", "Forys", email = "adam@appsilon.com", role = "aut"),
-  person("Dominik", "Krzeminski", email = "dominik@appsilon.com", role = "cre"),
+  person("Paweł", "Przytuła", email = "pawel@appsilon.com", role = "aut"),
+  person("Jakub", "Chojna", email = "jakub.chojna@appsilon.com", role = "aut"),
+  person("Olga", "Mierzwa-Sulima", email = "olga@appsilon.com", role = "aut"),
   person("Ashley", "Baldry", role = "ctb"),
+  person("Jakub", "Chojna", email = "jakub.chojna@appsilon.com", role = "ctb"),
+  person("Olga", "Mierzwa-Sulima", email = "olga@appsilon.com", role = "ctb"),
+  person("Pedro", "Manuel Coutinho da Silva", email = "pedro@appsilon.com", role = "ctb"),
+  person("Paweł", "Przytuła", email = "pawel@appsilon.com", role = "ctb"),
+  person("Kamil", "Żyła", email = "kamil@appsilon.com", role = "ctb"),
   person(family = "Appsilon Sp. z o.o.", role = c("cph")))
 Description: Creating a great user interface for your Shiny apps
     can be a hassle, especially if you want to work purely in R
@@ -18,6 +26,7 @@ BugReports: https://github.com/Appsilon/shiny.semantic/issues
 Encoding: UTF-8
 LazyData: TRUE
 License: MIT + file LICENSE
+VignetteBuilder: knitr
 Imports:
     shiny (>= 0.12.1),
     htmltools (>= 0.2.6),
@@ -30,8 +39,12 @@ Imports:
     R6
 Suggests:
     dplyr,
+    tibble,
+    knitr,
     testthat,
     lintr,
     DT,
-    covr
+    covr,
+    leaflet,
+    plotly
 RoxygenNote: 7.1.1

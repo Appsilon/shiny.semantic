@@ -28,7 +28,8 @@ $.extend(semanticSliderBinding, {
 
   // This returns a jQuery object with the DOM element.
   find: function(scope) {
-    return $(scope).find('.slider');
+    // checkbox with type slider was also found here causing: https://github.com/Appsilon/shiny.semantic/issues/229
+    return $(scope).find('.ui.slider:not(.checkbox)');
   },
 
   // Returns the ID of the DOM element.

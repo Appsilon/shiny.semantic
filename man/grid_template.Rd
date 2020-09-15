@@ -42,7 +42,7 @@ myGrid <- grid_template(default = list(
   rows_height = c("50px", "auto", "100px"),
   cols_width = c("100px", "2fr", "1fr")
 ))
-display_grid(myGrid)
+if (interactive()) display_grid(myGrid)
 subGrid <- grid_template(default = list(
   areas = rbind(
     c("top_left", "top_right"),
@@ -52,5 +52,5 @@ subGrid <- grid_template(default = list(
   cols_width = c("50\%", "50\%")
 ))
 
-display_grid(subGrid)
+if (interactive()) display_grid(subGrid)
 }

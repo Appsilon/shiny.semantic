@@ -25,11 +25,11 @@ if (interactive()){
     form(
       fields(class = "two",
              field(
-               label("Name"),
+               tags$label("Name"),
                text_input("name", value = "", type = "text", placeholder = "Enter Name...")
              ),
              field(
-               label("Surname"),
+               tags$label("Surname"),
                text_input("surname", value = "", type = "text", placeholder = "Enter Surname...")
              ))
     )

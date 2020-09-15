@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -141,10 +141,46 @@
     )
   )
 )</pre></div>
+<div id="shinysemantic-demos" class="section level2">
+<h2 class="hasAnchor">
+<a href="#shinysemantic-demos" class="anchor"></a>Shiny.semantic demos</h2>
+<div id="case-studies" class="section level3">
+<h3 class="hasAnchor">
+<a href="#case-studies" class="anchor"></a>Case studies</h3>
+<table class="table">
+<thead><tr class="header">
+<th align="center"><a href="https://demo.appsilon.ai/churn"><span class="emoji" data-emoji="link">🔗</span> Churn analytics</a></th>
+<th align="center"><a href="https://demo.appsilon.ai/frauds"><span class="emoji" data-emoji="link">🔗</span> Fraud detection</a></th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="center"><img src="reference/figures/churn.png" alt="" width="100%"></td>
+<td align="center"><img src="reference/figures/fraud.png" alt="" width="100%"></td>
+</tr></tbody>
+</table>
+</div>
+<div id="before-and-after" class="section level3">
+<h3 class="hasAnchor">
+<a href="#before-and-after" class="anchor"></a>Before and after</h3>
+<p>We show how <code>shiny.semantic</code> can be used to style an app and change it’s look.</p>
+<table class="table">
+<colgroup>
+<col width="54%">
+<col width="45%">
+</colgroup>
+<thead><tr class="header">
+<th align="center"><a href="https://shiny.rstudio.com/gallery/lake-profile-dashboard.html"><span class="emoji" data-emoji="link">🔗</span> BEFORE Utah Division of Water Quality (DWQ)</a></th>
+<th align="center"><a href="https://demo.appsilon.ai/apps/water-quality/"><span class="emoji" data-emoji="link">🔗</span> AFTER Utah Division of Water Quality (DWQ)</a></th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="center"><img src="reference/figures/before_wq.png" alt="" width="100%"></td>
+<td align="center"><img src="reference/figures/after_wq.png" alt="" width="100%"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
 <div id="component-examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#component-examples" class="anchor"></a>Component examples</h2>
-<p><img src="reference/figures/semantic_components.png" alt="" width="80%"></p>
 <center>
 <h3>
 </h3>
@@ -153,8 +189,7 @@
 </center>
 <p>See more examples with code in the <code>examples</code> folder:</p>
 <ul>
-<li><a href="https://github.com/Appsilon/shiny.semantic/blob/develop/examples/app.R">Static Semantic componenets demo</a></li>
-<li><a href="https://github.com/Appsilon/shiny.semantic/blob/develop/examples/themes/app.R">Static Semantic componenets demo with different theme</a></li>
+<li><a href="https://github.com/Appsilon/shiny.semantic/blob/develop/examples/app.R">Static Semantic components demo</a></li>
 <li><a href="https://github.com/Appsilon/shiny.semantic/blob/develop/examples/calendar/app.R">Calendar date and month demo with update</a></li>
 <li><a href="https://github.com/Appsilon/shiny.semantic/blob/develop/examples/counter_button/app.R">Counter button demo</a></li>
 <li><a href="https://github.com/Appsilon/shiny.semantic/blob/develop/examples/customcss/app.R">Custom CSS demo</a></li>
@@ -168,15 +203,8 @@
 <li><a href="https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R">Shiny selectInput demo</a></li>
 <li><a href="https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R">Slider and range with update demo</a></li>
 <li><a href="https://github.com/Appsilon/shiny.semantic/blob/develop/examples/tabset/app.R">Multiple tab demo</a></li>
+<li><a href="https://github.com/Appsilon/shiny.semantic/blob/develop/examples/toast/app.R">Notification demo</a></li>
 </ul>
-<p>Check out also our dashboard examples made with <strong>shiny.semantic</strong> library:</p>
-<table class="table">
-<thead><tr class="header">
-<th><a href="https://demo.appsilon.ai/churn">Churn analytics</a></th>
-<th><a href="https://demo.appsilon.ai/frauds">Fraud detection</a></th>
-</tr></thead>
-<tbody></tbody>
-</table>
 </div>
 <div id="how-to-install" class="section level2">
 <h2 class="hasAnchor">
@@ -219,6 +247,8 @@
 <p><strong>Changes in documentation</strong></p>
 <p>Both repository <strong>README.md</strong> file and an official documentation page are generated with Rmarkdown, so if there is a need to update them, please modify accordingly a <strong>README.Rmd</strong> file and use “Knit”.</p>
 <p>Documentation is rendered with <code>pkgdown</code>. Just run <code><a href="https://pkgdown.r-lib.org/reference/build_site.html">pkgdown::build_site()</a></code> after rendering new <strong>README.md</strong>.</p>
+<p><strong>Changes in vignettes</strong></p>
+<p>If you modified or added a new vignette, please rebuild them with <code><a href="https://devtools.r-lib.org//reference/build_vignettes.html">devtools::build_vignettes()</a></code>.</p>
 <p><em>Important:</em></p>
 <p>1) Please follow the code style from out <a href="https://github.com/Appsilon/shiny.semantic/blob/develop/STYLEGUIDE.md">styleguide</a>.</p>
 <p>2) We have a Contributor <a href="">Code of Conduct</a>. Make sure to check it and to follow it.</p>
@@ -292,9 +322,12 @@
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Filip Stachura <br><small class="roles"> Author </small>  </li>
+<li>Dominik Krzeminski <br><small class="roles"> Maintainer </small>  </li>
 <li>Krystian Igras <br><small class="roles"> Author </small>  </li>
 <li>Adam Forys <br><small class="roles"> Author </small>  </li>
-<li>Dominik Krzeminski <br><small class="roles"> Maintainer </small>  </li>
+<li>Paweł Przytuła <br><small class="roles"> Author </small>  </li>
+<li>Jakub Chojna <br><small class="roles"> Author </small>  </li>
+<li>Olga Mierzwa-Sulima <br><small class="roles"> Author </small>  </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
@@ -304,7 +337,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Filip Stachura, Krystian Igras, Adam Forys, Dominik Krzeminski.</p>
+  <p>Developed by Filip Stachura, Dominik Krzeminski, Krystian Igras, Adam Forys, Paweł Przytuła, Jakub Chojna, Olga Mierzwa-Sulima.</p>
 </div>
 
 <div class="pkgdown">
