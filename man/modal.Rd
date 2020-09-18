@@ -2,19 +2,22 @@
 % Please edit documentation in R/modal.R
 \name{modal}
 \alias{modal}
+\alias{modalDialog}
 \title{Create Semantic UI modal}
 \usage{
 modal(
   ...,
   id = "",
   class = "",
-  header = "",
+  header = NULL,
   content = NULL,
-  footer = NULL,
+  footer = div(class = "ui button positive", "OK"),
   target = NULL,
   settings = NULL,
   modal_tags = NULL
 )
+
+modalDialog(..., title = NULL, footer = NULL)
 }
 \arguments{
 \item{...}{Content elements to be added to the modal body.
@@ -31,19 +34,23 @@ If given in form of a list, HTML attributes for the container can also be change
 If given in form of a list, HTML attributes for the container can also be changed. Default NULL.}
 
 \item{footer}{Content to be displayed in the modal footer. Usually for buttons.
-If given in form of a list, HTML attributes for the container can also be changed. Default NULL.}
+If given in form of a list, HTML attributes for the container can also be changed.
+Set NULL, to make empty.}
 
 \item{target}{Javascript selector for the element that will open the modal. Default NULL.}
 
-\item{settings}{List of vectors of Semantic UI settings to be added to the modal. Default NULL.}
+\item{settings}{list of vectors of Semantic UI settings to be added to the modal. Default NULL.}
 
-\item{modal_tags}{Other modal elements. Default NULL.}
+\item{modal_tags}{character with title for \code{modalDialog} - equivalent to header}
+
+\item{title}{title displayed in header in \code{modalDialog}}
 }
 \description{
 This creates a modal using Semantic UI styles.
 }
 \examples{
 ## Create a simple server modal
+if (interactive()) {
 library(shiny)
 library(shiny.semantic)
 
@@ -59,13 +66,16 @@ server = function(input, output) {
   observeEvent(input$show, {
     create_modal(modal(
       id = "simple-modal",
-      title = "Important message",
+      header = h2("Important message"),
       "This is an important message!"
     ))
   })
 }
-
+shinyApp(ui, server)
+}
 ## Create a simple UI modal
+
+if (interactive()) {
 library(shiny)
 library(shiny.semantic)
 ui <- function() {
@@ -113,8 +123,10 @@ server <- shinyServer(function(input, output) {
     )
   })
 })
-
+shinyApp(ui, server)
+}
 ## Changing attributes of header and content.
+if (interactive()) {
 library(shiny)
 library(shiny.semantic)
 
@@ -131,12 +143,33 @@ server = function(input, output) {
     create_modal(modal(
       id = "simple-modal",
       title = "Important message",
-      header = list(style = "background: lightcoral"),
+      header = list("!!!", style = "background: lightcoral"),
       content = list(style = "background: lightblue",
                      `data-custom` = "value", "This is an important message!"),
       p("This is also part of the content!")
     ))
   })
+}
+shinyApp(ui, server)
+}
+if (interactive()) {
+library(shiny)
+library(shiny.semantic)
+shinyApp(
+  ui = semanticPage(
+    actionButton("show", "Show modal dialog")
+  ),
+  server = function(input, output) {
+    observeEvent(input$show, {
+      showModal(modalDialog(
+        title = "Important message",
+        "This modal will close after 3 sec.", easyClose = FALSE
+      ))
+      Sys.sleep(3)
+      removeModal()
+    })
+  }
+)
 }
 
 }

@@ -16,50 +16,50 @@ ui <- shinyUI(
             form(
               h4(class = "ui dividing header", "Inputs"),
               field(
-                label("Text"),
+                tags$label("Text"),
                 text_input("text_ex", value = "", type = "text", placeholder = "Enter Text...")
               ),
               field(
-                label("Text Area"),
+                tags$label("Text Area"),
                 text_input(
                   "textarea_ex", value = "", type = "textarea", placeholder = "Enter Text...", attribs = list(rows = 2)
                 )
               ),
               field(
-                label("Password"),
+                tags$label("Password"),
                 text_input("password_ex", value = "", type = "password", placeholder = "Select Password")
               ),
               field(
-                label("E-Mail"),
+                tags$label("E-Mail"),
                 text_input("email_ex", value = "", type = "email", placeholder = "Enter E-Mail")
               ),
               field(
-                label("URL"),
+                tags$label("URL"),
                 text_input("url_ex", value = "", type = "url", placeholder = "Enter URL")
               ),
               field(
                 numeric_input("number_ex", "Numeric", value = 50, min = 0, max = 100)
               ),
               field(
-                label("Checkbox"),
+                tags$label("Checkbox"),
                 checkbox_input("checkbox_ex", "Checkbox"),
                 tags$br(),
                 checkbox_input("slider_ex", "Slider", type = "slider")
               ),
               field(
-                label("Group Radio Button"),
+                tags$label("Group Radio Button"),
                 multiple_radio(
                   "grp_radio_ex", "Favourite Letter", choices = LETTERS[1:4], selected = "B", position = "inline"
                 )
               ),
               field(
-                label("Group Checkbox"),
+                tags$label("Group Checkbox"),
                 multiple_checkbox(
                   "grp_check_ex", "Favourite Numbers", choices = 1:5, position = "inline"
                 )
               ),
               field(
-                label("Calendar"),
+                tags$label("Calendar"),
                 calendar(
                   "calendar_ex"
                 )
@@ -75,45 +75,45 @@ ui <- shinyUI(
             form(
               h4(class = "ui dividing header", "Outputs"),
               field(
-                label("Text"),
+                tags$label("Text"),
                 "Written Text: ", shiny::textOutput("text_ex", container = shiny::span)
               ),
               field(
-                label("Text Area"),
+                tags$label("Text Area"),
                 "Written Text: ", shiny::textOutput("textarea_ex", container = shiny::span)
               ),
               field(
-                label("Password"),
+                tags$label("Password"),
                 "Written Text: ", shiny::textOutput("password_ex", container = shiny::span)
               ),
               field(
-                label("E-Mail"),
+                tags$label("E-Mail"),
                 "Written Text: ", shiny::textOutput("email_ex", container = shiny::span)
               ),
               field(
-                label("URL"),
+                tags$label("URL"),
                 "Written Text: ", shiny::textOutput("url_ex", container = shiny::span)
               ),
               field(
-                label("Number"),
+                tags$label("Number"),
                 "Selected Number: ", shiny::textOutput("number_ex", container = shiny::span)
               ),
               field(
-                label("Checkbox"),
+                tags$label("Checkbox"),
                 "Checkbox Selected:", shiny::textOutput("checkbox_ex", container = shiny::span),
                 tags$br(),
                 "Slider Selected:", shiny::textOutput("slider_ex", container = shiny::span)
               ),
               field(
-                label("Group Radio Button"),
+                tags$label("Group Radio Button"),
                 "Radio Button Selected:", shiny::textOutput("grp_radio_ex", container = shiny::span)
               ),
               field(
-                label("Group Checkbox"),
+                tags$label("Group Checkbox"),
                 "Checkboxes Selected:", shiny::textOutput("grp_check_ex", container = shiny::span)
               ),
               field(
-                label("Calendar"),
+                tags$label("Calendar"),
                 "Date Selected:", shiny::textOutput("calendar_ex", container = shiny::span)
               )
             )

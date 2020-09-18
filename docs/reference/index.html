@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -246,12 +246,6 @@
         <td>
           <p><code><a href="label.html">label()</a></code> </p>
         </td>
-        <td><p>Create HTML label tag</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="label_tag.html">label_tag()</a></code> </p>
-        </td>
         <td><p>Create Semantic UI label tag</p></td>
       </tr><tr>
         
@@ -286,7 +280,7 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="messagebox.html">messagebox()</a></code> </p>
+          <p><code><a href="message_box.html">message_box()</a></code> </p>
         </td>
         <td><p>Create Semantic UI Message box</p></td>
       </tr><tr>
@@ -301,6 +295,12 @@
           <p><code><a href="tabset.html">tabset()</a></code> </p>
         </td>
         <td><p>Create Semantic UI tabs</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="accordion.html">accordion()</a></code> </p>
+        </td>
+        <td><p>Accordion UI</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -329,7 +329,7 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="checkbox.html">checkbox_input()</a></code> <code><a href="checkbox.html">toggle()</a></code> </p>
+          <p><code><a href="checkbox.html">checkbox_input()</a></code> <code><a href="checkbox.html">checkboxInput()</a></code> <code><a href="checkbox.html">toggle()</a></code> </p>
         </td>
         <td><p>Create Semantic UI checkbox</p></td>
       </tr><tr>
@@ -365,7 +365,7 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="slider.html">slider_input()</a></code> <code><a href="slider.html">sliderInput()</a></code> <code><a href="slider.html">range_input()</a></code> <code><a href="slider.html">rangeInput()</a></code> </p>
+          <p><code><a href="slider.html">slider_input()</a></code> <code><a href="slider.html">sliderInput()</a></code> <code><a href="slider.html">range_input()</a></code> </p>
         </td>
         <td><p>Create Semantic UI Slider / Range</p></td>
       </tr><tr>
@@ -413,12 +413,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="update_slider.html">update_slider()</a></code> <code><a href="update_slider.html">update_range()</a></code> <code><a href="update_slider.html">updateSliderInput()</a></code> <code><a href="update_slider.html">updateRangeInput()</a></code> </p>
-        </td>
-        <td><p>Update slider Semantic UI component</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="updateSelectInput.html">updateSelectInput()</a></code> </p>
         </td>
         <td><p>Change the value of a select input on the client</p></td>
@@ -428,6 +422,12 @@
           <p><code><a href="update_dropdown_input.html">update_dropdown_input()</a></code> </p>
         </td>
         <td><p>Update dropdown Semantic UI component</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="update_slider.html">update_slider()</a></code> <code><a href="update_slider.html">update_range_input()</a></code> <code><a href="update_slider.html">updateSliderInput()</a></code> </p>
+        </td>
+        <td><p>Update slider Semantic UI component</p></td>
       </tr><tr>
         
         <td>
@@ -471,6 +471,55 @@
           <p><code><a href="search_selection_choices.html">search_selection_choices()</a></code> </p>
         </td>
         <td><p>Add Semantic UI search selection dropdown based on provided choices</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-layouts-functions" class="hasAnchor"><a href="#section-layouts-functions" class="anchor"></a>Layouts functions</h2>
+          <p class="section-desc"><p>Functions for search API.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="grid.html">grid()</a></code> </p>
+        </td>
+        <td><p>Use CSS grid template in Shiny UI</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="grid_template.html">grid_template()</a></code> </p>
+        </td>
+        <td><p>Define a template of a CSS grid</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sidebar_layout.html">sidebar_panel()</a></code> <code><a href="sidebar_layout.html">main_panel()</a></code> <code><a href="sidebar_layout.html">sidebar_layout()</a></code> <code><a href="sidebar_layout.html">sidebarPanel()</a></code> <code><a href="sidebar_layout.html">mainPanel()</a></code> <code><a href="sidebar_layout.html">sidebarLayout()</a></code> </p>
+        </td>
+        <td><p>Creates div containing children elements of sidebar panel</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="flow_layout.html">flow_layout()</a></code> <code><a href="flow_layout.html">flowLayout()</a></code> </p>
+        </td>
+        <td><p>Flow layout</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vertical_layout.html">vertical_layout()</a></code> <code><a href="vertical_layout.html">verticalLayout()</a></code> </p>
+        </td>
+        <td><p>Vertical layout</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="split_layout.html">split_layout()</a></code> <code><a href="split_layout.html">splitLayout()</a></code> </p>
+        </td>
+        <td><p>Split layout</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -560,7 +609,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Filip Stachura, Krystian Igras, Adam Forys, Dominik Krzeminski.</p>
+  <p>Developed by Filip Stachura, Dominik Krzeminski, Krystian Igras, Adam Forys, Paweł Przytuła, Jakub Chojna, Olga Mierzwa-Sulima.</p>
 </div>
 
 <div class="pkgdown">

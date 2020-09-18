@@ -50,8 +50,15 @@ specified. It should be formatted as a string with css units}
 
 \item{container_style}{CSS declarations for grid container}
 
-\item{area_styles}{List of CSS declarations for each grid area inside
-container}
+\item{area_styles}{List of CSS declarations for each grid area inside}
+
+\item{sidebarPanel}{same as \code{sidebar_panel}}
+
+\item{mainPanel}{same as \code{main_panel}}
+
+\item{position}{vector with position of sidebar elements in order sidebar, main}
+
+\item{fluid}{TRUE to use fluid layout; FALSE to use fixed layout.}
 }
 \value{
 Container with sidebar and main panels

@@ -11,6 +11,7 @@
 \alias{Semantic}
 \alias{UI}
 \alias{styles.}
+\alias{checkboxInput}
 \title{Create Semantic UI checkbox}
 \usage{
 checkbox_input(
@@ -20,6 +21,8 @@ checkbox_input(
   is_marked = TRUE,
   style = NULL
 )
+
+checkboxInput(inputId, label = "", value = FALSE, width = NULL)
 
 toggle(input_id, label = "", is_marked = TRUE, style = NULL)
 }
@@ -33,6 +36,12 @@ toggle(input_id, label = "", is_marked = TRUE, style = NULL)
 \item{is_marked}{Defines if checkbox should be marked. Default TRUE.}
 
 \item{style}{Style of the widget.}
+
+\item{inputId}{same as \code{input_id}}
+
+\item{value}{same as \code{is_marked}}
+
+\item{width}{The width of the input (currently not supported, but check \code{style})}
 }
 \description{
 Create Semantic UI checkbox

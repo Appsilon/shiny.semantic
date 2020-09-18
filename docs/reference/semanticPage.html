@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -153,7 +153,7 @@
   <span class='no'>...</span>,
   <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>""</span>,
   <span class='kw'>theme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>supress_bootstrap</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>suppress_bootstrap</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>margin</span> <span class='kw'>=</span> <span class='st'>"10px"</span>
 )</pre>
 
@@ -175,7 +175,7 @@ wrapper (e.g. style, class etc.)</p></td>
 <code>SUPPORTED_THEMES</code> or at http://semantic-ui-forest.com/themes.</p></td>
     </tr>
     <tr>
-      <th>supress_bootstrap</th>
+      <th>suppress_bootstrap</th>
       <td><p>boolean flag that supresses bootstrap when turned on</p></td>
     </tr>
     <tr>
@@ -204,7 +204,7 @@ in <code>shiny.minified = TRUE</code> mode.</p>
 
 <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'>semanticPage</span>(
   <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Hello Shiny Semantic!"</span>,
-  <span class='fu'><a href='label.html'>label</a></span>(<span class='st'>"Number of observations:"</span>),
+  <span class='no'>tags</span>$<span class='fu'><a href='label.html'>label</a></span>(<span class='st'>"Number of observations:"</span>),
   <span class='fu'><a href='slider.html'>slider_input</a></span>(<span class='st'>"obs"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>1000</span>),
   <span class='fu'><a href='segment.html'>segment</a></span>(
     <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/plotOutput.html'>plotOutput</a></span>(<span class='st'>"dist_plot"</span>)
@@ -230,7 +230,7 @@ in <code>shiny.minified = TRUE</code> mode.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Filip Stachura, Krystian Igras, Adam Forys, Dominik Krzeminski.</p>
+  <p>Developed by Filip Stachura, Dominik Krzeminski, Krystian Igras, Adam Forys, Paweł Przytuła, Jakub Chojna, Olga Mierzwa-Sulima.</p>
 </div>
 
 <div class="pkgdown">
