@@ -68,6 +68,7 @@ main_panel <- function(..., width = 3) {
 #'       hist(rnorm(input$obs))
 #'     })
 #'   }
+#'   runApp(ui, server)
 #' }
 #' @rdname sidebar_layout
 #' @export

@@ -103,6 +103,19 @@ reference:
   - '`update_rating_input`'
   - '`update_slider`'
 
+- title: Modal functions
+  desc: Functions for modals generation.
+  contents:
+  - '`modal`'
+  - '`modalDialog`'
+  - '`create_modal`'
+  - '`show_modal`'
+  - '`showModal`'
+  - '`remove_modal`'
+  - '`removeModal`'
+  - '`remove_all_modals`'
+  - '`hide_modal`'
+
 - title: Search functions
   desc: Functions for search API.
   contents:
