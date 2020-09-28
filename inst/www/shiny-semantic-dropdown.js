@@ -9,7 +9,7 @@ $.extend(semanticDropdownBinding, {
 
   // This returns a jQuery object with the DOM element.
   find: function(scope) {
-    return $(scope).find('.ui.dropdown');
+    return $(scope).find('.semantic-select-input');
   },
 
   // Returns the ID of the DOM element.
