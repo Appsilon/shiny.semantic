@@ -74,11 +74,7 @@ look.
 
 <center>
 
-<h3>
-
-<a href="https://demo.appsilon.ai/semantic/">Components live demo</a>
-
-</h4>
+<h3><a href="https://demo.appsilon.ai/semantic/">Components live demo</a></h3>
 
 </center>
 
