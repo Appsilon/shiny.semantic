@@ -143,9 +143,13 @@ list_of_area_tags <- function(area_names) {
 #' @export
 grid_template <- function(default = NULL, mobile = NULL) {
 
-  stopifnot("areas" %in% names(default) &&
-            "rows_height" %in% names(default) &&
-            "cols_width" %in% names(default))
+  if (!("areas" %in% names(default) &&
+        "rows_height" %in% names(default) &&
+        "cols_width" %in% names(default))) {
+    stop(paste(
+      "grid_template() default argument must contain list with:",
+      "areas, rows_height and cols_width. See documentation for examples."))
+  }
 
   area_names <- default$areas %>% as.vector %>% unique
   area_tags <- shiny::tagList(list_of_area_tags(area_names))
@@ -160,9 +164,13 @@ grid_template <- function(default = NULL, mobile = NULL) {
   css_mobile <- NULL
   if (!is.null(mobile)) {
 
-    stopifnot("areas" %in% names(mobile) &&
-              "rows_height" %in% names(mobile) &&
-              "cols_width" %in% names(mobile))
+    if (!("areas" %in% names(mobile) &&
+          "rows_height" %in% names(mobile) &&
+          "cols_width" %in% names(mobile))) {
+      stop(paste(
+        "grid_template() mobile argument must contain list with:",
+        "areas, rows_height and cols_width. See documentation for examples."))
+    }
 
     css_grid_template_areas <- data_frame_to_css_grid_template_areas(mobile$areas)
     css_mobile <- shiny::tags$style(paste(
@@ -249,20 +257,20 @@ grid <- function(grid_template, id = paste(sample(letters, 5), collapse = ''),
 
   if (display_mode) {
     # For debugging mode just display area name
-    template_variables <- as.list(setNames(grid_template$area_names, grid_template$area_names))
+    template_values <- as.list(setNames(grid_template$area_names, grid_template$area_names))
   } else {
-    template_variables <- list(...)
+    template_values <- list(...)
   }
 
-  template_variables$grid_id <- id
-  template_variables$custom_style_grid_container <- container_style
+  template_values$grid_id <- id
+  template_values$custom_style_grid_container <- container_style
 
   for (name in grid_template$area_names) {
     key <- glue::glue("{name}_custom_css")
-    template_variables[[key]] <- ifelse(name %in% names(area_styles), area_styles[[name]], "")
+    template_values[[key]] <- ifelse(name %in% names(area_styles), area_styles[[name]], "")
   }
 
-  do.call(function(...) htmltools::htmlTemplate(text_ = grid_template$template, ...), template_variables)
+  do.call(function(...) htmltools::htmlTemplate(text_ = grid_template$template, ...), template_values)
 }
 
 #' Display grid template in a browser for easy debugging
