@@ -276,11 +276,19 @@ grid <- function(grid_template, id = paste(sample(letters, 5), collapse = ''),
 #'
 #' @export
 display_grid <- function(grid_template) {
-  # Apply dotted border to show all grid areas.
-  # List looks like this: area_styles == list(area_1 = "border: 1px dotted #444", area_2 = ...)
-  area_styles <- as.list(setNames(
-    rep("border: 1px dotted #444", length(grid_template$area_names)),
-    grid_template$area_names))
+
+  # Apply style for debugging
+  n <- length(grid_template$area_names)
+  styles <- lapply(
+    rainbow(n), # Pick rainbow colors and then change opacity to 44
+    function(color) glue::glue(
+      "border: 1px dotted #888;",
+      "font-size: 2em;",
+      "padding: 20px;",
+      "background: {substr(color, 1, 7)}44"
+    )
+  ) %>% unlist
+  area_styles <- as.list(setNames(styles, grid_template$area_names))
 
   shiny::runApp(list(
       ui = semanticPage(
