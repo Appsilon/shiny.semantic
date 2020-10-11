@@ -143,12 +143,9 @@ list_of_area_tags <- function(area_names) {
 #' @export
 grid_template <- function(default = NULL, mobile = NULL) {
 
-  if (!("areas" %in% names(default) &&
-        "rows_height" %in% names(default) &&
-        "cols_width" %in% names(default))) {
-    stop(paste(
-      "grid_template() default argument must contain list with:",
-      "areas, rows_height and cols_width. See documentation for examples."))
+  if (!("areas" %in% names(default))) {
+    stop(paste("grid_template() default argument must contain list with `areas` definition.",
+               "See documentation for examples."))
   }
 
   area_names <- default$areas %>% as.vector %>% unique
@@ -164,12 +161,9 @@ grid_template <- function(default = NULL, mobile = NULL) {
   css_mobile <- NULL
   if (!is.null(mobile)) {
 
-    if (!("areas" %in% names(mobile) &&
-          "rows_height" %in% names(mobile) &&
-          "cols_width" %in% names(mobile))) {
-      stop(paste(
-        "grid_template() mobile argument must contain list with:",
-        "areas, rows_height and cols_width. See documentation for examples."))
+    if (!("areas" %in% names(mobile))) {
+      stop(paste("grid_template() mobile argument must contain list with `areas` definition.",
+                 "See documentation for examples."))
     }
 
     css_grid_template_areas <- data_frame_to_css_grid_template_areas(mobile$areas)
