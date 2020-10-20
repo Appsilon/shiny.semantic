@@ -4,20 +4,17 @@
 \alias{grid_template}
 \title{Define a template of a CSS grid}
 \usage{
-grid_template(
-  default = list(areas = rbind(c("main_area")), rows_height = c("100\%"), cols_width =
-    c("100\%")),
-  mobile = list(areas = rbind(c("main_area")), rows_height = c("100\%"), cols_width =
-    c("100\%"))
-)
+grid_template(default = NULL, mobile = NULL)
 }
 \arguments{
-\item{default}{Template for desktop:
+\item{default}{(required)
+Template for desktop:
 list(areas = [data.frame of character],
      rows_height = [vector of character],
      cols_width = [vector of character])}
 
-\item{mobile}{Template for mobile:
+\item{mobile}{(optional)
+Template for mobile (screen width below 768px):
 list(areas = [data.frame of character],
      rows_height = [vector of character],
      cols_width = [vector of character])}
@@ -25,23 +22,36 @@ list(areas = [data.frame of character],
 \value{
 list(template = [character], area_names = [vector of character])
 
-template - contains template that can be formatted with glue::glue() function
+template - contains template that can be parsed by htmlTemplate() function
 
-area_names - contain all unique area names used in grid definition
+area_names - contains all unique area names used in grid definition
 }
 \description{
 Define a template of a CSS grid
 }
 \examples{
-myGrid <- grid_template(default = list(
-  areas = rbind(
-    c("header", "header", "header"),
-    c("menu",   "main",   "right1"),
-    c("menu",   "main",   "right2")
+myGrid <- grid_template(
+  default = list(
+    areas = rbind(
+      c("header", "header", "header"),
+      c("menu",   "main",   "right1"),
+      c("menu",   "main",   "right2")
+    ),
+    rows_height = c("50px", "auto", "100px"),
+    cols_width = c("100px", "2fr", "1fr")
   ),
-  rows_height = c("50px", "auto", "100px"),
-  cols_width = c("100px", "2fr", "1fr")
-))
+  mobile = list(
+    areas = rbind(
+      "header",
+      "menu",
+      "main",
+      "right1",
+      "right2"
+    ),
+    rows_height = c("50px", "50px", "auto", "150px", "150px"),
+    cols_width = c("100\%")
+  )
+)
 if (interactive()) display_grid(myGrid)
 subGrid <- grid_template(default = list(
   areas = rbind(
