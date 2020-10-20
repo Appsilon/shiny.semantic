@@ -41,7 +41,7 @@ data_frame_to_css_grid_template_areas <- function(areas_dataframe) {
 #'    grid-template-rows: 50\% 50\%;
 #'    grid-template-columns: 100px 2fr 1fr;
 #'    grid-template-areas: 'a a a' 'b b b';
-#'    {custom_style_grid_container}"
+#'    {{ custom_style_grid_container }}"
 #' }
 #'
 grid_container_css <- function(css_grid_template_areas, rows_height, cols_width) {
@@ -51,7 +51,7 @@ grid_container_css <- function(css_grid_template_areas, rows_height, cols_width)
     glue::glue("grid-template-rows: {paste(rows_height, collapse = ' ')}"),
     glue::glue("grid-template-columns: {paste(cols_width, collapse = ' ')}"),
     glue::glue("grid-template-areas: {css_grid_template_areas}"),
-    "{custom_style_grid_container}" # To be rendered by glue::glue() later
+    "{{ custom_style_grid_container }}" # To be rendered by htmltools::htmlTemplate() later
   )
   paste(grid_container_styles, collapse = "; ")
 }
@@ -68,15 +68,17 @@ grid_container_css <- function(css_grid_template_areas, rows_height, cols_width)
 #' }
 #' returns the following list:
 #' \preformatted{
-#'   [[1]] <div style="grid-area: header; {custom_style_grid_area_header}">{{ header }}</div>
-#'   [[2]] <div style="grid-area: main; {custom_style_grid_area_main}">{{ main }}</div>
-#'   [[3]] <div style="grid-area: footer; {custom_style_grid_area_footer}">{{ footer }}</div>
+#'   [[1]] <div id="area-header" style="grid-area: header; {{ header_custom_css }}">{{ header }}</div>
+#'   [[2]] <div id="area-main" style="grid-area: main; {{ main_custom_css }}">{{ main }}</div>
+#'   [[3]] <div id="area-footer" style="grid-area: footer; {{ footer_custom_css }}">{{ footer }}</div>
 #' }
 #'
 list_of_area_tags <- function(area_names) {
   lapply(area_names,
     function(name) shiny::tags$div(
-     style = as.character(glue::glue("grid-area: {name}; {{custom_style_grid_area_{name}}}")), paste("{{", name, "}}")
+      id = as.character(glue::glue("area-{name}")),
+      style = paste0("grid-area: ", name, "; {{ ", name, "_custom_css }}"),
+      paste("{{", name, "}}")
     )
   )
 }
@@ -137,48 +139,6 @@ grid_template <- function(
   ) %>% htmltools::renderTags()
 
   return(list(template = grid_template$html, area_names = area_names))
-}
-
-#' Format string template (that represents HTML template) with custom CSS styles.
-#'
-#' @param html_template character
-#' @param area_names vector of character
-#' @param container_style character
-#' @param area_styles list of character
-#'
-#' @return character
-#'
-#' @details This is a helper function used in grid()
-#'
-apply_custom_styles_to_html_template <- function(html_template = "",
-                                                 area_names = c(),
-                                                 container_style = "",
-                                                 area_styles = list()) {
-  custom_styles <- list(custom_style_grid_container = container_style)
-  for (area in area_names) {
-    custom_styles[[glue::glue("custom_style_grid_area_{area}")]] <- ifelse(
-      area %in% names(area_styles), area_styles[[area]], "")
-  }
-  styled_template <- do.call(function(...) glue::glue(html_template, ...), custom_styles)
-  return(styled_template)
-}
-
-#' After applying custom CSS, prepares glue() template to be ready to use with htmltools::htmlTemplate()
-#'
-#' @param styled_html_template character
-#' @param area_names vector of character
-#' @param display_mode
-#' boolean - if TRUE it replaces \{\{\}\} mustache with <> so they can be displayed in the debug mode
-#'
-#' @return character
-#'
-#' @details This is a helper function used in grid()
-#' @importFrom stats setNames
-prepare_mustache_for_html_template <- function(styled_html_template = "", area_names = c(), display_mode = FALSE) {
-  mustache <- sapply(area_names, function(area) ifelse(display_mode, paste("<", area, ">"), paste("{{", area, "}}")))
-  areas_mustache <- as.list(setNames(mustache, area_names))
-  html_template <- do.call(function(...) glue::glue(styled_html_template, ...), areas_mustache)
-  return(html_template)
 }
 
 #' Use CSS grid template in Shiny UI
@@ -244,15 +204,21 @@ prepare_mustache_for_html_template <- function(styled_html_template = "", area_n
 #' @export
 grid <- function(grid_template, container_style = "", area_styles = list(), display_mode = FALSE, ...) {
 
-  # Replace {custom_style_grid_container} and {custom_style_grid_area_{name}} with custom CSS
-  styled_html_template <- apply_custom_styles_to_html_template(
-    grid_template$template, grid_template$area_names, container_style, area_styles)
+  if (display_mode) {
+    # For debugging mode just display area name
+    template_variables <- as.list(setNames(grid_template$area_names, grid_template$area_names))
+  } else {
+    template_variables <- list(...)
+  }
 
-  # Replace {areas} for glue::glue with {{areas}} for rendering htmlTemplate
-  mustached_html_template <- prepare_mustache_for_html_template(
-    styled_html_template, grid_template$area_names, display_mode)
+  template_variables$custom_style_grid_container <- container_style
 
-  htmltools::htmlTemplate(text_ = mustached_html_template, ...)
+  for (name in grid_template$area_names) {
+    key <- glue::glue("{name}_custom_css")
+    template_variables[[key]] <- ifelse(name %in% names(area_styles), area_styles[[name]], "")
+  }
+
+  do.call(function(...) htmltools::htmlTemplate(text_ = grid_template$template, ...), template_variables)
 }
 
 #' Display grid template in a browser for easy debugging

@@ -35,6 +35,6 @@ returns
    grid-template-rows: 50\% 50\%;
    grid-template-columns: 100px 2fr 1fr;
    grid-template-areas: 'a a a' 'b b b';
-   {custom_style_grid_container}"
+   {{ custom_style_grid_container }}"
 }
 }
