@@ -68,30 +68,33 @@ grid_container_css <- function(css_grid_template_areas, rows_height, cols_width)
 #' }
 #' returns the following list:
 #' \preformatted{
-#'   [[1]] <div id="area-header" style="grid-area: header; {{ header_custom_css }}">{{ header }}</div>
-#'   [[2]] <div id="area-main" style="grid-area: main; {{ main_custom_css }}">{{ main }}</div>
-#'   [[3]] <div id="area-footer" style="grid-area: footer; {{ footer_custom_css }}">{{ footer }}</div>
+#'   [[1]] <div id="{{ grid_id }}-header" style="grid-area: header; {{ header_custom_css }}">{{ header }}</div>
+#'   [[2]] <div id="{{ grid_id }}-main" style="grid-area: main; {{ main_custom_css }}">{{ main }}</div>
+#'   [[3]] <div id="{{ grid_id }}-footer" style="grid-area: footer; {{ footer_custom_css }}">{{ footer }}</div>
 #' }
 #'
 list_of_area_tags <- function(area_names) {
   lapply(area_names,
-    function(name) shiny::tags$div(
-      id = as.character(glue::glue("area-{name}")),
-      style = paste0("grid-area: ", name, "; {{ ", name, "_custom_css }}"),
-      paste("{{", name, "}}")
-    )
+    function(name) {
+      mustache_id <- "{{ grid_id }}"
+      mustache_css <- paste0("{{ ", name, "_custom_css }}")
+      mustache_area <- paste("{{", name, "}}")
+      return(HTML(
+        glue::glue('<div id="{mustache_id}-{name}" style="grid-area: {name}; {mustache_css}">{mustache_area}</div>')
+      ))
+    }
   )
 }
 
 #' Define a template of a CSS grid
 #'
-#' @param default
+#' @param default (required)
 #' Template for desktop:
 #' list(areas = [data.frame of character],
 #'      rows_height = [vector of character],
 #'      cols_width = [vector of character])
-#' @param mobile
-#' Template for mobile:
+#' @param mobile (optional)
+#' Template for mobile (screen width below 768px):
 #' list(areas = [data.frame of character],
 #'      rows_height = [vector of character],
 #'      cols_width = [vector of character])
@@ -99,20 +102,33 @@ list_of_area_tags <- function(area_names) {
 #' @return
 #' list(template = [character], area_names = [vector of character])
 #'
-#' template - contains template that can be formatted with glue::glue() function
+#' template - contains template that can be parsed by htmlTemplate() function
 #'
-#' area_names - contain all unique area names used in grid definition
+#' area_names - contains all unique area names used in grid definition
 #'
 #' @examples
-#' myGrid <- grid_template(default = list(
-#'   areas = rbind(
-#'     c("header", "header", "header"),
-#'     c("menu",   "main",   "right1"),
-#'     c("menu",   "main",   "right2")
+#' myGrid <- grid_template(
+#'   default = list(
+#'     areas = rbind(
+#'       c("header", "header", "header"),
+#'       c("menu",   "main",   "right1"),
+#'       c("menu",   "main",   "right2")
+#'     ),
+#'     rows_height = c("50px", "auto", "100px"),
+#'     cols_width = c("100px", "2fr", "1fr")
 #'   ),
-#'   rows_height = c("50px", "auto", "100px"),
-#'   cols_width = c("100px", "2fr", "1fr")
-#' ))
+#'   mobile = list(
+#'     areas = rbind(
+#'       "header",
+#'       "menu",
+#'       "main",
+#'       "right1",
+#'       "right2"
+#'     ),
+#'     rows_height = c("50px", "50px", "auto", "150px", "150px"),
+#'     cols_width = c("100%")
+#'   )
+#' )
 #' if (interactive()) display_grid(myGrid)
 #' subGrid <- grid_template(default = list(
 #'   areas = rbind(
@@ -125,20 +141,48 @@ list_of_area_tags <- function(area_names) {
 #'
 #' if (interactive()) display_grid(subGrid)
 #' @export
-grid_template <- function(
-  default = list(areas = rbind(c("main_area")), rows_height = c("100%"), cols_width = c("100%")),
-  mobile = list(areas = rbind(c("main_area")), rows_height = c("100%"), cols_width = c("100%"))) {
-  # TODO: Support for mobile grid version. Only `default` argument is used right now.
+grid_template <- function(default = NULL, mobile = NULL) {
+
+  if (!("areas" %in% names(default))) {
+    stop(paste("grid_template() default argument must contain list with `areas` definition.",
+               "See documentation for examples."))
+  }
 
   area_names <- default$areas %>% as.vector %>% unique
-  css_grid_template_areas <- data_frame_to_css_grid_template_areas(default$areas)
+  area_tags <- shiny::tagList(list_of_area_tags(area_names))
 
-  grid_template <- shiny::tags$div(
-    style = grid_container_css(css_grid_template_areas, default$rows_height, default$cols_width),
-    shiny::tagList(list_of_area_tags(area_names))
+  css_grid_template_areas <- data_frame_to_css_grid_template_areas(default$areas)
+  css_default <- shiny::tags$style(paste(
+    "#{{ grid_id }} {",
+      grid_container_css(css_grid_template_areas, default$rows_height, default$cols_width),
+    "}"
+  ))
+
+  css_mobile <- NULL
+  if (!is.null(mobile)) {
+
+    if (!("areas" %in% names(mobile))) {
+      stop(paste("grid_template() mobile argument must contain list with `areas` definition.",
+                 "See documentation for examples."))
+    }
+
+    css_grid_template_areas <- data_frame_to_css_grid_template_areas(mobile$areas)
+    css_mobile <- shiny::tags$style(paste(
+      "@media screen and (max-width: 768px) {",
+        "#{{ grid_id }} {",
+          grid_container_css(css_grid_template_areas, mobile$rows_height, mobile$cols_width),
+        "}",
+      "}"
+    ))
+  }
+
+  template <- shiny::tagList(
+    css_default,
+    css_mobile,
+    shiny::tags$div(id = "{{ grid_id }}", area_tags)
   ) %>% htmltools::renderTags()
 
-  return(list(template = grid_template$html, area_names = area_names))
+  return(list(template = template$html, area_names = area_names))
 }
 
 #' Use CSS grid template in Shiny UI
@@ -202,23 +246,25 @@ grid_template <- function(
 #' )
 #' }
 #' @export
-grid <- function(grid_template, container_style = "", area_styles = list(), display_mode = FALSE, ...) {
+grid <- function(grid_template, id = paste(sample(letters, 5), collapse = ''),
+                 container_style = "", area_styles = list(), display_mode = FALSE, ...) {
 
   if (display_mode) {
     # For debugging mode just display area name
-    template_variables <- as.list(setNames(grid_template$area_names, grid_template$area_names))
+    template_values <- as.list(setNames(grid_template$area_names, grid_template$area_names))
   } else {
-    template_variables <- list(...)
+    template_values <- list(...)
   }
 
-  template_variables$custom_style_grid_container <- container_style
+  template_values$grid_id <- id
+  template_values$custom_style_grid_container <- container_style
 
   for (name in grid_template$area_names) {
     key <- glue::glue("{name}_custom_css")
-    template_variables[[key]] <- ifelse(name %in% names(area_styles), area_styles[[name]], "")
+    template_values[[key]] <- ifelse(name %in% names(area_styles), area_styles[[name]], "")
   }
 
-  do.call(function(...) htmltools::htmlTemplate(text_ = grid_template$template, ...), template_variables)
+  do.call(function(...) htmltools::htmlTemplate(text_ = grid_template$template, ...), template_values)
 }
 
 #' Display grid template in a browser for easy debugging
@@ -232,19 +278,32 @@ grid <- function(grid_template, container_style = "", area_styles = list(), disp
 #'
 #' @export
 display_grid <- function(grid_template) {
-  temporary_html_file <- glue::glue("grid_render_{as.numeric(Sys.time())}.html")
 
-  # Apply dotted border to show all grid areas.
-  # List looks like this: area_styles == list(area_1 = "border: 1px dotted #444", area_2 = ...)
-  area_styles <- as.list(setNames(
-    rep("border: 1px dotted #444", length(grid_template$area_names)),
-    grid_template$area_names))
+  # Apply style for debugging
+  n <- length(grid_template$area_names)
+  styles <- lapply(
+    rainbow(n), # Pick rainbow colors and then change opacity to 44
+    function(color) glue::glue(
+      "border: 1px dotted #888;",
+      "font-size: 2em;",
+      "padding: 20px;",
+      "background: {substr(color, 1, 7)}44"
+    )
+  ) %>% unlist
+  area_styles <- as.list(setNames(styles, grid_template$area_names))
 
-  html <- grid(grid_template, container_style = "border: 1px dashed #000",
-               area_styles = area_styles, display_mode = TRUE)
+  shiny::runApp(list(
+      ui = semanticPage(
+        grid(
+          grid_template,
+          container_style = "border: 1px dashed #000",
+          area_styles = area_styles,
+          display_mode = TRUE
+        )
+      ),
+      server = function(input, output) {}
+    ),
+    launch.browser = T
+  )
 
-  base::write(unlist(html), temporary_html_file)
-  utils::browseURL(temporary_html_file)
-  Sys.sleep(1) # Let's wait for browser to load the file until we delete it
-  invisible(file.remove(temporary_html_file))
 }

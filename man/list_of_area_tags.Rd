@@ -22,8 +22,8 @@ This is a helper function used in grid_template()
 }
 returns the following list:
 \preformatted{
-  [[1]] <div id="area-header" style="grid-area: header; {{ header_custom_css }}">{{ header }}</div>
-  [[2]] <div id="area-main" style="grid-area: main; {{ main_custom_css }}">{{ main }}</div>
-  [[3]] <div id="area-footer" style="grid-area: footer; {{ footer_custom_css }}">{{ footer }}</div>
+  [[1]] <div id="{{ grid_id }}-header" style="grid-area: header; {{ header_custom_css }}">{{ header }}</div>
+  [[2]] <div id="{{ grid_id }}-main" style="grid-area: main; {{ main_custom_css }}">{{ main }}</div>
+  [[3]] <div id="{{ grid_id }}-footer" style="grid-area: footer; {{ footer_custom_css }}">{{ footer }}</div>
 }
 }

@@ -6,6 +6,7 @@
 \usage{
 grid(
   grid_template,
+  id = paste(sample(letters, 5), collapse = ""),
   container_style = "",
   area_styles = list(),
   display_mode = FALSE,

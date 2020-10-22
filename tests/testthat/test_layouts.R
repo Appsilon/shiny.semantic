@@ -60,9 +60,17 @@ test_that("test split_layout", {
 
 test_that("test splitLayout", {
   # test equivalence
-  expect_equal(split_layout(p("a")), splitLayout(p("a")))
-  expect_equal(split_layout(p("a"), cell_widths = c("25%", "75%")),
-               splitLayout(p("a"), cellWidths = c("25%", "75%")))
+  set.seed(123) # For generating the same random CSS id selector for grid.
+  layout1 <- split_layout(p("a"))
+  set.seed(123)
+  layout2 <- split_layout(p("a"))
+  expect_equal(layout1, layout2)
+
+  set.seed(123)
+  layout1 <- split_layout(p("a"), cell_widths = c("25%", "75%"))
+  set.seed(123)
+  layout2 <- splitLayout(p("a"), cellWidths = c("25%", "75%"))
+  expect_equal(layout1, layout2)
 })
 
 test_that("test vertical_layout", {
@@ -92,7 +100,9 @@ test_that("test vertical_layout", {
 
 
 test_that("test verticalLayout", {
+  set.seed(123) # For generating the same random CSS id selector for grid.
   v1 <- vertical_layout(p("a"), adjusted_to_page = F)
+  set.seed(123)
   v2 <- verticalLayout(p("a"))
   expect_equal(v1,v2)
 })
