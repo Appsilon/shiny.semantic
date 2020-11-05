@@ -69,7 +69,7 @@ icon <- function(class = "", ...) {
 
 #' Create Semantic UI label tag
 #'
-#' This creates a \code{div} or \code{a} tag with with class \code{ui label} using Semantic UI.
+#' This creates a `div` or `a` tag with with class `ui label` using Semantic UI.
 #'
 #' @param ... Other arguments to be added such as content of the tag (text, icons) and/or attributes (style)
 #' @param class class of the label. Look at https://semantic-ui.com/elements/label.html for all possibilities.
@@ -144,7 +144,7 @@ set_tab_id <- function(tab) {
 #' @param tab_content_class Class for the tab content (default: "bottom attached
 #' segment")
 #'
-#' @details You may access active tab id with \code{input$<id>_tab}.
+#' @details You may access active tab id with `input$<id>_tab`.
 #'
 #' @export
 #'
@@ -799,7 +799,7 @@ list_container <- function(content_list, is_divided = FALSE) {
 #'
 #' @param accordion_list list with lists with fields: `title` and `content`
 #' @param fluid if accordion is fluid then it takes width of parent div
-#' @param active_title if active title matches `title` from \code{accordion_list}
+#' @param active_title if active title matches `title` from `accordion_list`
 #' then this element is active by default
 #' @param styled if switched of then raw style (no boxes) is used
 #' @param custom_style character with custom style added to CSS of accordion (advanced use)

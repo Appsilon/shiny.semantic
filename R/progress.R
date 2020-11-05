@@ -14,7 +14,7 @@
 #' @param class UI class of the progress bar.
 #'
 #' @details
-#' To initialize the progress bar, you can either choose \code{value} and \code{total}, or \code{percent}.
+#' To initialize the progress bar, you can either choose `value` and `total`, or `percent`.
 #'
 #' @examples
 #' ## Only run examples in interactive R sessions
@@ -62,12 +62,12 @@ progress <- function(input_id, value = NULL, total = NULL, percent = NULL, progr
 
 #' Update progress Semantic UI component
 #'
-#' Change the value of a \code{\link{progress}} input on the client.
+#' Change the value of a [progress()] input on the client.
 #'
-#' @param session The \code{session} object passed to function given to \code{shinyServer}.
+#' @param session The `session` object passed to function given to `shinyServer`.
 #' @param input_id The id of the input object
-#' @param type Whether you want to increase the progress bar (\code{"increment"}), decrease the
-#' progress bar (\code{"decrement"}), update the label \code{"label"}, or set it to a specific value (\code{"value"})
+#' @param type Whether you want to increase the progress bar (`"increment"`), decrease the
+#' progress bar (`"decrement"`), update the label `"label"`, or set it to a specific value (`"value"`)
 #' @param value The value to increase/decrease by, or the value to be set to
 #'
 #' @export

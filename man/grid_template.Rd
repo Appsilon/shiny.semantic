@@ -9,18 +9,18 @@ grid_template(default = NULL, mobile = NULL)
 \arguments{
 \item{default}{(required)
 Template for desktop:
-list(areas = [data.frame of character],
-     rows_height = [vector of character],
-     cols_width = [vector of character])}
+list(areas = \link{data.frame of character},
+rows_height = \link{vector of character},
+cols_width = \link{vector of character})}
 
 \item{mobile}{(optional)
 Template for mobile (screen width below 768px):
-list(areas = [data.frame of character],
-     rows_height = [vector of character],
-     cols_width = [vector of character])}
+list(areas = \link{data.frame of character},
+rows_height = \link{vector of character},
+cols_width = \link{vector of character})}
 }
 \value{
-list(template = [character], area_names = [vector of character])
+list(template = \link{character}, area_names = \link{vector of character})
 
 template - contains template that can be parsed by htmlTemplate() function
 

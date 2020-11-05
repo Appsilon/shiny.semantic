@@ -23,7 +23,7 @@ digits2words <- function(number) {
 #' @param location character url with location
 #' @param title name of the page
 #' @param active_location name of the active subpage (if matches location then
-#' it gets highlighted), default empty (\code{""})
+#' it gets highlighted), default empty (`""`)
 #' @param icon non-mandatory parameter with icon name
 #'
 #' @return shiny tag link

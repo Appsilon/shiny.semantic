@@ -15,7 +15,7 @@ search_selection_choices(
 )
 }
 \arguments{
-\item{input_id}{Input name. Reactive value is available under input[[input_id]].}
+\item{input_id}{Input name. Reactive value is available under input[\link{input_id}].}
 
 \item{choices}{Vector or a list of choices to search through.}
 

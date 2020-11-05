@@ -3,12 +3,12 @@
 #' These functions either create or remove a toast notifications with Semantic UI styling.
 #'
 #' @param message Content of the message.
-#' @param title A title given to the toast. Defauly is empty (\code{""}).
+#' @param title A title given to the toast. Defauly is empty (`""`).
 #' @param action A list of lists containing settings for buttons/options to select within the
 #' @param duration Length in seconds for the toast to appear, default is 3 seconds. To make it not automatically close,
 #' set to 0.
-#' @param id A unique identifier for the notification. It is optional for \code{toast}, but required
-#' for \code{close_toast}.
+#' @param id A unique identifier for the notification. It is optional for `toast`, but required
+#' for `close_toast`.
 #' @param class Classes except "ui toast" to be added to the toast. Semantic UI classes can be used. Default "".
 #' @param toast_tags Other toast elements. Default NULL.
 #' @param session Session object to send notification to.
@@ -88,7 +88,7 @@
 #'
 #' if (interactive()) shinyApp(ui, server)
 #'
-#' @seealso \url{https://fomantic-ui.com/modules/toast}
+#' @seealso <https://fomantic-ui.com/modules/toast>
 #'
 #' @export
 toast <- function(message,
@@ -131,7 +131,7 @@ close_toast <- function(id, session = shiny::getDefaultReactiveDomain()) {
 #' @param ui Content of the toast.
 #' @param closeButton Logical, should a close icon appear on the toast?
 #' @param type Type of toast
-#' @param ... Arguments that can be passed to \code{toast}
+#' @param ... Arguments that can be passed to `toast`
 #'
 #' @rdname toast
 #' @export

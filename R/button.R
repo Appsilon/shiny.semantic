@@ -1,10 +1,10 @@
 #' Create Semantic UI Button
 #'
-#' @param input_id The \code{input} slot that will be used to access the value.
+#' @param input_id The `input` slot that will be used to access the value.
 #' @param label The contents of the button or link
-#' @param icon An optional \code{\link{icon}()} to appear on the button.
+#' @param icon An optional [icon()] to appear on the button.
 #' @param class An optional attribute to be added to the button's class. If used
-#' paramters like \code{color}, \code{size} are ignored.
+#' paramters like `color`, `size` are ignored.
 #' @param ... Named attributes to be applied to the button
 #'
 #' @examples
@@ -33,10 +33,10 @@ button <- function(input_id, label, icon = NULL, class = NULL, ...) {
 #'
 #' @param input_id The input slot that will be used to access the value.
 #' @param label The contents of the button - a text label, but you could also use any other HTML, like an image.
-#' @param icon An optional \link{icon} to appear on the button.
+#' @param icon An optional [icon] to appear on the button.
 #' @param width The width of the input.
 #' @param ... Named attributes to be applied to the button or remaining parameters passed to button,
-#'   like \code{class}.
+#'   like `class`.
 #'
 #' @examples
 #' if (interactive()){
@@ -63,7 +63,7 @@ action_button <- function(input_id, label, icon = NULL, width = NULL, ...) {
   do.call(button, args_list)
 }
 
-#' @param inputId the same as \code{input_id}
+#' @param inputId the same as `input_id`
 #' @export
 #' @rdname action_button
 actionButton <- function(inputId, label, icon = NULL, width = NULL, ...) {
@@ -112,7 +112,7 @@ update_action_button <- function(session, input_id, label = NULL, icon = NULL) {
   session$sendInputMessage(input_id, message)
 }
 
-#' @param inputId the same as \code{input_id}
+#' @param inputId the same as `input_id`
 #' @rdname update_action_button
 #' @export
 updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
@@ -123,9 +123,9 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #'
 #' Creates a counter button whose value increments by one each time it is pressed.
 #'
-#' @param input_id The \code{input} slot that will be used to access the value.
+#' @param input_id The `input` slot that will be used to access the value.
 #' @param label the content of the item to display
-#' @param icon an optional \code{\link{icon}()} to appear on the button.
+#' @param icon an optional [icon()] to appear on the button.
 #' @param value initial rating value (integer)
 #' @param color character with semantic color
 #' @param big_mark big numbers separator

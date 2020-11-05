@@ -27,7 +27,7 @@ checkboxInput(inputId, label = "", value = FALSE, width = NULL)
 toggle(input_id, label = "", is_marked = TRUE, style = NULL)
 }
 \arguments{
-\item{input_id}{Input name. Reactive value is available under input[[name]].}
+\item{input_id}{Input name. Reactive value is available under input[\link{name}].}
 
 \item{label}{Text to be displayed with checkbox.}
 
@@ -47,7 +47,7 @@ toggle(input_id, label = "", is_marked = TRUE, style = NULL)
 Create Semantic UI checkbox
 }
 \details{
-The inputs are updateable by using \code{\link[shiny]{updateCheckboxInput}}.
+The inputs are updateable by using \code{\link[shiny:updateCheckboxInput]{shiny::updateCheckboxInput()}}.
 
 The following \code{type}s are allowed:
 \itemize{

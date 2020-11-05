@@ -21,7 +21,7 @@ modalDialog(..., title = NULL, footer = NULL)
 }
 \arguments{
 \item{...}{Content elements to be added to the modal body.
-To change attributes of the container please check the `content` argument.}
+To change attributes of the container please check the \code{content} argument.}
 
 \item{id}{ID to be added to the modal div. Default "".}
 

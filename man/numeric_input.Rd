@@ -43,13 +43,13 @@ numericInput(
 \item{step}{Interval to use when stepping between min and max.}
 
 \item{type}{Input type specifying class attached to input container.
-See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.}
+See \href{https://fomantic-ui.com/collections/form.html}{Fomantic UI} for details.}
 
 \item{icon}{Icon or label attached to numeric input.}
 
 \item{placeholder}{Inner input label displayed when no value is specified.}
 
-\item{...}{Other parameters passed to \code{\link{numeric_input}} like \code{type} or \code{icon}.}
+\item{...}{Other parameters passed to \code{\link[=numeric_input]{numeric_input()}} like \code{type} or \code{icon}.}
 
 \item{inputId}{The input slot that will be used to access the value.}
 
@@ -60,7 +60,7 @@ This creates a default numeric input using Semantic UI. The input is available
 under \code{input[[input_id]]}.
 }
 \details{
-The inputs are updateable by using \code{\link{updateNumericInput}}.
+The inputs are updateable by using \code{\link[=updateNumericInput]{updateNumericInput()}}.
 }
 \examples{
 ## Only run examples in interactive R sessions

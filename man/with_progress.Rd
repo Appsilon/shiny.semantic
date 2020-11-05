@@ -61,32 +61,32 @@ inc_progress(
 }
 \arguments{
 \item{expr}{The work to be done. This expression should contain calls to
-`set_progress`.}
+\code{set_progress}.}
 
 \item{min}{The value that represents the starting point of the progress bar.
-Must be less tham `max`. Default is 0.}
+Must be less tham \code{max}. Default is 0.}
 
 \item{max}{The value that represents the end of the progress bar. Must be
-greater than `min`. Default is 1.}
+greater than \code{min}. Default is 1.}
 
 \item{value}{Single-element numeric vector; the value at which to set the
-progress bar, relative to `min` and `max`.}
+progress bar, relative to \code{min} and \code{max}.}
 
 \item{message}{A single-element character vector; the message to be displayed
-to the user, or `NULL` to hide the current message (if any).}
+to the user, or \code{NULL} to hide the current message (if any).}
 
-\item{session}{The Shiny session object, as provided by `shinyServer` to
+\item{session}{The Shiny session object, as provided by \code{shinyServer} to
 the server function. The default is to automatically find the session by
 using the current reactive domain.}
 
-\item{env}{The environment in which `expr` should be evaluated.}
+\item{env}{The environment in which \code{expr} should be evaluated.}
 
-\item{quoted}{Whether `expr` is a quoted expression (this is not
+\item{quoted}{Whether \code{expr} is a quoted expression (this is not
 common).}
 
-\item{...}{Arguments that may have been used in `shiny::withProgress`}
+\item{...}{Arguments that may have been used in \code{shiny::withProgress}}
 
-\item{amount}{For `inc_progress`, the amount to increment the status bar.
+\item{amount}{For \code{inc_progress}, the amount to increment the status bar.
 Default is 0.1.}
 }
 \description{
@@ -94,26 +94,26 @@ Reports progress to the user during long-running operations.
 }
 \details{
 This package exposes two distinct programming APIs for working with progress.
-Using `with_progress` with `inc_progress` or `set_progress`
-provide a simple function-based interface, while the [Progress()]
+Using \code{with_progress} with \code{inc_progress} or \code{set_progress}
+provide a simple function-based interface, while the \code{\link[=Progress]{Progress()}}
 reference class provides an object-oriented API.
 
-Use `with_progress` to wrap the scope of your work; doing so will cause a
+Use \code{with_progress} to wrap the scope of your work; doing so will cause a
 new progress panel to be created, and it will be displayed the first time
-`inc_progress` or `set_progress` are called. When `with_progress`
+\code{inc_progress} or \code{set_progress} are called. When \code{with_progress}
 exits, the corresponding progress panel will be removed.
 
-The `inc_progress` function increments the status bar by a specified
-amount, whereas the `set_progress` function sets it to a specific value,
+The \code{inc_progress} function increments the status bar by a specified
+amount, whereas the \code{set_progress} function sets it to a specific value,
 and can also set the text displayed.
 
-Generally, `with_progress`/`inc_progress`/`set_progress` should
+Generally, \code{with_progress}/\code{inc_progress}/\code{set_progress} should
 be sufficient; the exception is if the work to be done is asynchronous (this
 is not common) or otherwise cannot be encapsulated by a single scope. In that
-case, you can use the `Progress` reference class.
+case, you can use the \code{Progress} reference class.
 
-When migrating from shiny applications, the functions `withProgress`, `incProgress`
-and `setProgress` are aliases for `with_progress`, `inc_progress` and `set_progress`.
+When migrating from shiny applications, the functions \code{withProgress}, \code{incProgress}
+and \code{setProgress} are aliases for \code{with_progress}, \code{inc_progress} and \code{set_progress}.
 }
 \examples{
 ## Only run examples in interactive R sessions
@@ -141,5 +141,5 @@ shinyApp(ui, server)
 
 }
 \seealso{
-[Progress()]
+\code{\link[=Progress]{Progress()}}
 }

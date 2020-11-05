@@ -2,8 +2,8 @@
 #'
 #' This creates DT table styled with Semantic UI.
 #'
-#' @param ... datatable parameters, check \code{?DT::datatable} to learn more.
-#' @param options datatable options, check \code{?DT::datatable} to learn more.
+#' @param ... datatable parameters, check `?DT::datatable` to learn more.
+#' @param options datatable options, check `?DT::datatable` to learn more.
 #'
 #' @examples
 #' if (interactive()){
@@ -31,7 +31,7 @@ semantic_DT <- function(..., options = list()) {
 
 #' Semantic DT Output
 #'
-#' @param ... datatable parameters, check \code{?DT::datatable} to learn more.
+#' @param ... datatable parameters, check `?DT::datatable` to learn more.
 #'
 #' @return DT Output with semanitc style
 #' @export

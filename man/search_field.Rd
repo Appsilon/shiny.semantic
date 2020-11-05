@@ -7,10 +7,10 @@
 search_field(input_id, search_api_url, default_text = "Search", value = "")
 }
 \arguments{
-\item{input_id}{Input name. Reactive value is available under input[[input_id]].}
+\item{input_id}{Input name. Reactive value is available under input[\link{input_id}].}
 
 \item{search_api_url}{Register custom API url with server JSON Response
-containing fields `title` and `description`.}
+containing fields \code{title} and \code{description}.}
 
 \item{default_text}{Text to be visible on serach field when nothing
 is selected.}
@@ -19,10 +19,10 @@ is selected.}
 }
 \description{
 This creates a default search field using Semantic UI styles with Shiny
-input. Search field is already initialized and available under input[[input_id]].
+input. Search field is already initialized and available under input[\link{input_id}].
 Search will automatically route to the named API endpoint provided
 as parameter. API response is expected to be a JSON with property fields
-`title` and `description`.
+\code{title} and \code{description}.
 See https://semantic-ui.com/modules/search.html#behaviors for more details.
 }
 \examples{

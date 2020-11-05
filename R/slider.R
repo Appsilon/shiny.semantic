@@ -2,17 +2,17 @@
 #'
 #' @description
 #' This creates a slider input using Semantic UI. Slider is already initialized and
-#' available under \code{input[[input_id]]}. Use Range for range of values.
+#' available under `input[[input_id]]`. Use Range for range of values.
 #'
-#' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
+#' @param input_id Input name. Reactive value is available under `input[[input_id]]`.
 #' @param value The initial value to be selected for the sldier (lower value if using range).
 #' @param min The minimum value allowed to be selected for the slider.
 #' @param max The maximum value allowed to be selected for the slider.
 #' @param step The interval between each selectable value of the slider.
-#' @param class UI class of the slider. Can include \code{"Labeled"} and \code{"ticked"}.
+#' @param class UI class of the slider. Can include `"Labeled"` and `"ticked"`.
 #'
 #' @details
-#' Use \code{\link{update_slider}} to update the slider/range within the shiny session.
+#' Use [update_slider()] to update the slider/range within the shiny session.
 #'
 #' @rdname slider
 #'
@@ -59,7 +59,7 @@
 #'  }
 #'
 #' @seealso update_slider for input updates,
-#' \url{https://fomantic-ui.com/modules/slider.html} for preset classes.
+#' <https://fomantic-ui.com/modules/slider.html> for preset classes.
 #'
 #' @export
 slider_input <- function(input_id, value, min, max, step = 1, class = NULL) {
@@ -97,9 +97,9 @@ range_input <- function(input_id, value, value2, min, max, step = 1, class = NUL
 
 #' Update slider Semantic UI component
 #'
-#' Change the value of a \code{\link{slider_input}} input on the client.
+#' Change the value of a [slider_input()] input on the client.
 #'
-#' @param session The \code{session} object passed to function given to \code{shinyServer}.
+#' @param session The `session` object passed to function given to `shinyServer`.
 #' @param input_id The id of the input object
 #' @param value The value to be selected for the sldier (lower value if using range).
 #' @examples

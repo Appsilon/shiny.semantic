@@ -35,8 +35,8 @@ main_panel <- function(..., width = 3) {
 #' specified. It should be formatted as a string with css units
 #' @param container_style CSS declarations for grid container
 #' @param area_styles List of CSS declarations for each grid area inside
-#' @param sidebarPanel same as \code{sidebar_panel}
-#' @param mainPanel same as \code{main_panel}
+#' @param sidebarPanel same as `sidebar_panel`
+#' @param mainPanel same as `main_panel`
 #' @param position vector with position of sidebar elements in order sidebar, main
 #' @param fluid TRUE to use fluid layout; FALSE to use fixed layout.
 #'
@@ -169,8 +169,8 @@ sidebarLayout <- function(sidebarPanel,
 #' @param cell_args character with additional attributes that should be used for
 #' each cell of the layout.
 #' @param style character with style of outer box surrounding all elements
-#' @param cellWidths same as \code{cell_widths}
-#' @param cellArgs same as \code{cell_args}
+#' @param cellWidths same as `cell_widths`
+#' @param cellArgs same as `cell_args`
 #'
 #' @return split layout grid object
 #' @export
@@ -257,7 +257,7 @@ splitLayout <- function(..., cellWidths = NULL, cellArgs = "", style = NULL) {
 #' each cell of the layout.
 #' @param adjusted_to_page if TRUE it adjust elements position in equal spaces to
 #' the size of the page
-#' @param fluid not supported yet (here for consistency with \code{shiny})
+#' @param fluid not supported yet (here for consistency with `shiny`)
 #'
 #' @return vertical layout grid object
 #' @export

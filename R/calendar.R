@@ -1,12 +1,12 @@
 #' Create Semantic UI Calendar
 #'
 #' This creates a default calendar input using Semantic UI. The input is available
-#' under \code{input[[input_id]]}.
+#' under `input[[input_id]]`.
 #'
-#' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
+#' @param input_id Input name. Reactive value is available under `input[[input_id]]`.
 #' @param value Initial value of the numeric input.
 #' @param placeholder Text visible in the input when nothing is inputted.
-#' @param type Select from \code{'year'}, \code{'month'}, \code{'date'} and \code{'time'}
+#' @param type Select from `'year'`, `'month'`, `'date'` and `'time'`
 #' @param min Minimum allowed value.
 #' @param max Maximum allowed value.
 #'
@@ -73,8 +73,8 @@ calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", 
 #'
 #' This function updates the date on a calendar
 #'
-#' @param session The \code{session} object passed to function given to
-#'   \code{shinyServer}.
+#' @param session The `session` object passed to function given to
+#'   `shinyServer`.
 #' @param input_id ID of the calendar that will be updated
 #'
 #' @rdname calendar

@@ -17,7 +17,7 @@ progress(
 )
 }
 \arguments{
-\item{input_id}{Input name. Reactive value is available under input[[input_id]].}
+\item{input_id}{Input name. Reactive value is available under input[\link{input_id}].}
 
 \item{value}{The initial value to be selected for the progress bar.}
 
@@ -29,7 +29,7 @@ progress(
 
 \item{label}{The label to be visible underneath the progress bar.}
 
-\item{label_complete}{The label to be visible underneath the progress bar when the bar is at 100\%.}
+\item{label_complete}{The label to be visible underneath the progress bar when the bar is at 100\\%.}
 
 \item{size}{character with legal semantic size, eg. "medium", "huge", "tiny"}
 
@@ -37,7 +37,7 @@ progress(
 }
 \description{
 This creates a default progress using Semantic UI styles with Shiny input.
-Progress is already initialized and available under input[[input_id]].
+Progress is already initialized and available under input[\link{input_id}].
 }
 \details{
 To initialize the progress bar, you can either choose \code{value} and \code{total}, or \code{percent}.

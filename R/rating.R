@@ -2,11 +2,11 @@
 #'
 #' Crates rating component
 #'
-#' @param input_id The \code{input} slot that will be used to access the value.
+#' @param input_id The `input` slot that will be used to access the value.
 #' @param label the contents of the item to display
 #' @param value initial rating value
 #' @param max maximum value
-#' @param icon character with name of the icon or \code{\link{icon}()} that is
+#' @param icon character with name of the icon or [icon()] that is
 #' an element of the rating
 #' @param color character with colour name
 #' @param size character with legal semantic size, eg. "medium", "huge", "tiny"
@@ -55,7 +55,7 @@ rating_input <- function(input_id, label = "", value = 0, max = 3, icon = "star"
 #' Update rating
 #'
 #' Change the value of a rating input on the client. Check
-#' \code{rating_input} to learn more.
+#' `rating_input` to learn more.
 #'
 #' @param session shiny object with session info
 #'

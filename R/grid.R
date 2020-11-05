@@ -60,7 +60,7 @@ grid_container_css <- function(css_grid_template_areas, rows_height, cols_width)
 #'
 #' @param area_names vector with area names
 #'
-#' @return list of \code{shiny::tags$div}
+#' @return list of `shiny::tags$div`
 #'
 #' @details This is a helper function used in grid_template()
 #' \preformatted{
@@ -190,10 +190,10 @@ grid_template <- function(default = NULL, mobile = NULL) {
 #' @param grid_template grid template created with grid_template() function
 #' @param container_style character - string of custom CSS for the main grid container
 #' @param area_styles list of custom CSS styles for provided area names
-#' @param display_mode replaces areas HTML content with <area name> text. Used by display_grid() function
+#' @param display_mode replaces areas HTML content with `<area name>` text. Used by display_grid() function
 #' @param ... areas HTML content provided by named arguments
 #'
-#' @return Rendered HTML ready to use by Shiny UI. See \code{htmltools::htmlTemplate()} for more details.
+#' @return Rendered HTML ready to use by Shiny UI. See `htmltools::htmlTemplate()` for more details.
 #'
 #' @details
 #' Grids can be nested.

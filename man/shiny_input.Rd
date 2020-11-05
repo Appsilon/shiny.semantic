@@ -8,7 +8,7 @@ shiny_input(input_id, shiny_ui, value = NULL, type = "JSON")
 }
 \arguments{
 \item{input_id}{String with name of this input. Access to this input within server code is normal with
-input[[input_id]].}
+input[\link{input_id}].}
 
 \item{shiny_ui}{UI of HTML component presenting this input to the users. This UI should allow to extract its value
 with jQuery $().val() function.}

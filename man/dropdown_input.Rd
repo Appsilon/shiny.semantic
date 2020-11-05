@@ -14,7 +14,7 @@ dropdown_input(
 )
 }
 \arguments{
-\item{input_id}{Input name. Reactive value is available under input[[input_id]].}
+\item{input_id}{Input name. Reactive value is available under input[\link{input_id}].}
 
 \item{choices}{All available options one can select from.}
 
@@ -28,8 +28,8 @@ choice.}
 \item{type}{Change depending what type of dropdown is wanted.}
 }
 \description{
-This creates a default *dropdown_input* using Semantic UI styles with Shiny input.
-Dropdown is already initialized and available under input[[input_id]].
+This creates a default \emph{dropdown_input} using Semantic UI styles with Shiny input.
+Dropdown is already initialized and available under input[\link{input_id}].
 }
 \examples{
 ## Only run examples in interactive R sessions

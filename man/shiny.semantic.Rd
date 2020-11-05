@@ -12,14 +12,14 @@ your UI a fresh, modern and highly interactive look.
 \section{Options}{
 
 There are a number of global options that affect shiny.semantic as well as
-Shiny behavior.The options can be set globally with `options()`
+Shiny behavior.The options can be set globally with \code{options()}
 \describe{
 \item{shiny.custom.semantic.cdn (defaults is internal CDN)}{This controls from where the css
 and javascripts will be downloaded.}
-\item{shiny.semantic.local (defaults to `FALSE`)}{This allows to use only local dependency.}
-\item{shiny.custom.semantic (defaults to `NULL`)}{This allows to set custom local path
+\item{shiny.semantic.local (defaults to \code{FALSE})}{This allows to use only local dependency.}
+\item{shiny.custom.semantic (defaults to \code{NULL})}{This allows to set custom local path
 to semantic dependencies.}
-\item{shiny.minified (defaults to `TRUE`)}{Defines including JavaScript as a minified or
+\item{shiny.minified (defaults to \code{TRUE})}{Defines including JavaScript as a minified or
 un-minified file.}
 }
 }

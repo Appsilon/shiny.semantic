@@ -55,8 +55,8 @@ The following \code{type} s are allowed:
 \item{tel} {A special version of the text input specific for telephone numbers}
 }
 
-The inputs are updateable by using \code{\link[shiny]{updateTextInput}} or
-\code{\link[shiny]{updateTextAreaInput}} if \code{type = "textarea"}.
+The inputs are updateable by using \code{\link[shiny:updateTextInput]{shiny::updateTextInput()}} or
+\code{\link[shiny:updateTextAreaInput]{shiny::updateTextAreaInput()}} if \code{type = "textarea"}.
 }
 \examples{
 ## Only run examples in interactive R sessions

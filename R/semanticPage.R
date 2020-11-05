@@ -105,20 +105,20 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
 #'
 #' Inside, it uses two crucial options:
 #'
-#' (1) \code{shiny.minified} with a logical value, tells whether it should attach min or full
+#' (1) `shiny.minified` with a logical value, tells whether it should attach min or full
 #' semnatic css or js (TRUE by default).
-#' (2) \code{shiny.custom.semantic} if this option has not NULL character \code{semanticPage}
+#' (2) `shiny.custom.semantic` if this option has not NULL character `semanticPage`
 #' takes dependencies from custom css and js files specified in this path
-#' (NULL by default). Depending on \code{shiny.minified} value the folder should contain
-#' either "min" or standard version. The folder should contain: \code{semantic.css} and
-#' \code{semantic.js} files, or \code{semantic.min.css} and \code{semantic.min.js}
-#' in \code{shiny.minified = TRUE} mode.
+#' (NULL by default). Depending on `shiny.minified` value the folder should contain
+#' either "min" or standard version. The folder should contain: `semantic.css` and
+#' `semantic.js` files, or `semantic.min.css` and `semantic.min.js`
+#' in `shiny.minified = TRUE` mode.
 #'
 #' @param ... Other arguments to be added as attributes of the main div tag
 #' wrapper (e.g. style, class etc.)
 #' @param title A title to display in the browser's title bar.
 #' @param theme Theme name or path. Full list of supported themes you will find in
-#' \code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.
+#' `SUPPORTED_THEMES` or at http://semantic-ui-forest.com/themes.
 #' @param suppress_bootstrap boolean flag that supresses bootstrap when turned on
 #' @param margin character with body margin size
 #' @examples

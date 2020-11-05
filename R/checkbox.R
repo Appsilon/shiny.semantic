@@ -9,9 +9,9 @@
 #' @param type Type of checkbox: NULL, 'toggle'
 #' @param is_marked Defines if checkbox should be marked. Default TRUE.
 #' @param style Style of the widget.
-#' @param inputId same as \code{input_id}
-#' @param value same as \code{is_marked}
-#' @param width The width of the input (currently not supported, but check \code{style})
+#' @param inputId same as `input_id`
+#' @param value same as `is_marked`
+#' @param width The width of the input (currently not supported, but check `style`)
 #'
 #' @examples
 #' if (interactive()){
@@ -32,9 +32,9 @@
 #'   shinyApp(ui, server)
 #' }
 #' @details
-#' The inputs are updateable by using \code{\link[shiny]{updateCheckboxInput}}.
+#' The inputs are updateable by using [shiny::updateCheckboxInput()].
 #'
-#' The following \code{type}s are allowed:
+#' The following `type`s are allowed:
 #' \itemize{
 #' \item{NULL}{ The standard checkbox (default)}
 #' \item{toggle}{ Each checkbox has a toggle form}
@@ -69,20 +69,20 @@ toggle <- function(input_id, label = "", is_marked = TRUE, style = NULL) {
 #'
 #' This creates a multiple checkbox using Semantic UI styles.
 #'
-#' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
+#' @param input_id Input name. Reactive value is available under `input[[input_id]]`.
 #' @param label Text to be displayed with checkbox.
 #' @param choices Vector of labels to show checkboxes for.
 #' @param choices_value Vector of values that should be used for corresponding choice.
-#'   If not specified, \code{choices} is used by default.
+#'   If not specified, `choices` is used by default.
 #' @param selected The value(s) that should be chosen initially.
-#'   If \code{NULL} the first one from \code{choices} is chosen.
-#' @param position Specified checkmarks setup. Can be \code{grouped} or \code{inline}.
+#'   If `NULL` the first one from `choices` is chosen.
+#' @param position Specified checkmarks setup. Can be `grouped` or `inline`.
 #' @param type Type of checkbox or radio.
 #' @param ... Other arguments to be added as attributes of the
 #' tag (e.g. style, childrens etc.)
 #'
 #' @details
-#' The following \code{type}s are allowed:
+#' The following `type`s are allowed:
 #' \itemize{
 #' \item{NULL}{The standard checkbox (default)}
 #' \item{toggle}{Each checkbox has a toggle form}

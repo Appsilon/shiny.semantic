@@ -79,7 +79,7 @@ dropdown_input <- function(input_id, choices, choices_value = choices,
 #'   values for multiple select lists.
 #' @param multiple Is selection of multiple items allowed?
 #' @param width The width of the input.
-#' @param ... Arguments passed to \link{dropdown_input}.
+#' @param ... Arguments passed to [dropdown_input].
 #'
 #' @examples
 #' ## Only run examples in interactive R sessions
@@ -145,11 +145,11 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
 
 #' Update dropdown Semantic UI component
 #'
-#' Change the value of a \code{\link{dropdown_input}} input on the client.
+#' Change the value of a [dropdown_input()] input on the client.
 #'
-#' @param session The \code{session} object passed to function given to \code{shinyServer}.
+#' @param session The `session` object passed to function given to `shinyServer`.
 #' @param input_id The id of the input object
-#' @param choices All available options one can select from. If no need to update then leave as \code{NULL}
+#' @param choices All available options one can select from. If no need to update then leave as `NULL`
 #' @param choices_value What reactive value should be used for corresponding choice.
 #' @param value The initially selected value.
 #'
@@ -262,7 +262,7 @@ updateSelectInput <- function(session, inputId, label, choices = NULL, selected 
 
 #' Themes changer dropdown
 #'
-#' @param input_id Id of dropdown. \code{input[[input_id]]} returns the currently selected theme.
+#' @param input_id Id of dropdown. `input[[input_id]]` returns the currently selected theme.
 #' @param label Dropdown label.
 #'
 #' @examples

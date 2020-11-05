@@ -40,7 +40,7 @@ This creates a slider input using Semantic UI. Slider is already initialized and
 available under \code{input[[input_id]]}. Use Range for range of values.
 }
 \details{
-Use \code{\link{update_slider}} to update the slider/range within the shiny session.
+Use \code{\link[=update_slider]{update_slider()}} to update the slider/range within the shiny session.
 }
 \examples{
 if (interactive()) {

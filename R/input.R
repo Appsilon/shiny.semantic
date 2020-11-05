@@ -33,9 +33,9 @@ uiinput <- function(..., class = "") {
 #' Create Semantic UI Text Input
 #'
 #' This creates a default text input using Semantic UI. The input is available
-#' under \code{input[[input_id]]}.
+#' under `input[[input_id]]`.
 #'
-#' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
+#' @param input_id Input name. Reactive value is available under `input[[input_id]]`.
 #' @param value Pass value if you want to have default text.
 #' @param type Change depending what type of input is wanted. See details for options.
 #' @param placeholder Text visible in the input when nothing is inputted.
@@ -44,7 +44,7 @@ uiinput <- function(..., class = "") {
 #' @param width The width of the input, eg. "40px"
 #'
 #' @details
-#' The following \code{type} s are allowed:
+#' The following `type` s are allowed:
 #' \itemize{
 #' \item{text} {The standard input}
 #' \item{textarea} {An extended space for text}
@@ -54,8 +54,8 @@ uiinput <- function(..., class = "") {
 #' \item{tel} {A special version of the text input specific for telephone numbers}
 #' }
 #'
-#' The inputs are updateable by using \code{\link[shiny]{updateTextInput}} or
-#' \code{\link[shiny]{updateTextAreaInput}} if \code{type = "textarea"}.
+#' The inputs are updateable by using [shiny::updateTextInput()] or
+#' [shiny::updateTextAreaInput()] if `type = "textarea"`.
 #'
 #' @examples
 #' ## Only run examples in interactive R sessions
@@ -100,7 +100,7 @@ text_input <- function(input_id, label = NULL, value = "", type = "text",
 #'
 #' Create a text area input control for entry of unstructured text values.
 #'
-#' @param inputId Input name. Reactive value is available under \code{input[[input_id]]}.
+#' @param inputId Input name. Reactive value is available under `input[[input_id]]`.
 #' @param label character with label put above the input
 #' @param value Pass value if you want to have default text.
 #' @param width The width of the input, eg. "40px"
@@ -131,7 +131,7 @@ textAreaInput <- function(inputId, label, value = "", width = NULL, placeholder 
   )
 }
 
-#' @param inputId Input name. The same as \code{input_id}.
+#' @param inputId Input name. The same as `input_id`.
 #' @rdname text_input
 #' @export
 textInput <- function(inputId, label, value = "", width = NULL,
@@ -149,9 +149,9 @@ textInput <- function(inputId, label, value = "", width = NULL,
 #' Create Semantic UI Numeric Input
 #'
 #' This creates a default numeric input using Semantic UI. The input is available
-#' under \code{input[[input_id]]}.
+#' under `input[[input_id]]`.
 #'
-#' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
+#' @param input_id Input name. Reactive value is available under `input[[input_id]]`.
 #' @param value Initial value of the numeric input.
 #' @param min Minimum allowed value.
 #' @param max Maximum allowed value.
@@ -164,7 +164,7 @@ textInput <- function(inputId, label, value = "", width = NULL,
 #' @param label character with label
 #'
 #' @details
-#' The inputs are updateable by using \code{\link{updateNumericInput}}.
+#' The inputs are updateable by using [updateNumericInput()].
 #' @rdname numeric_input
 #' @examples
 #' ## Only run examples in interactive R sessions
@@ -209,7 +209,7 @@ numeric_input <- function(input_id, label, value, min = NA, max = NA, step = NA,
 #' @param max Maximum allowed value.
 #' @param step Interval to use when stepping between min and max.
 #' @param width The width of the input.
-#' @param ... Other parameters passed to \code{\link{numeric_input}} like \code{type} or \code{icon}.
+#' @param ... Other parameters passed to [numeric_input()] like `type` or `icon`.
 #' @rdname numeric_input
 #' @export
 numericInput <- function(inputId, label, value,
@@ -260,7 +260,7 @@ update_numeric_input <- function(session, input_id, label = NULL, value = NULL,
                             min = min, max = max, step = step)
 }
 
-#' @param inputId the same as \code{input_id}
+#' @param inputId the same as `input_id`
 #' @export
 #' @rdname update_numeric_input
 updateNumericInput <- shiny::updateNumericInput

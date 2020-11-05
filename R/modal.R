@@ -16,8 +16,8 @@
 #' @param target Javascript selector for the element that will open the modal. Default NULL.
 #' @param settings list of vectors of Semantic UI settings to be added to the modal. Default NULL.
 #' @param modal_tags other modal elements. Default NULL.
-#' @param modal_tags character with title for \code{modalDialog} - equivalent to header
-#' @param title title displayed in header in \code{modalDialog}
+#' @param modal_tags character with title for `modalDialog` - equivalent to header
+#' @param title title displayed in header in `modalDialog`
 #'
 #' @examples
 #' ## Create a simple server modal
@@ -229,7 +229,7 @@ modalDialog <- function(..., title = NULL, footer = NULL) {
 #' @param ui_modal HTML containing the modal.
 #' @param show If the modal should only be created or open when called (open by default).
 #' @param session Current session.
-#' @param ui Same as \code{ui_modal} in show modal
+#' @param ui Same as `ui_modal` in show modal
 #' @seealso modal
 #'
 #' @import shiny
@@ -261,8 +261,8 @@ attach_rule <- function(id, behavior, target, value) {
 #' This displays a hidden Semantic UI modal.
 #'
 #' @param id ID of the modal that will be displayed.
-#' @param session The \code{session} object passed to function given to
-#'   \code{shinyServer}.
+#' @param session The `session` object passed to function given to
+#'   `shinyServer`.
 #' @seealso modal
 #'
 #' @rdname show_modal

@@ -12,21 +12,21 @@ Reporting progress (object-oriented API)
 Reports progress to the user during long-running operations.
 
 This package exposes two distinct programming APIs for working with
-progress. [withProgress()] and [setProgress()]
+progress. \code{\link[=withProgress]{withProgress()}} and \code{\link[=setProgress]{setProgress()}}
 together provide a simple function-based interface, while the
-`Progress` reference class provides an object-oriented API.
+\code{Progress} reference class provides an object-oriented API.
 
-Instantiating a `Progress` object causes a progress panel to be
-created, and it will be displayed the first time the `set`
-method is called. Calling `close` will cause the progress panel
+Instantiating a \code{Progress} object causes a progress panel to be
+created, and it will be displayed the first time the \code{set}
+method is called. Calling \code{close} will cause the progress panel
 to be removed.
 
 As of version 0.14, the progress indicators use Shiny's new notification API.
 If you want to use the old styling (for example, you may have used customized
-CSS), you can use `style="old"` each time you call
-`Progress$new()`. If you don't want to set the style each time
-`Progress$new` is called, you can instead call
-[`shinyOptions(progress.style="old")`][shinyOptions] just once, inside the server
+CSS), you can use \code{style="old"} each time you call
+\code{Progress$new()}. If you don't want to set the style each time
+\code{Progress$new} is called, you can instead call
+\code{\link[=shinyOptions]{shinyOptions(progress.style="old")}} just once, inside the server
 function.
 }
 \examples{
@@ -57,7 +57,7 @@ shinyApp(ui, server)
 
 }
 \seealso{
-[with_progress()]
+\code{\link[=with_progress]{with_progress()}}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -84,16 +84,16 @@ Creates a new progress panel (but does not display it).
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{session}}{The Shiny session object, as provided by `shinyServer` to
+\item{\code{session}}{The Shiny session object, as provided by \code{shinyServer} to
 the server function.}
 
 \item{\code{min}}{The value that represents the starting point of the progress
-bar. Must be less than `max`.}
+bar. Must be less than \code{max}.}
 
 \item{\code{max}}{The value that represents the end of the progress bar. Must be
-greater than `min`.}
+greater than \code{min}.}
 
-\item{\code{...}}{Arguments that may have been used for `shiny::Progress`}
+\item{\code{...}}{Arguments that may have been used for \code{shiny::Progress}}
 }
 \if{html}{\out{</div>}}
 }
@@ -103,7 +103,7 @@ greater than `min`.}
 \if{latex}{\out{\hypertarget{method-set}{}}}
 \subsection{Method \code{set()}}{
 Updates the progress panel. When called the first time, the
-  progress panel is displayed.
+progress panel is displayed.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Progress$set(value = NULL, message = NULL, ...)}\if{html}{\out{</div>}}
 }
@@ -112,13 +112,13 @@ Updates the progress panel. When called the first time, the
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{value}}{Single-element numeric vector; the value at which to set the
-progress bar, relative to `min` and `max`. `NULL` hides the progress
+progress bar, relative to \code{min} and \code{max}. \code{NULL} hides the progress
 bar, if it is currently visible.}
 
 \item{\code{message}}{A single-element character vector; the message to be
-displayed to the user, or `NULL` to hide the current message (if any).}
+displayed to the user, or \code{NULL} to hide the current message (if any).}
 
-\item{\code{...}}{Arguments that may have been used for `shiny::Progress`}
+\item{\code{...}}{Arguments that may have been used for \code{shiny::Progress}}
 }
 \if{html}{\out{</div>}}
 }
@@ -127,9 +127,9 @@ displayed to the user, or `NULL` to hide the current message (if any).}
 \if{html}{\out{<a id="method-inc"></a>}}
 \if{latex}{\out{\hypertarget{method-inc}{}}}
 \subsection{Method \code{inc()}}{
-Like `set`, this updates the progress panel. The difference
-  is that `inc` increases the progress bar by `amount`, instead of
-  setting it to a specific value.
+Like \code{set}, this updates the progress panel. The difference
+is that \code{inc} increases the progress bar by \code{amount}, instead of
+setting it to a specific value.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Progress$inc(amount = 0.1, message = NULL, ...)}\if{html}{\out{</div>}}
 }
@@ -137,13 +137,13 @@ Like `set`, this updates the progress panel. The difference
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{amount}}{For the `inc()` method, a numeric value to increment the
+\item{\code{amount}}{For the \code{inc()} method, a numeric value to increment the
 progress bar.}
 
 \item{\code{message}}{A single-element character vector; the message to be
-displayed to the user, or `NULL` to hide the current message (if any).}
+displayed to the user, or \code{NULL} to hide the current message (if any).}
 
-\item{\code{...}}{Arguments that may have been used for `shiny::Progress`}
+\item{\code{...}}{Arguments that may have been used for \code{shiny::Progress}}
 }
 \if{html}{\out{</div>}}
 }
@@ -182,8 +182,8 @@ Returns the current value.
 \if{html}{\out{<a id="method-close"></a>}}
 \if{latex}{\out{\hypertarget{method-close}{}}}
 \subsection{Method \code{close()}}{
-Removes the progress panel. Future calls to `set` and
-  `close` will be ignored.
+Removes the progress panel. Future calls to \code{set} and
+\code{close} will be ignored.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Progress$close()}\if{html}{\out{</div>}}
 }

@@ -20,7 +20,7 @@ grid(
 
 \item{area_styles}{list of custom CSS styles for provided area names}
 
-\item{display_mode}{replaces areas HTML content with <area name> text. Used by display_grid() function}
+\item{display_mode}{replaces areas HTML content with \verb{<area name>} text. Used by display_grid() function}
 
 \item{...}{areas HTML content provided by named arguments}
 }

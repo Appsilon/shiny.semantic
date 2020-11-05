@@ -7,8 +7,8 @@
 list_container(content_list, is_divided = FALSE)
 }
 \arguments{
-\item{content_list}{list of lists with fields: `header` and/or `description`,
-`icon` containing the list items headers, descriptions (one of these is mandatory)
+\item{content_list}{list of lists with fields: \code{header} and/or \code{description},
+\code{icon} containing the list items headers, descriptions (one of these is mandatory)
 and icons. Icon column should contain strings with icon names available
 here: https://fomantic-ui.com/elements/icon.html}
 

@@ -26,7 +26,7 @@ updateSliderInput(session, inputId, value, ...)
 \item{...}{additional arguments}
 }
 \description{
-Change the value of a \code{\link{slider_input}} input on the client.
+Change the value of a \code{\link[=slider_input]{slider_input()}} input on the client.
 }
 \examples{
 ## Only run this example in interactive R sessions

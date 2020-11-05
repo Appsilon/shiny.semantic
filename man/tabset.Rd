@@ -30,7 +30,7 @@ segment")}
 This creates tabs with content using Semantic UI styles.
 }
 \details{
-You may access active tab id with \code{input$<id>_tab}.
+You may access active tab id with \verb{input$<id>_tab}.
 }
 \examples{
 ## Only run examples in interactive R sessions

@@ -13,11 +13,11 @@ accordion(
 )
 }
 \arguments{
-\item{accordion_list}{list with lists with fields: `title` and `content`}
+\item{accordion_list}{list with lists with fields: \code{title} and \code{content}}
 
 \item{fluid}{if accordion is fluid then it takes width of parent div}
 
-\item{active_title}{if active title matches `title` from \code{accordion_list}
+\item{active_title}{if active title matches \code{title} from \code{accordion_list}
 then this element is active by default}
 
 \item{styled}{if switched of then raw style (no boxes) is used}
