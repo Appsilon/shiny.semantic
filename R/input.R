@@ -5,23 +5,7 @@
 #' @param ... Other arguments to be added as attributes of the tag (e.g. style, class or childrens etc.)
 #' @param class Additional classes to add to html tag.
 #'
-#' @examples
-#' #' ## Only run examples in interactive R sessions
-#' if (interactive()) {
-#' library(shiny)
-#' library(shiny.semantic)
-#'
-#' ui <- semanticPage(
-#'   uiinput(icon("dog"),
-#'           numeric_input("input", value = 0, label = "")
-#'   )
-#' )
-#'
-#' server <- function(input, output, session) {
-#' }
-#'
-#' shinyApp(ui, server)
-#' }
+#' @example inst/examples/ui_input.R
 #'
 #' @seealso text_input
 #'
@@ -57,20 +41,8 @@ uiinput <- function(..., class = "") {
 #' The inputs are updateable by using [shiny::updateTextInput()] or
 #' [shiny::updateTextAreaInput()] if `type = "textarea"`.
 #'
-#' @examples
-#' ## Only run examples in interactive R sessions
-#' if (interactive()) {
-#'   library(shiny)
-#'   library(shiny.semantic)
-#'   ui <- semanticPage(
-#'     uiinput(
-#'       text_input("ex", label = "Your text", type = "text", placeholder = "Enter Text")
-#'     )
-#'   )
-#'   server <- function(input, output, session) {
-#'  }
-#'  shinyApp(ui, server)
-#'  }
+#' @example inst/examples/text_input.R
+#'
 #' @rdname text_input
 #' @export
 text_input <- function(input_id, label = NULL, value = "", type = "text",
@@ -106,18 +78,8 @@ text_input <- function(input_id, label = NULL, value = "", type = "text",
 #' @param width The width of the input, eg. "40px"
 #' @param placeholder Text visible in the input when nothing is inputted.
 #'
-#' @examples
-#' ## Only run examples in interactive R sessions
-#' if (interactive()) {
-#' ui <- semanticPage(
-#'   textAreaInput("a", "Area:", width = "200px"),
-#'   verbatimTextOutput("value")
-#' )
-#' server <- function(input, output, session) {
-#'   output$value <- renderText({ input$a })
-#' }
-#' shinyApp(ui, server)
-#' }
+#' @example inst/examples/text_area_input.R
+#'
 #' @export
 textAreaInput <- function(inputId, label, value = "", width = NULL, placeholder = NULL) {
   shiny::div(
@@ -166,17 +128,8 @@ textInput <- function(inputId, label, value = "", width = NULL,
 #' @details
 #' The inputs are updateable by using [updateNumericInput()].
 #' @rdname numeric_input
-#' @examples
-#' ## Only run examples in interactive R sessions
-#' if (interactive()) {
-#'   library(shiny)
-#'   library(shiny.semantic)
-#'   ui <- semanticPage(
-#'     numeric_input("ex", "Select number", 10),
-#'   )
-#'   server <- function(input, output, session) {}
-#'   shinyApp(ui, server)
-#' }
+#'
+#' @example inst/examples/numeric_input.R
 #'
 #' @export
 numeric_input <- function(input_id, label, value, min = NA, max = NA, step = NA,
@@ -230,28 +183,9 @@ numericInput <- function(inputId, label, value,
 #' @param min Minimum value.
 #' @param max Maximum value.
 #' @param step Step size.
-#' @examples
-#' ## Only run examples in interactive R sessions
-#' if (interactive()) {
-#' library(shiny)
-#' library(shiny.semantic)
 #'
-#' ui <- semanticPage(
-#'   slider_input("slider_in", 5, 0, 10),
-#'   numeric_input("input", "Numeric input:", 0)
-#' )
+#' @example inst/examples/update_numeric_input.R
 #'
-#' server <- function(input, output, session) {
-#'
-#'   observeEvent(input$slider_in, {
-#'     x <- input$slider_in
-#'
-#'     update_numeric_input(session, "input", value = x)
-#'   })
-#' }
-#'
-#' shinyApp(ui, server)
-#' }
 #' @export
 #' @rdname update_numeric_input
 update_numeric_input <- function(session, input_id, label = NULL, value = NULL,

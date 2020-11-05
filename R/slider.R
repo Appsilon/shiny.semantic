@@ -16,47 +16,7 @@
 #'
 #' @rdname slider
 #'
-#' @examples
-#' if (interactive()) {
-#'
-#'   library(shiny)
-#'   library(shiny.semantic)
-#'
-#'   # Slider example
-#'   ui <- shinyUI(
-#'     semanticPage(
-#'       title = "Slider example",
-#'       tags$br(),
-#'       slider_input("slider", 10, 0, 20),
-#'       p("Selected value:"),
-#'       textOutput("slider")
-#'     )
-#'   )
-#'
-#'    server <- shinyServer(function(input, output, session) {
-#'      output$slider <- renderText(input$slider)
-#'    })
-#'
-#'    shinyApp(ui = ui, server = server)
-#'
-#'    # Range example
-#'    ui <- shinyUI(
-#'      semanticPage(
-#'        title = "Range example",
-#'        tags$br(),
-#'        range_input("range", 10, 15, 0, 20),
-#'        p("Selected values:"),
-#'        textOutput("range")
-#'     )
-#'   )
-#'
-#'    server <- shinyServer(function(input, output, session) {
-#'      output$range <- renderText(paste(input$range, collapse = " - "))
-#'    })
-#'
-#'    shinyApp(ui = ui, server = server)
-#'
-#'  }
+#' @example inst/examples/slider_input.R
 #'
 #' @seealso update_slider for input updates,
 #' <https://fomantic-ui.com/modules/slider.html> for preset classes.
@@ -102,24 +62,8 @@ range_input <- function(input_id, value, value2, min, max, step = 1, class = NUL
 #' @param session The `session` object passed to function given to `shinyServer`.
 #' @param input_id The id of the input object
 #' @param value The value to be selected for the sldier (lower value if using range).
-#' @examples
-#' ## Only run this example in interactive R sessions
-#' if (interactive()) {
-#'   shinyApp(
-#'     ui = semanticPage(
-#'       p("The first slider controls the second"),
-#'       slider_input("control", "Controller:", min = 0, max = 20, value = 10,
-#'                    step = 1),
-#'       slider_input("receive", "Receiver:", min = 0, max = 20, value = 10,
-#'                    step = 1)
-#'     ),
-#'     server = function(input, output, session) {
-#'       observe({
-#'         update_slider(session, "receive", value = input$control)
-#'       })
-#'     }
-#'   )
-#' }
+#'
+#' @example inst/examples/update_slider.R
 #'
 #' @seealso slider_input
 #'

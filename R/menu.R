@@ -55,20 +55,8 @@ render_menu_link <- function(location, title, active_location = "", icon = NULL)
 #' @return shiny div with horizontal menu
 #' @export
 #'
-#' @examples
-#' library(shiny.semantic)
-#' menu_content <- list(
-#'  list(name = "AA", link = "http://example.com", icon = "dog"),
-#'  list(name = "BB", link = "#", icon="cat"),
-#'  list(name = "CC")
-#' )
-#' if (interactive()){
-#'   ui <- semanticPage(
-#'    horizontal_menu(menu_content)
-#'   )
-#'   server <- function(input, output, session) {}
-#'   shinyApp(ui, server)
-#' }
+#' @example inst/examples/horizontal_menu.R
+#'
 horizontal_menu <- function(menu_items, active_location = "", logo = NULL) {
   if (!is.list(menu_items))
     stop("'menu_items' must be a list with specific entry names Check docs.")

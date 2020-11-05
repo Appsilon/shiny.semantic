@@ -17,58 +17,56 @@ tag (e.g. style, class etc.)}
 This creates an icon tag using Semantic UI styles.
 }
 \examples{
-
 if (interactive()){
-library(shiny)
-library(shiny.semantic)
-
-ui <- function() {
-  shinyUI(
-    semanticPage(
-      # Basic icon
-      icon("home"),
-      br(),
-      # Different size
-      icon("small home"),
-      icon("large home"),
-      br(),
-      # Disabled icon
-      icon("disabled home"),
-      br(),
-      # Loading icon
-      icon("spinner loading"),
-      br(),
-      # Icon formatted as link
-      icon("close link"),
-      br(),
-      # Flipped
-      icon("horizontally flipped cloud"),
-      icon("vertically flipped cloud"),
-      br(),
-      # Rotated
-      icon("clockwise rotated cloud"),
-      icon("counterclockwise rotated cloud"),
-      br(),
-      # Circular
-      icon("circular home"),
-      br(),
-      # Bordered
-      icon("bordered home"),
-      br(),
-      # Colored
-      icon("red home"),
-      br(),
-      # inverted
-      segment(class = "inverted", icon("inverted home"))
+  library(shiny)
+  library(shiny.semantic)
+  
+  ui <- function() {
+    shinyUI(
+      semanticPage(
+        # Basic icon
+        icon("home"),
+        br(),
+        # Different size
+        icon("small home"),
+        icon("large home"),
+        br(),
+        # Disabled icon
+        icon("disabled home"),
+        br(),
+        # Loading icon
+        icon("spinner loading"),
+        br(),
+        # Icon formatted as link
+        icon("close link"),
+        br(),
+        # Flipped
+        icon("horizontally flipped cloud"),
+        icon("vertically flipped cloud"),
+        br(),
+        # Rotated
+        icon("clockwise rotated cloud"),
+        icon("counterclockwise rotated cloud"),
+        br(),
+        # Circular
+        icon("circular home"),
+        br(),
+        # Bordered
+        icon("bordered home"),
+        br(),
+        # Colored
+        icon("red home"),
+        br(),
+        # inverted
+        segment(class = "inverted", icon("inverted home"))
+      )
     )
-  )
+  }
+  
+  server <- shinyServer(function(input, output, session) {
+    
+  })
+  
+  shinyApp(ui = ui(), server = server)
 }
-
-server <- shinyServer(function(input, output, session) {
-
-})
-
-shinyApp(ui = ui(), server = server)
-}
-
 }

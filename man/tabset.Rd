@@ -37,7 +37,7 @@ You may access active tab id with \verb{input$<id>_tab}.
 if (interactive()){
   library(shiny)
   library(shiny.semantic)
-
+  
   ui <- shinyUI(semanticPage(
     tabset(tabs =
              list(
@@ -52,8 +52,7 @@ if (interactive()){
   ))
   server <- shinyServer(function(input, output) {
   })
-
+  
   shinyApp(ui, server)
 }
-
 }

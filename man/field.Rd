@@ -20,7 +20,7 @@ This creates a field tag using Semantic UI styles.
 if (interactive()){
   library(shiny)
   library(shiny.semantic)
-
+  
   ui <- shinyUI(semanticPage(
     form(
       field(
@@ -43,8 +43,7 @@ if (interactive()){
   ))
   server <- shinyServer(function(input, output) {
   })
-
+  
   shinyApp(ui, server)
 }
-
 }

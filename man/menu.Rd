@@ -22,7 +22,7 @@ This creates a menu using Semantic UI.
 if (interactive()) {
   library(shiny)
   library(shiny.semantic)
-
+  
   ui <- function() {
     shinyUI(
       semanticPage(

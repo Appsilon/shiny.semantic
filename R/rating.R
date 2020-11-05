@@ -12,23 +12,9 @@
 #' @param size character with legal semantic size, eg. "medium", "huge", "tiny"
 #'
 #' @return rating object
-#' @examples
-#' ## Only run examples in interactive R sessions
-#' if (interactive()) {
-#'   library(shiny)
-#'   library(shiny.semantic)
 #'
-#'   ui <- shinyUI(
-#'     semanticPage(
-#'       rating_input("rate", "How do you like it?", max = 5,
-#'                    icon = "heart", color = "yellow"),
-#'     )
-#'   )
-#'   server <- function(input, output) {
-#'     observeEvent(input$rate,{print(input$rate)})
-#'   }
-#'   shinyApp(ui = ui, server = server)
-#' }
+#' @example inst/examples/rating_input.R
+#'
 #' @export
 rating_input <- function(input_id, label = "", value = 0, max = 3, icon = "star",
                    color = "yellow", size = "") {
@@ -62,28 +48,8 @@ rating_input <- function(input_id, label = "", value = 0, max = 3, icon = "star"
 #' @param input_id rating input name
 #' @param label character with updated label
 #' @param value new rating value
-#' @examples
-#' ## Only run examples in interactive R sessions
-#' if (interactive()) {
-#' library(shiny)
-#' library(shiny.semantic)
 #'
-#' ui <- shinyUI(
-#'   semanticPage(
-#'     rating_input("rate", "How do you like it?", max = 5,
-#'                  icon = "heart", color = "yellow"),
-#'     numeric_input("numeric_in", "", 0, min = 0, max = 5)
-#'   )
-#' )
-#' server <- function(session, input, output) {
-#'   observeEvent(input$numeric_in, {
-#'     x <- input$numeric_in
-#'     update_rating_input(session, "rate", value = x)
-#'   }
-#'   )
-#' }
-#' shinyApp(ui = ui, server = server)
-#' }
+#' @example inst/examples/update_rating_input.R
 #'
 #' @export
 #' @rdname update_rating

@@ -17,7 +17,7 @@ progress(
 )
 }
 \arguments{
-\item{input_id}{Input name. Reactive value is available under input[\link{input_id}].}
+\item{input_id}{Input name. Reactive value is available under \code{input[[input_id]]}.}
 
 \item{value}{The initial value to be selected for the progress bar.}
 
@@ -37,7 +37,7 @@ progress(
 }
 \description{
 This creates a default progress using Semantic UI styles with Shiny input.
-Progress is already initialized and available under input[\link{input_id}].
+Progress is already initialized and available under \code{input[[input_id]]}.
 }
 \details{
 To initialize the progress bar, you can either choose \code{value} and \code{total}, or \code{percent}.
@@ -45,24 +45,23 @@ To initialize the progress bar, you can either choose \code{value} and \code{tot
 \examples{
 ## Only run examples in interactive R sessions
 if (interactive()) {
-
+  
   library(shiny)
   library(shiny.semantic)
   ui <- function() {
-      shinyUI(
-        semanticPage(
-          title = "Progress example",
-          progress("progress", percent = 24, label = "{percent}\% complete"),
-          p("Progress completion:"),
-          textOutput("progress")
-       )
-     )
+    shinyUI(
+      semanticPage(
+        title = "Progress example",
+        progress("progress", percent = 24, label = "{percent}\% complete"),
+        p("Progress completion:"),
+        textOutput("progress")
+      )
+    )
   }
   server <- shinyServer(function(input, output) {
-     output$progress <- renderText(input$progress)
+    output$progress <- renderText(input$progress)
   })
-
+  
   shinyApp(ui = ui(), server = server)
 }
-
 }

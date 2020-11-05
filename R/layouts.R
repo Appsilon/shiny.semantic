@@ -41,35 +41,9 @@ main_panel <- function(..., width = 3) {
 #' @param fluid TRUE to use fluid layout; FALSE to use fixed layout.
 #'
 #' @return Container with sidebar and main panels
-#' @examples
-#' if (interactive()){
-#'   library(shiny)
-#'   library(shiny.semantic)
-#'   ui <- semanticPage(
-#'     titlePanel("Hello Shiny!"),
-#'     sidebar_layout(
-#'       sidebar_panel(
-#'         shiny.semantic::sliderInput("obs",
-#'                                     "Number of observations:",
-#'                                     min = 0,
-#'                                     max = 1000,
-#'                                     value = 500),
-#'                                     width = 3
-#'       ),
-#'       main_panel(
-#'         plotOutput("distPlot"),
-#'         width = 4
-#'       ),
-#'       mirrored = TRUE
-#'     )
-#'   )
-#'   server <- function(input, output) {
-#'     output$distPlot <- renderPlot({
-#'       hist(rnorm(input$obs))
-#'     })
-#'   }
-#'   shinyApp(ui, server)
-#' }
+#'
+#' @example inst/examples/sidebar_layout.R
+#'
 #' @rdname sidebar_layout
 #' @export
 sidebar_layout <- function(sidebar_panel,
@@ -177,44 +151,8 @@ sidebarLayout <- function(sidebarPanel,
 #'
 #' @rdname split_layout
 #'
-#' @examples
-#' if (interactive()) {
-#'   #' Server code used for all examples
-#'   server <- function(input, output) {
-#'     output$plot1 <- renderPlot(plot(cars))
-#'     output$plot2 <- renderPlot(plot(pressure))
-#'     output$plot3 <- renderPlot(plot(AirPassengers))
-#'   }
-#'   #' Equal sizing
-#'   ui <- semanticPage(
-#'     split_layout(
-#'       plotOutput("plot1"),
-#'       plotOutput("plot2")
-#'     )
-#'   )
-#'   shinyApp(ui, server)
-#'   #' Custom widths
-#'   ui <- semanticPage(
-#'     split_layout(cell_widths = c("25%", "75%"),
-#'                 plotOutput("plot1"),
-#'                 plotOutput("plot2")
-#'     )
-#'   )
-#'   shinyApp(ui, server)
-#'   #' All cells at 300 pixels wide, with cell padding
-#'   #' and a border around everything
-#'   ui <- semanticPage(
-#'     split_layout(
-#'     cell_widths = 300,
-#'     cell_args = "padding: 6px;",
-#'     style = "border: 1px solid silver;",
-#'     plotOutput("plot1"),
-#'     plotOutput("plot2"),
-#'     plotOutput("plot3")
-#'   )
-#'   )
-#'   shinyApp(ui, server)
-#' }
+#' @example inst/examples/split_layout.R
+#'
 split_layout <- function(..., cell_widths = NULL, cell_args = "", style = NULL){
   if (class(cell_args) == "list")
     stop("In this implementation of `split_layout` cell_args must be character with style css")
@@ -262,23 +200,9 @@ splitLayout <- function(..., cellWidths = NULL, cellArgs = "", style = NULL) {
 #' @return vertical layout grid object
 #' @export
 #' @rdname vertical_layout
-#' @examples
-#' if (interactive()) {
-#'   ui <- semanticPage(
-#'     verticalLayout(
-#'       a(href="http://example.com/link1", "Link One"),
-#'       a(href="http://example.com/link2", "Link Two"),
-#'       a(href="http://example.com/link3", "Link Three")
-#'     )
-#'   )
-#'   shinyApp(ui, server = function(input, output) { })
-#' }
-#' if (interactive()) {
-#'   ui <- semanticPage(
-#'     vertical_layout(h1("Title"), h4("Subtitle"), p("paragraph"), h3("footer"))
-#'   )
-#'   shinyApp(ui, server = function(input, output) { })
-#' }
+#'
+#' @example inst/examples/vertical_layout.R
+#'
 vertical_layout <- function(..., rows_heights = NULL, cell_args = "", adjusted_to_page = TRUE) {
   ui_elements <- list(...)
   n_elems <- length(ui_elements)
@@ -336,17 +260,8 @@ verticalLayout <- function(..., fluid = NULL) {
 #' @export
 #' @rdname flow_layout
 #'
-#' @examples
-#' if (interactive()) {
-#'   ui <- semanticPage(
-#'     flow_layout(
-#'       numericInput("rows", "How many rows?", 5),
-#'       selectInput("letter", "Which letter?", LETTERS),
-#'       sliderInput("value", "What value?", 0, 100, 50)
-#'     )
-#'   )
-#'   shinyApp(ui, server = function(input, output) {})
-#' }
+#' @example inst/examples/flow_layout.R
+#'
 flow_layout <- function(..., cell_args = list(), cell_width = "208px", column_gap = "12px", row_gap = "0px") {
   container_style <- glue::glue(
     "display: grid;",

@@ -41,7 +41,7 @@ Crates rating component
 if (interactive()) {
   library(shiny)
   library(shiny.semantic)
-
+  
   ui <- shinyUI(
     semanticPage(
       rating_input("rate", "How do you like it?", max = 5,

@@ -23,17 +23,15 @@ Create Semantic UI Button
 }
 \examples{
 if (interactive()){
-library(shiny)
-library(shiny.semantic)
-ui <- semanticPage(
-  shinyUI(
-    button("simple_button", "Press Me!")
+  library(shiny)
+  library(shiny.semantic)
+  ui <- semanticPage(
+    shinyUI(
+      button("simple_button", "Press Me!")
+    )
   )
-)
-server <- function(input, output, session) {
+  server <- function(input, output, session) {
+  }
+  shinyApp(ui, server)
 }
-shinyApp(ui, server)
-}
-
-
 }

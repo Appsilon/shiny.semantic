@@ -22,7 +22,7 @@ This creates a \code{div} or \code{a} tag with with class \verb{ui label} using 
 if (interactive()){
   library(shiny)
   library(shiny.semantic)
-
+  
   ui <- shinyUI(
     semanticPage(
       ## label

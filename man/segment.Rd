@@ -20,7 +20,7 @@ This creates a segment using Semantic UI styles.
 if (interactive()){
   library(shiny)
   library(shiny.semantic)
-
+  
   ui <- shinyUI(semanticPage(
     segment(),
     # placeholder
@@ -34,8 +34,7 @@ if (interactive()){
   ))
   server <- shinyServer(function(input, output) {
   })
-
+  
   shinyApp(ui, server)
 }
-
 }

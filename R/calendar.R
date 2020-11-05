@@ -10,46 +10,7 @@
 #' @param min Minimum allowed value.
 #' @param max Maximum allowed value.
 #'
-#' @examples
-#' # Basic calendar
-#' if (interactive()) {
-#'
-#'   library(shiny)
-#'   library(shiny.semantic)
-#'
-#'   ui <- shinyUI(
-#'     semanticPage(
-#'       title = "Calendar example",
-#'       calendar("date"),
-#'       p("Selected date:"),
-#'       textOutput("selected_date")
-#'     )
-#'   )
-#'
-#'    server <- shinyServer(function(input, output, session) {
-#'      output$selected_date <- renderText(
-#'        as.character(input$date)
-#'      )
-#'    })
-#'
-#'    shinyApp(ui = ui, server = server)
-#'  }
-#'
-#' \dontrun{
-#' # Calendar with max and min
-#' calendar(
-#'   name = "date_finish",
-#'   placeholder = "Select End Date",
-#'   min = "2019-01-01",
-#'   max = "2020-01-01"
-#' )
-#'
-#' # Selecting month
-#' calendar(
-#'   name = "month",
-#'   type = "month"
-#' )
-#' }
+#' @example inst/examples/calendar.R
 #' @rdname calendar
 #' @export
 calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {

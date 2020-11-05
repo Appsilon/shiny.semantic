@@ -32,7 +32,7 @@ This creates a dropdown using Semantic UI.
 if (interactive()){
   library(shiny)
   library(shiny.semantic)
-
+  
   ui <- shinyUI(semanticPage(
     dropdown_menu(
       "Dropdown menu",
@@ -46,11 +46,11 @@ if (interactive()){
       name = "dropdown_menu",
       dropdown_specs = list("duration: 500")
     )
-
+    
   ))
   server <- shinyServer(function(input, output) {
   })
-
+  
   shinyApp(ui, server)
 }
 

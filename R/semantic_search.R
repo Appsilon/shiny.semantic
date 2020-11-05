@@ -23,52 +23,7 @@ define_selection_type <- function(input_id, multiple) {
 #' FALSE otherwise (default FALSE).
 #' @param default_text Text to be visible on dropdown when nothing is selected.
 #'
-#'#'@examples
-#' ## Only run examples in interactive R sessions
-#' if (interactive()) {
-#'    library(shiny)
-#'    library(shiny.semantic)
-#'    library(gapminder)
-#'    library(dplyr)
-#'
-#'    ui <- function() {
-#'     shinyUI(
-#'       semanticPage(
-#'         title = "Dropdown example",
-#'         uiOutput("search_letters"),
-#'         p("Selected letter:"),
-#'         textOutput("selected_letters")
-#'       )
-#'     )
-#'   }
-#'
-#'   server <- shinyServer(function(input, output, session) {
-#'
-#'    search_api <- function(gapminder, q) {
-#'      has_matching <- function(field) {
-#'         startsWith(field, q)
-#'       }
-#'       gapminder %>%
-#'         mutate(country = as.character(country)) %>%
-#'         select(country) %>%
-#'         unique %>%
-#'         filter(has_matching(country)) %>%
-#'         head(5) %>%
-#'           transmute(name = country,
-#'                   value = country)
-#'     }
-#'
-#'     search_api_url <- shiny.semantic::register_search(session,
-#'                                                       gapminder,
-#'                                                       search_api)
-#'     output$search_letters <- shiny::renderUI(
-#'       search_selection_api("search_result", search_api_url, multiple = TRUE)
-#'     )
-#'     output$selected_letters <- renderText(input[["search_result"]])
-#'   })
-#'
-#'   shinyApp(ui = ui(), server = server)
-#' }
+#'@example inst/examples/search_selection_api.R
 #'
 #' @import shiny
 #' @export
@@ -117,33 +72,8 @@ search_selection_api <- function(input_id,
 #' @param dropdown_settings Settings passed to dropdown() semantic-ui method.
 #' See https://semantic-ui.com/modules/dropdown.html#/settings
 #'
-#'@examples
-#' ## Only run examples in interactive R sessions
-#' if (interactive()) {
-#'   library(shiny)
-#'   library(shiny.semantic)
+#' @example inst/examples/search_selection_choices.R
 #'
-#'   ui <- function() {
-#'     shinyUI(
-#'       semanticPage(
-#'         title = "Dropdown example",
-#'         uiOutput("search_letters"),
-#'         p("Selected letter:"),
-#'         textOutput("selected_letters")
-#'       )
-#'     )
-#'   }
-#'
-#'   server <- shinyServer(function(input, output, session) {
-#'     choices <- LETTERS
-#'     output$search_letters <- shiny::renderUI(
-#'       search_selection_choices("search_result", choices, multiple = TRUE)
-#'     )
-#'     output$selected_letters <- renderText(input[["search_result"]])
-#'   })
-#'
-#'   shinyApp(ui = ui(), server = server)
-#' }
 #' @importFrom magrittr "%>%"
 #' @import shiny
 #' @export
@@ -219,46 +149,7 @@ search_selection_choices <- function(input_id,
 #' @param search_query Function providing a response as a list of
 #' lists or dataframe of search results.
 #'
-#' @examples
-#' if (interactive()) {
-#'   library(shiny)
-#'   library(tibble)
-#'   library(shiny.semantic)
-#'   shinyApp(
-#'     ui = semanticPage(
-#'       textInput("txt", "Enter the car name (or subset of name)"),
-#'       textOutput("api_url"),
-#'       uiOutput("open_url")
-#'     ),
-#'     server = function(input, output, session) {
-#'       api_response <- function(data, q) {
-#'         has_matching <- function(field) {
-#'           grepl(toupper(q), toupper(field), fixed = TRUE)
-#'         }
-#'         dplyr::filter(data, has_matching(car))
-#'       }
-#'
-#'       search_api_url <- register_search(session,
-#'                            tibble::rownames_to_column(mtcars, "car"), api_response)
-#'
-#'       output$api_url <- renderText({
-#'        glue::glue(
-#'         "Registered API url: ",
-#'         "{session$clientData$url_protocol}//{session$clientData$url_hostname}",
-#'         ":{session$clientData$url_port}/",
-#'         "{search_api_url}&q={input$txt}"
-#'         )
-#'       })
-#'
-#'       output$open_url <- renderUI({
-#'         tags$a(
-#'           "Open", class = "ui button",
-#'           href = glue::glue("./{search_api_url}&q={input$txt}"), target = "_blank"
-#'         )
-#'       })
-#'     }
-#'   )
-#' }
+#' @example inst/examples/register_search.R
 #'
 #' @export
 #' @import shiny

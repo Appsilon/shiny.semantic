@@ -15,10 +15,9 @@ theme_selector(input_id = "theme", label = "Choose theme")
 Themes changer dropdown
 }
 \examples{
-
 if (interactive()) {
-library(shiny)
- library(shiny.semantic)
+  library(shiny)
+  library(shiny.semantic)
   ui <- semanticPage(
     theme = "superhero",
     actionButton("action_button", "Press Me!"),
@@ -32,5 +31,4 @@ library(shiny)
   }
   shinyApp(ui, server)
 }
-
 }

@@ -33,27 +33,28 @@ function.
 ## Only run examples in interactive R sessions
 if (interactive()) {
 
-ui <- semanticPage(
-  plotOutput("plot")
-)
+  ui <- semanticPage(
+    plotOutput("plot")
+  )
 
-server <- function(input, output, session) {
-  output$plot <- renderPlot({
-    progress <- Progress$new(session, min=1, max=15)
-    on.exit(progress$close())
+  server <- function(input, output, session) {
+    output$plot <- renderPlot({
+      progress <- Progress$new(session, min=1, max=15)
+      on.exit(progress$close())
 
-    progress$set(message = 'Calculation in progress')
+      progress$set(message = 'Calculation in progress')
 
-    for (i in 1:15) {
-      progress$set(value = i)
-      Sys.sleep(0.5)
-    }
-    plot(cars)
-  })
+      for (i in 1:15) {
+        progress$set(value = i)
+        Sys.sleep(0.5)
+      }
+      plot(cars)
+    })
+  }
+
+  shinyApp(ui, server)
 }
 
-shinyApp(ui, server)
-}
 
 }
 \seealso{

@@ -42,7 +42,7 @@ search options using provided choices.
 if (interactive()) {
   library(shiny)
   library(shiny.semantic)
-
+  
   ui <- function() {
     shinyUI(
       semanticPage(
@@ -53,7 +53,7 @@ if (interactive()) {
       )
     )
   }
-
+  
   server <- shinyServer(function(input, output, session) {
     choices <- LETTERS
     output$search_letters <- shiny::renderUI(
@@ -61,7 +61,7 @@ if (interactive()) {
     )
     output$selected_letters <- renderText(input[["search_result"]])
   })
-
+  
   shinyApp(ui = ui(), server = server)
 }
 }

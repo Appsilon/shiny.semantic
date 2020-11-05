@@ -37,18 +37,18 @@ Creates a counter button whose value increments by one each time it is pressed.
 }
 \examples{
 if (interactive()) {
-library(shiny)
-library(shiny.semantic)
-ui <-semanticPage(
-     counter_button("counter", "My Counter Button",
+  library(shiny)
+  library(shiny.semantic)
+  ui <-semanticPage(
+    counter_button("counter", "My Counter Button",
                    icon = icon("world"),
                    size = "big", color = "purple")
- )
-server <- function(input, output) {
- observeEvent(input$counter,{
-   print(input$counter)
-  })
- }
-shinyApp(ui, server)
+  )
+  server <- function(input, output) {
+    observeEvent(input$counter,{
+      print(input$counter)
+    })
+  }
+  shinyApp(ui, server)
 }
 }

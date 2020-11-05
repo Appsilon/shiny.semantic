@@ -1,9 +1,9 @@
 #' Create progress Semantic UI component
 #'
 #' This creates a default progress using Semantic UI styles with Shiny input.
-#' Progress is already initialized and available under input[[input_id]].
+#' Progress is already initialized and available under `input[[input_id]]`.
 #'
-#' @param input_id Input name. Reactive value is available under input[[input_id]].
+#' @param input_id Input name. Reactive value is available under `input[[input_id]]`.
 #' @param value The initial value to be selected for the progress bar.
 #' @param total The maximum value that will be applied to the progress bar.
 #' @param percent The initial percentage to be selected for the progress bar.
@@ -16,28 +16,7 @@
 #' @details
 #' To initialize the progress bar, you can either choose `value` and `total`, or `percent`.
 #'
-#' @examples
-#' ## Only run examples in interactive R sessions
-#' if (interactive()) {
-#'
-#'   library(shiny)
-#'   library(shiny.semantic)
-#'   ui <- function() {
-#'       shinyUI(
-#'         semanticPage(
-#'           title = "Progress example",
-#'           progress("progress", percent = 24, label = "{percent}% complete"),
-#'           p("Progress completion:"),
-#'           textOutput("progress")
-#'        )
-#'      )
-#'   }
-#'   server <- shinyServer(function(input, output) {
-#'      output$progress <- renderText(input$progress)
-#'   })
-#'
-#'   shinyApp(ui = ui(), server = server)
-#' }
+#' @example inst/examples/progress.R
 #'
 #' @rdname progress
 #' @export
@@ -107,27 +86,28 @@ update_progress <- function(session, input_id, type = c("increment", "decrement"
 #' ## Only run examples in interactive R sessions
 #' if (interactive()) {
 #'
-#' ui <- semanticPage(
-#'   plotOutput("plot")
-#' )
+#'   ui <- semanticPage(
+#'     plotOutput("plot")
+#'   )
 #'
-#' server <- function(input, output, session) {
-#'   output$plot <- renderPlot({
-#'     progress <- Progress$new(session, min=1, max=15)
-#'     on.exit(progress$close())
+#'   server <- function(input, output, session) {
+#'     output$plot <- renderPlot({
+#'       progress <- Progress$new(session, min=1, max=15)
+#'       on.exit(progress$close())
 #'
-#'     progress$set(message = 'Calculation in progress')
+#'       progress$set(message = 'Calculation in progress')
 #'
-#'     for (i in 1:15) {
-#'       progress$set(value = i)
-#'       Sys.sleep(0.5)
-#'     }
-#'     plot(cars)
-#'   })
+#'       for (i in 1:15) {
+#'         progress$set(value = i)
+#'         Sys.sleep(0.5)
+#'       }
+#'       plot(cars)
+#'     })
+#'   }
+#'
+#'   shinyApp(ui, server)
 #' }
 #'
-#' shinyApp(ui, server)
-#' }
 #'
 #' @seealso [with_progress()]
 #' @format NULL
@@ -281,29 +261,7 @@ Progress <- R6::R6Class(
 #'   progress bar, relative to `min` and `max`.
 #' @param ... Arguments that may have been used in `shiny::withProgress`
 #'
-#' @examples
-#' ## Only run examples in interactive R sessions
-#' if (interactive()) {
-#'
-#' ui <- semanticPage(
-#'   plotOutput("plot")
-#' )
-#'
-#' server <- function(input, output) {
-#'   output$plot <- renderPlot({
-#'     with_progress(message = 'Calculation in progress',
-#'                  detail = 'This may take a while...', value = 0, {
-#'       for (i in 1:15) {
-#'         inc_progress(1/15)
-#'         Sys.sleep(0.25)
-#'       }
-#'     })
-#'     plot(cars)
-#'   })
-#' }
-#'
-#' shinyApp(ui, server)
-#' }
+#' @example inst/examples/with_progress.R
 #'
 #' @seealso [Progress()]
 #' @rdname with_progress

@@ -41,5 +41,4 @@ uirender(
         icon("calendar"))
   )
 )
-
 }

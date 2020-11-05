@@ -46,7 +46,6 @@ if (interactive()) {
     }
   )
 }
-
 }
 \seealso{
 slider_input

@@ -52,6 +52,7 @@ myGrid <- grid_template(
     cols_width = c("100\%")
   )
 )
+
 if (interactive()) display_grid(myGrid)
 subGrid <- grid_template(default = list(
   areas = rbind(

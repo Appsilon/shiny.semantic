@@ -20,7 +20,7 @@ This creates a cards tag using Semantic UI styles.
 if (interactive()){
   library(shiny)
   library(shiny.semantic)
-
+  
   ui <- shinyUI(semanticPage(
     cards(
       class = "two",
@@ -42,8 +42,7 @@ if (interactive()){
   ))
   server <- shinyServer(function(input, output) {
   })
-
+  
   shinyApp(ui, server)
 }
-
 }

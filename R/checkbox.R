@@ -4,7 +4,7 @@
 #'
 #' This creates a checkbox using Semantic UI styles.
 #'
-#' @param input_id Input name. Reactive value is available under input[[name]].
+#' @param input_id Input name. Reactive value is available under `input[[name]]`.
 #' @param label Text to be displayed with checkbox.
 #' @param type Type of checkbox: NULL, 'toggle'
 #' @param is_marked Defines if checkbox should be marked. Default TRUE.
@@ -13,24 +13,8 @@
 #' @param value same as `is_marked`
 #' @param width The width of the input (currently not supported, but check `style`)
 #'
-#' @examples
-#' if (interactive()){
-#'   ui <- shinyUI(
-#'     semanticPage(
-#'       p("Simple checkbox:"),
-#'       checkbox_input("example", "Check me", is_marked = FALSE),
-#'       p(),
-#'       p("Simple toggle:"),
-#'       toggle("tog1", "My Label", TRUE)
-#'     )
-#'   )
-#'   server <- function(input, output, session) {
-#'     observeEvent(input$tog1, {
-#'       print(input$tog1)
-#'     })
-#'   }
-#'   shinyApp(ui, server)
-#' }
+#' @example inst/examples/checkbox.R
+#'
 #' @details
 #' The inputs are updateable by using [shiny::updateCheckboxInput()].
 #'
@@ -91,37 +75,7 @@ toggle <- function(input_id, label = "", is_marked = TRUE, style = NULL) {
 #'
 #' @rdname multiple_checkbox
 #'
-#' @examples
-#' ## Only run examples in interactive R sessions
-#' if (interactive()) {
-#'   # Checkbox
-#'   library(shiny)
-#'   library(shiny.semantic)
-#'
-#'   ui <- function() {
-#'       shinyUI(
-#'         semanticPage(
-#'           title = "Checkbox example",
-#'           h1("Checkboxes"),
-#'           multiple_checkbox("checkboxes", "Select Letters", LETTERS[1:6], value = "A"),
-#'           p("Selected letters:"),
-#'           textOutput("selected_letters"),
-#'           tags$br(),
-#'           h1("Radioboxes"),
-#'           multiple_radio("radioboxes", "Select Letter", LETTERS[1:6], value = "A"),
-#'           p("Selected letter:"),
-#'           textOutput("selected_letter")
-#'        )
-#'      )
-#'   }
-#'
-#'   server <- shinyServer(function(input, output) {
-#'      output$selected_letters <- renderText(paste(input$checkboxes, collapse = ", "))
-#'      output$selected_letter <- renderText(input$radioboxes)
-#'   })
-#'
-#'   shinyApp(ui = ui(), server = server)
-#' }
+#' @example inst/examples/multiple_checkbox.R
 #'
 #' @export
 multiple_checkbox <- function(input_id, label, choices, choices_value = choices,

@@ -23,13 +23,13 @@ Create a text area input control for entry of unstructured text values.
 \examples{
 ## Only run examples in interactive R sessions
 if (interactive()) {
-ui <- semanticPage(
-  textAreaInput("a", "Area:", width = "200px"),
-  verbatimTextOutput("value")
-)
-server <- function(input, output, session) {
-  output$value <- renderText({ input$a })
-}
-shinyApp(ui, server)
+  ui <- semanticPage(
+    textAreaInput("a", "Area:", width = "200px"),
+    verbatimTextOutput("value")
+  )
+  server <- function(input, output, session) {
+    output$value <- renderText({ input$a })
+  }
+  shinyApp(ui, server)
 }
 }

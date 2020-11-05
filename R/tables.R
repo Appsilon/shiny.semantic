@@ -5,21 +5,7 @@
 #' @param ... datatable parameters, check `?DT::datatable` to learn more.
 #' @param options datatable options, check `?DT::datatable` to learn more.
 #'
-#' @examples
-#' if (interactive()){
-#'  library(shiny)
-#'  library(shiny.semantic)
-#'
-#'  ui <- semanticPage(
-#'    semantic_DTOutput("table")
-#'  )
-#'  server <- function(input, output, session) {
-#'    output$table <- DT::renderDataTable(
-#'      semantic_DT(iris)
-#'    )
-#'  }
-#'  shinyApp(ui, server)
-#' }
+#' @example inst/examples/semantic_dt.R
 #'
 #' @export
 semantic_DT <- function(..., options = list()) {
