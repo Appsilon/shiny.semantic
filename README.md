@@ -1,3 +1,4 @@
+<a href = "https://appsilon.com/careers/" target="_blank"><img src="http://d2v95fjda94ghc.cloudfront.net/hiring.png" alt="We are hiring!"/></a>
 
 <img src="man/figures/hexsticker.png" align="right" alt="" width="130" />
 
