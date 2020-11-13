@@ -46,5 +46,6 @@ Suggests:
     DT,
     covr,
     leaflet,
-    plotly
+    plotly,
+    xml2
 RoxygenNote: 7.1.1
