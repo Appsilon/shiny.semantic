@@ -2,7 +2,7 @@
 % Please edit documentation in R/sprite.R
 \name{rmsvg_sprite}
 \alias{rmsvg_sprite}
-\title{Remove svg from an sprite map}
+\title{Remove svg from a sprite map}
 \usage{
 rmsvg_sprite(id, sprite)
 }
@@ -15,7 +15,7 @@ rmsvg_sprite(id, sprite)
 invisible copy of new sprite map
 }
 \description{
-Remove svg from an sprite map
+Remove svg from a sprite map
 }
 \details{
 sprite map is modifyed on place

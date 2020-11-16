@@ -43,7 +43,7 @@ addsvg_sprite <- function(newsvg, sprite, id = NULL) {
 }
 
 
-#' Remove svg from an sprite map
+#' Remove svg from a sprite map
 #'
 #' @param id symbol id of the svg to be removed
 #' @param sprite \code{xml_document} object with the sprite map
