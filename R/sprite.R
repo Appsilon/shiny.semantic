@@ -24,13 +24,13 @@ id_exists <- function(id, sprite) {
 #' add_svg_sprite(newsvg, sprite, "new-icon")
 #' @export
 add_svg_sprite <- function(newsvg, sprite, id = NULL) {
-  if(!requireNamespace("xml2", quietly = TRUE)) {
+  if (!requireNamespace("xml2", quietly = TRUE)) {
     stop("Package \"xml2\" needed for this function to work.
       Please install it", call. = FALSE)
   }
-  if(is.null(id)) {
+  if (is.null(id)) {
     id <- xml2::xml_attr(newsvg, "id")
-    if(is.na(id)) stop("id is NULL and newsvg does not have id")
+    if (is.na(id)) stop("id is NULL and newsvg does not have id")
   }
   stopifnot(!id_exists(id, sprite))
   viewBox <- xml2::xml_attr(newsvg, "viewBox")
@@ -63,16 +63,14 @@ add_svg_sprite <- function(newsvg, sprite, id = NULL) {
 #' remove_svg_sprite("new-icon", sprite)
 #' @export
     remove_svg_sprite <- function(id, sprite) {
-    if(!requireNamespace("xml2", quietly = TRUE)) {
+    if (!requireNamespace("xml2", quietly = TRUE)) {
         stop("Package \"xml2\" needed for this function to work.
              Please install it", call. = FALSE)
     }
-    stopifnot(id_exists(id, sprite))
+    if (!id_exists(id, sprite)) stop(glue::glue("id {id} not found in sprite"))
     symbol2remove <- xml2::xml_find_first(
       sprite,
       paste0("/*[name()='svg']/*[name()='symbol'][@id='",id,"']"))
     xml2::xml_remove(symbol2remove)
     invisible(sprite)
 }
-
-
