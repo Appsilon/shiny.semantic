@@ -264,3 +264,82 @@ update_numeric_input <- function(session, input_id, label = NULL, value = NULL,
 #' @export
 #' @rdname update_numeric_input
 updateNumericInput <- shiny::updateNumericInput
+
+#' Create Semantic UI File Input
+#'
+#' This creates a default file input using Semantic UI. The input is available
+#' under \code{input[[input_id]]}.
+#'
+#' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
+#' @param label character with label
+#' @param multiple Whether the user should be allowed to select and upload multiple files at once.
+#' @param accept A character vector of "unique file type specifiers" which gives the browser a hint as to the type
+#'  of file the server expects. Many browsers use this prevent the user from selecting an invalid file.
+#' @param type Input type specifying class attached to input container.
+#'   See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.
+#' @param button_label The label used on the button.
+#' @param placeholder Inner input label displayed when no file has been uploaded.
+#' @param ... Unused.
+#'
+#' @rdname file_input
+#' @examples
+#' ## Only run examples in interactive R sessions
+#' if (interactive()) {
+#'   library(shiny)
+#'   library(shiny.semantic)
+#'   ui <- semanticPage(
+#'     form(
+#'       file_input("ex", "Select file"),
+#'       header("File type selected:", textOutput("ex_file"))
+#'     )
+#'   )
+#'   server <- function(input, output, session) {
+#'     output$ex_file <- renderText({
+#'       if (is.null(input)) return("No file uploaded")
+#'       tools::file_ext(input$ex$datapath)
+#'     })
+#'   }
+#'   shinyApp(ui, server)
+#' }
+#'
+#' @export
+file_input <- function(input_id, label, multiple = FALSE, accept = NULL, button_label = "Browse...",
+                          type = NULL, placeholder = "no file selected", ...) {
+
+  input_tag <- tags$input(id = input_id, name = input_id, type = "file", style = "display: none;")
+  if (multiple) input_tag$attribs$multiple  <- "multiple"
+  if (length(accept) > 0) input_tag$attribs$accept <- paste(accept, collapse = ",")
+
+  shiny::div(
+    class = "field form-group shiny-input-container",
+    if (!is.null(label)) tags$label(class = "control-label", label, `for` = input_id),
+    tags$div(
+      class = paste("input-group ui", type, "left action input"),
+      tags$label(
+        class = "ui labeled icon button btn-file",
+        tags$i(class = "file icon"), button_label,
+        input_tag
+      ),
+      tags$input(
+        class = "ui text input form-control", type = "text", placeholder = placeholder, readonly = "readonly"
+      )
+    ),
+    div(class = "ui bottom attached indicating progress shiny-file-input-progress", div(class = "bar progress-bar"))
+  )
+}
+
+#' Create a file input control
+#'
+#' @param inputId The input slot that will be used to access the value.
+#' @param buttonLabel The label used on the button.
+#' @param ... Other parameters passed to \code{\link{file_input}} like \code{type}.
+#' @rdname file_input
+#' @export
+fileInput <- function(inputId, label, multiple = FALSE, accept = NULL, width = NULL,
+                      buttonLabel = "Browse...", placeholder = "No file selected", ...) {
+  shiny::div(
+    class = "ui form",
+    style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
+    file_input(inputId, label, multiple, accept, button_label = buttonLabel, placeholder = placeholder, ...)
+  )
+}
