@@ -311,10 +311,10 @@ file_input <- function(input_id, label, multiple = FALSE, accept = NULL, button_
   if (length(accept) > 0) input_tag$attribs$accept <- paste(accept, collapse = ",")
 
   shiny::div(
-    class = "field form-group shiny-input-container",
-    if (!is.null(label)) tags$label(class = "control-label", label, `for` = input_id),
+    class = "field",
+    if (!is.null(label)) tags$label(`for` = input_id, label),
     tags$div(
-      class = paste("input-group ui", type, "left action input"),
+      class = paste("ui", type, "left action input ui-ss-input"),
       tags$label(
         class = "ui labeled icon button btn-file",
         tags$i(class = "file icon"), button_label,
@@ -324,7 +324,13 @@ file_input <- function(input_id, label, multiple = FALSE, accept = NULL, button_
         class = "ui text input form-control", type = "text", placeholder = placeholder, readonly = "readonly"
       )
     ),
-    div(class = "ui bottom attached indicating progress shiny-file-input-progress", div(class = "bar progress-bar"))
+    div(
+      id = paste0(input_id, "_progress"),
+      class = "ui bottom attached indicating small progress ui-ss-progress-file",
+      div(class = "bar"),
+      div(class = "label")
+    ),
+    tags$script(paste0("$('#", paste0(input_id, "_progress"), "').progress();"))
   )
 }
 
