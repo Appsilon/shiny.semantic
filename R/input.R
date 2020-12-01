@@ -325,8 +325,8 @@ file_input <- function(input_id, label, multiple = FALSE, accept = NULL, button_
       )
     ),
     div(
-      id = paste0(input_id, "_progress"),
-      class = "ui bottom attached indicating small progress ui-ss-progress-file",
+      id = paste0(input_id, "_progress"), style = "margin-top: 0;",
+      class = "ui indicating tiny progress ui-ss-progress-file",
       div(class = "bar"),
       div(class = "label")
     ),
