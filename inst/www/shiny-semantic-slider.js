@@ -4,32 +4,32 @@ $.extend(semanticSliderBinding, {
 
   // This initialize input element. It extracts data-value attribute and use that as value.
   initialize: function(el) {
-    var sliderDiv = $(el);
+    var sliderData = $(el).data();
+    var sliderOptions = {
+        min: Number(sliderData.min),
+        max: Number(sliderData.max),
+        step: Number(sliderData.step),
+        start: Number(sliderData.start),
+        onChange: function(value) { $(el).trigger('change'); }
+    };
 
-    if ($(el).hasClass('range')) {
-      $(el).slider({
-        min: Number($(el).data('min')),
-        max: Number($(el).data('max')),
-        step: Number($(el).data('step')),
-        start: Number($(el).data('start')),
-        end: Number($(el).data('end')),
-        onChange: function(value) { $(el).trigger('change'); }
-      });
-    } else {
-      $(el).slider({
-        min: Number($(el).data('min')),
-        max: Number($(el).data('max')),
-        step: Number($(el).data('step')),
-        start: Number($(el).data('start')),
-        onChange: function(value) { $(el).trigger('change'); }
-      });
+    if (Object.keys(sliderData).includes('ticks')) {
+      sliderOptions.interpretLabel = function(value, ticks = sliderData.ticks) {
+        return ticks[value];
+      };
     }
+
+    if (Object.keys(sliderData).includes('end')) {
+      sliderOptions.end = Number(sliderData.end);
+    }
+
+    $(el).slider(sliderOptions);
   },
 
   // This returns a jQuery object with the DOM element.
   find: function(scope) {
     // checkbox with type slider was also found here causing: https://github.com/Appsilon/shiny.semantic/issues/229
-    return $(scope).find('.ui.slider:not(.checkbox)');
+    return $(scope).find('.ss-slider');
   },
 
   // Returns the ID of the DOM element.
@@ -44,7 +44,21 @@ $.extend(semanticSliderBinding, {
     if ($(el).hasClass('range')) {
       value = [$(el).slider('get thumbValue', 'first'), $(el).slider('get thumbValue', 'second')];
     }
-    return value;
+
+    if ($(el).data('ticks')) {
+      return $(el).data('ticks')[value];
+    } else {
+      return value;
+    }
+  },
+
+  // Trying something to get the thumb value rather than input value
+  getType: function(el) {
+    if ($(el).data('ticks')) {
+      return false;
+    } else {
+      return 'shiny.number';
+    }
   },
 
   // Given the DOM element for the input, set the value.

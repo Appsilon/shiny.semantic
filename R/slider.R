@@ -10,6 +10,10 @@
 #' @param max The maximum value allowed to be selected for the slider.
 #' @param step The interval between each selectable value of the slider.
 #' @param class UI class of the slider. Can include \code{"Labeled"} and \code{"ticked"}.
+#' @param tick_labels
+#' @param time_format
+#' @param time_zone
+#'
 #'
 #' @details
 #' Use \code{\link{update_slider}} to update the slider/range within the shiny session.
@@ -62,10 +66,14 @@
 #' \url{https://fomantic-ui.com/modules/slider.html} for preset classes.
 #'
 #' @export
-slider_input <- function(input_id, value, min, max, step = 1, class = NULL) {
+slider_input <- function(input_id, value, min, max, step = 1, class = NULL, tick_labels = NULL,
+                         time_format = NULL, time_zone = NULL) {
+  if (!is.null(tick_labels)) tick_labels <- paste0("[\"", paste0(tick_labels, collapse = "\", \""), "\"]")
+
   div(
-    id = input_id, class = paste("ui slider", class),
-    `data-min` = min, `data-max` = max, `data-step` = step, `data-start` = value
+    id = input_id, class = paste("ui slider ss-slider", class),
+    `data-min` = min, `data-max` = max, `data-step` = step, `data-start` = value, `data-ticks` = tick_labels,
+    `data-time` = time_format, `data-tz` = time_zone
   )
 }
 
@@ -77,10 +85,17 @@ slider_input <- function(input_id, value, min, max, step = 1, class = NULL) {
 #' @export
 sliderInput <- function(inputId, label, min, max, value, step = 1, width = NULL, ...) {
   warn_unsupported_args(list(...))
+
+  if (length(value) == 1) {
+    slider <- slider_input(inputId, value, min, max, step = step)
+  } else {
+    slider <- range_input(inputId, value[1], value[2], min, max, step = step)
+  }
+
   form(
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
     tags$label(label),
-    slider_input(inputId, value, min, max, step = step)
+    slider
   )
 }
 
@@ -90,7 +105,7 @@ sliderInput <- function(inputId, label, min, max, value, step = 1, width = NULL,
 #' @export
 range_input <- function(input_id, value, value2, min, max, step = 1, class = NULL) {
   div(
-    id = input_id, class = paste("ui range slider", class),
+    id = input_id, class = paste("ui range slider ss-slider", class),
     `data-min` = min, `data-max` = max, `data-step` = step, `data-start` = value, `data-end` = value2
   )
 }
