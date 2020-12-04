@@ -108,6 +108,8 @@ See more examples with code in the `examples` folder:
     demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/numericInput.R)
   - [Shiny selectInput
     demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R)
+  - [Shiny fileInput
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/fileInput.R)
   - [Slider and range with update
     demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R)
   - [Multiple tab
@@ -141,7 +143,7 @@ remotes::install_github("Appsilon/shiny.semantic", ref = "0.1.0")
 ## How to use it?
 
 Firstly, you will have to invoke `shinyUI()` with `semanticPage()`
-instead of standard Shiny UI definitions like e.g. `bootstrapPage()`.
+instead of standard Shiny UI definitions like e.g. `bootstrapPage()`.
 From now on, all components can be annotated with [Fomantic
 UI](https://fomantic-ui.com/) specific CSS classes and also you will be
 able to use [shiny.semantic
