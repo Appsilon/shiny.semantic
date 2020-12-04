@@ -1,3 +1,5 @@
+// Adapted from rstudio/shiny repository
+//
 // Generic driver class for doing chunk-wise asynchronous processing of a
 // FileList object. Subclass/clone it and override the `on*` functions to
 // make it do something useful.
@@ -294,6 +296,11 @@ $.extend(semanticFileInput, {
   },
   getId: function(el) {
     return Shiny.InputBinding.prototype.getId.call(this, el) || el.name;
+  },
+  initialize: function(el) {
+    // Automatically makes the progress visible, so need to hide it again
+    var $progress = $(el).closest('div.field').find('.ui-ss-progress-file');
+    $progress.css('visibility', 'hidden');
   },
   getValue: function(el) {
     // This returns a non-undefined value only when there's a 'data-restore'

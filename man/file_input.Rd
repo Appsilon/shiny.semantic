@@ -28,27 +28,25 @@ fileInput(
 )
 }
 \arguments{
-\item{input_id}{Input name. Reactive value is available under \code{input[[input_id]]}.}
+\item{input_id, inputId}{Input name. Reactive value is available under \code{input[[input_id]]}.}
 
-\item{label}{character with label}
+\item{label}{Display label for the control, or NULL for no label.}
 
 \item{multiple}{Whether the user should be allowed to select and upload multiple files at once.}
 
 \item{accept}{A character vector of "unique file type specifiers" which gives the browser a hint as to the type
 of file the server expects. Many browsers use this prevent the user from selecting an invalid file.}
 
-\item{button_label}{The label used on the button.}
+\item{button_label, buttonLabel}{Display label for the button.}
 
 \item{type}{Input type specifying class attached to input container.
 See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.}
 
 \item{placeholder}{Inner input label displayed when no file has been uploaded.}
 
-\item{...}{Other parameters passed to \code{\link{file_input}} like \code{type}.}
+\item{...}{Other parameters passed from \code{fileInput} to \code{file_input} like \code{type}.}
 
-\item{inputId}{The input slot that will be used to access the value.}
-
-\item{buttonLabel}{The label used on the button.}
+\item{width}{The width of the input, e.g. \code{'400px'}, or \code{'100\%'}.}
 }
 \description{
 This creates a default file input using Semantic UI. The input is available
@@ -61,8 +59,14 @@ if (interactive()) {
   library(shiny.semantic)
   ui <- semanticPage(
     form(
-      file_input("ex", "Select file"),
-      header("File type selected:", textOutput("ex_file"))
+      div(
+        class = "ui grid",
+        div(
+          class = "four wide column",
+          file_input("ex", "Select file"),
+          header("File type selected:", textOutput("ex_file"))
+        )
+      )
     )
   )
   server <- function(input, output, session) {

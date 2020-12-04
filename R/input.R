@@ -270,18 +270,19 @@ updateNumericInput <- shiny::updateNumericInput
 #' This creates a default file input using Semantic UI. The input is available
 #' under \code{input[[input_id]]}.
 #'
-#' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
-#' @param label character with label
+#' @param input_id,inputId Input name. Reactive value is available under \code{input[[input_id]]}.
+#' @param label Display label for the control, or NULL for no label.
 #' @param multiple Whether the user should be allowed to select and upload multiple files at once.
 #' @param accept A character vector of "unique file type specifiers" which gives the browser a hint as to the type
 #'  of file the server expects. Many browsers use this prevent the user from selecting an invalid file.
 #' @param type Input type specifying class attached to input container.
 #'   See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.
-#' @param button_label The label used on the button.
+#' @param button_label,buttonLabel Display label for the button.
 #' @param placeholder Inner input label displayed when no file has been uploaded.
 #' @param ... Unused.
 #'
 #' @rdname file_input
+#'
 #' @examples
 #' ## Only run examples in interactive R sessions
 #' if (interactive()) {
@@ -289,8 +290,14 @@ updateNumericInput <- shiny::updateNumericInput
 #'   library(shiny.semantic)
 #'   ui <- semanticPage(
 #'     form(
-#'       file_input("ex", "Select file"),
-#'       header("File type selected:", textOutput("ex_file"))
+#'       div(
+#'         class = "ui grid",
+#'         div(
+#'           class = "four wide column",
+#'           file_input("ex", "Select file"),
+#'           header("File type selected:", textOutput("ex_file"))
+#'         )
+#'       )
 #'     )
 #'   )
 #'   server <- function(input, output, session) {
@@ -321,7 +328,7 @@ file_input <- function(input_id, label, multiple = FALSE, accept = NULL, button_
         input_tag
       ),
       tags$input(
-        class = "ui text input form-control", type = "text", placeholder = placeholder, readonly = "readonly"
+        class = paste("ui", type, "text input"), type = "text", placeholder = placeholder, readonly = "readonly"
       )
     ),
     div(
@@ -336,9 +343,8 @@ file_input <- function(input_id, label, multiple = FALSE, accept = NULL, button_
 
 #' Create a file input control
 #'
-#' @param inputId The input slot that will be used to access the value.
-#' @param buttonLabel The label used on the button.
-#' @param ... Other parameters passed to \code{\link{file_input}} like \code{type}.
+#' @param width The width of the input, e.g. \code{'400px'}, or \code{'100\%'}.
+#' @param ... Other parameters passed from \code{fileInput} to \code{file_input} like \code{type}.
 #' @rdname file_input
 #' @export
 fileInput <- function(inputId, label, multiple = FALSE, accept = NULL, width = NULL,

@@ -75,15 +75,17 @@ test_that("test file_input", {
   expect_is(file_input("file_input", "label", 20), "shiny.tag")
   # empty input
   expect_error(file_input())
-  # text input
-  expect_error(file_input("file_input", "label","Text input"))
-  # number input
-  si_str <- as.character(file_input("file_input", "label", 20))
-  expect_true(any(grepl("<input id=\"file_input\" value=\"20\" type=\"number\"/>",
-                        si_str, fixed = TRUE)))
+  # file input
+  si_str <- as.character(file_input("file_input", "File Input Label"))
+  expect_true(grepl("<input id=\"file_input\".*type=\"file\".*/>", si_str))
   # all parameters
-  expect_is(file_input("file_input", "label", 20, min = 10, max = 40, step = 1),
-            "shiny.tag")
+  expect_is(
+    file_input(
+      "file_input", "File Label", multiple = TRUE, accept = c("*.csv", "*.xlsx"), type = "tiny",
+      button_label = "Button", placeholder = "files needed"
+    ),
+    "shiny.tag"
+  )
 })
 
 test_that("test fileInput", {
