@@ -3,7 +3,7 @@ library(shiny.semantic)
 
 ui <- shinyUI(
   semanticPage(
-    fileInput("file_ex", "File Input", width = "400px", type = "small"),# numericinput specific params
+    fileInput("file_ex", "File Input", width = "400px", type = "small"),
     h3("File type uploaded"),
     textOutput("file_ex")
   )
