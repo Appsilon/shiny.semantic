@@ -69,3 +69,29 @@ test_that("test numericInput", {
   expect_error(numericInput())
   expect_error(numericInput("a", "label"), "\"value\" is missing")
 })
+
+test_that("test file_input", {
+  # type
+  expect_is(file_input("file_input", "label", 20), "shiny.tag")
+  # empty input
+  expect_error(file_input())
+  # file input
+  si_str <- as.character(file_input("file_input", "File Input Label"))
+  expect_true(grepl("<input id=\"file_input\".*type=\"file\".*/>", si_str))
+  # all parameters
+  expect_is(
+    file_input(
+      "file_input", "File Label", multiple = TRUE, accept = c("*.csv", "*.xlsx"), type = "tiny",
+      button_label = "Button", placeholder = "files needed"
+    ),
+    "shiny.tag"
+  )
+})
+
+test_that("test fileInput", {
+  # type
+  expect_is(fileInput("fileinput", "Label"), "shiny.tag")
+  # empty input
+  expect_error(fileInput())
+  expect_error(fileInput("fileinput"))
+})

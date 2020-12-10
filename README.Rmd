@@ -105,6 +105,7 @@ See more examples with code in the `examples` folder:
 * [Search selection demos](https://github.com/Appsilon/shiny.semantic/tree/develop/examples/search_selection)
 * [Shiny numericInput demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/numericInput.R)
 * [Shiny selectInput demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R)
+* [Shiny fileInput demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/fileInput.R)
 * [Slider and range with update demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R)
 * [Multiple tab demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/tabset/app.R)
 * [Notification demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/toast/app.R)
