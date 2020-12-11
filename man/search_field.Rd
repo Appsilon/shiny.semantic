@@ -7,10 +7,10 @@
 search_field(input_id, search_api_url, default_text = "Search", value = "")
 }
 \arguments{
-\item{input_id}{Input name. Reactive value is available under input[[input_id]].}
+\item{input_id}{Input name. Reactive value is available under input[\link{input_id}].}
 
 \item{search_api_url}{Register custom API url with server JSON Response
-containing fields `title` and `description`.}
+containing fields \code{title} and \code{description}.}
 
 \item{default_text}{Text to be visible on serach field when nothing
 is selected.}
@@ -19,57 +19,54 @@ is selected.}
 }
 \description{
 This creates a default search field using Semantic UI styles with Shiny
-input. Search field is already initialized and available under input[[input_id]].
+input. Search field is already initialized and available under input[\link{input_id}].
 Search will automatically route to the named API endpoint provided
 as parameter. API response is expected to be a JSON with property fields
-`title` and `description`.
+\code{title} and \code{description}.
 See https://semantic-ui.com/modules/search.html#behaviors for more details.
 }
 \examples{
-## Only run examples in interactive R sessions
-\dontrun{
-if (interactive()) {
-library(shiny)
-library(shiny.semantic)
-library(gapminder)
-library(dplyr)
-
-ui <- function() {
-  shinyUI(
-    semanticPage(
-      title = "Dropdown example",
-      p("Search country:"),
-      uiOutput("search_country"),
-      p("Selected country:"),
-      textOutput("selected_country")
-   )
-  )
-}
-
-server <- shinyServer(function(input, output, session) {
-
- search_api <- function(gapminder, q) {
-   has_matching <- function(field) {
-     startsWith(field, q)
-   }
-   gapminder \%>\%
-     mutate(country = as.character(country)) \%>\%
-     select(country) \%>\%
-     unique \%>\%
-     filter(has_matching(country)) \%>\%
-     head(5) \%>\%
-     transmute(title = country,
-               description = country)
- }
-
- search_api_url <- register_search(session, gapminder, search_api)
- output$search_letters <- shiny::renderUI(
-   search_field("search_result", search_api_url)
- )
- output$selected_country <- renderText(input[["search_result"]])
-})
-}
-
-shinyApp(ui = ui(), server = server)
+if (interactive() && require(gapminder)) {
+  library(shiny)
+  library(shiny.semantic)
+  library(gapminder)
+  library(dplyr)
+  
+  ui <- function() {
+    shinyUI(
+      semanticPage(
+        title = "Dropdown example",
+        p("Search country:"),
+        uiOutput("search_country"),
+        p("Selected country:"),
+        textOutput("selected_country")
+      )
+    )
+  }
+  
+  server <- shinyServer(function(input, output, session) {
+    
+    search_api <- function(gapminder, q) {
+      has_matching <- function(field) {
+        startsWith(field, q)
+      }
+      gapminder \%>\%
+        mutate(country = as.character(country)) \%>\%
+        select(country) \%>\%
+        unique \%>\%
+        filter(has_matching(country)) \%>\%
+        head(5) \%>\%
+        transmute(title = country,
+                  description = country)
+    }
+    
+    search_api_url <- register_search(session, gapminder, search_api)
+    output$search_letters <- shiny::renderUI(
+      search_field("search_result", search_api_url)
+    )
+    output$selected_country <- renderText(input[["search_result"]])
+  })
+  
+  shinyApp(ui = ui(), server = server)
 }
 }

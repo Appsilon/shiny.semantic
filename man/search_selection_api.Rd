@@ -12,25 +12,31 @@ search_selection_api(
 )
 }
 \arguments{
-\item{input_id}{Input name. Reactive value is available under input[[input_id]].}
+\item{input_id}{Input name. Reactive value is available under input[\link{input_id}].}
 
 \item{search_api_url}{Register API url with server JSON Response containing
-fields `name` and `value`.}
+fields \code{name} and \code{value}.}
 
 \item{multiple}{TRUE if the dropdown should allow multiple selections,
 FALSE otherwise (default FALSE).}
 
-\item{default_text}{Text to be visible on dropdown when nothing is selected.
-
-#'@examples
+\item{default_text}{Text to be visible on dropdown when nothing is selected.}
+}
+\description{
+Define the (multiple) search selection dropdown input for retrieving remote
+selection menu content from an API endpoint. API response is expected to be
+a JSON with property fields \code{name} and \code{value}. Using a search selection
+dropdown allows to search more easily through large lists.
+}
+\examples{
 ## Only run examples in interactive R sessions
-if (interactive()) {
-   library(shiny)
-   library(shiny.semantic)
-   library(gapminder)
-   library(dplyr)
-
-   ui <- function() {
+if (interactive() && require(gapminder)) {
+  library(shiny)
+  library(shiny.semantic)
+  library(gapminder)
+  library(dplyr)
+  
+  ui <- function() {
     shinyUI(
       semanticPage(
         title = "Dropdown example",
@@ -40,23 +46,23 @@ if (interactive()) {
       )
     )
   }
-
+  
   server <- shinyServer(function(input, output, session) {
-
-   search_api <- function(gapminder, q) {
-     has_matching <- function(field) {
+    
+    search_api <- function(gapminder, q) {
+      has_matching <- function(field) {
         startsWith(field, q)
       }
-      gapminder %>%
-        mutate(country = as.character(country)) %>%
-        select(country) %>%
-        unique %>%
-        filter(has_matching(country)) %>%
-        head(5) %>%
-          transmute(name = country,
+      gapminder \%>\%
+        mutate(country = as.character(country)) \%>\%
+        select(country) \%>\%
+        unique \%>\%
+        filter(has_matching(country)) \%>\%
+        head(5) \%>\%
+        transmute(name = country,
                   value = country)
     }
-
+    
     search_api_url <- shiny.semantic::register_search(session,
                                                       gapminder,
                                                       search_api)
@@ -65,13 +71,7 @@ if (interactive()) {
     )
     output$selected_letters <- renderText(input[["search_result"]])
   })
-
+  
   shinyApp(ui = ui(), server = server)
-}}
 }
-\description{
-Define the (multiple) search selection dropdown input for retrieving remote
-selection menu content from an API endpoint. API response is expected to be
-a JSON with property fields `name` and `value`. Using a search selection
-dropdown allows to search more easily through large lists.
 }

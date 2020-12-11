@@ -13,11 +13,11 @@ accordion(
 )
 }
 \arguments{
-\item{accordion_list}{list with lists with fields: `title` and `content`}
+\item{accordion_list}{list with lists with fields: \code{title} and \code{content}}
 
 \item{fluid}{if accordion is fluid then it takes width of parent div}
 
-\item{active_title}{if active title matches `title` from \code{accordion_list}
+\item{active_title}{if active title matches \code{title} from \code{accordion_list}
 then this element is active by default}
 
 \item{styled}{if switched of then raw style (no boxes) is used}
@@ -33,18 +33,18 @@ shown with one click.
 }
 \examples{
 if (interactive()) {
-library(shiny)
-library(shiny.semantic)
-accordion_content <- list(
-  list(title = "AA", content = h2("a a a a")),
-  list(title = "BB", content = p("b b b b"))
-)
-shinyApp(
-  ui = semanticPage(
-    accordion(accordion_content, fluid = F, active_title = "AA",
-              custom_style = "background: #babade;")
-  ),
-  server = function(input, output) {}
-)
+  library(shiny)
+  library(shiny.semantic)
+  accordion_content <- list(
+    list(title = "AA", content = h2("a a a a")),
+    list(title = "BB", content = p("b b b b"))
+  )
+  shinyApp(
+    ui = semanticPage(
+      accordion(accordion_content, fluid = F, active_title = "AA",
+                custom_style = "background: #babade;")
+    ),
+    server = function(input, output) {}
+  )
 }
 }

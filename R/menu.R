@@ -23,7 +23,7 @@ digits2words <- function(number) {
 #' @param location character url with location
 #' @param title name of the page
 #' @param active_location name of the active subpage (if matches location then
-#' it gets highlighted), default empty (\code{""})
+#' it gets highlighted), default empty (`""`)
 #' @param icon non-mandatory parameter with icon name
 #'
 #' @return shiny tag link
@@ -55,20 +55,8 @@ render_menu_link <- function(location, title, active_location = "", icon = NULL)
 #' @return shiny div with horizontal menu
 #' @export
 #'
-#' @examples
-#' library(shiny.semantic)
-#' menu_content <- list(
-#'  list(name = "AA", link = "http://example.com", icon = "dog"),
-#'  list(name = "BB", link = "#", icon="cat"),
-#'  list(name = "CC")
-#' )
-#' if (interactive()){
-#'   ui <- semanticPage(
-#'    horizontal_menu(menu_content)
-#'   )
-#'   server <- function(input, output, session) {}
-#'   shinyApp(ui, server)
-#' }
+#' @example inst/examples/horizontal_menu.R
+#'
 horizontal_menu <- function(menu_items, active_location = "", logo = NULL) {
   if (!is.list(menu_items))
     stop("'menu_items' must be a list with specific entry names Check docs.")

@@ -11,7 +11,7 @@ parse_val <- function(val) {
 #'
 #' @param color character with color name
 #'
-#' @return Error when \code{color} does not belong to palette
+#' @return Error when `color` does not belong to palette
 #' @export
 #' @examples
 #' check_proper_color("blue")

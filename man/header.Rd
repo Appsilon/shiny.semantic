@@ -21,14 +21,14 @@ This creates a header with optional icon using Semantic UI styles.
 if (interactive()){
   library(shiny)
   library(shiny.semantic)
-
+  
   ui <- shinyUI(semanticPage(
     header(title = "Header with description", description = "Description"),
     header(title = "Header with icon", description = "Description", icon = "dog")
   ))
   server <- shinyServer(function(input, output) {
   })
-
+  
   shinyApp(ui, server)
 }
 }

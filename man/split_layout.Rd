@@ -50,8 +50,8 @@ if (interactive()) {
   #' Custom widths
   ui <- semanticPage(
     split_layout(cell_widths = c("25\%", "75\%"),
-                plotOutput("plot1"),
-                plotOutput("plot2")
+                 plotOutput("plot1"),
+                 plotOutput("plot2")
     )
   )
   shinyApp(ui, server)
@@ -59,13 +59,13 @@ if (interactive()) {
   #' and a border around everything
   ui <- semanticPage(
     split_layout(
-    cell_widths = 300,
-    cell_args = "padding: 6px;",
-    style = "border: 1px solid silver;",
-    plotOutput("plot1"),
-    plotOutput("plot2"),
-    plotOutput("plot3")
-  )
+      cell_widths = 300,
+      cell_args = "padding: 6px;",
+      style = "border: 1px solid silver;",
+      plotOutput("plot1"),
+      plotOutput("plot2"),
+      plotOutput("plot3")
+    )
   )
   shinyApp(ui, server)
 }

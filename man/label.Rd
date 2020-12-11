@@ -15,14 +15,14 @@ label(..., class = "", is_link = TRUE)
 #'}
 }
 \description{
-This creates a \code{div} or \code{a} tag with with class \code{ui label} using Semantic UI.
+This creates a \code{div} or \code{a} tag with with class \verb{ui label} using Semantic UI.
 }
 \examples{
 ## Only run examples in interactive R sessions
 if (interactive()){
   library(shiny)
   library(shiny.semantic)
-
+  
   ui <- shinyUI(
     semanticPage(
       ## label

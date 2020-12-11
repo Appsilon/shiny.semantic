@@ -121,14 +121,14 @@ server <- function(input, output) {
   ids <- character(0)
   # A counter
   n <- 0
-
+  
   observeEvent(input$show, {
     # Save the ID for removal later
     id <- toast(paste("Message", n), duration = NULL)
     ids <<- c(ids, id)
     n <<- n + 1
   })
-
+  
   observeEvent(input$remove, {
     if (length(ids) > 0)
       close_toast(ids[1])
@@ -137,7 +137,6 @@ server <- function(input, output) {
 }
 
 if (interactive()) shinyApp(ui, server)
-
 }
 \seealso{
 \url{https://fomantic-ui.com/modules/toast}

@@ -29,7 +29,7 @@ Create Semantic UI Message box
 if (interactive()){
   library(shiny)
   library(shiny.semantic)
-
+  
   ui <- shinyUI(semanticPage(
     message_box(header = "Main header", content = "text"),
     # message with icon
@@ -47,8 +47,7 @@ if (interactive()){
   ))
   server <- shinyServer(function(input, output) {
   })
-
+  
   shinyApp(ui, server)
 }
-
 }

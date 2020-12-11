@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{parse_val}
 \alias{parse_val}
-\title{Parse the `shiny_input` value from JSON}
+\title{Parse the \code{shiny_input} value from JSON}
 \usage{
 parse_val(val)
 }
@@ -10,8 +10,8 @@ parse_val(val)
 \item{val}{value to get from JSON}
 }
 \value{
-Value of type defined in `shiny_input`
+Value of type defined in \code{shiny_input}
 }
 \description{
-Parse the `shiny_input` value from JSON
+Parse the \code{shiny_input} value from JSON
 }

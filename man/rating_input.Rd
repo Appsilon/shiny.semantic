@@ -23,7 +23,7 @@ rating_input(
 
 \item{max}{maximum value}
 
-\item{icon}{character with name of the icon or \code{\link{icon}()} that is
+\item{icon}{character with name of the icon or \code{\link[=icon]{icon()}} that is
 an element of the rating}
 
 \item{color}{character with colour name}
@@ -41,7 +41,7 @@ Crates rating component
 if (interactive()) {
   library(shiny)
   library(shiny.semantic)
-
+  
   ui <- shinyUI(
     semanticPage(
       rating_input("rate", "How do you like it?", max = 5,

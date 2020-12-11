@@ -41,10 +41,10 @@ This function updates the date on a calendar
 \examples{
 # Basic calendar
 if (interactive()) {
-
+  
   library(shiny)
   library(shiny.semantic)
-
+  
   ui <- shinyUI(
     semanticPage(
       title = "Calendar example",
@@ -53,17 +53,16 @@ if (interactive()) {
       textOutput("selected_date")
     )
   )
+  
+  server <- shinyServer(function(input, output, session) {
+    output$selected_date <- renderText(
+      as.character(input$date)
+    )
+  })
+  
+  shinyApp(ui = ui, server = server)
+}
 
-   server <- shinyServer(function(input, output, session) {
-     output$selected_date <- renderText(
-       as.character(input$date)
-     )
-   })
-
-   shinyApp(ui = ui, server = server)
- }
-
-\dontrun{
 # Calendar with max and min
 calendar(
   name = "date_finish",
@@ -77,5 +76,4 @@ calendar(
   name = "month",
   type = "month"
 )
-}
 }

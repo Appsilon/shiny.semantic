@@ -11,7 +11,7 @@ button(input_id, label, icon = NULL, class = NULL, ...)
 
 \item{label}{The contents of the button or link}
 
-\item{icon}{An optional \code{\link{icon}()} to appear on the button.}
+\item{icon}{An optional \code{\link[=icon]{icon()}} to appear on the button.}
 
 \item{class}{An optional attribute to be added to the button's class. If used
 paramters like \code{color}, \code{size} are ignored.}
@@ -23,17 +23,15 @@ Create Semantic UI Button
 }
 \examples{
 if (interactive()){
-library(shiny)
-library(shiny.semantic)
-ui <- semanticPage(
-  shinyUI(
-    button("simple_button", "Press Me!")
+  library(shiny)
+  library(shiny.semantic)
+  ui <- semanticPage(
+    shinyUI(
+      button("simple_button", "Press Me!")
+    )
   )
-)
-server <- function(input, output, session) {
+  server <- function(input, output, session) {
+  }
+  shinyApp(ui, server)
 }
-shinyApp(ui, server)
-}
-
-
 }

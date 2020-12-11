@@ -1,26 +1,13 @@
 #' Create Semantic UI Button
 #'
-#' @param input_id The \code{input} slot that will be used to access the value.
+#' @param input_id The `input` slot that will be used to access the value.
 #' @param label The contents of the button or link
-#' @param icon An optional \code{\link{icon}()} to appear on the button.
+#' @param icon An optional [icon()] to appear on the button.
 #' @param class An optional attribute to be added to the button's class. If used
-#' paramters like \code{color}, \code{size} are ignored.
+#' paramters like `color`, `size` are ignored.
 #' @param ... Named attributes to be applied to the button
 #'
-#' @examples
-#' if (interactive()){
-#' library(shiny)
-#' library(shiny.semantic)
-#' ui <- semanticPage(
-#'   shinyUI(
-#'     button("simple_button", "Press Me!")
-#'   )
-#' )
-#' server <- function(input, output, session) {
-#' }
-#' shinyApp(ui, server)
-#' }
-#'
+#' @example inst/examples/button.R
 #'
 #' @export
 button <- function(input_id, label, icon = NULL, class = NULL, ...) {
@@ -33,24 +20,12 @@ button <- function(input_id, label, icon = NULL, class = NULL, ...) {
 #'
 #' @param input_id The input slot that will be used to access the value.
 #' @param label The contents of the button - a text label, but you could also use any other HTML, like an image.
-#' @param icon An optional \link{icon} to appear on the button.
+#' @param icon An optional [icon] to appear on the button.
 #' @param width The width of the input.
 #' @param ... Named attributes to be applied to the button or remaining parameters passed to button,
-#'   like \code{class}.
+#'   like `class`.
 #'
-#' @examples
-#' if (interactive()){
-#' library(shiny)
-#' library(shiny.semantic)
-#' ui <- shinyUI(semanticPage(
-#'   actionButton("action_button", "Press Me!"),
-#'   textOutput("button_output")
-#' ))
-#' server <- function(input, output, session) {
-#'   output$button_output <- renderText(as.character(input$action_button))
-#' }
-#' shinyApp(ui, server)
-#' }
+#' @example inst/examples/action_button.R
 #'
 #' @export
 #' @rdname action_button
@@ -63,7 +38,7 @@ action_button <- function(input_id, label, icon = NULL, width = NULL, ...) {
   do.call(button, args_list)
 }
 
-#' @param inputId the same as \code{input_id}
+#' @param inputId the same as `input_id`
 #' @export
 #' @rdname action_button
 actionButton <- function(inputId, label, icon = NULL, width = NULL, ...) {
@@ -77,31 +52,8 @@ actionButton <- function(inputId, label, icon = NULL, width = NULL, ...) {
 #' @param label The label to set for the input object.
 #' @param icon The icon to set for the input object. To remove the current icon, use icon=character(0)
 #'
-#' @examples
+#' @example inst/examples/update_action_button.R
 #'
-#' if (interactive()){
-#' library(shiny)
-#' library(shiny.semantic)
-#'
-#' ui <- semanticPage(
-#'   actionButton("update", "Update button"),
-#'   br(),
-#'   actionButton("go_button", "Go")
-#' )
-#'
-#' server <- function(input, output, session) {
-#'   observe({
-#'     req(input$update)
-#'
-#'     # Updates go_button's label and icon
-#'     updateActionButton(session, "go_button",
-#'                        label = "New label",
-#'                        icon = icon("calendar"))
-#'
-#'   })
-#' }
-#' shinyApp(ui, server)
-#' }
 #'
 #' @export
 #' @rdname update_action_button
@@ -112,7 +64,7 @@ update_action_button <- function(session, input_id, label = NULL, icon = NULL) {
   session$sendInputMessage(input_id, message)
 }
 
-#' @param inputId the same as \code{input_id}
+#' @param inputId the same as `input_id`
 #' @rdname update_action_button
 #' @export
 updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
@@ -123,9 +75,9 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #'
 #' Creates a counter button whose value increments by one each time it is pressed.
 #'
-#' @param input_id The \code{input} slot that will be used to access the value.
+#' @param input_id The `input` slot that will be used to access the value.
 #' @param label the content of the item to display
-#' @param icon an optional \code{\link{icon}()} to appear on the button.
+#' @param icon an optional [icon()] to appear on the button.
 #' @param value initial rating value (integer)
 #' @param color character with semantic color
 #' @param big_mark big numbers separator
@@ -134,22 +86,7 @@ updateActionButton <- function(session, inputId, label = NULL, icon = NULL) {
 #' @return counter button object
 #' @export
 #' @rdname counterbutton
-#' @examples
-#' if (interactive()) {
-#' library(shiny)
-#' library(shiny.semantic)
-#' ui <-semanticPage(
-#'      counter_button("counter", "My Counter Button",
-#'                    icon = icon("world"),
-#'                    size = "big", color = "purple")
-#'  )
-#' server <- function(input, output) {
-#'  observeEvent(input$counter,{
-#'    print(input$counter)
-#'   })
-#'  }
-#' shinyApp(ui, server)
-#' }
+#' @example inst/examples/counter_button.R
 counter_button <- function(input_id, label = "", icon = NULL, value = 0,
                            color = "", size = "", big_mark = " ") {
   big_mark_regex <- if (big_mark == " ") "\\s" else big_mark

@@ -22,5 +22,5 @@ progress bar (\code{"decrement"}), update the label \code{"label"}, or set it to
 \item{value}{The value to increase/decrease by, or the value to be set to}
 }
 \description{
-Change the value of a \code{\link{progress}} input on the client.
+Change the value of a \code{\link[=progress]{progress()}} input on the client.
 }

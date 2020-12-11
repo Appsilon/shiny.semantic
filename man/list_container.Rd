@@ -7,8 +7,8 @@
 list_container(content_list, is_divided = FALSE)
 }
 \arguments{
-\item{content_list}{list of lists with fields: `header` and/or `description`,
-`icon` containing the list items headers, descriptions (one of these is mandatory)
+\item{content_list}{list of lists with fields: \code{header} and/or \code{description},
+\code{icon} containing the list items headers, descriptions (one of these is mandatory)
 and icons. Icon column should contain strings with icon names available
 here: https://fomantic-ui.com/elements/icon.html}
 
@@ -18,19 +18,20 @@ here: https://fomantic-ui.com/elements/icon.html}
 This creates a list with icons using Semantic UI
 }
 \examples{
-library(shiny)
-library(shiny.semantic)
-list_content <- list(
-  list(header = "Head", description = "Lorem ipsum", icon = "cat"),
-  list(header = "Head 2", icon = "tree"),
-  list(description = "Lorem ipsum 2", icon = "dog")
-)
-if (interactive()){
-  ui <- semanticPage(
-    list_container(list_content, is_divided = TRUE)
- )
-  server <- function(input, output) {}
-  shinyApp(ui, server)
+if (interactive()) {
+  library(shiny)
+  library(shiny.semantic)
+  list_content <- list(
+    list(header = "Head", description = "Lorem ipsum", icon = "cat"),
+    list(header = "Head 2", icon = "tree"),
+    list(description = "Lorem ipsum 2", icon = "dog")
+  )
+  if (interactive()){
+    ui <- semanticPage(
+      list_container(list_content, is_divided = TRUE)
+    )
+    server <- function(input, output) {}
+    shinyApp(ui, server)
+  }
 }
-
 }
