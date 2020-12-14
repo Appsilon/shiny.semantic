@@ -180,27 +180,9 @@ tabset <- function(tabs,
   id_tabs <- tabs %>% purrr::map(~ set_tab_id(.x))
   valid_ids <- id_tabs %>% purrr::map_chr(~ .x$id)
   active_tab <- if (!is.null(active)) active else valid_ids[1] # nolint
-  script_code <- paste0(
-    " $(document).on('shiny:sessioninitialized', function(event) {
-        Shiny.onInputChange('", id, "_tab', '", active_tab, "');
-      });
-      // Code below is needed to trigger visibility on reactive Shiny outputs.
-      // Thanks to that users do not have to set suspendWhenHidden to FALSE.
-      var previous_tab;
-      $('#", id, ".menu .item').tab({
-        onVisible: function(target) {
-          if (previous_tab) {
-            $(this).trigger('hidden');
-          }
-          $(window).resize();
-          $(this).trigger('shown');
-          previous_tab = this;
-          Shiny.onInputChange('", id, "_tab', $(this).attr('data-tab'))
-        }
-      });")
   shiny::tagList(
     shiny::div(id = id,
-               class = paste("ui menu", menu_class),
+               class = paste("ui menu sem", menu_class),
                purrr::map(id_tabs, ~ {
                  class <- paste("item", if (.$id == active_tab) "active" else "") # nolint
                  shiny::a(class = class, `data-tab` = .$id, .$menu)
@@ -210,9 +192,15 @@ tabset <- function(tabs,
       class <- paste("ui tab", tab_content_class,
                      if (.$id == active_tab) "active" else "") # nolint
       shiny::div(class = class, `data-tab` = .$id, .$content)
-    }),
-    shiny::tags$script(script_code)
+    })
   )
+}
+
+update_tabset <- function(session, input_id, selected = NULL) {
+  type <- match.arg(type)
+  message <- structure(list(value), names = type)
+
+  session$sendInputMessage(input_id, message)
 }
 
 #' Create Semantic UI header
