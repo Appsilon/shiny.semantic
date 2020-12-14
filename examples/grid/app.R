@@ -22,21 +22,25 @@ subGrid <- grid_template(default = list(
 
 ui <- semanticPage(
   grid(myGrid,
-       container_style = "border: 1px solid #f00",
-       area_styles = list(header = "background: #0099f9",
-                          menu = "border-right: 1px solid #0099f9"),
+       container_style = "border: 5px solid #3d7ea6",
+       area_styles = list(header = "border-bottom: 3px solid #5c969e",
+                          menu = "border-right: 3px solid #5c969e",
+                          main = "border-right: 3px solid #5c969e",
+                          right1 = "border-bottom: 3px solid #5c969e"),
        header = div(shiny::tags$h1("Hello CSS Grid!")),
-       menu = checkbox_input("example", "Check me", is_marked = FALSE),
+       menu = div("menu"),
        main = grid(subGrid,
-                   top_left = calendar("my_calendar"),
-                   top_right = div("hello 1"),
-                   bottom_left = div("hello 2"),
-                   bottom_right = div("hello 3")
+                   container_style = "padding: 5px;",
+                   area_styles = list(top_left = "border: 3px solid #ffa5a5;",
+                                      top_right = "border: 3px solid #ffa5a5;",
+                                      bottom_left = "border: 3px solid #ffa5a5;",
+                                      bottom_right = "border: 3px solid #ffa5a5;"),
+                   top_left = div("main top left"),
+                   top_right = div("main top right"),
+                   bottom_left = div("main bottom left"),
+                   bottom_right = div("main bottom right")
        ),
-       right1 = div(
-         toggle("toggle", "let's toggle"),
-         multiple_checkbox("mycheckbox", "mycheckbox",
-                           c("option A","option B","option C"))),
+       right1 = div("right 1"),
        right2 = div("right 2")
   )
 )
