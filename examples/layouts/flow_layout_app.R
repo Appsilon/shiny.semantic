@@ -4,8 +4,8 @@ library(shiny.semantic)
 ui <- semanticPage(
   title = "Flow layout example",
   flow_layout(
-    cell_width = 300,
-    textInput("first-name", label = "First Name"),
+    min_cell_width = 300,
+    textInput("first-name", label = "First Name", width = "100%"),
     textInput("middle-name", label = "Middle Name"),
     textInput("last-name", label = "Last Name"),
     textInput("address-1", label = "Address Line 1"),
