@@ -110,7 +110,7 @@ test_that("test verticalLayout", {
 test_that("test flow_layout", {
   actual <- as.character(flow_layout(
     cell_args = list(class = "cell"),
-    cell_width = "30%",
+    min_cell_width = "30%",
     column_gap = "15px",
     row_gap = 10,
     shiny::tags$p("a"),
@@ -122,7 +122,7 @@ test_that("test flow_layout", {
   expect_true(has("display: grid"))
   expect_true(has("align-self: start"))
   expect_true(has('class="cell"'))
-  expect_true(has("grid-template-columns: repeat(auto-fill, 30%)"))
+  expect_true(has("grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));"))
   expect_true(has("column-gap: 15px"))
   expect_true(has("row-gap: 10px"))
   expect_true(has("<p>a</p>"))

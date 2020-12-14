@@ -154,7 +154,8 @@ The elements on a given row will be top-aligned with each other.</p>
     <pre class="usage"><span class='fu'>flow_layout</span>(
   <span class='no'>...</span>,
   <span class='kw'>cell_args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
-  <span class='kw'>cell_width</span> <span class='kw'>=</span> <span class='st'>"208px"</span>,
+  <span class='kw'>min_cell_width</span> <span class='kw'>=</span> <span class='st'>"208px"</span>,
+  <span class='kw'>max_cell_width</span> <span class='kw'>=</span> <span class='st'>"1fr"</span>,
   <span class='kw'>column_gap</span> <span class='kw'>=</span> <span class='st'>"12px"</span>,
   <span class='kw'>row_gap</span> <span class='kw'>=</span> <span class='st'>"0px"</span>
 )
@@ -175,8 +176,12 @@ Named arguments will become HTML attributes on the outermost tag.</p></td>
 of the layout.</p></td>
     </tr>
     <tr>
-      <th>cell_width</th>
-      <td><p>The width of the cells.</p></td>
+      <th>min_cell_width</th>
+      <td><p>The minimum width of the cells.</p></td>
+    </tr>
+    <tr>
+      <th>max_cell_width</th>
+      <td><p>The maximum width of the cells.</p></td>
     </tr>
     <tr>
       <th>column_gap</th>
