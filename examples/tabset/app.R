@@ -2,16 +2,18 @@ library(shiny)
 library(shiny.semantic)
 
 ui <- shinyUI(semanticPage(
-  h2("Active Tab:"),
-  textOutput("activetab"),
   action_button("changetab", "Select First Tab!"),
+  br(),br(),
+  uiOutput("activetab"),
+  br(),br(),
   selectInput(
     inputId = "plot1xaxis",
     label = "change x axis variable in third tab:",
     choices = names(mtcars),
     selected = "mpg",
+    width = 200
   ),
-
+  br(),br(),
   tabset(tabs =
            list(
              list(menu = "First Tab", content = "Text works well", id= "first_tab"),
@@ -38,7 +40,9 @@ server <- function(input, output, session) {
          xlab = input$plot1xaxis, ylab = "cyl")
   )
 
-  output$activetab <- renderText(input$exampletabset)
+  output$activetab <- renderUI(
+    p(strong("Active Tab ID: "), input$exampletabset)
+  )
 }
 
 shiny::shinyApp(ui, server)
