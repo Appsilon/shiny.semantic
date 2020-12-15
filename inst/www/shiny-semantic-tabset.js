@@ -14,6 +14,7 @@ $.extend(semanticTabset, {
   },
   subscribe: function(el, callback) {
     $(el).on('change', function(event) {
+      $(this).trigger('shown');
       callback();
     });
     $(el).find('.item').on('click', function(event) {
