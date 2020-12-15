@@ -1,7 +1,7 @@
 library(shiny)
 library(shiny.semantic)
 
-ui <- shinyUI(semanticPage(
+ui <- semanticPage(
   action_button("changetab", "Select First Tab!"),
   br(),br(),
   uiOutput("activetab"),
@@ -23,7 +23,7 @@ ui <- shinyUI(semanticPage(
     active = "second_tab",
     id = "exampletabset"
   )
-))
+)
 server <- function(input, output, session) {
 
   observeEvent(input$changetab,{

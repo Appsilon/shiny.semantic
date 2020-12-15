@@ -17,30 +17,29 @@ update_tabset(session, input_id, selected = NULL)
 Change the select tab of a tabset on the client
 }
 \examples{
-
 if (interactive()){
-library(shiny)
-library(shiny.semantic)
+ library(shiny)
+ library(shiny.semantic)
 
-ui <- semanticPage(
-  actionButton("changetab", "Select Second Tab"),
-  tabset(
+ ui <- semanticPage(
+   actionButton("changetab", "Select Second Tab"),
+   tabset(
       tabs = list(
           list(menu = "First Tab", content = "First Tab", id= "first_tab"),
           list(menu = "Second Tab", content = "Second Tab", id = "second_tab")
       ),
       active = "first_tab",
       id = "exampletabset"
-  )
-)
+   )
+ )
 
-server <- function(input, output, session) {
-    observeEvent(input$changetab,{
-        update_tabset(session, "exampletabset", "second_tab")
-    })
-}
+ server <- function(input, output, session) {
+     observeEvent(input$changetab,{
+         update_tabset(session, "exampletabset", "second_tab")
+     })
+ }
 
-shinyApp(ui, server)
+ shinyApp(ui, server)
 }
 
 }

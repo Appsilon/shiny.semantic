@@ -144,8 +144,8 @@ set_tab_id <- function(tab) {
 #' @param tab_content_class Class for the tab content (default: "bottom attached
 #' segment")
 #'
-#' @details You may access active tab id with \code{input$<id>_tab}.
-#'
+#' @details You may access active tab id with \code{input$<id>}.
+#' @seealso update_tabset
 #' @export
 #'
 #' @examples
@@ -154,7 +154,7 @@ set_tab_id <- function(tab) {
 #'   library(shiny)
 #'   library(shiny.semantic)
 #'
-#'   ui <- shinyUI(semanticPage(
+#'   ui <- semanticPage(
 #'     tabset(tabs =
 #'              list(
 #'                list(menu = "First Tab", content = "Tab 1"),
@@ -165,9 +165,10 @@ set_tab_id <- function(tab) {
 #'     ),
 #'     h2("Active Tab:"),
 #'     textOutput("activetab")
-#'   ))
-#'   server <- shinyServer(function(input, output) {
-#'   })
+#'   )
+#'   server <- function(input, output) {
+#'       output$activetab <- renderText(input$exampletabset)
+#'   }
 #'
 #'   shinyApp(ui, server)
 #' }
@@ -203,30 +204,29 @@ tabset <- function(tabs,
 #' @param selected The id of the tab to be selected.
 #'
 #' @examples
-#'
 #' if (interactive()){
-#' library(shiny)
-#' library(shiny.semantic)
+#'  library(shiny)
+#'  library(shiny.semantic)
 #'
-#' ui <- semanticPage(
-#'   actionButton("changetab", "Select Second Tab"),
-#'   tabset(
+#'  ui <- semanticPage(
+#'    actionButton("changetab", "Select Second Tab"),
+#'    tabset(
 #'       tabs = list(
 #'           list(menu = "First Tab", content = "First Tab", id= "first_tab"),
 #'           list(menu = "Second Tab", content = "Second Tab", id = "second_tab")
 #'       ),
 #'       active = "first_tab",
 #'       id = "exampletabset"
-#'   )
-#' )
+#'    )
+#'  )
 #'
-#' server <- function(input, output, session) {
-#'     observeEvent(input$changetab,{
-#'         update_tabset(session, "exampletabset", "second_tab")
-#'     })
-#' }
+#'  server <- function(input, output, session) {
+#'      observeEvent(input$changetab,{
+#'          update_tabset(session, "exampletabset", "second_tab")
+#'      })
+#'  }
 #'
-#' shinyApp(ui, server)
+#'  shinyApp(ui, server)
 #' }
 #'
 #' @export

@@ -1,5 +1,4 @@
 var semanticTabset = new Shiny.InputBinding();
-var PREV_SEM_TAB;
 
 $.extend(semanticTabset, {
   find: function(scope) {
