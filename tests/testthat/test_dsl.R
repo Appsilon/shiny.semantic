@@ -27,16 +27,19 @@ test_that("test label type and input values", {
 test_that("test tabset type and input values", {
   # test empty input
   expect_error(tabset())
-  # check if contains links
   si_str <- as.character(tabset(list(
     list(menu = div("First link"), content = div("First content")),
-    list(menu = div("Second link"), content = div("Second content"))))
+    list(menu = div("Second link"), content = div("Second content"), id = "second_tab")),
+    active = "second_tab",)
   )
+  # check if tab id set correctly
+  expect_true(any(grepl('data-tab=\"second_tab\"', si_str, fixed = TRUE)))
+  # check if contains links
   expect_true(any(grepl("<div>First link</div>", si_str, fixed = TRUE)))
   # check if contains content
   expect_true(any(grepl("<div>Second content</div>", si_str, fixed = TRUE)))
-  # check if interactive
-  expect_true(any(grepl("onVisible: function(target) {", si_str, fixed = TRUE)))
+  # check if tab set in active is actually the active tab
+  expect_true(any(grepl('item active\" data-tab=\"second_tab', si_str, fixed = TRUE)))
 })
 
 
