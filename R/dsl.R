@@ -197,9 +197,7 @@ tabset <- function(tabs,
 }
 
 update_tabset <- function(session, input_id, selected = NULL) {
-  type <- match.arg(type)
-  message <- structure(list(value), names = type)
-
+  message <- list(selected = selected)
   session$sendInputMessage(input_id, message)
 }
 

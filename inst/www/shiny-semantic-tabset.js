@@ -13,13 +13,19 @@ $.extend(semanticTabset, {
     return tabsetVal;
   },
   subscribe: function(el, callback) {
-
+    $(el).on('change', function(event) {
+      callback();
+    });
+    $(el).find('.item').on('click', function(event) {
+      callback();
+    });
   },
   receiveMessage: function(el, data) {
-    var tab_name;
-    if (data.hasOwnProperty('name'))
-      tab_name = data.name;
-    $(el).tab('change tab', data);
+    var tab_id;
+    if (data.hasOwnProperty('selected'))
+      tab_id = data.selected;
+    $(el).find('.item').tab('change tab', tab_id);
+    $(el).trigger('change');
   },
   unsubscribe: function(el) {
     $(el).off();
