@@ -17,6 +17,7 @@ $.extend(semanticTabset, {
       callback();
     });
     $(el).find('.item').on('click', function(event) {
+      $(this).trigger('shown');
       callback();
     });
   },
