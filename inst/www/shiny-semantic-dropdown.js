@@ -46,7 +46,10 @@ $.extend(semanticDropdownBinding, {
   // the server.
   subscribe: function(el, callback) {
     $(el).dropdown({
-      onChange: callback
+      onChange: function(){
+        callback();
+        $(el).dropdown('hide');
+      }
     });
   },
 

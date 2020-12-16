@@ -3,7 +3,7 @@ library(shiny.semantic)
 
 ui <- semanticPage(
   title = "Dropdown example",
-  dropdown_input("simple_dropdown", LETTERS[1:5], value = "A", type = "selection multiple"),
+  dropdown_input("simple_dropdown", LETTERS[1:5], value = "A", type = "search selection multiple"),
   p("Selected letter:"),
   textOutput("selected_letter"),
   actionButton("simple_button", "Update input to D"),
