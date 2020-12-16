@@ -461,8 +461,8 @@ calendar_demo <- function() {
   div(
     h1(class="ui header", id="calendar", "Calendar"),
     demo(
-      calendar("date", type = "date", value = "20.2.2020", placeholder = "Select Date",
-               min = "2.2.2020", max = "25.2.2020")
+      calendar("date", type = "date", value = "2020-02-20", placeholder = "Select Date",
+               min = "2020-02-02", max = "2020-02-25")
     ),
     demo(
       calendar("month", type = "month", placeholder = "Pick Month")

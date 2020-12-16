@@ -53,6 +53,9 @@
 #' @rdname calendar
 #' @export
 calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
+  if (!is.null(value)) value <- format(as.Date(value), "%Y/%m/%d")
+  if (!is.na(min)) min <- format(as.Date(min), "%Y/%m/%d")
+  if (!is.na(max)) max <- format(as.Date(max), "%Y/%m/%d")
   cal_widget <-
     div(
       id = input_id, class = "ui calendar ss-input-date", `data-type` = type, `data-date` = value,
@@ -81,6 +84,9 @@ calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", 
 #'
 #' @export
 update_calendar <- function(session, input_id, value = NULL, min = NULL, max = NULL) {
+  if (!is.null(value)) value <- format(as.Date(value), "%Y/%m/%d")
+  if (!is.null(min)) min <- format(as.Date(min), "%Y/%m/%d")
+  if (!is.null(max)) max <- format(as.Date(max), "%Y/%m/%d")
   message <- list(value = value, min = min, max = max)
   session$sendInputMessage(input_id, message = message)
 }
