@@ -84,9 +84,9 @@ calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", 
 #'
 #' @export
 update_calendar <- function(session, input_id, value = NULL, min = NULL, max = NULL) {
-  value <- format(as.Date(value), "%Y/%m/%d")
-  min <- format(as.Date(min), "%Y/%m/%d")
-  max <- format(as.Date(max), "%Y/%m/%d")
+  value <- if (!is.null(value)) format(as.Date(value), "%Y/%m/%d")
+  min <- if (!is.null(min)) format(as.Date(min), "%Y/%m/%d")
+  max <- if (!is.null(max)) format(as.Date(max), "%Y/%m/%d")
   message <- list(value = value, min = min, max = max)
   session$sendInputMessage(input_id, message = message)
 }
