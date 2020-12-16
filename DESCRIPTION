@@ -36,8 +36,7 @@ Imports:
     magrittr,
     jsonlite,
     glue,
-    R6,
-    lubridate
+    R6
 Suggests:
     dplyr,
     tibble,

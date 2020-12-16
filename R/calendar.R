@@ -53,9 +53,9 @@
 #' @rdname calendar
 #' @export
 calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
-  value <- format(lubridate::parse_date_time(value, 'ymd'), "%Y/%m/%d")
-  min <- format(lubridate::parse_date_time(min, 'ymd'), "%Y/%m/%d")
-  max <- format(lubridate::parse_date_time(max, 'ymd'), "%Y/%m/%d")
+  value <- format(as.Date(value), "%Y/%m/%d")
+  min <- format(as.Date(min), "%Y/%m/%d")
+  max <- format(as.Date(max), "%Y/%m/%d")
   cal_widget <-
     div(
       id = input_id, class = "ui calendar ss-input-date", `data-type` = type, `data-date` = value,
@@ -84,9 +84,9 @@ calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", 
 #'
 #' @export
 update_calendar <- function(session, input_id, value = NULL, min = NULL, max = NULL) {
-  value <- format(lubridate::parse_date_time(value, 'ymd'), "%Y/%m/%d")
-  min <- format(lubridate::parse_date_time(min, 'ymd'), "%Y/%m/%d")
-  max <- format(lubridate::parse_date_time(max, 'ymd'), "%Y/%m/%d")
+  value <- format(as.Date(value), "%Y/%m/%d")
+  min <- format(as.Date(min), "%Y/%m/%d")
+  max <- format(as.Date(max), "%Y/%m/%d")
   message <- list(value = value, min = min, max = max)
   session$sendInputMessage(input_id, message = message)
 }
