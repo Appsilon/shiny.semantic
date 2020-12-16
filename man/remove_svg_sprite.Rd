@@ -28,4 +28,13 @@ newsvg <- read_xml("<svg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBo
 </svg>")
 add_svg_sprite(newsvg, sprite, "new-icon")
 remove_svg_sprite("new-icon", sprite)
+
+#' sprite <- xml_new_root("svg", "version" = "1.1", "xmlns" = "http://www.w3.org/2000/svg")
+appsilon_logo <- read_xml(system.file("assets/icons/appsilon-logo.svg", package = "shiny.semantic"))
+shiny_logo <- read_xml(system.file("assets/icons/shiny-logo.svg", package = "shiny.semantic"))
+add_svg_sprite(appsilon_logo, sprite, "appsilon_logo")
+add_svg_sprite(shiny_logo, sprite, "shiny_logo")
+remove_svg_sprite("shiny_logo", sprite)
+sprite_file <- tempfile()
+write_xml(sprite, sprite_file, options = "no_declaration")
 }
