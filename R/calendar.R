@@ -54,8 +54,8 @@
 #' @export
 calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
   value <- if (!is.null(value)) format(as.Date(value), "%Y/%m/%d")
-  min <- if (!is.null(min)) format(as.Date(min), "%Y/%m/%d")
-  max <- if (!is.null(max)) format(as.Date(max), "%Y/%m/%d")
+  min <- if (!is.na(min)) format(as.Date(min), "%Y/%m/%d")
+  max <- if (!is.na(max)) format(as.Date(max), "%Y/%m/%d")
   cal_widget <-
     div(
       id = input_id, class = "ui calendar ss-input-date", `data-type` = type, `data-date` = value,
