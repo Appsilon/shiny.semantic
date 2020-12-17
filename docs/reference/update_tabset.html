@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create Semantic UI tabs — tabset • SHINY.SEMANTIC</title>
+<title>Change the select tab of a tabset on the client — update_tabset • SHINY.SEMANTIC</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Create Semantic UI tabs — tabset" />
-<meta property="og:description" content="This creates tabs with content using Semantic UI styles." />
+<meta property="og:title" content="Change the select tab of a tabset on the client — update_tabset" />
+<meta property="og:description" content="Change the select tab of a tabset on the client" />
 
 
 
@@ -140,80 +140,59 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create Semantic UI tabs</h1>
+    <h1>Change the select tab of a tabset on the client</h1>
     <small class="dont-index">Source: <a href='https://github.com/Appsilon/shiny.semantic/blob/master/R/dsl.R'><code>R/dsl.R</code></a></small>
-    <div class="hidden name"><code>tabset.Rd</code></div>
+    <div class="hidden name"><code>update_tabset.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This creates tabs with content using Semantic UI styles.</p>
+    <p>Change the select tab of a tabset on the client</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tabset</span>(
-  <span class='no'>tabs</span>,
-  <span class='kw'>active</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>id</span> <span class='kw'>=</span> <span class='fu'><a href='generate_random_id.html'>generate_random_id</a></span>(<span class='st'>"menu"</span>),
-  <span class='kw'>menu_class</span> <span class='kw'>=</span> <span class='st'>"top attached tabular"</span>,
-  <span class='kw'>tab_content_class</span> <span class='kw'>=</span> <span class='st'>"bottom attached grid segment"</span>
-)</pre>
+    <pre class="usage"><span class='fu'>update_tabset</span>(<span class='no'>session</span>, <span class='no'>input_id</span>, <span class='kw'>selected</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>tabs</th>
-      <td><p>A list of tabs. Each tab is a list of three elements - first
-element defines menu item, second element defines tab content, third optional element defines tab id.</p></td>
+      <th>session</th>
+      <td><p>The session object passed to function given to shinyServer.</p></td>
     </tr>
     <tr>
-      <th>active</th>
-      <td><p>Id of the active tab. If NULL first tab will be active.</p></td>
+      <th>input_id</th>
+      <td><p>The id of the tabset object.</p></td>
     </tr>
     <tr>
-      <th>id</th>
-      <td><p>Id of the menu element (default: randomly generated id)</p></td>
-    </tr>
-    <tr>
-      <th>menu_class</th>
-      <td><p>Class for the menu element (default: "top attached
-tabular")</p></td>
-    </tr>
-    <tr>
-      <th>tab_content_class</th>
-      <td><p>Class for the tab content (default: "bottom attached
-segment")</p></td>
+      <th>selected</th>
+      <td><p>The id of the tab to be selected.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>You may access active tab id with <code>input$&lt;id&gt;</code>.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>update_tabset</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Only run examples in interactive R sessions</span>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+ <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
+ <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
 
-  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-    <span class='fu'>tabset</span>(<span class='kw'>tabs</span> <span class='kw'>=</span>
-             <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-               <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>menu</span> <span class='kw'>=</span> <span class='st'>"First Tab"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='st'>"Tab 1"</span>),
-               <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>menu</span> <span class='kw'>=</span> <span class='st'>"Second Tab"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='st'>"Tab 2"</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"second_tab"</span>)
-             ),
-           <span class='kw'>active</span> <span class='kw'>=</span> <span class='st'>"second_tab"</span>,
-           <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"exampletabset"</span>
-    ),
-    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>h2</a></span>(<span class='st'>"Active Tab:"</span>),
-    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"activetab"</span>)
-  )
-  <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
-      <span class='no'>output</span>$<span class='no'>activetab</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderText.html'>renderText</a></span>(<span class='no'>input</span>$<span class='no'>exampletabset</span>)
-  }
-  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
+ <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
+   <span class='fu'><a href='action_button.html'>actionButton</a></span>(<span class='st'>"changetab"</span>, <span class='st'>"Select Second Tab"</span>),
+   <span class='fu'><a href='tabset.html'>tabset</a></span>(
+      <span class='kw'>tabs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+          <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>menu</span> <span class='kw'>=</span> <span class='st'>"First Tab"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='st'>"First Tab"</span>, <span class='kw'>id</span><span class='kw'>=</span> <span class='st'>"first_tab"</span>),
+          <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>menu</span> <span class='kw'>=</span> <span class='st'>"Second Tab"</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='st'>"Second Tab"</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"second_tab"</span>)
+      ),
+      <span class='kw'>active</span> <span class='kw'>=</span> <span class='st'>"first_tab"</span>,
+      <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"exampletabset"</span>
+   )
+ )
+
+ <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
+     <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>changetab</span>,{
+         <span class='fu'>update_tabset</span>(<span class='no'>session</span>, <span class='st'>"exampletabset"</span>, <span class='st'>"second_tab"</span>)
+     })
+ }
+
+ <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
