@@ -196,7 +196,7 @@ tabset <- function(tabs,
   )
 }
 
-#' Change the select tab of a tabset on the client
+#' Change the selected tab of a tabset on the client
 #'
 #' @param session The session object passed to function given to shinyServer.
 #' @param input_id The id of the tabset object.
