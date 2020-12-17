@@ -53,6 +53,9 @@
 #' @rdname calendar
 #' @export
 calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
+  value <- gsub('-', '/', as.character(as.Date(value)))
+  min <- gsub('-', '/', as.character(as.Date(min)))
+  max <- gsub('-', '/', as.character(as.Date(max)))
   cal_widget <-
     div(
       id = input_id, class = "ui calendar ss-input-date", `data-type` = type, `data-date` = value,
@@ -81,6 +84,9 @@ calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", 
 #'
 #' @export
 update_calendar <- function(session, input_id, value = NULL, min = NULL, max = NULL) {
+  value <- gsub('-', '/', as.character(as.Date(value)))
+  min <- gsub('-', '/', as.character(as.Date(min)))
+  max <- gsub('-', '/', as.character(as.Date(max)))
   message <- list(value = value, min = min, max = max)
   session$sendInputMessage(input_id, message = message)
 }
