@@ -169,7 +169,6 @@ set_tab_id <- function(tab) {
 #'   server <- function(input, output) {
 #'       output$activetab <- renderText(input$exampletabset)
 #'   }
-#'
 #'   shinyApp(ui, server)
 #' }
 #'
@@ -177,7 +176,7 @@ tabset <- function(tabs,
                    active = NULL,
                    id = generate_random_id("menu"),
                    menu_class = "top attached tabular",
-                   tab_content_class = "bottom attached segment") {
+                   tab_content_class = "bottom attached grid segment") {
   id_tabs <- tabs %>% purrr::map(~ set_tab_id(.x))
   valid_ids <- id_tabs %>% purrr::map_chr(~ .x$id)
   active_tab <- if (!is.null(active)) active else valid_ids[1] # nolint

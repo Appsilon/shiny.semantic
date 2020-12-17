@@ -9,7 +9,7 @@ tabset(
   active = NULL,
   id = generate_random_id("menu"),
   menu_class = "top attached tabular",
-  tab_content_class = "bottom attached segment"
+  tab_content_class = "bottom attached grid segment"
 )
 }
 \arguments{
@@ -53,7 +53,6 @@ if (interactive()){
   server <- function(input, output) {
       output$activetab <- renderText(input$exampletabset)
   }
-
   shinyApp(ui, server)
 }
 

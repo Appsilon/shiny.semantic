@@ -9,7 +9,7 @@
 #' @param min The minimum value allowed to be selected for the slider.
 #' @param max The maximum value allowed to be selected for the slider.
 #' @param step The interval between each selectable value of the slider.
-#' @param class UI class of the slider. Can include \code{"Labeled"} and \code{"ticked"}.
+#' @param class UI class of the slider. Can include \code{"labeled"} and \code{"ticked"}.
 #'
 #' @details
 #' Use \code{\link{update_slider}} to update the slider/range within the shiny session.
@@ -17,29 +17,25 @@
 #' @rdname slider
 #'
 #' @examples
-#' if (interactive()) {
-#'
+#' if (interactive()) { # Slider example
 #'   library(shiny)
 #'   library(shiny.semantic)
 #'
-#'   # Slider example
 #'   ui <- shinyUI(
 #'     semanticPage(
 #'       title = "Slider example",
 #'       tags$br(),
-#'       slider_input("slider", 10, 0, 20),
+#'       slider_input("slider", 10, 0, 20, class = "labeled ticked"),
 #'       p("Selected value:"),
 #'       textOutput("slider")
 #'     )
 #'   )
-#'
 #'    server <- shinyServer(function(input, output, session) {
 #'      output$slider <- renderText(input$slider)
 #'    })
-#'
 #'    shinyApp(ui = ui, server = server)
-#'
-#'    # Range example
+#'  }
+#'  if (interactive()) { # Range example
 #'    ui <- shinyUI(
 #'      semanticPage(
 #'        title = "Range example",
@@ -49,20 +45,17 @@
 #'        textOutput("range")
 #'     )
 #'   )
-#'
 #'    server <- shinyServer(function(input, output, session) {
 #'      output$range <- renderText(paste(input$range, collapse = " - "))
 #'    })
-#'
 #'    shinyApp(ui = ui, server = server)
-#'
 #'  }
 #'
 #' @seealso update_slider for input updates,
 #' \url{https://fomantic-ui.com/modules/slider.html} for preset classes.
 #'
 #' @export
-slider_input <- function(input_id, value, min, max, step = 1, class = NULL) {
+slider_input <- function(input_id, value, min, max, step = 1, class = "labeled") {
   div(
     id = input_id, class = paste("ui slider", class),
     `data-min` = min, `data-max` = max, `data-step` = step, `data-start` = value
@@ -75,7 +68,8 @@ slider_input <- function(input_id, value, min, max, step = 1, class = NULL) {
 #' @param ... additional arguments
 #' @rdname slider
 #' @export
-sliderInput <- function(inputId, label, min, max, value, step = 1, width = NULL, ...) {
+sliderInput <- function(inputId, label, min, max, value, step = 1,
+                        width = NULL, ...) {
   warn_unsupported_args(list(...))
   form(
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
