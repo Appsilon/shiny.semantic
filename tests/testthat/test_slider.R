@@ -8,7 +8,8 @@ test_that("test slider_input", {
   # number input
   si_str <- as.character(slider_input("slider_input", 10, 0, 20))
   expect_true(grepl(
-    "<div id=\"slider_input\" class=\"ui slider \" data-min=\"0\" data-max=\"20\" data-step=\"1\" data-start=\"10\">",
+    paste("<div id=\"slider_input\" class=\"ui slider labeled\" data-min=\"0\"",
+    "data-max=\"20\" data-step=\"1\" data-start=\"10\">"),
     si_str
   ))
 })

@@ -35,6 +35,7 @@ Imports:
     stats,
     magrittr,
     jsonlite,
+    grDevices,
     glue,
     R6
 Suggests:

@@ -198,6 +198,8 @@ grid_template <- function(default = NULL, mobile = NULL) {
 #' @details
 #' Grids can be nested.
 #'
+#' @importFrom stats setNames
+#'
 #' @examples
 #' myGrid <- grid_template(default = list(
 #'   areas = rbind(
@@ -275,7 +277,8 @@ grid <- function(grid_template, id = paste(sample(letters, 5), collapse = ''),
 #'
 #' Warning: CSS can't be displayed in RStudio viewer pane. CSS grid is supported only by modern browsers.
 #' You can see list of supported browsers here: https://www.w3schools.com/css/css_grid.asp
-#'
+#' @importFrom stats setNames
+#' @importFrom grDevices rainbow
 #' @export
 display_grid <- function(grid_template) {
 
