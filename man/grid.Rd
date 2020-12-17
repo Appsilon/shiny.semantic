@@ -16,6 +16,8 @@ grid(
 \arguments{
 \item{grid_template}{grid template created with grid_template() function}
 
+\item{id}{id of grid}
+
 \item{container_style}{character - string of custom CSS for the main grid container}
 
 \item{area_styles}{list of custom CSS styles for provided area names}

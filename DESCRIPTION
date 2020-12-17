@@ -1,7 +1,7 @@
 Package: shiny.semantic
 Type: Package
 Title: Semantic UI Support for Shiny
-Version: 0.4.0
+Version: 0.4.2
 Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com", role = "aut"),
   person("Dominik", "Krzeminski", email = "dominik@appsilon.com", role = "cre"),
   person("Krystian", "Igras", email = "krystian@appsilon.com", role = "aut"),
@@ -15,6 +15,7 @@ Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com", role = "a
   person("Pedro", "Manuel Coutinho da Silva", email = "pedro@appsilon.com", role = "ctb"),
   person("Paweł", "Przytuła", email = "pawel@appsilon.com", role = "ctb"),
   person("Kamil", "Żyła", email = "kamil@appsilon.com", role = "ctb"),
+  person("Rabii", "Bouhestine", email = "rabii@appsilon.com", role = "ctb"),
   person(family = "Appsilon Sp. z o.o.", role = c("cph")))
 Description: Creating a great user interface for your Shiny apps
     can be a hassle, especially if you want to work purely in R

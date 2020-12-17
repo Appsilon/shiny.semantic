@@ -3,6 +3,30 @@ All notable changes to this project will be documented in this file.
 
 ## Upcoming
 
+## [0.4.2]
+
+### Added
+
+- `update_tabset`
+
+- added mobile grid demo in example
+
+- `file_input` and `fileInput` example
+
+### Changed
+
+- `tabset` by default has grid in tabs
+
+- grid has correct improts now
+
+- grid supports mobile screen resolutions now
+
+- fixed calendar dates not working properly in different timezones
+
+- calendar - added check for na in max/min
+
+- fixed multiple select bug in dropdown
+
 ## [0.4.0]
 
 ### Added

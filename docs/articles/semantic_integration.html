@@ -96,14 +96,13 @@
 
       
 
-      </header><script src="semantic_integration_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="semantic_integration_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="semantic_integration_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="semantic_integration_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Shiny.semantic integration with plotly and leaflet</h1>
                         <h4 class="author">Appsilon</h4>
             
-            <h4 class="date">2020-12-14</h4>
+            <h4 class="date">2020-12-17</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Appsilon/shiny.semantic/blob/master/vignettes/semantic_integration.Rmd"><code>vignettes/semantic_integration.Rmd</code></a></small>
       <div class="hidden name"><code>semantic_integration.Rmd</code></div>
@@ -127,16 +126,16 @@
   <span class="fu"><a href="../reference/segment.html">segment</a></span>(
     <span class="kw">class</span> <span class="kw">=</span> <span class="st">"basic"</span>,
     <span class="fu"><a href="../reference/checkbox.html">a</a></span>(<span class="kw">class</span><span class="kw">=</span><span class="st">"ui green ribbon label"</span>, <span class="st">"Plotly demo"</span>),
-    <span class="fu">plotlyOutput</span>(<span class="st">"plot"</span>)
+    <span class="fu"><a href="https://rdrr.io/pkg/plotly/man/plotly-shiny.html">plotlyOutput</a></span>(<span class="st">"plot"</span>)
 
   )
 )
 
 <span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {
-  <span class="no">output</span>$<span class="no">plot</span> <span class="kw">&lt;-</span> <span class="fu">renderPlotly</span>({
-    <span class="fu">plot_ly</span>(<span class="no">economics</span>, <span class="kw">x</span> <span class="kw">=</span> ~<span class="no">date</span>, <span class="kw">color</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span>(<span class="st">"black"</span>)) <span class="kw">%&gt;%</span>
-      <span class="fu">add_lines</span>(<span class="kw">y</span> <span class="kw">=</span> ~<span class="no">uempmed</span>) <span class="kw">%&gt;%</span>
-      <span class="fu">add_lines</span>(<span class="kw">y</span> <span class="kw">=</span> ~<span class="no">psavert</span>, <span class="kw">color</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span>(<span class="st">"red"</span>))
+  <span class="no">output</span>$<span class="no">plot</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/plotly/man/plotly-shiny.html">renderPlotly</a></span>({
+    <span class="fu"><a href="https://rdrr.io/pkg/plotly/man/plot_ly.html">plot_ly</a></span>(<span class="no">economics</span>, <span class="kw">x</span> <span class="kw">=</span> ~<span class="no">date</span>, <span class="kw">color</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span>(<span class="st">"black"</span>)) <span class="kw">%&gt;%</span>
+      <span class="fu"><a href="https://rdrr.io/pkg/plotly/man/add_trace.html">add_lines</a></span>(<span class="kw">y</span> <span class="kw">=</span> ~<span class="no">uempmed</span>) <span class="kw">%&gt;%</span>
+      <span class="fu"><a href="https://rdrr.io/pkg/plotly/man/add_trace.html">add_lines</a></span>(<span class="kw">y</span> <span class="kw">=</span> ~<span class="no">psavert</span>, <span class="kw">color</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span>(<span class="st">"red"</span>))
   })
 }
 
@@ -154,15 +153,15 @@
   <span class="fu"><a href="../reference/segment.html">segment</a></span>(
     <span class="kw">class</span> <span class="kw">=</span> <span class="st">"basic"</span>,
     <span class="fu"><a href="../reference/checkbox.html">a</a></span>(<span class="kw">class</span><span class="kw">=</span><span class="st">"ui blue ribbon label"</span>, <span class="st">"Leaflet demo"</span>),
-    <span class="fu">leafletOutput</span>(<span class="st">"map"</span>)
+    <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-shiny.html">leafletOutput</a></span>(<span class="st">"map"</span>)
 
   )
 )
 
 <span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {
-  <span class="no">output</span>$<span class="no">map</span> <span class="kw">&lt;-</span> <span class="fu">renderLeaflet</span>({
-    <span class="no">m</span> <span class="kw">&lt;-</span> <span class="fu">leaflet</span>() <span class="kw">%&gt;%</span> <span class="fu">addTiles</span>()
-    <span class="no">m</span> <span class="kw">&lt;-</span> <span class="no">m</span> <span class="kw">%&gt;%</span> <span class="fu">setView</span>(<span class="fl">21.00</span>, <span class="fl">52.21</span>, <span class="kw">zoom</span> <span class="kw">=</span> <span class="fl">12</span>)
+  <span class="no">output</span>$<span class="no">map</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-shiny.html">renderLeaflet</a></span>({
+    <span class="no">m</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html">leaflet</a></span>() <span class="kw">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html">addTiles</a></span>()
+    <span class="no">m</span> <span class="kw">&lt;-</span> <span class="no">m</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-methods.html">setView</a></span>(<span class="fl">21.00</span>, <span class="fl">52.21</span>, <span class="kw">zoom</span> <span class="kw">=</span> <span class="fl">12</span>)
     <span class="no">m</span>
   })
 }

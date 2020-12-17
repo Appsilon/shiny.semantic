@@ -188,6 +188,7 @@ grid_template <- function(default = NULL, mobile = NULL) {
 #' Use CSS grid template in Shiny UI
 #'
 #' @param grid_template grid template created with grid_template() function
+#' @param id id of grid
 #' @param container_style character - string of custom CSS for the main grid container
 #' @param area_styles list of custom CSS styles for provided area names
 #' @param display_mode replaces areas HTML content with <area name> text. Used by display_grid() function
