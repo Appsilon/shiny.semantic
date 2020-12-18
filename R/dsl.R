@@ -144,8 +144,8 @@ set_tab_id <- function(tab) {
 #' @param tab_content_class Class for the tab content (default: "bottom attached
 #' segment")
 #'
-#' @details You may access active tab id with \code{input$<id>_tab}.
-#'
+#' @details You may access active tab id with \code{input$<id>}.
+#' @seealso update_tabset
 #' @export
 #'
 #' @examples
@@ -154,7 +154,7 @@ set_tab_id <- function(tab) {
 #'   library(shiny)
 #'   library(shiny.semantic)
 #'
-#'   ui <- shinyUI(semanticPage(
+#'   ui <- semanticPage(
 #'     tabset(tabs =
 #'              list(
 #'                list(menu = "First Tab", content = "Tab 1"),
@@ -165,10 +165,10 @@ set_tab_id <- function(tab) {
 #'     ),
 #'     h2("Active Tab:"),
 #'     textOutput("activetab")
-#'   ))
-#'   server <- shinyServer(function(input, output) {
-#'   })
-#'
+#'   )
+#'   server <- function(input, output) {
+#'       output$activetab <- renderText(input$exampletabset)
+#'   }
 #'   shinyApp(ui, server)
 #' }
 #'
@@ -176,31 +176,13 @@ tabset <- function(tabs,
                    active = NULL,
                    id = generate_random_id("menu"),
                    menu_class = "top attached tabular",
-                   tab_content_class = "bottom attached segment") {
+                   tab_content_class = "bottom attached grid segment") {
   id_tabs <- tabs %>% purrr::map(~ set_tab_id(.x))
   valid_ids <- id_tabs %>% purrr::map_chr(~ .x$id)
   active_tab <- if (!is.null(active)) active else valid_ids[1] # nolint
-  script_code <- paste0(
-    " $(document).on('shiny:sessioninitialized', function(event) {
-        Shiny.onInputChange('", id, "_tab', '", active_tab, "');
-      });
-      // Code below is needed to trigger visibility on reactive Shiny outputs.
-      // Thanks to that users do not have to set suspendWhenHidden to FALSE.
-      var previous_tab;
-      $('#", id, ".menu .item').tab({
-        onVisible: function(target) {
-          if (previous_tab) {
-            $(this).trigger('hidden');
-          }
-          $(window).resize();
-          $(this).trigger('shown');
-          previous_tab = this;
-          Shiny.onInputChange('", id, "_tab', $(this).attr('data-tab'))
-        }
-      });")
   shiny::tagList(
     shiny::div(id = id,
-               class = paste("ui menu", menu_class),
+               class = paste("ui menu sem", menu_class),
                purrr::map(id_tabs, ~ {
                  class <- paste("item", if (.$id == active_tab) "active" else "") # nolint
                  shiny::a(class = class, `data-tab` = .$id, .$menu)
@@ -210,9 +192,47 @@ tabset <- function(tabs,
       class <- paste("ui tab", tab_content_class,
                      if (.$id == active_tab) "active" else "") # nolint
       shiny::div(class = class, `data-tab` = .$id, .$content)
-    }),
-    shiny::tags$script(script_code)
+    })
   )
+}
+
+#' Change the selected tab of a tabset on the client
+#'
+#' @param session The session object passed to function given to shinyServer.
+#' @param input_id The id of the tabset object.
+#' @param selected The id of the tab to be selected.
+#'
+#' @examples
+#' if (interactive()){
+#'  library(shiny)
+#'  library(shiny.semantic)
+#'
+#'  ui <- semanticPage(
+#'    actionButton("changetab", "Select Second Tab"),
+#'    tabset(
+#'       tabs = list(
+#'           list(menu = "First Tab", content = "First Tab", id= "first_tab"),
+#'           list(menu = "Second Tab", content = "Second Tab", id = "second_tab")
+#'       ),
+#'       active = "first_tab",
+#'       id = "exampletabset"
+#'    )
+#'  )
+#'
+#'  server <- function(input, output, session) {
+#'      observeEvent(input$changetab,{
+#'          update_tabset(session, "exampletabset", "second_tab")
+#'      })
+#'  }
+#'
+#'  shinyApp(ui, server)
+#' }
+#'
+#' @export
+#' @rdname update_tabset
+update_tabset <- function(session, input_id, selected = NULL) {
+  message <- list(selected = selected)
+  session$sendInputMessage(input_id, message)
 }
 
 #' Create Semantic UI header

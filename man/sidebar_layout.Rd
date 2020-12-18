@@ -97,5 +97,6 @@ if (interactive()){
       hist(rnorm(input$obs))
     })
   }
+  shinyApp(ui, server)
 }
 }

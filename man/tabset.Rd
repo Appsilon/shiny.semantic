@@ -9,7 +9,7 @@ tabset(
   active = NULL,
   id = generate_random_id("menu"),
   menu_class = "top attached tabular",
-  tab_content_class = "bottom attached segment"
+  tab_content_class = "bottom attached grid segment"
 )
 }
 \arguments{
@@ -30,7 +30,7 @@ segment")}
 This creates tabs with content using Semantic UI styles.
 }
 \details{
-You may access active tab id with \code{input$<id>_tab}.
+You may access active tab id with \code{input$<id>}.
 }
 \examples{
 ## Only run examples in interactive R sessions
@@ -38,7 +38,7 @@ if (interactive()){
   library(shiny)
   library(shiny.semantic)
 
-  ui <- shinyUI(semanticPage(
+  ui <- semanticPage(
     tabset(tabs =
              list(
                list(menu = "First Tab", content = "Tab 1"),
@@ -49,11 +49,14 @@ if (interactive()){
     ),
     h2("Active Tab:"),
     textOutput("activetab")
-  ))
-  server <- shinyServer(function(input, output) {
-  })
-
+  )
+  server <- function(input, output) {
+      output$activetab <- renderText(input$exampletabset)
+  }
   shinyApp(ui, server)
 }
 
+}
+\seealso{
+update_tabset
 }

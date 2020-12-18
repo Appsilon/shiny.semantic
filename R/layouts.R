@@ -68,6 +68,7 @@ main_panel <- function(..., width = 3) {
 #'       hist(rnorm(input$obs))
 #'     })
 #'   }
+#'   shinyApp(ui, server)
 #' }
 #' @rdname sidebar_layout
 #' @export
@@ -327,7 +328,8 @@ verticalLayout <- function(..., fluid = NULL) {
 #' Named arguments will become HTML attributes on the outermost tag.
 #' @param cell_args Any additional attributes that should be used for each cell
 #' of the layout.
-#' @param cell_width The width of the cells.
+#' @param min_cell_width The minimum width of the cells.
+#' @param max_cell_width The maximum width of the cells.
 #' @param column_gap The spacing between columns.
 #' @param row_gap The spacing between rows.
 #'
@@ -346,10 +348,13 @@ verticalLayout <- function(..., fluid = NULL) {
 #'   )
 #'   shinyApp(ui, server = function(input, output) {})
 #' }
-flow_layout <- function(..., cell_args = list(), cell_width = "208px", column_gap = "12px", row_gap = "0px") {
+flow_layout <- function(..., cell_args = list(),
+                        min_cell_width = "208px", max_cell_width = "1fr",column_gap = "12px", row_gap = "0px") {
+  if(max_cell_width != "1fr")
+    max_cell_width <- validateCssUnit(max_cell_width)
   container_style <- glue::glue(
     "display: grid;",
-    "grid-template-columns: repeat(auto-fill, {shiny::validateCssUnit(cell_width)});",
+    "grid-template-columns: repeat(auto-fill, minmax({validateCssUnit(min_cell_width)}, {max_cell_width}));",
     "column-gap: {shiny::validateCssUnit(column_gap)};",
     "row-gap: {shiny::validateCssUnit(row_gap)};"
   )

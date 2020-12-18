@@ -8,7 +8,8 @@
 flow_layout(
   ...,
   cell_args = list(),
-  cell_width = "208px",
+  min_cell_width = "208px",
+  max_cell_width = "1fr",
   column_gap = "12px",
   row_gap = "0px"
 )
@@ -22,7 +23,9 @@ Named arguments will become HTML attributes on the outermost tag.}
 \item{cell_args}{Any additional attributes that should be used for each cell
 of the layout.}
 
-\item{cell_width}{The width of the cells.}
+\item{min_cell_width}{The minimum width of the cells.}
+
+\item{max_cell_width}{The maximum width of the cells.}
 
 \item{column_gap}{The spacing between columns.}
 

@@ -6,7 +6,7 @@
 \alias{range_input}
 \title{Create Semantic UI Slider / Range}
 \usage{
-slider_input(input_id, value, min, max, step = 1, class = NULL)
+slider_input(input_id, value, min, max, step = 1, class = "labeled")
 
 sliderInput(inputId, label, min, max, value, step = 1, width = NULL, ...)
 
@@ -23,7 +23,7 @@ range_input(input_id, value, value2, min, max, step = 1, class = NULL)
 
 \item{step}{The interval between each selectable value of the slider.}
 
-\item{class}{UI class of the slider. Can include \code{"Labeled"} and \code{"ticked"}.}
+\item{class}{UI class of the slider. Can include \code{"labeled"} and \code{"ticked"}.}
 
 \item{inputId}{Input name.}
 
@@ -43,29 +43,25 @@ available under \code{input[[input_id]]}. Use Range for range of values.
 Use \code{\link{update_slider}} to update the slider/range within the shiny session.
 }
 \examples{
-if (interactive()) {
-
+if (interactive()) { # Slider example
   library(shiny)
   library(shiny.semantic)
 
-  # Slider example
   ui <- shinyUI(
     semanticPage(
       title = "Slider example",
       tags$br(),
-      slider_input("slider", 10, 0, 20),
+      slider_input("slider", 10, 0, 20, class = "labeled ticked"),
       p("Selected value:"),
       textOutput("slider")
     )
   )
-
    server <- shinyServer(function(input, output, session) {
      output$slider <- renderText(input$slider)
    })
-
    shinyApp(ui = ui, server = server)
-
-   # Range example
+ }
+ if (interactive()) { # Range example
    ui <- shinyUI(
      semanticPage(
        title = "Range example",
@@ -75,13 +71,10 @@ if (interactive()) {
        textOutput("range")
     )
   )
-
    server <- shinyServer(function(input, output, session) {
      output$range <- renderText(paste(input$range, collapse = " - "))
    })
-
    shinyApp(ui = ui, server = server)
-
  }
 
 }
