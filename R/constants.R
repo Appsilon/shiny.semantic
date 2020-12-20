@@ -18,3 +18,9 @@ SUPPORTED_THEMES <- c("cerulean", "darkly", "paper", "simplex",  # nolint
 #' Allowed sizes
 #' @export
 SIZE_LEVELS <- c("mini", "tiny", "small", "", "large", "huge", "massive")
+
+#' Allowed box sizes
+ALLOWED_BOX_SIDES_NONRIBBON <- c("top", "bottom", "top left", "top right", "bottom left", "bottom right")
+
+#' Allowed ribbon box sizes
+ALLOWED_BOX_SIDES_RIBBON <- c("top left", "top right")

@@ -9,7 +9,8 @@ semanticPage(
   title = "",
   theme = NULL,
   suppress_bootstrap = TRUE,
-  margin = "10px"
+  margin = "10px",
+  class = ""
 )
 }
 \arguments{
@@ -24,6 +25,8 @@ wrapper (e.g. style, class etc.)}
 \item{suppress_bootstrap}{boolean flag that supresses bootstrap when turned on}
 
 \item{margin}{character with body margin size}
+
+\item{class}{additional Fomantic page classes}
 }
 \description{
 This creates a Semantic page for use in a Shiny app.

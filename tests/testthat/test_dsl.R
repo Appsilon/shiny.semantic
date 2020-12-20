@@ -272,3 +272,17 @@ test_that("test accordion", {
   expect_true(any(grepl("style=\"background: red\">", si_str, fixed = TRUE)))
 
 })
+
+
+test_that("test box", {
+  expect_is(box(), "shiny.tag")
+  si_str <- as.character(box(title = "Sample box", color = "blue", "AAAA"))
+  # check if JS inserted
+  expect_true(any(grepl("$(document).ready(function() ", si_str, fixed = TRUE)))
+  expect_true(any(grepl("ui top right ribbon label blue", si_str, fixed = TRUE)))
+  expect_true(any(grepl("AAAA", si_str, fixed = TRUE)))
+  expect_true(any(grepl("AAAA", si_str, fixed = TRUE)))
+  # test color correct
+  si_str <- as.character(box(title = "Sample box", color = "red", "AAAA"))
+  expect_true(any(grepl("ui top right ribbon label red", si_str, fixed = TRUE)))
+})

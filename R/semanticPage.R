@@ -121,6 +121,7 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
 #' \code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.
 #' @param suppress_bootstrap boolean flag that supresses bootstrap when turned on
 #' @param margin character with body margin size
+#' @param class additional Fomantic page classes
 #' @examples
 #' ## Only run examples in interactive R sessions
 #' if (interactive()) {
@@ -147,7 +148,7 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
 #'
 #' @export
 semanticPage <- function(..., title = "", theme = NULL, suppress_bootstrap = TRUE,
-                         margin = "10px") {
+                         margin = "10px", class = "") {
   if (suppress_bootstrap) {
     suppress_bootstrap <- suppressDependencies("bootstrap")
   }
@@ -173,8 +174,11 @@ semanticPage <- function(..., title = "", theme = NULL, suppress_bootstrap = TRU
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-progress.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-toast.js")
     ),
-    shiny::tags$body(style = glue::glue("margin:{margin}; min-height: 611px;"),
-                     suppress_bootstrap,
-                     ...)
+    shiny::tags$body(
+      class = paste("grid", class),
+      style = glue::glue("margin:{margin}; min-height: 611px;"),
+      suppress_bootstrap,
+      ...
+    )
   )
 }

@@ -109,3 +109,17 @@ split_args <- function(...) {
   }
   return(list(positional = args[!is_named], named = args[is_named]))
 }
+
+#' Verify that given variable is in the list of allowed values.
+#'
+#' @param variable variable with a value
+#' @param values allowed values
+#' @return warning if variable not in allowed values
+verify_value_allowed <- function(variable, values) {
+  var <- get(variable, envir = parent.frame())
+  if (!(var %in% values)){
+    warning(paste(paste0("'", variable, "'"),
+                  "argument should be one of:",
+                  paste0("'", values, "'", collapse = ", ")))
+  }
+}
