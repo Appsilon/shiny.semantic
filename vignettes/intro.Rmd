@@ -40,7 +40,7 @@ width = "200px", height = "280px")
 ## Create a simple Shiny App
 Let's create a Shiny app with `semanticPage()` and just an `h1` title.
 
-<img src="intro_images/s0.png" alt="screen1" width="800"/>
+<img src="intro_images/s0.png" alt="screen1" width="400"/>
 
 ```{r echo=TRUE, include=TRUE, eval=FALSE, screenshot.force = FALSE}
 ui <- semanticPage(

@@ -80,3 +80,24 @@ server <- function(input, output, session) {
 
 shinyApp(ui = ui, server = server)
 ```
+
+### DataTable integration
+
+To add some neat Fomantic styling to your `DT` table you need to use
+`semantic_DT` wrapper.
+
+```{r echo=T, include = T, eval = FALSE}
+ library(shiny)
+ library(shiny.semantic)
+
+ ui <- semanticPage(
+   h2("Pretty tables in Shiny Semantic"),
+   semantic_DTOutput("table")
+ )
+ server <- function(input, output, session) {
+   output$table <- DT::renderDataTable(
+     semantic_DT(mtcars)
+   )
+ }
+ shinyApp(ui, server)
+```
