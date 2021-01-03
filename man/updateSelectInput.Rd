@@ -4,7 +4,13 @@
 \alias{updateSelectInput}
 \title{Change the value of a select input on the client}
 \usage{
-updateSelectInput(session, inputId, label, choices = NULL, selected = NULL)
+updateSelectInput(
+  session,
+  inputId,
+  label = NULL,
+  choices = NULL,
+  selected = NULL
+)
 }
 \arguments{
 \item{session}{The session object passed to function given to shinyServer.}

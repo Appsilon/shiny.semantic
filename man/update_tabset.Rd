@@ -2,7 +2,7 @@
 % Please edit documentation in R/dsl.R
 \name{update_tabset}
 \alias{update_tabset}
-\title{Change the select tab of a tabset on the client}
+\title{Change the selected tab of a tabset on the client}
 \usage{
 update_tabset(session, input_id, selected = NULL)
 }
@@ -14,7 +14,7 @@ update_tabset(session, input_id, selected = NULL)
 \item{selected}{The id of the tab to be selected.}
 }
 \description{
-Change the select tab of a tabset on the client
+Change the selected tab of a tabset on the client
 }
 \examples{
 if (interactive()){

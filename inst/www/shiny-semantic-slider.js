@@ -13,6 +13,7 @@ $.extend(semanticSliderBinding, {
         return ticks[value];
       };
       sliderOptions.start = sliderData.ticks.indexOf(sliderData.start);
+      sliderOptions.max = sliderData.ticks.length - 1;
     } else {
       sliderOptions.interpretLabel = Number(sliderData.min);
       sliderOptions.max = Number(sliderData.max);

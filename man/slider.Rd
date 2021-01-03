@@ -6,9 +6,27 @@
 \alias{range_input}
 \title{Create Semantic UI Slider / Range}
 \usage{
-slider_input(input_id, value, min, max, step = 1, class = "labeled")
+slider_input(
+  input_id,
+  value,
+  min,
+  max,
+  step = 1,
+  class = "labeled",
+  custom_ticks = NULL
+)
 
-sliderInput(inputId, label, min, max, value, step = 1, width = NULL, ...)
+sliderInput(
+  inputId,
+  label,
+  min,
+  max,
+  value,
+  step = 1,
+  width = NULL,
+  ticks = TRUE,
+  ...
+)
 
 range_input(input_id, value, value2, min, max, step = 1, class = NULL)
 }
@@ -23,13 +41,17 @@ range_input(input_id, value, value2, min, max, step = 1, class = NULL)
 
 \item{step}{The interval between each selectable value of the slider.}
 
-\item{class}{UI class of the slider. Can include \code{"labeled"} and \code{"ticked"}.}
+\item{class}{UI class of the slider. Can include \code{"Labeled"} and \code{"ticked"}.}
+
+\item{custom_ticks}{A vector of custom labels to be added to the slider. Will ignore \code{min} and \code{max}}
 
 \item{inputId}{Input name.}
 
 \item{label}{Display label for the control, or NULL for no label.}
 
 \item{width}{character with width of slider.}
+
+\item{ticks}{\code{FALSE} to hide tick marks, \code{TRUE} to show them according to some simple heuristics}
 
 \item{...}{additional arguments}
 
@@ -43,7 +65,8 @@ available under \code{input[[input_id]]}. Use Range for range of values.
 Use \code{\link{update_slider}} to update the slider/range within the shiny session.
 }
 \examples{
-if (interactive()) { # Slider example
+if (interactive()) {
+  # Slider example
   library(shiny)
   library(shiny.semantic)
 
@@ -60,8 +83,23 @@ if (interactive()) { # Slider example
      output$slider <- renderText(input$slider)
    })
    shinyApp(ui = ui, server = server)
- }
- if (interactive()) { # Range example
+
+  # Custom ticks slider
+  ui <- shinyUI(
+    semanticPage(
+      title = "Slider example",
+      tags$br(),
+      slider_input("slider_ticks", "F", custom_ticks = LETTERS, class = "labeled ticked"),
+      p("Selected value:"),
+      textOutput("slider_ticks")
+    )
+  )
+   server <- shinyServer(function(input, output, session) {
+     output$slider_ticks <- renderText(input$slider_ticks)
+   })
+   shinyApp(ui = ui, server = server)
+
+   # Range example
    ui <- shinyUI(
      semanticPage(
        title = "Range example",
