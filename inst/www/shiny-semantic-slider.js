@@ -1,22 +1,23 @@
 var semanticSliderBinding = new Shiny.InputBinding();
 
 $.extend(semanticSliderBinding, {
-
   // This initialize input element. It extracts data-value attribute and use that as value.
   initialize: function(el) {
     var sliderData = $(el).data();
     var sliderOptions = {
-        min: Number(sliderData.min),
-        max: Number(sliderData.max),
-        step: Number(sliderData.step),
-        start: Number(sliderData.start),
-        onChange: function(value) { $(el).trigger('change'); }
+      onChange: function(value) { $(el).trigger('change'); }
     };
 
     if (Object.keys(sliderData).includes('ticks')) {
       sliderOptions.interpretLabel = function(value, ticks = sliderData.ticks) {
         return ticks[value];
       };
+      sliderOptions.start = sliderData.ticks.indexOf(sliderData.start);
+    } else {
+      sliderOptions.interpretLabel = Number(sliderData.min);
+      sliderOptions.max = Number(sliderData.max);
+      sliderOptions.step = Number(sliderData.step);
+      sliderOptions.start = Number(sliderData.start);
     }
 
     if (Object.keys(sliderData).includes('end')) {
@@ -63,11 +64,21 @@ $.extend(semanticSliderBinding, {
 
   // Given the DOM element for the input, set the value.
   setValue: function(el, value) {
-    if ($(el).hasClass('range')) {
-      $(el).slider('set rangeValue', value[0], value[1]);
+    if ($(el).data('ticks')) {
+      if ($(el).hasClass('range')) {
+        $(el).slider('set rangeValue', $(el).data('ticks').indexOf(value[0]), $(el).data('ticks').indexOf(value[1]));
+      } else {
+        $(el).slider('set value', $(el).data('ticks').indexOf(value));
+      }
     } else {
-      $(el).slider('set value', value);
+      if ($(el).hasClass('range')) {
+        $(el).slider('set rangeValue', value[0], value[1]);
+      } else {
+        $(el).slider('set value', value);
+      }
     }
+
+
   },
 
   // Set up the event listeners so that interactions with the

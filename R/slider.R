@@ -60,12 +60,20 @@
 #' @export
 slider_input <- function(input_id, value, min, max, step = 1, class = "labeled", tick_labels = NULL,
                          time_format = NULL, time_zone = NULL) {
-  if (!is.null(tick_labels)) tick_labels <- paste0("[\"", paste0(tick_labels, collapse = "\", \""), "\"]")
-  div(
-    id = input_id, class = paste("ui slider ss-slider", class),
-    `data-min` = min, `data-max` = max, `data-step` = step, `data-start` = value, `data-ticks` = tick_labels,
-    `data-time` = time_format, `data-tz` = time_zone
-  )
+  if (!is.null(tick_labels)) {
+    tick_labels <- paste0("[\"", paste0(tick_labels, collapse = "\", \""), "\"]")
+    div(
+      id = input_id, class = paste("ui slider ss-slider", class),
+      `data-start` = value, `data-ticks` = tick_labels, `data-time` = time_format, `data-tz` = time_zone
+    )
+  } else {
+    div(
+      id = input_id, class = paste("ui slider ss-slider", class),
+      `data-min` = min, `data-max` = max, `data-step` = step, `data-start` = value,
+      `data-time` = time_format, `data-tz` = time_zone
+    )
+  }
+
 }
 
 #' @param inputId Input name.
