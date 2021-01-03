@@ -71,13 +71,13 @@ $.extend(semanticSliderBinding, {
       if ($(el).hasClass('range')) {
         $(el).slider('set rangeValue', $(el).data('ticks').indexOf(value[0]), $(el).data('ticks').indexOf(value[1]));
       } else {
-        $(el).slider('set value', $(el).data('ticks').indexOf(value));
+        $(el).slider('set value', $(el).data('ticks').indexOf(value[0]));
       }
     } else {
       if ($(el).hasClass('range')) {
         $(el).slider('set rangeValue', value[0], value[1]);
       } else {
-        $(el).slider('set value', value);
+        $(el).slider('set value', value[0]);
       }
     }
 
