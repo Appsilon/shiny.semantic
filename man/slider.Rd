@@ -41,7 +41,7 @@ range_input(input_id, value, value2, min, max, step = 1, class = NULL)
 
 \item{step}{The interval between each selectable value of the slider.}
 
-\item{class}{UI class of the slider. Can include \code{"Labeled"} and \code{"ticked"}.}
+\item{class}{UI class of the slider. Can include \code{"labeled"} and \code{"ticked"}.}
 
 \item{custom_ticks}{A vector of custom labels to be added to the slider. Will ignore \code{min} and \code{max}}
 
@@ -79,10 +79,10 @@ if (interactive()) {
       textOutput("slider")
     )
   )
-   server <- shinyServer(function(input, output, session) {
-     output$slider <- renderText(input$slider)
-   })
-   shinyApp(ui = ui, server = server)
+  server <- shinyServer(function(input, output, session) {
+    output$slider <- renderText(input$slider)
+  })
+  shinyApp(ui = ui, server = server)
 
   # Custom ticks slider
   ui <- shinyUI(
@@ -94,26 +94,26 @@ if (interactive()) {
       textOutput("slider_ticks")
     )
   )
-   server <- shinyServer(function(input, output, session) {
-     output$slider_ticks <- renderText(input$slider_ticks)
-   })
-   shinyApp(ui = ui, server = server)
+  server <- shinyServer(function(input, output, session) {
+    output$slider_ticks <- renderText(input$slider_ticks)
+  })
+  shinyApp(ui = ui, server = server)
 
-   # Range example
-   ui <- shinyUI(
-     semanticPage(
-       title = "Range example",
-       tags$br(),
-       range_input("range", 10, 15, 0, 20),
-       p("Selected values:"),
-       textOutput("range")
+  # Range example
+  ui <- shinyUI(
+    semanticPage(
+      title = "Range example",
+      tags$br(),
+      range_input("range", 10, 15, 0, 20),
+      p("Selected values:"),
+      textOutput("range")
     )
   )
-   server <- shinyServer(function(input, output, session) {
-     output$range <- renderText(paste(input$range, collapse = " - "))
-   })
-   shinyApp(ui = ui, server = server)
- }
+  server <- shinyServer(function(input, output, session) {
+    output$range <- renderText(paste(input$range, collapse = " - "))
+  })
+  shinyApp(ui = ui, server = server)
+}
 
 }
 \seealso{

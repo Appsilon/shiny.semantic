@@ -9,7 +9,7 @@
 #' @param min The minimum value allowed to be selected for the slider.
 #' @param max The maximum value allowed to be selected for the slider.
 #' @param step The interval between each selectable value of the slider.
-#' @param class UI class of the slider. Can include \code{"Labeled"} and \code{"ticked"}.
+#' @param class UI class of the slider. Can include \code{"labeled"} and \code{"ticked"}.
 #' @param custom_ticks A vector of custom labels to be added to the slider. Will ignore \code{min} and \code{max}
 #'
 #' @details
@@ -32,10 +32,10 @@
 #'       textOutput("slider")
 #'     )
 #'   )
-#'    server <- shinyServer(function(input, output, session) {
-#'      output$slider <- renderText(input$slider)
-#'    })
-#'    shinyApp(ui = ui, server = server)
+#'   server <- shinyServer(function(input, output, session) {
+#'     output$slider <- renderText(input$slider)
+#'   })
+#'   shinyApp(ui = ui, server = server)
 #'
 #'   # Custom ticks slider
 #'   ui <- shinyUI(
@@ -47,26 +47,26 @@
 #'       textOutput("slider_ticks")
 #'     )
 #'   )
-#'    server <- shinyServer(function(input, output, session) {
-#'      output$slider_ticks <- renderText(input$slider_ticks)
-#'    })
-#'    shinyApp(ui = ui, server = server)
+#'   server <- shinyServer(function(input, output, session) {
+#'     output$slider_ticks <- renderText(input$slider_ticks)
+#'   })
+#'   shinyApp(ui = ui, server = server)
 #'
-#'    # Range example
-#'    ui <- shinyUI(
-#'      semanticPage(
-#'        title = "Range example",
-#'        tags$br(),
-#'        range_input("range", 10, 15, 0, 20),
-#'        p("Selected values:"),
-#'        textOutput("range")
+#'   # Range example
+#'   ui <- shinyUI(
+#'     semanticPage(
+#'       title = "Range example",
+#'       tags$br(),
+#'       range_input("range", 10, 15, 0, 20),
+#'       p("Selected values:"),
+#'       textOutput("range")
 #'     )
 #'   )
-#'    server <- shinyServer(function(input, output, session) {
-#'      output$range <- renderText(paste(input$range, collapse = " - "))
-#'    })
-#'    shinyApp(ui = ui, server = server)
-#'  }
+#'   server <- shinyServer(function(input, output, session) {
+#'     output$range <- renderText(paste(input$range, collapse = " - "))
+#'   })
+#'   shinyApp(ui = ui, server = server)
+#' }
 #'
 #' @seealso update_slider for input updates,
 #' \url{https://fomantic-ui.com/modules/slider.html} for preset classes.

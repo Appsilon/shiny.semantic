@@ -13,16 +13,18 @@ $.extend(semanticSliderBinding, {
         return ticks[value];
       };
       sliderOptions.start = sliderData.ticks.indexOf(sliderData.start);
+      if ($(el).hasClass('range')) {
+        sliderOptions.end = sliderData.ticks.indexOf(sliderData.end);
+      }
       sliderOptions.max = sliderData.ticks.length - 1;
     } else {
       sliderOptions.interpretLabel = Number(sliderData.min);
       sliderOptions.max = Number(sliderData.max);
       sliderOptions.step = Number(sliderData.step);
       sliderOptions.start = Number(sliderData.start);
-    }
-
-    if (Object.keys(sliderData).includes('end')) {
-      sliderOptions.end = Number(sliderData.end);
+      if ($(el).hasClass('range')) {
+        sliderOptions.end = Number(sliderData.end);
+      }
     }
 
     $(el).slider(sliderOptions);
