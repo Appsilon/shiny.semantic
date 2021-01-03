@@ -32,7 +32,9 @@
 #' @export
 dropdown_input <- function(input_id, choices, choices_value = choices,
                      default_text = "Select", value = NULL, type = "selection fluid") {
-    if (!is.null(value)) value <- paste(as.character(value), collapse = ",")
+    if (!is.null(value)) {
+      value <- paste(as.character(value), collapse = ",")
+    }
     shiny::div(
       id = input_id, class = paste("ui", type, "dropdown semantic-select-input"),
       tags$input(type = "hidden", name = input_id, value = value),
@@ -44,7 +46,7 @@ dropdown_input <- function(input_id, choices, choices_value = choices,
           is.null(names(.)) ~
             purrr::map2(
               choices, choices_value,
-              ~ shiny::div(class = paste0(if (.y %in% value) "active ", "item"), `data-value` = .y, .x)
+              ~ shiny::div(class = "item", `data-value` = .y, .x)
             ),
           !is.null(names(.)) ~
             purrr::map(
@@ -54,7 +56,7 @@ dropdown_input <- function(input_id, choices, choices_value = choices,
                   menu_divider(),
                   purrr::map2(
                     choices[[.x]], choices_value[[.x]],
-                    ~ shiny::div(class = paste0(if (.y %in% value) "active ", "item"), `data-value` = .y, .x)
+                    ~ shiny::div(class = "item", `data-value` = .y, .x)
                   )
                 )
               }
@@ -242,7 +244,7 @@ update_dropdown_input <- function(session, input_id, choices = NULL, choices_val
 #' }
 #'
 #' @export
-updateSelectInput <- function(session, inputId, label, choices = NULL, selected = NULL) {
+updateSelectInput <- function(session, inputId, label = NULL, choices = NULL, selected = NULL) {
   if (!is.null(selected)) selected <- paste(as.character(selected), collapse = ",") else selected <- NULL
   if (!is.null(choices)) {
     choices_text <- names(choices)

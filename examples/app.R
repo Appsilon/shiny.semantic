@@ -190,23 +190,43 @@ grid_demo <- function() {
   div(
     h1(class="ui header", id="grid", "Grid"),
     demo(
-      grid(
-        grid_template(default = list(
+      grid(grid_template(default = list(
         areas = rbind(
           c("header", "header", "header"),
-          c("menu",   "main",   "main"),
-          c("menu",   "main",   "main")
+          c("menu",   "main",   "right1"),
+          c("menu",   "main",   "right2")
         ),
         rows_height = c("50px", "auto", "100px"),
         cols_width = c("100px", "2fr", "1fr")
       )),
-      container_style = "border: 1px solid #f00",
-      area_styles = list(header = "background: #0099f9",
-                         menu = "border-right: 1px solid #0099f9"),
-      header = "header",
-      menu = "menu",
-      main = "main"
-    )
+      container_style = "border: 5px solid #3d7ea6",
+      area_styles = list(header = "border-bottom: 3px solid #5c969e",
+                         menu = "border-right: 3px solid #5c969e",
+                         main = "border-right: 3px solid #5c969e",
+                         right1 = "border-bottom: 3px solid #5c969e"),
+      header = div("header"),
+      menu = div("menu"),
+      main = grid(grid_template(default = list(
+        areas = rbind(
+          c("top_left", "top_right"),
+          c("bottom_left", "bottom_right")
+        ),
+        rows_height = c("50%", "50%"),
+        cols_width = c("50%", "50%")
+      )),
+      container_style = "padding: 5px;",
+      area_styles = list(top_left = "border: 3px solid #ffa5a5;",
+                         top_right = "border: 3px solid #ffa5a5;",
+                         bottom_left = "border: 3px solid #ffa5a5;",
+                         bottom_right = "border: 3px solid #ffa5a5;"),
+      top_left = div("main top left"),
+      top_right = div("main top right"),
+      bottom_left = div("main bottom left"),
+      bottom_right = div("main bottom right")
+      ),
+      right1 = div("right 1"),
+      right2 = div("right 2")
+      )
     )
   )
 }
@@ -441,8 +461,8 @@ calendar_demo <- function() {
   div(
     h1(class="ui header", id="calendar", "Calendar"),
     demo(
-      calendar("date", type = "date", value = "20.2.2020", placeholder = "Select Date",
-               min = "2.2.2020", max = "25.2.2020")
+      calendar("date", type = "date", value = "2020-02-20", placeholder = "Select Date",
+               min = "2020-02-02", max = "2020-02-25")
     ),
     demo(
       calendar("month", type = "month", placeholder = "Pick Month")

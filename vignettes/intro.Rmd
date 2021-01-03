@@ -40,7 +40,7 @@ width = "200px", height = "280px")
 ## Create a simple Shiny App
 Let's create a Shiny app with `semanticPage()` and just an `h1` title.
 
-<img src="intro_images/s0.png" alt="screen1" width="800"/>
+<img src="intro_images/s0.png" alt="screen1" width="400"/>
 
 ```{r echo=TRUE, include=TRUE, eval=FALSE, screenshot.force = FALSE}
 ui <- semanticPage(
@@ -53,9 +53,12 @@ server <- function(input, output, session) {}
 shinyApp(ui, server)
 ```
 
+### Built-in layouts
+
 Now let's add sidebar layout `sidebar_layout()` with a sidebar panel `sidebar_panel()` and main panel `main_panel()`. The sidebar is displayed with a distinct background color and typically contains input controls. The main area occupies 2/3 of the horizontal width and typically contains outputs.
 
 <img src="intro_images/s1.png" alt="screen2" width="800"/>
+
 
 ```{r echo=TRUE, include=TRUE, eval=FALSE, screenshot.force = FALSE}
 ui <- semanticPage(
@@ -203,6 +206,11 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 ```
 
+There is more layouts that you can use. Just check the documentation of: `splitLayout`,
+`flow_layout`, `vertical_layout` and some more!
+
+###  Grid templates
+
 Finally let's change the layout of the plots on the page and make them appear next to each other. We will use `grid()` for it and define a grid template using `grid_template()` with 1 row and 2 columns of the same size. Our grid template will contain 2 areas `chart1` and `chart2`
 
 ```{r echo=TRUE, include=TRUE, eval=FALSE, screenshot.force = FALSE}
@@ -214,6 +222,8 @@ grid_charts <- grid_template(
 ```
 
 We assign plots' outputs `plotOutput()` to both areas inside the `grid` function.
+
+This is the final effect of our work:
 
 <img src="intro_images/s5.png" alt="screen6" width="800"/>
 
@@ -263,3 +273,5 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 ```
 
+You can define grids for different screen sizes. [Here](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/grid/app.R) is an example on how to define
+it for mobile.

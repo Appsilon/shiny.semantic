@@ -14,36 +14,31 @@
 #' @param time_format
 #' @param time_zone
 #'
-#'
 #' @details
 #' Use \code{\link{update_slider}} to update the slider/range within the shiny session.
 #'
 #' @rdname slider
 #'
 #' @examples
-#' if (interactive()) {
-#'
+#' if (interactive()) { # Slider example
 #'   library(shiny)
 #'   library(shiny.semantic)
 #'
-#'   # Slider example
 #'   ui <- shinyUI(
 #'     semanticPage(
 #'       title = "Slider example",
 #'       tags$br(),
-#'       slider_input("slider", 10, 0, 20),
+#'       slider_input("slider", 10, 0, 20, class = "labeled ticked"),
 #'       p("Selected value:"),
 #'       textOutput("slider")
 #'     )
 #'   )
-#'
 #'    server <- shinyServer(function(input, output, session) {
 #'      output$slider <- renderText(input$slider)
 #'    })
-#'
 #'    shinyApp(ui = ui, server = server)
-#'
-#'    # Range example
+#'  }
+#'  if (interactive()) { # Range example
 #'    ui <- shinyUI(
 #'      semanticPage(
 #'        title = "Range example",
@@ -53,23 +48,19 @@
 #'        textOutput("range")
 #'     )
 #'   )
-#'
 #'    server <- shinyServer(function(input, output, session) {
 #'      output$range <- renderText(paste(input$range, collapse = " - "))
 #'    })
-#'
 #'    shinyApp(ui = ui, server = server)
-#'
 #'  }
 #'
 #' @seealso update_slider for input updates,
 #' \url{https://fomantic-ui.com/modules/slider.html} for preset classes.
 #'
 #' @export
-slider_input <- function(input_id, value, min, max, step = 1, class = NULL, tick_labels = NULL,
+slider_input <- function(input_id, value, min, max, step = 1, class = "labeled", tick_labels = NULL,
                          time_format = NULL, time_zone = NULL) {
   if (!is.null(tick_labels)) tick_labels <- paste0("[\"", paste0(tick_labels, collapse = "\", \""), "\"]")
-
   div(
     id = input_id, class = paste("ui slider ss-slider", class),
     `data-min` = min, `data-max` = max, `data-step` = step, `data-start` = value, `data-ticks` = tick_labels,
@@ -83,7 +74,8 @@ slider_input <- function(input_id, value, min, max, step = 1, class = NULL, tick
 #' @param ... additional arguments
 #' @rdname slider
 #' @export
-sliderInput <- function(inputId, label, min, max, value, step = 1, width = NULL, ...) {
+sliderInput <- function(inputId, label, min, max, value, step = 1,
+                        width = NULL, ...) {
   warn_unsupported_args(list(...))
 
   if (length(value) == 1) {

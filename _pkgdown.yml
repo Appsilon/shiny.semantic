@@ -64,6 +64,7 @@ reference:
   - '`message_box`'
   - '`segment`'
   - '`tabset`'
+  - '`update_tabset`'
   - '`accordion`'
 
 - title: Action elements
@@ -91,6 +92,10 @@ reference:
   - '`textInput`'
   - '`text_input`'
   - '`toggle`'
+  - '`file_input`'
+  - '`fileInput`'
+  - '`progress`'
+  - '`toast`'
   - '`updateActionButton`'
   - '`update_action_button`'
   - '`updateNumericInput`'
@@ -103,6 +108,19 @@ reference:
   - '`update_rating_input`'
   - '`update_slider`'
 
+- title: Modal functions
+  desc: Functions for modals generation.
+  contents:
+  - '`modal`'
+  - '`modalDialog`'
+  - '`create_modal`'
+  - '`show_modal`'
+  - '`showModal`'
+  - '`remove_modal`'
+  - '`removeModal`'
+  - '`remove_all_modals`'
+  - '`hide_modal`'
+
 - title: Search functions
   desc: Functions for search API.
   contents:
@@ -111,8 +129,8 @@ reference:
   - '`search_selection_api`'
   - '`search_selection_choices`'
 
-- title: Layouts functions
-  desc: Functions for search API.
+- title: Layouts and grid
+  desc: Function for layouts and grid.
   contents:
   - '`grid`'
   - '`grid_template`'

@@ -1,6 +1,6 @@
 context("ui calendar")
 
-test_that("test uicalendar", {
+test_that("test calendar", {
   # type
   expect_is(calendar("calendar_input"), "shiny.tag")
   # empty input
