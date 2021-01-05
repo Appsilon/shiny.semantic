@@ -1,35 +1,39 @@
 var semanticSliderBinding = new Shiny.InputBinding();
 
 $.extend(semanticSliderBinding, {
-
   // This initialize input element. It extracts data-value attribute and use that as value.
   initialize: function(el) {
-    var sliderDiv = $(el);
+    var sliderData = $(el).data();
+    var sliderOptions = {
+      onChange: function(value) { $(el).trigger('change'); }
+    };
 
-    if ($(el).hasClass('range')) {
-      $(el).slider({
-        min: Number($(el).data('min')),
-        max: Number($(el).data('max')),
-        step: Number($(el).data('step')),
-        start: Number($(el).data('start')),
-        end: Number($(el).data('end')),
-        onChange: function(value) { $(el).trigger('change'); }
-      });
+    if (Object.keys(sliderData).includes('ticks')) {
+      sliderOptions.interpretLabel = function(value, ticks = sliderData.ticks) {
+        return ticks[value];
+      };
+      sliderOptions.start = sliderData.ticks.indexOf(sliderData.start);
+      if ($(el).hasClass('range')) {
+        sliderOptions.end = sliderData.ticks.indexOf(sliderData.end);
+      }
+      sliderOptions.max = sliderData.ticks.length - 1;
     } else {
-      $(el).slider({
-        min: Number($(el).data('min')),
-        max: Number($(el).data('max')),
-        step: Number($(el).data('step')),
-        start: Number($(el).data('start')),
-        onChange: function(value) { $(el).trigger('change'); }
-      });
+      sliderOptions.interpretLabel = Number(sliderData.min);
+      sliderOptions.max = Number(sliderData.max);
+      sliderOptions.step = Number(sliderData.step);
+      sliderOptions.start = Number(sliderData.start);
+      if ($(el).hasClass('range')) {
+        sliderOptions.end = Number(sliderData.end);
+      }
     }
+
+    $(el).slider(sliderOptions);
   },
 
   // This returns a jQuery object with the DOM element.
   find: function(scope) {
     // checkbox with type slider was also found here causing: https://github.com/Appsilon/shiny.semantic/issues/229
-    return $(scope).find('.ui.slider:not(.checkbox)');
+    return $(scope).find('.ss-slider');
   },
 
   // Returns the ID of the DOM element.
@@ -44,16 +48,40 @@ $.extend(semanticSliderBinding, {
     if ($(el).hasClass('range')) {
       value = [$(el).slider('get thumbValue', 'first'), $(el).slider('get thumbValue', 'second')];
     }
-    return value;
+
+    if ($(el).data('ticks')) {
+      return $(el).data('ticks')[value];
+    } else {
+      return value;
+    }
+  },
+
+  // Trying something to get the thumb value rather than input value
+  getType: function(el) {
+    if ($(el).data('ticks')) {
+      return false;
+    } else {
+      return 'shiny.number';
+    }
   },
 
   // Given the DOM element for the input, set the value.
   setValue: function(el, value) {
-    if ($(el).hasClass('range')) {
-      $(el).slider('set rangeValue', value[0], value[1]);
+    if ($(el).data('ticks')) {
+      if ($(el).hasClass('range')) {
+        $(el).slider('set rangeValue', $(el).data('ticks').indexOf(value[0]), $(el).data('ticks').indexOf(value[1]));
+      } else {
+        $(el).slider('set value', $(el).data('ticks').indexOf(value[0]));
+      }
     } else {
-      $(el).slider('set value', value);
+      if ($(el).hasClass('range')) {
+        $(el).slider('set rangeValue', value[0], value[1]);
+      } else {
+        $(el).slider('set value', value[0]);
+      }
     }
+
+
   },
 
   // Set up the event listeners so that interactions with the
