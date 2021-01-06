@@ -27,6 +27,10 @@ All notable changes to this project will be documented in this file.
 
 - fixed multiple select bug in dropdown
 
+- fixed Custom Slider Labels adding
+
+- fixed updateSelectInput
+
 ## [0.4.0]
 
 ### Added
