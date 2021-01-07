@@ -12,6 +12,10 @@ ui <- semanticPage(
     tags$br(),
     textOutput("slider_ex"),
     tags$br(), tags$br(),
+    slider_input("custom_slider", "D", custom_ticks = LETTERS),
+    tags$br(),
+    textOutput("custom_slider"),
+    tags$br(), tags$br(),
 
     p("Update range to 10-17"),
     button("button", "Update")
@@ -22,6 +26,7 @@ ui <- semanticPage(
 server <- shinyServer(function(input, output, session) {
   output$range_ex <- renderText(paste(input$range_ex, collapse = ", "))
   output$slider_ex <- renderText(input$slider_ex[1])
+  output$custom_slider <- renderText(input$custom_slider)
   observeEvent(input$button, update_range_input(session, "range_ex", 10, 17))
 })
 

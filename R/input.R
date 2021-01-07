@@ -141,7 +141,7 @@ textInput <- function(inputId, label, value = "", width = NULL,
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
     shiny::div(class = "field",
                if (!is.null(label)) tags$label(label, `for` = inputId),
-               text_input(inputId, value, placeholder = placeholder, type = type)
+               text_input(inputId, value = value, placeholder = placeholder, type = type)
     )
   )
 }
