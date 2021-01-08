@@ -244,7 +244,7 @@ update_dropdown_input <- function(session, input_id, choices = NULL, choices_val
 #' }
 #'
 #' @export
-updateSelectInput <- function(session, inputId, label, choices = NULL, selected = NULL) {
+updateSelectInput <- function(session, inputId, label = NULL, choices = NULL, selected = NULL) {
   if (!is.null(selected)) selected <- paste(as.character(selected), collapse = ",") else selected <- NULL
   if (!is.null(choices)) {
     choices_text <- names(choices)
