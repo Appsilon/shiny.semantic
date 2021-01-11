@@ -269,6 +269,7 @@ attach_rule <- function(id, behavior, target, value) {
 #'
 #' @export
 show_modal <- function(id, session = shiny::getDefaultReactiveDomain()) {
+  id <- ifelse(inherits(session, "session_proxy"), session$ns(id), id)
   session$sendCustomMessage("showSemanticModal", list(id = id, action = "show")) # nolint
 }
 
