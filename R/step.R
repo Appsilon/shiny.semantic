@@ -90,7 +90,7 @@ steps <- function(id, steps_list, class = NULL) {
 #' @export
 single_step <- function(id, title, description = NULL, icon_class = NULL,
                         class = NULL) {
-    step_icon <- if (is.null(icon_class)) NULL else tags$i(class = paste(icon_class, "icon"))
+    step_icon <- if (is.null(icon_class)) NULL else tags$i(class = paste(icon_class, "icon")) # nolint
     step_description <- if (is.null(description)) NULL else shiny::div(
         class = "description",
         description
