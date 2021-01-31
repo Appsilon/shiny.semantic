@@ -171,7 +171,8 @@ semanticPage <- function(..., title = "", theme = NULL, suppress_bootstrap = TRU
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-rating.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-tabset.js"),
       shiny::tags$script(src = "shiny.semantic/shiny-semantic-progress.js"),
-      shiny::tags$script(src = "shiny.semantic/shiny-semantic-toast.js")
+      shiny::tags$script(src = "shiny.semantic/shiny-semantic-toast.js"),
+      shiny::tags$script(src = "shiny.semantic/shiny-semantic-step.js")
     ),
     shiny::tags$body(style = glue::glue("margin:{margin};"),
                      suppress_bootstrap,
