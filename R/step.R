@@ -78,9 +78,9 @@ steps <- function(id, steps_list, class = NULL) {
         no = sprintf("ui %s steps", class)
     )
     shiny::div(
+        id = id,
         class = steps_class,
         steps_list
-        # lapply(steps_list, function(step) step)
     )
 }
 
@@ -116,7 +116,7 @@ single_step <- function(id, title, description = NULL, icon_class = NULL,
 
 #' @rdname toggle_step_state
 #' @export
-toggle_step_state <- function(id, state = TRUE, asis = FALSE) {
+toggle_step_state <- function(id, state = TRUE, automatic_steps = TRUE, asis = FALSE) {
     session <- shiny::getDefaultReactiveDomain()
     # Make sure set_attribute_by_id works with namespaces (shiny modules)
     id <- ifelse(
@@ -124,6 +124,9 @@ toggle_step_state <- function(id, state = TRUE, asis = FALSE) {
         session$ns(id),
         id
     )
-    parameters <- list("step_id" = id, "state" = state)
+    parameters <- list(
+        "step_id" = id,
+        "state" = state,
+        "automatic_steps" = automatic_steps)
     session$sendCustomMessage("toggle_step_state", parameters)
 }
