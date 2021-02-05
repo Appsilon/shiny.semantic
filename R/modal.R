@@ -270,7 +270,8 @@ attach_rule <- function(id, behavior, target, value) {
 #' @rdname show_modal
 #'
 #' @export
-show_modal <- function(id, session = shiny::getDefaultReactiveDomain(), asis = FALSE) {
+show_modal <- function(id, session = shiny::getDefaultReactiveDomain(),
+                       asis = TRUE) {
   id <- ifelse(inherits(session, "session_proxy"), session$ns(id), id)
   session$sendCustomMessage("showSemanticModal", list(id = id, action = "show")) # nolint
 }
@@ -282,7 +283,8 @@ showModal <- function(ui, session = shiny::getDefaultReactiveDomain()) {
 
 #' @rdname show_modal
 #' @export
-remove_modal <- function(id, session = shiny::getDefaultReactiveDomain(), asis = FALSE) {
+remove_modal <- function(id, session = shiny::getDefaultReactiveDomain(),
+                         asis = TRUE) {
   id <- ifelse(inherits(session, "session_proxy"), session$ns(id), id)
   shiny::removeUI(paste0("#", id))
 }
@@ -302,7 +304,8 @@ removeModal <- function(session = shiny::getDefaultReactiveDomain()) {
 
 #' @rdname show_modal
 #' @export
-hide_modal <- function(id, session = shiny::getDefaultReactiveDomain(), asis = FALSE) {
+hide_modal <- function(id, session = shiny::getDefaultReactiveDomain(),
+                       asis = TRUE) {
   id <- ifelse(inherits(session, "session_proxy"), session$ns(id), id)
   session$sendCustomMessage("showSemanticModal", list(id = id, action = "hide")) # nolint
 }
