@@ -8,12 +8,10 @@
 
 <title>Create a select list input control — selectInput • SHINY.SEMANTIC</title>
 
-
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -38,9 +36,10 @@
 
 
 
-
 <meta property="og:title" content="Create a select list input control — selectInput" />
+
 <meta property="og:description" content="Create a select list that can be used to choose a single or multiple items from a list of values." />
+
 
 
 
@@ -72,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
       </span>
     </div>
 
@@ -93,6 +92,7 @@
   </a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
@@ -146,19 +146,21 @@
     </div>
 
     <div class="ref-description">
+    
     <p>Create a select list that can be used to choose a single or multiple items from a list of values.</p>
+    
     </div>
 
-    <pre class="usage"><span class='fu'>selectInput</span>(
-  <span class='no'>inputId</span>,
-  <span class='no'>label</span>,
-  <span class='no'>choices</span>,
-  <span class='kw'>selected</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>multiple</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>
-)</pre>
-
+    <pre class="usage"><span class='fu'>selectInput</span><span class='op'>(</span>
+  <span class='va'>inputId</span>,
+  <span class='va'>label</span>,
+  <span class='va'>choices</span>,
+  selected <span class='op'>=</span> <span class='cn'>NULL</span>,
+  multiple <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  width <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
+    
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -194,30 +196,32 @@ values for multiple select lists.</p></td>
       <td><p>Arguments passed to <a href='dropdown_input.html'>dropdown_input</a>.</p></td>
     </tr>
     </table>
-
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Only run examples in interactive R sessions</span>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
+<span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
 
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>shiny.semantic</span><span class='op'>)</span>
 
   <span class='co'># basic example</span>
-  <span class='fu'>shinyApp</span>(
-    <span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-      <span class='fu'>selectInput</span>(<span class='st'>"variable"</span>, <span class='st'>"Variable:"</span>,
-                  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Cylinders"</span> <span class='kw'>=</span> <span class='st'>"cyl"</span>,
-                    <span class='st'>"Transmission"</span> <span class='kw'>=</span> <span class='st'>"am"</span>,
-                    <span class='st'>"Gears"</span> <span class='kw'>=</span> <span class='st'>"gear"</span>)),
-      <span class='fu'>tableOutput</span>(<span class='st'>"data"</span>)
-    ),
-    <span class='kw'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
-      <span class='no'>output</span>$<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>renderTable</span>({
-        <span class='no'>mtcars</span>[, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mpg"</span>, <span class='no'>input</span>$<span class='no'>variable</span>), <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]
-      }, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-    }
-  )
-}</div></pre>
+  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span><span class='op'>(</span>
+    ui <span class='op'>=</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span><span class='op'>(</span>
+      <span class='fu'>selectInput</span><span class='op'>(</span><span class='st'>"variable"</span>, <span class='st'>"Variable:"</span>,
+                  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Cylinders"</span> <span class='op'>=</span> <span class='st'>"cyl"</span>,
+                    <span class='st'>"Transmission"</span> <span class='op'>=</span> <span class='st'>"am"</span>,
+                    <span class='st'>"Gears"</span> <span class='op'>=</span> <span class='st'>"gear"</span><span class='op'>)</span><span class='op'>)</span>,
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/tableOutput.html'>tableOutput</a></span><span class='op'>(</span><span class='st'>"data"</span><span class='op'>)</span>
+    <span class='op'>)</span>,
+    server <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>input</span>, <span class='va'>output</span><span class='op'>)</span> <span class='op'>{</span>
+      <span class='va'>output</span><span class='op'>$</span><span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderTable.html'>renderTable</a></span><span class='op'>(</span><span class='op'>{</span>
+        <span class='va'>mtcars</span><span class='op'>[</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mpg"</span>, <span class='va'>input</span><span class='op'>$</span><span class='va'>variable</span><span class='op'>)</span>, drop <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>]</span>
+      <span class='op'>}</span>, rownames <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+    <span class='op'>}</span>
+  <span class='op'>)</span>
+<span class='op'>}</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -233,7 +237,7 @@ values for multiple select lists.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

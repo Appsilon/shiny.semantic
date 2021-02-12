@@ -8,12 +8,10 @@
 
 <title>Reporting progress (object-oriented API) — Progress • SHINY.SEMANTIC</title>
 
-
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -38,10 +36,11 @@
 
 
 
-
 <meta property="og:title" content="Reporting progress (object-oriented API) — Progress" />
+
 <meta property="og:description" content="Reporting progress (object-oriented API)
 Reporting progress (object-oriented API)" />
+
 
 
 
@@ -73,7 +72,7 @@ Reporting progress (object-oriented API)" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
       </span>
     </div>
 
@@ -94,6 +93,7 @@ Reporting progress (object-oriented API)" />
   </a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
@@ -147,12 +147,13 @@ Reporting progress (object-oriented API)" />
     </div>
 
     <div class="ref-description">
+    
     <p>Reporting progress (object-oriented API)</p>
 <p>Reporting progress (object-oriented API)</p>
+    
     </div>
 
-
-
+        
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Reports progress to the user during long-running operations.</p>
@@ -171,13 +172,15 @@ CSS), you can use `style="old"` each time you call
 `Progress$new` is called, you can instead call
 [`shinyOptions(progress.style="old")`][shinyOptions] just once, inside the server
 function.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>[with_progress()]</p></div>
+    
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
-<h3>Public methods</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Public methods</h3>
 
 <ul>
 <li><p><a href='#method-new'><code>Progress$new()</code></a></p></li>
@@ -190,12 +193,12 @@ function.</p>
 <li><p><a href='#method-clone'><code>Progress$clone()</code></a></p></li>
 </ul>
 <p><hr>
-<a id="method-new"></a></p><h3>Method <code>new()</code></h3>
-<p>Creates a new progress panel (but does not display it).</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Progress</span>$<span class='fu'>new</span>(<span class='kw'>session</span> <span class='kw'>=</span> <span class='fu'>getDefaultReactiveDomain</span>(), <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='no'>...</span>)</pre><p></div></p>
+<a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
+<p>Creates a new progress panel (but does not display it).</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>Progress</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>session <span class='op'>=</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/domains.html'>getDefaultReactiveDomain</a></span><span class='op'>(</span><span class='op'>)</span>, min <span class='op'>=</span> <span class='fl'>0</span>, max <span class='op'>=</span> <span class='fl'>1</span>, <span class='va'>...</span><span class='op'>)</span></pre><p></div></p>
 
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
 <dt><code>session</code></dt><dd><p>The Shiny session object, as provided by `shinyServer` to
 the server function.</p></dd>
 
@@ -209,13 +212,13 @@ greater than `min`.</p></dd>
 
 </dl><p></div></p>
 <p><hr>
-<a id="method-set"></a></p><h3>Method <code>set()</code></h3>
+<a id="method-set"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>set()</code></h3>
 <p>Updates the progress panel. When called the first time, the
-  progress panel is displayed.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Progress</span>$<span class='fu'>set</span>(<span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>message</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre><p></div></p>
+  progress panel is displayed.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>Progress</span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>value <span class='op'>=</span> <span class='cn'>NULL</span>, message <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre><p></div></p>
 
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
 <dt><code>value</code></dt><dd><p>Single-element numeric vector; the value at which to set the
 progress bar, relative to `min` and `max`. `NULL` hides the progress
 bar, if it is currently visible.</p></dd>
@@ -227,14 +230,14 @@ displayed to the user, or `NULL` to hide the current message (if any).</p></dd>
 
 </dl><p></div></p>
 <p><hr>
-<a id="method-inc"></a></p><h3>Method <code>inc()</code></h3>
+<a id="method-inc"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>inc()</code></h3>
 <p>Like `set`, this updates the progress panel. The difference
   is that `inc` increases the progress bar by `amount`, instead of
-  setting it to a specific value.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Progress</span>$<span class='fu'>inc</span>(<span class='kw'>amount</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>message</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre><p></div></p>
+  setting it to a specific value.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>Progress</span><span class='op'>$</span><span class='fu'>inc</span><span class='op'>(</span>amount <span class='op'>=</span> <span class='fl'>0.1</span>, message <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre><p></div></p>
 
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
 <dt><code>amount</code></dt><dd><p>For the `inc()` method, a numeric value to increment the
 progress bar.</p></dd>
 
@@ -245,64 +248,67 @@ displayed to the user, or `NULL` to hide the current message (if any).</p></dd>
 
 </dl><p></div></p>
 <p><hr>
-<a id="method-getMin"></a></p><h3>Method <code>getMin()</code></h3>
-<p>Returns the minimum value.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Progress</span>$<span class='fu'>getMin</span>()</pre><p></div></p>
+<a id="method-getMin"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>getMin()</code></h3>
+<p>Returns the minimum value.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>Progress</span><span class='op'>$</span><span class='fu'>getMin</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
 
 <p><hr>
-<a id="method-getMax"></a></p><h3>Method <code>getMax()</code></h3>
-<p>Returns the maximum value.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Progress</span>$<span class='fu'>getMax</span>()</pre><p></div></p>
+<a id="method-getMax"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>getMax()</code></h3>
+<p>Returns the maximum value.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>Progress</span><span class='op'>$</span><span class='fu'>getMax</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
 
 <p><hr>
-<a id="method-getValue"></a></p><h3>Method <code>getValue()</code></h3>
-<p>Returns the current value.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Progress</span>$<span class='fu'>getValue</span>()</pre><p></div></p>
+<a id="method-getValue"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>getValue()</code></h3>
+<p>Returns the current value.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>Progress</span><span class='op'>$</span><span class='fu'>getValue</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
 
 <p><hr>
-<a id="method-close"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/connections.html'>close()</a></code></h3>
+<a id="method-close"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code><a href='https://rdrr.io/r/base/connections.html'>close()</a></code></h3>
 <p>Removes the progress panel. Future calls to `set` and
-  `close` will be ignored.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Progress</span>$<span class='fu'><a href='https://rdrr.io/r/base/connections.html'>close</a></span>()</pre><p></div></p>
+  `close` will be ignored.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>Progress</span><span class='op'>$</span><span class='fu'>close</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
 
 <p><hr>
-<a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
-<p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Progress</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
+<a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
+<p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>Progress</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
 
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
 <dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
 
 </dl><p></div></p>
 
 
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Only run examples in interactive R sessions</span>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
+<span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
 
-<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-  <span class='fu'>plotOutput</span>(<span class='st'>"plot"</span>)
-)
+<span class='va'>ui</span> <span class='op'>&lt;-</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span><span class='op'>(</span>
+  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/plotOutput.html'>plotOutput</a></span><span class='op'>(</span><span class='st'>"plot"</span><span class='op'>)</span>
+<span class='op'>)</span>
 
-<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
-  <span class='no'>output</span>$<span class='no'>plot</span> <span class='kw'>&lt;-</span> <span class='fu'>renderPlot</span>({
-    <span class='no'>progress</span> <span class='kw'>&lt;-</span> <span class='no'>Progress</span>$<span class='fu'>new</span>(<span class='no'>session</span>, <span class='kw'>min</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>max</span><span class='kw'>=</span><span class='fl'>15</span>)
-    <span class='fu'><a href='https://rdrr.io/r/base/on.exit.html'>on.exit</a></span>(<span class='no'>progress</span>$<span class='fu'><a href='https://rdrr.io/r/base/connections.html'>close</a></span>())
+<span class='va'>server</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>input</span>, <span class='va'>output</span>, <span class='va'>session</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>output</span><span class='op'>$</span><span class='va'>plot</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderPlot.html'>renderPlot</a></span><span class='op'>(</span><span class='op'>{</span>
+    <span class='va'>progress</span> <span class='op'>&lt;-</span> <span class='va'>Progress</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='va'>session</span>, min<span class='op'>=</span><span class='fl'>1</span>, max<span class='op'>=</span><span class='fl'>15</span><span class='op'>)</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/on.exit.html'>on.exit</a></span><span class='op'>(</span><span class='va'>progress</span><span class='op'>$</span><span class='fu'>close</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 
-    <span class='no'>progress</span>$<span class='fu'>set</span>(<span class='kw'>message</span> <span class='kw'>=</span> <span class='st'>'Calculation in progress'</span>)
+    <span class='va'>progress</span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>message <span class='op'>=</span> <span class='st'>'Calculation in progress'</span><span class='op'>)</span>
 
-    <span class='kw'>for</span> (<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>15</span>) {
-      <span class='no'>progress</span>$<span class='fu'>set</span>(<span class='kw'>value</span> <span class='kw'>=</span> <span class='no'>i</span>)
-      <span class='fu'><a href='https://rdrr.io/r/base/Sys.sleep.html'>Sys.sleep</a></span>(<span class='fl'>0.5</span>)
-    }
-    <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>cars</span>)
-  })
-}
+    <span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>15</span><span class='op'>)</span> <span class='op'>{</span>
+      <span class='va'>progress</span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>value <span class='op'>=</span> <span class='va'>i</span><span class='op'>)</span>
+      <span class='fu'><a href='https://rdrr.io/r/base/Sys.sleep.html'>Sys.sleep</a></span><span class='op'>(</span><span class='fl'>0.5</span><span class='op'>)</span>
+    <span class='op'>}</span>
+    <span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>cars</span><span class='op'>)</span>
+  <span class='op'>}</span><span class='op'>)</span>
+<span class='op'>}</span>
 
-<span class='fu'>shinyApp</span>(<span class='no'>ui</span>, <span class='no'>server</span>)
-}</div></pre>
+<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span><span class='op'>(</span><span class='va'>ui</span>, <span class='va'>server</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -318,7 +324,7 @@ displayed to the user, or `NULL` to hide the current message (if any).</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

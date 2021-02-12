@@ -8,12 +8,10 @@
 
 <title>Render semanticui htmlwidget — uirender • SHINY.SEMANTIC</title>
 
-
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -38,10 +36,11 @@
 
 
 
-
 <meta property="og:title" content="Render semanticui htmlwidget — uirender" />
+
 <meta property="og:description" content="htmlwidget that adds semanticui dependencies and
 renders in viewer or rmarkdown." />
+
 
 
 
@@ -73,7 +72,7 @@ renders in viewer or rmarkdown." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
       </span>
     </div>
 
@@ -94,6 +93,7 @@ renders in viewer or rmarkdown." />
   </a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
@@ -147,12 +147,14 @@ renders in viewer or rmarkdown." />
     </div>
 
     <div class="ref-description">
+    
     <p>htmlwidget that adds semanticui dependencies and
 renders in viewer or rmarkdown.</p>
+    
     </div>
 
-    <pre class="usage"><span class='fu'>uirender</span>(<span class='no'>ui</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>element_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-
+    <pre class="usage"><span class='fu'>uirender</span><span class='op'>(</span><span class='va'>ui</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, height <span class='op'>=</span> <span class='cn'>NULL</span>, element_id <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -176,15 +178,17 @@ which results in intelligent automatic sizing.</p></td>
 (rather than an automatically generated one).</p></td>
     </tr>
     </table>
-
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
-<span class='fu'>uirender</span>(<span class='fu'><a href='card.html'>card</a></span>(<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='kw'>class</span><span class='kw'>=</span><span class='st'>"content"</span>,
-                  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='kw'>class</span><span class='kw'>=</span><span class='st'>"header"</span>, <span class='st'>"Elliot Fu"</span>),
-                  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='kw'>class</span><span class='kw'>=</span><span class='st'>"meta"</span>, <span class='st'>"Friend"</span>),
-                  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='kw'>class</span><span class='kw'>=</span><span class='st'>"description"</span>, <span class='st'>"Elliot Fu is a film-maker from New York."</span>))))</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://shiny.rstudio.com'>shiny</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>shiny.semantic</span><span class='op'>)</span>
+<span class='fu'>uirender</span><span class='op'>(</span><span class='fu'><a href='card.html'>card</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>div</a></span><span class='op'>(</span>class<span class='op'>=</span><span class='st'>"content"</span>,
+                  <span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>div</a></span><span class='op'>(</span>class<span class='op'>=</span><span class='st'>"header"</span>, <span class='st'>"Elliot Fu"</span><span class='op'>)</span>,
+                  <span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>div</a></span><span class='op'>(</span>class<span class='op'>=</span><span class='st'>"meta"</span>, <span class='st'>"Friend"</span><span class='op'>)</span>,
+                  <span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>div</a></span><span class='op'>(</span>class<span class='op'>=</span><span class='st'>"description"</span>, <span class='st'>"Elliot Fu is a film-maker from New York."</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -200,7 +204,7 @@ which results in intelligent automatic sizing.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

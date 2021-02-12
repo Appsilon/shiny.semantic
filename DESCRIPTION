@@ -28,6 +28,8 @@ Encoding: UTF-8
 LazyData: TRUE
 License: MIT + file LICENSE
 VignetteBuilder: knitr
+Depends:
+    shiny.layouts (>= 0.1.0)
 Imports:
     shiny (>= 0.12.1),
     htmltools (>= 0.2.6),

@@ -8,12 +8,10 @@
 
 <title>Create Semantic UI Slider / Range — slider_input • SHINY.SEMANTIC</title>
 
-
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -38,10 +36,11 @@
 
 
 
-
 <meta property="og:title" content="Create Semantic UI Slider / Range — slider_input" />
+
 <meta property="og:description" content="This creates a slider input using Semantic UI. Slider is already initialized and
 available under input[[input_id]]. Use Range for range of values." />
+
 
 
 
@@ -73,7 +72,7 @@ available under input[[input_id]]. Use Range for range of values." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
       </span>
     </div>
 
@@ -94,6 +93,7 @@ available under input[[input_id]]. Use Range for range of values." />
   </a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
@@ -147,16 +147,36 @@ available under input[[input_id]]. Use Range for range of values." />
     </div>
 
     <div class="ref-description">
+    
     <p>This creates a slider input using Semantic UI. Slider is already initialized and
 available under <code>input[[input_id]]</code>. Use Range for range of values.</p>
+    
     </div>
 
-    <pre class="usage"><span class='fu'>slider_input</span>(<span class='no'>input_id</span>, <span class='no'>value</span>, <span class='no'>min</span>, <span class='no'>max</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"labeled"</span>)
+    <pre class="usage"><span class='fu'>slider_input</span><span class='op'>(</span>
+  <span class='va'>input_id</span>,
+  <span class='va'>value</span>,
+  <span class='va'>min</span>,
+  <span class='va'>max</span>,
+  step <span class='op'>=</span> <span class='fl'>1</span>,
+  class <span class='op'>=</span> <span class='st'>"labeled"</span>,
+  custom_ticks <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>sliderInput</span>(<span class='no'>inputId</span>, <span class='no'>label</span>, <span class='no'>min</span>, <span class='no'>max</span>, <span class='no'>value</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+<span class='fu'>sliderInput</span><span class='op'>(</span>
+  <span class='va'>inputId</span>,
+  <span class='va'>label</span>,
+  <span class='va'>min</span>,
+  <span class='va'>max</span>,
+  <span class='va'>value</span>,
+  step <span class='op'>=</span> <span class='fl'>1</span>,
+  width <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ticks <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
 
-<span class='fu'>range_input</span>(<span class='no'>input_id</span>, <span class='no'>value</span>, <span class='no'>value2</span>, <span class='no'>min</span>, <span class='no'>max</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-
+<span class='fu'>range_input</span><span class='op'>(</span><span class='va'>input_id</span>, <span class='va'>value</span>, <span class='va'>value2</span>, <span class='va'>min</span>, <span class='va'>max</span>, step <span class='op'>=</span> <span class='fl'>1</span>, class <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -185,6 +205,10 @@ available under <code>input[[input_id]]</code>. Use Range for range of values.</
       <td><p>UI class of the slider. Can include <code>"labeled"</code> and <code>"ticked"</code>.</p></td>
     </tr>
     <tr>
+      <th>custom_ticks</th>
+      <td><p>A vector of custom labels to be added to the slider. Will ignore <code>min</code> and <code>max</code></p></td>
+    </tr>
+    <tr>
       <th>inputId</th>
       <td><p>Input name.</p></td>
     </tr>
@@ -197,6 +221,10 @@ available under <code>input[[input_id]]</code>. Use Range for range of values.</
       <td><p>character with width of slider.</p></td>
     </tr>
     <tr>
+      <th>ticks</th>
+      <td><p><code>FALSE</code> to hide tick marks, <code>TRUE</code> to show them according to some simple heuristics</p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>additional arguments</p></td>
     </tr>
@@ -205,49 +233,69 @@ available under <code>input[[input_id]]</code>. Use Range for range of values.</
       <td><p>The initial upper value of the slider.</p></td>
     </tr>
     </table>
-
+    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Use <code><a href='update_slider.html'>update_slider</a></code> to update the slider/range within the shiny session.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>update_slider for input updates,
 <a href='https://fomantic-ui.com/modules/slider.html'>https://fomantic-ui.com/modules/slider.html</a> for preset classes.</p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) { <span class='co'># Slider example</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='co'># Slider example</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://shiny.rstudio.com'>shiny</a></span><span class='op'>)</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>shiny.semantic</span><span class='op'>)</span>
 
-  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span>(
-    <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-      <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Slider example"</span>,
-      <span class='no'>tags</span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>br</a></span>(),
-      <span class='fu'>slider_input</span>(<span class='st'>"slider"</span>, <span class='fl'>10</span>, <span class='fl'>0</span>, <span class='fl'>20</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"labeled ticked"</span>),
-      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>p</a></span>(<span class='st'>"Selected value:"</span>),
-      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"slider"</span>)
-    )
-  )
-   <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
-     <span class='no'>output</span>$<span class='no'>slider</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderText.html'>renderText</a></span>(<span class='no'>input</span>$<span class='no'>slider</span>)
-   })
-   <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='kw'>ui</span> <span class='kw'>=</span> <span class='no'>ui</span>, <span class='kw'>server</span> <span class='kw'>=</span> <span class='no'>server</span>)
- }
- <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) { <span class='co'># Range example</span>
-   <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span>(
-     <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-       <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Range example"</span>,
-       <span class='no'>tags</span>$<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>br</a></span>(),
-       <span class='fu'>range_input</span>(<span class='st'>"range"</span>, <span class='fl'>10</span>, <span class='fl'>15</span>, <span class='fl'>0</span>, <span class='fl'>20</span>),
-       <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>p</a></span>(<span class='st'>"Selected values:"</span>),
-       <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"range"</span>)
-    )
-  )
-   <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html'>shinyServer</a></span>(<span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
-     <span class='no'>output</span>$<span class='no'>range</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderText.html'>renderText</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='no'>input</span>$<span class='no'>range</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>" - "</span>))
-   })
-   <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='kw'>ui</span> <span class='kw'>=</span> <span class='no'>ui</span>, <span class='kw'>server</span> <span class='kw'>=</span> <span class='no'>server</span>)
- }</div></pre>
+  <span class='va'>ui</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span><span class='op'>(</span>
+    <span class='fu'><a href='semanticPage.html'>semanticPage</a></span><span class='op'>(</span>
+      title <span class='op'>=</span> <span class='st'>"Slider example"</span>,
+      <span class='va'>tags</span><span class='op'>$</span><span class='fu'>br</span><span class='op'>(</span><span class='op'>)</span>,
+      <span class='fu'>slider_input</span><span class='op'>(</span><span class='st'>"slider"</span>, <span class='fl'>10</span>, <span class='fl'>0</span>, <span class='fl'>20</span>, class <span class='op'>=</span> <span class='st'>"labeled ticked"</span><span class='op'>)</span>,
+      <span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>p</a></span><span class='op'>(</span><span class='st'>"Selected value:"</span><span class='op'>)</span>,
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span><span class='op'>(</span><span class='st'>"slider"</span><span class='op'>)</span>
+    <span class='op'>)</span>
+  <span class='op'>)</span>
+  <span class='va'>server</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html'>shinyServer</a></span><span class='op'>(</span><span class='kw'>function</span><span class='op'>(</span><span class='va'>input</span>, <span class='va'>output</span>, <span class='va'>session</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>output</span><span class='op'>$</span><span class='va'>slider</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderText.html'>renderText</a></span><span class='op'>(</span><span class='va'>input</span><span class='op'>$</span><span class='va'>slider</span><span class='op'>)</span>
+  <span class='op'>}</span><span class='op'>)</span>
+  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span><span class='op'>(</span>ui <span class='op'>=</span> <span class='va'>ui</span>, server <span class='op'>=</span> <span class='va'>server</span><span class='op'>)</span>
+
+  <span class='co'># Custom ticks slider</span>
+  <span class='va'>ui</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span><span class='op'>(</span>
+    <span class='fu'><a href='semanticPage.html'>semanticPage</a></span><span class='op'>(</span>
+      title <span class='op'>=</span> <span class='st'>"Slider example"</span>,
+      <span class='va'>tags</span><span class='op'>$</span><span class='fu'>br</span><span class='op'>(</span><span class='op'>)</span>,
+      <span class='fu'>slider_input</span><span class='op'>(</span><span class='st'>"slider_ticks"</span>, <span class='st'>"F"</span>, custom_ticks <span class='op'>=</span> <span class='va'>LETTERS</span>, class <span class='op'>=</span> <span class='st'>"labeled ticked"</span><span class='op'>)</span>,
+      <span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>p</a></span><span class='op'>(</span><span class='st'>"Selected value:"</span><span class='op'>)</span>,
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span><span class='op'>(</span><span class='st'>"slider_ticks"</span><span class='op'>)</span>
+    <span class='op'>)</span>
+  <span class='op'>)</span>
+  <span class='va'>server</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html'>shinyServer</a></span><span class='op'>(</span><span class='kw'>function</span><span class='op'>(</span><span class='va'>input</span>, <span class='va'>output</span>, <span class='va'>session</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>output</span><span class='op'>$</span><span class='va'>slider_ticks</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderText.html'>renderText</a></span><span class='op'>(</span><span class='va'>input</span><span class='op'>$</span><span class='va'>slider_ticks</span><span class='op'>)</span>
+  <span class='op'>}</span><span class='op'>)</span>
+  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span><span class='op'>(</span>ui <span class='op'>=</span> <span class='va'>ui</span>, server <span class='op'>=</span> <span class='va'>server</span><span class='op'>)</span>
+
+  <span class='co'># Range example</span>
+  <span class='va'>ui</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span><span class='op'>(</span>
+    <span class='fu'><a href='semanticPage.html'>semanticPage</a></span><span class='op'>(</span>
+      title <span class='op'>=</span> <span class='st'>"Range example"</span>,
+      <span class='va'>tags</span><span class='op'>$</span><span class='fu'>br</span><span class='op'>(</span><span class='op'>)</span>,
+      <span class='fu'>range_input</span><span class='op'>(</span><span class='st'>"range"</span>, <span class='fl'>10</span>, <span class='fl'>15</span>, <span class='fl'>0</span>, <span class='fl'>20</span><span class='op'>)</span>,
+      <span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>p</a></span><span class='op'>(</span><span class='st'>"Selected values:"</span><span class='op'>)</span>,
+      <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span><span class='op'>(</span><span class='st'>"range"</span><span class='op'>)</span>
+    <span class='op'>)</span>
+  <span class='op'>)</span>
+  <span class='va'>server</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyServer.html'>shinyServer</a></span><span class='op'>(</span><span class='kw'>function</span><span class='op'>(</span><span class='va'>input</span>, <span class='va'>output</span>, <span class='va'>session</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>output</span><span class='op'>$</span><span class='va'>range</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderText.html'>renderText</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>input</span><span class='op'>$</span><span class='va'>range</span>, collapse <span class='op'>=</span> <span class='st'>" - "</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>}</span><span class='op'>)</span>
+  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span><span class='op'>(</span>ui <span class='op'>=</span> <span class='va'>ui</span>, server <span class='op'>=</span> <span class='va'>server</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -263,7 +311,7 @@ available under <code>input[[input_id]]</code>. Use Range for range of values.</
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

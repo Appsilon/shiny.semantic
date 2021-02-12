@@ -8,12 +8,10 @@
 
 <title>Get CDN path semantic dependencies — get_cdn_path • SHINY.SEMANTIC</title>
 
-
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -38,9 +36,10 @@
 
 
 
-
 <meta property="og:title" content="Get CDN path semantic dependencies — get_cdn_path" />
+
 <meta property="og:description" content="Internal function that returns path string from `shiny.custom.semantic.cdn` options." />
+
 
 
 
@@ -72,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
       </span>
     </div>
 
@@ -93,6 +92,7 @@
   </a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
@@ -146,19 +146,23 @@
     </div>
 
     <div class="ref-description">
+    
     <p>Internal function that returns path string from `shiny.custom.semantic.cdn` options.</p>
+    
     </div>
 
-    <pre class="usage"><span class='fu'>get_cdn_path</span>()</pre>
-
-
+    <pre class="usage"><span class='fu'>get_cdn_path</span><span class='op'>(</span><span class='op'>)</span></pre>
+        
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>CDN path of semantic dependencies</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Load shiny.semantic dependencies from local domain.</span>
-<span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span>(<span class='st'>"shiny.custom.semantic.cdn"</span> <span class='kw'>=</span> <span class='st'>"shiny.semantic"</span>)</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span><span class='op'>(</span><span class='st'>"shiny.custom.semantic.cdn"</span> <span class='op'>=</span> <span class='st'>"shiny.semantic"</span><span class='op'>)</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -174,7 +178,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

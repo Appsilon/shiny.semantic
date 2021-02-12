@@ -8,12 +8,10 @@
 
 <title>Create Semantic UI checkbox — checkbox_input • SHINY.SEMANTIC</title>
 
-
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -38,9 +36,10 @@
 
 
 
-
 <meta property="og:title" content="Create Semantic UI checkbox — checkbox_input" />
+
 <meta property="og:description" content="Create Semantic UI checkbox" />
+
 
 
 
@@ -72,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
       </span>
     </div>
 
@@ -93,6 +92,7 @@
   </a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
@@ -146,21 +146,23 @@
     </div>
 
     <div class="ref-description">
+    
     <p>Create Semantic UI checkbox</p>
+    
     </div>
 
-    <pre class="usage"><span class='fu'>checkbox_input</span>(
-  <span class='no'>input_id</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+    <pre class="usage"><span class='fu'>checkbox_input</span><span class='op'>(</span>
+  <span class='va'>input_id</span>,
+  label <span class='op'>=</span> <span class='st'>""</span>,
+  type <span class='op'>=</span> <span class='cn'>NULL</span>,
+  is_marked <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  style <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>checkboxInput</span>(<span class='no'>inputId</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>checkboxInput</span><span class='op'>(</span><span class='va'>inputId</span>, label <span class='op'>=</span> <span class='st'>""</span>, value <span class='op'>=</span> <span class='cn'>FALSE</span>, width <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>toggle</span>(<span class='no'>input_id</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-
+<span class='fu'>toggle</span><span class='op'>(</span><span class='va'>input_id</span>, label <span class='op'>=</span> <span class='st'>""</span>, is_marked <span class='op'>=</span> <span class='cn'>TRUE</span>, style <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -197,7 +199,7 @@
       <td><p>The width of the input (currently not supported, but check <code>style</code>)</p></td>
     </tr>
     </table>
-
+    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The inputs are updateable by using <code><a href='https://shiny.rstudio.com/reference/shiny/latest/updateCheckboxInput.html'>updateCheckboxInput</a></code>.</p>
@@ -207,25 +209,27 @@
 <li><p>slider Each checkbox has a simple slider form</p></li>
 </ul>
 
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
-  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'>shinyUI</span>(
-    <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-      <span class='fu'>p</span>(<span class='st'>"Simple checkbox:"</span>),
-      <span class='fu'>checkbox_input</span>(<span class='st'>"example"</span>, <span class='st'>"Check me"</span>, <span class='kw'>is_marked</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>),
-      <span class='fu'>p</span>(),
-      <span class='fu'>p</span>(<span class='st'>"Simple toggle:"</span>),
-      <span class='fu'>toggle</span>(<span class='st'>"tog1"</span>, <span class='st'>"My Label"</span>, <span class='fl'>TRUE</span>)
-    )
-  )
-  <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
-    <span class='fu'>observeEvent</span>(<span class='no'>input</span>$<span class='no'>tog1</span>, {
-      <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>input</span>$<span class='no'>tog1</span>)
-    })
-  }
-  <span class='fu'>shinyApp</span>(<span class='no'>ui</span>, <span class='no'>server</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
+  <span class='va'>ui</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span><span class='op'>(</span>
+    <span class='fu'><a href='semanticPage.html'>semanticPage</a></span><span class='op'>(</span>
+      <span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>p</a></span><span class='op'>(</span><span class='st'>"Simple checkbox:"</span><span class='op'>)</span>,
+      <span class='fu'>checkbox_input</span><span class='op'>(</span><span class='st'>"example"</span>, <span class='st'>"Check me"</span>, is_marked <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>,
+      <span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>p</a></span><span class='op'>(</span><span class='op'>)</span>,
+      <span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>p</a></span><span class='op'>(</span><span class='st'>"Simple toggle:"</span><span class='op'>)</span>,
+      <span class='fu'>toggle</span><span class='op'>(</span><span class='st'>"tog1"</span>, <span class='st'>"My Label"</span>, <span class='cn'>TRUE</span><span class='op'>)</span>
+    <span class='op'>)</span>
+  <span class='op'>)</span>
+  <span class='va'>server</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>input</span>, <span class='va'>output</span>, <span class='va'>session</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html'>observeEvent</a></span><span class='op'>(</span><span class='va'>input</span><span class='op'>$</span><span class='va'>tog1</span>, <span class='op'>{</span>
+      <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>input</span><span class='op'>$</span><span class='va'>tog1</span><span class='op'>)</span>
+    <span class='op'>}</span><span class='op'>)</span>
+  <span class='op'>}</span>
+  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span><span class='op'>(</span><span class='va'>ui</span>, <span class='va'>server</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -241,7 +245,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

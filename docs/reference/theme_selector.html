@@ -8,12 +8,10 @@
 
 <title>Themes changer dropdown — theme_selector • SHINY.SEMANTIC</title>
 
-
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -38,9 +36,10 @@
 
 
 
-
 <meta property="og:title" content="Themes changer dropdown — theme_selector" />
+
 <meta property="og:description" content="Themes changer dropdown" />
+
 
 
 
@@ -72,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
       </span>
     </div>
 
@@ -93,6 +92,7 @@
   </a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
@@ -146,11 +146,13 @@
     </div>
 
     <div class="ref-description">
+    
     <p>Themes changer dropdown</p>
+    
     </div>
 
-    <pre class="usage"><span class='fu'>theme_selector</span>(<span class='kw'>input_id</span> <span class='kw'>=</span> <span class='st'>"theme"</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"Choose theme"</span>)</pre>
-
+    <pre class="usage"><span class='fu'>theme_selector</span><span class='op'>(</span>input_id <span class='op'>=</span> <span class='st'>"theme"</span>, label <span class='op'>=</span> <span class='st'>"Choose theme"</span><span class='op'>)</span></pre>
+    
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -163,26 +165,28 @@
       <td><p>Dropdown label.</p></td>
     </tr>
     </table>
-
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
- <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
-  <span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-    <span class='kw'>theme</span> <span class='kw'>=</span> <span class='st'>"superhero"</span>,
-    <span class='fu'><a href='action_button.html'>actionButton</a></span>(<span class='st'>"action_button"</span>, <span class='st'>"Press Me!"</span>),
-    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"button_output"</span>),
-    <span class='fu'>theme_selector</span>(),
-    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span>(<span class='st'>"theme"</span>)
-  )
-  <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
-    <span class='no'>output</span>$<span class='no'>button_output</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderText.html'>renderText</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>input</span>$<span class='no'>action_button</span>))
-    <span class='no'>output</span>$<span class='no'>theme</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderText.html'>renderText</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>input</span>$<span class='no'>theme</span>))
-  }
-  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
-}</div></pre>
+<span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://shiny.rstudio.com'>shiny</a></span><span class='op'>)</span>
+ <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>shiny.semantic</span><span class='op'>)</span>
+  <span class='va'>ui</span> <span class='op'>&lt;-</span> <span class='fu'><a href='semanticPage.html'>semanticPage</a></span><span class='op'>(</span>
+    theme <span class='op'>=</span> <span class='st'>"superhero"</span>,
+    <span class='fu'><a href='action_button.html'>actionButton</a></span><span class='op'>(</span><span class='st'>"action_button"</span>, <span class='st'>"Press Me!"</span><span class='op'>)</span>,
+    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span><span class='op'>(</span><span class='st'>"button_output"</span><span class='op'>)</span>,
+    <span class='fu'>theme_selector</span><span class='op'>(</span><span class='op'>)</span>,
+    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/textOutput.html'>textOutput</a></span><span class='op'>(</span><span class='st'>"theme"</span><span class='op'>)</span>
+  <span class='op'>)</span>
+  <span class='va'>server</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>input</span>, <span class='va'>output</span>, <span class='va'>session</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>output</span><span class='op'>$</span><span class='va'>button_output</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderText.html'>renderText</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>input</span><span class='op'>$</span><span class='va'>action_button</span><span class='op'>)</span><span class='op'>)</span>
+    <span class='va'>output</span><span class='op'>$</span><span class='va'>theme</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/renderText.html'>renderText</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>input</span><span class='op'>$</span><span class='va'>theme</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>}</span>
+  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span><span class='op'>(</span><span class='va'>ui</span>, <span class='va'>server</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -198,7 +202,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

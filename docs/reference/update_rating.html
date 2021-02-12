@@ -8,12 +8,10 @@
 
 <title>Update rating — update_rating_input • SHINY.SEMANTIC</title>
 
-
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -38,10 +36,11 @@
 
 
 
-
 <meta property="og:title" content="Update rating — update_rating_input" />
+
 <meta property="og:description" content="Change the value of a rating input on the client. Check
 rating_input to learn more." />
+
 
 
 
@@ -73,7 +72,7 @@ rating_input to learn more." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
       </span>
     </div>
 
@@ -94,6 +93,7 @@ rating_input to learn more." />
   </a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
@@ -147,12 +147,14 @@ rating_input to learn more." />
     </div>
 
     <div class="ref-description">
+    
     <p>Change the value of a rating input on the client. Check
 <code>rating_input</code> to learn more.</p>
+    
     </div>
 
-    <pre class="usage"><span class='fu'>update_rating_input</span>(<span class='no'>session</span>, <span class='no'>input_id</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-
+    <pre class="usage"><span class='fu'>update_rating_input</span><span class='op'>(</span><span class='va'>session</span>, <span class='va'>input_id</span>, label <span class='op'>=</span> <span class='cn'>NULL</span>, value <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -173,30 +175,32 @@ rating_input to learn more." />
       <td><p>new rating value</p></td>
     </tr>
     </table>
-
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Only run examples in interactive R sessions</span>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
+<span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://shiny.rstudio.com'>shiny</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>shiny.semantic</span><span class='op'>)</span>
 
-<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span>(
-  <span class='fu'><a href='semanticPage.html'>semanticPage</a></span>(
-    <span class='fu'><a href='rating_input.html'>rating_input</a></span>(<span class='st'>"rate"</span>, <span class='st'>"How do you like it?"</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>5</span>,
-                 <span class='kw'>icon</span> <span class='kw'>=</span> <span class='st'>"heart"</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"yellow"</span>),
-    <span class='fu'><a href='numeric_input.html'>numeric_input</a></span>(<span class='st'>"numeric_in"</span>, <span class='st'>""</span>, <span class='fl'>0</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>5</span>)
-  )
-)
-<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>session</span>, <span class='no'>input</span>, <span class='no'>output</span>) {
-  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>numeric_in</span>, {
-    <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>input</span>$<span class='no'>numeric_in</span>
-    <span class='fu'>update_rating_input</span>(<span class='no'>session</span>, <span class='st'>"rate"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='no'>x</span>)
-  }
-  )
-}
-<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span>(<span class='kw'>ui</span> <span class='kw'>=</span> <span class='no'>ui</span>, <span class='kw'>server</span> <span class='kw'>=</span> <span class='no'>server</span>)
-}</div></pre>
+<span class='va'>ui</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html'>shinyUI</a></span><span class='op'>(</span>
+  <span class='fu'><a href='semanticPage.html'>semanticPage</a></span><span class='op'>(</span>
+    <span class='fu'><a href='rating_input.html'>rating_input</a></span><span class='op'>(</span><span class='st'>"rate"</span>, <span class='st'>"How do you like it?"</span>, max <span class='op'>=</span> <span class='fl'>5</span>,
+                 icon <span class='op'>=</span> <span class='st'>"heart"</span>, color <span class='op'>=</span> <span class='st'>"yellow"</span><span class='op'>)</span>,
+    <span class='fu'><a href='numeric_input.html'>numeric_input</a></span><span class='op'>(</span><span class='st'>"numeric_in"</span>, <span class='st'>""</span>, <span class='fl'>0</span>, min <span class='op'>=</span> <span class='fl'>0</span>, max <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
+<span class='va'>server</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>session</span>, <span class='va'>input</span>, <span class='va'>output</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html'>observeEvent</a></span><span class='op'>(</span><span class='va'>input</span><span class='op'>$</span><span class='va'>numeric_in</span>, <span class='op'>{</span>
+    <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='va'>input</span><span class='op'>$</span><span class='va'>numeric_in</span>
+    <span class='fu'>update_rating_input</span><span class='op'>(</span><span class='va'>session</span>, <span class='st'>"rate"</span>, value <span class='op'>=</span> <span class='va'>x</span><span class='op'>)</span>
+  <span class='op'>}</span>
+  <span class='op'>)</span>
+<span class='op'>}</span>
+<span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html'>shinyApp</a></span><span class='op'>(</span>ui <span class='op'>=</span> <span class='va'>ui</span>, server <span class='op'>=</span> <span class='va'>server</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -212,7 +216,7 @@ rating_input to learn more." />
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -8,12 +8,10 @@
 
 <title>Create universal Shiny input binding — shiny_input • SHINY.SEMANTIC</title>
 
-
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -38,12 +36,13 @@
 
 
 
-
 <meta property="og:title" content="Create universal Shiny input binding — shiny_input" />
+
 <meta property="og:description" content="Universal binding for Shiny input on custom user interface. Using this function one can create various inputs
 ranging from text, numerical, date, dropdowns, etc. Value of this input is extracted via jQuery using $().val()
 function and default exposed as serialized JSON to the Shiny server. If you want to change type of exposed input
 value specify it via type param. Currently list of supported types is &quot;JSON&quot; (default) and &quot;text&quot;." />
+
 
 
 
@@ -75,7 +74,7 @@ value specify it via type param. Currently list of supported types is &quot;JSON
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SHINY.SEMANTIC</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
       </span>
     </div>
 
@@ -96,6 +95,7 @@ value specify it via type param. Currently list of supported types is &quot;JSON
   </a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
@@ -149,14 +149,16 @@ value specify it via type param. Currently list of supported types is &quot;JSON
     </div>
 
     <div class="ref-description">
+    
     <p>Universal binding for Shiny input on custom user interface. Using this function one can create various inputs
 ranging from text, numerical, date, dropdowns, etc. Value of this input is extracted via jQuery using $().val()
 function and default exposed as serialized JSON to the Shiny server. If you want to change type of exposed input
 value specify it via type param. Currently list of supported types is "JSON" (default) and "text".</p>
+    
     </div>
 
-    <pre class="usage"><span class='fu'>shiny_input</span>(<span class='no'>input_id</span>, <span class='no'>shiny_ui</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"JSON"</span>)</pre>
-
+    <pre class="usage"><span class='fu'>shiny_input</span><span class='op'>(</span><span class='va'>input_id</span>, <span class='va'>shiny_ui</span>, value <span class='op'>=</span> <span class='cn'>NULL</span>, type <span class='op'>=</span> <span class='st'>"JSON"</span><span class='op'>)</span></pre>
+    
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -180,25 +182,27 @@ valus in dynamic UIs.</p></td>
       <td><p>Type of input value (could be "JSON" or "text").</p></td>
     </tr>
     </table>
-
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny.semantic</span>)
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://shiny.rstudio.com'>shiny</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>shiny.semantic</span><span class='op'>)</span>
 <span class='co'># Create a week field</span>
-<span class='fu'><a href='uirender.html'>uirender</a></span>(
-  <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>tagList</a></span>(
-    <span class='fu'><a href='https://shiny.rstudio.com/reference/shiny/latest/reexports.html'>div</a></span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"ui icon input"</span>,
-        <span class='kw'>style</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+<span class='fu'><a href='uirender.html'>uirender</a></span><span class='op'>(</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/tag.html'>tagList</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>div</a></span><span class='op'>(</span>class <span class='op'>=</span> <span class='st'>"ui icon input"</span>,
+        style <span class='op'>=</span> <span class='cn'>NULL</span>,
         <span class='st'>""</span>,
-        <span class='fu'>shiny_input</span>(
+        <span class='fu'>shiny_input</span><span class='op'>(</span>
           <span class='st'>"my_id"</span>,
-          <span class='no'>tags</span>$<span class='fu'>input</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"week"</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"my_id"</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='kw'>NULL</span>),
-          <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-          <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"text"</span>),
-        <span class='fu'><a href='icon.html'>icon</a></span>(<span class='st'>"calendar"</span>))
-  )
-)</div></pre>
+          <span class='va'>tags</span><span class='op'>$</span><span class='fu'>input</span><span class='op'>(</span>type <span class='op'>=</span> <span class='st'>"week"</span>, name <span class='op'>=</span> <span class='st'>"my_id"</span>, min <span class='op'>=</span> <span class='cn'>NULL</span>, max <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>,
+          value <span class='op'>=</span> <span class='cn'>NULL</span>,
+          type <span class='op'>=</span> <span class='st'>"text"</span><span class='op'>)</span>,
+        <span class='fu'><a href='icon.html'>icon</a></span><span class='op'>(</span><span class='st'>"calendar"</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -214,7 +218,7 @@ valus in dynamic UIs.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
