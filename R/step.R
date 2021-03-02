@@ -5,13 +5,12 @@
 #' @param class (Optional) A character string with the semantic class to be
 #' added to the steps element.
 #' @seealso single_steps
-#' @examples 
+#' @examples
 #' if (interactive()) {
 #'  library(shiny)
 #'  library(shiny.semantic)
 #'  ui <- semanticPage(
 #'  title = "Steps Example",
-#'  hr(),
 #'  shiny::tagList(
 #'    h2("Steps example"),
 #'    shiny.semantic::steps(
@@ -36,7 +35,6 @@
 #'                    )
 #'      )
 #'    ),
-#'    hr(),
 #'    h3("Actions"),
 #'    shiny.semantic::action_button("step_1_complete", "Make it night"),
 #'    shiny.semantic::action_button("step_2_complete", "Call the insects"),
@@ -68,15 +66,10 @@
 #'
 #'  shiny::shinyApp(ui, server)
 #' }
-#'#' @rdname steps
-#'#' @import shiny
+#' @rdname steps
 #' @export
 steps <- function(id, steps_list, class = NULL) {
-    steps_class <- ifelse(
-        test = is.null(class),
-        yes = "ui steps",
-        no = sprintf("ui %s steps", class)
-    )
+    steps_class <- if (is.null(class)) "ui steps" else sprintf("ui %s steps", class) # nolint
     shiny::div(
         id = id,
         class = steps_class,
@@ -94,25 +87,23 @@ steps <- function(id, steps_list, class = NULL) {
 #' @param description A character that will fill the description of the step
 #' @param icon_class A character which will be correpond to a fomantic icon
 #' class to be used in the step
-#' @param class A character representing a class to be passed to the step
+#' @param step_class A character representing a class to be passed to the step
 #'
 #' @seealso steps
 #'
 #' @rdname single_step
 #' @export
 single_step <- function(id, title, description = NULL, icon_class = NULL,
-                        class = NULL) {
-    step_icon <- if (is.null(icon_class)) NULL else tags$i(class = paste(icon_class, "icon")) # nolint
+                        step_class = NULL) {
+    step_icon <- if (is.null(icon_class)) NULL else tags$i(
+        class = paste(icon_class, "icon")
+    )
     step_description <- if (is.null(description)) NULL else shiny::div(
         class = "description",
         description
     )
     step_title <- shiny::div(class = "title", title)
-    step_class <- ifelse(
-        is.null(class),
-        "step",
-        sprintf("%s step", class)
-    )
+    step_class <- if(is.null(step_class)) "step" else sprintf("%s step", step_class) # nolint
 
     shiny::div(
         id = id,
@@ -128,17 +119,15 @@ single_step <- function(id, title, description = NULL, icon_class = NULL,
 
 #' @rdname toggle_step_state
 #' @export
-toggle_step_state <- function(id, state = TRUE, automatic_steps = TRUE, asis = FALSE) {
+toggle_step_state <- function(id, state = TRUE, automatic_steps = TRUE,
+                              asis = TRUE) {
     session <- shiny::getDefaultReactiveDomain()
     # Make sure set_attribute_by_id works with namespaces (shiny modules)
-    id <- ifelse(
-        inherits(session, "session_proxy") && !asis,
-        session$ns(id),
-        id
-    )
+    if (inherits(session, "session_proxy") && !asis) session$ns(id) else id
     parameters <- list(
         "step_id" = id,
         "state" = state,
-        "automatic_steps" = automatic_steps)
+        "automatic_steps" = automatic_steps
+    )
     session$sendCustomMessage("toggle_step_state", parameters)
 }
