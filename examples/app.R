@@ -104,6 +104,36 @@ icon_demo <- function() {
   )
 }
 
+step_demo <- function() {
+  div(
+    h1(class = "ui header", id = "step", "Step"),
+    demo(steps(
+            id = "steps",
+            steps_list = list(
+                single_step(
+                    id = "step_1",
+                    title = "Step 1",
+                    description = "It's night?",
+                    icon_class = "moon"
+                ),
+                single_step(
+                    id = "step_2",
+                    title = "Step 2",
+                    description = "Order some food",
+                    icon_class = "bug"
+                ),
+                single_step(
+                    id = "step_3",
+                    title = "Step 3",
+                    description = "Feed the Kiwi",
+                    icon_class = "kiwi bird"
+                )
+            )
+        )
+    )
+  )
+}
+
 toast_demo <- function(){
   toast_code <- "toast(
            \"This is a semantic toast. Cheers!\",
@@ -494,6 +524,7 @@ ui <- function() {
             button(),
             counter_button_demo(),
             icon_demo(),
+            step_demo(),
             divider(),
             uiinput_demo(),
             uilabel(),
