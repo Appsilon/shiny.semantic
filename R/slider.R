@@ -8,7 +8,8 @@
 #' @param value The initial value to be selected for the sldier (lower value if using range).
 #' @param min The minimum value allowed to be selected for the slider.
 #' @param max The maximum value allowed to be selected for the slider.
-#' @param step The interval between each selectable value of the slider.
+#' @param step The interval between each selectable value of the slider. If the value is a date,
+#'   then the step is in `days`.
 #' @param class UI class of the slider. Can include \code{"labeled"} and \code{"ticked"}.
 #' @param custom_ticks A vector of custom labels to be added to the slider. Will ignore \code{min} and \code{max}
 #'
@@ -73,6 +74,18 @@
 #'
 #' @export
 slider_input <- function(input_id, value, min, max, step = 1, class = "labeled", custom_ticks = NULL) {
+  
+  if (inherits(value, "Date") & is.null(custom_ticks)) {
+
+    val_range <- unname((max - min)[[1]])
+    n_ticks <- floor(val_range / step)
+    custom_ticks <- seq(from = min, to = max, by = step)
+    value <- 1 + unname((value - min)[[1]]) / step
+    min <- 1
+    max <- 1 + n_ticks
+
+  }
+
   if (!is.null(custom_ticks)) {
     custom_ticks <- paste0("[\"", paste0(custom_ticks, collapse = "\", \""), "\"]")
     div(
