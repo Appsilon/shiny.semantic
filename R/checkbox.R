@@ -149,6 +149,23 @@ multiple_checkbox <- function(input_id, label, choices, choices_value = choices,
 }
 
 #' @rdname multiple_checkbox
+#' @export
+update_multiple_checkbox <- function(session, input_id, choices = NULL, choices_value = choices,
+                                     value = NULL, label = NULL) {
+  if (!is.null(value)) value <- jsonlite::toJSON(value) else value <- NULL
+  if (!is.null(choices)) {
+    options <- jsonlite::toJSON(data.frame(name = choices, value = choices_value))
+  } else {
+    options <- NULL
+  }
+
+  message <- list(choices = options, value = value, label = label)
+  message <- message[!vapply(message, is.null, FUN.VALUE = logical(1))]
+
+  session$sendInputMessage(input_id, message)
+}
+
+#' @rdname multiple_checkbox
 #'
 #' @export
 multiple_radio <- function(input_id, label, choices, choices_value = choices,
@@ -169,9 +186,21 @@ multiple_radio <- function(input_id, label, choices, choices_value = choices,
   }))
 
   shiny::div(
-    id = input_id, class = paste(position, "fields shiny-input-radiogroup"),
+    id = input_id, class = paste(position, "fields ss-checkbox-input"),
     tags$label(`for` = input_id, label),
     choices_html,
     ...
   )
+}
+
+#' @rdname multiple_checkbox
+#' @export
+update_multiple_radio <- function(session, input_id, choices = NULL, choices_value = choices,
+                                  value = NULL, label = NULL) {
+  if (length(value) > 1) {
+    warning("More than one radio box has been selected, only first will be used")
+    value <- value[1]
+  }
+
+  update_multiple_checkbox(session, input_id, choices, choices_value, value, label)
 }
