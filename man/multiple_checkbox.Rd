@@ -2,9 +2,7 @@
 % Please edit documentation in R/checkbox.R
 \name{multiple_checkbox}
 \alias{multiple_checkbox}
-\alias{update_multiple_checkbox}
 \alias{multiple_radio}
-\alias{update_multiple_radio}
 \title{Create Semantic UI multiple checkbox}
 \usage{
 multiple_checkbox(
@@ -18,15 +16,6 @@ multiple_checkbox(
   ...
 )
 
-update_multiple_checkbox(
-  session,
-  input_id,
-  choices = NULL,
-  choices_value = choices,
-  value = NULL,
-  label = NULL
-)
-
 multiple_radio(
   input_id,
   label,
@@ -36,15 +25,6 @@ multiple_radio(
   position = "grouped",
   type = "radio",
   ...
-)
-
-update_multiple_radio(
-  session,
-  input_id,
-  choices = NULL,
-  choices_value = choices,
-  value = NULL,
-  label = NULL
 )
 }
 \arguments{
@@ -90,12 +70,12 @@ if (interactive()) {
         semanticPage(
           title = "Checkbox example",
           h1("Checkboxes"),
-          multiple_checkbox("checkboxes", "Select Letters", LETTERS[1:6], value = "A"),
+          multiple_checkbox("checkboxes", "Select Letters", LETTERS[1:6], selected = "A"),
           p("Selected letters:"),
           textOutput("selected_letters"),
           tags$br(),
           h1("Radioboxes"),
-          multiple_radio("radioboxes", "Select Letter", LETTERS[1:6], value = "A"),
+          multiple_radio("radioboxes", "Select Letter", LETTERS[1:6], selected = "A"),
           p("Selected letter:"),
           textOutput("selected_letter")
        )

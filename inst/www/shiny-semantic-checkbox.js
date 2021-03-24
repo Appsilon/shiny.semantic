@@ -30,7 +30,7 @@ $.extend(semanticCheckboxBinding, {
   // Given the DOM element for the input, set the value.
   setValue: function(el, value) {
     var checkboxes = $(el).find('.ui.checkbox');
-    checkboxes.checkbox('unckeck');
+    checkboxes.checkbox('uncheck');
 
     for (i = 0; i < checkboxes.length; i++) {
       if (value.includes($(checkboxes[i]).find('input').attr('value'))) {
