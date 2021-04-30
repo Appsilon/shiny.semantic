@@ -49,5 +49,6 @@ Suggests:
     DT,
     covr,
     leaflet,
-    plotly
+    plotly,
+    rmarkdown
 RoxygenNote: 7.1.1
