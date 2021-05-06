@@ -2,11 +2,10 @@ library(shiny)
 library(shiny.semantic)
 
 ui <- navbar_page(
-  title = "Hello Shiny Semantic!",
+  title = "Hello Shiny Semantic!", collapsible = TRUE,
   tab_panel(
     "Content",
-    tags$label("Number of observations:"),
-    slider_input("obs", value = 500, min = 0, max = 1000),
+    numeric_input("obs", "Number of observations:", value = 500, min = 0, max = 1000),
     segment(
       plotOutput("dist_plot")
     )

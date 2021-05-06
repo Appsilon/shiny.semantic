@@ -9,6 +9,12 @@ navbar_page(
   title = "",
   id = NULL,
   selected = NULL,
+  position = c("", "top fixed", "bottom fixed"),
+  header = NULL,
+  footer = NULL,
+  collapsible = FALSE,
+  window_title = title,
+  menu_class = NULL,
   theme = NULL,
   suppress_bootstrap = TRUE
 )

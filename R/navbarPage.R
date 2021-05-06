@@ -46,15 +46,29 @@
 #'
 #' @export
 navbar_page <- function(..., title = "", id = NULL, selected = NULL,
-                        theme = NULL, suppress_bootstrap = TRUE) {
+                        position = c("", "top fixed", "bottom fixed"),
+                        header = NULL, footer = NULL,
+                        collapsible = FALSE, window_title = title,
+                        menu_class = NULL, theme = NULL, suppress_bootstrap = TRUE) {
   tabs <- list(...)
+  position <- match.arg(position)
   if (is.null(selected)) selected <- get_first_tab(tabs)
+
+  if (collapsible) {
+    collapse_icon <- tags$button(
+      class = "ui basic icon button collapsed-hamburger-icon",
+      tags$i(class = "hamburger icon")
+    )
+  } else {
+    collapse_icon <- NULL
+  }
 
   menu_items <- lapply(tabs, navbar_menu_creator, selected = selected)
   menu_header <- tags$nav(
     div(
-      class = "ui stackable menu sem",
-      div(class = "item", title),
+      class = paste("ui navbar-page-menu", position, menu_class, "stackable menu sem"),
+      id = id,
+      div(class = "item", title, collapse_icon),
       menu_items
     )
   )
@@ -62,19 +76,21 @@ navbar_page <- function(..., title = "", id = NULL, selected = NULL,
   menu_content <- lapply(tabs, navbar_content_creator, selected = selected)
 
   semanticPage(
-    menu_header, menu_content,
-    title = title, theme = theme, suppress_bootstrap = suppress_bootstrap, margin = 0
+    menu_header, tags$header(header), tags$main(menu_content), tags$footer(footer),
+    # shiny::tags$script(src = "shiny.semantic/shiny-semantic.js"),
+    title = window_title, theme = theme, suppress_bootstrap = suppress_bootstrap, margin = 0
   )
 }
 
 navbar_menu_creator <- function(tab, selected = NULL) {
   if (inherits(tab, "ssnavmenu")) {
     dropdown_menu(
-      tab$title,
+      id = tab$menu_name,
+      name = tab$title,
       tags$i(class = "dropdown icon"),
       div(class = "menu", lapply(tab$tabs, navbar_menu_creator, selected = selected)),
-      name = generate_random_id("nav-menu"),
-      is_menu_item = TRUE
+      is_menu_item = TRUE,
+      class = "navbar-collapisble-item"
     )
   } else if (is.character(tab)) {
     if (grepl("^(-|_){4,}$", tab)) menu_divider() else div(class = "header", tab)
@@ -85,7 +101,7 @@ navbar_menu_creator <- function(tab, selected = NULL) {
     class <- paste0(if (identical(title, selected)) "active " else "", "item")
 
     tags$a(
-      class = class,
+      class = paste("navbar-collapisble-item", class),
       `data-tab` = tab_id,
       if (!is.null(icon)) tags$i(class = paste(icon, "icon")),
       if (!(!is.null(icon) && title == "")) title
