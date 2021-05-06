@@ -2,7 +2,7 @@
 % Please edit documentation in R/navbarPage.R
 \name{navbar_menu}
 \alias{navbar_menu}
-\title{Navebar Menu}
+\title{Navbar Menu}
 \usage{
 navbar_menu(title, ..., menu_name = title, icon = NULL)
 }

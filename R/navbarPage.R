@@ -48,19 +48,18 @@
 navbar_page <- function(..., title = "", id = NULL, selected = NULL,
                         theme = NULL, suppress_bootstrap = TRUE) {
   tabs <- list(...)
+  if (is.null(selected)) selected <- get_first_tab(tabs)
 
   menu_items <- lapply(tabs, navbar_menu_creator, selected = selected)
-  if (is.null(selected)) menu_items[[1]]$attribs$class <- "active item"
   menu_header <- tags$nav(
     div(
-      class = "ui sem menu",
+      class = "ui stackable menu sem",
       div(class = "item", title),
       menu_items
     )
   )
 
   menu_content <- lapply(tabs, navbar_content_creator, selected = selected)
-  if (is.null(selected)) menu_content[[1]]$attribs$class <- paste(menu_content[[1]]$attribs$class, "active")
 
   semanticPage(
     menu_header, menu_content,
@@ -69,22 +68,57 @@ navbar_page <- function(..., title = "", id = NULL, selected = NULL,
 }
 
 navbar_menu_creator <- function(tab, selected = NULL) {
-  title <- tab$attribs$`data-title`
-  tab_id <- tab$attribs$`data-tab`
-  active <- if (identical(title, selected)) "active " else ""
+  if (inherits(tab, "ssnavmenu")) {
+    dropdown_menu(
+      tab$title,
+      tags$i(class = "dropdown icon"),
+      div(class = "menu", lapply(tab$tabs, navbar_menu_creator, selected = selected)),
+      name = generate_random_id("nav-menu"),
+      is_menu_item = TRUE
+    )
+  } else if (is.character(tab)) {
+    if (grepl("^(-|_){4,}$", tab)) menu_divider() else div(class = "header", tab)
+  } else {
+    title <- tab$attribs$`data-title`
+    icon <- tab$attribs$`data-icon`
+    tab_id <- tab$attribs$`data-tab`
+    class <- paste0(if (identical(title, selected)) "active " else "", "item")
 
-  tags$a(class = paste0(active, "item"), `data-tab` = tab_id, title)
+    tags$a(
+      class = class,
+      `data-tab` = tab_id,
+      if (!is.null(icon)) tags$i(class = paste(icon, "icon")),
+      if (!(!is.null(icon) && title == "")) title
+    )
+  }
 }
 
 navbar_content_creator <- function(tab, selected = NULL) {
-  title <- tab$attribs$`data-title`
-  if (identical(title, selected)) {
-    tab$attribs$class <- paste(tab$attribs$class, "active")
+  if (inherits(tab, "ssnavmenu")) {
+    tagList(lapply(tab$tabs, navbar_content_creator, selected = selected))
+  } else if (is.character(tab)) {
+    NULL
+  } else {
+    title <- tab$attribs$`data-title`
+
+    if (identical(title, selected)) {
+      tab$attribs$class <- paste(tab$attribs$class, "active")
+    }
+    tab
   }
-  tab
 }
 
-#' Navebar Menu
+get_first_tab <- function(tabs, i = 1) {
+  if (inherits(tabs[[i]], "ssnavmenu")) {
+    get_first_tab(tabs[[i]]$tabs, i)
+  } else if (is.character(tabs[[i]])) {
+    get_first_tab(tabs, i + 1)
+  } else {
+    tabs[[i]]$attribs$`data-title`
+  }
+}
+
+#' Navbar Menu
 #'
 #' @description
 #'
@@ -101,16 +135,6 @@ navbar_menu <- function(title, ..., menu_name = title, icon = NULL) {
     list(title = title, menu_name = menu_name, tabs = list(...), icon = icon),
     class = "ssnavmenu"
   )
-}
-
-#' Tabset Panel
-#'
-#' @description
-#' Create a tabset that contains \code{\link{tab_panel}}s.
-#'
-#' @export
-tabset_panel <- function(..., id = NULL, selected = NULL, type = c("tabs", "pills", "hidden")) {
-
 }
 
 #' Tab Panel
