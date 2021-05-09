@@ -66,7 +66,9 @@ navbar_page <- function(..., title = "", id = NULL, selected = NULL,
                         collapsible = FALSE, window_title = title,
                         type = "stackable", theme = NULL, suppress_bootstrap = TRUE) {
   tabs <- list(...)
+  if (!length(tabs)) stop("No tabs detected")
   position <- match.arg(position)
+
   # Padding depending on the position
   body_padding <- switch(position, "top fixed" = "padding-top: 40px;", "bottom fixed" = "padding-bottom: 40px;", "")
   if (is.null(selected)) selected <- get_first_tab(tabs)
