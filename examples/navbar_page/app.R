@@ -3,24 +3,22 @@ library(shiny.semantic)
 
 ui <- navbar_page(
   title = "Hello Shiny Semantic!",
-  # id = "page_navbar",
+  id = "page_navbar",
   collapsible = TRUE,
 
   tab_panel(
     title = "Content",
-    numeric_input("obs", "Number of observations:", value = 500, min = 0, max = 1000),
-    segment(plotOutput("dist_plot"))
+    form(multiple_radio("toggle", "Show Menu Dropdown", c("Yes", "No"), c("show", "hide"), "show"))
   ),
   tab_panel(
     title = "Icon",
     icon = "r project",
-    "A tab with an icon in the menu"
+    "A tab with an icon in the menu",
   ),
   tab_panel(
     title = "A Very Long Tab Name",
     "Example of a tab name which is very long",
-    form(field(tags$label("Test dropdown"), dropdown_input("letters", LETTERS))),
-    segment("Letter chosen:", textOutput("letter", inline = TRUE))
+    tags$br(),
   ),
   navbar_menu(
     "Menu",
@@ -28,7 +26,6 @@ ui <- navbar_page(
     tab_panel(
       title = "Part 1",
       value = "sec1_part1",
-      segment("Number chosen:", textOutput("number", inline = TRUE))
     ),
     "----",
     "Section 2",
@@ -43,13 +40,14 @@ ui <- navbar_page(
   )
 )
 
-server <- function(input, output) {
-  output$dist_plot <- renderPlot({
-    hist(rnorm(input$obs))
-  })
-
-  output$letter <- renderText(input$letters)
-  output$number <- renderText(input$obs)
+server <- function(input, output, session) {
+  observeEvent(input$toggle, {
+    if (input$toggle == "hide") {
+      hide_tab(session, "page_navbar", target = "Menu")
+    } else {
+      show_tab(session, "page_navbar", target = "Menu")
+    }
+  }, ignoreInit = TRUE)
 }
 
 shinyApp(ui, server)

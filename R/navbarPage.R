@@ -107,7 +107,7 @@ navbar_page <- function(..., title = "", id = NULL, selected = NULL,
 
 navbar_menu_creator <- function(tab, selected = NULL) {
   if (inherits(tab, "ssnavmenu")) {
-    dropdown_menu(
+    nav_menu <- dropdown_menu(
       id = tab$id,
       name = tab$title,
       tags$i(class = "dropdown icon"),
@@ -115,6 +115,8 @@ navbar_menu_creator <- function(tab, selected = NULL) {
       is_menu_item = TRUE,
       class = "navbar-collapisble-item"
     )
+    nav_menu[[1]]$attribs$`data-tab` = tab$id
+    nav_menu
   } else if (is.character(tab)) {
     if (grepl("^(-|_){4,}$", tab)) menu_divider() else div(class = "header", tab)
   } else {
@@ -218,4 +220,27 @@ tab_panel <- function(title, ..., value = title, icon = NULL, type = "bottom att
     `data-title` = title, `data-tab` = value, `data-icon` = icon,
     ...
   )
+}
+
+#' Show/Hide Tab
+#'
+#' @description
+#' Dynamically show or hide a \code{\link{tab_panel}} or \code{navbar_menu}
+#'
+#' @param session
+#' @param id
+#' @param target
+#'
+#' @rdname tab_visibility
+#' @export
+show_tab <- function(session = shiny::getDefaultReactiveDomain(), id, target) {
+  menu_id <- session$ns(id)
+  session$sendCustomMessage("toggleSemanticNavbarTab", list(id = menu_id, target = target, toggle = "show"))
+}
+
+#' @rdname tab_visibility
+#' @export
+hide_tab <- function(session = shiny::getDefaultReactiveDomain(), id, target) {
+  menu_id <- session$ns(id)
+  session$sendCustomMessage("toggleSemanticNavbarTab", list(id = menu_id, target = target, toggle = "hide"))
 }
