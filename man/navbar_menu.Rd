@@ -4,7 +4,7 @@
 \alias{navbar_menu}
 \title{Navbar Menu}
 \usage{
-navbar_menu(title, ..., menu_name = title, icon = NULL)
+navbar_menu(title, ..., id = title, icon = NULL)
 }
 \arguments{
 \item{title}{Display title for menu}
@@ -12,11 +12,21 @@ navbar_menu(title, ..., menu_name = title, icon = NULL)
 \item{...}{\code{\link{tab_panel}} elements to include in the page. Can also include strings as section headers,
 or "----" as a horizontal separator.}
 
-\item{menu_name}{The value that is linked to the \code{navbar_menu}}
+\item{id}{The ID of the \code{navbar_menu}}
 
 \item{icon}{Optional icon to appear on the tab.
 This attribute is only valid when using a \code{tab_panel} within a \code{\link{navbar_page}}.}
 }
 \description{
+Create a dropdown menu for a \code{\link{navbar_page}}.
+}
+\examples{
+navbar_menu(
+  "Menu",
+  tab_panel("Summary", shiny::plotOutput("plot")),
+  "----",
+  "Section header",
+  tab_panel("Table", shiny::tableOutput("table"))
+)
 
 }

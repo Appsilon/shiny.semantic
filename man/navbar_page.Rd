@@ -2,7 +2,7 @@
 % Please edit documentation in R/navbarPage.R
 \name{navbar_page}
 \alias{navbar_page}
-\title{Semantic UI page}
+\title{Semantic UI page with top level navigation bar}
 \usage{
 navbar_page(
   ...,
@@ -14,26 +14,48 @@ navbar_page(
   footer = NULL,
   collapsible = FALSE,
   window_title = title,
-  menu_class = NULL,
+  type = "stackable",
   theme = NULL,
   suppress_bootstrap = TRUE
 )
 }
 \arguments{
-\item{...}{Other arguments to be added as attributes of the main div tag
-wrapper (e.g. style, class etc.)}
+\item{...}{Other arguments to be added as attributes of the main div tag wrapper (e.g. style, class etc.)}
 
-\item{title}{A title to display in the browser's title bar.}
+\item{title}{A title to display in the navbar.}
+
+\item{id}{ID of the navbar menu. Given random ID if none specified.}
+
+\item{selected}{Which tab should be selected first? If none selected, will automatically have the first tab open.}
+
+\item{position}{Determines the location and behaviour of the navbar. Padding will be included when pinned to prevent
+overlap.
+\itemize{
+\item{""}{Default. Top of page, and goes out of view when scrolling}
+\item{"top fixed"}{Top of page, pinned when scrolling}
+\item{"bottom fixed"}{Bottom of page, pinned when scrolling}
+}}
+
+\item{header}{Optional list of tags to be added to the top of all \code{tab_panel}s.}
+
+\item{footer}{Optional list of tags to be added to the bottom of all \code{tab_panel}s.}
+
+\item{collapsible}{\code{TRUE} to automatically collapse the navigation elements into a menu when the width of the
+browser is less than 768 pixels (useful for viewing on smaller touchscreen device)}
+
+\item{window_title}{A title to display in the browser's title bar. By default it will be the same as the navbar
+title.}
+
+\item{type}{Class to be given to the navbar menu.}
 
 \item{theme}{Theme name or path. Full list of supported themes you will find in
 \code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.}
 
 \item{suppress_bootstrap}{boolean flag that supresses bootstrap when turned on}
-
-\item{margin}{character with body margin size}
 }
 \description{
-This creates a Semantic page for use in a Shiny app.
+This creates a Semantic page for use in a Shiny app. It is in the same layout as \code{\link[shiny]{navbarPage}},
+where a top level navigation bar exists.
 }
 \details{
 Inside, it uses two crucial options:
@@ -48,27 +70,24 @@ either "min" or standard version. The folder should contain: \code{semantic.css}
 in \code{shiny.minified = TRUE} mode.
 }
 \examples{
-## Only run examples in interactive R sessions
-if (interactive()) {
-library(shiny)
-library(shiny.semantic)
-
-ui <- semanticPage(
-  title = "Hello Shiny Semantic!",
-  tags$label("Number of observations:"),
-  slider_input("obs", value = 500, min = 0, max = 1000),
-  segment(
-    plotOutput("dist_plot")
-  )
+navbar_page(
+  "App Title",
+  tab_panel("Plot"),
+  tab_panel("Summary"),
+  tab_panel("Table")
 )
 
-server <- function(input, output) {
-  output$dist_plot <- renderPlot({
-    hist(rnorm(input$obs))
-  })
-}
-
-shinyApp(ui, server)
-}
+navbar_page(
+  "App Title",
+  tab_panel("Plot"),
+  tab_panel("Icon", icon = "r project"),
+  navbar_menu(
+    "More",
+    tab_panel("Summary"),
+    "----",
+    "Section header",
+    tab_panel("Table")
+  )
+)
 
 }
