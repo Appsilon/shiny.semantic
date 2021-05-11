@@ -14,7 +14,9 @@ test_that("test calendar", {
     calendar("calendar_input", Sys.Date(),
              "Select tomorrow",
              min = Sys.Date() - 3,
-             max = Sys.Date() + 4),
+             max = Sys.Date() + 4,
+             start_calendar_id = "start_calendar_id",
+             end_calendar_id = "end_calendar_id"),
     "shiny.tag"
   )
 })

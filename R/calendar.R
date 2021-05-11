@@ -9,6 +9,8 @@
 #' @param type Select from \code{'year'}, \code{'month'}, \code{'date'} and \code{'time'}
 #' @param min Minimum allowed value.
 #' @param max Maximum allowed value.
+#' @param start_calendar_id id of the calendar that defines the range start.
+#' @param end_calendar_id id of the calendar that defines the range end.
 #'
 #' @examples
 #' # Basic calendar
@@ -50,9 +52,32 @@
 #'   type = "month"
 #' )
 #' }
+#'
+#'
+#' \dontrun{
+#' # Calendar range
+#'   calendar(
+#'     input_id = "start_date",
+#'     type = "date",
+#'     value = "2020-02-20",
+#'     min = "2020-01-01",
+#'     max = "2020-03-01",
+#'     end_calendar_id = "end_date"
+#'   )
+#'
+#'   calendar(
+#'     input_id = "end_date",
+#'     type = "date",
+#'     value = "2020-02-23",
+#'     min = "2020-01-01",
+#'     max = "2020-03-01",
+#'     start_calendar_id = "start_date"
+#'   )
+#' }
 #' @rdname calendar
 #' @export
-calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
+calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA,
+                     start_calendar_id = NULL, end_calendar_id = NULL) {
   if (!is.null(value)) value <- format(as.Date(value), "%Y/%m/%d")
   if (!is.na(min)) min <- format(as.Date(min), "%Y/%m/%d")
   if (!is.na(max)) max <- format(as.Date(max), "%Y/%m/%d")
@@ -68,6 +93,8 @@ calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", 
 
   if (!is.na(min)) cal_widget$attribs[["data-min-date"]] <- min
   if (!is.na(max)) cal_widget$attribs[["data-max-date"]] <- max
+  if (!is.null(start_calendar_id)) cal_widget$attribs[["data-start-calendar-id"]] <- start_calendar_id
+  if (!is.null(end_calendar_id)) cal_widget$attribs[["data-end-calendar-id"]] <- end_calendar_id
 
   cal_widget
 }

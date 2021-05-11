@@ -23,10 +23,20 @@ $.extend(semanticDateBinding, {
 
   // This initialize input element. It extracts data-value attribute and use that as value.
   initialize: function(el) {
+    const startCalendarId = $(el).data('startCalendarId') ?
+      `#${$(el).data('startCalendarId')}` :
+      null;
+
+    const endCalendarId = $(el).data('endCalendarId') ?
+      `#${$(el).data('endCalendarId')}` :
+      null;
+      
     $(el).calendar({
       onChange: function(date, text, mode) {
         $(el).trigger('change');
-      }
+      },
+      startCalendar: startCalendarId,
+      endCalendar: endCalendarId
     });
   },
 
