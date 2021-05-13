@@ -1,4 +1,21 @@
+#' Create Semantic UI Calendar Range
+#'
+#' This is a wrapper for creating calendar ranges using Semantic UI calendars.
+#' It creates a form composed of two calendars. The selected range values are
+#' available under \code{input[[input_id]]}.
+#'
+#' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
+#' @param type Select from \code{'year'}, \code{'month'}, \code{'date'} and \code{'time'}.
+#' @param start_value Initial value of the calendar defining the start of the range.
+#' @param end_value Initial value of the calendar defining the end of the range.
+#' @param start_placeholder Text visible in the start calendar input when nothing is inputted.
+#' @param end_placeholder Text visible in the end calendar input when nothing is inputted.
+#' @param min Minimum allowed value in both calendars.
+#' @param max Maximum allowed value in both calendars.
+#'
+#' @rdname calendar_range
 #' @export
+#'
 calendar_range <- function(input_id, type = "date", start_value = NULL, end_value = NULL,
                            start_placeholder = NULL, end_placeholder = NULL, min = NA, max = NA) {
   if (!is.null(start_value)) start_value <- format(as.Date(start_value), "%Y/%m/%d")
@@ -57,6 +74,17 @@ calendar_range <- function(input_id, type = "date", start_value = NULL, end_valu
   cal_range_widget
 }
 
+#'
+#' Update UI calendar range
+#'
+#' This function updates the dates on a calendar range
+#'
+#' @param session The \code{session} object passed to function given to
+#'   \code{shinyServer}.
+#'
+#' @param input_id ID of the calendar range that will be updated
+#'
+#' @rdname calendar_range
 #' @export
 update_calendar_range <- function(session, input_id, start_value = NULL, end_value = NULL, min = NULL, max = NULL) {
   if (!is.null(start_value)) value <- format(as.Date(start_value), "%Y/%m/%d")

@@ -8,7 +8,9 @@ ui <- semanticPage(
           start_value = "2020-02-20",
           end_value = "2020-03-20",
           min = "2020-01-01",
-          max = "2020-12-01"
+          max = "2020-12-01",
+          start_placeholder = "Select range start",
+          end_placeholder = "Select range end"
         ),
         div(
           class = "two fields",
