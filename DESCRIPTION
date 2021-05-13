@@ -51,5 +51,6 @@ Suggests:
     leaflet,
     plotly,
     rmarkdown,
-    markdown
+    markdown,
+    stringr
 RoxygenNote: 7.1.1

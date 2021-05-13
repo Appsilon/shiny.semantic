@@ -4,6 +4,10 @@
 #' It creates a form composed of two calendars. The selected range values are
 #' available under \code{input[[input_id]]}.
 #'
+#' @details The Semantic UI calendar range automatically pops up the end range
+#' calendar when changing the start range. Therefore events are only sent on
+#' changes done in the end range calendar.
+#'
 #' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
 #' @param type Select from \code{'year'}, \code{'month'}, \code{'date'} and \code{'time'}.
 #' @param start_value Initial value of the calendar defining the start of the range.
@@ -23,37 +27,44 @@ calendar_range <- function(input_id, type = "date", start_value = NULL, end_valu
   if (!is.na(min)) min <- format(as.Date(min), "%Y/%m/%d")
   if (!is.na(max)) max <- format(as.Date(max), "%Y/%m/%d")
 
-  start_cal_widget <- div(
-    class = "ui calendar ss-input-date-range-item",
-    `data-type` = type,
-    `data-date` = start_value,
-    div(
-      class = "ui input left icon",
-      tags$i(class = "calendar icon"),
-      tags$input(type = "text", placeholder = start_placeholder)
+  create_cal_widget <- function(type, value, placeholder, min, max) {
+    cal_widget <- div(
+      class = "ui calendar ss-input-date-range-item",
+      `data-type` = type,
+      `data-date` = start_value,
+      div(
+        class = "ui input left icon",
+        tags$i(class = "calendar icon"),
+        tags$input(type = "text", placeholder = start_placeholder)
+      )
     )
-  )
 
-  end_cal_widget <- div(
-    class = "ui calendar ss-input-date-range-item",
-    `data-type` = type,
-    `data-date` = end_value,
-    div(
-      class = "ui input left icon",
-      tags$i(class = "calendar icon"),
-      tags$input(type = "text", placeholder = end_placeholder)
-    )
-  )
+    if (!is.na(min)) {
+      cal_widget$attribs[["data-min-date"]] <- min
+    }
 
-  if (!is.na(min)) {
-    start_cal_widget$attribs[["data-min-date"]] <- min
-    end_cal_widget$attribs[["data-min-date"]] <- min
+    if (!is.na(max)) {
+      cal_widget$attribs[["data-msx-date"]] <- max
+    }
+
+    cal_widget
   }
 
-  if (!is.na(max)) {
-    start_cal_widget$attribs[["data-max-date"]] <- max
-    end_cal_widget$attribs[["data-max-date"]] <- max
-  }
+  start_cal_widget <- create_cal_widget(
+    type = type,
+    value = start_value,
+    placeholder = start_placeholder,
+    min = min,
+    max = max
+  )
+
+  end_cal_widget <- create_cal_widget(
+    type = type,
+    value = end_value,
+    placeholder = end_placeholder,
+    min = min,
+    max = max
+  )
 
   cal_range_widget <- div(
     id = input_id,
@@ -77,7 +88,7 @@ calendar_range <- function(input_id, type = "date", start_value = NULL, end_valu
 #'
 #' Update UI calendar range
 #'
-#' This function updates the dates on a calendar range
+#' This function updates the dates on a calendar range.
 #'
 #' @param session The \code{session} object passed to function given to
 #'   \code{shinyServer}.
