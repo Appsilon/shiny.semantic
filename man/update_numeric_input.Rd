@@ -16,7 +16,7 @@ update_numeric_input(
 )
 
 updateNumericInput(
-  session,
+  session = getDefaultReactiveDomain(),
   inputId,
   label = NULL,
   value = NULL,

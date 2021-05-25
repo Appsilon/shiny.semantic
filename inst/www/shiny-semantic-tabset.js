@@ -34,3 +34,13 @@ $.extend(semanticTabset, {
 });
 
 Shiny.inputBindings.register(semanticTabset, 'shiny.semanticTabset');
+
+Shiny.addCustomMessageHandler('toggleSemanticNavbarTab', function(message) {
+  var tabs = $(`#${message.id}`).find('.item');
+  var sel_tab = tabs.filter((index, element) => $(element).data('tab') === `${message.target}`)
+  if (message.toggle === 'show') {
+    sel_tab.show();
+  } else {
+    sel_tab.hide();
+  }
+});
