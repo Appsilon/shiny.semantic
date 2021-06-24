@@ -80,7 +80,7 @@ text_input <- function(input_id, label = NULL, value = "", type = "text",
   }
 
   if (type == "textarea") {
-    input <- tags$textarea(id = input_id, value = value, placeholder = placeholder)
+    input <- tags$textarea(id = input_id, value, placeholder = placeholder)
   } else {
     input <- tags$input(id = input_id, value = value, type = type, placeholder = placeholder)
   }
