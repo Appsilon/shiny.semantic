@@ -16,12 +16,15 @@
 #' @param end_placeholder Text visible in the end calendar input when nothing is inputted.
 #' @param min Minimum allowed value in both calendars.
 #' @param max Maximum allowed value in both calendars.
+#' @param start_label Label text in the start calendar.
+#' @param end_label Label text in the end calendar.
 #'
 #' @rdname calendar_range
 #' @export
 #'
 calendar_range <- function(input_id, type = "date", start_value = NULL, end_value = NULL,
-                           start_placeholder = NULL, end_placeholder = NULL, min = NA, max = NA) {
+                           start_placeholder = NULL, end_placeholder = NULL, min = NA, max = NA,
+                           start_label = NULL, end_label = NULL) {
   if (!is.null(start_value)) start_value <- format(as.Date(start_value), "%Y/%m/%d")
   if (!is.null(end_value)) end_value <- format(as.Date(end_value), "%Y/%m/%d")
   if (!is.na(min)) min <- format(as.Date(min), "%Y/%m/%d")
@@ -73,10 +76,12 @@ calendar_range <- function(input_id, type = "date", start_value = NULL, end_valu
       class = "two fields",
       div(
         class = "field",
+        tags$label(start_label),
         start_cal_widget
       ),
       div(
         class = "field",
+        tags$label(end_label),
         end_cal_widget
       )
     )

@@ -10,7 +10,9 @@ ui <- semanticPage(
           min = "2020-01-01",
           max = "2020-12-01",
           start_placeholder = "Select range start",
-          end_placeholder = "Select range end"
+          end_placeholder = "Select range end",
+          start_label = "Start Date",
+          end_label = "End Date"
         ),
         div(
           class = "two fields",
