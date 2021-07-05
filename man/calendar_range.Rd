@@ -13,7 +13,9 @@ calendar_range(
   start_placeholder = NULL,
   end_placeholder = NULL,
   min = NA,
-  max = NA
+  max = NA,
+  start_label = NULL,
+  end_label = NULL
 )
 
 update_calendar_range(
@@ -41,6 +43,10 @@ update_calendar_range(
 \item{min}{Minimum allowed value in both calendars.}
 
 \item{max}{Maximum allowed value in both calendars.}
+
+\item{start_label}{Label text in the start calendar.}
+
+\item{end_label}{Label text in the end calendar.}
 
 \item{session}{The \code{session} object passed to function given to
 \code{shinyServer}.}
