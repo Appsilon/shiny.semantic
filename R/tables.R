@@ -3,6 +3,8 @@
 #' This creates DT table styled with Semantic UI.
 #'
 #' @param ... datatable parameters, check \code{?DT::datatable} to learn more.
+#' @param style A character to determine the style being used. Default
+#' is semanticui
 #' @param options datatable options, check \code{?DT::datatable} to learn more.
 #'
 #' @examples
@@ -22,10 +24,10 @@
 #' }
 #'
 #' @export
-semantic_DT <- function(..., options = list()) {
+semantic_DT <- function(..., style = "semanticui", options = list()) {
   DT::datatable(..., options = options,
                 class = 'ui small compact table',
-                style = "semanticui",
+                style = style,
                 rownames = FALSE)
 }
 
