@@ -14,8 +14,9 @@ navbar_page(
   footer = NULL,
   collapsible = FALSE,
   window_title = title,
-  type = "stackable",
+  class = "stackable",
   theme = NULL,
+  enable_hash_state = TRUE,
   suppress_bootstrap = TRUE
 )
 }
@@ -46,10 +47,14 @@ browser is less than 768 pixels (useful for viewing on smaller touchscreen devic
 \item{window_title}{A title to display in the browser's title bar. By default it will be the same as the navbar
 title.}
 
-\item{type}{Class to be given to the navbar menu.}
+\item{class}{Additional classes to be given to the navbar menu. Defaults to \code{"stackable"}. For optional classes
+have a look in details}
 
 \item{theme}{Theme name or path. Full list of supported themes you will find in
 \code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.}
+
+\item{enable_hash_state}{boolean flag that enables a different hash in the URL for each tab, and creates historical
+events}
 
 \item{suppress_bootstrap}{boolean flag that supresses bootstrap when turned on}
 }
@@ -68,17 +73,24 @@ takes dependencies from custom css and js files specified in this path
 either "min" or standard version. The folder should contain: \code{semantic.css} and
 \code{semantic.js} files, or \code{semantic.min.css} and \code{semantic.min.js}
 in \code{shiny.minified = TRUE} mode.
+
+The following classes can be applied to the navbar:
+\itemize{
+\item{\code{stackable}} - When the width of the webpage becomes too thin, for example on mobile, the navbar will
+become a stack
+\item{\code{inverted}} - Will create an inverted coloured navbar
+}
 }
 \examples{
 navbar_page(
-  "App Title",
+  title = "App Title",
   tab_panel("Plot"),
   tab_panel("Summary"),
   tab_panel("Table")
 )
 
 navbar_page(
-  "App Title",
+  title = "App Title",
   tab_panel("Plot"),
   tab_panel("Icon", icon = "r project"),
   navbar_menu(

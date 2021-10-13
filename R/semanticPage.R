@@ -157,6 +157,7 @@ semanticPage <- function(..., title = "", theme = NULL, suppress_bootstrap = TRU
   shiny::tagList(
     shiny::tags$head(
       get_dependencies(theme),
+      shiny::tags$script(src = "shiny.semantic/shared/semantic/history.min.js"),
       shiny::tags$title(title),
       shiny::tags$meta(name = "viewport", content = "width=device-width, initial-scale=1.0"),
       shiny::tags$link(rel = "stylesheet", type = "text/css", href = "shiny.semantic/shiny-semantic.css"),

@@ -8,15 +8,18 @@ ui <- navbar_page(
 
   tab_panel(
     title = "Content",
+    value = "content",
     form(multiple_radio("toggle", "Show Menu Dropdown", c("Yes", "No"), c("show", "hide"), "show"))
   ),
   tab_panel(
     title = "Icon",
+    value = "icon",
     icon = "r project",
     "A tab with an icon in the menu",
   ),
   tab_panel(
     title = "A Very Long Tab Name",
+    value = "long_tab_name",
     "Example of a tab name which is very long",
     tags$br(),
   ),
@@ -35,7 +38,8 @@ ui <- navbar_page(
       h3("Section 2 - Part 1")
     ),
     tab_panel(
-      title = "Part 2"
+      title = "Part 2",
+      value = "sec2_part2"
     )
   )
 )

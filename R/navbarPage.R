@@ -33,21 +33,32 @@
 #' browser is less than 768 pixels (useful for viewing on smaller touchscreen device)
 #' @param window_title A title to display in the browser's title bar. By default it will be the same as the navbar
 #' title.
-#' @param type Class to be given to the navbar menu.
+#' @param class Additional classes to be given to the navbar menu. Defaults to \code{"stackable"}. For optional classes
+#' have a look in details
 #' @param theme Theme name or path. Full list of supported themes you will find in
 #' \code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.
+#' @param enable_hash_state boolean flag that enables a different hash in the URL for each tab, and creates historical
+#' events
 #' @param suppress_bootstrap boolean flag that supresses bootstrap when turned on
+#'
+#' @details
+#' The following classes can be applied to the navbar:
+#' \itemize{
+#' \item{\code{stackable}} - When the width of the webpage becomes too thin, for example on mobile, the navbar will
+#' become a stack
+#' \item{\code{inverted}} - Will create an inverted coloured navbar
+#' }
 #'
 #' @examples
 #' navbar_page(
-#'   "App Title",
+#'   title = "App Title",
 #'   tab_panel("Plot"),
 #'   tab_panel("Summary"),
 #'   tab_panel("Table")
 #' )
 #'
 #' navbar_page(
-#'   "App Title",
+#'   title = "App Title",
 #'   tab_panel("Plot"),
 #'   tab_panel("Icon", icon = "r project"),
 #'   navbar_menu(
@@ -64,7 +75,8 @@ navbar_page <- function(..., title = "", id = NULL, selected = NULL,
                         position = c("", "top fixed", "bottom fixed"),
                         header = NULL, footer = NULL,
                         collapsible = FALSE, window_title = title,
-                        type = "stackable", theme = NULL, suppress_bootstrap = TRUE) {
+                        class = "stackable", theme = NULL,
+                        enable_hash_state = TRUE, suppress_bootstrap = TRUE) {
   tabs <- list(...)
   if (!length(tabs)) stop("No tabs detected")
   position <- match.arg(position)
@@ -90,8 +102,9 @@ navbar_page <- function(..., title = "", id = NULL, selected = NULL,
 
   menu_header <- tags$nav(
     div(
-      class = paste("ui navbar-page-menu", position, type, "menu sem"),
+      class = paste("ui menu ss-menu navbar-page-menu", position, class),
       id = id,
+      `data-hash-history` = tolower(as.character(enable_hash_state)),
       menu_items
     )
   )
@@ -227,9 +240,35 @@ tab_panel <- function(title, ..., value = title, icon = NULL, type = "bottom att
 #' @description
 #' Dynamically show or hide a \code{\link{tab_panel}} or \code{navbar_menu}
 #'
-#' @param session
-#' @param id
-#' @param target
+#' @param session The \code{session} object passed to function given to \code{shinyServer}.
+#' @param id The id of the navbar object
+#' @param target The tab value to toggle visibility
+#'
+#' @examples
+#' if (interactive()) {
+#'   library(shiny)
+#'   library(shiny.semantic)
+#'
+#'   ui <- navbar_page(
+#'     title = "App Title",
+#'     id = "navbar",
+#'     tab_panel(
+#'       "Plot",
+#'       action_button("hide", "Hide Table"),
+#'       action_button("show", "Show Table"),
+#'       value = "plot"
+#'     ),
+#'     tab_panel("Summary", value = "summary"),
+#'     tab_panel("Table", value = "table")
+#'   )
+#'
+#'   server <- function(input, output, session) {
+#'     observeEvent(input$hide, hide_tab(session, "navbar", "table"))
+#'     observeEvent(input$show, show_tab(session, "navbar", "table"))
+#'   }
+#'
+#'   shinyApp(ui, server)
+#' }
 #'
 #' @rdname tab_visibility
 #' @export

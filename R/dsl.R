@@ -182,7 +182,7 @@ tabset <- function(tabs,
   active_tab <- if (!is.null(active)) active else valid_ids[1] # nolint
   shiny::tagList(
     shiny::div(id = id,
-               class = paste("ui menu sem", menu_class),
+               class = paste("ui menu ss-menu", menu_class),
                purrr::map(id_tabs, ~ {
                  class <- paste("item", if (.$id == active_tab) "active" else "") # nolint
                  shiny::a(class = class, `data-tab` = .$id, .$menu)
