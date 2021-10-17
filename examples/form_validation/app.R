@@ -3,109 +3,69 @@ library(shiny.semantic)
 
 ui <- shinyUI(
   semanticPage(
-    tags$br(),
-
     div(
-      class = "ui grid",
+      class = "ui basic segment grid",
       div(
-        class = "two column row",
-        # Form Input
+        class = "two column stretched row",
         div(
           class = "column",
           segment(
             form(
               id = "form",
-              h4(class = "ui dividing header", "Inputs"),
-              field(
-                tags$label("Text"),
-                text_input("text_ex", value = "", type = "text", placeholder = "Enter Text...")
+              h4(class = "ui dividing header", "User Information"),
+              fields(
+                class = "two",
+                field(
+                  tags$label("Firstname"),
+                  text_input("firstname", value = "", type = "text")
+                ),
+                field(
+                  tags$label("Surname"),
+                  text_input("surname", value = "", type = "text")
+                )
               ),
               field(
-                tags$label("Text Area"),
-                text_input(
-                  "textarea_ex", value = "", type = "textarea", placeholder = "Enter Text...", attribs = list(rows = 2)
-                )
+                tags$label("E-Mail Address"),
+                text_input("email", value = "", type = "email")
               ),
               field(
                 tags$label("Password"),
-                text_input("password_ex", value = "", type = "password", placeholder = "Select Password")
+                text_input("password", value = "", type = "password")
               ),
               field(
-                tags$label("E-Mail"),
-                text_input("email_ex", value = "", type = "email", placeholder = "Enter E-Mail")
+                tags$label("Age"),
+                text_input("age", value = "", type = "text"),
               ),
               field(
-                tags$label("URL"),
-                text_input("url_ex", value = "", type = "url", placeholder = "Enter URL")
-              ),
-              field(
-                numeric_input("number_ex", "Numeric", value = 50, min = 0, max = 100)
-              ),
-              field(
-                tags$label("Checkbox"),
-                checkbox_input("checkbox_ex", "Checkbox", is_marked = FALSE),
-              ),
-              field(
-                tags$label("Group Radio Button"),
-                multiple_radio(
-                  "grp_radio_ex", "Favourite Letter", choices = LETTERS[1:4], selected = "B", position = "inline"
-                )
+                checkbox_input("confirm", label = "I confirm this information is correct", is_marked = FALSE),
               ),
               form_validation(
                 id = "form",
-                field_validation("password_ex", field_rule("minLength", value = 6)),
-                field_validation("email_ex", field_rule("email")),
-                field_validation("checkbox_ex", field_rule("checked"))
+                field_validation("firstname", field_rule("empty")),
+                field_validation("surname", field_rule("empty")),
+                field_validation("email", field_rule("email")),
+                field_validation("password", field_rule("minLength", value = 6)),
+                field_validation("age", field_rule("empty"), field_rule("number")),
+                field_validation("confirm", field_rule("checked", "You must confirm to submit details"))
               )
             )
           )
         ),
 
-        # Form Output
         div(
           class = "column",
           segment(
             form(
-              h4(class = "ui dividing header", "Outputs"),
-              field(
-                tags$label("Text"),
-                "Written Text: ", shiny::textOutput("text_ex", container = shiny::span)
-              ),
-              field(
-                tags$label("Text Area"),
-                "Written Text: ", shiny::textOutput("textarea_ex", container = shiny::span)
-              ),
-              field(
-                tags$label("Password"),
-                "Written Text: ", shiny::textOutput("password_ex", container = shiny::span)
-              ),
-              field(
-                tags$label("E-Mail"),
-                "Written Text: ", shiny::textOutput("email_ex", container = shiny::span)
-              ),
-              field(
-                tags$label("URL"),
-                "Written Text: ", shiny::textOutput("url_ex", container = shiny::span)
-              ),
-              field(
-                tags$label("Number"),
-                "Selected Number: ", shiny::textOutput("number_ex", container = shiny::span)
-              ),
-              field(
-                tags$label("Checkbox"),
-                "Checkbox Selected:", shiny::textOutput("checkbox_ex", container = shiny::span),
-              ),
-              field(
-                tags$label("Group Radio Button"),
-                "Radio Button Selected:", shiny::textOutput("grp_radio_ex", container = shiny::span)
-              ),
-              field(
-                tags$label("Group Checkbox"),
-                "Checkboxes Selected:", shiny::textOutput("grp_check_ex", container = shiny::span)
-              ),
-              field(
-                tags$label("Calendar"),
-                "Date Selected:", shiny::textOutput("calendar_ex", container = shiny::span)
+              h4(class = "ui dividing header", "Bio"),
+              card(
+                div(class = "content",  textOutput("name", container = function(...) span(class = "header", ...))),
+                div(class = "image", div(class = "ui placeholder", div(class = "square image"))),
+                div(
+                  class = "content",
+                  p("E-mail:", textOutput("email", inline = TRUE)),
+                  p("Age:", textOutput("age", inline = TRUE)),
+                  p("Password:", textOutput("password", inline = TRUE))
+                )
               )
             )
           )
@@ -116,16 +76,20 @@ ui <- shinyUI(
 )
 
 server <- shinyServer(function(input, output, session) {
-  form_submit <- eventReactive(input$form_submit, {input$form_submit == 1})
-  output$text_ex <- renderText({form_submit(); input$text_ex})
-  output$textarea_ex <- renderText({form_submit(); input$textarea_ex})
-  output$password_ex <- renderText({form_submit(); input$password_ex})
-  output$email_ex <- renderText({form_submit(); input$email_ex})
-  output$url_ex <- renderText({form_submit(); input$url_ex})
-  output$number_ex <- renderText({form_submit(); paste(input$number_ex, "   Class: ", class(input$number_ex))})
-  output$checkbox_ex <- renderText({form_submit(); input$checkbox_ex})
-  output$grp_radio_ex <- renderText({form_submit(); input$grp_radio_ex})
-  output$grp_check_ex <- renderText({form_submit(); paste(input$grp_check_ex, collapse = ", ")})
+  form_submission <- eventReactive(input$form_submit, {
+    list(
+      firstname = input$firstname,
+      surname = input$surname,
+      name = paste(input$firstname, input$surname),
+      email = input$email,
+      password = input$password,
+      age = input$age
+    )
+  })
+  output$name <- renderText(form_submission()$name)
+  output$email <- renderText(form_submission()$email)
+  output$password <- renderText(gsub(".", "*", form_submission()$password))
+  output$age <- renderText(form_submission()$age)
 })
 
 shiny::shinyApp(ui, server)
