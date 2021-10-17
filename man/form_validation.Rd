@@ -6,8 +6,44 @@
 \usage{
 form_validation(id, ...)
 }
+\arguments{
+\item{id}{ID of the parent form}
+
+\item{...}{A series of \code{\link{field_validation}} that are related to inputs within the parent form}
+}
 \description{
 Form Validation for Semantic UI
+}
+\examples{
+if (interactive()) {
+  library(shiny)
+  library(shiny.semantic)
+
+  ui <- semanticPage(
+    form(
+      id = "form",
+      field(
+        tags$label("Name"),
+        text_input("name")
+      ),
+      field(
+        tags$label("E-Mail"),
+        text_input("email")
+      ),
+      form_validation(
+        id = "form",
+        field_valitaion("name", field_rule("empty"))
+        field_valitaion("email", field_rule("empty"), field_rule("email"))
+      )
+    )
+  )
+
+  server <- function(input, output) {
+  }
+
+  shinyApp(ui, server)
+}
+
 }
 \seealso{
 field_validation

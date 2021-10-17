@@ -1,15 +1,51 @@
 #' Form Validation for Semantic UI
 #'
+#' @param id ID of the parent form
+#' @param ... A series of \code{\link{field_validation}} that are related to inputs within the parent form
+#' @param submit_label Label to give the submission button at the end of the form (included in returned UI with input
+#' value \code{\{id\}_submit})
+#' @param submit_class Additional classes to give the submission button
+#'
+#' @examples
+#' if (interactive()) {
+#'   library(shiny)
+#'   library(shiny.semantic)
+#'
+#'   ui <- semanticPage(
+#'     form(
+#'       id = "form",
+#'       field(
+#'         tags$label("Name"),
+#'         text_input("name")
+#'       ),
+#'       field(
+#'         tags$label("E-Mail"),
+#'         text_input("email")
+#'       ),
+#'       form_validation(
+#'         id = "form",
+#'         field_validation("name", field_rule("empty")),
+#'         field_validation("email", field_rule("empty"), field_rule("email"))
+#'       )
+#'     )
+#'   )
+#'
+#'   server <- function(input, output) {
+#'   }
+#'
+#'   shinyApp(ui, server)
+#' }
+#'
 #' @seealso field_validation
 #'
 #' @export
-form_validation <- function(id, ...) {
+form_validation <- function(id, ..., submit_label = "Submit", submit_class = "") {
   fields <- list(...)
   names(fields) <- vapply(fields, function(x) x$identifier, character(1))
   fields_json <- jsonlite::toJSON(fields, auto_unbox = TRUE)
 
   tagList(
-    action_button(input_id = paste0(id, "_submit"), label = "Submit", class = "submit"),
+    action_button(input_id = paste0(id, "_submit"), label = submit_label, class = paste("submit", submit_class)),
     div(class = "ui error message"),
     tags$script(glue::glue("$('#{|id|}').form({fields: {|fields_json|}});", .open = "{|", .close = "|}"))
   )
