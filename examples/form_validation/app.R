@@ -51,10 +51,8 @@ ui <- shinyUI(
                   "grp_radio_ex", "Favourite Letter", choices = LETTERS[1:4], selected = "B", position = "inline"
                 )
               ),
-              action_button(input_id = "submit", label = "Submit", class = "submit"),
-              div(class = "ui error message"),
               form_validation(
-                "form",
+                id = "form",
                 field_validation("password_ex", field_rule("minLength", value = 6)),
                 field_validation("email_ex", field_rule("email")),
                 field_validation("checkbox_ex", field_rule("checked"))
@@ -96,8 +94,6 @@ ui <- shinyUI(
               field(
                 tags$label("Checkbox"),
                 "Checkbox Selected:", shiny::textOutput("checkbox_ex", container = shiny::span),
-                tags$br(),
-                "Slider Selected:", shiny::textOutput("slider_ex", container = shiny::span)
               ),
               field(
                 tags$label("Group Radio Button"),
@@ -120,17 +116,16 @@ ui <- shinyUI(
 )
 
 server <- shinyServer(function(input, output, session) {
-  output$text_ex <- renderText(input$text_ex)
-  output$textarea_ex <- renderText(input$textarea_ex)
-  output$password_ex <- renderText(input$password_ex)
-  output$email_ex <- renderText(input$email_ex)
-  output$url_ex <- renderText(input$url_ex)
-  output$number_ex <- renderText(paste(input$number_ex, "   Class: ", class(input$number_ex)))
-  output$checkbox_ex <- renderText(input$checkbox_ex)
-  output$slider_ex <- renderText(input$slider_ex)
-  output$grp_radio_ex <- renderText(input$grp_radio_ex)
-  output$grp_check_ex <- renderText(paste(input$grp_check_ex, collapse = ", "))
-  output$calendar_ex <- renderText(as.character(input$calendar_ex))
+  form_submit <- eventReactive(input$form_submit, {input$form_submit == 1})
+  output$text_ex <- renderText({form_submit(); input$text_ex})
+  output$textarea_ex <- renderText({form_submit(); input$textarea_ex})
+  output$password_ex <- renderText({form_submit(); input$password_ex})
+  output$email_ex <- renderText({form_submit(); input$email_ex})
+  output$url_ex <- renderText({form_submit(); input$url_ex})
+  output$number_ex <- renderText({form_submit(); paste(input$number_ex, "   Class: ", class(input$number_ex))})
+  output$checkbox_ex <- renderText({form_submit(); input$checkbox_ex})
+  output$grp_radio_ex <- renderText({form_submit(); input$grp_radio_ex})
+  output$grp_check_ex <- renderText({form_submit(); paste(input$grp_check_ex, collapse = ", ")})
 })
 
 shiny::shinyApp(ui, server)

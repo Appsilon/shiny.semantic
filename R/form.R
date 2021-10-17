@@ -8,7 +8,12 @@ form_validation <- function(id, ...) {
   names(fields) <- vapply(fields, function(x) x$identifier, character(1))
   fields_json <- jsonlite::toJSON(fields, auto_unbox = TRUE)
 
-  tags$script(glue::glue("$('#{|id|}').form({fields: {|fields_json|}});", .open = "{|", .close = "|}"))
+  tagList(
+    action_button(input_id = paste0(id, "_submit"), label = "Submit", class = "submit"),
+    div(class = "ui error message"),
+    tags$script(glue::glue("$('#{|id|}').form({fields: {|fields_json|}});", .open = "{|", .close = "|}"))
+  )
+
 }
 
 #' Field Validation for Semantic UI

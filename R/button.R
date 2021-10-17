@@ -24,7 +24,7 @@
 #'
 #' @export
 button <- function(input_id, label, icon = NULL, class = NULL, ...) {
-  tags$button(id = input_id, class = paste("ui", class, "button"), icon, " ", label, ...)
+  tags$button(id = input_id, class = paste("ui", class, "button ss-button"), icon, " ", label, ...)
 }
 
 #' Action button
@@ -154,7 +154,7 @@ counter_button <- function(input_id, label = "", icon = NULL, value = 0,
                            color = "", size = "", big_mark = " ") {
   big_mark_regex <- if (big_mark == " ") "\\s" else big_mark
   shiny::div(
-    class = "ui labeled button", tabindex = "0",
+    class = "ui labeled button ss-button", tabindex = "0",
     shiny::tagList(
       button(input_id = input_id, label, icon,
                class = paste(c(size, color), collapse = " "),
