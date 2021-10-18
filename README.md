@@ -93,6 +93,8 @@ See more examples with code in the `examples` folder:
     demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/dropdown_updates/app.R)
   - [Form inputs
     demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/form_inputs/app.R)
+  - [Form validation
+    demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/form_validation/app.R)
   - [Modal
     demos](https://github.com/Appsilon/shiny.semantic/tree/develop/examples/modal)
   - [Multiple checkbox
