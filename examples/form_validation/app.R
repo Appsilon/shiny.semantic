@@ -44,7 +44,7 @@ ui <- shinyUI(
                 checkbox_input("confirm", label = "I confirm this information is correct", is_marked = FALSE),
               ),
               form_validation(
-                id = "form",
+                id = "form", inline = TRUE,
                 field_validation("firstname", field_rule("empty")),
                 field_validation("surname", field_rule("empty")),
                 field_validation("email", field_rule("email")),

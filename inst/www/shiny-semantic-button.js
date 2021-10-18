@@ -2,7 +2,7 @@
 var semanticButtonBinding = new Shiny.InputBinding();
 $.extend(semanticButtonBinding, {
   find: function(scope) {
-    return $(scope).find(".ss-button");
+    return $(scope).find(".button");
   },
   getValue: function(el) {
     return $(el).data('val') || 0;
