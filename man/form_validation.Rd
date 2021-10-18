@@ -4,15 +4,44 @@
 \alias{form_validation}
 \title{Form Validation for Semantic UI}
 \usage{
-form_validation(id, ...)
+form_validation(
+  id,
+  ...,
+  submit_label = "Submit",
+  submit_class = "",
+  inline = FALSE
+)
 }
 \arguments{
 \item{id}{ID of the parent form}
 
-\item{...}{A series of \code{\link{field_validation}} that are related to inputs within the parent form}
+\item{...}{A series of \code{\link{field_validation}} whose \code{id} are inputs contained within the form}
+
+\item{submit_label}{Label to give the submission button at the end of the form (included in returned UI with input
+value \code{\{id\}_submit})}
+
+\item{submit_class}{Additional classes to give the submission button}
+
+\item{inline}{Logical, do you want the field validation errors as inline labels \code{TRUE},
+or in a message box at the bottom of the form \code{FALSE}?}
 }
 \description{
-Form Validation for Semantic UI
+A form validation behaviour checks data against a set of criteria before passing it along to the server.
+}
+\details{
+In order for the validation to work, the \code{form_validation} must be a direct child of the \code{form}.
+
+There are twp ways to control using form inputs on the server side:
+
+\itemize{
+\item{The form id is enabled as an input, and will either be \code{TRUE} or \code{FALSE} depending on the status of
+the form upon the last submission. When the shiny application loads, by default it will be set to \code{FALSE}}
+\item{Alternatively the "Submit" button has an input value of \code{{form_id}_submit} and will only trigger
+server-side events if all the fields pass validation.}
+}
+
+\strong{NB} If you do not include either form validation input as part of the server-side code
+then the inputs will pass through to the server as if there were no validation.
 }
 \examples{
 if (interactive()) {
@@ -32,8 +61,8 @@ if (interactive()) {
       ),
       form_validation(
         id = "form",
-        field_valitaion("name", field_rule("empty"))
-        field_valitaion("email", field_rule("empty"), field_rule("email"))
+        field_validation("name", field_rule("empty")),
+        field_validation("email", field_rule("empty"), field_rule("email"))
       )
     )
   )
@@ -46,5 +75,5 @@ if (interactive()) {
 
 }
 \seealso{
-field_validation
+\code{\link{field_validation}}, \code{\url{https://fomantic-ui.com/behaviors/form.html}}
 }

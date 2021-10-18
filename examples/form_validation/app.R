@@ -33,6 +33,10 @@ ui <- shinyUI(
                 text_input("password", value = "", type = "password")
               ),
               field(
+                tags$label("Confirm Password"),
+                text_input("password_confirm", value = "", type = "password")
+              ),
+              field(
                 tags$label("Age"),
                 text_input("age", value = "", type = "text"),
               ),
@@ -45,7 +49,12 @@ ui <- shinyUI(
                 field_validation("surname", field_rule("empty")),
                 field_validation("email", field_rule("email")),
                 field_validation("password", field_rule("minLength", value = 6)),
-                field_validation("age", field_rule("empty"), field_rule("number")),
+                field_validation("password_confirm", field_rule("empty"), field_rule("match", value = "password")),
+                field_validation(
+                  "age",
+                  field_rule("empty"),
+                  field_rule("integer", "You must be at least 18 to join", value = "18..")
+                ),
                 field_validation("confirm", field_rule("checked", "You must confirm to submit details"))
               )
             )
@@ -55,17 +64,16 @@ ui <- shinyUI(
         div(
           class = "column",
           segment(
-            form(
-              h4(class = "ui dividing header", "Bio"),
-              card(
-                div(class = "content",  textOutput("name", container = function(...) span(class = "header", ...))),
-                div(class = "image", div(class = "ui placeholder", div(class = "square image"))),
-                div(
-                  class = "content",
-                  p("E-mail:", textOutput("email", inline = TRUE)),
-                  p("Age:", textOutput("age", inline = TRUE)),
-                  p("Password:", textOutput("password", inline = TRUE))
-                )
+            class = "basic",
+            h4(class = "ui dividing header", "Bio"),
+            card(
+              div(class = "content",  textOutput("name", container = function(...) span(class = "header", ...))),
+              div(class = "image", div(class = "ui placeholder", div(class = "square image"))),
+              div(
+                class = "content",
+                p("E-mail:", textOutput("email", inline = TRUE)),
+                p("Age:", textOutput("age", inline = TRUE)),
+                p("Password:", textOutput("password", inline = TRUE))
               )
             )
           )
