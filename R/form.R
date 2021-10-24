@@ -7,18 +7,18 @@
 #' @param submit_label Label to give the submission button at the end of the form (included in returned UI with input
 #' value \code{\{id\}_submit})
 #' @param submit_class Additional classes to give the submission button
-#' @param inline Logical, do you want the field validation errors as inline labels \code{TRUE},
-#' or in a message box at the bottom of the form \code{FALSE}?
+#' @param inline Logical, do you want the field validation errors as in-line labels (\code{TRUE}),
+#' or in a message box at the bottom of the form (\code{FALSE})?
 #'
 #' @details
 #' In order for the validation to work, the \code{form_validation} must be a direct child of the \code{form}.
 #'
-#' There are twp ways to control using form inputs on the server side:
+#' There are two ways to control using form inputs on the server side:
 #'
 #' \itemize{
 #' \item{The form id is enabled as an input, and will either be \code{TRUE} or \code{FALSE} depending on the status of
 #' the form upon the last submission. When the shiny application loads, by default it will be set to \code{FALSE}}
-#' \item{Alternatively the "Submit" button has an input value of \code{{form_id}_submit} and will only trigger
+#' \item{Alternatively the "Submit" button has an input value of \code{{id}_submit} and will only trigger
 #' server-side events if all the fields pass validation.}
 #' }
 #'
@@ -55,7 +55,8 @@
 #'   shinyApp(ui, server)
 #' }
 #'
-#' @seealso \code{\link{field_validation}}, \url{https://fomantic-ui.com/behaviors/form.html}
+#' @seealso \code{\link{field_validation}}
+#' @references \url{https://fomantic-ui.com/behaviors/form.html}
 #'
 #' @export
 form_validation <- function(id, ..., submit_label = "Submit", submit_class = "", inline = FALSE) {
@@ -158,7 +159,9 @@ create_form_validation_js <- function(id, rules, inline = FALSE) {
 #'   field_rule("regExp", "Must contain at least one special character", "\\W")
 #' )
 #'
-#' @seealso \code{\link{form_validation}}, \url{https://fomantic-ui.com/behaviors/form.html}
+#' @seealso \code{\link{form_validation}}
+#'
+#' @references \url{https://fomantic-ui.com/behaviors/form.html}
 #'
 #' @rdname field_validation
 #' @export

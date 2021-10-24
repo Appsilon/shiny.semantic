@@ -72,6 +72,9 @@ field_validation(
 )
 
 }
+\references{
+\url{https://fomantic-ui.com/behaviors/form.html}
+}
 \seealso{
-\code{\link{form_validation}}, \url{https://fomantic-ui.com/behaviors/form.html}
+\code{\link{form_validation}}
 }

@@ -22,8 +22,8 @@ value \code{\{id\}_submit})}
 
 \item{submit_class}{Additional classes to give the submission button}
 
-\item{inline}{Logical, do you want the field validation errors as inline labels \code{TRUE},
-or in a message box at the bottom of the form \code{FALSE}?}
+\item{inline}{Logical, do you want the field validation errors as in-line labels (\code{TRUE}),
+or in a message box at the bottom of the form (\code{FALSE})?}
 }
 \description{
 A form validation behaviour checks data against a set of criteria before passing it along to the server.
@@ -31,12 +31,12 @@ A form validation behaviour checks data against a set of criteria before passing
 \details{
 In order for the validation to work, the \code{form_validation} must be a direct child of the \code{form}.
 
-There are twp ways to control using form inputs on the server side:
+There are two ways to control using form inputs on the server side:
 
 \itemize{
 \item{The form id is enabled as an input, and will either be \code{TRUE} or \code{FALSE} depending on the status of
 the form upon the last submission. When the shiny application loads, by default it will be set to \code{FALSE}}
-\item{Alternatively the "Submit" button has an input value of \code{{form_id}_submit} and will only trigger
+\item{Alternatively the "Submit" button has an input value of \code{{id}_submit} and will only trigger
 server-side events if all the fields pass validation.}
 }
 
@@ -74,6 +74,9 @@ if (interactive()) {
 }
 
 }
+\references{
+\url{https://fomantic-ui.com/behaviors/form.html}
+}
 \seealso{
-\code{\link{field_validation}}, \url{https://fomantic-ui.com/behaviors/form.html}
+\code{\link{field_validation}}
 }
