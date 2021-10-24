@@ -36,21 +36,27 @@ testthat::test_that("field_rule passes with required value with valid rule", {
   testthat::expect_error(field_rule("contains", value = "abc"), NA)
 })
 
-testthat::test_that("Basic field_rule returns an object of class 'field_rule'", {
+testthat::test_that("field_rule returns an object of class 'field_rule'", {
   rule <- field_rule("contains", value = "abc")
 
   testthat::expect_is(rule, "list")
   testthat::expect_is(rule, "field_rule")
 })
 
-testthat::test_that("Basic field_rule returns a single item list named 'type'", {
-  rule_type <- "checked"
-  rule_value <- "abc"
-  rule <- field_rule(rule_type)
+testthat::test_that("field_rule returns a single item list named 'type'", {
+  rule <- field_rule("contains", value = "abc")
 
   testthat::expect_is(rule, "list")
   testthat::expect_named(rule, "type")
   testthat::expect_is(rule$type, "character")
+})
+
+testthat::test_that("regExp field_rule escapes the regular expression", {
+  rule_type <- "regExp"
+  rule_value <- "abc"
+  rule <- field_rule(rule_type, value = rule_value)
+
+  testthat::expect_match(rule$type, paste0("\\/", rule_value, "\\/"))
 })
 
 testthat::test_that("field_rule with prompt returns an extra list item named 'prompt'", {
@@ -116,6 +122,10 @@ testthat::test_that("form_validation fails with no rules", {
   testthat::expect_error(form_validation("form"))
 })
 
+testthat::test_that("form_validation fails with invalid rule", {
+  testthat::expect_error(form_validation("form", "No empty fields"))
+})
+
 testthat::test_that("form_validation passes with rules", {
   testthat::expect_error(form_validation("form", field_validation("field", field_rule("checked"))), NA)
 })
@@ -132,7 +142,7 @@ testthat::test_that("Valid form_validation contains a Fomantic UI button", {
   validation <- form_validation(form_id, field_validation("field", field_rule("checked")))
 
   tag_types <- vapply(validation, function(x) x$name, character(1))
-  testthat::expect_equal(sum(tag_types == "button") == 1)
+  testthat::expect_equal(sum(tag_types == "button"), 1)
 
   validation_button <- validation[[which(tag_types == "button")]]
   testthat::expect_match(validation_button$attribs$id, paste0(form_id, "_submit"))
@@ -147,7 +157,7 @@ testthat::test_that("Valid form_validation contains a an error message box", {
 
   validation_divs <- validation[which(tag_types == "div")]
   div_tag_classes <- vapply(validation_divs, function(x) x$attribs$class, character(1))
-  testthat::expect_true(sum(grepl("ui.+error.+message", validation_divs)) == 1)
+  testthat::expect_equal(sum(grepl("ui.+error.+message", validation_divs)), 1)
 })
 
 testthat::test_that("Inline form_validation doesn't contains a an error message box", {
@@ -157,7 +167,7 @@ testthat::test_that("Inline form_validation doesn't contains a an error message 
 
   validation_divs <- validation[which(tag_types == "div")]
   div_tag_classes <- vapply(validation_divs, function(x) x$attribs$class, character(1))
-  testthat::expect_true(sum(grepl("ui.+error.+message", validation_divs)) == 0)
+  testthat::expect_equal(sum(grepl("ui.+error.+message", validation_divs)), 0)
 })
 
 testthat::test_that("Valid form_validation contains a JS script containing the rule validation", {
@@ -165,7 +175,7 @@ testthat::test_that("Valid form_validation contains a JS script containing the r
   validation <- form_validation(form_id, field_validation("field", field_rule("checked")))
 
   tag_types <- vapply(validation, function(x) x$name, character(1))
-  testthat::expect_equal(sum(tag_types == "script") == 1)
+  testthat::expect_equal(sum(tag_types == "script"), 1)
 
   validation_script <- validation[[which(tag_types == "script")]]
   testthat::expect_match(validation_script$children[[1]], "form.*field.*checked")

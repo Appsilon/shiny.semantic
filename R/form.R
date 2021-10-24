@@ -55,7 +55,7 @@
 #'   shinyApp(ui, server)
 #' }
 #'
-#' @seealso \code{\link{field_validation}}, \code{\url{https://fomantic-ui.com/behaviors/form.html}}
+#' @seealso \code{\link{field_validation}}, \url{https://fomantic-ui.com/behaviors/form.html}
 #'
 #' @export
 form_validation <- function(id, ..., submit_label = "Submit", submit_class = "", inline = FALSE) {
@@ -154,11 +154,11 @@ create_form_validation_js <- function(id, rules, inline = FALSE) {
 #' field_validation(
 #'   "password",
 #'   field_rule("empty"),
-#'   field_rule("minLength", 8),
+#'   field_rule("minLength", value = 8),
 #'   field_rule("regExp", "Must contain at least one special character", "\\W")
 #' )
 #'
-#' @seealso \code{\link{form_validation}}, \code{\url{https://fomantic-ui.com/behaviors/form.html}}
+#' @seealso \code{\link{form_validation}}, \url{https://fomantic-ui.com/behaviors/form.html}
 #'
 #' @rdname field_validation
 #' @export

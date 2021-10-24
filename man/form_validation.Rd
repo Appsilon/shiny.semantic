@@ -75,5 +75,5 @@ if (interactive()) {
 
 }
 \seealso{
-\code{\link{field_validation}}, \code{\url{https://fomantic-ui.com/behaviors/form.html}}
+\code{\link{field_validation}}, \url{https://fomantic-ui.com/behaviors/form.html}
 }

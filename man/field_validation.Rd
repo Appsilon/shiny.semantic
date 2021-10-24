@@ -67,11 +67,11 @@ field_validation("email", field_rule("email"))
 field_validation(
   "password",
   field_rule("empty"),
-  field_rule("minLength", 8),
+  field_rule("minLength", value = 8),
   field_rule("regExp", "Must contain at least one special character", "\\\\W")
 )
 
 }
 \seealso{
-\code{\link{form_validation}}, \code{\url{https://fomantic-ui.com/behaviors/form.html}}
+\code{\link{form_validation}}, \url{https://fomantic-ui.com/behaviors/form.html}
 }
