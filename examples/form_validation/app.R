@@ -43,19 +43,41 @@ ui <- shinyUI(
               field(
                 checkbox_input("confirm", label = "I confirm this information is correct", is_marked = FALSE),
               ),
+
               form_validation(
-                id = "form", inline = TRUE,
-                field_validation("firstname", field_rule("empty")),
-                field_validation("surname", field_rule("empty")),
-                field_validation("email", field_rule("email")),
-                field_validation("password", field_rule("minLength", value = 6)),
-                field_validation("password_confirm", field_rule("empty"), field_rule("match", value = "password")),
+                id = "form",
+                field_validation(
+                  "firstname",
+                  field_rule("empty")
+                ),
+                field_validation(
+                  "surname",
+                  field_rule("empty"),
+                  field_rule("doesntContain", value = "test")
+                ),
+                field_validation(
+                  "email",
+                  field_rule("email")
+                ),
+                field_validation(
+                  "password",
+                  field_rule("minLength", value = 6),
+                  field_rule("regExp", "Password must contain at least one special character", "\\W")
+                ),
+                field_validation(
+                  "password_confirm",
+                  field_rule("empty"),
+                  field_rule("match", value = "password")
+                ),
                 field_validation(
                   "age",
                   field_rule("empty"),
-                  field_rule("integer", "You must be at least 18 to join", value = "18..")
+                  field_rule("integer", "You must be at least 18 to register", value = "18..")
                 ),
-                field_validation("confirm", field_rule("checked", "You must confirm to submit details"))
+                field_validation(
+                  "confirm",
+                  field_rule("checked", "Confirm to submit details")
+                )
               )
             )
           )

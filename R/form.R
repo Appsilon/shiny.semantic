@@ -59,21 +59,49 @@
 #'
 #' @export
 form_validation <- function(id, ..., submit_label = "Submit", submit_class = "", inline = FALSE) {
-  fields <- list(...)
-  names(fields) <- vapply(fields, function(x) x$identifier, character(1))
-  fields_json <- jsonlite::toJSON(fields, auto_unbox = TRUE)
+  rules <- list(...)
 
-  tagList(
-    action_button(input_id = paste0(id, "_submit"), label = submit_label, class = paste("submit", submit_class)),
-    if (inline == FALSE) div(class = "ui error message"),
-    tags$script(
-      glue::glue(
-        "$('#{|id|}').form({fields: {|fields_json|}, inline: {|tolower(inline)|}});",
-        .open = "{|", .close = "|}"
-      )
-    )
+  if (length(rules) == 0) {
+    stop("No rules present for ", id)
+  }
+
+  if (!is.logical(inline) || is.na(inline)) {
+    stop("inline must be TRUE or FALSE")
+  }
+
+  if (!all(sapply(rules, inherits, what = "field_validation"))) {
+    stop("Not all items are of class `field_validation`, use `field_validation` to specify rules.")
+  }
+
+  submit_button <- action_button(
+    input_id = paste0(id, "_submit"), label = submit_label,
+    class = paste("submit", submit_class)
   )
 
+  rules_js <- create_form_validation_js(id, rules, inline)
+
+  if (isTRUE(inline)) {
+    tagList(
+      submit_button,
+      tags$script(rules_js)
+    )
+  } else {
+    tagList(
+      submit_button,
+      div(class = "ui error message"),
+      tags$script(rules_js)
+    )
+  }
+}
+
+create_form_validation_js <- function(id, rules, inline = FALSE) {
+  names(rules) <- vapply(rules, function(x) x$identifier, character(1))
+  rules_json <- jsonlite::toJSON(rules, auto_unbox = TRUE)
+
+  glue::glue(
+    "$('#{|id|}').form({fields: {|rules_json|}, inline: {|tolower(inline)|}});",
+    .open = "{|", .close = "|}"
+  )
 }
 
 #' Field Validation for Semantic UI
@@ -136,6 +164,15 @@ form_validation <- function(id, ..., submit_label = "Submit", submit_class = "",
 #' @export
 field_validation <- function(id, ...) {
   rules <- list(...)
+
+  if (length(rules) == 0) {
+    stop("No rules present for ", id)
+  }
+
+  if (!all(sapply(rules, inherits, what = "field_rule"))) {
+    stop("Not all items are of class `field_rule`, use `field_rule` to specify rules.")
+  }
+
   structure(list(identifier = id, rules = rules), class = c("list", "field_validation"))
 }
 
@@ -154,7 +191,7 @@ field_rule <- function(rule, prompt = NULL, value = NULL) {
     if (is.null(value)) {
       stop(rule, " rule must have a value for validation")
     } else if (rule == "regExp") {
-      value <- escape_regex(value)
+      value <- escape_field_validation_regex(value)
     }
 
     rule_info <- list(type = paste0(rule, "[", value, "]"))
@@ -162,10 +199,10 @@ field_rule <- function(rule, prompt = NULL, value = NULL) {
 
   if (!is.null(prompt)) rule_info$prompt <- prompt
 
-  structure(rule_info, class = c("list", "rule_info"))
+  structure(rule_info, class = c("list", "field_rule"))
 }
 
-escape_regex <- function(x) paste0("/", x, "/")
+escape_field_validation_regex <- function(x) paste0("/", x, "/")
 
 FIELD_RULES_NO_VALUES <- c("empty", "checked", "email", "url", "integer", "decimal", "number", "creditCard")
 FIELD_RULES_WITH_VALUES <- c(
