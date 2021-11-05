@@ -73,6 +73,8 @@ warn_unsupported_args <- function(args) {
     to_wrn <- paste0(as.character(names(args)), collapse = ',')
   else if (class(args) == "character")
     to_wrn <- paste0(args, collapse = ',')
+  else if (is.null(args))
+    return()
   else
     stop("Wrong input type!")
   if (nchar(to_wrn) >= 1)
