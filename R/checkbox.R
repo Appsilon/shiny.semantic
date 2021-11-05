@@ -156,7 +156,7 @@ multiple_checkbox <- function(input_id, label, choices, choices_value = choices,
 #' @param input_id The id of the input object
 #' @param choices All available options one can select from. If no need to update then leave as \code{NULL}
 #' @param choices_value What reactive value should be used for corresponding choice.
-#' @param value The initially selected value.
+#' @param selected The initially selected value.
 #' @param label The label linked to the input
 #'
 #' @examples
