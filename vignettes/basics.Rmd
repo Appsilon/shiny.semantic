@@ -37,7 +37,7 @@ UI framework that works under the hood.
 - **What `shiny.semantic` has to do with Fomantic UI?**
 
 Similarly to `Shiny` attaching *Bootstrap* CSS and JS libraries, `shiny.semantic` relies on
-[Fomantic UI](fomantic-ui.com/). Historically, we built this package around *Semantic UI*
+[Fomantic UI](https://fomantic-ui.com/). Historically, we built this package around *Semantic UI*
 library, but it got deprecated and now (since December 2019) we rely on the well-supported
 and maintained community fork called [Fomantic UI](fomantic-ui.com/).
 
@@ -107,7 +107,7 @@ text_input("txt", type = "text", placeholder = "Enter Text")
 date_input("date")
 ```
 
-For more components visit our [Components live demo website](https://demo.appsilon.ai/semantic/)
+For more components visit our [Components live demo website](https://demo.appsilon.com/apps/semantic)
 or the `examples/` folder on our [repository](https://github.com/Appsilon/shiny.semantic/).
 
 Little sneak-peak of what you can get is listed on the graphics below. Most of the components

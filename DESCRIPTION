@@ -22,7 +22,7 @@ Description: Creating a great user interface for your Shiny apps
     can be a hassle, especially if you want to work purely in R
     and don't want to use, for instance HTML templates. This
     package adds support for a powerful UI library Fomantic UI -
-    <http://fomantic-ui.com/> (before Semantic). It also supports
+    <https://fomantic-ui.com/> (before Semantic). It also supports
     universal UI input binding that works with various DOM elements.
 BugReports: https://github.com/Appsilon/shiny.semantic/issues
 Encoding: UTF-8
