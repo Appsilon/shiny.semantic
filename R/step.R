@@ -116,7 +116,16 @@ single_step <- function(id, title, description = NULL, icon_class = NULL,
     )
 }
 
-
+#' Toggle step state
+#'
+#' @param id ID of step to be toggled
+#' @param state State of the step, \code{TRUE} stands for enabled
+#' @param automatic_steps Whether to toggle focus of next step automatically
+#' @param asis When used inside of Shiny module, \code{TRUE} will disable adding
+#'   the namespace to \code{id}
+#'
+#' @seealso steps
+#'
 #' @rdname toggle_step_state
 #' @export
 toggle_step_state <- function(id, state = TRUE, automatic_steps = TRUE,
