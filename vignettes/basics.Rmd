@@ -39,7 +39,7 @@ UI framework that works under the hood.
 Similarly to `Shiny` attaching *Bootstrap* CSS and JS libraries, `shiny.semantic` relies on
 [Fomantic UI](https://fomantic-ui.com/). Historically, we built this package around *Semantic UI*
 library, but it got deprecated and now (since December 2019) we rely on the well-supported
-and maintained community fork called [Fomantic UI](fomantic-ui.com/).
+and maintained community fork called [Fomantic UI](https://fomantic-ui.com/).
 
 - **Do I need to learn a new syntax to be able to use it?**
 
@@ -70,7 +70,7 @@ You can use `shiny.semantic` in two ways:
 ### (a) Using Fomantic CSS classes
 
 If you know this and that about web development, you can create a number of components
-by extending standard `Shiny` objects with class definitions from [Fomantic UI](fomantic-ui.com/)
+by extending standard `Shiny` objects with class definitions from [Fomantic UI](https://fomantic-ui.com/)
 documentation. For example:
 
 ```{r echo=T, include = T, eval = FALSE, screenshot.force = FALSE}
