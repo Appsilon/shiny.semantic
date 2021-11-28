@@ -15,7 +15,7 @@ ui <- semanticPage(
       "percent_ex", percent = 35, progress_lab = TRUE, label = "{percent}% complete", label_complete = "All done!"
     ),
     tags$br(),
-    button("button2", "Increase b 5%"),
+    button("button2", "Increase by 5%"),
     button("button3", "Decrease by 5%"),
     textOutput("percent_ex")
   )

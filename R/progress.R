@@ -73,9 +73,9 @@ progress <- function(input_id, value = NULL, total = NULL, percent = NULL, progr
 #' @export
 update_progress <- function(session, input_id, type = c("increment", "decrement", "label", "value"), value = 1) {
   type <- match.arg(type)
-  message <- structure(list(value), names = type)
+  message <- list(id = input_id, type = type, value = value)
 
-  session$sendInputMessage(input_id, message)
+  session$sendCustomMessage("ssprogress", list(type = "change", message = message))
 }
 
 #' Reporting progress (object-oriented API)

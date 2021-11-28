@@ -70,12 +70,12 @@ if (interactive()) {
         semanticPage(
           title = "Checkbox example",
           h1("Checkboxes"),
-          multiple_checkbox("checkboxes", "Select Letters", LETTERS[1:6], value = "A"),
+          multiple_checkbox("checkboxes", "Select Letters", LETTERS[1:6], selected = "A"),
           p("Selected letters:"),
           textOutput("selected_letters"),
           tags$br(),
           h1("Radioboxes"),
-          multiple_radio("radioboxes", "Select Letter", LETTERS[1:6], value = "A"),
+          multiple_radio("radioboxes", "Select Letter", LETTERS[1:6], selected = "A"),
           p("Selected letter:"),
           textOutput("selected_letter")
        )

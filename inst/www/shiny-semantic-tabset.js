@@ -2,7 +2,7 @@ var semanticTabset = new Shiny.InputBinding();
 
 $.extend(semanticTabset, {
   find: function(scope) {
-    return $(scope).find('.tabular.menu');
+    return $(scope).find('.ui.menu.sem');
   },
   initialize: function(el){
     $(el).find('.item').tab();

@@ -103,12 +103,12 @@ toggle <- function(input_id, label = "", is_marked = TRUE, style = NULL) {
 #'         semanticPage(
 #'           title = "Checkbox example",
 #'           h1("Checkboxes"),
-#'           multiple_checkbox("checkboxes", "Select Letters", LETTERS[1:6], value = "A"),
+#'           multiple_checkbox("checkboxes", "Select Letters", LETTERS[1:6], selected = "A"),
 #'           p("Selected letters:"),
 #'           textOutput("selected_letters"),
 #'           tags$br(),
 #'           h1("Radioboxes"),
-#'           multiple_radio("radioboxes", "Select Letter", LETTERS[1:6], value = "A"),
+#'           multiple_radio("radioboxes", "Select Letter", LETTERS[1:6], selected = "A"),
 #'           p("Selected letter:"),
 #'           textOutput("selected_letter")
 #'        )
@@ -140,12 +140,74 @@ multiple_checkbox <- function(input_id, label, choices, choices_value = choices,
     )
   }))
 
-  shiny::div(
-    id = input_id, class = paste(position, "fields shiny-input-checkboxgroup"),
+  shiny::div(class="ui form",
+    id = input_id, class = paste(position, "fields ss-checkbox-input"),
     tags$label(`for` = input_id, label),
     choices_html,
     ...
   )
+}
+
+#' Update checkbox Semantic UI component
+#'
+#' Change the value of a \code{\link{multiple_checkbox}} input on the client.
+#'
+#' @param session The \code{session} object passed to function given to \code{shinyServer}.
+#' @param input_id The id of the input object
+#' @param choices All available options one can select from. If no need to update then leave as \code{NULL}
+#' @param choices_value What reactive value should be used for corresponding choice.
+#' @param selected The initially selected value.
+#' @param label The label linked to the input
+#'
+#' @examples
+#' if (interactive()) {
+#'
+#' library(shiny)
+#' library(shiny.semantic)
+#'
+#' ui <- function() {
+#'   shinyUI(
+#'     semanticPage(
+#'       title = "Checkbox example",
+#'       form(
+#'         multiple_checkbox(
+#'           "simple_checkbox", "Letters:", LETTERS[1:5], selected = c("A", "C"), type = "slider"
+#'         )
+#'       ),
+#'       p("Selected letter:"),
+#'       textOutput("selected_letter"),
+#'       shiny.semantic::actionButton("simple_button", "Update input to D")
+#'     )
+#'   )
+#' }
+#'
+#' server <- shinyServer(function(input, output, session) {
+#'   output$selected_letter <- renderText(paste(input[["simple_checkbox"]], collapse = ", "))
+#'
+#'   observeEvent(input$simple_button, {
+#'     update_multiple_checkbox(session, "simple_checkbox", selected = "D")
+#'   })
+#' })
+#'
+#' shinyApp(ui = ui(), server = server)
+#'
+#' }
+#'
+#' @export
+update_multiple_checkbox <- function(session = getDefaultReactiveDomain(),
+                                     input_id, choices = NULL, choices_value = choices,
+                                     selected = NULL, label = NULL) {
+  if (!is.null(selected)) value <- jsonlite::toJSON(selected) else value <- NULL
+  if (!is.null(choices)) {
+    options <- jsonlite::toJSON(data.frame(name = choices, value = choices_value))
+  } else {
+    options <- NULL
+  }
+
+  message <- list(choices = options, value = value, label = label)
+  message <- message[!vapply(message, is.null, FUN.VALUE = logical(1))]
+
+  session$sendInputMessage(input_id, message)
 }
 
 #' @rdname multiple_checkbox
@@ -168,10 +230,23 @@ multiple_radio <- function(input_id, label, choices, choices_value = choices,
     )
   }))
 
-  shiny::div(
-    id = input_id, class = paste(position, "fields shiny-input-radiogroup"),
+  shiny::div(class="ui form",
+    id = input_id, class = paste(position, "fields ss-checkbox-input"),
     tags$label(`for` = input_id, label),
     choices_html,
     ...
   )
+}
+
+#' @rdname update_multiple_checkbox
+#' @export
+update_multiple_radio <- function(session = getDefaultReactiveDomain(),
+                                  input_id, choices = NULL, choices_value = choices,
+                                  selected = NULL, label = NULL) {
+  if (length(selected) > 1) {
+    warning("More than one radio box has been selected, only first will be used")
+    selected <- selected[1]
+  }
+
+  update_multiple_checkbox(session, input_id, choices, choices_value, selected, label)
 }

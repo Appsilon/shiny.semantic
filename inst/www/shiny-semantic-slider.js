@@ -18,7 +18,7 @@ $.extend(semanticSliderBinding, {
       }
       sliderOptions.max = sliderData.ticks.length - 1;
     } else {
-      sliderOptions.interpretLabel = Number(sliderData.min);
+      sliderOptions.min = Number(sliderData.min);
       sliderOptions.max = Number(sliderData.max);
       sliderOptions.step = Number(sliderData.step);
       sliderOptions.start = Number(sliderData.start);

@@ -8,21 +8,24 @@
 \alias{hide_modal}
 \title{Show, Hide or Remove Semantic UI modal}
 \usage{
-show_modal(id, session = shiny::getDefaultReactiveDomain())
+show_modal(id, session = shiny::getDefaultReactiveDomain(), asis = TRUE)
 
-remove_modal(id, session = shiny::getDefaultReactiveDomain())
+remove_modal(id, session = shiny::getDefaultReactiveDomain(), asis = TRUE)
 
 remove_all_modals(session = shiny::getDefaultReactiveDomain())
 
 removeModal(session = shiny::getDefaultReactiveDomain())
 
-hide_modal(id, session = shiny::getDefaultReactiveDomain())
+hide_modal(id, session = shiny::getDefaultReactiveDomain(), asis = TRUE)
 }
 \arguments{
 \item{id}{ID of the modal that will be displayed.}
 
 \item{session}{The \code{session} object passed to function given to
 \code{shinyServer}.}
+
+\item{asis}{A boolean indicating if the id must be handled as is (TRUE) or
+will be it must be namespaced (FALSE)}
 }
 \description{
 This displays a hidden Semantic UI modal.

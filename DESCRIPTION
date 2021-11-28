@@ -3,7 +3,7 @@ Type: Package
 Title: Semantic UI Support for Shiny
 Version: 0.4.3
 Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com", role = "aut"),
-  person("Dominik", "Krzeminski", email = "dominik@appsilon.com", role = "cre"),
+  person("Dominik", "Krzeminski", email = "dominik@appsilon.com", role = "aut"),
   person("Krystian", "Igras", email = "krystian@appsilon.com", role = "aut"),
   person("Adam", "Forys", email = "adam@appsilon.com", role = "aut"),
   person("Paweł", "Przytuła", email = "pawel@appsilon.com", role = "aut"),
@@ -16,12 +16,13 @@ Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com", role = "a
   person("Paweł", "Przytuła", email = "pawel@appsilon.com", role = "ctb"),
   person("Kamil", "Żyła", email = "kamil@appsilon.com", role = "ctb"),
   person("Rabii", "Bouhestine", email = "rabii@appsilon.com", role = "ctb"),
+  person("Developers", "Appsilon", email = "support+opensource@appsilon.com", role = "cre"),
   person(family = "Appsilon Sp. z o.o.", role = c("cph")))
 Description: Creating a great user interface for your Shiny apps
     can be a hassle, especially if you want to work purely in R
     and don't want to use, for instance HTML templates. This
     package adds support for a powerful UI library Fomantic UI -
-    <http://fomantic-ui.com/> (before Semantic). It also supports
+    <https://fomantic-ui.com/> (before Semantic). It also supports
     universal UI input binding that works with various DOM elements.
 BugReports: https://github.com/Appsilon/shiny.semantic/issues
 Encoding: UTF-8
@@ -48,5 +49,7 @@ Suggests:
     DT,
     covr,
     leaflet,
-    plotly
-RoxygenNote: 7.1.1
+    plotly,
+    rmarkdown,
+    markdown
+RoxygenNote: 7.1.2

@@ -128,8 +128,8 @@ sidebar_layout <- function(sidebar_panel,
 
   grid(
     grid_template = layout,
-    container_style,
-    area_styles,
+    container_style = container_style,
+    area_styles = area_styles,
     sidebar_panel = sidebar_children,
     main_panel = main_children
   )
