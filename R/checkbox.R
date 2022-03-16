@@ -55,7 +55,8 @@ checkbox_input <- function(input_id, label = "", type = NULL, is_marked = TRUE,
 #' @rdname checkbox
 #' @export
 checkboxInput <- function(inputId, label = "", value = FALSE, width = NULL){
-  warn_unsupported_args(c("width"))
+  if (!is.null(width))
+    warn_unsupported_args(c("width"))
   checkbox_input(inputId, label, is_marked = value)
 }
 
