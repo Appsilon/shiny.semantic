@@ -32,9 +32,9 @@ update_multiple_radio(
 
 \item{choices_value}{What reactive value should be used for corresponding choice.}
 
-\item{label}{The label linked to the input}
+\item{selected}{The initially selected value.}
 
-\item{value}{The initially selected value.}
+\item{label}{The label linked to the input}
 }
 \description{
 Change the value of a \code{\link{multiple_checkbox}} input on the client.

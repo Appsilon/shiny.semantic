@@ -24,7 +24,7 @@ hide_modal(id, session = shiny::getDefaultReactiveDomain(), asis = TRUE)
 \item{session}{The \code{session} object passed to function given to
 \code{shinyServer}.}
 
-\item{asis}{A boolean indicating if the id must be handled as is (TRUE) or 
+\item{asis}{A boolean indicating if the id must be handled as is (TRUE) or
 will be it must be namespaced (FALSE)}
 }
 \description{
