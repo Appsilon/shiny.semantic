@@ -125,6 +125,7 @@ server <- shinyServer(function(input, output) {
 })
 shinyApp(ui, server)
 }
+
 ## Changing attributes of header and content.
 if (interactive()) {
 library(shiny)
@@ -152,24 +153,36 @@ server = function(input, output) {
 }
 shinyApp(ui, server)
 }
+
+## Modal that closes automatically after specific time
 if (interactive()) {
 library(shiny)
 library(shiny.semantic)
-shinyApp(
-  ui = semanticPage(
-    actionButton("show", "Show modal dialog")
-  ),
-  server = function(input, output) {
-    observeEvent(input$show, {
-      showModal(modalDialog(
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      actionButton("show", "Show modal dialog")
+    )
+  )
+}
+
+server <- shinyServer(function(input, output, session) {
+  observeEvent(input$show, {
+    create_modal(
+      modal(
+        id = "simple-modal",
         title = "Important message",
-        "This modal will close after 3 sec.", easyClose = FALSE
-      ))
-      Sys.sleep(3)
-      removeModal()
-    })
-  }
-)
+        header = "Example modal",
+        content = "This modal will close after 3 sec.",
+        footer = NULL,
+      )
+    )
+    Sys.sleep(3)
+    hide_modal(id = "simple-modal")
+  })
+})
+
+shinyApp(ui = ui(), server = server)
 }
 
 }
