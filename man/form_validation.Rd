@@ -2,13 +2,14 @@
 % Please edit documentation in R/form.R
 \name{form_validation}
 \alias{form_validation}
-\title{Form Validation for Semantic UI}
+\title{Form Validation for Fomantic UI}
 \usage{
 form_validation(
   id,
   ...,
   submit_label = "Submit",
   submit_class = "",
+  include_button = TRUE,
   inline = FALSE
 )
 }
@@ -22,8 +23,17 @@ value \code{\{id\}_submit})}
 
 \item{submit_class}{Additional classes to give the submission button}
 
+\item{include_button}{Logical, should the submit button be included? Defaults to \code{TRUE}. If \code{FALSE}, a
+\code{\link{action_button}} will be required in the form somewhere with
+\code{"submit form-button"} included as part of the class in order for the validation to run.}
+
 \item{inline}{Logical, do you want the field validation errors as in-line labels (\code{TRUE}),
 or in a message box at the bottom of the form (\code{FALSE})?}
+}
+\value{
+A \code{shiny.tag.list} containing the inline JS to perform the form validation in the shiny UI.
+
+If \code{include_button = TRUE} then a button will also be included to appear in the UI.
 }
 \description{
 A form validation behaviour checks data against a set of criteria before passing it along to the server.
@@ -31,14 +41,8 @@ A form validation behaviour checks data against a set of criteria before passing
 \details{
 In order for the validation to work, the \code{form_validation} must be a direct child of the \code{form}.
 
-There are two ways to control using form inputs on the server side:
-
-\itemize{
-\item{The form id is enabled as an input, and will either be \code{TRUE} or \code{FALSE} depending on the status of
-the form upon the last submission. When the shiny application loads, by default it will be set to \code{FALSE}}
-\item{Alternatively the "Submit" button has an input value of \code{{id}_submit} and will only trigger
-server-side events if all the fields pass validation.}
-}
+The "Submit" button has an input value of \code{\{id\}_submit} and will only trigger
+server-side events if all the fields pass validation.
 
 \strong{NB} If you do not include either form validation input as part of the server-side code
 then the inputs will pass through to the server as if there were no validation.
@@ -49,6 +53,9 @@ if (interactive()) {
   library(shiny.semantic)
 
   ui <- semanticPage(
+    tags$head(
+      extendShinySemantic()
+    ),
     form(
       id = "form",
       field(
@@ -78,5 +85,5 @@ if (interactive()) {
 \url{https://fomantic-ui.com/behaviors/form.html}
 }
 \seealso{
-\code{\link{field_validation}}
+\code{\link{field_validation}}, \code{\link{form_button}}
 }

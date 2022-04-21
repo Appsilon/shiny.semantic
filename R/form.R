@@ -1,4 +1,4 @@
-#' Form Validation for Semantic UI
+#' Form Validation for Fomantic UI
 #'
 #' A form validation behaviour checks data against a set of criteria before passing it along to the server.
 #'
@@ -7,20 +7,22 @@
 #' @param submit_label Label to give the submission button at the end of the form (included in returned UI with input
 #' value \code{\{id\}_submit})
 #' @param submit_class Additional classes to give the submission button
+#' @param include_button Logical, should the submit button be included? Defaults to \code{TRUE}. If \code{FALSE}, a
+#' \code{\link{action_button}} will be required in the form somewhere with
+#' \code{"submit form-button"} included as part of the class in order for the validation to run.
 #' @param inline Logical, do you want the field validation errors as in-line labels (\code{TRUE}),
 #' or in a message box at the bottom of the form (\code{FALSE})?
+#'
+#' @return
+#' A \code{shiny.tag.list} containing the inline JS to perform the form validation in the shiny UI.
+#'
+#' If \code{include_button = TRUE} then a button will also be included to appear in the UI.
 #'
 #' @details
 #' In order for the validation to work, the \code{form_validation} must be a direct child of the \code{form}.
 #'
-#' There are two ways to control using form inputs on the server side:
-#'
-#' \itemize{
-#' \item{The form id is enabled as an input, and will either be \code{TRUE} or \code{FALSE} depending on the status of
-#' the form upon the last submission. When the shiny application loads, by default it will be set to \code{FALSE}}
-#' \item{Alternatively the "Submit" button has an input value of \code{{id}_submit} and will only trigger
-#' server-side events if all the fields pass validation.}
-#' }
+#' The "Submit" button has an input value of \code{\{id\}_submit} and will only trigger
+#' server-side events if all the fields pass validation.
 #'
 #' \strong{NB} If you do not include either form validation input as part of the server-side code
 #' then the inputs will pass through to the server as if there were no validation.
@@ -55,11 +57,12 @@
 #'   shinyApp(ui, server)
 #' }
 #'
-#' @seealso \code{\link{field_validation}}
+#' @seealso \code{\link{field_validation}}, \code{\link{form_button}}
 #' @references \url{https://fomantic-ui.com/behaviors/form.html}
 #'
 #' @export
-form_validation <- function(id, ..., submit_label = "Submit", submit_class = "", inline = FALSE) {
+form_validation <- function(id, ..., submit_label = "Submit", submit_class = "",
+                            include_button = TRUE, inline = FALSE) {
   rules <- list(...)
 
   if (length(rules) == 0) {
@@ -74,38 +77,33 @@ form_validation <- function(id, ..., submit_label = "Submit", submit_class = "",
     stop("Not all items are of class `field_validation`, use `field_validation` to specify rules.")
   }
 
-  submit_button <- action_button(
-    input_id = paste0(id, "_submit"), label = submit_label,
-    class = paste("submit", submit_class)
-  )
+  if (include_button) {
+    submit_button <- form_button(
+      input_id = paste0(id, "_submit"),
+      label = submit_label,
+      class = submit_class
+    )
+  } else {
+    submit_button <- NULL
+  }
 
   rules_js <- create_form_validation_js(id, rules, inline)
 
-  if (isTRUE(inline)) {
-    tagList(
-      submit_button,
-      tags$script(rules_js)
-    )
-  } else {
-    tagList(
-      submit_button,
-      div(class = "ui error message"),
-      tags$script(rules_js)
-    )
-  }
+  tagList(
+    submit_button,
+    if (isTRUE(inline)) div(class = "ui error message"),
+    tags$script(rules_js)
+  )
 }
 
 create_form_validation_js <- function(id, rules, inline = FALSE) {
   names(rules) <- vapply(rules, function(x) x$identifier, character(1))
   rules_json <- jsonlite::toJSON(rules, auto_unbox = TRUE)
 
-  glue::glue(
-    "$('#{|id|}').form({fields: {|rules_json|}, inline: {|tolower(inline)|}});",
-    .open = "{|", .close = "|}"
-  )
+  paste0("$('#", id, "').form({fields: ", rules_json, ", inline: ", tolower(inline), "});")
 }
 
-#' Field Validation for Semantic UI
+#' Field Validation for Fomantic UI
 #'
 #' A field validation assigns a series of rules that have been assigned to a particular input and checks, upon
 #' the form submission, whether or not the input meets all specified criteria.
@@ -115,12 +113,18 @@ create_form_validation_js <- function(id, rules, inline = FALSE) {
 #'
 #' @param id HTML id of the field to be validated
 #' @param ... A series of \code{field_rule}s that will be applied to the field
+#' @param extra_params A named list of extra parameters that can be added to the field validation. For example
+#' \code{optional = TRUE} means the field will only be checked if non-empty
+#'
+#' @return
+#' A structured list of the \code{field_rules} that can be recognised by \code{\link{form_validation}}.
 #'
 #' @details
 #' The following \code{rules} are allowed:
 #' \describe{
 #' \item{\code{empty}}{A field is not empty}
 #' \item{\code{checked}}{A checkbox field is checked}
+#' \item{\code{email}}{A field is a valid e-mail address}
 #' \item{\code{url}}{A field is a url}
 #' \item{\code{integer}}{A field is an integer value or matches an integer range\code{*}}
 #' \item{\code{decimal}}{A field must be a decimal number or matches a decimal range\code{*}}
@@ -138,7 +142,6 @@ create_form_validation_js <- function(id, rules, inline = FALSE) {
 #' \item{\code{minCount}, \code{exactCount}, \code{maxCount}}{
 #' A multiple select field contains at least/exactly/at most a set number of selections
 #' }
-#'
 #' }
 #'
 #' \code{*} For ranges, include the parameter \code{value = "x..y"}
@@ -165,7 +168,7 @@ create_form_validation_js <- function(id, rules, inline = FALSE) {
 #'
 #' @rdname field_validation
 #' @export
-field_validation <- function(id, ...) {
+field_validation <- function(id, ..., extra_params = NULL) {
   rules <- list(...)
 
   if (length(rules) == 0) {
@@ -176,7 +179,9 @@ field_validation <- function(id, ...) {
     stop("Not all items are of class `field_rule`, use `field_rule` to specify rules.")
   }
 
-  structure(list(identifier = id, rules = rules), class = c("list", "field_validation"))
+  field_rules <- structure(list(identifier = id, rules = rules), class = c("list", "field_validation"))
+  if (!is.null(extra_params)) field_rules <- append(field_rules, extra_params)
+  field_rules
 }
 
 #' @param rule The type of rule to be applied. Valid rules are available in Details.

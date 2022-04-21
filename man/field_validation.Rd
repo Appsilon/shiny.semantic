@@ -3,9 +3,9 @@
 \name{field_validation}
 \alias{field_validation}
 \alias{field_rule}
-\title{Field Validation for Semantic UI}
+\title{Field Validation for Fomantic UI}
 \usage{
-field_validation(id, ...)
+field_validation(id, ..., extra_params = NULL)
 
 field_rule(rule, prompt = NULL, value = NULL)
 }
@@ -14,11 +14,17 @@ field_rule(rule, prompt = NULL, value = NULL)
 
 \item{...}{A series of \code{field_rule}s that will be applied to the field}
 
+\item{extra_params}{A named list of extra parameters that can be added to the field validation. For example
+\code{optional = TRUE} means the field will only be checked if non-empty}
+
 \item{rule}{The type of rule to be applied. Valid rules are available in Details.}
 
 \item{prompt}{Text to be displayed in the UI if the validation fails. Leave \code{NULL} if want to use default text.}
 
 \item{value}{Certain fields require a value to check validation. Check Details if the \code{rule} requires a value.}
+}
+\value{
+A structured list of the \code{field_rules} that can be recognised by \code{\link{form_validation}}.
 }
 \description{
 A field validation assigns a series of rules that have been assigned to a particular input and checks, upon
@@ -33,6 +39,7 @@ The following \code{rules} are allowed:
 \describe{
 \item{\code{empty}}{A field is not empty}
 \item{\code{checked}}{A checkbox field is checked}
+\item{\code{email}}{A field is a valid e-mail address}
 \item{\code{url}}{A field is a url}
 \item{\code{integer}}{A field is an integer value or matches an integer range\code{*}}
 \item{\code{decimal}}{A field must be a decimal number or matches a decimal range\code{*}}
@@ -50,7 +57,6 @@ A field should (not) match the value of another validation field. Use the field 
 \item{\code{minCount}, \code{exactCount}, \code{maxCount}}{
 A multiple select field contains at least/exactly/at most a set number of selections
 }
-
 }
 
 \code{*} For ranges, include the parameter \code{value = "x..y"}

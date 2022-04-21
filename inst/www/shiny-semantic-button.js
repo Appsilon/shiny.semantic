@@ -19,7 +19,7 @@ $.extend(semanticButtonBinding, {
       var val = $el.data('val') || 0;
 
       // If button is a submit button in a form, then need to check validation is in place first
-      if ($el.hasClass('submit') && $el.parent().hasClass('form')) {
+      if ($el.hasClass('form-button') && $el.parent().hasClass('form')) {
         if (!$el.parent().form('is valid')) {
           return;
         }

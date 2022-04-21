@@ -146,7 +146,7 @@ testthat::test_that("Valid form_validation contains a Fomantic UI button", {
 
   validation_button <- validation[[which(tag_types == "button")]]
   testthat::expect_match(validation_button$attribs$id, paste0(form_id, "_submit"))
-  testthat::expect_match(validation_button$attribs$class, "ui.+submit.+button")
+  testthat::expect_match(validation_button$attribs$class, "ui.+form.+button")
 })
 
 testthat::test_that("Valid form_validation contains a an error message box", {
