@@ -1,17 +1,17 @@
 $(document).ready(function() {
   $('.collapsed-hamburger-icon').on('click', function() {
-    $('.navbar-collapisble-item').transition('fade down');
+    $('.navbar-collapsible-item:not(.hidden-item)').transition('fade down');
   });
 
   if (window.innerWidth < 768) {
-    $('.navbar-collapisble-item').transition('hide');
+    $('.navbar-collapsible-item').transition('hide');
   }
 
   window.addEventListener('resize', function(event) {
     if (window.innerWidth >= 768) {
-      $('.navbar-collapisble-item').transition('show');
+      $('.navbar-collapsible-item:not(.hidden-item)').transition('show');
     } else {
-      $('.navbar-collapisble-item').transition('hide');
+      $('.navbar-collapsible-item:not(.hidden-item)').transition('hide');
     }
   }, true);
 });

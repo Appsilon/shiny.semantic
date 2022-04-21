@@ -8,7 +8,7 @@
 #' Inside, it uses two crucial options:
 #'
 #' (1) \code{shiny.minified} with a logical value, tells whether it should attach min or full
-#' semnatic css or js (TRUE by default).
+#' semantic css or js (TRUE by default).
 #' (2) \code{shiny.custom.semantic} if this option has not NULL character \code{semanticPage}
 #' takes dependencies from custom css and js files specified in this path
 #' (NULL by default). Depending on \code{shiny.minified} value the folder should contain
@@ -27,6 +27,7 @@
 #' \item{"top fixed"}{Top of page, pinned when scrolling}
 #' \item{"bottom fixed"}{Bottom of page, pinned when scrolling}
 #' }
+#' @param head Optional list of tags to be added to \code{tags$head}.
 #' @param header Optional list of tags to be added to the top of all \code{tab_panel}s.
 #' @param footer Optional list of tags to be added to the bottom of all \code{tab_panel}s.
 #' @param collapsible \code{TRUE} to automatically collapse the navigation elements into a menu when the width of the
@@ -36,10 +37,13 @@
 #' @param class Additional classes to be given to the navbar menu. Defaults to \code{"stackable"}. For optional classes
 #' have a look in details
 #' @param theme Theme name or path. Full list of supported themes you will find in
-#' \code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.
+#' \code{SUPPORTED_THEMES} or at https://semantic-ui-forest.com/themes.
 #' @param enable_hash_state boolean flag that enables a different hash in the URL for each tab, and creates historical
 #' events
-#' @param suppress_bootstrap boolean flag that supresses bootstrap when turned on
+#' @param suppress_bootstrap boolean flag that suppresses bootstrap when turned on
+#'
+#' @return
+#' A \code{shiny.tag.list} containing the UI for a shiny application.
 #'
 #' @details
 #' The following classes can be applied to the navbar:
@@ -73,7 +77,7 @@
 #' @export
 navbar_page <- function(..., title = "", id = NULL, selected = NULL,
                         position = c("", "top fixed", "bottom fixed"),
-                        header = NULL, footer = NULL,
+                        head = NULL, header = NULL, footer = NULL,
                         collapsible = FALSE, window_title = title,
                         class = "stackable", theme = NULL,
                         enable_hash_state = TRUE, suppress_bootstrap = TRUE) {
@@ -112,6 +116,10 @@ navbar_page <- function(..., title = "", id = NULL, selected = NULL,
   menu_content <- lapply(tabs, navbar_content_creator, selected = selected)
 
   semanticPage(
+    tags$head(
+      if (enable_hash_state) tags$script(src = "shiny.semantic/shared/history/history.min.js"),
+      head
+    ),
     menu_header,
     div(style = body_padding, tags$header(header), tags$main(menu_content), tags$footer(footer)),
     title = window_title, theme = theme, suppress_bootstrap = suppress_bootstrap, margin = 0
@@ -126,7 +134,7 @@ navbar_menu_creator <- function(tab, selected = NULL) {
       tags$i(class = "dropdown icon"),
       div(class = "menu", lapply(tab$tabs, navbar_menu_creator, selected = selected)),
       is_menu_item = TRUE,
-      class = "navbar-collapisble-item"
+      class = "navbar-collapsible-item"
     )
     nav_menu[[1]]$attribs$`data-tab` = tab$id
     nav_menu
@@ -139,7 +147,7 @@ navbar_menu_creator <- function(tab, selected = NULL) {
     class <- paste0(if (identical(title, selected)) "active " else "", "item")
 
     tags$a(
-      class = paste("navbar-collapisble-item", class),
+      class = paste("navbar-collapsible-item", class),
       `data-tab` = tab_id,
       if (!is.null(icon)) tags$i(class = paste(icon, "icon")),
       if (!(!is.null(icon) && title == "")) title
@@ -183,6 +191,9 @@ get_first_tab <- function(tabs, i = 1) {
 #' @param id The ID of the \code{navbar_menu}
 #' @param icon Optional icon to appear on the tab.
 #' This attribute is only valid when using a \code{tab_panel} within a \code{\link{navbar_page}}.
+#'
+#' @return
+#' A structured list of class \code{ssnavmenu}, that can be used in \code{\link{navbar_page}}.
 #'
 #' @examples
 #' navbar_menu(
@@ -243,6 +254,9 @@ tab_panel <- function(title, ..., value = title, icon = NULL, type = "bottom att
 #' @param session The \code{session} object passed to function given to \code{shinyServer}.
 #' @param id The id of the navbar object
 #' @param target The tab value to toggle visibility
+#'
+#' @return
+#' Changes to the visibility of a tab in the shiny UI.
 #'
 #' @examples
 #' if (interactive()) {
