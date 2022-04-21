@@ -80,7 +80,7 @@ text_input <- function(input_id, label = NULL, value = "", type = "text",
   }
 
   if (type == "textarea") {
-    input <- tags$textarea(id = input_id, value = value, placeholder = placeholder)
+    input <- tags$textarea(id = input_id, value, placeholder = placeholder)
   } else {
     input <- tags$input(id = input_id, value = value, type = type, placeholder = placeholder)
   }
@@ -110,7 +110,7 @@ text_input <- function(input_id, label = NULL, value = "", type = "text",
 #' ## Only run examples in interactive R sessions
 #' if (interactive()) {
 #' ui <- semanticPage(
-#'   textAreaInput("a", "Area:", width = "200px"),
+#'   textAreaInput("a", "Area:", value = "200", width = "200px"),
 #'   verbatimTextOutput("value")
 #' )
 #' server <- function(input, output, session) {
@@ -125,7 +125,7 @@ textAreaInput <- function(inputId, label, value = "", width = NULL, placeholder 
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
     shiny::div(class = "field",
                if (!is.null(label)) tags$label(label, `for` = inputId),
-               text_input(inputId, value,
+               text_input(inputId, value = value,
                           placeholder = placeholder, type = "textarea")
     )
   )
