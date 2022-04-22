@@ -160,7 +160,7 @@ testthat::test_that("Valid form_validation contains a an error message box", {
   testthat::expect_equal(sum(grepl("ui.+error.+message", validation_divs)), 1)
 })
 
-testthat::test_that("Inline form_validation doesn't contains a an error message box", {
+testthat::test_that("Inline form_validation doesn't contain a an error message box", {
   validation <- form_validation("form", field_validation("field", field_rule("checked")), inline = TRUE)
 
   tag_types <- vapply(validation, function(x) x$name, character(1))

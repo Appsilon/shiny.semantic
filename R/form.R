@@ -89,11 +89,18 @@ form_validation <- function(id, ..., submit_label = "Submit", submit_class = "",
 
   rules_js <- create_form_validation_js(id, rules, inline)
 
-  tagList(
-    submit_button,
-    if (isTRUE(inline)) div(class = "ui error message"),
-    tags$script(rules_js)
-  )
+  if (isTRUE(inline)) {
+    tagList(
+      submit_button,
+      tags$script(rules_js)
+    )
+  } else {
+    tagList(
+      submit_button,
+      div(class = "ui error message"),
+      tags$script(rules_js)
+    )
+  }
 }
 
 create_form_validation_js <- function(id, rules, inline = FALSE) {
