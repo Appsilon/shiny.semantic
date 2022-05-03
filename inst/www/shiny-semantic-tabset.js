@@ -34,3 +34,16 @@ $.extend(semanticTabset, {
 });
 
 Shiny.inputBindings.register(semanticTabset, 'shiny.semanticTabset');
+
+$(document).ready(() => {
+  $('.menu a.item, .menu .link.item').on('click', function() {
+    if(!$(this).hasClass('dropdown browse')) {
+      $(this)
+        .addClass('active')
+        .closest('.ui.menu')
+        .find('.item')
+        .not($(this))
+        .removeClass('active');
+    }
+  });
+});
