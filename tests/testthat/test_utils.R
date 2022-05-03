@@ -14,6 +14,7 @@ test_that("test check_proper_color", {
 })
 
 test_that("test warn_unsupported_args", {
+  expect_null(warn_unsupported_args(NULL))
   expect_error(warn_unsupported_args(1), "Wrong input type!")
   expect_warning(warn_unsupported_args(c("a","b")), "arguments: `a,b` are not supported yet")
   expect_warning(warn_unsupported_args(list(a=1,b=2)), "arguments: `a,b` are not supported yet")
