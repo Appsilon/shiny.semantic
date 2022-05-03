@@ -11,14 +11,12 @@ date_input(
   value = NULL,
   min = NULL,
   max = NULL,
-  style = NULL,
-  icon_name = "calendar"
+  style = NULL
 )
 
 dateInput(
   inputId,
   label = NULL,
-  icon = NULL,
   value = NULL,
   min = NULL,
   max = NULL,
@@ -39,11 +37,7 @@ dateInput(
 
 \item{style}{Css style for widget.}
 
-\item{icon_name}{Icon that should be displayed on widget.}
-
 \item{inputId}{Input id.}
-
-\item{icon}{Icon that should be displayed on widget.}
 
 \item{width}{character width of the object}
 
