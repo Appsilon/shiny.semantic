@@ -58,7 +58,7 @@ ui <- semanticPage(
 
 ### Case studies
 
-| [:link: Churn analytics](https://demo.appsilon.ai/churn) | [:link: Fraud detection](https://demo.appsilon.ai/frauds) |
+| [:link: Churn analytics](https://demo.appsilon.ai/churn) | [:link: Fraud detection](https://demo.prod.appsilon.ai/flights_fraud_demo/) |
 | :------------------------------------------------------: | :-------------------------------------------------------: |
 | <img src="man/figures/churn.png" alt="" width="100%" />  |  <img src="man/figures/fraud.png" alt="" width="100%" />  |
 
