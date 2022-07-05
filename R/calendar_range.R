@@ -9,11 +9,11 @@
 #' changes done in the end range calendar.
 #'
 #' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
-#' @param type Select from \code{'year'}, \code{'month'}, \code{'date'} and \code{'time'}.
 #' @param start_value Initial value of the calendar defining the start of the range.
 #' @param end_value Initial value of the calendar defining the end of the range.
 #' @param start_placeholder Text visible in the start calendar input when nothing is inputted.
 #' @param end_placeholder Text visible in the end calendar input when nothing is inputted.
+#' @param type Select from \code{'year'}, \code{'month'}, \code{'date'} and \code{'time'}.
 #' @param min Minimum allowed value in both calendars.
 #' @param max Maximum allowed value in both calendars.
 #'
