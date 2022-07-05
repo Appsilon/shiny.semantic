@@ -3,7 +3,7 @@ library(shiny.semantic)
 
 ui <- semanticPage(
         title = "Calendar range example",
-        calendar_range(
+        calendar_range_double(
           input_id = "calendar_range",
           start_value = "2020-02-20",
           end_value = "2020-03-20",
