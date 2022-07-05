@@ -78,4 +78,24 @@ calendar(
   type = "month"
 )
 }
+
+
+\dontrun{
+# Calendar range
+  calendar(
+    input_id = "start_date",
+    type = "date",
+    value = "2020-02-20",
+    min = "2020-01-01",
+    max = "2020-03-01",
+  )
+
+  calendar(
+    input_id = "end_date",
+    type = "date",
+    value = "2020-02-23",
+    min = "2020-01-01",
+    max = "2020-03-01",
+  )
+}
 }
