@@ -17,10 +17,10 @@
 #' @param min Minimum allowed value in both calendars.
 #' @param max Maximum allowed value in both calendars.
 #'
-#' @rdname calendar_range
+#' @rdname calendar_range_double
 #' @export
 #'
-calendar_range <- function(input_id, type = "date", start_value = NULL, end_value = NULL,
+calendar_range_double <- function(input_id, type = "date", start_value = NULL, end_value = NULL,
                            start_placeholder = NULL, end_placeholder = NULL, min = NA, max = NA) {
   if (!is.null(start_value)) start_value <- format(as.Date(start_value), "%Y/%m/%d")
   if (!is.null(end_value)) end_value <- format(as.Date(end_value), "%Y/%m/%d")
