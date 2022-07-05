@@ -27,29 +27,6 @@ calendar_range <- function(input_id, type = "date", start_value = NULL, end_valu
   if (!is.na(min)) min <- format(as.Date(min), "%Y/%m/%d")
   if (!is.na(max)) max <- format(as.Date(max), "%Y/%m/%d")
 
-  create_cal_widget <- function(type, value, placeholder, min, max) {
-    cal_widget <- div(
-      class = "ui calendar ss-input-date-range-item",
-      `data-type` = type,
-      `data-date` = start_value,
-      div(
-        class = "ui input left icon",
-        tags$i(class = "calendar icon"),
-        tags$input(type = "text", placeholder = start_placeholder)
-      )
-    )
-
-    if (!is.na(min)) {
-      cal_widget$attribs[["data-min-date"]] <- min
-    }
-
-    if (!is.na(max)) {
-      cal_widget$attribs[["data-msx-date"]] <- max
-    }
-
-    cal_widget
-  }
-
   start_cal_widget <- create_cal_widget(
     type = type,
     value = start_value,
@@ -83,6 +60,29 @@ calendar_range <- function(input_id, type = "date", start_value = NULL, end_valu
   )
 
   cal_range_widget
+}
+
+create_cal_widget <- function(type="date", value, placeholder, min, max) {
+  cal_widget <- div(
+    class = "ui calendar ss-input-date-range-item",
+    `data-type` = type,
+    `data-date` = value,
+    div(
+      class = "ui input left icon",
+      tags$i(class = "calendar icon"),
+      tags$input(type = "text", placeholder)
+    )
+  )
+
+  if (!is.na(min)) {
+    cal_widget$attribs[["data-min-date"]] <- min
+  }
+
+  if (!is.na(max)) {
+    cal_widget$attribs[["data-max-date"]] <- max
+  }
+
+  cal_widget
 }
 
 #'
