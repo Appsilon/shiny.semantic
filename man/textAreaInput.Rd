@@ -24,7 +24,7 @@ Create a text area input control for entry of unstructured text values.
 ## Only run examples in interactive R sessions
 if (interactive()) {
 ui <- semanticPage(
-  textAreaInput("a", "Area:", width = "200px"),
+  textAreaInput("a", "Area:", value = "200", width = "200px"),
   verbatimTextOutput("value")
 )
 server <- function(input, output, session) {

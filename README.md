@@ -58,7 +58,7 @@ ui <- semanticPage(
 
 ### Case studies
 
-| [:link: Churn analytics](https://demo.appsilon.ai/churn) | [:link: Fraud detection](https://demo.appsilon.ai/frauds) |
+| [:link: Churn analytics](https://demo.appsilon.ai/churn) | [:link: Fraud detection](https://demo.prod.appsilon.ai/flights_fraud_demo/) |
 | :------------------------------------------------------: | :-------------------------------------------------------: |
 | <img src="man/figures/churn.png" alt="" width="100%" />  |  <img src="man/figures/fraud.png" alt="" width="100%" />  |
 
@@ -245,11 +245,11 @@ install.packages("shiny", version='0.14.2.9001')
   - adding more semantic components
   - new version release on CRAN
 
-## Appsilon Data Science
+## Appsilon
 
 <img src="https://avatars0.githubusercontent.com/u/6096772" align="right" alt="" width="6%" />
 
 Appsilon is the **Full Service Certified RStudio Partner**. Learn more
 at [appsilon.com](https://appsilon.com).
 
-Get in touch [dev@appsilon.com](dev@appsilon.com)
+Get in touch [support+opensource@appsilon.com](support+opensource@appsilon.com)
