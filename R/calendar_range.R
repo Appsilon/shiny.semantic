@@ -5,8 +5,8 @@
 #' available under \code{input[[input_id]]}.
 #'
 #' @details The Semantic UI calendar range automatically pops up the end range
-#' calendar when changing the start range. Therefore events are only sent on
-#' changes done in the end range calendar.
+#' calendar when changing the start date. Therefore events are only sent on
+#' changes done in the end date calendar.
 #'
 #' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
 #' @param start_value Initial value of the calendar defining the start of the range.
