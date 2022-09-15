@@ -15,3 +15,4 @@ path to default css semantic file or default filename
 \description{
 Get default semantic css
 }
+\keyword{internal}

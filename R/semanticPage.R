@@ -7,6 +7,7 @@
 #' options("shiny.custom.semantic.cdn" = "shiny.semantic")
 #'
 #' @return CDN path of semantic dependencies
+#' @keywords internal
 get_cdn_path <- function() {
   getOption("shiny.custom.semantic.cdn", default = "https://d335w9rbwpvuxm.cloudfront.net/2.8.3")
 }
@@ -18,6 +19,7 @@ get_cdn_path <- function() {
 #' @param theme define theme
 #'
 #' @return Content with appended dependencies.
+#' @keywords internal
 get_dependencies <- function(theme = NULL) {
   minfield <- if (getOption("shiny.minified", TRUE)) "min" else NULL
   javascript_file <- paste(c("semantic", minfield, "js"), collapse = ".")
@@ -59,6 +61,7 @@ get_dependencies <- function(theme = NULL) {
 #' @param full_url define return output filename or full path. Default TRUE
 #'
 #' @return path to default css semantic file or default filename
+#' @keywords internal
 get_default_semantic_theme <- function(full_url = TRUE) {
   minfield <- if (getOption("shiny.minified", TRUE)) "min" else NULL
   css_file <- paste(c("semantic", minfield, "css"), collapse = ".")

@@ -16,3 +16,4 @@ list_element(header = NULL, description = NULL, icon_name = NULL)
 \description{
 Helper function to render list element
 }
+\keyword{internal}

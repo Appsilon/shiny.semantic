@@ -3,6 +3,7 @@
 #' Extracts numeric values
 #' @param value Value to be converted to numeric
 #' @return Numeric value
+#' @keywords internal
 get_numeric <- function(value) as.numeric(gsub("([0-9]+).*$", "\\1", value))
 
 #' Creates div containing children elements of sidebar panel

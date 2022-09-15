@@ -13,3 +13,4 @@ element defines menu item, second element defines tab content, third optional el
 \description{
 Sets tab id if it wasn't provided
 }
+\keyword{internal}

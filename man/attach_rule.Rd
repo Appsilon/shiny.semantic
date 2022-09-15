@@ -18,3 +18,4 @@ attach_rule(id, behavior, target, value)
 \description{
 Internal function that creates the rule for a specific setting or behavior of the modal.
 }
+\keyword{internal}
