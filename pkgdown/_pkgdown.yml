@@ -1,10 +1,14 @@
-title: SHINY.SEMANTIC
+title: shiny.semantic
 template:
-  params:
-    bootswatch: yeti
+  bootstrap: 5
+  bootswatch: pulse
+  bslib:
+    pkgdown-nav-height: 100px
+
+url: https://appsilon.github.io/shiny.semantic/
 
 navbar:
-  type: inverse
+  bg: primary
   left:
     - icon: fa-home
       href: index.html
@@ -12,7 +16,6 @@ navbar:
     - icon: fa-university
       text: "Tutorials"
       href: articles/index.html
-  right:
     - icon: fa-file-code-o
       text: "Reference"
       href: reference/index.html
@@ -22,6 +25,7 @@ navbar:
     - icon: fa-user-o
       text: "CoC"
       href: CODE_OF_CONDUCT.html
+  right:
     - icon: fa-github fa-lg
       href: https://github.com/Appsilon/shiny.semantic
     - icon: fa-twitter fa-lg
@@ -39,6 +43,7 @@ articles:
 reference:
 - title: Fomantic (semantic) page
   contents:
+  - '`shiny.semantic`'
   - '`semanticPage`'
 
 - title: UI elements
@@ -55,7 +60,6 @@ reference:
   - '`horizontal_menu`'
   - '`icon`'
   - '`label`'
-  - '`label_tag`'
   - '`list_container`'
   - '`menu`'
   - '`menu_divider`'
@@ -104,9 +108,10 @@ reference:
   - '`update_dropdown_input`'
   - '`updateSliderInput`'
   - '`update_calendar`'
-  - '`update_range`'
   - '`update_rating_input`'
   - '`update_slider`'
+  - '`update_multiple_checkbox`'
+  - '`update_progress`'
 
 - title: Modal functions
   desc: Functions for modals generation.
@@ -132,6 +137,7 @@ reference:
 - title: Layouts and grid
   desc: Function for layouts and grid.
   contents:
+  - '`display_grid`'
   - '`grid`'
   - '`grid_template`'
   - '`sidebar_layout`'
@@ -157,8 +163,17 @@ reference:
 - title: Other
   desc: Other useful functions or objects.
   contents:
+  - '`check_proper_color`'
+  - '`check_semantic_theme`'
+  - '`Progress`'
   - '`semantic_DT`'
+  - '`semantic_DTOutput`'
   - '`shiny_input`'
   - '`shiny_text_input`'
+  - '`single_step`'
+  - '`steps`'
+  - '`theme_selector`'
+  - '`toggle_step_state`'
   - '`uiinput`'
   - '`uirender`'
+  - '`with_progress`'
