@@ -1,12 +1,8 @@
-<a href = "https://appsilon.com/careers/" target="_blank"><img src="http://d2v95fjda94ghc.cloudfront.net/hiring.png" alt="We are hiring!"/></a>
-
-<img src="man/figures/hexsticker.png" align="right" alt="" width="130" />
-
-# shiny.semantic
+# shiny.semantic <a href="https://appsilon.github.io/shiny.semantic/"><img src="man/figures/hexsticker.png" align="right" alt="semantic.dashboard logo" style="height: 140px;"></a>
 
 <!-- badges: start -->
 
-![R-CMD-check](https://github.com/Appsilon/shiny.semantic/workflows/R-CMD-check/badge.svg)
+[![R-CMD-check](https://github.com/Appsilon/shiny.semantic/workflows/R-CMD-check/badge.svg)](https://github.com/Appsilon/shiny.semantic/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/Appsilon/shiny.semantic/branch/master/graph/badge.svg)](https://codecov.io/gh/Appsilon/shiny.semantic)
 
 [![cranlogs](https://cranlogs.r-pkg.org/badges/shiny.semantic)](https://CRAN.R-project.org/package=shiny.semantic)
@@ -166,7 +162,9 @@ documentation.](https://fomantic-ui.com/)
 
 At the moment you have to pass page title in `semanticPage()`
 
-    semanticPage(title = "Your page title", ...)
+```r
+semanticPage(title = "Your page title", ...)
+```
 
 **Note \#2**
 
@@ -188,15 +186,6 @@ especially valuable.
 
 If you want to contribute to this project please submit a regular PR,
 once you’re done with new feature or bug fix.<br>
-
-**Changes in documentation**
-
-Both repository **README.md** file and an official documentation page
-are generated with Rmarkdown, so if there is a need to update them,
-please modify accordingly a **README.Rmd** file and use “Knit”.
-
-Documentation is rendered with `pkgdown`. Just run
-`pkgdown::build_site()` after rendering new **README.md**.
 
 **Changes in vignettes**
 
@@ -228,7 +217,7 @@ However, if you encounter any problems, try the following:
 <!-- end list -->
 
 ``` r
-install.packages("shiny", version='0.14.2.9001')
+install.packages("shiny", version='1.4')
 ```
 
 3.  Some bugs may be related directly to Semantic UI. In that case
@@ -249,7 +238,9 @@ install.packages("shiny", version='0.14.2.9001')
 
 <img src="https://avatars0.githubusercontent.com/u/6096772" align="right" alt="" width="6%" />
 
-Appsilon is the **Full Service Certified RStudio Partner**. Learn more
+Appsilon is a **Full Service Certified RStudio Partner**. Learn more
 at [appsilon.com](https://appsilon.com).
 
-Get in touch [support+opensource@appsilon.com](support+opensource@appsilon.com)
+Get in touch [opensource@appsilon.com](opensource@appsilon.com)
+
+<a href = "https://appsilon.com/careers/" target="_blank"><img src="http://d2v95fjda94ghc.cloudfront.net/hiring.png" alt="We are hiring!"/></a>
