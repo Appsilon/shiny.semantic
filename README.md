@@ -1,15 +1,13 @@
 # shiny.semantic <a href="https://appsilon.github.io/shiny.semantic/"><img src="man/figures/hexsticker.png" align="right" alt="semantic.dashboard logo" style="height: 140px;"></a>
 
-<!-- badges: start -->
+> _Fomantic (Semantic) UI wrapper for Shiny._
 
+<!-- badges: start -->
 [![R-CMD-check](https://github.com/Appsilon/shiny.semantic/workflows/R-CMD-check/badge.svg)](https://github.com/Appsilon/shiny.semantic/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/Appsilon/shiny.semantic/branch/master/graph/badge.svg)](https://codecov.io/gh/Appsilon/shiny.semantic)
-
 [![cranlogs](https://cranlogs.r-pkg.org/badges/shiny.semantic)](https://CRAN.R-project.org/package=shiny.semantic)
 [![total](https://cranlogs.r-pkg.org/badges/grand-total/shiny.semantic)](https://CRAN.R-project.org/package=shiny.semantic)
 <!-- badges: end -->
-
-**Fomantic (Semantic) UI wrapper for Shiny**
 
 With this library it is easy to wrap Shiny with **[Fomantic
 UI](https://fomantic-ui.com/)** (previously *Semantic*). Add a few
