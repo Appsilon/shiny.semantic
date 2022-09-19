@@ -28,3 +28,4 @@ areas_dataframe <- rbind(
 result == "'header header header' 'menu main right1' 'menu main right2'"
 }
 }
+\keyword{internal}

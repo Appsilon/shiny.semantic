@@ -17,3 +17,4 @@ Internal function that returns path string from `shiny.custom.semantic.cdn` opti
 options("shiny.custom.semantic.cdn" = "shiny.semantic")
 
 }
+\keyword{internal}

@@ -2,6 +2,7 @@
 #'
 #' @param input_id character with name
 #' @param multiple multiple flag
+#' @keywords internal
 define_selection_type <- function(input_id, multiple) {
   multiple_class <- switch(multiple, "multiple", NULL)
   classes <- c("ui", "fluid", "search", "selection",

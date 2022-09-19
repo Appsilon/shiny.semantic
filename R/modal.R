@@ -262,6 +262,7 @@ create_modal <- function(ui_modal, show = TRUE, session = shiny::getDefaultReact
 #' @param behavior What behavior is beging set i. e. setting or attach events.
 #' @param target First argument of the behavior. Usually a target or a setting name.
 #' @param value Second argument of the behavior. usually an action or a setting value.
+#' @keywords internal
 attach_rule <- function(id, behavior, target, value) {
   is_boolean <- (value == "false" || value == "true")
   paste0(

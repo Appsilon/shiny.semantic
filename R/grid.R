@@ -13,6 +13,7 @@
 #' result == "'header header header' 'menu main right1' 'menu main right2'"
 #' }
 #'
+#' @keywords internal
 data_frame_to_css_grid_template_areas <- function(areas_dataframe) {
   apply(areas_dataframe, 1, function(row) paste(row, collapse = ' ')) %>%
     lapply(function(row) glue::glue("'{row}'")) %>%
@@ -44,6 +45,7 @@ data_frame_to_css_grid_template_areas <- function(areas_dataframe) {
 #'    {{ custom_style_grid_container }}"
 #' }
 #'
+#' @keywords internal
 grid_container_css <- function(css_grid_template_areas, rows_height, cols_width) {
   grid_container_styles <- c(
     "display: grid",
@@ -73,6 +75,7 @@ grid_container_css <- function(css_grid_template_areas, rows_height, cols_width)
 #'   [[3]] <div id="{{ grid_id }}-footer" style="grid-area: footer; {{ footer_custom_css }}">{{ footer }}</div>
 #' }
 #'
+#' @keywords internal
 list_of_area_tags <- function(area_names) {
   lapply(area_names,
     function(name) {

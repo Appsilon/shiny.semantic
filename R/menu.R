@@ -3,6 +3,7 @@
 #' @param number numeric digits from 1 to 10
 #'
 #' @return character with number word
+#' @keywords internal
 digits2words <- function(number) {
   textrep <- c("one","two","three","four","five",
                "six","seven","eight","nine", "ten")
