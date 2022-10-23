@@ -199,7 +199,7 @@ update_multiple_checkbox <- function(session = getDefaultReactiveDomain(),
                                      selected = NULL, label = NULL) {
   if (!is.null(selected)) value <- jsonlite::toJSON(gsub("'", '"', selected)) else value <- NULL
   if (!is.null(choices)) {
-    options <- jsonlite::toJSON(data.frame(name = choices, value = gsub( "'", '"', choices_value)))
+    options <- jsonlite::toJSON(data.frame(name = choices, value = gsub("'", '"', choices_value)))
   } else {
     options <- NULL
   }
