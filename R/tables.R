@@ -4,6 +4,7 @@
 #'
 #' @param ... datatable parameters, check \code{?DT::datatable} to learn more.
 #' @param options datatable options, check \code{?DT::datatable} to learn more.
+#' @param style datatable style, check \code{?DT::datatable} to learn more.
 #'
 #' @examples
 #' if (interactive()){
@@ -22,10 +23,10 @@
 #' }
 #'
 #' @export
-semantic_DT <- function(..., options = list()) {
+semantic_DT <- function(..., options = list(), style="semanticui") {
   DT::datatable(..., options = options,
                 class = 'ui small compact table',
-                style = "semanticui",
+                style = style,
                 rownames = FALSE)
 }
 
