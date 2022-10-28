@@ -23,7 +23,12 @@
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<![endif]--><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6VTLM1KWHK"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6VTLM1KWHK');
+</script>
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -109,7 +114,7 @@
       <img src="" class="logo" alt=""><h1>Build your first dynamic shiny.semantic app using layout and grid</h1>
                         <h4 data-toc-skip class="author">Appsilon</h4>
             
-            <h4 data-toc-skip class="date">2022-09-19</h4>
+            <h4 data-toc-skip class="date">2022-10-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Appsilon/shiny.semantic/blob/HEAD/vignettes/intro.Rmd" class="external-link"><code>vignettes/intro.Rmd</code></a></small>
       <div class="d-none name"><code>intro.Rmd</code></div>
@@ -120,7 +125,8 @@
 <div class="section level2">
 <h2 id="create-ui-inside-documents">Create UI inside documents<a class="anchor" aria-label="anchor" href="#create-ui-inside-documents"></a>
 </h2>
-<p>This is how you generate your first UI with <code>shiny.semantic</code>:</p>
+<p>This is how you generate your first UI with
+<code>shiny.semantic</code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/uirender.html">uirender</a></span><span class="op">(</span></span>
 <span>  <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/tagList.html" class="external-link">tagList</a></span><span class="op">(</span></span>
@@ -134,13 +140,14 @@
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span>,</span>
 <span>width <span class="op">=</span> <span class="st">"200px"</span>, height <span class="op">=</span> <span class="st">"280px"</span><span class="op">)</span></span></code></pre></div>
-<div id="htmlwidget-dd5f8a5cd38ac1d89b91" style="width:200px;height:280px;" class="uirender html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dd5f8a5cd38ac1d89b91">{"x":{"ui":"<h4>\n  Numeric input\n  <i class=\"world icon\"><\/i>\n<\/h4>\n<div class=\"field\">\n  <label for=\"input\"><\/label>\n  <div class=\"ui  input\">\n    <input id=\"input\" value=\"0\" type=\"number\"/>\n  <\/div>\n<\/div>\n<div class=\"ui divided list\">\n  <div class=\"item\">\n    <i class=\"cat icon\"><\/i>\n    <div class=\"content\">\n      <div class=\"header\">Item 1<\/div>\n      <div class=\"description\">My text for item 1<\/div>\n    <\/div>\n  <\/div>\n  <div class=\"item\">\n    <i class=\"tree icon\"><\/i>\n    <div class=\"content\">\n      <div class=\"header\">Item 2<\/div>\n      <div class=\"description\">My text for item 2<\/div>\n    <\/div>\n  <\/div>\n  <div class=\"item\">\n    <i class=\"dog icon\"><\/i>\n    <div class=\"content\">\n      <div class=\"header\">Item 3<\/div>\n      <div class=\"description\">My text for item 3<\/div>\n    <\/div>\n  <\/div>\n<\/div>","shiny_custom_semantic":"https://d335w9rbwpvuxm.cloudfront.net/2.8.3"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e2c4f84c233d7e9f9ec2" style="width:200px;height:280px;" class="uirender html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e2c4f84c233d7e9f9ec2">{"x":{"ui":"<h4>\n  Numeric input\n  <i class=\"world icon\"><\/i>\n<\/h4>\n<div class=\"field\">\n  <label for=\"input\"><\/label>\n  <div class=\"ui  input\">\n    <input id=\"input\" value=\"0\" type=\"number\"/>\n  <\/div>\n<\/div>\n<div class=\"ui divided list\">\n  <div class=\"item\">\n    <i class=\"cat icon\"><\/i>\n    <div class=\"content\">\n      <div class=\"header\">Item 1<\/div>\n      <div class=\"description\">My text for item 1<\/div>\n    <\/div>\n  <\/div>\n  <div class=\"item\">\n    <i class=\"tree icon\"><\/i>\n    <div class=\"content\">\n      <div class=\"header\">Item 2<\/div>\n      <div class=\"description\">My text for item 2<\/div>\n    <\/div>\n  <\/div>\n  <div class=\"item\">\n    <i class=\"dog icon\"><\/i>\n    <div class=\"content\">\n      <div class=\"header\">Item 3<\/div>\n      <div class=\"description\">My text for item 3<\/div>\n    <\/div>\n  <\/div>\n<\/div>","shiny_custom_semantic":"https://d335w9rbwpvuxm.cloudfront.net/2.8.3"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="section level2">
 <h2 id="create-a-simple-shiny-app">Create a simple Shiny App<a class="anchor" aria-label="anchor" href="#create-a-simple-shiny-app"></a>
 </h2>
-<p>Let’s create a Shiny app with <code><a href="../reference/semanticPage.html">semanticPage()</a></code> and just an <code>h1</code> title.</p>
+<p>Let’s create a Shiny app with <code><a href="../reference/semanticPage.html">semanticPage()</a></code> and just an
+<code>h1</code> title.</p>
 <p><img src="intro_images/s0.png" alt="screen1" width="400"></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span><span class="op">(</span></span>
@@ -154,7 +161,11 @@
 <div class="section level3">
 <h3 id="built-in-layouts">Built-in layouts<a class="anchor" aria-label="anchor" href="#built-in-layouts"></a>
 </h3>
-<p>Now let’s add sidebar layout <code><a href="../reference/sidebar_layout.html">sidebar_layout()</a></code> with a sidebar panel <code><a href="../reference/sidebar_layout.html">sidebar_panel()</a></code> and main panel <code><a href="../reference/sidebar_layout.html">main_panel()</a></code>. The sidebar is displayed with a distinct background color and typically contains input controls. The main area occupies 2/3 of the horizontal width and typically contains outputs.</p>
+<p>Now let’s add sidebar layout <code><a href="../reference/sidebar_layout.html">sidebar_layout()</a></code> with a
+sidebar panel <code><a href="../reference/sidebar_layout.html">sidebar_panel()</a></code> and main panel
+<code><a href="../reference/sidebar_layout.html">main_panel()</a></code>. The sidebar is displayed with a distinct
+background color and typically contains input controls. The main area
+occupies 2/3 of the horizontal width and typically contains outputs.</p>
 <p><img src="intro_images/s1.png" alt="screen2" width="800"></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span><span class="op">(</span></span>
@@ -169,7 +180,8 @@
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
-<p>Next let’s fill in the main panel <code><a href="../reference/sidebar_layout.html">main_panel()</a></code> with a Fomantic (Semantic previously) UI segment containing 2 cards.</p>
+<p>Next let’s fill in the main panel <code><a href="../reference/sidebar_layout.html">main_panel()</a></code> with a
+Fomantic (Semantic previously) UI segment containing 2 cards.</p>
 <p><img src="intro_images/s2.png" alt="screen3" width="800"></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span><span class="op">(</span></span>
@@ -204,7 +216,8 @@
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
-<p>Time to fill in sidebar <code><a href="../reference/sidebar_layout.html">sidebar_panel()</a></code>, so let’s add a dropdown. We create it input using <code><a href="../reference/dropdown_input.html">dropdown_input()</a></code>.</p>
+<p>Time to fill in sidebar <code><a href="../reference/sidebar_layout.html">sidebar_panel()</a></code>, so let’s add a
+dropdown. We create it input using <code><a href="../reference/dropdown_input.html">dropdown_input()</a></code>.</p>
 <p><img src="intro_images/s3.png" alt="screen4" width="800"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span><span class="op">(</span></span>
@@ -244,7 +257,9 @@
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
-<p>Let’s make dropdown do something and generate a histogram and a simple plot from a selected <code>mtcars</code> column using dropdown.</p>
+<p>Let’s make dropdown do something and generate a histogram and a
+simple plot from a selected <code>mtcars</code> column using
+dropdown.</p>
 <p><img src="intro_images/s4.png" alt="screen5" width="800"></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span><span class="op">(</span></span>
@@ -288,19 +303,26 @@
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
-<p>There is more layouts that you can use. Just check the documentation of: <code>splitLayout</code>, <code>flow_layout</code>, <code>vertical_layout</code> and some more!</p>
+<p>There is more layouts that you can use. Just check the documentation
+of: <code>splitLayout</code>, <code>flow_layout</code>,
+<code>vertical_layout</code> and some more!</p>
 </div>
 <div class="section level3">
 <h3 id="grid-templates">Grid templates<a class="anchor" aria-label="anchor" href="#grid-templates"></a>
 </h3>
-<p>Finally let’s change the layout of the plots on the page and make them appear next to each other. We will use <code><a href="../reference/grid.html">grid()</a></code> for it and define a grid template using <code><a href="../reference/grid_template.html">grid_template()</a></code> with 1 row and 2 columns of the same size. Our grid template will contain 2 areas <code>chart1</code> and <code>chart2</code></p>
+<p>Finally let’s change the layout of the plots on the page and make
+them appear next to each other. We will use <code><a href="../reference/grid.html">grid()</a></code> for it
+and define a grid template using <code><a href="../reference/grid_template.html">grid_template()</a></code> with 1 row
+and 2 columns of the same size. Our grid template will contain 2 areas
+<code>chart1</code> and <code>chart2</code></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">grid_charts</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/grid_template.html">grid_template</a></span><span class="op">(</span></span>
 <span>  default <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>areas <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"chart1"</span>, <span class="st">"chart2"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>                 rows_height <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"100%"</span><span class="op">)</span>,</span>
 <span>                 cols_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"50%"</span>, <span class="st">"50%"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>We assign plots’ outputs <code><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html" class="external-link">plotOutput()</a></code> to both areas inside the <code>grid</code> function.</p>
+<p>We assign plots’ outputs <code><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html" class="external-link">plotOutput()</a></code> to both areas
+inside the <code>grid</code> function.</p>
 <p>This is the final effect of our work:</p>
 <p><img src="intro_images/s5.png" alt="screen6" width="800"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -347,7 +369,8 @@
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
-<p>You can define grids for different screen sizes. <a href="https://github.com/Appsilon/shiny.semantic/blob/develop/examples/grid/app.R" class="external-link">Here</a> is an example on how to define it for mobile.</p>
+<p>You can define grids for different screen sizes. <a href="https://github.com/Appsilon/shiny.semantic/blob/develop/examples/grid/app.R" class="external-link">Here</a>
+is an example on how to define it for mobile.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
