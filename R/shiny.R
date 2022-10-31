@@ -31,6 +31,14 @@ NULL
   # Add directory for static resources
   file <- system.file("www", package = "shiny.semantic", mustWork = TRUE)
   shiny::addResourcePath("shiny.semantic", file)
+  shiny::registerInputHandler("shiny.vector", function(value, ...) {
+    if (is.null(value)) {
+      return(value)
+    } else {
+      values <- shiny:::safeFromJSON(value)
+      return(values)
+    }
+  }, force = TRUE)
 }
 
 #' Create universal Shiny input binding
