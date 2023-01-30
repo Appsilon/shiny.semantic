@@ -51,5 +51,6 @@ Suggests:
     leaflet,
     plotly,
     rmarkdown,
-    markdown
+    markdown,
+    rcmdcheck
 RoxygenNote: 7.2.1
