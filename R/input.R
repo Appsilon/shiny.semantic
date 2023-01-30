@@ -179,11 +179,17 @@ textInput <- function(inputId, label, value = "", width = NULL,
 #' }
 #'
 #' @export
-numeric_input <- function(input_id, label, value, min = NA, max = NA, step = NA,
+numeric_input <- function(input_id, label, value = NULL, min = NA, max = NA, step = NA,
                            type = NULL, icon = NULL, placeholder = NULL, ...) {
-  if (!is.numeric(value) & !grepl("^\\d*(\\.\\d*|)$", value)) stop("Non-numeric input detected")
+  if (!(is.null(placeholder) || is.character(placeholder))) {
+    stop ("placeholder should be NULL or character")
+  }
+  if (!is.null(value) & is.null(placeholder)) {
+    if (!is.numeric(value) & !grepl("^\\d*(\\.\\d*|)$", value)) stop("Non-numeric input detected")
+  }
+  
 
-  input_tag <- tags$input(id = input_id, value = value, type = "number")
+  input_tag <- tags$input(id = input_id, value = value, type = "number", placeholder = placeholder)
   if (!is.na(min)) input_tag$attribs$min <- min
   if (!is.na(max)) input_tag$attribs$max <- max
   if (!is.na(step)) input_tag$attribs$step <- step
@@ -212,7 +218,7 @@ numeric_input <- function(input_id, label, value, min = NA, max = NA, step = NA,
 #' @param ... Other parameters passed to \code{\link{numeric_input}} like \code{type} or \code{icon}.
 #' @rdname numeric_input
 #' @export
-numericInput <- function(inputId, label, value,
+numericInput <- function(inputId, label, value = NULL,
                          min = NA, max = NA, step = NA, width = NULL, ...) {
   shiny::div(
     class = "ui form",
