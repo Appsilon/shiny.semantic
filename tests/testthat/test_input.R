@@ -70,7 +70,7 @@ test_that("test numericInput", {
   expect_is(numericInput("numberinput", "NLabel", 20), "shiny.tag")
   # empty input
   expect_error(numericInput())
-  expect_error(numericInput("a", "label"), "either value or placeholder should be defined")
+  expect_error(numericInput("a", "label"), "either 'value' or 'placeholder' should be defined")
 })
 
 test_that("test file_input", {
