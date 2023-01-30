@@ -182,8 +182,9 @@ textInput <- function(inputId, label, value = "", width = NULL,
 numeric_input <- function(input_id, label, value = NULL, min = NA, max = NA, step = NA,
                            type = NULL, icon = NULL, placeholder = NULL, ...) {
   if (!(is.null(placeholder) || is.character(placeholder))) {
-    stop ("placeholder should be NULL or character")
+    stop ("'placeholder' should be NULL or character")
   }
+  if (is.null(value) & is.null(placeholder)) stop ("either 'value' or 'placeholder' should be defined")
   if (!is.null(value) & is.null(placeholder)) {
     if (!is.numeric(value) & !grepl("^\\d*(\\.\\d*|)$", value)) stop("Non-numeric input detected")
   }
