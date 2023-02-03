@@ -159,7 +159,7 @@ textInput <- function(inputId, label, value = "", width = NULL,
 #' @param type Input type specifying class attached to input container.
 #'   See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.
 #' @param icon Icon or label attached to numeric input.
-#' @param placeholder Inner input label displayed when no value is specified.
+#' @param placeholder Inner input label displayed when no value is specified. Should be NULL or a string
 #' @param ... Unused.
 #' @param label character with label
 #'
@@ -216,15 +216,16 @@ numeric_input <- function(input_id, label, value = NULL, min = NA, max = NA, ste
 #' @param max Maximum allowed value.
 #' @param step Interval to use when stepping between min and max.
 #' @param width The width of the input.
+#' @param placeholder Inner input label displayed when no value is specified. Should be NULL or a string
 #' @param ... Other parameters passed to \code{\link{numeric_input}} like \code{type} or \code{icon}.
 #' @rdname numeric_input
 #' @export
-numericInput <- function(inputId, label, value = NULL,
-                         min = NA, max = NA, step = NA, width = NULL, ...) {
+numericInput <- function(inputId, label, value = NULL, min = NA, max = NA,
+                         step = NA, width = NULL, placeholder = NULL, ...) {
   shiny::div(
     class = "ui form",
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
-    numeric_input(inputId, label, value, min, max, step, ...)
+    numeric_input(inputId, label, value, min, max, step, placeholder = placeholder, ...)
   )
 }
 
