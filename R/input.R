@@ -159,11 +159,12 @@ textInput <- function(inputId, label, value = "", width = NULL,
 #' @param type Input type specifying class attached to input container.
 #'   See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.
 #' @param icon Icon or label attached to numeric input.
-#' @param placeholder Inner input label displayed when no value is specified. Should be NULL or a string
+#' @param placeholder Inner input label displayed when no value is specified.
 #' @param ... Unused.
 #' @param label character with label
 #'
 #' @details
+#' Either `value` or `placeholder` should be defined.
 #' The inputs are updateable by using \code{\link{updateNumericInput}}.
 #' @rdname numeric_input
 #' @examples
@@ -216,7 +217,7 @@ numeric_input <- function(input_id, label, value = NULL, min = NA, max = NA, ste
 #' @param max Maximum allowed value.
 #' @param step Interval to use when stepping between min and max.
 #' @param width The width of the input.
-#' @param placeholder Inner input label displayed when no value is specified. Should be NULL or a string
+#' @param placeholder Inner input label displayed when no value is specified
 #' @param ... Other parameters passed to \code{\link{numeric_input}} like \code{type} or \code{icon}.
 #' @rdname numeric_input
 #' @export
