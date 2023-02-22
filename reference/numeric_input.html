@@ -97,7 +97,7 @@ under <code>input[[input_id]]</code>.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">numeric_input</span><span class="op">(</span></span>
 <span>  <span class="va">input_id</span>,</span>
 <span>  <span class="va">label</span>,</span>
-<span>  <span class="va">value</span>,</span>
+<span>  value <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  min <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  max <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  step <span class="op">=</span> <span class="cn">NA</span>,</span>
@@ -110,11 +110,12 @@ under <code>input[[input_id]]</code>.</p>
 <span><span class="fu">numericInput</span><span class="op">(</span></span>
 <span>  <span class="va">inputId</span>,</span>
 <span>  <span class="va">label</span>,</span>
-<span>  <span class="va">value</span>,</span>
+<span>  value <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  min <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  max <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  step <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  width <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  placeholder <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -155,7 +156,7 @@ See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.</p
 
 
 <dt>placeholder</dt>
-<dd><p>Inner input label displayed when no value is specified.</p></dd>
+<dd><p>Inner input label displayed when no value is specified</p></dd>
 
 
 <dt>...</dt>
@@ -172,7 +173,8 @@ See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.</p
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>The inputs are updateable by using <code><a href="update_numeric_input.html">updateNumericInput</a></code>.</p>
+    <p>Either `value` or `placeholder` should be defined.
+The inputs are updateable by using <code><a href="update_numeric_input.html">updateNumericInput</a></code>.</p>
     </div>
 
     <div class="section level2">
