@@ -53,12 +53,15 @@ test_that("test numeric_input", {
   expect_error(numeric_input())
   # text input
   expect_error(numeric_input("number input", "label","Text input"))
+  # non-character and non NULL placeholder
+  expect_error(numeric_input("number input", "label", NULL, placeholder = 4))
   # number input
   si_str <- as.character(numeric_input("number_input", "label", 20))
   expect_true(any(grepl("<input id=\"number_input\" value=\"20\" type=\"number\"/>",
                         si_str, fixed = TRUE)))
   # all parameters
-  expect_is(numeric_input("number_input", "label", 20, min = 10, max = 40, step = 1),
+  expect_is(numeric_input("number_input", "label", 20, min = 10, max = 40, step = 1, 
+    placeholder = "please type an input"),
             "shiny.tag")
 })
 
@@ -67,7 +70,7 @@ test_that("test numericInput", {
   expect_is(numericInput("numberinput", "NLabel", 20), "shiny.tag")
   # empty input
   expect_error(numericInput())
-  expect_error(numericInput("a", "label"), "\"value\" is missing")
+  expect_error(numericInput("a", "label"), "either 'value' or 'placeholder' should be defined")
 })
 
 test_that("test file_input", {
