@@ -69,7 +69,7 @@ look.
 
 <center>
 
-<h3><a href="https://demo.appsilon.ai/semantic/">Components live demo</a></h3>
+<h3><a href="https://connect.appsilon.com/shiny-semantic-components/">Components live demo</a></h3>
 
 </center>
 
