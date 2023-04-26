@@ -9,7 +9,10 @@
 #' @return CDN path of semantic dependencies
 #' @keywords internal
 get_cdn_path <- function() {
-  getOption("shiny.custom.semantic.cdn", default = "https://d335w9rbwpvuxm.cloudfront.net/2.8.3")
+  getOption(
+    "shiny.custom.semantic.cdn",
+    default = "https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2"
+  )
 }
 
 #' Add dashboard dependencies to html
