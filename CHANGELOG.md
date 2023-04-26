@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 ## Upcoming
 
+- upgrade to library 2.9.2
+
 ## [0.4.2]
 
 ### Added
