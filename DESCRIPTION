@@ -52,5 +52,6 @@ Suggests:
     plotly,
     rmarkdown,
     markdown,
-    rcmdcheck
+    rcmdcheck,
+    mockery
 RoxygenNote: 7.2.1
