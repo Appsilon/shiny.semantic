@@ -25,7 +25,7 @@ hide_modal(id, session = shiny::getDefaultReactiveDomain(), asis = TRUE)
 \code{shinyServer}.}
 
 \item{asis}{A boolean indicating if the id must be handled as is (TRUE) or
-will be it must be namespaced (FALSE)}
+FALSE if it meants to be namespaced}
 }
 \description{
 This displays a hidden Semantic UI modal.
