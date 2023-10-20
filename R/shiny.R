@@ -20,6 +20,7 @@
 #'
 #' @docType package
 #' @name shiny.semantic
+#' @aliases shiny.semantic-package
 NULL
 
 #' Internal function that expose javascript bindings to Shiny app.
