@@ -53,7 +53,7 @@
     
     <a class="navbar-brand me-2" href="index.html">shiny.semantic</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.3.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -137,8 +137,8 @@
 </ul>
 <p><img src="reference/figures/ss_before.png" alt="shiny" align="right" width="40%"></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/" class="external-link">shiny</a></span><span class="op">)</span></span>
-<span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span></span>
+<span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">div</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">div</a></span><span class="op">(</span></span>
 <span>      <span class="fu"><a href="reference/checkbox.html">a</a></span><span class="op">(</span><span class="st">"Link"</span><span class="op">)</span>,</span>
@@ -248,17 +248,17 @@
 <div class="section level2">
 <h2 id="how-to-use-it">How to use it?<a class="anchor" aria-label="anchor" href="#how-to-use-it"></a>
 </h2>
-<p>Firstly, you will have to invoke <code><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyUI.html" class="external-link">shinyUI()</a></code> with <code><a href="reference/semanticPage.html">semanticPage()</a></code> instead of standard Shiny UI definitions like e.g. <code><a href="https://shiny.rstudio.com/reference/shiny/latest/bootstrapPage.html" class="external-link">bootstrapPage()</a></code>. From now on, all components can be annotated with <a href="https://fomantic-ui.com/" class="external-link">Fomantic UI</a> specific CSS classes and also you will be able to use <a href="https://demo.appsilon.ai/semantic/" class="external-link">shiny.semantic components</a>.</p>
+<p>Firstly, you will have to invoke <code><a href="https://rdrr.io/pkg/shiny/man/shinyUI.html" class="external-link">shinyUI()</a></code> with <code><a href="reference/semanticPage.html">semanticPage()</a></code> instead of standard Shiny UI definitions like e.g. <code><a href="https://rdrr.io/pkg/shiny/man/bootstrapPage.html" class="external-link">bootstrapPage()</a></code>. From now on, all components can be annotated with <a href="https://fomantic-ui.com/" class="external-link">Fomantic UI</a> specific CSS classes and also you will be able to use <a href="https://demo.appsilon.ai/semantic/" class="external-link">shiny.semantic components</a>.</p>
 <p>Basic example for rendering a simple button. will look like this:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/" class="external-link">shiny</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">shiny.semantic</span><span class="op">)</span></span>
 <span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/semanticPage.html">semanticPage</a></span><span class="op">(</span></span>
 <span>      title <span class="op">=</span> <span class="st">"My page"</span>,</span>
 <span>      <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">div</a></span><span class="op">(</span>class <span class="op">=</span> <span class="st">"ui button"</span>, <span class="fu"><a href="reference/icon.html">icon</a></span><span class="op">(</span><span class="st">"user"</span><span class="op">)</span>,  <span class="st">"Icon button"</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span>
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
-<span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
 <p>For better understanding it’s good to check <a href="https://fomantic-ui.com/" class="external-link">Fomantic UI documentation.</a></p>
 <p><strong>Note #1</strong></p>
 <p>At the moment you have to pass page title in <code><a href="reference/semanticPage.html">semanticPage()</a></code></p>

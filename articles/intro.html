@@ -43,7 +43,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">shiny.semantic</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.3.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,12 +114,12 @@
 
 
 
-<script src="intro_files/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="intro_files/uirender-binding-0.4.3/uirender.js"></script><div class="row">
+<script src="intro_files/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="intro_files/uirender-binding-0.4.3.9000/uirender.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Build your first dynamic shiny.semantic app using layout and grid</h1>
                         <h4 data-toc-skip class="author">Appsilon</h4>
             
-            <h4 data-toc-skip class="date">2023-04-14</h4>
+            <h4 data-toc-skip class="date">2023-10-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Appsilon/shiny.semantic/blob/HEAD/vignettes/intro.Rmd" class="external-link"><code>vignettes/intro.Rmd</code></a></small>
       <div class="d-none name"><code>intro.Rmd</code></div>
@@ -145,8 +145,8 @@
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span>,</span>
 <span>width <span class="op">=</span> <span class="st">"200px"</span>, height <span class="op">=</span> <span class="st">"280px"</span><span class="op">)</span></span></code></pre></div>
-<div id="htmlwidget-7814ef6313bac8eb3d13" style="width:200px;height:280px;" class="uirender html-widget "></div>
-<script type="application/json" data-for="htmlwidget-7814ef6313bac8eb3d13">{"x":{"ui":"<h4>\n  Numeric input\n  <i class=\"world icon\"><\/i>\n<\/h4>\n<div class=\"field\">\n  <label for=\"input\"><\/label>\n  <div class=\"ui  input\">\n    <input id=\"input\" value=\"0\" type=\"number\"/>\n  <\/div>\n<\/div>\n<div class=\"ui divided list\">\n  <div class=\"item\">\n    <i class=\"cat icon\"><\/i>\n    <div class=\"content\">\n      <div class=\"header\">Item 1<\/div>\n      <div class=\"description\">My text for item 1<\/div>\n    <\/div>\n  <\/div>\n  <div class=\"item\">\n    <i class=\"tree icon\"><\/i>\n    <div class=\"content\">\n      <div class=\"header\">Item 2<\/div>\n      <div class=\"description\">My text for item 2<\/div>\n    <\/div>\n  <\/div>\n  <div class=\"item\">\n    <i class=\"dog icon\"><\/i>\n    <div class=\"content\">\n      <div class=\"header\">Item 3<\/div>\n      <div class=\"description\">My text for item 3<\/div>\n    <\/div>\n  <\/div>\n<\/div>","shiny_custom_semantic":"https://d335w9rbwpvuxm.cloudfront.net/2.8.3"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-031f340ec1c00df8eafc" style="width:200px;height:280px;" class="uirender html-widget "></div>
+<script type="application/json" data-for="htmlwidget-031f340ec1c00df8eafc">{"x":{"ui":"<h4>\n  Numeric input\n  <i class=\"world icon\"><\/i>\n<\/h4>\n<div class=\"field\">\n  <label for=\"input\"><\/label>\n  <div class=\"ui  input\">\n    <input id=\"input\" value=\"0\" type=\"number\"/>\n  <\/div>\n<\/div>\n<div class=\"ui divided list\">\n  <div class=\"item\">\n    <i class=\"cat icon\"><\/i>\n    <div class=\"content\">\n      <div class=\"header\">Item 1<\/div>\n      <div class=\"description\">My text for item 1<\/div>\n    <\/div>\n  <\/div>\n  <div class=\"item\">\n    <i class=\"tree icon\"><\/i>\n    <div class=\"content\">\n      <div class=\"header\">Item 2<\/div>\n      <div class=\"description\">My text for item 2<\/div>\n    <\/div>\n  <\/div>\n  <div class=\"item\">\n    <i class=\"dog icon\"><\/i>\n    <div class=\"content\">\n      <div class=\"header\">Item 3<\/div>\n      <div class=\"description\">My text for item 3<\/div>\n    <\/div>\n  <\/div>\n<\/div>","shiny_custom_semantic":"https://d335w9rbwpvuxm.cloudfront.net/2.8.3"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="section level2">
 <h2 id="create-a-simple-shiny-app">Create a simple Shiny App<a class="anchor" aria-label="anchor" href="#create-a-simple-shiny-app"></a>
@@ -162,7 +162,7 @@
 <span></span>
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="built-in-layouts">Built-in layouts<a class="anchor" aria-label="anchor" href="#built-in-layouts"></a>
 </h3>
@@ -184,7 +184,7 @@ occupies 2/3 of the horizontal width and typically contains outputs.</p>
 <span></span>
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
 <p>Next let’s fill in the main panel <code><a href="../reference/sidebar_layout.html">main_panel()</a></code> with a
 Fomantic (Semantic previously) UI segment containing 2 cards.</p>
 <p><img src="intro_images/s2.png" alt="screen3" width="800"></p>
@@ -220,7 +220,7 @@ Fomantic (Semantic previously) UI segment containing 2 cards.</p>
 <span></span>
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
 <p>Time to fill in sidebar <code><a href="../reference/sidebar_layout.html">sidebar_panel()</a></code>, so let’s add a
 dropdown. We create it input using <code><a href="../reference/dropdown_input.html">dropdown_input()</a></code>.</p>
 <p><img src="intro_images/s3.png" alt="screen4" width="800"></p>
@@ -231,7 +231,7 @@ dropdown. We create it input using <code><a href="../reference/dropdown_input.ht
 <span>  <span class="fu"><a href="../reference/sidebar_layout.html">sidebar_layout</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="../reference/sidebar_layout.html">sidebar_panel</a></span><span class="op">(</span></span>
 <span>      <span class="fu"><a href="../reference/dropdown_input.html">dropdown_input</a></span><span class="op">(</span><span class="st">"mtcars_dropdown"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mpg"</span>, <span class="st">"cyl"</span>, <span class="st">"disp"</span>, <span class="st">"hp"</span><span class="op">)</span>, value <span class="op">=</span> <span class="st">"mpg"</span><span class="op">)</span>,</span>
-<span>      <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/textOutput.html" class="external-link">textOutput</a></span><span class="op">(</span><span class="st">"dropdown"</span><span class="op">)</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textOutput.html" class="external-link">textOutput</a></span><span class="op">(</span><span class="st">"dropdown"</span><span class="op">)</span></span>
 <span>    <span class="op">)</span>,</span>
 <span>    <span class="fu"><a href="../reference/sidebar_layout.html">main_panel</a></span><span class="op">(</span></span>
 <span>      <span class="fu"><a href="../reference/segment.html">segment</a></span><span class="op">(</span></span>
@@ -258,10 +258,10 @@ dropdown. We create it input using <code><a href="../reference/dropdown_input.ht
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">output</span><span class="op">$</span><span class="va">dropdown</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/renderPrint.html" class="external-link">renderText</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">mtcars_dropdown</span><span class="op">)</span></span>
+<span>  <span class="va">output</span><span class="op">$</span><span class="va">dropdown</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderPrint.html" class="external-link">renderText</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">mtcars_dropdown</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
 <p>Let’s make dropdown do something and generate a histogram and a
 simple plot from a selected <code>mtcars</code> column using
 dropdown.</p>
@@ -295,19 +295,19 @@ dropdown.</p>
 <span>           <span class="op">)</span></span>
 <span>         <span class="op">)</span></span>
 <span>      <span class="op">)</span>,</span>
-<span>      <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/plotOutput.html" class="external-link">plotOutput</a></span><span class="op">(</span><span class="st">"histogram"</span><span class="op">)</span>,</span>
-<span>      <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/plotOutput.html" class="external-link">plotOutput</a></span><span class="op">(</span><span class="st">"plot"</span><span class="op">)</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html" class="external-link">plotOutput</a></span><span class="op">(</span><span class="st">"histogram"</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html" class="external-link">plotOutput</a></span><span class="op">(</span><span class="st">"plot"</span><span class="op">)</span></span>
 <span>      <span class="op">)</span></span>
 <span>    <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">output</span><span class="op">$</span><span class="va">dropdown</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/renderPrint.html" class="external-link">renderText</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">mtcars_dropdown</span><span class="op">)</span></span>
-<span>  <span class="va">output</span><span class="op">$</span><span class="va">histogram</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/renderPlot.html" class="external-link">renderPlot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[[</span><span class="va">input</span><span class="op">$</span><span class="va">mtcars_dropdown</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="va">output</span><span class="op">$</span><span class="va">plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/renderPlot.html" class="external-link">renderPlot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[[</span><span class="va">input</span><span class="op">$</span><span class="va">mtcars_dropdown</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">output</span><span class="op">$</span><span class="va">dropdown</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderPrint.html" class="external-link">renderText</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">mtcars_dropdown</span><span class="op">)</span></span>
+<span>  <span class="va">output</span><span class="op">$</span><span class="va">histogram</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html" class="external-link">renderPlot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[[</span><span class="va">input</span><span class="op">$</span><span class="va">mtcars_dropdown</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">output</span><span class="op">$</span><span class="va">plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html" class="external-link">renderPlot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[[</span><span class="va">input</span><span class="op">$</span><span class="va">mtcars_dropdown</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
 <p>There is more layouts that you can use. Just check the documentation
 of: <code>splitLayout</code>, <code>flow_layout</code>,
 <code>vertical_layout</code> and some more!</p>
@@ -326,7 +326,7 @@ and 2 columns of the same size. Our grid template will contain 2 areas
 <span>                 rows_height <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"100%"</span><span class="op">)</span>,</span>
 <span>                 cols_width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"50%"</span>, <span class="st">"50%"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>We assign plots’ outputs <code><a href="https://shiny.rstudio.com/reference/shiny/latest/plotOutput.html" class="external-link">plotOutput()</a></code> to both areas
+<p>We assign plots’ outputs <code><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html" class="external-link">plotOutput()</a></code> to both areas
 inside the <code>grid</code> function.</p>
 <p>This is the final effect of our work:</p>
 <p><img src="intro_images/s5.png" alt="screen6" width="800"></p>
@@ -360,20 +360,20 @@ inside the <code>grid</code> function.</p>
 <span>         <span class="op">)</span></span>
 <span>      <span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="../reference/grid.html">grid</a></span><span class="op">(</span><span class="va">grid_charts</span>,</span>
-<span>           chart1 <span class="op">=</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/plotOutput.html" class="external-link">plotOutput</a></span><span class="op">(</span><span class="st">"histogram"</span><span class="op">)</span>,</span>
-<span>           chart2 <span class="op">=</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/plotOutput.html" class="external-link">plotOutput</a></span><span class="op">(</span><span class="st">"plot"</span><span class="op">)</span></span>
+<span>           chart1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html" class="external-link">plotOutput</a></span><span class="op">(</span><span class="st">"histogram"</span><span class="op">)</span>,</span>
+<span>           chart2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html" class="external-link">plotOutput</a></span><span class="op">(</span><span class="st">"plot"</span><span class="op">)</span></span>
 <span>         <span class="op">)</span></span>
 <span>      <span class="op">)</span></span>
 <span>    <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">output</span><span class="op">$</span><span class="va">dropdown</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/renderPrint.html" class="external-link">renderText</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">mtcars_dropdown</span><span class="op">)</span></span>
-<span>  <span class="va">output</span><span class="op">$</span><span class="va">histogram</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/renderPlot.html" class="external-link">renderPlot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[[</span><span class="va">input</span><span class="op">$</span><span class="va">mtcars_dropdown</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="va">output</span><span class="op">$</span><span class="va">plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/renderPlot.html" class="external-link">renderPlot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[[</span><span class="va">input</span><span class="op">$</span><span class="va">mtcars_dropdown</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">output</span><span class="op">$</span><span class="va">dropdown</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderPrint.html" class="external-link">renderText</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">mtcars_dropdown</span><span class="op">)</span></span>
+<span>  <span class="va">output</span><span class="op">$</span><span class="va">histogram</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html" class="external-link">renderPlot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[[</span><span class="va">input</span><span class="op">$</span><span class="va">mtcars_dropdown</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">output</span><span class="op">$</span><span class="va">plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html" class="external-link">renderPlot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[[</span><span class="va">input</span><span class="op">$</span><span class="va">mtcars_dropdown</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
 <p>You can define grids for different screen sizes. <a href="https://github.com/Appsilon/shiny.semantic/blob/develop/examples/grid/app.R" class="external-link">Here</a>
 is an example on how to define it for mobile.</p>
 </div>
