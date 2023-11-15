@@ -1,7 +1,6 @@
-# Change Log
-All notable changes to this project will be documented in this file.
+## [development]
 
-## Upcoming
+- `shiny.semantic` no longer uses CDN as the default source of assets. Instead, `semantic.assets` package was introduced.
 
 ## [0.4.2]
 
@@ -43,7 +42,7 @@ All notable changes to this project will be documented in this file.
 
 - to modals: `modalDialog`, `removeModal`, `remove_all_modals`
 
-- new STYLEGUIDE introduced 
+- new STYLEGUIDE introduced
 
 - horizontal menu
 
