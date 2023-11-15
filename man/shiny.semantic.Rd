@@ -3,6 +3,7 @@
 \docType{package}
 \name{shiny.semantic}
 \alias{shiny.semantic}
+\alias{shiny.semantic-package}
 \title{Semantic UI wrapper for Shiny}
 \description{
 With this library it’s easy to wrap Shiny with Semantic UI
