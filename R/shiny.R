@@ -29,8 +29,8 @@ NULL
 #' @keywords internal
 .onLoad <- function(libname, pkgname) { # nolint
   # Add directory for static resources
-  file <- system.file("www", package = "semantic.assets", mustWork = TRUE)
-  shiny::addResourcePath("semantic.assets", file)
+  file <- system.file("www", package = "shiny.semantic", mustWork = TRUE)
+  shiny::addResourcePath("shiny.semantic", file)
 }
 
 #' Create universal Shiny input binding
