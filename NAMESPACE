@@ -3,7 +3,6 @@
 export(COLOR_PALETTE)
 export(Progress)
 export(SIZE_LEVELS)
-export(SUPPORTED_THEMES)
 export(accordion)
 export(actionButton)
 export(action_button)

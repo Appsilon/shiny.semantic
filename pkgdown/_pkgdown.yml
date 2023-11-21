@@ -176,7 +176,6 @@ reference:
   contents:
   - '`COLOR_PALETTE`'
   - '`SIZE_LEVELS`'
-  - '`SUPPORTED_THEMES`'
 
 - title: Other
   desc: Other useful functions or objects.

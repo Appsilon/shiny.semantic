@@ -107,7 +107,8 @@ get_css_file <- function(type, theme = NULL, minified = NULL) {
 #' wrapper (e.g. style, class etc.)
 #' @param title A title to display in the browser's title bar.
 #' @param theme Theme name or path. Full list of supported themes you will find in
-#' \code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.
+#' \code{\link[semantic.assets:SUPPORTED_THEMES]{semantic.assets::SUPPORTED_THEMES}}
+#' or at http://semantic-ui-forest.com/themes.
 #' @param suppress_bootstrap boolean flag that supresses bootstrap when turned on
 #' @param margin character with body margin size
 #' @examples

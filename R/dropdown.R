@@ -287,8 +287,8 @@ updateSelectInput <- function(session, inputId, label = NULL, choices = NULL, se
 #' @export
 theme_selector <- function(input_id = "theme", label = "Choose theme") {
   dropdown_content <- dropdown_input(
-    "theme", choices = c("default", SUPPORTED_THEMES),
-    choices_value = c("", SUPPORTED_THEMES),
+    "theme", choices = c("default", semantic.assets::SUPPORTED_THEMES),
+    choices_value = c("", semantic.assets::SUPPORTED_THEMES),
     type = "selection fluid themes-dropdown"
   )
   shiny::div(
