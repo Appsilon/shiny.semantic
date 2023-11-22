@@ -176,13 +176,11 @@ reference:
   contents:
   - '`COLOR_PALETTE`'
   - '`SIZE_LEVELS`'
-  - '`SUPPORTED_THEMES`'
 
 - title: Other
   desc: Other useful functions or objects.
   contents:
   - '`check_proper_color`'
-  - '`check_semantic_theme`'
   - '`Progress`'
   - '`semantic_DT`'
   - '`semantic_DTOutput`'

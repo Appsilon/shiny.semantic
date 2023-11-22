@@ -1,7 +1,7 @@
 Package: shiny.semantic
 Type: Package
 Title: Semantic UI Support for Shiny
-Version: 0.4.3.9000
+Version: 0.4.3.9001
 Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com", role = "aut"),
   person("Dominik", "Krzeminski", email = "dominik@appsilon.com", role = "aut"),
   person("Krystian", "Igras", email = "krystian@appsilon.com", role = "aut"),
@@ -39,7 +39,8 @@ Imports:
     jsonlite,
     grDevices,
     glue,
-    R6
+    R6,
+    semantic.assets
 Suggests:
     dplyr,
     tibble,
@@ -53,5 +54,6 @@ Suggests:
     rmarkdown,
     markdown,
     rcmdcheck,
-    mockery
+    mockery,
+    withr
 RoxygenNote: 7.2.3
