@@ -52,9 +52,6 @@
     <loc>https://appsilon.github.io/shiny.semantic/reference/SIZE_LEVELS.html</loc>
   </url>
   <url>
-    <loc>https://appsilon.github.io/shiny.semantic/reference/SUPPORTED_THEMES.html</loc>
-  </url>
-  <url>
     <loc>https://appsilon.github.io/shiny.semantic/reference/accordion.html</loc>
   </url>
   <url>
@@ -77,9 +74,6 @@
   </url>
   <url>
     <loc>https://appsilon.github.io/shiny.semantic/reference/check_proper_color.html</loc>
-  </url>
-  <url>
-    <loc>https://appsilon.github.io/shiny.semantic/reference/check_semantic_theme.html</loc>
   </url>
   <url>
     <loc>https://appsilon.github.io/shiny.semantic/reference/check_shiny_param.html</loc>
@@ -139,13 +133,13 @@
     <loc>https://appsilon.github.io/shiny.semantic/reference/generate_random_id.html</loc>
   </url>
   <url>
-    <loc>https://appsilon.github.io/shiny.semantic/reference/get_cdn_path.html</loc>
-  </url>
-  <url>
-    <loc>https://appsilon.github.io/shiny.semantic/reference/get_default_semantic_theme.html</loc>
+    <loc>https://appsilon.github.io/shiny.semantic/reference/get_css_file.html</loc>
   </url>
   <url>
     <loc>https://appsilon.github.io/shiny.semantic/reference/get_dependencies.html</loc>
+  </url>
+  <url>
+    <loc>https://appsilon.github.io/shiny.semantic/reference/get_dependencies_path.html</loc>
   </url>
   <url>
     <loc>https://appsilon.github.io/shiny.semantic/reference/get_numeric.html</loc>
