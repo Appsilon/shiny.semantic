@@ -1,13 +1,17 @@
+:root {
+  --primary-color: #F0873B;
+}
+
 .navbar {
-  background-color: #F0873B !important;
+  background-color: var(--primary-color) !important;
 }
 
 #navbar > ul.navbar-nav > li.nav-item a:hover {
-  background-color: #F0873B !important;
+  background-color: var(--primary-color) !important;
 }
 
 .navbar-dark .navbar-nav .active>.nav-link {
-  background-color: #F0873B !important;
+  background-color: var(--primary-color) !important;
   color: #fff;
 }
 
@@ -21,24 +25,25 @@ nav .text-muted {
 }
 
 a {
-  color: #F0873B;
+  color: var(--primary-color);
 }
 
 a:hover {
-  color: #b6652b;
+  color: #2c2b2b;
 }
 
 button.btn.btn-primary.btn-copy-ex {
-  background-color: #F0873B;
-  border-color: #F0873B;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
-.app-preview {
-  margin: 1.5em 0.75em;
-  padding: 0.25em;
-  box-shadow:
-    0 3.9px 4.6px rgba(0, 0, 0, 0.08),
-    0 12.3px 8.4px rgba(0, 0, 0, 0.056),
-    0 18.8px 19.2px rgba(0, 0, 0, 0.037),
-    0 22px 40px rgba(0, 0, 0, 0.019);
+.home {
+  left: 0px;
+  position: absolute;
+  padding: 8px 30px;
+  color: rgba(255,255,255,0.55);
+}
+
+.home:hover {
+  color: rgba(255,255,255,0.9);
 }

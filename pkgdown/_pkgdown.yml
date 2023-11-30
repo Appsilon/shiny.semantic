@@ -22,6 +22,9 @@ template:
         gtag('js', new Date());
         gtag('config', 'G-FQQZL5V93G');
       </script>
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+    before_navbar: |
+      <a href="https://rhinoverse.dev" class="home"><i class="fa fa-lg fa-chevron-left"></i></a>
 
 url: https://appsilon.github.io/shiny.semantic/
 
@@ -38,8 +41,8 @@ navbar:
       text: "Reference"
       href: reference/index.html
     - icon: fa-newspaper-o
-      text: "Changes"
-      href: CHANGELOG.html
+      text: "Changelog"
+      href: news/index.html
     - icon: fa-user-o
       text: "CoC"
       href: CODE_OF_CONDUCT.html
@@ -48,6 +51,15 @@ navbar:
       href: https://github.com/Appsilon/shiny.semantic
     - icon: fa-twitter fa-lg
       href: https://twitter.com/Appsilon
+
+home:
+  sidebar:
+    structure: [star, links, license, community, citation, authors, dev]
+    components:
+      star:
+        title: GitHub
+        text: |
+          <a class="github-button" href="https://github.com/appsilon/shiny.semantic" data-size="large" data-show-count="true" aria-label="Star Appsilon/shiny.semantic on GitHub">Star</a>
 
 articles:
 - title: All tutorials
