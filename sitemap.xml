@@ -4,9 +4,6 @@
     <loc>https://appsilon.github.io/shiny.semantic/404.html</loc>
   </url>
   <url>
-    <loc>https://appsilon.github.io/shiny.semantic/CHANGELOG.html</loc>
-  </url>
-  <url>
     <loc>https://appsilon.github.io/shiny.semantic/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
@@ -38,6 +35,9 @@
   </url>
   <url>
     <loc>https://appsilon.github.io/shiny.semantic/index.html</loc>
+  </url>
+  <url>
+    <loc>https://appsilon.github.io/shiny.semantic/news/index.html</loc>
   </url>
   <url>
     <loc>https://appsilon.github.io/shiny.semantic/pull_request_template.html</loc>
