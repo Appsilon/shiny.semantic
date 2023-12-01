@@ -10,9 +10,17 @@
   background-color: var(--primary-color) !important;
 }
 
-.navbar-dark .navbar-nav .active>.nav-link {
+#navbar > ul.navbar-nav > li.nav-item a {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.navbar-dark .navbar-nav .active > .nav-link {
   background-color: var(--primary-color) !important;
-  color: #fff;
+  color: #fff !important;
+}
+
+.navbar-brand {
+  color: #fff !important;
 }
 
 .navbar-dark input[type="search"] {
