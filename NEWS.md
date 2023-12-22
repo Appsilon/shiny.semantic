@@ -6,6 +6,8 @@
 
 - Remove unnecessary warning in `checkboxInput` when `width` is set to `NULL`.
 
+- `uirender` uses assets from `semantic.assets`.
+
 # [shiny.semantic 0.4.3](https://github.com/Appsilon/shiny.semantic/releases/tag/0.4.3)
 
 - Removed inline-styled min-height from `<body>`.
