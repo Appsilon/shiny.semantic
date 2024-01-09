@@ -1,5 +1,5 @@
 ---
-title: "Test renderui"
+title: "`uirender` example"
 output: html_document
 ---
 
