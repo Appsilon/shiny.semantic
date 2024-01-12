@@ -173,15 +173,15 @@ modal <- function(...,
 
   if (is.null(footer)) {
     footer <- ""
-  } else if (class(footer)[[1]] == "shiny.tag") {
+  } else if (inherits(footer, "shiny.tag")) {
     footer <- shiny::tagList(footer)
   }
 
-  if (class(header)[[1]] == "shiny.tag") {
+  if (inherits(header, "shiny.tag")) {
     header <- shiny::tagList(header)
   }
 
-  if (class(content)[[1]] == "shiny.tag") {
+  if (inherits(content, "shiny.tag")) {
     content <- shiny::tagList(content)
   }
 

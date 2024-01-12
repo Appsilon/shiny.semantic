@@ -36,7 +36,7 @@ rating_input <- function(input_id, label = "", value = 0, max = 3, icon = "star"
     warning("Size value not supported.")
     size <- ""
   }
-  if (class(icon) == "shiny.tag") {
+  if (inherits(icon, "shiny.tag")) {
     icon <- extract_icon_name(icon)
   }
   class <- glue::glue("ui {size} {color} rating")

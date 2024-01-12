@@ -217,7 +217,7 @@ sidebarLayout <- function(sidebarPanel,
 #'   shinyApp(ui, server)
 #' }
 split_layout <- function(..., cell_widths = NULL, cell_args = "", style = NULL){
-  if (class(cell_args) == "list")
+  if (inherits(cell_args, "list"))
     stop("In this implementation of `split_layout` cell_args must be character with style css")
   ui_elements <- list(...)
   n_elems <- length(ui_elements)
