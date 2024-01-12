@@ -1,5 +1,5 @@
-Package: shiny.semantic
 Type: Package
+Package: shiny.semantic
 Title: Semantic UI Support for Shiny
 Version: 0.4.3.9002
 Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com", role = "aut"),
@@ -18,42 +18,46 @@ Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com", role = "a
   person("Rabii", "Bouhestine", email = "rabii@appsilon.com", role = "ctb"),
   person("Developers", "Appsilon", email = "support+opensource@appsilon.com", role = "cre"),
   person(family = "Appsilon Sp. z o.o.", role = c("cph")))
-Description: Creating a great user interface for your Shiny apps
-    can be a hassle, especially if you want to work purely in R
-    and don't want to use, for instance HTML templates. This
-    package adds support for a powerful UI library Fomantic UI -
-    <https://fomantic-ui.com/> (before Semantic). It also supports
-    universal UI input binding that works with various DOM elements.
-BugReports: https://github.com/Appsilon/shiny.semantic/issues
-Encoding: UTF-8
-LazyData: TRUE
+Description: Creating a great user interface for your Shiny apps can be a
+    hassle, especially if you want to work purely in R and don't want to
+    use, for instance HTML templates. This package adds support for a
+    powerful UI library Fomantic UI - <https://fomantic-ui.com/> (before
+    Semantic). It also supports universal UI input binding that works with
+    various DOM elements.
 License: MIT + file LICENSE
-VignetteBuilder: knitr
+URL: https://appsilon.github.io/shiny.semantic/, https://github.com/Appsilon/shiny.semantic
+BugReports: https://github.com/Appsilon/shiny.semantic/issues
 Imports:
-    shiny (>= 0.12.1),
+    glue,
+    grDevices,
     htmltools (>= 0.2.6),
     htmlwidgets (>= 0.8),
-    purrr (>= 0.2.2),
-    stats,
-    magrittr,
     jsonlite,
-    grDevices,
-    glue,
+    magrittr,
+    purrr (>= 0.2.2),
     R6,
-    semantic.assets (>= 1.1.0)
+    semantic.assets (>= 1.1.0),
+    shiny (>= 0.12.1),
+    stats
 Suggests:
-    dplyr,
-    tibble,
-    knitr,
-    testthat,
-    lintr,
-    DT,
     covr,
+    dplyr,
+    DT,
+    gapminder,
+    knitr,
     leaflet,
-    plotly,
-    rmarkdown,
+    lintr,
     markdown,
-    rcmdcheck,
     mockery,
+    plotly,
+    rcmdcheck,
+    rmarkdown,
+    testthat,
+    tibble,
     withr
+VignetteBuilder:
+    knitr
+Encoding: UTF-8
+Language: en-US
+LazyData: TRUE
 RoxygenNote: 7.2.3
