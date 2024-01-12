@@ -24,7 +24,7 @@ define_selection_type <- function(input_id, multiple) {
 #' FALSE otherwise (default FALSE).
 #' @param default_text Text to be visible on dropdown when nothing is selected.
 #'
-#'#'@examples
+#' @examples
 #' ## Only run examples in interactive R sessions
 #' if (interactive()) {
 #'    library(shiny)
