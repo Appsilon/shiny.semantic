@@ -1,22 +1,19 @@
 Type: Package
 Package: shiny.semantic
 Title: Semantic UI Support for Shiny
-Version: 0.4.3.9002
+Version: 0.5.0
 Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com", role = "aut"),
-  person("Dominik", "Krzeminski", email = "dominik@appsilon.com", role = "aut"),
-  person("Krystian", "Igras", email = "krystian@appsilon.com", role = "aut"),
-  person("Adam", "Forys", email = "adam@appsilon.com", role = "aut"),
+  person("Dominik", "Krzeminski", role = "aut"),
+  person("Krystian", "Igras", role = "aut"),
+  person("Adam", "Forys", role = "aut"),
   person("Paweł", "Przytuła", email = "pawel@appsilon.com", role = "aut"),
   person("Jakub", "Chojna", email = "jakub.chojna@appsilon.com", role = "aut"),
   person("Olga", "Mierzwa-Sulima", email = "olga@appsilon.com", role = "aut"),
   person("Jakub", "Nowicki", email = "opensource+kuba@appsilon.com", role = c("aut", "cre")),
   person("Ashley", "Baldry", role = "ctb"),
-  person("Jakub", "Chojna", email = "jakub.chojna@appsilon.com", role = "ctb"),
-  person("Olga", "Mierzwa-Sulima", email = "olga@appsilon.com", role = "ctb"),
   person("Pedro", "Manuel Coutinho da Silva", email = "pedro@appsilon.com", role = "ctb"),
-  person("Paweł", "Przytuła", email = "pawel@appsilon.com", role = "ctb"),
   person("Kamil", "Żyła", email = "kamil@appsilon.com", role = "ctb"),
-  person("Rabii", "Bouhestine", email = "rabii@appsilon.com", role = "ctb"),
+  person("Rabii", "Bouhestine", role = "ctb"),
   person(family = "Appsilon Sp. z o.o.", role = c("cph")))
 Description: Creating a great user interface for your Shiny apps can be a
     hassle, especially if you want to work purely in R and don't want to
