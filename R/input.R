@@ -190,7 +190,6 @@ numeric_input <- function(input_id, label, value = NULL, min = NA, max = NA, ste
     if (!is.numeric(value) & !grepl("^\\d*(\\.\\d*|)$", value)) stop("Non-numeric input detected")
   }
 
-
   input_tag <- tags$input(id = input_id, value = value, type = "number", placeholder = placeholder)
   if (!is.na(min)) input_tag$attribs$min <- min
   if (!is.na(max)) input_tag$attribs$max <- max

@@ -14,6 +14,7 @@ Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com", role = "a
   person("Pedro", "Manuel Coutinho da Silva", email = "pedro@appsilon.com", role = "ctb"),
   person("Kamil", "Żyła", email = "kamil@appsilon.com", role = "ctb"),
   person("Rabii", "Bouhestine", role = "ctb"),
+  person("Federico", "Rivandeira", email = "federico@appsilon.com", role = "ctb"),
   person(family = "Appsilon Sp. z o.o.", role = c("cph")))
 Description: Creating a great user interface for your Shiny apps can be a
     hassle, especially if you want to work purely in R and don't want to
