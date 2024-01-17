@@ -43,7 +43,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">shiny.semantic</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.3.9002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0</small>
 
     <a href="https://rhinoverse.dev" class="external-link home"><i class="fa fa-lg fa-chevron-left"></i></a>
 
@@ -121,7 +121,7 @@
       <img src="" class="logo" alt=""><h1>Shiny.semantic integration with plotly and leaflet</h1>
                         <h4 data-toc-skip class="author">Appsilon</h4>
             
-            <h4 data-toc-skip class="date">2024-01-09</h4>
+            <h4 data-toc-skip class="date">2024-01-17</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Appsilon/shiny.semantic/blob/HEAD/vignettes/semantic_integration.Rmd" class="external-link"><code>vignettes/semantic_integration.Rmd</code></a></small>
       <div class="d-none name"><code>semantic_integration.Rmd</code></div>
@@ -140,7 +140,7 @@ well with other popular R packages. Let’s see how to create a simple
 application with <code>plotly</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">shiny.semantic</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://appsilon.github.io/shiny.semantic/">shiny.semantic</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://plotly-r.com" class="external-link">plotly</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span><span class="op">(</span></span>
@@ -169,7 +169,7 @@ application with <code>plotly</code>.</p>
 <code>leaflet</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">shiny.semantic</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://appsilon.github.io/shiny.semantic/">shiny.semantic</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span><span class="op">(</span></span>
@@ -198,7 +198,7 @@ application with <code>plotly</code>.</p>
 need to use <code>semantic_DT</code> wrapper.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span></span>
-<span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">shiny.semantic</span><span class="op">)</span></span>
+<span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://appsilon.github.io/shiny.semantic/">shiny.semantic</a></span><span class="op">)</span></span>
 <span></span>
 <span> <span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/semanticPage.html">semanticPage</a></span><span class="op">(</span></span>
 <span>   <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">h2</a></span><span class="op">(</span><span class="st">"Pretty tables in Shiny Semantic"</span><span class="op">)</span>,</span>
@@ -220,7 +220,7 @@ need to use <code>semantic_DT</code> wrapper.</p>
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by Filip Stachura, Dominik Krzeminski, Krystian Igras, Adam Forys, Paweł Przytuła, Jakub Chojna, Olga Mierzwa-Sulima, Developers Appsilon.</p>
+<p>Developed by Filip Stachura, Dominik Krzeminski, Krystian Igras, Adam Forys, Paweł Przytuła, Jakub Chojna, Olga Mierzwa-Sulima, Jakub Nowicki.</p>
 </div>
 
 <div class="pkgdown-footer-right">
