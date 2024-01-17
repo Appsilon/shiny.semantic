@@ -41,27 +41,25 @@ dropdown_input <- function(input_id, choices, choices_value = choices,
       icon("dropdown"),
       shiny::div(class = "default text", default_text),
       menu(
-        purrr::when(
-          choices,
-          is.null(names(.)) ~
-            purrr::map2(
-              choices, choices_value,
-              ~ shiny::div(class = "item", `data-value` = .y, .x)
-            ),
-          !is.null(names(.)) ~
-            purrr::map(
-              seq_len(length(choices)), ~ {
-                shiny::tagList(
-                  menu_header(names(choices)[.x], is_item = FALSE),
-                  menu_divider(),
-                  purrr::map2(
-                    choices[[.x]], choices_value[[.x]],
-                    ~ shiny::div(class = "item", `data-value` = .y, .x)
-                  )
+        if (is.null(names(choices))) {
+          purrr::map2(
+            choices, choices_value,
+            ~ shiny::div(class = "item", `data-value` = .y, .x)
+          )
+        } else {
+          purrr::map(
+            seq_len(length(choices)), ~ {
+              shiny::tagList(
+                menu_header(names(choices)[.x], is_item = FALSE),
+                menu_divider(),
+                purrr::map2(
+                  choices[[.x]], choices_value[[.x]],
+                  ~ shiny::div(class = "item", `data-value` = .y, .x)
                 )
-              }
-            )
-        )
+              )
+            }
+          )
+        }
       )
     )
 }

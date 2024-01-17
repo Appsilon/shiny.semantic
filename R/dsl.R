@@ -860,7 +860,7 @@ accordion <- function(accordion_list, fluid = TRUE, active_title = "",
             div(class = paste("title", active), icon("dropdown"), x$title),
             div(class = paste("content", active),
                 p(class = "transition hidden",
-                  if (class(x$content) == "shiny.tag") x$content else div(x$content)
+                  if (inherits(x$content, "shiny.tag")) x$content else div(x$content)
                 )
             )
           )

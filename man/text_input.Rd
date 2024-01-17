@@ -47,12 +47,12 @@ under \code{input[[input_id]]}.
 \details{
 The following \code{type} s are allowed:
 \itemize{
-\item{text} {The standard input}
-\item{textarea} {An extended space for text}
-\item{password} {A censored version of the text input}
-\item{email} {A special version of the text input specific for email addresses}
-\item{url} {A special version of the text input specific for URLs}
-\item{tel} {A special version of the text input specific for telephone numbers}
+\item{text} The standard input
+\item{textarea} An extended space for text
+\item{password} A censored version of the text input
+\item{email} A special version of the text input specific for email addresses
+\item{url} A special version of the text input specific for URLs
+\item{tel} A special version of the text input specific for telephone numbers
 }
 
 The inputs are updateable by using \code{\link[shiny]{updateTextInput}} or

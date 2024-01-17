@@ -74,9 +74,9 @@ generate_random_id <- function(prefix, id_length = 20) {
 #' @param args list or vector with extra arguments
 #' @keywords internal
 warn_unsupported_args <- function(args) {
-  if (class(args) == "list")
+  if (inherits(args, "list"))
     to_wrn <- paste0(as.character(names(args)), collapse = ',')
-  else if (class(args) == "character")
+  else if (inherits(args, "character"))
     to_wrn <- paste0(args, collapse = ',')
   else if (is.null(args))
     return()

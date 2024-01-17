@@ -8,6 +8,10 @@
 
 - `uirender` uses assets from `semantic.assets`.
 
+- Replaced class to string comparisons.
+
+- Replaced deprecated `purrr::when` call.
+
 # [shiny.semantic 0.4.3](https://github.com/Appsilon/shiny.semantic/releases/tag/0.4.3)
 
 - Removed inline-styled min-height from `<body>`.
