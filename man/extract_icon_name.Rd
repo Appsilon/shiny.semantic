@@ -15,3 +15,4 @@ character with icon name
 \description{
 Extract icon name
 }
+\keyword{internal}

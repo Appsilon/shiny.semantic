@@ -1,6 +1,6 @@
 ^renv$
 ^renv\.lock$
-^_pkgdown\.yml$
+pkgdown
 ^codecov\.yml$
 ^\.travis\.yml$
 ^.*\.Rproj$

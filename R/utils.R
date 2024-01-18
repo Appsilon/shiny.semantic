@@ -3,6 +3,7 @@
 #' @param val value to get from JSON
 #'
 #' @return Value of type defined in `shiny_input`
+#' @keywords internal
 parse_val <- function(val) {
   jsonlite::fromJSON(ifelse(is.null(val), '""', val))
 }
@@ -34,6 +35,7 @@ check_proper_color <- function(color) {
 #' @param ... Arguments passed to the shiny.semantic version of the shiny function
 #'
 #' @return If the shiny exclusive argument is called in a shiny.semantic, then a message is posted in the UI
+#' @keywords internal
 check_shiny_param <- function(name, func, ...) {
   args <- list(...)
   args_names <- names(args)
@@ -47,6 +49,7 @@ check_shiny_param <- function(name, func, ...) {
 #' @param name function name
 #'
 #' @return function
+#' @keywords internal
 `%:::%` <- function(pkg, name) { # nolint
   pkg <- as.character(substitute(pkg))
   name <- as.character(substitute(name))
@@ -58,6 +61,7 @@ check_shiny_param <- function(name, func, ...) {
 #'
 #' @param prefix character with prefix add to id
 #' @param id_length numeric with length of id (default 20)
+#' @keywords internal
 generate_random_id <- function(prefix, id_length = 20) {
   random_id <- paste(sample(letters, id_length, replace = TRUE), collapse = "")
   paste0(prefix, "-", random_id)
@@ -68,10 +72,11 @@ generate_random_id <- function(prefix, id_length = 20) {
 #' This throws warning if there are parameters not supported by semantic.
 #'
 #' @param args list or vector with extra arguments
+#' @keywords internal
 warn_unsupported_args <- function(args) {
-  if (class(args) == "list")
+  if (inherits(args, "list"))
     to_wrn <- paste0(as.character(names(args)), collapse = ',')
-  else if (class(args) == "character")
+  else if (inherits(args, "character"))
     to_wrn <- paste0(args, collapse = ',')
   else if (is.null(args))
     return()
@@ -88,6 +93,7 @@ warn_unsupported_args <- function(args) {
 #' @param icon icon object
 #'
 #' @return character with icon name
+#' @keywords internal
 extract_icon_name <- function(icon) {
   gsub(" icon", "", icon$attribs$class)
 }
@@ -102,6 +108,7 @@ extract_icon_name <- function(icon) {
 #' * `named`, a list of the named arguments.
 #'
 #' @md
+#' @keywords internal
 split_args <- function(...) {
   args <- list(...)
   if (is.null(names(args))) {

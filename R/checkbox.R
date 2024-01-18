@@ -36,9 +36,9 @@
 #'
 #' The following \code{type}s are allowed:
 #' \itemize{
-#' \item{NULL}{ The standard checkbox (default)}
-#' \item{toggle}{ Each checkbox has a toggle form}
-#' \item{slider}{ Each checkbox has a simple slider form}
+#' \item{NULL} The standard checkbox (default)
+#' \item{toggle} Each checkbox has a toggle form
+#' \item{slider} Each checkbox has a simple slider form
 #' }
 #'
 #' @rdname checkbox
@@ -55,7 +55,8 @@ checkbox_input <- function(input_id, label = "", type = NULL, is_marked = TRUE,
 #' @rdname checkbox
 #' @export
 checkboxInput <- function(inputId, label = "", value = FALSE, width = NULL){
-  warn_unsupported_args(c("width"))
+  if (!is.null(width))
+    warn_unsupported_args(c("width"))
   checkbox_input(inputId, label, is_marked = value)
 }
 
@@ -84,9 +85,9 @@ toggle <- function(input_id, label = "", is_marked = TRUE, style = NULL) {
 #' @details
 #' The following \code{type}s are allowed:
 #' \itemize{
-#' \item{NULL}{The standard checkbox (default)}
-#' \item{toggle}{Each checkbox has a toggle form}
-#' \item{slider}{Each checkbox has a simple slider form}
+#' \item{NULL} The standard checkbox (default)
+#' \item{toggle} Each checkbox has a toggle form
+#' \item{slider} Each checkbox has a simple slider form
 #' }
 #'
 #' @rdname multiple_checkbox
@@ -140,7 +141,7 @@ multiple_checkbox <- function(input_id, label, choices, choices_value = choices,
     )
   }))
 
-  shiny::div(class="ui form",
+  shiny::div(
     id = input_id, class = paste(position, "fields ss-checkbox-input"),
     tags$label(`for` = input_id, label),
     choices_html,
@@ -230,7 +231,7 @@ multiple_radio <- function(input_id, label, choices, choices_value = choices,
     )
   }))
 
-  shiny::div(class="ui form",
+  shiny::div(
     id = input_id, class = paste(position, "fields ss-checkbox-input"),
     tags$label(`for` = input_id, label),
     choices_html,

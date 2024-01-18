@@ -20,3 +20,4 @@ If the shiny exclusive argument is called in a shiny.semantic, then a message is
 A quick function to check a shiny.semantic wrapper of a shiny function to see whether any
 extra arguments are called that aren't required for the shiny.semantic version
 }
+\keyword{internal}

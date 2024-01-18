@@ -7,7 +7,7 @@
 uirender(ui, width = NULL, height = NULL, element_id = NULL)
 }
 \arguments{
-\item{ui}{UI, which will be wraped in an htmlwidget.}
+\item{ui}{UI, which will be wrapped in an htmlwidget.}
 
 \item{width}{Fixed width for widget (in css units). The default is NULL,
 which results in intelligent automatic sizing.}
@@ -25,9 +25,15 @@ renders in viewer or rmarkdown.
 \examples{
 library(shiny)
 library(shiny.semantic)
-uirender(card(div(class="content",
-                  div(class="header", "Elliot Fu"),
-                  div(class="meta", "Friend"),
-                  div(class="description", "Elliot Fu is a film-maker from New York."))))
+uirender(
+  card(
+    div(
+      class="content",
+      div(class="header", "Elliot Fu"),
+      div(class="meta", "Friend"),
+      div(class="description", "Elliot Fu is a film-maker from New York.")
+    )
+  )
+)
 
 }

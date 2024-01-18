@@ -14,3 +14,4 @@ define_selection_type(input_id, multiple)
 \description{
 Define search type if multiple
 }
+\keyword{internal}

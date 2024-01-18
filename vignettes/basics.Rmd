@@ -20,7 +20,7 @@ library(shiny.semantic)
 ```
 
 
-In this tutorial we will walk you through the basics of `shiny.semantic`. 
+In this tutorial we will walk you through the basics of `shiny.semantic`.
 
 ## Quick Q&A
 
@@ -98,7 +98,7 @@ width = "400px", height = "150px")
 
 ### (b) Using predefined objects
 
-If you are not that comfortable with web development, you can take advantage of the 
+If you are not that comfortable with web development, you can take advantage of the
 number of elements that we implemented for you. See some examples below:
 
 ```{r echo = T, include = T, eval = FALSE, screenshot.force = FALSE}
@@ -107,7 +107,7 @@ text_input("txt", type = "text", placeholder = "Enter Text")
 date_input("date")
 ```
 
-For more components visit our [Components live demo website](https://demo.appsilon.com/apps/semantic)
+For more components visit our [Components live demo website](https://connect.appsilon.com/shiny-semantic-components/)
 or the `examples/` folder on our [repository](https://github.com/Appsilon/shiny.semantic/).
 
 Little sneak-peak of what you can get is listed on the graphics below. Most of the components

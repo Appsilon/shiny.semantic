@@ -3,6 +3,7 @@
 #' @param number numeric digits from 1 to 10
 #'
 #' @return character with number word
+#' @keywords internal
 digits2words <- function(number) {
   textrep <- c("one","two","three","four","five",
                "six","seven","eight","nine", "ten")
@@ -79,7 +80,7 @@ horizontal_menu <- function(menu_items, active_location = "", logo = NULL) {
     logo_ui <- ""
   else {
     number_items <- length(menu_items) + 1
-    if (class(logo) == "shiny.tag")
+    if (inherits(logo, "shiny.tag"))
       logo_ui <- shiny::div(class = "item",
                             logo)
     else

@@ -123,6 +123,7 @@ label <- function(..., class = "", is_link = TRUE) {
 #'
 #' @param tab A tab. Tab is a list of three elements - first
 #' element defines menu item, second element defines tab content, third optional element defines tab id.
+#' @keywords internal
 set_tab_id <- function(tab) {
   id <- tab$id
   menu <- tab$menu
@@ -762,6 +763,7 @@ menu_divider <- function(...) {
 #' @param icon_name character with optional icon
 #'
 #' @import shiny
+#' @keywords internal
 list_element <- function(header = NULL, description = NULL, icon_name = NULL) {
   div(class = "item",  if (!is.null(icon)) icon(icon_name) else "",
       div(class = "content",
@@ -858,7 +860,7 @@ accordion <- function(accordion_list, fluid = TRUE, active_title = "",
             div(class = paste("title", active), icon("dropdown"), x$title),
             div(class = paste("content", active),
                 p(class = "transition hidden",
-                  if (class(x$content) == "shiny.tag") x$content else div(x$content)
+                  if (inherits(x$content, "shiny.tag")) x$content else div(x$content)
                 )
             )
           )

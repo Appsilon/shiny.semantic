@@ -15,3 +15,4 @@ character with number word
 \description{
 Helper function that transforms digits to words
 }
+\keyword{internal}

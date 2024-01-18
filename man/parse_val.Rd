@@ -15,3 +15,4 @@ Value of type defined in `shiny_input`
 \description{
 Parse the `shiny_input` value from JSON
 }
+\keyword{internal}

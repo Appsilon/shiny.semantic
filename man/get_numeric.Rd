@@ -15,3 +15,4 @@ Numeric value
 \description{
 Extracts numeric values
 }
+\keyword{internal}
