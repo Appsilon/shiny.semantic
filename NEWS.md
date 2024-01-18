@@ -1,4 +1,4 @@
-# shiny.semantic (development)
+# shiny.semantic 0.5.0
 
 - `shiny.semantic` no longer uses CDN as the default source of assets. Instead, `semantic.assets` package was introduced.
 
