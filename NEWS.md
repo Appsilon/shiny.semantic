@@ -2,6 +2,8 @@
 
 - Fixed `range_input` now returns both lower and upper bound.
 
+- Fixed `update_multiple_checkbox` not supporting choices with single quote.
+
 # [shiny.semantic 0.5.0](https://github.com/Appsilon/shiny.semantic/releases/tag/0.5.0)
 
 - `shiny.semantic` no longer uses CDN as the default source of assets. Instead, `semantic.assets` package was introduced.
