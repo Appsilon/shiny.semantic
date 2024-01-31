@@ -59,7 +59,7 @@ $.extend(semanticSliderBinding, {
     if ($(el).data('ticks')) {
       return false;
     } else {
-      return 'shiny.vector';
+      return 'shiny.semantic.vector';
     }
   },
   // Given the DOM element for the input, set the value.

@@ -31,7 +31,7 @@ NULL
   # Add directory for static resources
   file <- system.file("www", package = "shiny.semantic", mustWork = TRUE)
   shiny::addResourcePath("shiny.semantic", file)
-  shiny::registerInputHandler("shiny.vector", function(value, ...) {
+  shiny::registerInputHandler("shiny.semantic.vector", function(value, ...) {
     if (is.null(value)) {
       return(value)
     } else {
