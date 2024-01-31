@@ -50,6 +50,26 @@
 #'   type = "month"
 #' )
 #' }
+#'
+#'
+#' \dontrun{
+#' # Calendar range
+#'   calendar(
+#'     input_id = "start_date",
+#'     type = "date",
+#'     value = "2020-02-20",
+#'     min = "2020-01-01",
+#'     max = "2020-03-01",
+#'   )
+#'
+#'   calendar(
+#'     input_id = "end_date",
+#'     type = "date",
+#'     value = "2020-02-23",
+#'     min = "2020-01-01",
+#'     max = "2020-03-01",
+#'   )
+#' }
 #' @rdname calendar
 #' @export
 calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA) {
@@ -68,6 +88,30 @@ calendar <- function(input_id, value = NULL, placeholder = NULL, type = "date", 
 
   if (!is.na(min)) cal_widget$attribs[["data-min-date"]] <- min
   if (!is.na(max)) cal_widget$attribs[["data-max-date"]] <- max
+
+  cal_widget
+}
+
+#' Defines calendar ranges
+#'
+#'
+#' @param input_id Input name. Reactive value is available under \code{input[[input_id]]}.
+#' @param value Initial value of the numeric input.
+#' @param placeholder Text visible in the input when nothing is inputted.
+#' @param type Select from \code{'year'}, \code{'month'}, \code{'date'} and \code{'time'}
+#' @param min Minimum allowed value.
+#' @param max Maximum allowed value.
+#' @param start_calendar_id id of the calendar that defines the range start.
+#' @param end_calendar_id id of the calendar that defines the range end.
+#'
+#' @rdname calendar_range_single
+#'
+#' @export
+calendar_range_single <- function(input_id, value = NULL, placeholder = NULL, type = "date", min = NA, max = NA,
+                                  start_calendar_id = NULL, end_calendar_id = NULL) {
+  cal_widget <- calendar(input_id, value, placeholder, type, min, max)
+  if (!is.null(start_calendar_id)) cal_widget$attribs[["data-start-calendar-id"]] <- start_calendar_id
+  if (!is.null(end_calendar_id)) cal_widget$attribs[["data-end-calendar-id"]] <- end_calendar_id
 
   cal_widget
 }
