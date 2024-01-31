@@ -35,7 +35,7 @@ NULL
     if (is.null(value)) {
       return(value)
     } else {
-      values <- shiny:::safeFromJSON(value)
+      values <- jsonlite::fromJSON(value)
       return(values)
     }
   }, force = TRUE)
