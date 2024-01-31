@@ -9,9 +9,8 @@
 #' There are a number of global options that affect shiny.semantic as well as
 #' Shiny behavior.The options can be set globally with `options()`
 #' \describe{
-#' \item{shiny.custom.semantic.cdn (defaults is internal CDN)}{This controls from where the css
+#' \item{shiny.custom.semantic.cdn (defaults to `NULL`)}{This controls from where the css
 #' and javascripts will be downloaded.}
-#' \item{shiny.semantic.local (defaults to `FALSE`)}{This allows to use only local dependency.}
 #' \item{shiny.custom.semantic (defaults to `NULL`)}{This allows to set custom local path
 #' to semantic dependencies.}
 #' \item{shiny.minified (defaults to `TRUE`)}{Defines including JavaScript as a minified or
@@ -20,16 +19,26 @@
 #'
 #' @docType package
 #' @name shiny.semantic
+#' @aliases shiny.semantic-package
 NULL
 
 #' Internal function that expose javascript bindings to Shiny app.
 #'
 #' @param libname library name
 #' @param pkgname package name
+#' @keywords internal
 .onLoad <- function(libname, pkgname) { # nolint
   # Add directory for static resources
   file <- system.file("www", package = "shiny.semantic", mustWork = TRUE)
   shiny::addResourcePath("shiny.semantic", file)
+  shiny::registerInputHandler("shiny.semantic.vector", function(value, ...) {
+    if (is.null(value)) {
+      return(value)
+    } else {
+      values <- jsonlite::fromJSON(value)
+      return(values)
+    }
+  }, force = TRUE)
 }
 
 #' Create universal Shiny input binding

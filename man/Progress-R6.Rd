@@ -62,19 +62,19 @@ shinyApp(ui, server)
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Progress$new()}}
-\item \href{#method-set}{\code{Progress$set()}}
-\item \href{#method-inc}{\code{Progress$inc()}}
-\item \href{#method-getMin}{\code{Progress$getMin()}}
-\item \href{#method-getMax}{\code{Progress$getMax()}}
-\item \href{#method-getValue}{\code{Progress$getValue()}}
-\item \href{#method-close}{\code{Progress$close()}}
-\item \href{#method-clone}{\code{Progress$clone()}}
+\item \href{#method-Progress-new}{\code{Progress$new()}}
+\item \href{#method-Progress-set}{\code{Progress$set()}}
+\item \href{#method-Progress-inc}{\code{Progress$inc()}}
+\item \href{#method-Progress-getMin}{\code{Progress$getMin()}}
+\item \href{#method-Progress-getMax}{\code{Progress$getMax()}}
+\item \href{#method-Progress-getValue}{\code{Progress$getValue()}}
+\item \href{#method-Progress-close}{\code{Progress$close()}}
+\item \href{#method-Progress-clone}{\code{Progress$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Progress-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Progress-new}{}}}
 \subsection{Method \code{new()}}{
 Creates a new progress panel (but does not display it).
 \subsection{Usage}{
@@ -99,8 +99,8 @@ greater than `min`.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-set"></a>}}
-\if{latex}{\out{\hypertarget{method-set}{}}}
+\if{html}{\out{<a id="method-Progress-set"></a>}}
+\if{latex}{\out{\hypertarget{method-Progress-set}{}}}
 \subsection{Method \code{set()}}{
 Updates the progress panel. When called the first time, the
   progress panel is displayed.
@@ -124,8 +124,8 @@ displayed to the user, or `NULL` to hide the current message (if any).}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-inc"></a>}}
-\if{latex}{\out{\hypertarget{method-inc}{}}}
+\if{html}{\out{<a id="method-Progress-inc"></a>}}
+\if{latex}{\out{\hypertarget{method-Progress-inc}{}}}
 \subsection{Method \code{inc()}}{
 Like `set`, this updates the progress panel. The difference
   is that `inc` increases the progress bar by `amount`, instead of
@@ -149,8 +149,8 @@ displayed to the user, or `NULL` to hide the current message (if any).}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getMin"></a>}}
-\if{latex}{\out{\hypertarget{method-getMin}{}}}
+\if{html}{\out{<a id="method-Progress-getMin"></a>}}
+\if{latex}{\out{\hypertarget{method-Progress-getMin}{}}}
 \subsection{Method \code{getMin()}}{
 Returns the minimum value.
 \subsection{Usage}{
@@ -159,8 +159,8 @@ Returns the minimum value.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getMax"></a>}}
-\if{latex}{\out{\hypertarget{method-getMax}{}}}
+\if{html}{\out{<a id="method-Progress-getMax"></a>}}
+\if{latex}{\out{\hypertarget{method-Progress-getMax}{}}}
 \subsection{Method \code{getMax()}}{
 Returns the maximum value.
 \subsection{Usage}{
@@ -169,8 +169,8 @@ Returns the maximum value.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getValue"></a>}}
-\if{latex}{\out{\hypertarget{method-getValue}{}}}
+\if{html}{\out{<a id="method-Progress-getValue"></a>}}
+\if{latex}{\out{\hypertarget{method-Progress-getValue}{}}}
 \subsection{Method \code{getValue()}}{
 Returns the current value.
 \subsection{Usage}{
@@ -179,8 +179,8 @@ Returns the current value.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-close"></a>}}
-\if{latex}{\out{\hypertarget{method-close}{}}}
+\if{html}{\out{<a id="method-Progress-close"></a>}}
+\if{latex}{\out{\hypertarget{method-Progress-close}{}}}
 \subsection{Method \code{close()}}{
 Removes the progress panel. Future calls to `set` and
   `close` will be ignored.
@@ -190,8 +190,8 @@ Removes the progress panel. Future calls to `set` and
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Progress-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Progress-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

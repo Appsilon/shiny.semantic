@@ -110,3 +110,85 @@ test_that("test modalDialog", {
   ))
 
 })
+
+
+testthat::test_that(
+  "show_modal with asis as TRUE sends exactly the id passed to the
+                    session$sendCustomMessage function",
+  {
+    # Prepare the stub to check what is passed to the
+    # session$sendCustomMessage method
+    stub_custom_message <-
+      function(message, parameters) {
+        list(message = message,
+             parameters = parameters)
+      }
+    mockery::stub(where = show_modal, what = "session$sendCustomMessage", stub_custom_message)
+    # Mocking the Shiny session
+    session <- shiny::MockShinySession$new()
+    # Mocking a module's session
+    module_session <- session$makeScope("new")
+    # Act
+    result <- show_modal("id", session = module_session, asis = TRUE)
+    
+    # Assert
+    testthat::expect_equal(result$message, "showSemanticModal")
+    testthat::expect_equal(result$parameters$id, "id")
+    testthat::expect_equal(result$parameters$action, "show")
+  }
+)
+
+testthat::test_that(
+  "show_modal with asis as FALSE namespaces the id passed to the
+  session$sendCustomMessage function when it IS IN the context
+  of a sessionproxy (shiny module)",
+  {
+    # Prepare the stub to check what is passed to the
+    # session$sendCustomMessage method
+    stub_custom_message <- function(message, parameters) {
+        list(
+          message = message,
+          parameters = parameters
+        )
+    }
+    mockery::stub(where = show_modal, what = "session$sendCustomMessage", stub_custom_message)
+    # Mocking the Shiny session
+    session <- shiny::MockShinySession$new()
+    # Mocking a module's session
+    module_session <- session$makeScope("new")
+    # Act
+    result <- show_modal("id", session = module_session, asis = FALSE)
+    
+    # Assert
+    testthat::expect_equal(result$message, "showSemanticModal")
+    testthat::expect_equal(result$parameters$id, "new-id")
+    testthat::expect_equal(result$parameters$action, "show")
+  }
+)
+
+
+testthat::test_that(
+  "show_modal with asis as FALSE do not namespace the id passed to the
+  session$sendCustomMessage function when it IS NOT in the context
+  of a sessionproxy (shiny module)",
+  {
+    # Prepare the stub to check what is passed to the
+    # session$sendCustomMessage method
+    stub_custom_message <- function(message, parameters) {
+      list(
+        message = message,
+        parameters = parameters
+      )
+    }
+    mockery::stub(where = show_modal, what = "session$sendCustomMessage", stub_custom_message)
+    # Mocking the Shiny session
+    session <- shiny::MockShinySession$new()
+    # Act
+    result <- show_modal("id", session = session, asis = FALSE)
+    
+    # Assert
+    testthat::expect_equal(result$message, "showSemanticModal")
+    testthat::expect_equal(result$parameters$id, "id")
+    testthat::expect_equal(result$parameters$action, "show")
+  }
+)

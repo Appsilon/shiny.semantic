@@ -8,7 +8,7 @@
 numeric_input(
   input_id,
   label,
-  value,
+  value = NULL,
   min = NA,
   max = NA,
   step = NA,
@@ -21,11 +21,12 @@ numeric_input(
 numericInput(
   inputId,
   label,
-  value,
+  value = NULL,
   min = NA,
   max = NA,
   step = NA,
   width = NULL,
+  placeholder = NULL,
   ...
 )
 }
@@ -47,7 +48,7 @@ See [Fomantic UI](https://fomantic-ui.com/collections/form.html) for details.}
 
 \item{icon}{Icon or label attached to numeric input.}
 
-\item{placeholder}{Inner input label displayed when no value is specified.}
+\item{placeholder}{Inner input label displayed when no value is specified}
 
 \item{...}{Other parameters passed to \code{\link{numeric_input}} like \code{type} or \code{icon}.}
 
@@ -60,6 +61,7 @@ This creates a default numeric input using Semantic UI. The input is available
 under \code{input[[input_id]]}.
 }
 \details{
+Either `value` or `placeholder` should be defined.
 The inputs are updateable by using \code{\link{updateNumericInput}}.
 }
 \examples{

@@ -14,3 +14,4 @@
 \description{
 Internal function that expose javascript bindings to Shiny app.
 }
+\keyword{internal}

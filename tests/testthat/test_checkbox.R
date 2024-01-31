@@ -24,3 +24,13 @@ test_that("test toggle alias for checkbox_input", {
   expect_true(any(grepl("toggle",
                         si_str2, fixed = TRUE)))
 })
+
+test_that("checkboxInput warns on unsupported arguments", {
+  expect_silent(checkboxInput("check"))
+  expect_silent(checkboxInput("check", NULL))
+  expect_silent(checkboxInput("check", "My Label"))
+  expect_silent(checkboxInput("check", "My Label", TRUE))
+  expect_silent(checkboxInput("check", "My Label", FALSE))
+  expect_silent(checkboxInput("check", width = NULL))
+  expect_warning(checkboxInput("check", width = "10%"))
+})
