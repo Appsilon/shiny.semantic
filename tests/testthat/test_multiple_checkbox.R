@@ -17,7 +17,7 @@ test_that("test multiple_checkbox input values", {
     ))
   expect_true(any(
     grepl(
-      "<div class=\"ui form grouped fields ss-checkbox-input\" id=\"checkboxes\">",
+      "<div id=\"checkboxes\" class=\"grouped fields ss-checkbox-input\">",
       si_str,
       fixed = TRUE
     )
