@@ -92,8 +92,13 @@ create_cal_widget <- function(type="date", value, placeholder, min, max) {
 #'
 #' @param session The \code{session} object passed to function given to
 #'   \code{shinyServer}.
-#'
 #' @param input_id ID of the calendar range that will be updated
+#' @param start_value New start value of the calendar defining the start of the range.
+#' @param end_value New end value of the calendar defining the end of the range.
+#' @param min New minimum allowed value in both calendars.
+#' @param max New maximum allowed value in both calendars.
+#'
+#' @return None. This function is called for its side effects.
 #'
 #' @rdname calendar_range
 #' @export

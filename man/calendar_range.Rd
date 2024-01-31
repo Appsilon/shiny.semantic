@@ -18,6 +18,17 @@ update_calendar_range(
 \code{shinyServer}.}
 
 \item{input_id}{ID of the calendar range that will be updated}
+
+\item{start_value}{New start value of the calendar defining the start of the range.}
+
+\item{end_value}{New end value of the calendar defining the end of the range.}
+
+\item{min}{New minimum allowed value in both calendars.}
+
+\item{max}{New maximum allowed value in both calendars.}
+}
+\value{
+None. This function is called for its side effects.
 }
 \description{
 This function updates the dates on a calendar range.
