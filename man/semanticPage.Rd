@@ -19,7 +19,8 @@ wrapper (e.g. style, class etc.)}
 \item{title}{A title to display in the browser's title bar.}
 
 \item{theme}{Theme name or path. Full list of supported themes you will find in
-\code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.}
+\code{\link[semantic.assets:SUPPORTED_THEMES]{semantic.assets::SUPPORTED_THEMES}}
+or at http://semantic-ui-forest.com/themes.}
 
 \item{suppress_bootstrap}{boolean flag that supresses bootstrap when turned on}
 

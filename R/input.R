@@ -46,12 +46,12 @@ uiinput <- function(..., class = "") {
 #' @details
 #' The following \code{type} s are allowed:
 #' \itemize{
-#' \item{text} {The standard input}
-#' \item{textarea} {An extended space for text}
-#' \item{password} {A censored version of the text input}
-#' \item{email} {A special version of the text input specific for email addresses}
-#' \item{url} {A special version of the text input specific for URLs}
-#' \item{tel} {A special version of the text input specific for telephone numbers}
+#' \item{text} The standard input
+#' \item{textarea} An extended space for text
+#' \item{password} A censored version of the text input
+#' \item{email} A special version of the text input specific for email addresses
+#' \item{url} A special version of the text input specific for URLs
+#' \item{tel} A special version of the text input specific for telephone numbers
 #' }
 #'
 #' The inputs are updateable by using \code{\link[shiny]{updateTextInput}} or
@@ -164,6 +164,7 @@ textInput <- function(inputId, label, value = "", width = NULL,
 #' @param label character with label
 #'
 #' @details
+#' Either `value` or `placeholder` should be defined.
 #' The inputs are updateable by using \code{\link{updateNumericInput}}.
 #' @rdname numeric_input
 #' @examples
@@ -179,11 +180,17 @@ textInput <- function(inputId, label, value = "", width = NULL,
 #' }
 #'
 #' @export
-numeric_input <- function(input_id, label, value, min = NA, max = NA, step = NA,
+numeric_input <- function(input_id, label, value = NULL, min = NA, max = NA, step = NA,
                            type = NULL, icon = NULL, placeholder = NULL, ...) {
-  if (!is.numeric(value) & !grepl("^\\d*(\\.\\d*|)$", value)) stop("Non-numeric input detected")
+  if (!(is.null(placeholder) || is.character(placeholder))) {
+    stop ("'placeholder' should be NULL or character")
+  }
+  if (is.null(value) & is.null(placeholder)) stop ("either 'value' or 'placeholder' should be defined")
+  if (!is.null(value)) {
+    if (!is.numeric(value) & !grepl("^\\d*(\\.\\d*|)$", value)) stop("Non-numeric input detected")
+  }
 
-  input_tag <- tags$input(id = input_id, value = value, type = "number")
+  input_tag <- tags$input(id = input_id, value = value, type = "number", placeholder = placeholder)
   if (!is.na(min)) input_tag$attribs$min <- min
   if (!is.na(max)) input_tag$attribs$max <- max
   if (!is.na(step)) input_tag$attribs$step <- step
@@ -209,15 +216,16 @@ numeric_input <- function(input_id, label, value, min = NA, max = NA, step = NA,
 #' @param max Maximum allowed value.
 #' @param step Interval to use when stepping between min and max.
 #' @param width The width of the input.
+#' @param placeholder Inner input label displayed when no value is specified
 #' @param ... Other parameters passed to \code{\link{numeric_input}} like \code{type} or \code{icon}.
 #' @rdname numeric_input
 #' @export
-numericInput <- function(inputId, label, value,
-                         min = NA, max = NA, step = NA, width = NULL, ...) {
+numericInput <- function(inputId, label, value = NULL, min = NA, max = NA,
+                         step = NA, width = NULL, placeholder = NULL, ...) {
   shiny::div(
     class = "ui form",
     style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
-    numeric_input(inputId, label, value, min, max, step, ...)
+    numeric_input(inputId, label, value, min, max, step, placeholder = placeholder, ...)
   )
 }
 

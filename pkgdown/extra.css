@@ -1,0 +1,57 @@
+:root {
+  --primary-color: #F0873B;
+}
+
+.navbar {
+  background-color: var(--primary-color) !important;
+}
+
+#navbar > ul.navbar-nav > li.nav-item a:hover {
+  background-color: var(--primary-color) !important;
+}
+
+#navbar > ul.navbar-nav > li.nav-item a {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.navbar-dark .navbar-nav .active > .nav-link {
+  background-color: var(--primary-color) !important;
+  color: #fff !important;
+}
+
+.navbar-brand {
+  color: #fff !important;
+}
+
+.navbar-dark input[type="search"] {
+  background-color: #fff !important;
+  color: #444 !important;
+}
+
+nav .text-muted {
+  color: #d8d8d8 !important;
+}
+
+a {
+  color: var(--primary-color);
+}
+
+a:hover {
+  color: #2c2b2b;
+}
+
+button.btn.btn-primary.btn-copy-ex {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.home {
+  left: 0px;
+  position: absolute;
+  padding: 8px 30px;
+  color: rgba(255,255,255,0.55);
+}
+
+.home:hover {
+  color: rgba(255,255,255,0.9);
+}
