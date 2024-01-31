@@ -41,27 +41,25 @@ dropdown_input <- function(input_id, choices, choices_value = choices,
       icon("dropdown"),
       shiny::div(class = "default text", default_text),
       menu(
-        purrr::when(
-          choices,
-          is.null(names(.)) ~
-            purrr::map2(
-              choices, choices_value,
-              ~ shiny::div(class = "item", `data-value` = .y, .x)
-            ),
-          !is.null(names(.)) ~
-            purrr::map(
-              seq_len(length(choices)), ~ {
-                shiny::tagList(
-                  menu_header(names(choices)[.x], is_item = FALSE),
-                  menu_divider(),
-                  purrr::map2(
-                    choices[[.x]], choices_value[[.x]],
-                    ~ shiny::div(class = "item", `data-value` = .y, .x)
-                  )
+        if (is.null(names(choices))) {
+          purrr::map2(
+            choices, choices_value,
+            ~ shiny::div(class = "item", `data-value` = .y, .x)
+          )
+        } else {
+          purrr::map(
+            seq_len(length(choices)), ~ {
+              shiny::tagList(
+                menu_header(names(choices)[.x], is_item = FALSE),
+                menu_divider(),
+                purrr::map2(
+                  choices[[.x]], choices_value[[.x]],
+                  ~ shiny::div(class = "item", `data-value` = .y, .x)
                 )
-              }
-            )
-        )
+              )
+            }
+          )
+        }
       )
     )
 }
@@ -287,8 +285,8 @@ updateSelectInput <- function(session, inputId, label = NULL, choices = NULL, se
 #' @export
 theme_selector <- function(input_id = "theme", label = "Choose theme") {
   dropdown_content <- dropdown_input(
-    "theme", choices = c("default", SUPPORTED_THEMES),
-    choices_value = c("", SUPPORTED_THEMES),
+    "theme", choices = c("default", semantic.assets::SUPPORTED_THEMES),
+    choices_value = c("", semantic.assets::SUPPORTED_THEMES),
     type = "selection fluid themes-dropdown"
   )
   shiny::div(

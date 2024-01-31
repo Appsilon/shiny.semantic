@@ -278,7 +278,7 @@ attach_rule <- function(id, behavior, target, value) {
 #' @param session The \code{session} object passed to function given to
 #'   \code{shinyServer}.
 #' @param asis A boolean indicating if the id must be handled as is (TRUE) or
-#' will be it must be namespaced (FALSE)
+#' FALSE if it meants to be namespaced
 #' @seealso modal
 #'
 #' @rdname show_modal
@@ -286,7 +286,9 @@ attach_rule <- function(id, behavior, target, value) {
 #' @export
 show_modal <- function(id, session = shiny::getDefaultReactiveDomain(),
                        asis = TRUE) {
-  id <- ifelse(inherits(session, "session_proxy"), session$ns(id), id)
+  if (!asis) {
+    id <- ifelse(inherits(session, "session_proxy"), session$ns(id), id)
+  }
   session$sendCustomMessage("showSemanticModal", list(id = id, action = "show")) # nolint
 }
 
@@ -299,7 +301,9 @@ showModal <- function(ui, session = shiny::getDefaultReactiveDomain()) {
 #' @export
 remove_modal <- function(id, session = shiny::getDefaultReactiveDomain(),
                          asis = TRUE) {
-  id <- ifelse(inherits(session, "session_proxy"), session$ns(id), id)
+  if (!asis) {
+    id <- ifelse(inherits(session, "session_proxy"), session$ns(id), id)
+  }
   shiny::removeUI(paste0("#", id))
 }
 
@@ -320,6 +324,8 @@ removeModal <- function(session = shiny::getDefaultReactiveDomain()) {
 #' @export
 hide_modal <- function(id, session = shiny::getDefaultReactiveDomain(),
                        asis = TRUE) {
-  id <- ifelse(inherits(session, "session_proxy"), session$ns(id), id)
+  if (!asis) {
+    id <- ifelse(inherits(session, "session_proxy"), session$ns(id), id)
+  }
   session$sendCustomMessage("showSemanticModal", list(id = id, action = "hide")) # nolint
 }

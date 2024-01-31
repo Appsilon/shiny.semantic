@@ -69,7 +69,7 @@ look.
 
 <center>
 
-<h3><a href="https://demo.appsilon.ai/semantic/">Components live demo</a></h3>
+<h3><a href="https://connect.appsilon.com/shiny-semantic-components/">Components live demo</a></h3>
 
 </center>
 
@@ -236,9 +236,11 @@ install.packages("shiny", version='1.4')
 
 <img src="https://avatars0.githubusercontent.com/u/6096772" align="right" alt="" width="6%" />
 
-Appsilon is a **Full Service Certified RStudio Partner**. Learn more
-at [appsilon.com](https://appsilon.com).
+Appsilon is a **Posit (formerly RStudio) Full Service Certified Partner**.<br/>
+Learn more at [appsilon.com](https://appsilon.com).
 
-Get in touch [opensource@appsilon.com](opensource@appsilon.com)
+Get in touch [opensource@appsilon.com](mailto:opensource@appsilon.com)
 
-<a href = "https://appsilon.com/careers/" target="_blank"><img src="http://d2v95fjda94ghc.cloudfront.net/hiring.png" alt="We are hiring!"/></a>
+Explore the [Rhinoverse](https://rhinoverse.dev) - a family of R packages built around [Rhino](https://appsilon.github.io/rhino/)!
+
+<a href = "https://appsilon.com/careers/" target="_blank"><img src="https://raw.githubusercontent.com/Appsilon/website-cdn/gh-pages/WeAreHiring1.png" alt="We are hiring!"/></a>

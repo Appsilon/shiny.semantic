@@ -1,11 +1,42 @@
-# Change Log
-All notable changes to this project will be documented in this file.
+# shiny.semantic 0.5.0
 
-## Upcoming
+- `shiny.semantic` no longer uses CDN as the default source of assets. Instead, `semantic.assets` package was introduced.
 
-## [0.4.2]
+- Bugfix: modal function now handles JS callbacks.
 
-### Added
+- Remove unnecessary warning in `checkboxInput` when `width` is set to `NULL`.
+
+- `uirender` uses assets from `semantic.assets`.
+
+- Replaced class to string comparisons.
+
+- Replaced deprecated `purrr::when` call.
+
+# [shiny.semantic 0.4.3](https://github.com/Appsilon/shiny.semantic/releases/tag/0.4.3)
+
+- Removed inline-styled min-height from `<body>`.
+
+- Prevent the use of explicitly namespaced ids when calling functions like `show_modal`.
+
+- Fixed tabsets not working after changing its class trough the `menu_class` parameter.
+
+- Fixed a bug when not including custom labels, you don't need the `interpretLabel` parameter for standard sliders.
+
+- Fixed `sidebar_layout`` rendering by assigning variables to all parameters in grid function.
+
+- Added functionality that enables both the `multiple_checkbox` and `multiple_radio` to be updated, both the options and the selected values. Includes a warning in `update_multiple_radio` when more than one value is selected.
+
+- Unbinding the progress bar as an input, but still accessible through `input$id`. Updates like the `Progress` toast and can be updated server side as before.
+
+- Inline works for checkbox and radio inputs.
+
+- Fixed `textAreaInput` value parameter.
+
+- `warn_unsupported_args` adopted to a new implementation of `base::intersect`.
+
+# [shiny.semantic 0.4.2](https://github.com/Appsilon/shiny.semantic/releases/tag/0.4.2)
+
+## Added
 
 - `update_tabset`
 
@@ -13,7 +44,7 @@ All notable changes to this project will be documented in this file.
 
 - `file_input` and `fileInput` example
 
-### Changed
+## Changed
 
 - `tabset` by default has grid in tabs
 
@@ -31,9 +62,9 @@ All notable changes to this project will be documented in this file.
 
 - fixed updateSelectInput
 
-## [0.4.0]
+# [shiny.semantic 0.4.0](https://github.com/Appsilon/shiny.semantic/releases/tag/0.4.0)
 
-### Added
+## Added
 
 - progress bar and notification (toasts)
 
@@ -43,7 +74,7 @@ All notable changes to this project will be documented in this file.
 
 - to modals: `modalDialog`, `removeModal`, `remove_all_modals`
 
-- new STYLEGUIDE introduced 
+- new STYLEGUIDE introduced
 
 - horizontal menu
 
@@ -53,7 +84,7 @@ All notable changes to this project will be documented in this file.
 
 - almost all functions have working examples now
 
-### Changed
+## Changed
 
 - ui (static) elements are renamed to the name of the object they generate, eg. `uiicon` -> `icon`, `uibutton` -> `button`, etc.
 
@@ -77,13 +108,13 @@ All notable changes to this project will be documented in this file.
 
 - supressing bootstrap parametrised in semanticPage
 
-### Removed
+## Removed
 
 - checkbox constant
 
-## [0.3.0]
+# shiny.semantic 0.3.0
 
-### Added
+## Added
 
 - added semantic modal
 
@@ -91,7 +122,7 @@ All notable changes to this project will be documented in this file.
 
 - shiny.custom.semantic.cdn options introduced to get dependencies from custom location.
 
-### Changed
+## Changed
 
 - Migrate to fomantic 2.8.3
 
@@ -99,18 +130,19 @@ All notable changes to this project will be documented in this file.
 
 - updated slider
 
-### Removed
+## Removed
 
 - slider_input was removed
 
-## [0.2.4]
+# shiny.semantic 0.2.4
 
-### Added
+## Added
 
 -  shiny.custom.semantic.cdn options introduced to get dependencies from custom location.
 
-## [0.1.2]
-### Added
+# shiny.semantic 0.1.2
+
+## Added
 
 - Add multiple selection search dropdown
 
@@ -138,7 +170,7 @@ All notable changes to this project will be documented in this file.
 
 - Theming example added.
 
-### Changed
+## Changed
 
 - Adjust countries example.
 
@@ -150,21 +182,19 @@ All notable changes to this project will be documented in this file.
 
 - Changed the way otems are added to menu. Also dropdown item can be added to the menu using uidropdown. Added function uilabel to create Semantic UI labels. New examples how to  use uimenu.
 
-### Fixed
+## Fixed
 
 - Fixing input problem for shiny_input.
 
 - Fixed suspendWhenHidden problem with tabset.
 
-### Removed
+## Removed
 
 - Deleted repetition of dropdown_choice function
 
-## [0.1.1]
+# shiny.semantic 0.1.1
 
-*2017-05-29*
-
-### Added
+## Added
 
 - Show pointer when hovering over tabset menu items.
 
@@ -174,22 +204,20 @@ All notable changes to this project will be documented in this file.
 
 - Default dropdown component added to shiny.semantic.
 
-### Fixed
+## Fixed
 
 - Documentation.
 
-### Changed
+## Changed
 
 - Documentation and examples.
 
 - Lexical changes in description section.
 
 
-## [0.1.0]
+# shiny.semantic 0.1.0
 
-*2016-12-05*
-
-### Added
+## Added
 
 - First version of API.
 

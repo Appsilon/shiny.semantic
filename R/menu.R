@@ -80,7 +80,7 @@ horizontal_menu <- function(menu_items, active_location = "", logo = NULL) {
     logo_ui <- ""
   else {
     number_items <- length(menu_items) + 1
-    if (class(logo) == "shiny.tag")
+    if (inherits(logo, "shiny.tag"))
       logo_ui <- shiny::div(class = "item",
                             logo)
     else
