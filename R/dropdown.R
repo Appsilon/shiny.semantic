@@ -173,7 +173,7 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
 #'   output$selected_letter <- renderText(paste(input[["simple_dropdown"]], collapse = ", "))
 #'
 #'   observeEvent(input$simple_button, {
-#'     update_dropdown(session, "simple_dropdown", value = "D")
+#'     update_dropdown_input(session, "simple_dropdown", value = "D")
 #'   })
 #' })
 #'
