@@ -22,9 +22,11 @@ $.extend(semanticCheckboxBinding, {
   // Given the DOM element for the input, return the value as JSON.
   getValue: function(el) {
     var checkboxes = $(el).find('.ui.checkbox');
-    var checkboxCheck = checkboxes.checkbox('is checked');
+    var checkboxCheck = $.map(checkboxes, function(x) { return $(x).checkbox("is checked") });
     var checkboxValues = $.map(checkboxes.find('input'), function(n) { return n.value; });
-    return checkboxValues.filter(x => checkboxCheck[checkboxValues.indexOf(x)]);
+    return checkboxValues.filter(function(x) {
+      return checkboxCheck[checkboxValues.indexOf(x)];
+    });
   },
 
   // Given the DOM element for the input, set the value.
@@ -65,11 +67,11 @@ $.extend(semanticCheckboxBinding, {
 
       $(el).find(".field").remove();
 
-      data.choices.forEach(x => {
+      data.choices.forEach(function(x) {
         $(el).append(
-          $(`<div class='field'>
-            <div class='${checkboxClass}'>
-              <input type='${checkboxType}' name='${el.id}' tabindex='0' value='${x.value}' class='hidden'>
+          $(`<div class="field">
+            <div class="${checkboxClass}">
+              <input type="${checkboxType}" name="${el.id}" tabindex="0" value="${x.value}" class="hidden">
               <label>${x.name}</label>
             </div>
            </div>`)
@@ -78,14 +80,14 @@ $.extend(semanticCheckboxBinding, {
 
     }
 
-    if (data.hasOwnProperty('value')) {
+    if (data.hasOwnProperty("value")) {
       this.setValue(el, data.value);
     }
 
-    if (data.hasOwnProperty('label')) {
+    if (data.hasOwnProperty("label")) {
       $("label[for='" + el.id + "'").html(data.label);
     }
   }
 });
 
-Shiny.inputBindings.register(semanticCheckboxBinding, 'shiny.semanticCheckbox');
+Shiny.inputBindings.register(semanticCheckboxBinding, "shiny.semanticCheckbox");

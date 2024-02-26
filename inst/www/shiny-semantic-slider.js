@@ -52,14 +52,14 @@ $.extend(semanticSliderBinding, {
     if ($(el).data('ticks')) {
       return $(el).data('ticks')[value];
     } else {
-      return value;
+      return(JSON.stringify(value))
     }
   },
   getType: function(el) {
     if ($(el).data('ticks')) {
       return false;
     } else {
-      return 'shiny.number';
+      return 'shiny.semantic.vector';
     }
   },
   // Given the DOM element for the input, set the value.

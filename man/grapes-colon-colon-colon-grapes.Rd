@@ -17,3 +17,4 @@ function
 \description{
 ::: hack solution to pass CRAN checks
 }
+\keyword{internal}

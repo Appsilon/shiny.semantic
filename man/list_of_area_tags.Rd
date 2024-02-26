@@ -27,3 +27,4 @@ returns the following list:
   [[3]] <div id="{{ grid_id }}-footer" style="grid-area: footer; {{ footer_custom_css }}">{{ footer }}</div>
 }
 }
+\keyword{internal}

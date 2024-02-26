@@ -1,14 +1,37 @@
-#' Get CDN path semantic dependencies
+#' Get dependencies path
 #'
-#' Internal function that returns path string from `shiny.custom.semantic.cdn` options.
-#'
-#' @examples
-#' ## Load shiny.semantic dependencies from local domain.
-#' options("shiny.custom.semantic.cdn" = "shiny.semantic")
-#'
-#' @return CDN path of semantic dependencies
-get_cdn_path <- function() {
-  getOption("shiny.custom.semantic.cdn", default = "https://d335w9rbwpvuxm.cloudfront.net/2.8.3")
+#' @return path with css and js files
+#' @keywords internal
+get_dependencies_path <- function() {
+  if (!is.null(getOption("shiny.custom.semantic"))) {
+    return(
+      list(
+        src = c(file = getOption("shiny.custom.semantic")),
+        type = "custom"
+      )
+    )
+  }
+
+  if (!is.null(getOption("shiny.custom.semantic.cdn"))) {
+    return(
+      list(
+        src = c(href = getOption("shiny.custom.semantic.cdn")),
+        type = "cdn"
+      )
+    )
+  }
+
+  list(
+    src = c(
+      file = system.file(
+        "www",
+        "shared",
+        "semantic",
+        package = "semantic.assets"
+      )
+    ),
+    type = "local"
+  )
 }
 
 #' Add dashboard dependencies to html
@@ -18,85 +41,51 @@ get_cdn_path <- function() {
 #' @param theme define theme
 #'
 #' @return Content with appended dependencies.
+#' @keywords internal
 get_dependencies <- function(theme = NULL) {
-  minfield <- if (getOption("shiny.minified", TRUE)) "min" else NULL
-  javascript_file <- paste(c("semantic", minfield, "js"), collapse = ".")
-  css_files <- c(check_semantic_theme(theme, full_url = FALSE))
+  dep_src <- get_dependencies_path()
 
-  dep_src <- NULL
-  if (!is.null(getOption("shiny.custom.semantic", NULL))) {
-    dep_src <- c(file = getOption("shiny.custom.semantic"))
-  } else if (isTRUE(getOption("shiny.semantic.local", FALSE))) {
-    if (!is.null(theme)) {
-      warning("It's not posible use local semantic version with themes. Using CDN")
-    } else {
-      dep_src <- c(
-        file = system.file(
-          "www",
-          "shared",
-          "semantic",
-          package = "shiny.semantic"
-        )
-      )
-    }
-  }
+  minified <- if (getOption("shiny.minified", TRUE)) "min" else NULL
+  javascript_file <- paste(c("semantic", minified, "js"), collapse = ".")
 
-  if (is.null(dep_src)) {
-    dep_src <- c(href = get_cdn_path())
-  }
+  css_file <- get_css_file(
+    type = dep_src$type,
+    theme = theme,
+    minified = minified
+  )
+
   shiny::tagList(
-    htmltools::htmlDependency("semantic-ui",
-                              "2.8.3",
-                              dep_src,
-                              script = javascript_file,
-                              stylesheet = css_files
+    shiny::tagList(
+      htmltools::htmlDependency(
+        "semantic-ui",
+        "2.8.3",
+        dep_src$src,
+        script = javascript_file,
+        stylesheet = css_file
+      )
     )
   )
 }
 
-#' Get default semantic css
+#' Get css file
 #'
-#' @param full_url define return output filename or full path. Default TRUE
+#' @param type define type of dependencies source
+#' @param theme define theme
+#' @param minified define if minified version should be used
 #'
-#' @return path to default css semantic file or default filename
-get_default_semantic_theme <- function(full_url = TRUE) {
-  minfield <- if (getOption("shiny.minified", TRUE)) "min" else NULL
-  css_file <- paste(c("semantic", minfield, "css"), collapse = ".")
-  path <- file.path(get_cdn_path(), css_file, fsep = "/")
-  return(c(ifelse(full_url, path, css_file)))
-}
-
-#' Semantic theme path validator
-#'
-#' @param theme_css it can be either NULL, character with css path, or theme name
-#' @param full_url boolean flag that defines what is returned, either filename, or full path. Default TRUE
-#'
-#' @return path to theme or filename
-#' @export
-#'
-#' @examples
-#' check_semantic_theme(NULL)
-#' check_semantic_theme("darkly")
-#' check_semantic_theme("darkly", full_url = FALSE)
-check_semantic_theme <- function(theme_css, full_url = TRUE) {
-  minfield <- if (getOption("shiny.minified", TRUE)) "min" else NULL
-  if (is.null(theme_css)) return(get_default_semantic_theme(full_url))
-  if (tools::file_ext(theme_css) == "css") return(theme_css)
-  if (theme_css %in% SUPPORTED_THEMES) {
-    if (full_url)
-      return(
-        file.path(
-          get_cdn_path(),
-          paste(c("semantic", theme_css, minfield, "css"), collapse = "."),
-          fsep = "/"
-        )
-      )
-    else
-      return(paste(c("semantic", theme_css, minfield, "css"), collapse = "."))
-  } else {
-    warning(paste("Theme ", theme_css, "not recognized. Default used instead!"))
-    return(get_default_semantic_theme(full_url))
+#' @return css file name
+#' @keywords internal
+get_css_file <- function(type, theme = NULL, minified = NULL) {
+  if (type == "custom") {
+    return(theme)
   }
+
+  if (type == "local" && !(is.null(theme) || theme %in% semantic.assets::SUPPORTED_THEMES)) {
+    warning(paste("Theme ", theme, "not recognized. Default used instead!"))
+    theme <- NULL
+  }
+
+  paste(c("semantic", theme, minified, "css"), collapse = ".")
 }
 
 #' Semantic UI page
@@ -118,7 +107,8 @@ check_semantic_theme <- function(theme_css, full_url = TRUE) {
 #' wrapper (e.g. style, class etc.)
 #' @param title A title to display in the browser's title bar.
 #' @param theme Theme name or path. Full list of supported themes you will find in
-#' \code{SUPPORTED_THEMES} or at http://semantic-ui-forest.com/themes.
+#' \code{\link[semantic.assets:SUPPORTED_THEMES]{semantic.assets::SUPPORTED_THEMES}}
+#' or at http://semantic-ui-forest.com/themes.
 #' @param suppress_bootstrap boolean flag that supresses bootstrap when turned on
 #' @param margin character with body margin size
 #' @examples
