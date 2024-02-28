@@ -24,11 +24,14 @@
 #' }
 #'
 #' @export
-semantic_DT <- function(..., options = list(), style="semanticui", class = 'ui small compact table') {
-  DT::datatable(..., options = options,
-                class = class,
-                style = style,
-                rownames = FALSE)
+semantic_DT <- function(..., options = list(), style = "semanticui", class = 'ui small compact table') {
+  DT::datatable(
+    ...,
+    options = options,
+    class = class,
+    style = style,
+    rownames = FALSE
+  )
 }
 
 #' Semantic DT Output
@@ -38,5 +41,5 @@ semantic_DT <- function(..., options = list(), style="semanticui", class = 'ui s
 #' @return DT Output with semanitc style
 #' @export
 semantic_DTOutput <- function(...) {
-    DT::DTOutput(...)
+  DT::DTOutput(...)
 }
