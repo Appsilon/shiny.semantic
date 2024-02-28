@@ -1,4 +1,4 @@
-pandoc: 2.19.2
+pandoc: 3.1.11
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
@@ -6,7 +6,7 @@ articles:
   fomantic_js: fomantic_js.html
   intro: intro.html
   semantic_integration: semantic_integration.html
-last_built: 2024-01-31T15:57Z
+last_built: 2024-02-28T15:26Z
 urls:
   reference: https://appsilon.github.io/shiny.semantic/reference
   article: https://appsilon.github.io/shiny.semantic/articles
