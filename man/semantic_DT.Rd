@@ -4,12 +4,21 @@
 \alias{semantic_DT}
 \title{Create Semantic DT Table}
 \usage{
-semantic_DT(..., options = list())
+semantic_DT(
+  ...,
+  options = list(),
+  style = "semanticui",
+  class = "ui small compact table"
+)
 }
 \arguments{
 \item{...}{datatable parameters, check \code{?DT::datatable} to learn more.}
 
 \item{options}{datatable options, check \code{?DT::datatable} to learn more.}
+
+\item{style}{datatable style, check \code{?DT::datatable} to learn more.}
+
+\item{class}{datatable class, check \code{?DT::datatable} to learn more.}
 }
 \description{
 This creates DT table styled with Semantic UI.
