@@ -1,4 +1,10 @@
-on: push
+on:
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+  workflow_dispatch:
 
 name: R-CMD-check
 
