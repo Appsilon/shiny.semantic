@@ -149,7 +149,8 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
 #' @param input_id The id of the input object
 #' @param choices All available options one can select from. If no need to update then leave as \code{NULL}
 #' @param choices_value What reactive value should be used for corresponding choice.
-#' @param value The initially selected value.
+#' @param value A value to update dropdown to. \code{character(0)} and \code{""} clear the dropdown.
+#' \code{NULL} (the default) does not change selection.
 #'
 #' @examples
 #' if (interactive()) {

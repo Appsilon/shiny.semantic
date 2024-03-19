@@ -21,7 +21,8 @@ update_dropdown_input(
 
 \item{choices_value}{What reactive value should be used for corresponding choice.}
 
-\item{value}{The initially selected value.}
+\item{value}{A value to update dropdown to. \code{character(0)} and \code{""} clear the dropdown.
+\code{NULL} (the default) does not change selection.}
 }
 \description{
 Change the value of a \code{\link{dropdown_input}} input on the client.

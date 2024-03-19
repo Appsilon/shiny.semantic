@@ -32,6 +32,10 @@ $.extend(semanticDropdownBinding, {
 
   // Given the DOM element for the input, set the value.
   setValue: function(el, value) {
+    if (value === '') {
+      $(el).dropdown('clear');
+      return;
+    }
     if ($(el).hasClass('multiple')) {
       $(el).dropdown('clear', true);
       value.split(",").map(v => $(el).dropdown('set selected', v));
