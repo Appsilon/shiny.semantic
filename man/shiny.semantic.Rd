@@ -24,3 +24,37 @@ un-minified file.}
 }
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://appsilon.github.io/shiny.semantic/}
+  \item \url{https://github.com/Appsilon/shiny.semantic}
+  \item Report bugs at \url{https://github.com/Appsilon/shiny.semantic/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Jakub Nowicki \email{opensource+kuba@appsilon.com}
+
+Authors:
+\itemize{
+  \item Filip Stachura \email{filip@appsilon.com}
+  \item Dominik Krzeminski
+  \item Krystian Igras
+  \item Adam Forys
+  \item Paweł Przytuła \email{pawel@appsilon.com}
+  \item Jakub Chojna \email{jakub.chojna@appsilon.com}
+  \item Olga Mierzwa-Sulima \email{olga@appsilon.com}
+}
+
+Other contributors:
+\itemize{
+  \item Ashley Baldry [contributor]
+  \item Pedro Manuel Coutinho da Silva \email{pedro@appsilon.com} [contributor]
+  \item Kamil Żyła \email{kamil@appsilon.com} [contributor]
+  \item Rabii Bouhestine [contributor]
+  \item Federico Rivandeira \email{federico@appsilon.com} [contributor]
+  \item  Appsilon Sp. z o.o. [copyright holder]
+}
+
+}
