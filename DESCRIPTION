@@ -51,6 +51,7 @@ Suggests:
     rcmdcheck,
     rmarkdown,
     testthat,
+    shinytest2,
     tibble,
     withr
 VignetteBuilder:
