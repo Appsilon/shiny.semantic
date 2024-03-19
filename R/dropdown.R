@@ -177,17 +177,14 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
 #'
 #' @export
 update_dropdown_input <- function(session, input_id, choices = NULL, choices_value = choices, value = NULL) {
-  if (!is.null(value)) value <- paste(as.character(value), collapse = ",") else value <- NULL
-  if (!is.null(choices)) {
-    options <- jsonlite::toJSON(list(values = data.frame(name = choices, text = choices, value = choices_value)))
-  } else {
-    options <- NULL
+  msg <- list()
+  if (!is.null(value)) {
+    msg$value <- paste(as.character(value), collapse = ",") # NOTE: paste() converts character(0) to ""
   }
-
-  message <- list(choices = options, value = value)
-  message <- message[!vapply(message, is.null, FUN.VALUE = logical(1))]
-
-  session$sendInputMessage(input_id, message)
+  if (!is.null(choices)) {
+    msg$choices <- jsonlite::toJSON(list(values = data.frame(name = choices, text = choices, value = choices_value)))
+  }
+  session$sendInputMessage(input_id, msg)
 }
 
 #' Change the value of a select input on the client
