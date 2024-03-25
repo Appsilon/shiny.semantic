@@ -20,6 +20,44 @@ ui <- shinyUI(
                 text_input("text_ex", value = "", type = "text", placeholder = "Enter Text...")
               ),
               field(
+                textInput("text_ex",
+                           value = "",
+                           type = "text",
+                           placeholder = "Enter Text...",
+                           label = "Text",
+                           class = "ui right labeled input"
+                )
+              ),
+              field(
+                textInput("text_ex",
+                           value = "",
+                           type = "text",
+                           placeholder = "Enter Text...",
+                           label = "Text",
+                           label_class = "ui pointing below blue label",
+                )
+              ),
+              field(
+                textInput("text_ex",
+                           value = "",
+                           type = "text",
+                           placeholder = "Enter Text...",
+                           label = "Text",
+                           class = "inline field",
+                           label_class = "ui left purple basic tag label",
+                )
+              ),
+              field(
+                textInput("text_ex",
+                           value = "",
+                           type = "text",
+                           placeholder = "Enter Text...",
+                           label = "Text",
+                           class = "inline field",
+                           label_class = "ui right pointing label",
+                )
+              ),
+              field(
                 tags$label("Text Area"),
                 text_input(
                   "textarea_ex", value = "", type = "textarea", placeholder = "Enter Text...", attribs = list(rows = 2)
