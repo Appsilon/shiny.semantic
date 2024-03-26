@@ -1,7 +1,7 @@
 Type: Package
 Package: shiny.semantic
 Title: Semantic UI Support for Shiny
-Version: 0.5.0.9002
+Version: 0.5.0.9003
 Authors@R: c(person("Filip", "Stachura", email = "filip@appsilon.com", role = "aut"),
   person("Dominik", "Krzeminski", role = "aut"),
   person("Krystian", "Igras", role = "aut"),
@@ -51,6 +51,7 @@ Suggests:
     rcmdcheck,
     rmarkdown,
     testthat,
+    shinytest2,
     tibble,
     withr
 VignetteBuilder:
