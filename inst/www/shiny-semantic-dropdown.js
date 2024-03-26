@@ -63,22 +63,15 @@ $.extend(semanticDropdownBinding, {
   },
 
   receiveMessage: function(el, data) {
+    let value = data.value;
     if (data.hasOwnProperty('choices')) {
       // setup menu changes dropdown options without triggering onChange event
       $(el).dropdown('setup menu', data.choices);
-      // when no value passed, return null for multiple dropdown and first value for single one
-      if (!data.hasOwnProperty('value')) {
-        let value = ""
-        if (!$(el).hasClass('multiple')) {
-          value = data.choices.values[0].value
-        }
-        this.setValue(el, value);
-      }
+      // either keep the value provided or use the fact that an empty string clears the input and triggers a change event
+      value ||= ""
     }
 
-    if (data.hasOwnProperty('value')) {
-      this.setValue(el, data.value);
-    }
+    this.setValue(el, value);
 
     if (data.hasOwnProperty('label')) {
       $("label[for='" + el.id + "'").html(data.label);
