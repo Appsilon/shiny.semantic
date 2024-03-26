@@ -57,6 +57,22 @@ describe("update_dropdown_input", {
     )
   })
 
+  it("is a no-op with a value not in choices", {
+    # Arrange
+    initial_value <- "A"
+    app <- init_driver(test_app(value = "asdf", initial = initial_value, multiple = FALSE))
+    withr::defer(app$stop())
+
+    # Act
+    app$click("trigger")
+
+    # Assert
+    expect_equal(
+      app$get_value(input = "dropdown"),
+      initial_value
+    )
+  })
+
   it("updates a single-selection dropdown with a new value", {
     # Arrange
     value <- "A"
@@ -147,26 +163,9 @@ describe("update_dropdown_input", {
     )
   })
 
-  it("updates choices and selects the first element with value = NULL", {
+  it("updates choices and clears selection in a single-selection dropdown when provided with choices and a NULL value", {
     # Arrange
-    choices <- c("abc", "xyz")
-    app <- init_driver(test_app(value = NULL, initial = NULL, multiple = FALSE, choices = choices))
-    withr::defer(app$stop())
-
-    # Act
-    app$click("trigger")
-
-    # Assert
-    expect_equal(
-      app$get_value(input = "dropdown"),
-      choices[1]
-    )
-  })
-
-  it("updates choices and clears selection with value = \"\"", {
-    # Arrange
-    choices <- c("abc", "xyz")
-    app <- init_driver(test_app(value = "", initial = NULL, multiple = FALSE, choices = choices))
+    app <- init_driver(test_app(value = NULL, initial = "abc", multiple = FALSE, choices = c("abc", "xyz")))
     withr::defer(app$stop())
 
     # Act
@@ -176,6 +175,52 @@ describe("update_dropdown_input", {
     expect_equal(
       app$get_value(input = "dropdown"),
       ""
+    )
+  })
+
+  it("updates choices and clears selection in a multi-selection dropdown when provided with choices and a NULL value", {
+    # Arrange
+    app <- init_driver(test_app(value = NULL, initial = "abc", multiple = TRUE, choices = c("abc", "xyz")))
+    withr::defer(app$stop())
+
+    # Act
+    app$click("trigger")
+
+    # Assert
+    expect_null(
+      app$get_value(input = "dropdown")
+    )
+  })
+
+  it("updates choices and sets selection in a single-selection dropdown when provided with both choices and a value", {
+    # Arrange
+    value <- "xyz"
+    app <- init_driver(test_app(value = value, initial = NULL, multiple = FALSE, choices = c("abc", "xyz")))
+    withr::defer(app$stop())
+
+    # Act
+    app$click("trigger")
+
+    # Assert
+    expect_equal(
+      app$get_value(input = "dropdown"),
+      value
+    )
+  })
+
+  it("updates choices and sets selection in a multi-selection dropdown when provided with both choices and a value", {
+    # Arrange
+    value <- c("abc", "xyz")
+    app <- init_driver(test_app(value = value, initial = NULL, multiple = TRUE, choices = c("abc", "xyz")))
+    withr::defer(app$stop())
+
+    # Act
+    app$click("trigger")
+
+    # Assert
+    expect_equal(
+      app$get_value(input = "dropdown"),
+      value
     )
   })
 })
