@@ -149,8 +149,17 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
 #' @param input_id The id of the input object
 #' @param choices All available options one can select from. If no need to update then leave as \code{NULL}
 #' @param choices_value What reactive value should be used for corresponding choice.
-#' @param value A value to update dropdown to. \code{character(0)} and \code{""} clear the dropdown.
-#' \code{NULL} (the default) does not change selection.
+#' @param value A value to update dropdown to. Defaults to \code{NULL}.
+#' \itemize{
+#'   \item a value from \code{choices} updates the selection
+#'   \item \code{character(0)} and \code{""} clear the selection
+#'   \item \code{NULL}:
+#'   \itemize{
+#'     \item clears the selection if \code{choices} is provided
+#'     \item otherwise, \code{NULL} does not change the selection
+#'   }
+#'   \item a value not found in \code{choices} does not change the selection
+#' }
 #'
 #' @examples
 #' if (interactive()) {
