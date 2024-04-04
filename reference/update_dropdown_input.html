@@ -20,7 +20,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">shiny.semantic</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0.9002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0.9003</small>
 
     <a href="https://rhinoverse.dev" class="external-link home"><i class="fa fa-lg fa-chevron-left"></i></a>
 
@@ -125,7 +125,13 @@
 
 
 <dt>value</dt>
-<dd><p>The initially selected value.</p></dd>
+<dd><p>A value to update dropdown to. Defaults to <code>NULL</code>.</p><ul><li><p>a value from <code>choices</code> updates the selection</p></li>
+<li><p><code>character(0)</code> and <code>""</code> clear the selection</p></li>
+<li><p><code>NULL</code>:</p><ul><li><p>clears the selection if <code>choices</code> is provided</p></li>
+<li><p>otherwise, <code>NULL</code> does not change the selection</p></li>
+</ul></li>
+<li><p>a value not found in <code>choices</code> does not change the selection</p></li>
+</ul></dd>
 
 </dl></div>
 
