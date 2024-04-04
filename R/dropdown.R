@@ -149,7 +149,17 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
 #' @param input_id The id of the input object
 #' @param choices All available options one can select from. If no need to update then leave as \code{NULL}
 #' @param choices_value What reactive value should be used for corresponding choice.
-#' @param value The initially selected value.
+#' @param value A value to update dropdown to. Defaults to \code{NULL}.
+#' \itemize{
+#'   \item a value from \code{choices} updates the selection
+#'   \item \code{character(0)} and \code{""} clear the selection
+#'   \item \code{NULL}:
+#'   \itemize{
+#'     \item clears the selection if \code{choices} is provided
+#'     \item otherwise, \code{NULL} does not change the selection
+#'   }
+#'   \item a value not found in \code{choices} does not change the selection
+#' }
 #'
 #' @examples
 #' if (interactive()) {
@@ -177,17 +187,14 @@ selectInput <- function(inputId, label, choices, selected = NULL, multiple = FAL
 #'
 #' @export
 update_dropdown_input <- function(session, input_id, choices = NULL, choices_value = choices, value = NULL) {
-  if (!is.null(value)) value <- paste(as.character(value), collapse = ",") else value <- NULL
-  if (!is.null(choices)) {
-    options <- jsonlite::toJSON(list(values = data.frame(name = choices, text = choices, value = choices_value)))
-  } else {
-    options <- NULL
+  msg <- list()
+  if (!is.null(value)) {
+    msg$value <- paste(as.character(value), collapse = ",") # NOTE: paste() converts character(0) to ""
   }
-
-  message <- list(choices = options, value = value)
-  message <- message[!vapply(message, is.null, FUN.VALUE = logical(1))]
-
-  session$sendInputMessage(input_id, message)
+  if (!is.null(choices)) {
+    msg$choices <- jsonlite::toJSON(list(values = data.frame(name = choices, text = choices, value = choices_value)))
+  }
+  session$sendInputMessage(input_id, msg)
 }
 
 #' Change the value of a select input on the client

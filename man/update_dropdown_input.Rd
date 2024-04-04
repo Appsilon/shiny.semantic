@@ -21,7 +21,17 @@ update_dropdown_input(
 
 \item{choices_value}{What reactive value should be used for corresponding choice.}
 
-\item{value}{The initially selected value.}
+\item{value}{A value to update dropdown to. Defaults to \code{NULL}.
+\itemize{
+  \item a value from \code{choices} updates the selection
+  \item \code{character(0)} and \code{""} clear the selection
+  \item \code{NULL}:
+  \itemize{
+    \item clears the selection if \code{choices} is provided
+    \item otherwise, \code{NULL} does not change the selection
+  }
+  \item a value not found in \code{choices} does not change the selection
+}}
 }
 \description{
 Change the value of a \code{\link{dropdown_input}} input on the client.
