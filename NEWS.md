@@ -1,5 +1,7 @@
 # shiny.semantic (development)
 
+# [shiny.semantic 0.5.1](https://github.com/Appsilon/shiny.semantic/releases/tag/0.5.1)
+
 - Fixed `range_input` now returns both lower and upper bound.
 
 - Fixed `update_multiple_checkbox` not supporting choices with single quote.
