@@ -1,4 +1,18 @@
-# shiny.semantic 0.5.0
+# shiny.semantic (development)
+
+# [shiny.semantic 0.5.1](https://github.com/Appsilon/shiny.semantic/releases/tag/0.5.1)
+
+- Fixed `range_input` now returns both lower and upper bound.
+
+- Fixed `update_multiple_checkbox` not supporting choices with single quote.
+
+- `semantic_DT` now accepts style and class arguments.
+
+-  **Breaking change:** fixed `update_dropdown_input`.
+  - It now clears the dropdown on `value = character(0)` and `value = ""`.
+  - It now clears the dropdown on `choices` update.
+
+# [shiny.semantic 0.5.0](https://github.com/Appsilon/shiny.semantic/releases/tag/0.5.0)
 
 - `shiny.semantic` no longer uses CDN as the default source of assets. Instead, `semantic.assets` package was introduced.
 

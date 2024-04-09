@@ -21,39 +21,43 @@ update_dropdown_input(
 
 \item{choices_value}{What reactive value should be used for corresponding choice.}
 
-\item{value}{The initially selected value.}
+\item{value}{A value to update dropdown to. Defaults to \code{NULL}.
+\itemize{
+  \item a value from \code{choices} updates the selection
+  \item \code{character(0)} and \code{""} clear the selection
+  \item \code{NULL}:
+  \itemize{
+    \item clears the selection if \code{choices} is provided
+    \item otherwise, \code{NULL} does not change the selection
+  }
+  \item a value not found in \code{choices} does not change the selection
+}}
 }
 \description{
 Change the value of a \code{\link{dropdown_input}} input on the client.
 }
 \examples{
 if (interactive()) {
+  library(shiny)
+  library(shiny.semantic)
 
-library(shiny)
-library(shiny.semantic)
-
-ui <- function() {
-  shinyUI(
-    semanticPage(
-      title = "Dropdown example",
-      dropdown_input("simple_dropdown", LETTERS[1:5], value = "A", type = "selection multiple"),
-      p("Selected letter:"),
-      textOutput("selected_letter"),
-      shiny.semantic::actionButton("simple_button", "Update input to D")
-    )
+  ui <- semanticPage(
+    title = "Dropdown example",
+    dropdown_input("simple_dropdown", LETTERS[1:5], value = "A", type = "selection multiple"),
+    p("Selected letter:"),
+    textOutput("selected_letter"),
+    shiny.semantic::actionButton("simple_button", "Update input to D")
   )
-}
 
-server <- shinyServer(function(input, output, session) {
-  output$selected_letter <- renderText(paste(input[["simple_dropdown"]], collapse = ", "))
+  server <- function(input, output, session) {
+    output$selected_letter <- renderText(paste(input[["simple_dropdown"]], collapse = ", "))
 
-  observeEvent(input$simple_button, {
-    update_dropdown(session, "simple_dropdown", value = "D")
-  })
-})
+    observeEvent(input$simple_button, {
+      update_dropdown_input(session, "simple_dropdown", value = "D")
+    })
+  }
 
-shinyApp(ui = ui(), server = server)
-
+  shinyApp(ui, server)
 }
 
 }

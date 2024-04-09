@@ -16,3 +16,6 @@
   -webkit-transition: color .1s ease,border-color .1s ease;
   transition: color .1s ease,border-color .1s ease;
 }
+table.dataTable tr.selected td, table.dataTable td.selected {
+  background-color: #95d8f5;
+}
