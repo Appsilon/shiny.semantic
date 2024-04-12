@@ -247,9 +247,11 @@ updateSelectInput <- function(session, inputId, label = NULL, choices = NULL, se
   if (!is.null(selected)) selected <- paste(as.character(selected), collapse = ",") else selected <- NULL
   if (!is.null(choices)) {
     choices_text <- names(choices)
+    choices_value <- unlist(unname(choices))
     if (identical(choices_text, NULL))
       choices_text <- choices
-    options <- jsonlite::toJSON(list(values = data.frame(name = choices_text, text = choices_text, value = choices)))
+    
+    options <- jsonlite::toJSON(list(values = data.frame(name = choices_text, text = choices_text, value = choices_value)))
   } else {
     options <- NULL
   }
