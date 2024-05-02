@@ -32,7 +32,28 @@ test_that("test textInput", {
   si_str <- as.character(textInput("text_input", "Text Input"))
   expect_true(any(grepl("<div class=\"ui form\">\n  <div class=\"field\">",
                         si_str, fixed = TRUE)))
-
+  #input label
+  si_str <- as.character(
+    textInput(
+      "text_ex",
+      value = "",
+      type = "text",
+      placeholder = "Enter Text...",
+      label = "Text",
+      class = "ui right labeled input",
+      label_class = "ui blue label"
+    )
+  )
+  expect_true(any(
+    grepl(
+      "<div class=\"ui form\">\n  <div class=\"ui right labeled input\">\n",
+      si_str,
+      fixed = TRUE
+    )
+  ) &&
+    any(grepl(
+      "<div class=\"ui blue label\">\n", si_str, fixed = TRUE
+    )))
 })
 
 test_that("test textAreaInput", {
