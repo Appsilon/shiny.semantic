@@ -219,7 +219,7 @@ search_selection_choices <- function(input_id,
 #' @param data Data (the value that is passed into registerDataObj)
 #' @param search_query Function providing a response as a list of
 #' lists or dataframe of search results.
-#'
+#' @param endpoint_name (optional) name your endpoint (useful when you have multiple search api on your app)
 #' @examples
 #' if (interactive()) {
 #'   library(shiny)
@@ -263,8 +263,8 @@ search_selection_choices <- function(input_id,
 #'
 #' @export
 #' @import shiny
-register_search <- function(session, data, search_query) {
-  session$registerDataObj("search_api", data, function(data, request) { # nolint
+register_search <- function(session, data, search_query,endpoint_name="search_api") {
+  session$registerDataObj(endpoint_name, data, function(data, request) { # nolint
     query <- shiny::parseQueryString(request$QUERY_STRING)
     extracted_query <- query$q
     response <- jsonlite::toJSON(list(
