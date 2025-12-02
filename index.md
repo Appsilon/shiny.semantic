@@ -1,0 +1,240 @@
+# shiny.semantic [![semantic.dashboard logo](reference/figures/hexsticker.png)](https://appsilon.github.io/shiny.semantic/)
+
+> *Fomantic (Semantic) UI wrapper for Shiny.*
+
+With this library it is easy to wrap Shiny with **[Fomantic
+UI](https://fomantic-ui.com/)** (previously *Semantic*). Add a few
+simple lines of code to give your UI a **fresh, modern and highly
+interactive** look.
+
+- **shiny**
+
+![shiny](reference/figures/ss_before.png)
+
+``` r
+library(shiny)
+ui <- fluidPage(
+  div(
+    div(
+      a("Link"),
+      p("Lorem ipsum, lorem ipsum, lorem ipsum"),
+      actionButton("button", "Click")
+    )
+  )
+)
+```
+
+- **shiny.semantic**
+
+![semantic](reference/figures/ss_after.png)
+
+``` r
+library(shiny.semantic)
+ui <- semanticPage(
+  div(class = "ui raised segment",
+    div(
+      a(class="ui green ribbon label", "Link"),
+      p("Lorem ipsum, lorem ipsum, lorem ipsum"),
+      actionButton("button", "Click")
+    )
+  )
+)
+```
+
+## Shiny.semantic demos
+
+### Case studies
+
+| [🔗 Churn analytics](https://demo.appsilon.ai/churn) | [🔗 Fraud detection](https://demo.prod.appsilon.ai/flights_fraud_demo/) |
+|:----------------------------------------------------:|:-----------------------------------------------------------------------:|
+|           ![](reference/figures/churn.png)           |                    ![](reference/figures/fraud.png)                     |
+
+### Before and after
+
+We show how `shiny.semantic` can be used to style an app and change it’s
+look.
+
+| [🔗 BEFORE Utah Division of Water Quality (DWQ)](https://shiny.rstudio.com/gallery/lake-profile-dashboard.html) | [🔗 AFTER Utah Division of Water Quality (DWQ)](https://demo.appsilon.ai/apps/water-quality/) |
+|:---------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------:|
+|                                      ![](reference/figures/before_wq.png)                                       |                              ![](reference/figures/after_wq.png)                              |
+
+## Component examples
+
+### [Components live demo](https://connect.appsilon.com/shiny-semantic-components/)
+
+See more examples with code in the `examples` folder:
+
+- [Static Semantic components
+  demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/app.R)
+- [Calendar date and month demo with
+  update](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/calendar/app.R)
+- [Counter button
+  demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/counter_button/app.R)
+- [Custom CSS
+  demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/customcss/app.R)
+- [Dropdown update
+  demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/dropdown_updates/app.R)
+- [Form inputs
+  demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/form_inputs/app.R)
+- [Modal
+  demos](https://github.com/Appsilon/shiny.semantic/tree/develop/examples/modal)
+- [Multiple checkbox
+  demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/multiple_checkbox/app.R)
+- [Rating with update
+  demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/rating/app.R)
+- [Search selection
+  demos](https://github.com/Appsilon/shiny.semantic/tree/develop/examples/search_selection)
+- [Shiny numericInput
+  demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/numericInput.R)
+- [Shiny selectInput
+  demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R)
+- [Shiny fileInput
+  demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/fileInput.R)
+- [Slider and range with update
+  demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/shiny_syntax/selectInput.R)
+- [Multiple tab
+  demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/tabset/app.R)
+- [Notification
+  demo](https://github.com/Appsilon/shiny.semantic/blob/develop/examples/toast/app.R)
+
+## How to install?
+
+You can install a stable `shiny.semantic` release from CRAN repository:
+
+``` r
+install.packages("shiny.semantic")
+```
+
+and the latest version with `remotes`:
+
+``` r
+remotes::install_github("Appsilon/shiny.semantic@develop")
+```
+
+(`master` branch contains the stable version. Use `develop` branch for
+latest features)
+
+To install [previous
+versions](https://appsilon.github.io/shiny.semantic/) you can run:
+
+``` r
+remotes::install_github("Appsilon/shiny.semantic", ref = "0.1.0")
+```
+
+## How to use it?
+
+Firstly, you will have to invoke
+[`shinyUI()`](https://rdrr.io/pkg/shiny/man/shinyUI.html) with
+[`semanticPage()`](https://appsilon.github.io/shiny.semantic/reference/semanticPage.md)
+instead of standard Shiny UI definitions like
+e.g. [`bootstrapPage()`](https://rdrr.io/pkg/shiny/man/bootstrapPage.html).
+From now on, all components can be annotated with [Fomantic
+UI](https://fomantic-ui.com/) specific CSS classes and also you will be
+able to use [shiny.semantic
+components](https://demo.appsilon.ai/semantic/).
+
+Basic example for rendering a simple button. will look like this:
+
+``` r
+library(shiny)
+library(shiny.semantic)
+ui <- semanticPage(
+      title = "My page",
+      div(class = "ui button", icon("user"),  "Icon button")
+    )
+server <- function(input, output) {}
+shinyApp(ui, server)
+```
+
+For better understanding it’s good to check [Fomantic UI
+documentation.](https://fomantic-ui.com/)
+
+**Note \#1**
+
+At the moment you have to pass page title in
+[`semanticPage()`](https://appsilon.github.io/shiny.semantic/reference/semanticPage.md)
+
+``` r
+semanticPage(title = "Your page title", ...)
+```
+
+**Note \#2**
+
+The `shiny` package works with **Bootstrap** library under the hood.
+`shiny.semantic` uses [Fomantic UI](https://fomantic-ui.com/). Sometimes
+using both of these libraries may cause troubles with rendering specific
+UI elements. That is why by default we turn off Bootstrap dependencies.
+
+However, you can switch off suppressing bootstrap by calling
+`semanticPage(suppress_bootstrap = FALSE, ...)`
+
+## How to contribute?
+
+We welcome contributions of all types!
+
+We encourage typo corrections, bug reports, bug fixes and feature
+requests. Feedback on the clarity of the documentation and examples is
+especially valuable.
+
+If you want to contribute to this project please submit a regular PR,
+once you’re done with new feature or bug fix.  
+
+**Changes in vignettes**
+
+If you modified or added a new vignette, please rebuild them with
+`devtools::build_vignettes()`.
+
+*Important:*
+
+1.  Please follow the code style from out
+    [styleguide](https://github.com/Appsilon/shiny.semantic/blob/develop/STYLEGUIDE.md).
+
+2.  We have a Contributor [Code of
+    Conduct](https://appsilon.github.io/shiny.semantic/). Make sure to
+    check it and to follow it.
+
+## Troubleshooting
+
+We used the latest versions of dependencies for this library, so please
+update your R environment before installation.
+
+However, if you encounter any problems, try the following:
+
+1.  Up-to-date R language environment
+2.  Installing specific dependent libraries versions
+
+- shiny
+
+``` r
+install.packages("shiny", version='1.4')
+```
+
+3.  Some bugs may be related directly to Semantic UI. In that case
+    please try to check issues on its
+    [repository.](https://github.com/fomantic/fomantic-ui)
+4.  Some bugs may be related to **Bootstrap**. Please make sure you have
+    it suppressed. Instructions are above in **How to use it?** section.
+
+## Future enhacements
+
+- create all update functions for input components to mimic shiny as
+  close as possible
+- add some glue code in `dsl.R` to make using this package smoother
+- adding more semantic components
+- new version release on CRAN
+
+## Appsilon
+
+![](https://avatars0.githubusercontent.com/u/6096772)
+
+Appsilon is a **Posit (formerly RStudio) Full Service Certified
+Partner**.  
+Learn more at [appsilon.com](https://appsilon.com).
+
+Get in touch <opensource@appsilon.com>
+
+Explore the [Rhinoverse](https://rhinoverse.dev) - a family of R
+packages built around [Rhino](https://appsilon.github.io/rhino/)!
+
+[![We are
+hiring!](https://raw.githubusercontent.com/Appsilon/website-cdn/gh-pages/WeAreHiring1.png)](https://appsilon.com/careers/)

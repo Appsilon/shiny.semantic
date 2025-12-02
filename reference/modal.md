@@ -1,0 +1,212 @@
+# Create Semantic UI modal
+
+This creates a modal using Semantic UI styles.
+
+## Usage
+
+``` r
+modal(
+  ...,
+  id = "",
+  class = "",
+  header = NULL,
+  content = NULL,
+  footer = div(class = "ui button positive", "OK"),
+  target = NULL,
+  settings = NULL,
+  modal_tags = NULL
+)
+
+modalDialog(..., title = NULL, footer = NULL)
+```
+
+## Arguments
+
+- ...:
+
+  Content elements to be added to the modal body. To change attributes
+  of the container please check the \`content\` argument.
+
+- id:
+
+  ID to be added to the modal div. Default "".
+
+- class:
+
+  Classes except "ui modal" to be added to the modal. Semantic UI
+  classes can be used. Default "".
+
+- header:
+
+  Content to be displayed in the modal header. If given in form of a
+  list, HTML attributes for the container can also be changed. Default
+  "".
+
+- content:
+
+  Content to be displayed in the modal body. If given in form of a list,
+  HTML attributes for the container can also be changed. Default NULL.
+
+- footer:
+
+  Content to be displayed in the modal footer. Usually for buttons. If
+  given in form of a list, HTML attributes for the container can also be
+  changed. Set NULL, to make empty.
+
+- target:
+
+  Javascript selector for the element that will open the modal. Default
+  NULL.
+
+- settings:
+
+  list of vectors of Semantic UI settings to be added to the modal.
+  Default NULL.
+
+- modal_tags:
+
+  character with title for `modalDialog` - equivalent to header
+
+- title:
+
+  title displayed in header in `modalDialog`
+
+## Examples
+
+``` r
+## Create a simple server modal
+if (interactive()) {
+library(shiny)
+library(shiny.semantic)
+
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      actionButton("show", "Show modal dialog")
+    )
+  )
+}
+
+server = function(input, output) {
+  observeEvent(input$show, {
+    create_modal(modal(
+      id = "simple-modal",
+      header = h2("Important message"),
+      "This is an important message!"
+    ))
+  })
+}
+shinyApp(ui, server)
+}
+## Create a simple UI modal
+
+if (interactive()) {
+library(shiny)
+library(shiny.semantic)
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      title = "Modal example - Static UI modal",
+      div(id = "modal-open-button", class = "ui button", "Open Modal"),
+      modal(
+        div("Example content"),
+        id = "example-modal",
+        target = "modal-open-button"
+      )
+    )
+  )
+}
+
+## Observe server side actions
+library(shiny)
+library(shiny.semantic)
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      title = "Modal example - Server side actions",
+      uiOutput("modalAction"),
+      actionButton("show", "Show by calling show_modal")
+    )
+  )
+}
+
+server <- shinyServer(function(input, output) {
+  observeEvent(input$show, {
+    show_modal('action-example-modal')
+  })
+  observeEvent(input$hide, {
+    hide_modal('action-example-modal')
+  })
+
+  output$modalAction <- renderUI({
+    modal(
+      actionButton("hide", "Hide by calling hide_modal"),
+      id = "action-example-modal",
+      header = "Modal example",
+      footer = "",
+      class = "tiny"
+    )
+  })
+})
+shinyApp(ui, server)
+}
+
+## Changing attributes of header and content.
+if (interactive()) {
+library(shiny)
+library(shiny.semantic)
+
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      actionButton("show", "Show modal dialog")
+    )
+  )
+}
+
+server = function(input, output) {
+  observeEvent(input$show, {
+    create_modal(modal(
+      id = "simple-modal",
+      title = "Important message",
+      header = list("!!!", style = "background: lightcoral"),
+      content = list(style = "background: lightblue",
+                     `data-custom` = "value", "This is an important message!"),
+      p("This is also part of the content!")
+    ))
+  })
+}
+shinyApp(ui, server)
+}
+
+## Modal that closes automatically after specific time
+if (interactive()) {
+library(shiny)
+library(shiny.semantic)
+ui <- function() {
+  shinyUI(
+    semanticPage(
+      actionButton("show", "Show modal dialog")
+    )
+  )
+}
+
+server <- shinyServer(function(input, output, session) {
+  observeEvent(input$show, {
+    create_modal(
+      modal(
+        id = "simple-modal",
+        title = "Important message",
+        header = "Example modal",
+        content = "This modal will close after 3 sec.",
+        footer = NULL,
+      )
+    )
+    Sys.sleep(3)
+    hide_modal(id = "simple-modal")
+  })
+})
+
+shinyApp(ui = ui(), server = server)
+}
+```

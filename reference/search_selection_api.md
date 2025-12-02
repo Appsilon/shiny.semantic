@@ -1,0 +1,88 @@
+# Add Semantic UI search selection dropdown based on REST API
+
+Define the (multiple) search selection dropdown input for retrieving
+remote selection menu content from an API endpoint. API response is
+expected to be a JSON with property fields \`name\` and \`value\`. Using
+a search selection dropdown allows to search more easily through large
+lists.
+
+## Usage
+
+``` r
+search_selection_api(
+  input_id,
+  search_api_url,
+  multiple = FALSE,
+  default_text = "Select"
+)
+```
+
+## Arguments
+
+- input_id:
+
+  Input name. Reactive value is available under input\[\[input_id\]\].
+
+- search_api_url:
+
+  Register API url with server JSON Response containing fields \`name\`
+  and \`value\`.
+
+- multiple:
+
+  TRUE if the dropdown should allow multiple selections, FALSE otherwise
+  (default FALSE).
+
+- default_text:
+
+  Text to be visible on dropdown when nothing is selected.
+
+## Examples
+
+``` r
+## Only run examples in interactive R sessions
+if (interactive()) {
+   library(shiny)
+   library(shiny.semantic)
+   library(gapminder)
+   library(dplyr)
+
+   ui <- function() {
+    shinyUI(
+      semanticPage(
+        title = "Dropdown example",
+        uiOutput("search_letters"),
+        p("Selected letter:"),
+        textOutput("selected_letters")
+      )
+    )
+  }
+
+  server <- shinyServer(function(input, output, session) {
+
+   search_api <- function(gapminder, q) {
+     has_matching <- function(field) {
+        startsWith(field, q)
+      }
+      gapminder %>%
+        mutate(country = as.character(country)) %>%
+        select(country) %>%
+        unique %>%
+        filter(has_matching(country)) %>%
+        head(5) %>%
+          transmute(name = country,
+                  value = country)
+    }
+
+    search_api_url <- shiny.semantic::register_search(session,
+                                                      gapminder,
+                                                      search_api)
+    output$search_letters <- shiny::renderUI(
+      search_selection_api("search_result", search_api_url, multiple = TRUE)
+    )
+    output$selected_letters <- renderText(input[["search_result"]])
+  })
+
+  shinyApp(ui = ui(), server = server)
+}
+```

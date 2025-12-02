@@ -1,0 +1,83 @@
+# Shiny.semantic integration with plotly and leaflet
+
+## Integration with plotly or leaflet
+
+### Plotly integration
+
+Similarly to `shiny`, `shiny.semantic` works well with other popular R
+packages. Let’s see how to create a simple application with `plotly`.
+
+``` r
+library(shiny)
+library(shiny.semantic)
+library(plotly)
+
+ui <- semanticPage(
+  segment(
+    class = "basic",
+    a(class="ui green ribbon label", "Plotly demo"),
+    plotlyOutput("plot")
+
+  )
+)
+
+server <- function(input, output, session) {
+  output$plot <- renderPlotly({
+    plot_ly(economics, x = ~date, color = I("black")) %>%
+      add_lines(y = ~uempmed) %>%
+      add_lines(y = ~psavert, color = I("red"))
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+### Leaflet integration
+
+And now let’s have a look at similar example, but with `leaflet`.
+
+``` r
+library(shiny)
+library(shiny.semantic)
+library(leaflet)
+
+ui <- semanticPage(
+  segment(
+    class = "basic",
+    a(class="ui blue ribbon label", "Leaflet demo"),
+    leafletOutput("map")
+
+  )
+)
+
+server <- function(input, output, session) {
+  output$map <- renderLeaflet({
+    m <- leaflet() %>% addTiles()
+    m <- m %>% setView(21.00, 52.21, zoom = 12)
+    m
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+### DataTable integration
+
+To add some neat Fomantic styling to your `DT` table you need to use
+`semantic_DT` wrapper.
+
+``` r
+ library(shiny)
+ library(shiny.semantic)
+
+ ui <- semanticPage(
+   h2("Pretty tables in Shiny Semantic"),
+   semantic_DTOutput("table")
+ )
+ server <- function(input, output, session) {
+   output$table <- DT::renderDataTable(
+     semantic_DT(mtcars)
+   )
+ }
+ shinyApp(ui, server)
+```
