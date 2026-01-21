@@ -134,15 +134,41 @@ textAreaInput <- function(inputId, label, value = "", width = NULL, placeholder 
 #' @param inputId Input name. The same as \code{input_id}.
 #' @rdname text_input
 #' @export
-textInput <- function(inputId, label, value = "", width = NULL,
-                      placeholder = NULL, type = "text") {
+textInput <- function(inputId, label, value = "", width = NULL, placeholder = NULL,
+                      type = "text", class = "field", label_class = "ui label") {
   shiny::div(
     class = "ui form",
-    style = if (!is.null(width)) glue::glue("width: {shiny::validateCssUnit(width)};"),
-    shiny::div(class = "field",
-               if (!is.null(label)) tags$label(label, `for` = inputId),
-               text_input(inputId, value = value, placeholder = placeholder, type = type)
-    )
+    style = if (!is.null(width))
+      glue::glue("width: {shiny::validateCssUnit(width)};"),
+    if (label_class == "ui label" ||
+        grepl("below", label_class, fixed = TRUE) ||
+        grepl("right", label_class, fixed = TRUE)) {
+      shiny::div(
+        class = class,
+        shiny::div(class = label_class,
+                   if (!is.null(label))
+                     tags$label(label, `for` = inputId)),
+        text_input(
+          inputId,
+          value = value,
+          placeholder = placeholder,
+          type = type
+        )
+      )
+    } else {
+      shiny::div(
+        class = class,
+        text_input(
+          inputId,
+          value = value,
+          placeholder = placeholder,
+          type = type
+        ),
+        shiny::div(class = label_class,
+                   if (!is.null(label))
+                     tags$label(label, `for` = inputId))
+      )
+    }
   )
 }
 
