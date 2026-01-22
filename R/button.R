@@ -171,3 +171,29 @@ counter_button <- function(input_id, label = "", icon = NULL, value = 0,
     )
   )
 }
+
+#' Fomantic UI Button
+#'
+#' @description
+#' Creates a button specifically for Fomantic UI forms in order to check all inputs meet validation rules
+#'
+#' @param input_id The input slot that will be used to access the value
+#' @param label The contents of the button, can either be character string or HTML tags
+#' @param icon An optional \code{\link{icon}} to appear on the button
+#' @param width Width of the input
+#' @param class An optional attribute to be added to the button's class. If used
+#' paramters like \code{color}, \code{size} are ignored.
+#' @param ... Named attributes to be applied to the button or remaining parameters passed to button, like \code{class}
+#'
+#' @return
+#' A \code{shiny.tag} that will show a submit button in the UI of a shiny application.
+#'
+#' @examples
+#' form_button("submit", "Submit")
+#'
+#' @seealso \code{\link{form_validation}}, \code{\link{action_button}}
+#' @export
+form_button <- function(input_id, label, icon = NULL, width = NULL, class = NULL, ...) {
+  class <- paste("form-button", class)
+  button(input_id, label, icon = NULL, width = NULL, class = class, ...)
+}
