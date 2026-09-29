@@ -9,6 +9,14 @@
 [![total](https://cranlogs.r-pkg.org/badges/grand-total/shiny.semantic)](https://CRAN.R-project.org/package=shiny.semantic)
 <!-- badges: end -->
 
+> [!WARNING]
+> **Versions 0.4.3 and older require an upgrade to 0.5.0 or later.**
+>
+> `shiny.semantic` versions below 0.5.0 load Fomantic UI assets from a CDN that stops serving them on **January 4, 2027**.
+> From that date on, apps using these versions do not load their styles and scripts.
+> Upgrade to `shiny.semantic` 0.5.0 or later, which bundles its assets through the `semantic.assets` package.
+> See the [changelog](https://appsilon.github.io/shiny.semantic/news/index.html) for details on what changed.
+
 With this library it is easy to wrap Shiny with **[Fomantic
 UI](https://fomantic-ui.com/)** (previously *Semantic*). Add a few
 simple lines of code to give your UI a **fresh, modern and highly
