@@ -22,6 +22,7 @@ character
 
 This is a helper function used in grid_template()
 
+
     areas_dataframe <- rbind(
        c("header", "header", "header"),
        c("menu",   "main",   "right1"),

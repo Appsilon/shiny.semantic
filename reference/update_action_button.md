@@ -36,6 +36,7 @@ updateActionButton(session, inputId, label = NULL, icon = NULL)
 ## Examples
 
 ``` r
+
 if (interactive()){
 library(shiny)
 library(shiny.semantic)

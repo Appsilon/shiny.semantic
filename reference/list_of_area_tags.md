@@ -22,9 +22,11 @@ list of `shiny::tags$div`
 
 This is a helper function used in grid_template()
 
+
       list_of_area_tags(c("header", "main", "footer"))
 
 returns the following list:
+
 
       [[1]] <div id="{{ grid_id }}-header" style="grid-area: header; {{ header_custom_css }}">{{ header }}</div>
       [[2]] <div id="{{ grid_id }}-main" style="grid-area: main; {{ main_custom_css }}">{{ main }}</div>

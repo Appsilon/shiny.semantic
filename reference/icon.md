@@ -23,6 +23,7 @@ icon(class = "", ...)
 ## Examples
 
 ``` r
+
 if (interactive()){
 library(shiny)
 library(shiny.semantic)

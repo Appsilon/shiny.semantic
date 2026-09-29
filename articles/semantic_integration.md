@@ -8,6 +8,7 @@ Similarly to `shiny`, `shiny.semantic` works well with other popular R
 packages. Let’s see how to create a simple application with `plotly`.
 
 ``` r
+
 library(shiny)
 library(shiny.semantic)
 library(plotly)
@@ -37,6 +38,7 @@ shinyApp(ui = ui, server = server)
 And now let’s have a look at similar example, but with `leaflet`.
 
 ``` r
+
 library(shiny)
 library(shiny.semantic)
 library(leaflet)
@@ -67,6 +69,7 @@ To add some neat Fomantic styling to your `DT` table you need to use
 `semantic_DT` wrapper.
 
 ``` r
+
  library(shiny)
  library(shiny.semantic)
 

@@ -30,6 +30,7 @@ character
 
 This is a helper function used in grid_template()
 
+
       grid_container_css(
         "'a a a' 'b b b'",
         c("50%", "50%"),
@@ -37,6 +38,7 @@ This is a helper function used in grid_template()
       )
 
 returns
+
 
       "display: grid;
        height: 100%;

@@ -64,6 +64,7 @@ definitions from [Fomantic UI](https://fomantic-ui.com/) documentation.
 For example:
 
 ``` r
+
 div(class = "ui raised segment",
   div(
     a(class="ui green ribbon label", "Link"),
@@ -80,6 +81,7 @@ advantage of the number of elements that we implemented for you. See
 some examples below:
 
 ``` r
+
 range_input("range", 10, 15, 0, 20)
 text_input("txt", type = "text", placeholder = "Enter Text")
 date_input("date")
@@ -100,6 +102,7 @@ documentation. For example, you can call in RStudio (to see the docs for
 a counter button):
 
 ``` r
+
 ?counter_button
 ```
 

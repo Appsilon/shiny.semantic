@@ -5,6 +5,7 @@
 This is how you generate your first UI with `shiny.semantic`:
 
 ``` r
+
 uirender(
   shiny::tagList(
     h4("Numeric input", icon("world")),
@@ -28,6 +29,7 @@ and just an `h1` title.
 ![screen1](intro_images/s0.png)
 
 ``` r
+
 ui <- semanticPage(
   title = "My first page",
   h1("My page")
@@ -53,6 +55,7 @@ width and typically contains outputs.
 ![screen2](intro_images/s1.png)
 
 ``` r
+
 ui <- semanticPage(
   title = "My first page",
   h1("My page"),
@@ -74,6 +77,7 @@ with a Fomantic (Semantic previously) UI segment containing 2 cards.
 ![screen3](intro_images/s2.png)
 
 ``` r
+
 ui <- semanticPage(
   title = "My first page",
   h1("My page"),
@@ -116,6 +120,7 @@ so let’s add a dropdown. We create it input using
 ![screen4](intro_images/s3.png)
 
 ``` r
+
 ui <- semanticPage(
   title = "My first page",
   h1("My page"),
@@ -161,6 +166,7 @@ plot from a selected `mtcars` column using dropdown.
 ![screen5](intro_images/s4.png)
 
 ``` r
+
 ui <- semanticPage(
   title = "My first page",
   h1("My page"),
@@ -218,6 +224,7 @@ with 1 row and 2 columns of the same size. Our grid template will
 contain 2 areas `chart1` and `chart2`
 
 ``` r
+
 grid_charts <- grid_template(
   default = list(areas = rbind(c("chart1", "chart2")),
                  rows_height = c("100%"),
@@ -234,6 +241,7 @@ This is the final effect of our work:
 ![screen6](intro_images/s5.png)
 
 ``` r
+
 ui <- semanticPage(
   title = "My first page",
   h1("My page"),

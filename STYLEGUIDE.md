@@ -7,6 +7,7 @@ Variables follow snake case naming style (unless they overlap with
 
 ``` r
 
+
 my_variable <- 33
 
 function(input, another_argument){}
@@ -18,6 +19,7 @@ Constants are defined with capital letter snake case and kept in the
 `constants.R` script (unless they’re internal).
 
 ``` r
+
 COLORS <- c("red", "green", "blue")
 ```
 
@@ -42,6 +44,7 @@ then implementing a wrapper that follows `shiny` syntax.
 Example:
 
 ``` r
+
 # semantic styling
 action_button <- function(input_id, label, icon = NULL, width = NULL, ...) {
   ...

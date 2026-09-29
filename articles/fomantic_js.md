@@ -8,6 +8,7 @@ document is ready. There are at least 2 options to do this:
 1.  Use `shinyjs`
 
 ``` r
+
 library(shinyjs)
 ...
 jsCode <- " # Fomantic UI componts JS "
@@ -31,6 +32,7 @@ shinyApp(ui = ui(), server = server)
 2.  Use `shiny::tags$script()`
 
 ``` r
+
 ...
 jsCode <- "
 $(document).ready(function() {

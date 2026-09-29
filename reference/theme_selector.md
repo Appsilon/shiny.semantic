@@ -22,6 +22,7 @@ theme_selector(input_id = "theme", label = "Choose theme")
 ## Examples
 
 ``` r
+
 if (interactive()) {
 library(shiny)
  library(shiny.semantic)

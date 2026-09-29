@@ -2,6 +2,17 @@
 
 > *Fomantic (Semantic) UI wrapper for Shiny.*
 
+> \[!WARNING\] **Versions 0.4.3 and older require an upgrade to 0.5.0 or
+> later.**
+>
+> `shiny.semantic` versions below 0.5.0 load Fomantic UI assets from a
+> CDN that stops serving them on **January 4, 2027**. From that date on,
+> apps using these versions do not load their styles and scripts.
+> Upgrade to `shiny.semantic` 0.5.0 or later, which bundles its assets
+> through the `semantic.assets` package. See the
+> [changelog](https://appsilon.github.io/shiny.semantic/news/index.html)
+> for details on what changed.
+
 With this library it is easy to wrap Shiny with **[Fomantic
 UI](https://fomantic-ui.com/)** (previously *Semantic*). Add a few
 simple lines of code to give your UI a **fresh, modern and highly
@@ -12,6 +23,7 @@ interactive** look.
 ![shiny](reference/figures/ss_before.png)
 
 ``` r
+
 library(shiny)
 ui <- fluidPage(
   div(
@@ -29,6 +41,7 @@ ui <- fluidPage(
 ![semantic](reference/figures/ss_after.png)
 
 ``` r
+
 library(shiny.semantic)
 ui <- semanticPage(
   div(class = "ui raised segment",
@@ -46,8 +59,8 @@ ui <- semanticPage(
 ### Case studies
 
 | [🔗 Churn analytics](https://demo.appsilon.ai/churn) | [🔗 Fraud detection](https://demo.prod.appsilon.ai/flights_fraud_demo/) |
-|:----------------------------------------------------:|:-----------------------------------------------------------------------:|
-|           ![](reference/figures/churn.png)           |                    ![](reference/figures/fraud.png)                     |
+|:--:|:--:|
+| ![](reference/figures/churn.png) | ![](reference/figures/fraud.png) |
 
 ### Before and after
 
@@ -55,8 +68,8 @@ We show how `shiny.semantic` can be used to style an app and change it’s
 look.
 
 | [🔗 BEFORE Utah Division of Water Quality (DWQ)](https://shiny.rstudio.com/gallery/lake-profile-dashboard.html) | [🔗 AFTER Utah Division of Water Quality (DWQ)](https://demo.appsilon.ai/apps/water-quality/) |
-|:---------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------:|
-|                                      ![](reference/figures/before_wq.png)                                       |                              ![](reference/figures/after_wq.png)                              |
+|:--:|:--:|
+| ![](reference/figures/before_wq.png) | ![](reference/figures/after_wq.png) |
 
 ## Component examples
 
@@ -102,12 +115,14 @@ See more examples with code in the `examples` folder:
 You can install a stable `shiny.semantic` release from CRAN repository:
 
 ``` r
+
 install.packages("shiny.semantic")
 ```
 
 and the latest version with `remotes`:
 
 ``` r
+
 remotes::install_github("Appsilon/shiny.semantic@develop")
 ```
 
@@ -118,6 +133,7 @@ To install [previous
 versions](https://appsilon.github.io/shiny.semantic/) you can run:
 
 ``` r
+
 remotes::install_github("Appsilon/shiny.semantic", ref = "0.1.0")
 ```
 
@@ -136,6 +152,7 @@ components](https://demo.appsilon.ai/semantic/).
 Basic example for rendering a simple button. will look like this:
 
 ``` r
+
 library(shiny)
 library(shiny.semantic)
 ui <- semanticPage(
@@ -155,6 +172,7 @@ At the moment you have to pass page title in
 [`semanticPage()`](https://appsilon.github.io/shiny.semantic/reference/semanticPage.md)
 
 ``` r
+
 semanticPage(title = "Your page title", ...)
 ```
 
@@ -206,6 +224,7 @@ However, if you encounter any problems, try the following:
 - shiny
 
 ``` r
+
 install.packages("shiny", version='1.4')
 ```
 
