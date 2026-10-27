@@ -19,6 +19,14 @@ test_that("test dropdown_input", {
 })
 
 
+test_that("theme_selector uses its input_id for the dropdown and label", {
+  rendered <- as.character(theme_selector(input_id = "custom_theme"))
+
+  expect_match(rendered, 'id="custom_theme"')
+  expect_match(rendered, 'for="custom_theme"')
+})
+
+
 describe("update_dropdown_input", {
   skip_on_cran()
   local_edition(3)
