@@ -1,0 +1,18 @@
+/* Navbar Page Visibility */
+@media only screen and (min-width: 768px) {
+  .navbar-page-menu .collapsed-hamburger-icon {
+    display: none!important;
+  }
+}
+
+.ui.menu.navbar-page-menu .item>.collapsed-hamburger-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 1px;
+  margin-top: 1px;
+}
+
+.ui.menu .item.hidden.navbar-collapsible-item {
+  display: none;
+}
